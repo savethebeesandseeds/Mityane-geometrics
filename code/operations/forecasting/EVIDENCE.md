@@ -38,14 +38,14 @@ tree has its own current source fingerprint; it must not be substituted for a
 historically captured source identity.
 
 The preserved prospective market registration consists of the
-[numeric card](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card.json),
-[amendment 001](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card-amendment-001.json),
-[amendment 002](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card-amendment-002.json),
-[campaign admission](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/campaign-admission.json)
-and [registration review](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/registration-review.json).
+[numeric card](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card.json),
+[amendment 001](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card-amendment-001.json),
+[amendment 002](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card-amendment-002.json),
+[campaign admission](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/campaign-admission.json)
+and [registration review](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/registration-review.json).
 Read the original card and amendments in order; later amendments supersede their
 listed clauses while preserving original bytes. The separate
-[issuance policy](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/forecast_issuance_v1/policy.json) governs
+[issuance policy](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/forecast_issuance_v1/policy.json) governs
 the joint-frozen serving stage.
 
 The registered lane fixes CPB-v3.market-01 native width 36, H128 windows, K4

@@ -10,7 +10,7 @@ for argument in "$@"; do
   [[ "$argument" != --encoders ]] || select_encoder=false
 done
 binary="${EMBEDDING_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-mae/feature_harness}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/rpb-mae}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/rpb-mae}"
 mkdir -p -- "$run_root"
 run_directory="$(mktemp -d "$run_root/minimum-XXXXXX")"
 selection=()

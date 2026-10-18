@@ -3,7 +3,7 @@
 This additive boundary issues state/Dynamics forecasts from a complete checked
 frozen Encoder, online State Representation Network, Target State Representation
 Network and Dynamics Model tuple. The prospective policy is
-`archive/embeddings/pre-cleanup-2026-10-18/doc/forecast_issuance_v1/policy.json`, SHA256
+`.archive/embeddings/pre-cleanup-2026-10-18/doc/forecast_issuance_v1/policy.json`, SHA256
 `18fcaeab478e0b66dfe2fca132cc4c5d8ae3de368eb4a74d7428fdf9bfef2805`.
 
 Only its joint-frozen single-stage policy is supported. Online state, target

@@ -170,7 +170,7 @@ def release_binding(capsule):
 def source_binding(capsule,index):
     manifest = metadata(capsule/'source-manifest.json')
     rows = manifest['files']; names = [relative_name(x['path']) for x in rows]
-    check(names==sorted(set(names)) and all(n.startswith('code/') or n in ('Makefile','setup.sh','dependencies.lock','archive/embeddings/pre-cleanup-2026-10-18/doc/dataset_registry.json') for n in names),
+    check(names==sorted(set(names)) and all(n.startswith('code/') or n in ('Makefile','setup.sh','dependencies.lock','.archive/embeddings/pre-cleanup-2026-10-18/doc/dataset_registry.json') for n in names),
           'whole closed compiled SOURCE name matrix')
     check({CARD,'setup.sh','code/scripts/install-libtorch.py'}<=set(names),'card and internal SDK SOURCE')
     for row in rows:

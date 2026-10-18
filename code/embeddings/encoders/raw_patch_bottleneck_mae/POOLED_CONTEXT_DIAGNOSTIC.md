@@ -153,7 +153,7 @@ Independent audit PASS: 96,170,207 checks/1,235 CPU archive decodes/402.684740 s
 
 The CPU audit checks saved common/nonshared initialization, unchanged diagnostic projection and absent moments, original scaler/data/support, fixed query reductions, maps/logits/argmax and source intervals. It performs no CUDA/model/autodiff/optimizer/head fit or PCA/SVD fit. CUDA checkpoint bodies are byte-bound; actual named live CPU state/AdamW/scaler witnesses and captured CUDA admission establish association without independently reenacting the optimizer trajectory. No causal bottleneck claim or broad generalization claim follows from these synthetic tasks. Pure GPU kernel time is unmeasured. Historical quality payloads, TEST and stress are absent. Original RPB-v7 artifacts and the active v4 reference remain unchanged.
 
-[Frozen prospective card](../../evaluation/cards/pooled_context_v1.md). [Full durable summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/pooled_context_v1.json).
+[Frozen prospective card](../../evaluation/cards/pooled_context_v1.md). [Full durable summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/pooled_context_v1.json).
 
 Metadata/source bindings:
 

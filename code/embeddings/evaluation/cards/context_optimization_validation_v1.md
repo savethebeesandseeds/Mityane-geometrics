@@ -252,5 +252,5 @@ VALIDATION or reconstruction later is optimization diagnosis, not a selected
 checkpoint, repaired fixed 512-update card, confirmation or acceptance. Any
 later quality comparison requires a new declared budget/reference, independently
 trained seeds and unopened TEST namespace; this card authorizes none. Follow the
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): model tags
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): model tags
 alone in encoder table cells, with short descriptions immediately beside them.

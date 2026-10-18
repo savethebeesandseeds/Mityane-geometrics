@@ -262,5 +262,5 @@ features/predictions/labels/source IDs; fixed-budget manifest; query arrays and
 reconstruction reductions; ordinary new TEST and all stress masks/predictions;
 paired scores/intervals/coverage; cost records; independent verification; and
 the final measured disposition. Preserve all old files/reports. Follow the
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) with tag-only
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) with tag-only
 encoder table cells and descriptions in adjacent prose.

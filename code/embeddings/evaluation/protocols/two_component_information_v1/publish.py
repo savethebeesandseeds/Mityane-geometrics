@@ -14,7 +14,7 @@ def sha(path):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/two_component_information_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/two_component_information_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
     parser = argparse.ArgumentParser()
     parser.add_argument('--admission', type=Path, required=True)
     args = parser.parse_args()
@@ -61,7 +61,7 @@ def main():
             'metadata_sources_sha256':sha(manifest),'artifact_inventory_sha256':sha(inventory)},
         'encoder_calls':0,'optimizer_updates':0,'head_fits':0,'PCA_fits':0,
         'quality_generation':False,'testing_accessed':False,'old_artifacts_replaced':False}
-    summary_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json'
+    summary_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json'
     with summary_path.open('x') as stream:
         stream.write(json.dumps(summary,indent=2)+'\n')
     lines = [
@@ -113,7 +113,7 @@ def main():
         'establish encoder quality on the new datasets, universal observability',
         'outside this family, or production promotion. Keep TEMPO-3 and RPB-v18',
         'milestones intact; compare new dataset instances under unchanged fixed heads.', ''])
-    report_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/TWO_COMPONENT_INFORMATION_V1.md'
+    report_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/TWO_COMPONENT_INFORMATION_V1.md'
     with report_path.open('x') as stream:
         stream.write('\n'.join(lines))
     print(json.dumps({'summary_sha256':sha(summary_path),'report_sha256':sha(report_path),

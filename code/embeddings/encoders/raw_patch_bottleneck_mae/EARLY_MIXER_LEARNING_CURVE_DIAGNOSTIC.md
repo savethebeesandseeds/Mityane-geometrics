@@ -256,7 +256,7 @@ Independent audit PASS: 141,317,815 checks, 1,675 CPU archive decodes, 548.28628
 
 No adaptive best-point selection, rescue, automatic promotion, TEST or stress occurs. Read the entire paired timing curve, worst-cohort scores, coverage, reconstruction and final amplitude tradeoffs together. Nested known-VALIDATION points do not provide independent generalization confirmation. Strong initial amplitude controls limit training-credit claims. This report does not replace historical v7 weights or prove a causal internal mechanism.
 
-[Frozen prospective card](../../evaluation/cards/early_mixer_learning_curve_v1.md). [Durable full summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_learning_curve_v1.json).
+[Frozen prospective card](../../evaluation/cards/early_mixer_learning_curve_v1.md). [Durable full summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_learning_curve_v1.json).
 
 Metadata/source bindings:
 

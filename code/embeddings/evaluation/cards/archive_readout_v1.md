@@ -68,6 +68,6 @@ come from the saved learned-global milestone at 512 completed CUDA updates,
 batch size 8. The compact width is 32. No encoder is retrained, and no TEST
 archive is opened. Readout fits run on CPU with one thread.
 
-See [the reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md),
+See [the reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md),
 [the continuation plan](../../encoders/raw_patch_bottleneck_mae/NEXT_ADVANCE.md),
 and [evaluation integration](../README.md).

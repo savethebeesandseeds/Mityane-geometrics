@@ -74,7 +74,22 @@ The source image retains the SDK at `/opt/cuwacunu_embedding/libtorch` and CUDA
 `/etc/profile.d/embedding.sh`; direct commands can use `bash -lc` or absolute
 paths. Keep build artifacts, temporary files, toolchains and caches on the
 container filesystem under `/opt/mityane-geometrics`. Persist selected research
-artifacts under the ignored `data/` and `output/` host directories.
+artifacts under the ignored `.temp/` host directory. Create dataset
+subdirectories there only when needed; `code/data/` contains source code.
+
+## Local artifacts
+
+The repository's local artifact directory is `.temp/`, mounted at
+`/mityane/.temp`. Its complete contents are ignored by Git. It holds named run
+results, selected datasets, checkpoints, branding exports, maintenance files and
+migration recovery history. Preserve existing evidence and recovery files.
+
+This directory was renamed from root `output/` without changing the retained
+file contents. Dated receipts keep their original `output/...` path identities;
+those root-relative local files now live at `.temp/...`. Imported artifacts under
+`code/embeddings/output/`, `.build/` and `.external/` stay in their original
+locations. Build caches and build temporary files remain under
+`/opt/mityane-geometrics` inside the container.
 
 ## Embeddings component
 
@@ -91,16 +106,22 @@ been removed. Run from `/mityane` through the root task entry:
 
 New component builds, temporary files and task locks live under
 `/opt/mityane-geometrics/embeddings/build/<session>`. Named task outputs live
-under `/mityane/output/embeddings/runs/<session>`. Imported historical artifacts
+under `/mityane/.temp/embeddings/runs/<session>`. Imported historical artifacts
 remain in the component's ignored `output/`, `.build/` and `.external/`
 directories. Prefer named tasks; direct research runners require their own
 declared output path and frozen procedure before research. The complete
 pre-cleanup source/documentation component is preserved in
-`archive/embeddings/pre-cleanup-2026-10-18/`. Historical source capsules and
+`.archive/embeddings/pre-cleanup-2026-10-18/`. Historical source capsules and
 receipts retain their original bytes, paths and hashes. Those identities are
 evidence, not paths to rewrite or a request to replay old experiments. Read
-[the archive guide](../archive/embeddings/README.md) for source ownership and
+[the archive guide](../.archive/embeddings/README.md) for source ownership and
 historical path mapping, and [the research guide](EMBEDDINGS.md) for pause status.
+
+The root archive directory is now `.archive/`. Dated receipts retain their
+original `archive/...` paths and hashes; map that leading root segment to
+`.archive/...` when locating the same files. Nested `archive/` directories
+inside a preserved snapshot keep their original names. The layout verifier
+resolves this root mapping without rewriting the receipts.
 
 The imported archived headers exceed Windows' legacy path length under the
 component directory. This checkout uses repository-local `core.longpaths=true`;

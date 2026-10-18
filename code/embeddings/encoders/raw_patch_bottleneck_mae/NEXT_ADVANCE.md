@@ -3,9 +3,9 @@
 Live direction reviewed: 2026-10-12. Research chronology below: through 2026-10-10.
 
 The configurable RPB-v20 API and separate TEMPO-5 capacity experiment are
-implemented. Read [current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md), the
-[capacity report](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md) and its
-[12 October continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-12_AFTER_CONFIGURABLE_CAPACITY.md).
+implemented. Read [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md), the
+[capacity report](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md) and its
+[12 October continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-12_AFTER_CONFIGURABLE_CAPACITY.md).
 The compact RPB-v20.alt-01 configuration is retained for continuation.
 Next proposed research identifies learned versus fixed-coordinate usefulness
 from saved features, then predeclares matched H128/H256 quality work and, if
@@ -18,14 +18,14 @@ belong to their original cards, not a universal v20 dimension restriction.
 Older encoder designs remain archived references and compatibility inputs;
 routine research does not retrain every historical variant.
 
-Use [the reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) and
-[the version registry](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). Shared evaluation
+Use [the reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) and
+[the version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). Shared evaluation
 stays separate from encoder training and decoding.
 
 ## Preserved 10 October spectral milestone and proposed direction
 
 The latest completed quality record at that milestone was
-[RPB-v19.alt-01](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md),
+[RPB-v19.alt-01](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md),
 the unchanged v19 design on fresh masters 930905, 930906 and 930907 for each of
 **TEMPO-4** slow-component timing and **AMP-2** component balance, both at
 designed complexity **5/5**. All 12 prospective conditions pass at native32,
@@ -39,11 +39,11 @@ not uniform across cohorts; query VALIDATION MAE is 0.74248 for timing and
 The proposed next direction at that milestone was a separate harmonic linear decoder architecture,
 keeping the fixed prior, data, native32 and heads unchanged. It is prospective:
 the implementation and new quality cohorts are not allocated. Follow the
-[historical continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md).
+[historical continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md).
 There is no default promotion. Original saved **RPB-v7** and the formal
 **RPB-v4** reference remain protected.
 
-The preceding [RPB-v19 screen](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md) introduced the design;
+The preceding [RPB-v19 screen](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md) introduced the design;
 **RPB-v4 remains the formal evaluated reference**, with original saved **RPB-v7**
 protected. V19 keeps 20 learned shape coordinates and 12 fixed low/high spectral
 relation coordinates inside native32. Its two-cohort screen passed the
@@ -55,7 +55,7 @@ reconstruction still need demonstrated progress.
 
 Its separate fresh confirmation is now complete above. Preserve native32,
 the fixed heads and separate task populations, together with the
-[historical screen continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_MULTIBAND.md).
+[historical screen continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_MULTIBAND.md).
 No TEST/stress access or default promotion follows the screen.
 
 The preserved [RPB-v18 result](UNIT_TEMPORAL_RELATION_SCREEN.md) normalizes each
@@ -71,8 +71,8 @@ retains 100%/100% intact and 82.19%/99.90% deleted means, with 100% coverage.
 Its 70.31% deleted Linear cohort fails both joint rules. Both experiments keep
 the unchanged native32, .15 context deletion, B8, 512 updates and fixed heads.
 
-Keep the [v18 milestone](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/MILESTONE_2026-10-10_RPB_V18.md)
-and its [historical continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_FRESH_V17.md).
+Keep the [v18 milestone](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/MILESTONE_2026-10-10_RPB_V18.md)
+and its [historical continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_FRESH_V17.md).
 The coherent two-component challenge proposed there now has passed information
 admission and the completed v18/v19 screen linked above. Do not infer universal
 quality from either the preserved single-component result or a two-cohort screen.
@@ -124,11 +124,11 @@ All four designs have their own frozen card, source, tag and checkpoint namespac
 That architecture-screen milestone proposed fresh-source verification of v17.
 The five-cohort RPB-v17.alt-01 follow-up is now complete, and the subsequent
 v18 development screen improves deleted Linear accuracy on those known cohorts.
-The [historical architecture-screen continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_ARCHITECTURE_SCREEN.md)
+The [historical architecture-screen continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_ARCHITECTURE_SCREEN.md)
 preserves the earlier decision. That milestone used the dated continuation and
 two-component challenge linked above; present direction is at the top of this
 document. No TEST/stress or default promotion followed.
-The earlier [independent TRAIN-support proposal](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_VISIBLE_DIFFERENCE.md)
+The earlier [independent TRAIN-support proposal](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_VISIBLE_DIFFERENCE.md)
 is deferred and preserved, not measured. Avoid expanded comparisons of weak
 candidates and do not rescue v15/v16 by tuning their frozen recipes.
 
@@ -173,7 +173,7 @@ are preserved. Stop pooled width and gain without tuning heads, rates or budgets
 Skip half-mixer and further width variations. The pooled milestone selected the
 fresh fixed 512 confirmation now completed above. Preserve original RPB-v7,
 active RPB-v4, every earlier group and every retained curve point. The
-[historical pooled continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-09_AFTER_POOLED_CONTEXT.md)
+[historical pooled continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-09_AFTER_POOLED_CONTEXT.md)
 preserves that prospective decision.
 
 ## Completed milestone
@@ -542,7 +542,7 @@ rate or budget, and preserve all five runs including master4404.
 The separately frozen [saved-TRAIN scale lesson](NATIVE_VIEW_LOSS_SCALE_TRAIN_DIAGNOSTIC.md)
 is complete: no scale floor activated, and agreement grew later in every run.
 Its scalar traces do not identify objective-specific gradients or establish cause.
-The original dated [continuation note](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08.md)
+The original dated [continuation note](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08.md)
 remains the historical pre-diagnosis record.
 
 The [v7 decoder calibration](V7_DECODER_CALIBRATION_DIAGNOSTIC.md) then froze all
@@ -565,12 +565,12 @@ passes against v4 before calibration; equal-budget guards and the intact
 worst-master guard fail. Independent saved-evidence audit passed 67,932,331
 checks. Exact frozen features justify reusing classification after calibration.
 There was no TEST/stress access, promotion or new tag. The
-[earlier continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08_AFTER_DECODER_CALIBRATION.md)
+[earlier continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08_AFTER_DECODER_CALIBRATION.md)
 remains the historical prospective record.
 
 The [saved-TRAIN reliability diagnosis](SAVED_NATIVE_RELIABILITY_DIAGNOSTIC.md)
 completed the earlier [plan](FROZEN_NATIVE_RELIABILITY_PLAN.md) and
-[dated continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08_AFTER_FRESH_DECODER_REPLICATION.md).
+[dated continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-08_AFTER_FRESH_DECODER_REPLICATION.md).
 It compares every paired v4/v7 TRAIN export, retained fixed-head margins,
 within-source separation, feature variation and encoder training trace.
 Master12412 is already weaker on TRAIN as well as VALIDATION; this cannot be

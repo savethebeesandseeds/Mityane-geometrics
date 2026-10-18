@@ -51,8 +51,10 @@ datasets, checkpoints and failed attempts are retained. This migration adds no
 research training, fitted preprocessing or new quality measurement.
 
 The original Git directory is retained, with its Windows ownership unchanged,
-at ignored `output/migration/embeddings-2026-10-18/source.git`. It is recovery
-history; the component is ordinary source in Mityane's existing repository,
+at ignored `.temp/migration/embeddings-2026-10-18/source.git`. It is recovery
+history; root `output/` was subsequently renamed to `.temp/` with all contents
+preserved. Dated receipts retain the original path identity. The component is
+ordinary source in Mityane's existing repository,
 without a nested repository or submodule. The complete before/after file
 inventory and hashes are in that same local migration directory. Original
 versions of adapted operational files were retained under the component's
@@ -100,14 +102,14 @@ third-party obligations are consolidated in root `LICENSE` and
 `THIRD_PARTY_NOTICES.md`.
 
 The full source/documentation component immediately before this cleanup is retained
-byte-for-byte at `archive/embeddings/pre-cleanup-2026-10-18/`, including its
+byte-for-byte at `.archive/embeddings/pre-cleanup-2026-10-18/`, including its
 `code/`, `doc/`, `archive/` and top-level files. Historical ignored `output/`,
 `.build/` and `.external/` stay in place under `code/embeddings/`. Original
 source capsules, evidence, model IDs, hashes and old path identities are not
 rewritten. Maintained source references/build inputs change with ownership;
 new source identities must not be substituted into historical receipts.
 
-The [archive guide](../archive/embeddings/README.md) and
+The [archive guide](../.archive/embeddings/README.md) and
 [current research guide](EMBEDDINGS.md) distinguish preserved records from
 current instructions. The earlier migration record and verification receipts
 remain dated accounts of that import. Cleanup supplies no new scientific

@@ -17,7 +17,9 @@ Historical ignored `output/`, `.build/` and `.external/` remain at their
 existing locations under `code/embeddings/`, including local datasets,
 checkpoints and SDK transfer input. These directories were not relocated or
 deleted as cleanup. The initial migration's source Git recovery directory
-remains at ignored `output/migration/embeddings-2026-10-18/source.git`.
+now lives at ignored `.temp/migration/embeddings-2026-10-18/source.git` after
+the root artifact-directory rename; dated receipts retain the original
+`output/migration/...` path identity.
 
 ## Current ownership
 

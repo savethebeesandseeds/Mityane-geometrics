@@ -146,7 +146,7 @@ Independent audit PASS: 96,352,345 checks, 1,215 CPU archive decodes, 380.147750
 
 No numeric automatic promotion rule was declared. Assess timing intact/deleted linear accuracy, worst-cohort accuracy, fixed TRAIN/VALIDATION MAE, neural regressions and amplitude separately before any next change. This report does not replace original RPB-v7 weights or claim a causal internal mechanism.
 
-[Frozen prospective card](../../evaluation/cards/early_mixer_reliability_v1.md). [Durable full summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_reliability_v1.json).
+[Frozen prospective card](../../evaluation/cards/early_mixer_reliability_v1.md). [Durable full summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_reliability_v1.json).
 
 The first engineering admission passed with a 134-file source closure. Before any quality generation, the closure was corrected to 146 files and a new actual CUDA admission passed under the measured source fingerprint. Both admission records are preserved; the earlier capture is not used as a quality binding. [Initial admission](../../output/runs/rpb-early-mixer-reliability/admission/admission-sGWNLS/passed.json) and [final admission](../../output/runs/rpb-early-mixer-reliability/admission/admission-0zaRdL/passed.json).
 

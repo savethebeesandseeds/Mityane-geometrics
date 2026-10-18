@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
 device="${1:-cpu}"
 [[ "$device" == cpu || "$device" == cuda ]] || { echo 'Usage: cli_smoke.sh [cpu|cuda]' >&2; exit 1; }
 embedding_bin="${EMBEDDING_BIN:-/opt/mityane-geometrics/embeddings/build/baseline/embedding}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/baseline}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/baseline}"
 mkdir -p -- "$run_root"
 output="$(mktemp -d "$run_root/smoke-$device-XXXXXX")"
 "$embedding_bin" synthetic --config code/embeddings/encoders/mtf_jepa_mae_vicreg/config/default.conf --output "$output/data.pt" --samples 9

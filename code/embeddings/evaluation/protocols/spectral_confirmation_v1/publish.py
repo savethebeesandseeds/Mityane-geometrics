@@ -58,7 +58,7 @@ def table(records):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/spectral_confirmation_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/spectral_confirmation_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
     p = argparse.ArgumentParser()
     p.add_argument('--admission', type=Path, required=True)
     a = p.parse_args()
@@ -68,7 +68,7 @@ def main():
             or not capsule.name.startswith('admission-') or capsule.is_symlink()):
         raise ValueError('direct confirmation admission required')
     freeze = json.loads((capsule/'freeze/freeze.json').read_text())
-    registry_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
+    registry_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
     original = json.loads(registry_path.read_text())
     if (any(v['id'] == 'RPB-v19.alt-01' for v in original['instance_bundles'])
             or not any(v['tag'] == 'RPB-v19' for v in original['versions'])
@@ -180,15 +180,15 @@ def main():
         'Full artifacts: `'+str(capsule.relative_to(ROOT))+'`.','',
         'The original v19 screen, TEMPO-3 v18, formal v4, original v7, older evidence',
         'and defaults remain preserved. No TEST, stress or promotion.', '']
-    output = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/results/spectral_confirmation_v1.json'
-    report_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md'
+    output = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/results/spectral_confirmation_v1.json'
+    report_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md'
     with output.open('x') as f:
         f.write(json.dumps(summary,indent=2)+'\n')
     with report_path.open('x') as f:
         f.write('\n'.join(lines))
     evidence = dict(protocol=summary['protocol'],datasets=['TEMPO-4','AMP-2'],master_seeds=masters,
-        encoder_updates_each=512,native_global_width=32,measured_record='archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md',
-        durable_summary='archive/embeddings/pre-cleanup-2026-10-18/doc/results/spectral_confirmation_v1.json',durable_summary_sha256=sha(output),
+        encoder_updates_each=512,native_global_width=32,measured_record='.archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md',
+        durable_summary='.archive/embeddings/pre-cleanup-2026-10-18/doc/results/spectral_confirmation_v1.json',durable_summary_sha256=sha(output),
         artifact_inventory_sha256=sha(inventory),capsule=str(capsule),promotion=False,
         source_fingerprint=freeze['source_fingerprint'],card_sha256=freeze['card_sha256'])
     registry = json.loads(json.dumps(original))

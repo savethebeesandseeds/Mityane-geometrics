@@ -8,7 +8,7 @@ for argument in "$@"; do
   }
 done
 binary="${EVALUATION_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_evaluate}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/rpb-mae}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/rpb-mae}"
 mkdir -p -- "$run_root"
 run_directory="$(mktemp -d "$run_root/reconstruction-XXXXXX")"
 "$binary" reconstruct "$@" --output "$run_directory/results"

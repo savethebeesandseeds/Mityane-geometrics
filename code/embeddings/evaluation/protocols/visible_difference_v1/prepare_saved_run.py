@@ -22,7 +22,7 @@ PARENT = Path('/embedding/output/runs/rpb-structured-hard-timing/structured-hard
 PARENT_META = {
     'artifact-integrity.json': (PARENT/'artifact-integrity.json', '9bd9efe7c1e6c536ba57970c8db4f5549f3a06480a2407ab8d2d5ff38efc08aa'),
     'parent-validation.json': (Path('/embedding/output/runs/rpb-structured-hard-timing/audit-tools/run-xrZMAS-v3-ordering/validation.json'), 'cf79abdca511f22778622d2b08e62b74b592c10618d1090ea2bd53eefd84539c'),
-    'parent-summary.json': (Path('/embedding/archive/embeddings/pre-cleanup-2026-10-18/doc/results/structured_hard_timing_comparison_v2.json'), '1f5641212ce329a449073822a98d0db5c7e99a818532dfdca857bc78b9e17cd4'),
+    'parent-summary.json': (Path('/embedding/.archive/embeddings/pre-cleanup-2026-10-18/doc/results/structured_hard_timing_comparison_v2.json'), '1f5641212ce329a449073822a98d0db5c7e99a818532dfdca857bc78b9e17cd4'),
 }
 
 def require(ok, why):

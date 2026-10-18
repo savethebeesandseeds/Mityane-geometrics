@@ -9,7 +9,7 @@ The prospective contract is
 [`configurable_capacity_v1.md`](../../cards/configurable_capacity_v1.md).
 TEMPO-5 uses three streams,128 candles and nine structured feature roles;
 the observed slow lead/lag target has designed complexity5/5. The benchmark is
-[`configurable_capacity`](../../../../../archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/benchmarks/configurable_capacity). It is a
+[`configurable_capacity`](../../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/benchmarks/configurable_capacity). It is a
 dimension-aware synthetic benchmark, not the market dataloader. Primary H128
 and engineering H256 share the same period/delay law in original candle units.
 
@@ -78,4 +78,4 @@ python3 -B code/embeddings/evaluation/protocols/configurable_capacity_v1/publish
 This reads saved heads, predictions and tensors without fitting or running an
 encoder. Keep the corrected auditor's source and binary fingerprints separate
 from the original experiment's fingerprint, and verify the original artifact
-manifest afterward. See [the review record](../../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CODE_REVIEW_2026-10-12.md).
+manifest afterward. See [the review record](../../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CODE_REVIEW_2026-10-12.md).

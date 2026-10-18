@@ -3,7 +3,7 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
 embedding_bin="${EMBEDDING_BIN:-/opt/mityane-geometrics/embeddings/build/baseline/embedding}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/baseline}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/baseline}"
 config_args=(--config code/embeddings/encoders/mtf_jepa_mae_vicreg/config/evaluation.conf)
 for argument in "$@"; do
   case "$argument" in

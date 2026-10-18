@@ -10,7 +10,7 @@ pooling improves compact linear lag accessibility. The
 primary PCA36 ridge benefit over initialization, while native96 nonlinear
 readouts showed positive training effects. That evidence motivates this mixer
 experiment; it does not establish that independent exports lack lag information.
-The [shared policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md),
+The [shared policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md),
 [implementation guidelines](RPB_MAE_implementation_guidelines.md#aligned-mixer-experiment)
 and [controlled-pairs-v2 card](../../evaluation/cards/controlled_pairs_v2.md)
 govern the contracts and evidence limits.

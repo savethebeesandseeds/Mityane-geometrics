@@ -8,7 +8,7 @@ for argument in "$@"; do
   }
 done
 binary="${ARCHIVE_READOUT_BIN:-/opt/mityane-geometrics/embeddings/build/archive-controls/embedding_archive_readout}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/archive-controls}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/archive-controls}"
 mkdir -p -- "$run_root"
 run_directory="$(mktemp -d "$run_root/archive-readout-XXXXXX")"
 "$binary" "$@" --output "$run_directory/results"

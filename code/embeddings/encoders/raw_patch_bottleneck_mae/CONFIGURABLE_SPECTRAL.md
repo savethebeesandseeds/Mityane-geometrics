@@ -1,7 +1,7 @@
 # RPB-v20 configurable spectral encoder
 
 For repository-wide evidence and open work, read
-[current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md). This guide describes the
+[current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md). This guide describes the
 implemented v20 API; historical CLI examples in the RPB guide use a separate
 workflow and checkpoint format.
 
@@ -9,7 +9,7 @@ This is the reusable backport from the clean `cuwacunu` integration project,
 requested to keep representation research independent of market ingestion.
 The v19 source and every historical checkpoint/card remain unchanged. RPB-v20
 has CUDA engineering checks and a separate
-[completed synthetic capacity experiment](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md).
+[completed synthetic capacity experiment](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md).
 Three fresh TEMPO-5 cohorts at C3/H128/F9 compare W64/D32, W128/D32 and W64/D64
 at512 updates. Compact W64/D32 is the continuation configuration; larger profiles
 show no consistent classification gain at this budget. No market instance is trained.

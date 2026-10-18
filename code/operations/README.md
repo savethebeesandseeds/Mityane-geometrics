@@ -42,7 +42,7 @@ data handling and cross-component utilities belong in `../data/` and `../shared/
 Run implementation checks through the root managed container and the root
 Makefile/task runner; see each operation's guide for its focused targets.
 Historical source, cards, protocols and receipts remain unchanged in the
-[pre-cleanup archive](../../archive/embeddings/README.md). New protocols and
+[pre-cleanup archive](../../.archive/embeddings/README.md). New protocols and
 evidence remain owned by their operation and must distinguish current source
 identities from historical receipts.
 

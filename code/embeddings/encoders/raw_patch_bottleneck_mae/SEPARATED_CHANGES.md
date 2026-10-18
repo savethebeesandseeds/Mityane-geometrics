@@ -61,7 +61,7 @@ Build/check in the managed container:
 bash code/scripts/task.sh rpb-v24 -j2 test-rpb-v24
 ```
 
-The [recorded experiment](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) fixes one
+The [recorded experiment](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) fixes one
 initial/final MKT-HIST-2 experiment and unchanged evaluator. Wider native40
 means164/724 head parameters and different width-derived seeds compared with
 native32's132/596; both new views use the same D40 seeds. An initial control

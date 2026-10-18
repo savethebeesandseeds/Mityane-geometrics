@@ -12,7 +12,7 @@ def sha(path):
 
 
 def record(summary_name, report_name, card_name, designs):
-    summary_path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/results' / summary_name
+    summary_path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/results' / summary_name
     summary = json.loads(summary_path.read_text())
     report = 'code/embeddings/encoders/raw_patch_bottleneck_mae/' + report_name
     card = 'code/embeddings/evaluation/cards/' + card_name
@@ -48,8 +48,8 @@ def record(summary_name, report_name, card_name, designs):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/partitioned_relation_screen_v1/record_versions.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
-    path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/partitioned_relation_screen_v1/record_versions.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
     original = json.loads(path.read_text())
     updated = json.loads(json.dumps(original))
     records = record('architecture_screen_v1.json', 'TEMPORAL_ARCHITECTURE_SCREEN.md',
@@ -75,20 +75,20 @@ def main():
     updated['versions'] += records
     updated['architecture_screen_diagnostic'] = {
         'measured_record': 'code/embeddings/encoders/raw_patch_bottleneck_mae/TEMPORAL_ARCHITECTURE_SCREEN.md',
-        'durable_summary': 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/architecture_screen_v1.json', 'candidates': ['RPB-v14', 'RPB-v15'],
+        'durable_summary': '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/architecture_screen_v1.json', 'candidates': ['RPB-v14', 'RPB-v15'],
         'quality_trajectories': 7, 'encoder_updates': 3584, 'native_exports': 42,
         'head_pipelines': 42, 'individual_heads': 84, 'query_writers': 14,
         'necessary_masked_forwards': 56, 'CPU_encoder_execution': False,
         'old_model_reruns': 0, 'baseline_head_refits': 0, 'promotion': False}
     updated['partitioned_relation_diagnostic'] = {
         'measured_record': 'code/embeddings/encoders/raw_patch_bottleneck_mae/PARTITIONED_TEMPORAL_RELATION_SCREEN.md',
-        'durable_summary': 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/partitioned_relation_screen_v1.json', 'candidate': 'RPB-v16',
+        'durable_summary': '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/partitioned_relation_screen_v1.json', 'candidate': 'RPB-v16',
         'quality_trajectories': 2,
         'encoder_updates': 1024, 'CPU_encoder_execution': False,
         'old_model_reruns': 0, 'baseline_head_refits': 0, 'promotion': False}
     updated['fixed_prior_relation_diagnostic'] = {
         'measured_record': 'code/embeddings/encoders/raw_patch_bottleneck_mae/FIXED_PRIOR_TEMPORAL_RELATION_SCREEN.md',
-        'durable_summary': 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_relation_screen_v1.json', 'candidate': 'RPB-v17',
+        'durable_summary': '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_relation_screen_v1.json', 'candidate': 'RPB-v17',
         'quality_trajectories': len(records[-1]['master_seeds']),
         'encoder_updates': 512 * len(records[-1]['master_seeds']), 'CPU_encoder_execution': False,
         'old_model_reruns': 0, 'baseline_head_refits': 0, 'promotion': False}

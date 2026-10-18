@@ -66,11 +66,11 @@ scales/gradients, native blocks, own saved readout contributions and reconstruct
 diagnosis. No V14 is selected and no refit/old replay, Git
 publication or deletion is authorized. No new experiment for this note.
 
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_RESULTS.md),
-[detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_DETAIL.md),
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_REVIEW.md),
-[final trust join](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v13/final-establishment.json) and
-[research ledger](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json).
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_RESULTS.md),
+[detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_DETAIL.md),
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V13_REVIEW.md),
+[final trust join](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v13/final-establishment.json) and
+[research ledger](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json).
 Earlier family documentation remains below with the scope edits; original bytes remain in the preserved snapshots.
 
 ---
@@ -107,9 +107,9 @@ declare saved TRAIN-only V11/V12 moments/native blocks/own saved readout
 contributions/reconstruction diagnosis before V13 selection. No new candidate,
 Git publication or deletion is admitted.
 
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V12_RESULTS.md),
-[detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V12_DETAIL.md) and
-[trust join](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v12/final-establishment.json).
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V12_RESULTS.md),
+[detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V12_DETAIL.md) and
+[trust join](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v12/final-establishment.json).
 The complete earlier family documentation remains below.
 
 ---
@@ -171,7 +171,7 @@ future-period forecast. Three readout fits are head variation, not three encoder
 runs. Complexity4/5 and5/5 are ordinal recipe levels; native36/native40 head and
 capacity confounds remain explicit in the reports.
 
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_RESULTS.md), [detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_DETAIL.md), [review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_REVIEW.md), [final trust join](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v11/final-establishment.json) and [research ledger](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json). Earlier scientific notes remain below as historical context.
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_RESULTS.md), [detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_DETAIL.md), [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V11_REVIEW.md), [final trust join](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v11/final-establishment.json) and [research ledger](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json). Earlier scientific notes remain below as historical context.
 
 ---
 
@@ -208,11 +208,11 @@ or promised improvement. Exact moment/layout semantics, full attention-dependent
 adjoints and causal/learning/resume proofs require a separate prospective review.
 No new candidate, code, card, build, training or quality run is admitted by this note.
 
-See the [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_RESULTS.md),
-[detailed evidence](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_DETAIL.md),
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_REVIEW.md),
-[final trust join](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v10/final-establishment.json) and
-[clean research ledger](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json).
+See the [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_RESULTS.md),
+[detailed evidence](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_DETAIL.md),
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V10_REVIEW.md),
+[final trust join](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v10/final-establishment.json) and
+[clean research ledger](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json).
 This front note records the current state; the earlier scientific notes below are
 retained as historical context.
 
@@ -250,7 +250,7 @@ and all three between-bin directions learn, with positive overall final projecti
 Initial13 DATA/statistic pairings compare20:40 only plus five whole statistics;
 content20 may differ, no whole40 equality or trained-weight import is claimed.
 
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_RESULTS.md), [detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_DETAIL.md), [review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_REVIEW.md) and the ledger.
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_RESULTS.md), [detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_DETAIL.md), [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V9_REVIEW.md) and the ledger.
 This is known chronological VALIDATION and designed TEMPO-5 evidence, not a fresh
 period forecast or causal explanation. Downstream global mixing already existed;
 the blend changes routing/scales/work. Complexity4/5 and5/5 are ordinal recipes.
@@ -276,13 +276,13 @@ All older notes below are preserved historical context superseded by this update
 # Latest research branch — CPB-v8.market-01
 
 CPB-v3.market-01 remains the clean baseline.
-The complete owned V8 sources are under [versions/v8](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v8), with the
+The complete owned V8 sources are under [versions/v8](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v8), with the
 full public header [versions/v8.h](versions/v8.h) and immutable prospective
 [descriptor](versions/CPB-v8.json). No older version is a runtime include or
 learned/statistic initializer for V8.
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_RESULTS.md),
-[detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_DETAIL.md) and
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_REVIEW.md).
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_RESULTS.md),
+[detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_DETAIL.md) and
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_REVIEW.md).
 
 V8 changes one V6 forward mechanism: four original-position temporal bins
 pool contextual states and feed disjoint eight-row slices of the same32-row
@@ -341,10 +341,10 @@ adds no gate. Eighteen conditions, including all8 TEMPO-5 floors, fail. Counts
 under earlier floor sets keep their original meaning. Complexity 4/5 and 5/5 are
 ordinal recipe labels, not accuracy or observed difficulty.
 
-Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_RESULTS.md),
-[detail](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_DETAIL.md),
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_REVIEW.md) and
-[the ledger](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json). All artifacts remain
+Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_RESULTS.md),
+[detail](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_DETAIL.md),
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V7_REVIEW.md) and
+[the ledger](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json). All artifacts remain
 local/hash-verified; PT archives, including five main checkpoints, are ignored by Git. Stop this clipping
 recipe; next is separately declared saved TRAIN V6/V7 diagnosis before broader
 causal temporal-summary design, with no V8 selection or cap/rate/seed/head rescue.
@@ -354,7 +354,7 @@ causal temporal-summary design, with no V8 selection or cap/rate/seed/head rescu
 ## Latest measured research version — CPB-v6.market-01
 
 V3 remains the clean baseline. V6 is defined by its own
-complete copies in [versions/v6](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v6/) and immutable prospective
+complete copies in [versions/v6](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v6/) and immutable prospective
 [descriptor](versions/CPB-v6.json); its measured instance is separate. It keeps
 V5 native40 forward capacity and fresh constructor draws, changing only the
 objective to Huber1 mean supervision plus detached-error Gaussian variance
@@ -364,9 +364,9 @@ One2048/B8 CUDA run, causal/typed-resume proofs and fixed initial/final heads
 are complete:12/22 strongest-V3/V4/V5 numeric conditions, full trust/coverage.
 Keep its seven timing leaders, linear relation and TRAIN MAE alongside all old
 scoped strengths; V6 is not an overall winner or application replacement.
-[Results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_RESULTS.md),
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_REVIEW.md) and
-[ledger](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json) hold the measured
+[Results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_RESULTS.md),
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_REVIEW.md) and
+[ledger](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json) hold the measured
 status. The goal continues with saved TRAIN-only V5/V6 diagnosis. Preserve every
 historical version/result/checkpoint and failed invocation; no Git publication
 or reference promotion was authorized by this research continuation.
@@ -378,18 +378,18 @@ reference; CPB-v3.market-01 remains the baseline.** V5 uses
 independent freshly learned mean4 and uncertainty4 projections, with unchanged
 Gaussian NLL and2048/B8 budget. It improves neural volatility/relation and TRAIN
 MAE but fails overall advancement:7/22 stronger clean-reference goal conditions,
-with full trust and coverage. Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V5_RESULTS.md),
-[review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V5_REVIEW.md), [live catalog](versions/current.json)
+with full trust and coverage. Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V5_RESULTS.md),
+[review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V5_REVIEW.md), [live catalog](versions/current.json)
 and [measured instance](versions/instances/CPB-v5.market-01.json). Its complete
-implementation/configuration is in [versions/v5](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v5/); the full public
+implementation/configuration is in [versions/v5](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v5/); the full public
 [v5.h](versions/v5.h) and [version descriptor](versions/CPB-v5.json) locate the
 definition. No historical version is included at runtime. V4 and every earlier
 source/result/checkpoint remain preserved. The next goal step is saved TRAIN-only
 v4/v5 diagnosis, followed by a separately declared mechanism. No reference promotion or
 publication. The dated milestone notes below retain their original scope.
-Current status (15 October 2026): **CPB-v3.market-01 is the clean from-scratch research baseline**, with mixed task quality. See [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V3_RESULTS.md), [review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V3_REVIEW.md), [live catalog](versions/current.json) and [measured instance](versions/instances/CPB-v3.market-01.json). CPB-v1 remains the pretrained historical reference; v1/v2 scores impose no gates. The frozen-v1-parent proposal is withdrawn.
+Current status (15 October 2026): **CPB-v3.market-01 is the clean from-scratch research baseline**, with mixed task quality. See [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V3_RESULTS.md), [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V3_REVIEW.md), [live catalog](versions/current.json) and [measured instance](versions/instances/CPB-v3.market-01.json). CPB-v1 remains the pretrained historical reference; v1/v2 scores impose no gates. The frozen-v1-parent proposal is withdrawn.
 
-Latest controlled research: **CPB-v4.market-01 is measured and preserved at19/22; v3 remains the clean baseline.** Read [results](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_RESULTS.md), [review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_REVIEW.md) and [measured v4 instance](versions/instances/CPB-v4.market-01.json). The owned [v4 directory](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v4/) contains the entire implementation/config/tests and public [v4.h](versions/v4/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v4.h). Its design declaration and v3/v4 frozen files remain unchanged. Further work is proposed saved TRAIN-only diagnosis, with no later model run or automatic promotion.
+Latest controlled research: **CPB-v4.market-01 is measured and preserved at19/22; v3 remains the clean baseline.** Read [results](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_RESULTS.md), [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_REVIEW.md) and [measured v4 instance](versions/instances/CPB-v4.market-01.json). The owned [v4 directory](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v4/) contains the entire implementation/config/tests and public [v4.h](versions/v4/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v4.h). Its design declaration and v3/v4 frozen files remain unchanged. Further work is proposed saved TRAIN-only diagnosis, with no later model run or automatic promotion.
 
 # Causal patch bottleneck MAE
 
@@ -402,14 +402,14 @@ inside the copied implementation.
 The separately owned **CPB-v2.market-01** experiment adapted its learned encoder
 and decoder under causal execution. Its single 2048-update CUDA run is complete
 and stopped after failing the frozen advancement criteria. Read the
-[measured report](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_RESULTS.md) and
-[review/next direction](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_REVIEW.md). Its
-[prospective card](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_CARD.md) remains unchanged.
+[measured report](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_RESULTS.md) and
+[review/next direction](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_REVIEW.md). Its
+[prospective card](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_CARD.md) remains unchanged.
 Each version owns its full implementation.
 Use the [live catalog](versions/current.json), the per-design
 [v2 declaration](versions/CPB-v2.json),
 [measured v2 instance](versions/instances/CPB-v2.market-01.json) and physical
-[v2 directory](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v2/).
+[v2 directory](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v2/).
 The original `versions/index.json` remains its frozen v1 admission snapshot.
 
 CPB-v1 is a separately owned causal encoder derived from the saved V30 design.
@@ -423,7 +423,7 @@ declared.
 
 ## Physical version entry
 
-The complete v1 implementation lives in [`versions/v1/`](../../../../archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v1/).
+The complete v1 implementation lives in [`versions/v1/`](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/causal_patch_bottleneck_mae/versions/v1/).
 That directory owns its `include/`, `config/`, `tests/`, `v1.mk` and provenance.
 The sole public C++ entry is
 [`versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h`](versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h),
@@ -464,7 +464,7 @@ frozen; they are preserved rather than rewritten as a live status page.
 The [verified instance record](versions/instances/CPB-v1.market-01.json) binds
 actual source/configuration, the usable typed checkpoint, both engineering
 attempts, proof/admission/quality evidence, report and full-precision task
-results. The [portable guide](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1.md)
+results. The [portable guide](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1.md)
 contains measured task tables and reuse instructions. Checkpoints and data remain local artifacts; the portable guide records
 the research measurements. These additive records carry later status outside the
 admitted physical implementation and prospective manifest.

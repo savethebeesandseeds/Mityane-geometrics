@@ -8,7 +8,7 @@ saved exports without importing an encoder. PCA follows raw observations only.
 
 **RPB-v4:** learned global bottleneck. It reconstructs from its exact 32-number
 global export. Model cells below contain the tag only, with descriptions in text
-beside the tables, following [the reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).
+beside the tables, following [the reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).
 
 ## Conditions
 

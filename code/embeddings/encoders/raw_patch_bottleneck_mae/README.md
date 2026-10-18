@@ -3,10 +3,10 @@
 
 This folder owns the RPB model family, preprocessing, training/checkpoint
 adapters and the configurable spectral/content relation APIs. Read
-[current repository status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) before choosing a
+[current repository status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) before choosing a
 version or an experiment.
 
-The additive [streaming TRAIN and resume support](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/STREAMING_TRAINING_SUPPORT.md)
+The additive [streaming TRAIN and resume support](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/STREAMING_TRAINING_SUPPORT.md)
 provides a bounded statistics accumulator and a separate v22 AdamW continuation
 archive. Focused CUDA engineering checks cover the portable headers/tests and
 change no historical model or inference format.
@@ -14,7 +14,7 @@ change no historical model or inference format.
 ## Content-only ordered relation API: RPB-v22
 
 [RPB-v22](CONTENT_ORDERED_RELATION.md) is the separately tagged content-only
-relation API. Start with the [plain encoder guide](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RPB_V22_ENCODER_GUIDE.md)
+relation API. Start with the [plain encoder guide](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RPB_V22_ENCODER_GUIDE.md)
 for its input/output contract, architecture and training explanation.
 It accepts values and masks `[B,C,H,F]` and serves native `[B,D]`, using the
 same configurable geometry, TRAIN scaler, masks and waveform decoder as v20.
@@ -39,7 +39,7 @@ masked waveform Huber reconstruction; classifier heads remain in evaluation.
 
 `rpb-v22` builds its artificial CUDA checker; `test-rpb-v22` runs it.
 These targets provide engineering checks, not a general training/serving CLI.
-The [completed RPB-v22.alt-01 experiment](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md)
+The [completed RPB-v22.alt-01 experiment](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md)
 passes the two-cohort screen and third known development check on TEMPO-5,
 designed complexity 5/5, at the unchanged 512-update/B8 budget. This is synthetic
 development evidence, not fresh confirmation or market quality. RPB-v20 remains
@@ -57,7 +57,7 @@ backbone and every feature pair reaches the fixed spectral mean.
 
 Its CUDA float32 model, configurable TRAIN scaler, typed file binding and immutable
 inference checkpoint API have recorded engineering checks. A separate
-[completed capacity experiment](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md)
+[completed capacity experiment](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md)
 measures three profiles at C3/H128/F9/P8 on TEMPO-5, complexity 5/5.
 Compact RPB-v20.alt-01 (W64/D32) remains the preserved capacity configuration; wider-backbone
 alt-02 and larger-output alt-03 show no consistent final classification benefit
@@ -68,16 +68,16 @@ The [API guide](CONFIGURABLE_SPECTRAL.md) is the contract for this model.
 
 ## Completed quality and preserved references
 
-[Content-only relations](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md) is
+[Content-only relations](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md) is
 the latest completed quality record; follow the
-[13 October continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-13_AFTER_CONTENT_RELATION.md).
+[13 October continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-13_AFTER_CONTENT_RELATION.md).
 The unchanged-v22 fresh synthetic confirmation is proposed, not launched.
-The [RPB-v21.alt-01 screen](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_LEARNED_RELATION_V1.md)
+The [RPB-v21.alt-01 screen](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_LEARNED_RELATION_V1.md)
 is stopped after its deletion gate fails; keep its recipe and evidence intact.
-[Configurable capacity](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md) and its
-[12 October continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-12_AFTER_CONFIGURABLE_CAPACITY.md)
+[Configurable capacity](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md) and its
+[12 October continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-12_AFTER_CONFIGURABLE_CAPACITY.md)
 remain the preserved v20 milestone.
-The preserved [RPB-v19.alt-01](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md) record
+The preserved [RPB-v19.alt-01](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/SPECTRAL_CONFIRMATION_V1.md) record
 confirms unchanged v19 on fresh TEMPO-4 slow-component timing
 and AMP-2 component balance, each at designed complexity 5/5. These are synthetic
 development measurements at the report's fixed geometry and budgets. Most strength
@@ -86,11 +86,11 @@ No new experiment is measured by this guide.
 
 **RPB-v4** remains the formal evaluated reference. The original **RPB-v7** instances,
 all historical checkpoints/scalers/readouts, and every frozen card remain protected.
-Use the [version registry](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) for stable design
+Use the [version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) for stable design
 and instance tags. The harmonic decoder remains a prospective idea in the
-[dated continuation](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md).
+[dated continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md).
 
-Historical records include the [v19 screen](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md),
+Historical records include the [v19 screen](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md),
 [v18 unit-relation screen](UNIT_TEMPORAL_RELATION_SCREEN.md),
 [fresh v17 confirmation](FIXED_PRIOR_FRESH_CONFIRMATION.md),
 [architecture screen](TEMPORAL_ARCHITECTURE_SCREEN.md),
@@ -105,7 +105,7 @@ The sections below describe the preserved `embedding_raw_patch_bottleneck_mae`
 CLI and its adapters. The configurable v20/v22 APIs above have their own entry points.
 Shared evaluation owns datasets, splits, fixed heads, populations and reports;
 model-specific training, inference and decoding stay in this folder.
-Use [current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for active work and
+Use [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for active work and
 [NEXT_ADVANCE.md](NEXT_ADVANCE.md) for the preserved development chronology.
 
 ## Preserved CLI model
@@ -224,7 +224,7 @@ directory `code/shared/representation/include` and include prefix `embedding/sha
 ## Container build and checks
 
 Use the existing managed development container and the
-[environment workflow](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md). From the project root on
+[environment workflow](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md). From the project root on
 Windows, build and run through the named `rpb-mae` session:
 
 ```powershell
@@ -354,7 +354,7 @@ Its fit callback receives permitted training observations and declared metadata;
 it receives no labels, hidden clean signals or held-out observations. The
 [shared engine and integration guide](../../evaluation/README.md) owns cards,
 splits, normalization/PCA/probes, paired populations, scores and reports. See
-[the policy review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) for remaining
+[the policy review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) for remaining
 scope. The ordinary RPB executable owns synthetic/prepare/train/embed and does
 not link the evaluator or baseline; it has no evaluation command. Run comparisons
 through `embedding_evaluate`.

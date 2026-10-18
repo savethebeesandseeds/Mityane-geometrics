@@ -260,5 +260,5 @@ fixed-budget manifest before TEST; fixed query arrays/reductions; all ordinary
 and stress populations/masks/predictions; per-master paired scores/intervals;
 cost and input preservation records; independent stdlib verification; and
 the measured disposition. Never alter earlier reports/cards. Follow the
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): tag-only
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): tag-only
 embedding cells and short descriptions in adjacent prose.

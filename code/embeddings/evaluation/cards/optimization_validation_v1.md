@@ -152,5 +152,5 @@ statistics/native-no-PCA, paired seeds/source populations, prediction replay,
 reconstruction reductions and original bytes. No Torch/model execution or
 TEST/stress discovery is needed for that audit; actual CUDA continuity is covered
 by coordinated container gates. Follow the
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): tag-only model
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md): tag-only model
 cells and short descriptions in adjacent prose.

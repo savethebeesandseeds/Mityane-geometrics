@@ -87,7 +87,7 @@ def safe_name(name):
     require(isinstance(name, str) and str(p) == name and not p.is_absolute() and
             all(x not in ('', '.', '..') for x in p.parts) and '\\' not in name,
             'normalized relative source name required')
-    require(name in ('Makefile', 'dependencies.lock', 'setup.sh', 'archive/embeddings/pre-cleanup-2026-10-18/doc/dataset_registry.json') or name.startswith('code/'),
+    require(name in ('Makefile', 'dependencies.lock', 'setup.sh', '.archive/embeddings/pre-cleanup-2026-10-18/doc/dataset_registry.json') or name.startswith('code/'),
             'closed source namespace')
     return name
 

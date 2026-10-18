@@ -251,7 +251,7 @@ preservation. It does not execute a model, fit a head or independently deseriali
 CUDA storage; actual CUDA/state association is covered by hash-bound coordinated
 tests. Preserve failed audit versions and use separately identified corrections.
 
-Follow the [reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md):
+Follow the [reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md):
 quality and training tables, tag-only encoder cells and short descriptions
 immediately beside the tables. Label this experiment new, historical evidence
 reused, and unmeasured consumer acceptance explicitly. Do not pool different

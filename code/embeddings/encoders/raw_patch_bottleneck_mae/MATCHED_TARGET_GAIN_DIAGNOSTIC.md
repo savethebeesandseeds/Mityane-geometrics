@@ -148,7 +148,7 @@ Independent audit PASS: 88,154,488 checks/1,165 CPU archive decodes/358.420464 s
 
 The CPU audit replays source gain ranks/uniforms/gains, all actual candidate normalized targets, maps/logits/support/query reductions and source effects. It performs no CUDA/model/autodiff/optimizer/head fit or PCA/SVD fit. CUDA checkpoint bodies are byte-bound; live CPU model/AdamW/scaler state and captured actual CUDA admission establish their interpretation. It does not reenact the optimizer trajectory or prove a causal architecture bottleneck. No historical quality payloads, TEST or stress enter this comparison.
 
-[Frozen prospective card](../../evaluation/cards/matched_target_gain_v1.md). [Full durable summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/matched_target_gain_v1.json).
+[Frozen prospective card](../../evaluation/cards/matched_target_gain_v1.md). [Full durable summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/matched_target_gain_v1.json).
 
 Metadata/source bindings:
 

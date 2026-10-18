@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../../.."
 device="${1:-cpu}"
 [[ "$device" == cpu || "$device" == cuda ]] || { echo 'Usage: cli_smoke.sh [cpu|cuda]' >&2; exit 1; }
 embedding_bin="${RPB_MAE_BIN:-${EMBEDDING_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_raw_patch_bottleneck_mae}}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/rpb-mae}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/rpb-mae}"
 mkdir -p -- "$run_root"
 output="$(mktemp -d "$run_root/smoke-$device-XXXXXX")"
 config="${RPB_CONFIG:-code/embeddings/encoders/raw_patch_bottleneck_mae/config/smoke.conf}"

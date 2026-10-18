@@ -39,4 +39,4 @@ intervals are conditional on each fitted checkpoint/readout. The card provides n
 consumer acceptance, multiplicity correction or uncertainty over retraining seeds.
 
 See the [RPB recipe and evidence](../../encoders/raw_patch_bottleneck_mae/LEARNING_CURVE.md)
-and [evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
+and [evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).

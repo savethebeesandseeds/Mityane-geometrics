@@ -45,13 +45,14 @@ evaluation.
 | `code/data/` | Data readers, validation and preprocessing code |
 | `code/shared/` | Utilities shared by multiple components |
 | `code/scripts/` | Environment checks and project task entry points |
-| `config/` | Versioned configurations without credentials |
-| `tests/` | Component and integration checks |
 | `doc/` | Environment guide, design and research notes |
-| `archive/embeddings/` | Unmodified predecessor source, research evidence and dated instructions |
+| `.archive/embeddings/` | Unmodified predecessor source, research evidence and dated instructions |
 | `web/dashboard/` | Standalone project dashboard; Hero records and branding are owner-defined |
-| `data/` | Local datasets; contents excluded from Git |
-| `output/` | Generated runs, checkpoints, embeddings and reports; excluded from Git |
+| `.temp/` | Local datasets, generated runs, checkpoints, embeddings and recovery records; excluded from Git |
+
+`code/data/` owns readers, validation and preprocessing source. Store local
+dataset files under ignored `.temp/` directories only when needed.
+Tests and configuration files live with their owning component.
 
 ## Current implementation
 
@@ -108,7 +109,7 @@ application development; no application service starts during setup.
 
 Builds, tests and services run inside the container. Store build products and
 dependency caches under `/opt/mityane-geometrics`, and selected persistent
-artifacts under `output/`. The inherited Linux SDK remains at
+artifacts under `.temp/`. The inherited Linux SDK remains at
 `/opt/cuwacunu_embedding/libtorch` (LibTorch `2.6.0+cu124`, C++11 ABI1).
 
 See [the environment guide](doc/ENVIRONMENT.md) for the authoritative container
@@ -129,10 +130,10 @@ From this repository root:
 The repository-root Makefile and `code/scripts/task.sh` own current build/test
 entry points. Each named session has a locked build directory under
 `/opt/mityane-geometrics/embeddings/build/<session>` and writes new task results
-to `output/embeddings/runs/<session>`. The retained `embeddings` artifact
+to `.temp/embeddings/runs/<session>`. The retained `embeddings` artifact
 namespace avoids disturbing existing task paths while source ownership is split.
 
-The [archive guide](archive/embeddings/README.md) explains the byte-preserved
+The [archive guide](.archive/embeddings/README.md) explains the byte-preserved
 pre-cleanup snapshot and historical path identities. Historical ignored data,
 checkpoints and transfer inputs remain at `code/embeddings/output/`, `.build/`
 and `.external/`. The [initial migration record](doc/EMBEDDINGS_MIGRATION_2026-10-18.md)

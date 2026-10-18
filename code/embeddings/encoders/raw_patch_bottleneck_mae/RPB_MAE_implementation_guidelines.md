@@ -3,7 +3,7 @@
 Date: 2026-10-05
 
 Scope: preserved initial engineering guidance. Later RPB designs have separate
-contracts and frozen evidence. Start with [current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md)
+contracts and frozen evidence. Start with [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md)
 and [RPB-v20 API](CONFIGURABLE_SPECTRAL.md); an extension called planned below
 does not override a later implemented, versioned module.
 
@@ -17,12 +17,12 @@ reconstruction measurements, and the [frozen-probe record](FROZEN_PROBE_ADVANCE.
 reports the stronger feature comparison. Extensions below remain plans
 unless listed there.
 
-The [embedding evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
+The [embedding evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
 governs shared harness ownership, experimental validity, reporting, and
 acceptance. This guide defines RPB-MAE engineering choices and applicable model
 contracts; its evaluation sections are interpreted under the shared policy.
 The [shared integration guide](../../evaluation/README.md) and
-[implementation review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) define
+[implementation review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) define
 current evaluator ownership and limits.
 
 Read this alongside the
@@ -424,7 +424,7 @@ provenance; it must not require either model class.
 
 Reuse the existing managed development container and pinned dependencies.
 Build and test inside that container, using the documented
-[environment workflow](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md). Do not add a container or
+[environment workflow](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md). Do not add a container or
 install another framework for the core candidate.
 
 The explicit model targets are `rpb-mae` and `test-rpb-mae`, with a binary named
@@ -814,5 +814,5 @@ pooled-global evidence is weaker and heavy losses erode the benefit. Every
 stress case reuses ordinary fitted assets, with explicit observed support and
 conditional/full-population correctness. Consumer confirmation contracts,
 domain-specific outages, costs and promotion evidence remain pending.
-See the [shared review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) for the
+See the [shared review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) for the
 authoritative implementation limits and subsequent validation results.

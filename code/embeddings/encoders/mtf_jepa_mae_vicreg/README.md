@@ -5,18 +5,18 @@ behavior, parameter registration names, configuration defaults and version 1
 checkpoint format are preserved.
 
 Its stable design tag is **MTF-v1 — Multiscale JEPA and reconstruction** in the
-[version registry](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). It remains a retained
+[version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). It remains a retained
 reference; active RPB development does not routinely retrain this encoder.
 
-See [current repository status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for RPB-v20's
+See [current repository status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for RPB-v20's
 separate API and the latest completed quality record. This folder's CLI and
 checkpoint format remain MTF-v1.
 
-The [embedding evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
+The [embedding evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
 defines shared evidence, protocol, reporting, and acceptance rules. The retained
 baseline evaluator and historical reports keep their original protocol and
 limitations. The separate shared evaluator produces protocol v2 development
-evidence; its [implementation review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
+evidence; its [implementation review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
 records policy requirements that remain incomplete.
 
 | Folder | Contents |
@@ -71,5 +71,5 @@ flat forwarding headers and root-level encoder aliases have been removed; source
 callers use the canonical includes and namespace. CLI commands, checkpoint keys
 and parameter registration names retain their existing behavior.
 
-See [environment coordination](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md) for named build
+See [environment coordination](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md) for named build
 sessions and persisted output locations.

@@ -3,15 +3,15 @@
 This file preserves engineering stages recorded from 6 October 2026, through
 the balanced-view RPB-v8 milestone below. It is not the current status of the
 model family. RPB-v20 is implemented separately with a completed capacity
-quality record. See [current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md)
+quality record. See [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md)
 and the [configurable API](CONFIGURABLE_SPECTRAL.md). Original measurements and
 their protocol semantics remain unchanged.
 
 Date: 2026-10-06
 
 **Active experimental version: RPB-v4 — Learned global bottleneck.** Use
-[stable version tags](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) and the
-[results reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).
+[stable version tags](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) and the
+[results reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).
 The [next advance plan](NEXT_ADVANCE.md) focuses on native32 outputs and fixed
 heads, with PCA only on raw data. The new shared archive evaluator completed
 [phase-1 controls](NATIVE_BASELINE_COMPARISON.md) without encoder retraining or
@@ -29,13 +29,13 @@ archived references rather than routine retraining candidates.
 The first independent-channel candidate is implemented alongside the working
 MTF-JEPA-MAE-VICReg baseline. This records engineering checks and bounded
 development comparisons; it is not a promotion decision under the
-[shared evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
+[shared evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
 Commands and archive semantics are in the [README](README.md).
 The original comparisons are archived protocol-v1 evidence. Later sections
 record protocol-v2 and separate reconstruction/stress tracks. Current shared-driver
 ownership and protocol-v2 limits are documented in the
 [integration guide](../../evaluation/README.md) and
-[implementation review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md).
+[implementation review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md).
 
 ## Implemented scope
 
@@ -192,7 +192,7 @@ Refactor container validation passed shared dummy-provider and fitting tests,
 both model/workflow regressions, original-reference baseline extraction parity,
 binary dependency inspection, both-adapter development comparisons, frozen RPB
 checkpoint inference and a repeated independent-geometry card. The dated
-[shared review](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) records actual
+[shared review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) records actual
 artifacts, source identities and scope. The original results above remain v1;
 no quality promotion follows from the refactor.
 
@@ -402,5 +402,5 @@ head tuning or post-encoder PCA occurred. Five new v8 trajectories use ten
 retained v4/v7 references; all five masters and both heads remain in the report.
 
 Earlier sections retain their historical recipes and chronology. See the
-[durable result summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json)
+[durable result summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json)
 for this completed known-VALIDATION diagnostic.

@@ -20,6 +20,9 @@ Use the existing flat ownership boundaries: embeddings `encoders/`,
 their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
 `representation/` and `artifacts/`. Do not recreate the imported nested
 `code/embeddings/code/` tree or component-level environment/build configuration.
+Keep model-specific runners in `code/embeddings/scripts/`.
+Keep tests and versioned non-secret configurations with their owning component.
+Credentials belong in ignored environment files or external secret storage.
 Each serious operation needs an Operation Contract and a linked
 Requirements-and-Evidence Record as defined by the charter. Record which
 operation, population, horizon, representation version and geometry a result
@@ -66,25 +69,31 @@ Build products, temporary files and dependency caches go under
 `/opt/mityane-geometrics` inside the container. The inherited LibTorch SDK stays
 at `/opt/cuwacunu_embedding/libtorch`; its original verification records bind
 that path. Do not relocate, duplicate or modify the SDK. Persist selected data,
-checkpoints and reports under this repository's ignored `data/` and `output/`.
+checkpoints and reports under this repository's ignored `.temp/`.
+Keep data-handling source in `code/data/`; create local dataset directories
+under `.temp/` only when needed. This directory also preserves migration recovery
+history and evidence; its name does not authorize deleting its contents.
 The imported component's ignored `output/`, `.build/` and `.external/` retain
 historical files in place; do not delete or rewrite them as cleanup. New named
 embedding tasks write to `/opt/mityane-geometrics/embeddings/build` and
-`/mityane/output/embeddings/runs`. The root Makefile and `code/scripts/task.sh`
+`/mityane/.temp/embeddings/runs`. The root Makefile and `code/scripts/task.sh`
 are the build/test entries; `container.ps1`, `setup.sh` and `dependencies.lock`
 at the root are the authoritative shared environment configuration. Never recreate the
 retired standalone container.
 Use named directories for concurrent work and account for shared GPU capacity.
 
 Read `doc/EMBEDDINGS.md` for inherited research status and
-`archive/embeddings/README.md` for the preserved evidence boundary. The complete
+`.archive/embeddings/README.md` for the preserved evidence boundary. The complete
 pre-cleanup source/documentation component is frozen at
-`archive/embeddings/pre-cleanup-2026-10-18/`, including source capsules, dated
+`.archive/embeddings/pre-cleanup-2026-10-18/`, including source capsules, dated
 instructions, original configurations and research documents. Do not rewrite
 its bytes or treat archived instructions as current lifecycle commands.
 Original paths and hashes remain evidence identities. A historical reproduction
 needs an explicit path mapping and the relevant frozen admission/protocol;
 maintenance does not resume paused experiments, metadata application or training.
+Imported encoder research and unfinished V14 metadata review/application remain
+paused. Relocated or edited source has a new path-bound source identity; never
+substitute it for the source recorded by a historical receipt.
 
 # Project dashboard
 
@@ -106,6 +115,9 @@ to check freshness without rewriting it. Preserve the imported AGPL notices.
 Keep fitted preprocessing tied to its training split. Record model/checkpoint
 identity, native embedding shape, masks, data splits, seeds, environment and
 evaluation protocol with every result. Preserve failures and earlier references.
+For inherited encoder evaluations, keep preprocessing TRAIN-only and retain
+the frozen heads and protection floors. Do not replay completed research
+experiments solely to reproduce an existing score.
 Do not claim inherited dependencies establish model or application quality.
 Verify actual CUDA execution before substantial GPU work.
 

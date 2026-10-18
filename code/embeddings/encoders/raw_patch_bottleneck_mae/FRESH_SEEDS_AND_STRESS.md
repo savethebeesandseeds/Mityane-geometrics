@@ -10,7 +10,7 @@ readouts under observation deletion. The previous three seeds guided development
 and remain archived. Five new seeds do not by themselves establish consumer
 confirmation: acceptance thresholds, resource limits, relevant consumer data and
 across-training-run/multiplicity rules remain incomplete under the
-[shared policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
+[shared policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
 
 The focal base comparison remains **lag-sign ridge at joint PCA width 36,
 trained contextual mixer versus trained independent RPB (`pair-1`)**. Stress

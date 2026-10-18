@@ -11,7 +11,7 @@ RPB-v4 uses ordinary context. RPB-v7 adds 0.15 TRAIN context deletion every atte
 
 ## Retained quality and cost — no new scoring
 
-These known VALIDATION scores and synchronized training-loop times are copied from the checked-in [v8 durable summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json). They are context, not results of this TRAIN diagnosis. Each run has 128 known VALIDATION examples / 64 source pairs. Three declared head repetitions use Ridge penalty 1 and tanh16 / Adam 0.01 / 100 updates. Size 32 heads have 66 / 562 parameters; raw 576 heads have 1,154 / 9,266. Repetitions and saved checkpoints are not additional encoder runs.
+These known VALIDATION scores and synchronized training-loop times are copied from the checked-in [v8 durable summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json). They are context, not results of this TRAIN diagnosis. Each run has 128 known VALIDATION examples / 64 source pairs. Three declared head repetitions use Ridge penalty 1 and tanh16 / Adam 0.01 / 100 updates. Size 32 heads have 66 / 562 parameters; raw 576 heads have 1,154 / 9,266. Repetitions and saved checkpoints are not additional encoder runs.
 
 **Intact known VALIDATION, retained**
 
@@ -113,6 +113,6 @@ The CPU reader does not rerun encoders, decoder functions, CUDA autodiff, classi
 | Independent reader | `ab5433bb97ec9ee80150d4518fecdd6807b3024d68c4932c61af3906728901c0` |
 | Passed validation | `29325651ed56630cd984b2853ad9355178bc5378cfd4c94cb5554816c1e2cd07` |
 
-The [durable measured summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/training_objective_diagnostic_v1.json) retains exact per-master diagnostics, normalized fractions, original producer identities, retained-quality provenance and reader corrections. The [source-only audit replay bundle](../../output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6/README.md) preserves the passed audit, source dependencies and frozen compiled sources; it contains no model/data payloads.
+The [durable measured summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/training_objective_diagnostic_v1.json) retains exact per-master diagnostics, normalized fractions, original producer identities, retained-quality provenance and reader corrections. The [source-only audit replay bundle](../../output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6/README.md) preserves the passed audit, source dependencies and frozen compiled sources; it contains no model/data payloads.
 
 Stop the all-pair auxiliary hypothesis under this card. A native-view agreement mechanism can be planned separately to retain ordinary reconstruction while studying deletion robustness. It is unimplemented and unmeasured here; this report creates no new model tag or promotion.

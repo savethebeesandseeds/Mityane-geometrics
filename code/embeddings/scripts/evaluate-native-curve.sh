@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run evaluation inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'native-curve-v1 has a fixed declared recipe; no runner overrides.' >&2; exit 1; }
 binary="${NATIVE_CURVE_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-native-curve/embedding_native_curve}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/rpb-native-curve}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/rpb-native-curve}"
 mkdir -p -- "$run_root"
 run_directory="$(mktemp -d "$run_root/native-curve-XXXXXX")"
 printf 'Native curve capsule: %s\n' "$run_directory"

@@ -250,7 +250,7 @@ The sole saved-arithmetic audit passed 17152339 checks and decoded 280 CPU witne
 
 The candidate produced 15 quality exports plus 15 initial-parity exports, 10 query writers / 40 masked forwards, and 15 supported pipelines / 30 individual heads. No baseline, control or untrained head was refitted, and no parent encoder was re-exported.
 
-Full five-cohort objective traces, reconstruction populations, individual intervals, matched pairs and retained parent metadata are saved in [the durable JSON](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/visible_difference_v1.json).
+Full five-cohort objective traces, reconstruction populations, individual intervals, matched pairs and retained parent metadata are saved in [the durable JSON](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/visible_difference_v1.json).
 
 - Card SHA: `75e30dce63ddadaeeaf9daa6b25fd540ed02f9e0e11374e8787a7f846eaf78bc`
 - Producer SOURCE: `14c99891d6a4a9b1831116431a31e3eef9b4b352565db63f1df6889828332bdb`

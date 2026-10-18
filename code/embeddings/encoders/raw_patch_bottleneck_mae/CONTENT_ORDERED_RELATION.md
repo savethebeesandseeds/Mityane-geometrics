@@ -9,8 +9,8 @@ V20 and the stopped v21 model, settings, checkpoints and results are preserved.
 
 For a plain explanation of the input/output ranks, additional metadata, three
 architecture routes, exact training targets and separate evaluation, see
-[RPB-v22 explained](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RPB_V22_ENCODER_GUIDE.md). The
-[completed development report](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md)
+[RPB-v22 explained](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RPB_V22_ENCODER_GUIDE.md). The
+[completed development report](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md)
 records RPB-v22.alt-01's passed screen and third check; the guide reuses those
 measurements and performs no new experiment.
 

@@ -179,6 +179,6 @@ The protocol provides fresh synthetic development evidence. It does not define
 consumer chronology, acceptance thresholds, external tasks or an across-seed
 confidence interval. A failed primary cannot be rescued by the neural head or
 by changing the reported split. Follow the
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md),
-[evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) and
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md),
+[evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) and
 [advance record](../../encoders/raw_patch_bottleneck_mae/NATIVE_CURVE_ADVANCE.md).

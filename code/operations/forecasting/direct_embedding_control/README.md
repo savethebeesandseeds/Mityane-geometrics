@@ -5,7 +5,7 @@ implements separately fitted horizon-specific residual MLPs in native embedding
 coordinates. It does not update an Encoder or a State Representation Network.
 
 The prospective recipe is registered in
-[the numeric card](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card.json), before
+[the numeric card](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/latent_state_control_v1/numeric-card.json), before
 implementation. Its D36/K4/tanh32 geometry has 5,828 parameters per horizon and
 17,484 across horizons 1, 16 and 128, within the 18,000 parameter budget.
 Per-horizon input means/stds and residual RMS scales use exactly the weighted,

@@ -5,7 +5,7 @@ Waajacu's `cuwacunu_embedding` project, including adaptations of
 `cuwacunu_torch`. Their MIT copyright and permission notice is retained in the
 root [LICENSE](LICENSE), which also covers copied and adapted project code.
 The duplicate component license had the same bytes. Original notices and
-configuration remain in the [pre-cleanup snapshot](archive/embeddings/pre-cleanup-2026-10-18/).
+configuration remain in the [pre-cleanup snapshot](.archive/embeddings/pre-cleanup-2026-10-18/).
 See [source provenance](doc/PROVENANCE.md) for revisions and import boundaries.
 
 The dashboard includes code imported from Non-verba under AGPL-3.0-only.
@@ -26,3 +26,11 @@ vendor notices retain their own provenance and licenses.
 
 Redistributions including third-party binaries must include the corresponding
 upstream license texts and notices.
+
+`code/scripts/html5-entities.json` retains the HTML5 named-character table from
+CPython v3.11.2 `Lib/html/entities.py` under Python-2.0. It is static data for
+the Node Markdown-link verifier; no Python runtime is used by that verifier.
+The table includes its exact source revision, installed module SHA256 and
+generation metadata. Copyright (c) 2001–2023 Python Software Foundation;
+All Rights Reserved. The complete retained
+[Python license](doc/licenses/cpython-Python-2.0.txt) applies to this data.

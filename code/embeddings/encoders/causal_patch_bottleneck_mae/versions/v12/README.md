@@ -14,7 +14,7 @@ The V11 canonical descriptor and three active V11 research tests were also
 preserved before copies or edits. All55 parent files match the frozen V11 source
 manifest. Their complete exact bytes and hashes live under
 output/engineering/causal-fresh-v12-source-preparation/attempt-001/family/parent-copies/.
-New research tests own full bodies under archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v12/tests/.
+New research tests own full bodies under .archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v12/tests/.
 There are no old learned-source includes, parent runtime calls or forwarders.
 Torch and the standard library are the only external implementation dependencies.
 
@@ -118,7 +118,7 @@ dual_support_actual_trace. They are emitted only after the fixture checks pass.
 No old full_attention_dependent_moment_adjoints claim is made.
 
 The sole descriptor for now is the unmeasured DRAFT at
-archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v12/CPB-v12.descriptor-draft.json with card=null.
+.archive/embeddings/pre-cleanup-2026-10-18/doc/causal_fresh_v12/CPB-v12.descriptor-draft.json with card=null.
 The canonical versions/CPB-v12.json and an instance/catalog selection are absent
 until separately reviewed prospective freeze. Preserve the applied strongest
 V3–V11 future22 criteria and every historical original pass count. Uniform

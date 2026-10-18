@@ -262,7 +262,7 @@ budget search, acceptance, automatic promotion or TEST draw follows this card.
 Even passing this known-VALIDATION diagnostic requires a separate frozen card
 and explicit decision before fresh TEST or independently trained confirmation.
 
-Follow the [reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md):
+Follow the [reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md):
 quality and training tables, tag-only embedding cells with descriptions in
 adjacent prose, every master/head and named view retained, and a clear division
 between this new diagnostic, historical evidence reused and unmeasured acceptance.

@@ -4,8 +4,8 @@ This is the completed historical experiment record. Its compressed tiers and
 selection rules remain part of that evidence. **RPB-v4 — Learned global
 bottleneck** is the active experimental version; future primary comparisons use
 its native32 output without PCA afterward. See the
-[version registry](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md),
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md), and
+[version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md),
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md), and
 [next advance plan](NEXT_ADVANCE.md). Historical `current_mixer`, `mean_global`,
 and `learned_global` names map to RPB-v2, RPB-v3-mean, and RPB-v4 respectively.
 
@@ -128,7 +128,7 @@ All stages are synthetic development evidence. Source-group intervals condition
 on fitted models/readouts and do not measure retraining uncertainty. A useful
 change should improve compact/global lag access across paired seeds while retaining
 the other tasks and support contracts; consumer acceptance remains governed by
-the [evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
+the [evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
 
 ## Recorded outcomes
 

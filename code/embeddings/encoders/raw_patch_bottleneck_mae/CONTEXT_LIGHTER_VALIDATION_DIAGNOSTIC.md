@@ -293,7 +293,7 @@ with zero payload reads. Inventory SHA256 is
 `628b65139b621199bc9f3aafafd0f6b0ed757f61c8b36293b4ea99e949d8ef3b`.
 Replay still requires the named local data capsules and documented helper-path
 resolution; the bundle does not contain the data. The
-[durable numerical summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_lighter_validation_v1.json)
+[durable numerical summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_lighter_validation_v1.json)
 retains exact means, all masters, training scope and audit identities in source
 control; large generated checkpoints and archives remain local under `output/`.
 Its SHA256 is `1f9e9c0124fc4fe77d284d8b4e7f2c0cfd9649cad04999da1328ae8db7b3b98a`.

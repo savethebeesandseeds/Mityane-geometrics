@@ -3,13 +3,13 @@
 Date: 2026-10-04
 Original status (4 October): research-informed proposal, before implementation.
 Preserved proposal: the RPB family has since been implemented and evaluated in
-separate stages. Use [current status](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md), the
+separate stages. Use [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md), the
 [model guide](README.md) and [RPB-v20 API](CONFIGURABLE_SPECTRAL.md) for supported
 code and measured evidence. The proposal below is not the v20 API specification;
 unimplemented extensions retain their prospective status.
 
 Shared evaluation and claim requirements are governed by the
-[embedding evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
+[embedding evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md).
 Where this proposal overlaps with that policy, use the policy for experimental
 validity and acceptance and this document for encoder-specific architecture.
 

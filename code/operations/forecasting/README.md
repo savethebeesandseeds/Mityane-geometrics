@@ -40,7 +40,7 @@ entry point does not start a study.
 
 Original research documentation, source closures, policies, results and failure
 records are preserved under
-[the complete pre-cleanup snapshot](../../../archive/embeddings/pre-cleanup-2026-10-18/README.md).
+[the complete pre-cleanup snapshot](../../../.archive/embeddings/pre-cleanup-2026-10-18/README.md).
 Historical paths and hashes keep their original meaning. New code has a current
 source identity and must not silently inherit an earlier captured-source claim.
 

@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'paired-pooling-v1 has a fixed recipe; no runner overrides.' >&2; exit 1; }
 binary="${PAIRED_POOLING_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-paired-pooling/embedding_paired_pooling}"
-run_root="${EMBEDDING_RUN_ROOT:-$PWD/output/runs/rpb-paired-pooling}"
+run_root="${EMBEDDING_RUN_ROOT:-$PWD/.temp/runs/rpb-paired-pooling}"
 reference="$PWD/output/runs/rpb-native-curve/native-curve-5G8O5c"
 inventory_sha='c9922d3c817630da3d8609b7ba8d2b47cab7434a17fe28bf5ae272a841da0d95'
 [[ "$(sha256sum "$reference/artifact-integrity.json" | cut -d ' ' -f 1)" == "$inventory_sha" ]] || { echo 'Retained reference inventory identity differs.' >&2; exit 1; }

@@ -7,7 +7,7 @@ LIBTORCH ?= /opt/cuwacunu_embedding/libtorch
 SDK_PROVENANCE_INPUTS := setup.sh code/scripts/install-libtorch.py dependencies.lock
 OBSERVATION_PROVENANCE_INPUTS := code/data/observations/include/embedding/shared/data.h code/data/observations/src/data.cpp
 REFERENCE_DIR ?= $(CURDIR)/code/embeddings/.build/reference
-RUN_ROOT ?= $(CURDIR)/output/embeddings/runs/baseline
+RUN_ROOT ?= $(CURDIR)/.temp/embeddings/runs/baseline
 BIN := $(BUILD_DIR)/embedding
 COMMON_CPPFLAGS := -Icode/shared/representation/include -Icode/shared/settings/include -Icode/data/observations/include -Icode/shared/representation/tests -isystem $(LIBTORCH)/include -isystem $(LIBTORCH)/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1
 CPPFLAGS := -I$(ENCODER_ROOT)/include -I$(ENCODER_ROOT)/tests $(COMMON_CPPFLAGS)

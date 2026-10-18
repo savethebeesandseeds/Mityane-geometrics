@@ -42,5 +42,5 @@ oracle. There is no new stress acceptance threshold or test-driven selection.
 
 The engine writes root `stress-card.json` and `stress-report.json`, plus each
 seed/task's `stress/` artifacts. The ordinary v2 report remains separate.
-The [evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) defines the
+The [evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) defines the
 remaining domain, confirmation, cost and consumer contracts.

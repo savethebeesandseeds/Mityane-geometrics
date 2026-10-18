@@ -223,4 +223,4 @@ the question is whether its quality benefit repeats across independent training,
 rather than whether more reconstruction optimization can recover it. This
 proposal is not a completed experiment or an authorization to tune on new TEST.
 Follow the [next plan](NEXT_ADVANCE.md) and
-[reporting standard](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).
+[reporting standard](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md).

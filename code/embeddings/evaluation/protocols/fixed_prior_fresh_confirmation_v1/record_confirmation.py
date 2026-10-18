@@ -12,14 +12,14 @@ def sha(path):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/fixed_prior_fresh_confirmation_v1/record_confirmation.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
-    path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/fixed_prior_fresh_confirmation_v1/record_confirmation.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
     original = json.loads(path.read_text())
     updated = json.loads(json.dumps(original))
     tag = 'RPB-v17.alt-01'
     if tag in {b['id'] for b in original['instance_bundles']}:
         raise ValueError('fresh bundle already registered; do not overwrite')
-    summary_path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_fresh_confirmation_v1.json'
+    summary_path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_fresh_confirmation_v1.json'
     summary = json.loads(summary_path.read_text())
     report = 'code/embeddings/encoders/raw_patch_bottleneck_mae/FIXED_PRIOR_FRESH_CONFIRMATION.md'
     card = 'code/embeddings/evaluation/cards/fixed_prior_fresh_confirmation_v1.md'

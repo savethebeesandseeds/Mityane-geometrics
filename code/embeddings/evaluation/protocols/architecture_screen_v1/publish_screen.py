@@ -80,7 +80,7 @@ def main():
                        'saved_check_sha256': sha(run / 'saved-check.json'),
                        'source_fingerprint': report['source_fingerprint'],
                        'saved_check': checked})
-    parent_path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/structured_hard_timing_comparison_v2.json'
+    parent_path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/structured_hard_timing_comparison_v2.json'
     parent = json.loads(parent_path.read_text())
     if sha(parent_path) != '1f5641212ce329a449073822a98d0db5c7e99a818532dfdca857bc78b9e17cd4':
         raise ValueError('protected baseline metadata changed')

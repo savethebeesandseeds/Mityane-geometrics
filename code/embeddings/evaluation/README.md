@@ -1,7 +1,7 @@
 # Reusable embedding evaluation
 
 Completed-run audit and repair utilities live only in the immutable
-[historical tools archive](../../../archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/tools/).
+[historical tools archive](../../../.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/tools/).
 The six legacy protocol entry points that published repository-global summaries
 or registry changes are retired. Their original implementations remain archived;
 new publication needs its own versioned protocol and destination. Capsule-local
@@ -18,31 +18,31 @@ Forecasting baselines and common-observable readouts are owned separately by
 The inherited protocol descriptions below retain their original scientific
 scope. Current execution uses the repository-root Makefile/task runner inside
 `mityane-geometrics`; frozen source identities and original records remain in
-[the pre-cleanup archive](../../../archive/embeddings/README.md). Historical
+[the pre-cleanup archive](../../../.archive/embeddings/README.md). Historical
 reproduction requires its own path mapping and protocol admission.
 
 ## Historical protocol context
 
 The implemented RPB-v20 API and its
-[configurable capacity record](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md)
+[configurable capacity record](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md)
 belong to an earlier synthetic development stage.
 The [capacity producer/reader](protocols/configurable_capacity_v1/README.md)
 is an experiment-specific entry point separate from the historical
 `embedding_evaluate` registry. It trains v20 on CUDA and reuses this repository's
 shared fixed heads on saved native features; it imports no market loader.
-The [v20 instance extension](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/configurable_capacity_embedding_versions.json)
+The [v20 instance extension](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/configurable_capacity_embedding_versions.json)
 identifies the exact measured bundles. Arbitrary geometry and market quality
 do not follow from that synthetic record.
 
 This folder composes encoder adapters with the encoder-independent evaluation
-engine. The [evaluation policy](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) defines
+engine. The [evaluation policy](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) defines
 the evidence and acceptance rules; the
-[implementation review](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) records
+[implementation review](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) records
 which requirements are implemented and which remain pending.
 
 New result summaries follow the
-[reporting standard](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) and
-[version registry](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). Primary encoder rows use
+[reporting standard](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/RESULTS_REPORTING_STANDARD.md) and
+[version registry](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). Primary encoder rows use
 native exports without PCA afterward; the standalone raw-data row is labelled
 "PCA only — no encoder". RPB-v4 is the formal evaluated reference within those
 historical protocol versions. The [historical advance plan](../encoders/raw_patch_bottleneck_mae/NEXT_ADVANCE.md)

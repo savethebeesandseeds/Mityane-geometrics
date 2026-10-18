@@ -12,12 +12,12 @@ def sha(path):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/unit_relation_screen_v1/record_screen.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
-    registry = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/unit_relation_screen_v1/record_screen.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    registry = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
     original = json.loads(registry.read_text())
     if 'RPB-v18' in {v['tag'] for v in original['versions']}:
         raise ValueError('v18 already registered; do not overwrite')
-    summary_path = ROOT / 'archive/embeddings/pre-cleanup-2026-10-18/doc/results/unit_relation_screen_v1.json'
+    summary_path = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/doc/results/unit_relation_screen_v1.json'
     summary = json.loads(summary_path.read_text())
     panel = summary['stages'].get('all_known', summary['stages']['screen'])
     training, = panel['training']

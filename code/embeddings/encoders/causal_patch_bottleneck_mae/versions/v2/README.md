@@ -61,4 +61,4 @@ updates, not the one separately declared2048-update market quality trajectory.
 
 Implementation is pending admission/build/proof; this README asserts no
 measured quality or passed runtime check. See the prospective research card
-`archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_CARD.md` and its machine-readable companion.
+`.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FINETUNE_V2_CARD.md` and its machine-readable companion.

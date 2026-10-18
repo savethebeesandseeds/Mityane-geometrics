@@ -24,7 +24,7 @@ The fixed spectral tail and decoder are inherited. H>=17 and the base geometry
 rules still apply. Distinct typed immutable inference/training formats bind
 architecture, configuration, scaler and standard AdamW/counter state.
 
-The [version registry](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) records the matched
+The [version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) records the matched
 market development recipe and measured instance. Fresh chronological confirmation
 and synthetic quality remain separate work.
 
@@ -32,5 +32,5 @@ The additive [frozen-level recipe](FROZEN_LEVEL_TRAINING.md) imports a trained
 v22 child, preserves its complete state and updates only the change projection.
 It uses the same v23 inference arithmetic and a distinct instance/recipe.
 Its test-rpb-v23-frozen target is separate; the recorded CUDA gate passed.
-The [market result](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md)
+The [market result](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md)
 misses the full goal; keep the original fresh v23 instance and the v22 reference.

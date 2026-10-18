@@ -12,7 +12,7 @@ shift
   echo 'Session must be 1-64 lowercase letters, digits, underscores or hyphens, starting with a letter or digit.' >&2; exit 1;
 }
 build_dir="/opt/mityane-geometrics/embeddings/build/$session"
-run_root="$PWD/output/embeddings/runs/$session"
+run_root="$PWD/.temp/embeddings/runs/$session"
 mkdir -p -- "$build_dir/tmp"
 export TMPDIR="$build_dir/tmp"
 exec 9>"$build_dir/.task.lock"

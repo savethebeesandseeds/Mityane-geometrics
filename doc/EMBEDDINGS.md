@@ -10,7 +10,7 @@ forecasting in [the operation guide](../code/operations/forecasting/README.md).
 ## Research status
 
 Encoder research remains **paused** at the
-[18 October 2026 V14 migration handoff](../archive/embeddings/pre-cleanup-2026-10-18/doc/HANDOFF_2026-10-18_V14_PAUSED_MIGRATION.md).
+[18 October 2026 V14 migration handoff](../.archive/embeddings/pre-cleanup-2026-10-18/doc/HANDOFF_2026-10-18_V14_PAUSED_MIGRATION.md).
 CPB-v3.market-01 remains the clean causal baseline. CPB-v14.market-01 is the
 latest measured candidate; the handoff preserves its scoped results and
 limitations. It records three generated, unapplied metadata proposals whose
@@ -29,14 +29,14 @@ All links below lead to unchanged documents in the pre-cleanup snapshot:
 
 | Record | Use |
 | --- | --- |
-| [V14 handoff](../archive/embeddings/pre-cleanup-2026-10-18/doc/HANDOFF_2026-10-18_V14_PAUSED_MIGRATION.md) | Completed science, exact pause boundary, unfinished reconciliation and resume conditions |
-| [V14 results](../archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V14_RESULTS.md) | Saved task-specific measurements |
-| [Research ledger](../archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json) | Scoped historical leaders; the handoff notes V14 metadata has not been applied |
-| [Evaluation policy](../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) | Inherited evaluation boundaries and controls |
-| [Version guide](../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) | Preserved design/instance identities |
-| [Historical index](../archive/embeddings/pre-cleanup-2026-10-18/doc/README.md) | Earlier research reports, cards, protocols and model guides |
+| [V14 handoff](../.archive/embeddings/pre-cleanup-2026-10-18/doc/HANDOFF_2026-10-18_V14_PAUSED_MIGRATION.md) | Completed science, exact pause boundary, unfinished reconciliation and resume conditions |
+| [V14 results](../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V14_RESULTS.md) | Saved task-specific measurements |
+| [Research ledger](../.archive/embeddings/pre-cleanup-2026-10-18/doc/clean_causal_encoder_research_ledger.json) | Scoped historical leaders; the handoff notes V14 metadata has not been applied |
+| [Evaluation policy](../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) | Inherited evaluation boundaries and controls |
+| [Version guide](../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) | Preserved design/instance identities |
+| [Historical index](../.archive/embeddings/pre-cleanup-2026-10-18/doc/README.md) | Earlier research reports, cards, protocols and model guides |
 
-The [archive guide](../archive/embeddings/README.md) maps old source locations
+The [archive guide](../.archive/embeddings/README.md) maps old source locations
 to current ownership. Frozen source capsules, protocol cards, receipts and
 hashes keep their original bytes and path identities. Historical ignored data,
 checkpoints, mirrors and transfer inputs remain under `code/embeddings/`.

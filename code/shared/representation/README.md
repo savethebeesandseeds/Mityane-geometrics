@@ -15,7 +15,7 @@ The table and examples below describe shared utilities; protocol-specific
 information-admission and frozen research drivers additionally live under
 `code/embeddings/evaluation/benchmarks/` and `code/embeddings/evaluation/protocols/`.
 
-The preserved [embedding evaluation policy](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
+The preserved [embedding evaluation policy](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
 defines the inherited shared harness, task/protocol, encoder-adapter and report boundaries.
 Encoder-specific training losses and structural contracts stay with their encoder;
 the inherited encoder evaluations retain that policy's fitting, scoring, coverage
@@ -79,7 +79,7 @@ Generic harness and engine code import neither encoder. The `evaluation` target
 builds `embedding_evaluate` with both registered adapters; `feature-harness`
 builds `feature_harness` with baseline/raw/descriptor/mask controls and no RPB
 model/workflow. Both use the same shared engine and protocol v2. Their inherited
-protocols produce development evidence; the preserved [implementation review](../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
+protocols produce development evidence; the preserved [implementation review](../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
 records the remaining acceptance, robustness, cost and bottleneck-evidence gaps.
 
 The separate reconstruction engine evaluates exact compact decoder inputs.

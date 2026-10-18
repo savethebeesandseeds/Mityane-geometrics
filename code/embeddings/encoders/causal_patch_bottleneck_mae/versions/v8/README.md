@@ -6,7 +6,7 @@ Inherited notices remain in every copied file and LICENSES/NOTICE.
 This source-only candidate is pending independent admission, build and runtime
 proof. No quality result or promotion is claimed. CPB-v3 remains the selected
 clean baseline/application. Preserve all V3–V7 strengths and historical bytes.
-The prospective experiment card is archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_CARD.json.
+The prospective experiment card is .archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V8_CARD.json.
 
 The version owns complete physical V6 copies under its own include paths,
 namespace, settings, fixtures and typed kinds. The external versions/v8.h is a

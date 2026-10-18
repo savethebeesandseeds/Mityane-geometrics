@@ -74,7 +74,7 @@ row accuracy. Median linear margin uses each saved row's true-class logit gap.
 
 No Ridge pair ties occur. Full served/outer/ridge geometry, all row margins,
 all source-paired differences and all four fixed trace blocks are retained in
-the [machine summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/saved_native_reliability_v1.json)
+the [machine summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/saved_native_reliability_v1.json)
 and bound tensor capsule.
 
 The following losses describe sampled optimization queries over updates 385–512;

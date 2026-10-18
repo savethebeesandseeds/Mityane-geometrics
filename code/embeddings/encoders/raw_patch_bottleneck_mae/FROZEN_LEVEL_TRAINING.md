@@ -46,6 +46,6 @@ no child moments/decay, typed inference reload and exact next resumed loss and
 weights. Research check target: `test-rpb-v23-frozen`. A mirrored fixture is not a second test execution.
 
 The separately declared market experiment is
-[RPB-v23.market-01.alt-01](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md).
+[RPB-v23.market-01.alt-01](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md).
 Its dataset, recipe and fixed-head evaluation remain separate from the portable
 model. Existing v22 configurations and source/archives are preserved.

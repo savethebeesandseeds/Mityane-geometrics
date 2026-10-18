@@ -105,7 +105,7 @@ The [independent audit](../../output/runs/rpb-context-balanced-validation/audit-
 | Independent auditor | `e436a63f60b3215bc8cda6f545a500c4af93b5d60f3fe5cae78ec9b5e019da49` |
 | Passed validation | `a78b231b0a17553030d058c9b26608b6b49d3a8447cc165ca5e8136685427ef0` |
 
-The [durable numerical summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json) retains exact scores, every master and head repetition, cost scopes, guards and evidence identities. Large archives remain local under `output/`.
+The [durable numerical summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/context_balanced_validation_v1.json) retains exact scores, every master and head repetition, cost scopes, guards and evidence identities. Large archives remain local under `output/`.
 
 The [preserved audit replay bundle](../../output/runs/rpb-context-balanced-validation/audit-tools/replay-bundle-99UTEV-20261007T051527Z-262d74bf/REPLAY.md) contains the exact auditor/helper sources and unchanged passed validation record. It preserves source-only replay dependencies, not the data capsules.
 

@@ -5,7 +5,7 @@ Inherited notices remain in all complete copied files and LICENSES/NOTICE.
 
 Implemented source, pending independent preflight, frozen capsule admission,
 build and runtime proof. No passing execution or measured quality is claimed.
-The prospective protocol is archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_CARD.json. CPB-v3 remains the
+The prospective protocol is .archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V6_CARD.json. CPB-v3 remains the
 selected clean baseline/application; V4/V5 scoped strengths remain protected.
 
 This version owns a full physical copy of the V5 architecture/parser closure,

@@ -41,4 +41,4 @@ They perform no encoder training, classifier fitting, PCA or quality evaluation.
 The nested Makefile keeps these sources outside the frozen confirmation build
 closure. Before measuring encoders here, freeze a separate prospective card,
 cohort seeds and saved-evidence reader as described in the
-[benchmark plan](../../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/HARDER_TIMING_BENCHMARK_PLAN.md).
+[benchmark plan](../../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/HARDER_TIMING_BENCHMARK_PLAN.md).

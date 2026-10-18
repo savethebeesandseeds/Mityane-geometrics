@@ -110,7 +110,7 @@ performance benchmark.
 
 All cells below average the three retained head repetitions within that cohort.
 The complete per-repetition scores, seeds, support counts and conditional
-intervals remain in the [durable summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/frozen_amplitude_transfer_v1.json).
+intervals remain in the [durable summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/frozen_amplitude_transfer_v1.json).
 
 Intact amplitude VALIDATION:
 
@@ -267,5 +267,5 @@ captured source and engineering admission. No selection or promotion is declared
 - [New capsule inventory](../../output/runs/rpb-frozen-amplitude-transfer/frozen-amplitude-transfer-JFPbYJ/artifact-integrity.json): `16e9a7bbeefe659eeb7a9ac0feb13152f385f0104f45ea99ce30669309c05464`; 757 files / 113,292,680 bytes, excluding itself.
 - [Passed independent audit](../../output/runs/rpb-frozen-amplitude-transfer/audit-tools/run-JFPbYJ-v2/validation.json): `d531531935cdf8d0106d05b8f839318b0726f97d202ba4696eb3347e57aa923d`.
 - [Sealed independent reader](../../output/runs/rpb-frozen-amplitude-transfer/audit-tools/independent-amplitude-transfer-20261009-v2/validate_frozen_amplitude_transfer.py): `186301e6c95703c54dc1fbe7c14de9bac1a248fcb0f08fb27fca54fc7dacc6e9`.
-- [Durable summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/frozen_amplitude_transfer_v1.json): `b0c129160aa2066c616e5c5ebc1f8c025cab5e22588beea6c5f0d92fb59c7933`.
+- [Durable summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/frozen_amplitude_transfer_v1.json): `b0c129160aa2066c616e5c5ebc1f8c025cab5e22588beea6c5f0d92fb59c7933`.
 - [Prior saved-TRAIN diagnosis](SAVED_NATIVE_RELIABILITY_DIAGNOSTIC.md): inconclusive timing geometry/margin evidence, preserved separately.

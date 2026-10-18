@@ -22,7 +22,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_RECEIPT = "doc/EMBEDDINGS_CLEANUP_2026-10-18.json"
-HISTORICAL_ROOT = "archive/embeddings/pre-cleanup-2026-10-18"
+HISTORICAL_ROOT = ".archive/embeddings/pre-cleanup-2026-10-18"
 IGNORED_ARTIFACTS = tuple(
     f"code/embeddings/{name}" for name in ("output", ".build", ".external")
 )
@@ -52,6 +52,10 @@ def repository_path(value: object, label: str) -> Path:
     relative = PurePosixPath(value.replace("\\", "/"))
     if relative.is_absolute() or ".." in relative.parts or ":" in value:
         raise ValueError(f"{label} is not a safe repository-relative path: {value}")
+    # Dated receipts retain the original root archive/ path identity. The
+    # directory rename changes navigation, never their recorded bytes/hashes.
+    if relative.parts and relative.parts[0] == "archive":
+        relative = PurePosixPath(".archive", *relative.parts[1:])
     path = ROOT.joinpath(*relative.parts)
     return path
 
@@ -250,7 +254,7 @@ def check_markdown_links(checks: Checks) -> None:
         parent = Path(base)
         directories[:] = [
             name for name in directories
-            if name not in {".git", ".build", ".external", "output", "__pycache__", "archive"}
+            if name not in {".git", ".build", ".external", "output", "__pycache__", "archive", ".archive"}
         ]
         sources.extend(parent / name for name in files if name.lower().endswith(".md"))
         for name in files:
@@ -272,7 +276,7 @@ def check_markdown_links(checks: Checks) -> None:
             target = Path(os.path.abspath(target))
             # Frozen evidence keeps the original path identities; its internal
             # link graph is intentionally excluded from maintained link checks.
-            if target.is_relative_to(ROOT / "archive"):
+            if target.is_relative_to(ROOT / ".archive"):
                 continue
             checks.links += 1
             if target not in existence:

@@ -53,7 +53,7 @@ repetition and score intact/deleted with the same fits. Export three native view
 at0/512 and original four-bank TRAIN/VALIDATION waveform queries at512.
 
 Reuse the saved matched RPB-v17.alt-01 scores from
-`archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_fresh_confirmation_v1.json`, SHA
+`.archive/embeddings/pre-cleanup-2026-10-18/doc/results/fixed_prior_fresh_confirmation_v1.json`, SHA
 `6255530c52f710dbb5311e385d7529f878ba3637ce5f5c9101b93864a43bab11`.
 No old encoder execution, baseline head refits or PCA. Advance to retained
 masters81888/82989/85191 only if:

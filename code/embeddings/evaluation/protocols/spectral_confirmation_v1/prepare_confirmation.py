@@ -101,7 +101,7 @@ def main():
         names = sorted(set(a.source_list.read_text().splitlines()))
         if not names or any(not n or Path(n).is_absolute() or '..' in Path(n).parts for n in names):
             raise ValueError('closed relative source list required')
-        if sha(SDK) != SDK_SHA or sha(ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json') != INFO_SHA:
+        if sha(SDK) != SDK_SHA or sha(ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json') != INFO_SHA:
             raise ValueError('verified SDK/information admission changed')
         card = ROOT/'code/embeddings/evaluation/cards/spectral_confirmation_v1.md'
         identities = [direct(ROOT/n, True) for n in names]

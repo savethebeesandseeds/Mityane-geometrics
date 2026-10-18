@@ -9,7 +9,7 @@ the existing compact exports more useful to frozen probes than their matched
 initialization. It follows the [held-out decoder-reliance track](DECODER_RELIANCE.md),
 which established useful reconstruction information within its synthetic
 population. Reconstruction quality does not answer this frozen-feature question.
-The [shared policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) and
+The [shared policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md) and
 [controlled-pairs-v2 protocol](../../evaluation/cards/controlled_pairs_v2.md)
 govern the comparison.
 

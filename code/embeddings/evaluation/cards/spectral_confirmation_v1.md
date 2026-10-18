@@ -20,7 +20,7 @@ Never average the tasks together.
 The exact draw law is the frozen information card
 `code/embeddings/evaluation/cards/two_component_information_v1.md`, SHA256
 `ee92e33107d97a247eea383736d44db570ebc9d6d6ddba83420f41ac467d0b5b`.
-Its passed admission is `archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json`,
+Its passed admission is `.archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json`,
 SHA256 `04fda53a38d8ead378dec5b276c62eba322ec5ea0361daab789a02ee3c03569f`.
 Reuse that receipt; do not rerun information fitting or use its outputs as
 features, labels or training targets.

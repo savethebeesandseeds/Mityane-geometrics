@@ -48,7 +48,7 @@ bash code/scripts/task.sh baseline -j2 all test
 
 The root Makefile, task runner, dependency lock and setup are authoritative.
 Named builds and locks use `/opt/mityane-geometrics/embeddings/build/<session>`;
-new task results use `/mityane/output/embeddings/runs/<session>`. See the
+new task results use `/mityane/.temp/embeddings/runs/<session>`. See the
 [environment guide](../../doc/ENVIRONMENT.md) for the existing container and SDK.
 
 ## Research and preservation
@@ -58,10 +58,10 @@ Research remains paused at the saved 18 October 2026 handoff. Start with the
 not authorize experiments or unfinished metadata application.
 
 The complete pre-cleanup source/documentation component is retained byte-for-byte under
-[`../../archive/embeddings/pre-cleanup-2026-10-18/`](../../archive/embeddings/pre-cleanup-2026-10-18/).
+[`../../.archive/embeddings/pre-cleanup-2026-10-18/`](../../.archive/embeddings/pre-cleanup-2026-10-18/).
 Historical ignored `output/`, `.build/` and `.external/` remain in this directory.
 Frozen paths, source capsules, cards, checkpoints and receipts retain their
-identities. Read the [archive guide](../../archive/embeddings/README.md) before
+identities. Read the [archive guide](../../.archive/embeddings/README.md) before
 following a historical source or reproduction pointer.
 
 The repository [MIT license](../../LICENSE) covers the imported project code;

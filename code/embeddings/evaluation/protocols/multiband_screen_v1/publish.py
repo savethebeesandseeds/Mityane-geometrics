@@ -58,13 +58,13 @@ def table(records):
 
 
 def main():
-    raise SystemExit('Retired historical publisher: original source is in archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/multiband_screen_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
+    raise SystemExit('Retired historical publisher: original source is in .archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/multiband_screen_v1/publish.py. Historical registries are immutable; use a separately versioned publication protocol for new work.')
     p = argparse.ArgumentParser()
     p.add_argument('--admission', type=Path, required=True)
     a = p.parse_args()
     capsule = a.admission
     freeze = json.loads((capsule/'freeze/freeze.json').read_text())
-    registry_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
+    registry_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/embedding_versions.json'
     original_registry = json.loads(registry_path.read_text())
     if any(v['tag'] == 'RPB-v19' for v in original_registry['versions']) or any(v['id'] == 'RPB-v18.alt-01' for v in original_registry['instance_bundles']):
         raise ValueError('new additive identities required; never replace a registry entry')
@@ -187,15 +187,15 @@ def main():
         'Source, card, SDK, input and artifact hashes are retained in the JSON.', '',
         'TEMPO-3 RPB-v18, formal RPB-v4, original RPB-v7 and all older results remain',
         'preserved. No TEST, stress evaluation, default change or reference promotion.', '']
-    output = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/results/multiband_screen_v1.json'
-    report_path = ROOT/'archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md'
+    output = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/results/multiband_screen_v1.json'
+    report_path = ROOT/'.archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md'
     with output.open('x') as f:
         f.write(json.dumps(summary,indent=2)+'\n')
     with report_path.open('x') as f:
         f.write('\n'.join(lines))
     evidence = dict(protocol=summary['protocol'],datasets=['TEMPO-4','AMP-2'],master_seeds=[920903,920904],
-                    encoder_updates_each=512,native_global_width=32,measured_record='archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md',
-                    durable_summary='archive/embeddings/pre-cleanup-2026-10-18/doc/results/multiband_screen_v1.json',durable_summary_sha256=sha(output),
+                    encoder_updates_each=512,native_global_width=32,measured_record='.archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md',
+                    durable_summary='.archive/embeddings/pre-cleanup-2026-10-18/doc/results/multiband_screen_v1.json',durable_summary_sha256=sha(output),
                     artifact_inventory_sha256=sha(inventory),capsule=str(capsule),promotion=False,
                     source_fingerprint=freeze['source_fingerprint'],card_sha256=freeze['card_sha256'])
     registry = json.loads(json.dumps(original_registry))

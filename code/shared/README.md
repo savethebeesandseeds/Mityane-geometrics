@@ -24,5 +24,5 @@ normalization and metric identities across component boundaries.
 Artifact integrity hashes identify selected bytes and parent relationships;
 they do not establish scientific validity or source authenticity. Preserve
 historical source closures and receipts in
-[the archive](../../archive/embeddings/README.md). Run shared utility checks
+[the archive](../../.archive/embeddings/README.md). Run shared utility checks
 through the managed container, root Makefile and `code/scripts/task.sh`.

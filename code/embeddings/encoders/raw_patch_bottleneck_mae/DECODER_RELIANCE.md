@@ -5,7 +5,7 @@ recipe; useful held-out decoder reliance established within this synthetic track
 
 This experiment advances the bottleneck evidence required by the
 [implementation guidelines](RPB_MAE_implementation_guidelines.md) and shared
-[evaluation policy](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md). Existing model
+[evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md). Existing model
 tests establish exact-export decoding, gradient reachability and the absence of
 a token-state bypass. Held-out measurements test whether decoding uses useful
 trajectory information beyond masks, channel identities and positions.

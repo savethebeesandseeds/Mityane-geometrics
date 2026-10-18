@@ -73,6 +73,6 @@ on both actual main-run initial and final checkpoints before quality.
 
 This implementation is pending source admission/build/runtime verification.
 No passing test or measured quality follows from source creation. The separate
-prospective card is `archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_CARD.md`. Earlier v1/v2 source,
+prospective card is `.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_CARD.md`. Earlier v1/v2 source,
 checkpoints and measurements remain protected historical references. They are
 not v4 training sources or quality targets.

@@ -159,7 +159,7 @@ Independent audit PASS: 96,153,106 checks, 1,255 CPU archive decodes, 780.004451
 
 No numeric automatic promotion rule was declared. Assess timing intact/deleted linear accuracy, worst-cohort accuracy, fixed TRAIN/VALIDATION MAE, neural regressions and amplitude separately before any next change. This report does not replace original RPB-v7 weights or claim a causal internal mechanism.
 
-[Frozen prospective card](../../evaluation/cards/early_mixer_confirmation_v1.md). [Durable full summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_confirmation_v1.json).
+[Frozen prospective card](../../evaluation/cards/early_mixer_confirmation_v1.md). [Durable full summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/early_mixer_confirmation_v1.json).
 
 Metadata/source bindings:
 

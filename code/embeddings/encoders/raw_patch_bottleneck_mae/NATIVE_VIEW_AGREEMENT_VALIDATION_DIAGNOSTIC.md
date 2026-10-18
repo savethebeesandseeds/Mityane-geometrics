@@ -120,7 +120,7 @@ The [independent audit](../../output/runs/rpb-native-view-agreement-validation/a
 | Independent auditor | `8955026bdeb9361a3dd79adfe9b08255149e9f6f3fe2e671a230915138407435` |
 | Passed validation | `c0a96603d9b5e38e619841a5027088a383ce76f8a376409b1dd63b71fe8946c5` |
 
-The [durable numerical summary](../../../../archive/embeddings/pre-cleanup-2026-10-18/doc/results/native_view_agreement_validation_v1.json) retains exact scores, every master and head repetition, cost scopes, guards and evidence identities. Large archives remain local under `output/`.
+The [durable numerical summary](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/results/native_view_agreement_validation_v1.json) retains exact scores, every master and head repetition, cost scopes, guards and evidence identities. Large archives remain local under `output/`.
 
 The first coordinated admission failed compilation before CUDA or quality access because of a mixed-const pointer initializer list. Its failure and source inventory were preserved; the repair uses an explicit const-pointer array without numerical changes. Before measurement, peer review corrected the new auditor's stale v8 input filter and v7 output-path protection, then a reporting-only inherited v1 release-status field. The first announced seal is preserved; final seal changes only the two reviewed release flags. All older readers and result artifacts remain unchanged.
 

@@ -17,12 +17,13 @@ issuance belongs in [`../operations/forecasting/issuance/`](../operations/foreca
 Market data is one application lane, with no change to the domain-agnostic
 project scope.
 
-Store shared local dataset files in the root `data/` directory. Fit learned
-preprocessing using the declared training split and retain its version and
+Store local dataset files under ignored [`.temp/`](../../doc/ENVIRONMENT.md#local-artifacts)
+directories only when needed. Fit learned preprocessing using the declared
+training split and retain its version and
 training scope. Keep generated observations distinguishable from real source
 cohorts. Imported historical artifacts retain their preserved locations under
 `code/embeddings/output/`, `.build/` and `.external/`; source and evidence
-snapshots live in [the archive](../../archive/embeddings/README.md).
+snapshots live in [the archive](../../.archive/embeddings/README.md).
 
 Build and test from the repository root through the managed container's root
 Makefile and `code/scripts/task.sh`. Keep data admission, representation
