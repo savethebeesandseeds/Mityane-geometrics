@@ -1,0 +1,31 @@
+# Toolchains, dependencies and build caches belong inside the container.
+/.build/
+/.external/
+/.venv/
+/build/
+__pycache__/
+*.py[cod]
+*.o
+*.a
+*.so
+*.exe
+
+# Local data and generated research artifacts.
+/data/*
+!/data/README.md
+/output/*
+!/output/README.md
+*.pt
+*.pth
+*.onnx
+
+# Credentials and editor state.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
