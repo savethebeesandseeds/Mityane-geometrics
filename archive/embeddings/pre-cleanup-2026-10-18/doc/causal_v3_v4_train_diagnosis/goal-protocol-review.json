@@ -1,0 +1,207 @@
+{
+  "status": "passed",
+  "scope": "Static existing saved JSON protocol arithmetic only; no archive or model reads",
+  "checks": 64,
+  "goal_sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25",
+  "reference_sha256": "305d34b525be81c33fb7f2ade2173e71162d7fce56d8fefc82783925607add13",
+  "criterion_count": 22,
+  "counts": {
+    "market_retention": 8,
+    "tempo5_retention": 8,
+    "variance_quality": 1,
+    "relation_usefulness": 2,
+    "neural_trend_robustness": 1,
+    "fixed_query_MAE": 2
+  },
+  "criteria": [
+    {
+      "id": "past_volatility:linear_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.964673433811061,
+      "source": "CPB-v3.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.5551762291104203,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9072134297036245,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.5698752307038314,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.8628403110608782,
+      "source": "CPB-v3.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.6873705450109496,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.3264050670418407,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "category": "market_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.20951046448819055,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9830729166666666,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9696180555555556,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9466145833333334,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.93359375,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9934895833333334,
+      "source": "CPB-v3.market-01",
+      "matches": true
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.98828125,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9583333333333334,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "rule": "candidate + 1e-12 >= floor",
+      "expected": 0.9561631944444444,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "train:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "rule": "candidate <= floor + 1e-12",
+      "expected": 0.25904599043427573,
+      "source": "CPB-v3.market-01",
+      "matches": true
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "rule": "candidate <= floor + 1e-12",
+      "expected": 0.30831692401624544,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "category": "variance_quality",
+      "rule": "candidate < floor - 1e-12",
+      "expected": -0.04538148809081624,
+      "source": "CPB-v4.market-01",
+      "matches": true
+    },
+    {
+      "id": "past_trend:all3_neural_R2_positive",
+      "category": "neural_trend_robustness",
+      "rule": "all three final neural trend R2 values > 0",
+      "expected": 0,
+      "source": "strict positivity",
+      "matches": true
+    },
+    {
+      "id": "past_relation:linear_r2:positive",
+      "category": "relation_usefulness",
+      "rule": "candidate > 0",
+      "expected": 0,
+      "source": "strict positivity",
+      "matches": true
+    },
+    {
+      "id": "past_relation:neural_mean_r2:positive",
+      "category": "relation_usefulness",
+      "rule": "candidate > 0",
+      "expected": 0,
+      "source": "strict positivity",
+      "matches": true
+    }
+  ],
+  "new_candidate_declared": false,
+  "model_calls": 0,
+  "fits": 0,
+  "kind": "clean_causal_encoder_search_goal_static_review_v1",
+  "goal_path": "doc/clean_causal_encoder_search_goal.json",
+  "reference_path": "doc/results/causal_fresh_v4/comparison.json",
+  "tensor_deserializations": 0,
+  "notes": [
+    "Only frozen saved JSON values and prospective rule strings were checked.",
+    "Higher market/timing values use max(finalV3,finalV4); lower TRAIN/VALIDATION MAE uses min.",
+    "Validation NLL must improve strictly below the stronger negative V4 reference minus1e-12.",
+    "Three strict positivity predicates remain separate; no new candidate or quality result is declared."
+  ]
+}

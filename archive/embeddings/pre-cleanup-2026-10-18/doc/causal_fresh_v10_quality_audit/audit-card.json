@@ -1,0 +1,1306 @@
+{
+  "kind": "causal_fresh_v10_saved_quality_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-16T13:31:20.2564099Z",
+  "stage": "declared_after_static_review_before_any_saved_numeric_audit",
+  "execution_pending": true,
+  "model": "CPB-v10.market-01",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "old_model_numeric_reads": 0,
+  "main_card": {
+    "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+    "bytes": 119685,
+    "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+  },
+  "input_manifest": {
+    "path": "doc/causal_fresh_v10/input-manifest.json",
+    "bytes": 5465,
+    "sha256": "c79f92f11342b57a99e6f97ff7ef371b57f700c2765126d6138ce658cf856cc4"
+  },
+  "main_source_manifest_sha256": "66b9563b987011833678a231409574ecff46e4e22c71764bef07e5782ca5dc98",
+  "main_source_zip_sha256": "d66418fca82f81abe60c35f8184ef0d0bb8a51d94f66ce9e4d67df5e56c3b30f",
+  "main_source_files": 127,
+  "main_attempt": "attempt-001",
+  "audit_attempt": "attempt-001",
+  "outside_frozen_main_source": true,
+  "auditor_sources": [
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "audit.py",
+      "bytes": 90694,
+      "sha256": "9c17b794c0d20a66a4e5b13161d013b9928ea62b372dde7a413813363c793fce"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 10187,
+      "sha256": "2a298f7f3b9570bcb1758bdaf9921e250c72d6e234fb001abc4e9638e0e6de12"
+    },
+    {
+      "file": "README.md",
+      "bytes": 7299,
+      "sha256": "155333e9276f8ffda3d4bcede6990e870544050da8ea38de49687ed4a807ed10"
+    }
+  ],
+  "expected_main_paths": {
+    "training": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/run-001",
+    "quality": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/quality-001",
+    "card": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/source/doc/CAUSAL_FRESH_V10_CARD.json"
+  },
+  "paired_initial_reference_inputs": [
+    {
+      "id": "market_initial_train",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/market/cpb_v9-train.pt",
+        "bytes": 39393,
+        "sha256": "267783792b0d237b1fc42e5fca6b5e9043dee56671f42e91e55ebdf4a5eca8d5"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            112,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            112
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            112
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v10-train.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "market_initial_validation",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/market/cpb_v9-validation.pt",
+        "bytes": 13139,
+        "sha256": "ca1685dac61cc249032ff3bc430abcd11da15762a4c200bbda8bdc4f7c6d0246"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            32,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            32
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            32
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v10-validation.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "4f7b78fd7e4470b8300257dbdafdd5c9130d60cf83ac8fbf643f2715dc89ddd3"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "90bdc1844af8b4a2869cecb7d4bc5240587bbcbfbdd25f1b553491635d929f74"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "6361bf0318d70c5bdde911cbaba5699e63a9fc5f24fa2ab03d37fa2ebb8b4a80"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "8b1bd50f5e2d497191b88f0eb56825d7c457dd71f4e0728dc4086c8e8c79e30b"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "04b2f13a1707f80da5290471ce38846c4c4cb862885fb639dc99ed6b17f333b9"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "e437f97d837d0d77b0f56cb6a661194894d8ab39c3d8646261aa4956386b4e0a"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution.",
+      "feature_value_coordinate_slice": [
+        0,
+        40
+      ]
+    },
+    {
+      "id": "fresh_market_input_scaler",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/calibration/input-scaler.pt",
+        "bytes": 39988,
+        "sha256": "37155907ef2f287f625e9e52ad70deac8f53adf9f9ae2aac24c9ea30229a84fa"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "sum",
+        "sumsq",
+        "scaler.mean",
+        "scaler.scale",
+        "scaler.count",
+        "scaler.channel_ids",
+        "scaler.floor_applied",
+        "scaler.scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "sum",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "sumsq",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scaler.scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/input-scaler.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution."
+    },
+    {
+      "id": "fresh_market_bank_normalizer",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/calibration/bank-standardizer.pt",
+        "bytes": 53951,
+        "sha256": "e0bfa8a4c295f6239c884f2798e1c73f7b625fe41546cc5946a3b71aed82d204"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "bank.bank.counts",
+        "bank.bank.sum",
+        "bank.bank.sumsq",
+        "bank.bank.mean",
+        "bank.bank.scale",
+        "bank.bank.support",
+        "bank.bank.input_geometry",
+        "bank.bank.sampling_interval",
+        "bank.bank.floor",
+        "bank.bank.minimum_support"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.counts",
+          "shape": [
+            270
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sum",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.sumsq",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.mean",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.scale",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.support",
+          "shape": [
+            270
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "bank.bank.input_geometry",
+          "shape": [
+            6
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sampling_interval",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.minimum_support",
+          "shape": [],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/bank-standardizer.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/synthetic-scalers/master-941101.pt",
+        "bytes": 3953,
+        "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941101.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/synthetic-scalers/master-941102.pt",
+        "bytes": 3953,
+        "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941102.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/features/synthetic-scalers/master-941103.pt",
+        "bytes": 3953,
+        "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941103.pt",
+      "comparison": "All declared numeric fields compare whole logical tensors,including all40 feature coordinates and all fresh-statistic tensors;not whole-file metadata equality. No old model/head execution."
+    }
+  ],
+  "native_coordinate_slice": [
+    0,
+    40
+  ],
+  "native_coordinates_compared": 40,
+  "content20_equality_required": true,
+  "whole_native40_equality_claimed": true,
+  "goal_protocol": {
+    "path": "doc/causal_fresh_v10/goal-protocol.json",
+    "bytes": 35421,
+    "sha256": "221f7cc748db8bc57bbb8dd066f569d957d16791d2a7cfe0ef0cc3785a579144"
+  },
+  "source_parent": {
+    "path": "code/research/causal_fresh_v9_quality_audit_attempt002/audit.py",
+    "bytes": 85083,
+    "sha256": "2f332ad728e865313a51b852a6f624c005be89bbba6d5861724ee2d9af077d76"
+  },
+  "independent_source_review": {
+    "path": "doc/causal_fresh_v10/quality-auditor-independent-static-review.json",
+    "bytes": 7074,
+    "sha256": "744fb349fa5839f89a18452272c4b4f07ecbc24cb7ea57b1aa3901c883649a92"
+  },
+  "helpers_provenance": {
+    "path": "doc/causal_fresh_v10_quality_audit/provenance.json",
+    "bytes": 11160,
+    "sha256": "9fa423205cea6008db751e9a922dcad458866a7299d6bd74a4c77ef0bda94e6f"
+  },
+  "completed_quality_receipt": {
+    "path": "output/runs/causal-fresh-v10/run-001/quality-001/quality-receipt.json",
+    "bytes": 4801,
+    "sha256": "5026c89f422b1a20cd8f3de08c92bf3f7b72879bd2b378f56596cc390971fb6b"
+  },
+  "completed_quality_stage": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/quality-stage.json",
+    "bytes": 1697,
+    "sha256": "c7500a068d01bb1e8d6b0553a0973fa5104ab4f40c3f5427a1276cd00827870f"
+  },
+  "completed_main_mirror": {
+    "path": "doc/causal_fresh_v10/complete-mirror-attempt-001.json",
+    "bytes": 263638,
+    "sha256": "7819d652e06750827176d8a42e3dbc00a0f1dae621545f51f126c8788d74d587"
+  },
+  "report_only_recovery_required": false,
+  "scope": [
+    "All112TRAIN/32knownVALIDATION saved market predictions,physical errors,ridge reconstruction,allrepetitions,fixedD40recipes;no fitting",
+    "TEMPO5 saved count/group/interval/mean/coverage arithmetic;1572 recorded initial/final exports;no model or head forward",
+    "13savedV9 references:eight FULLnative40 DATA banks and five whole fresh-statistic archives;no imported model/statistics or old score reuse",
+    "Seven clean V3–V9 controls,four separate V6–V9trust joins,historicalV8/V9PARTIALpairing and opaqueV9report-only recovery remain unchanged",
+    "221f22exactmax/min/positivity operators,chronological ties,noTRAINNLLgate,no automatic winner or appselection",
+    "Sevenbinary11TUactualsource closure;newjointGaussian/F64FDproof and unchangedhalf-mixturetemporalproof;75mandatorytensors plusregisteredgauge capacity",
+    "Actual passed normal outerquality wrapper/five scientific receipt durations/seven local exit0 stage files and report/comparison outputs;no current recovery",
+    "Saved8192group/2048gauge/2048between evidence/receipt bindings;independent training audit owns detailed saved-array arithmetic"
+  ],
+  "fresh_schema_contract": "Only main fresh-constructor JSON omits gradient_policy; requireabsence there and strict policies elsewhere.",
+  "execution_wrapper": {
+    "path": "doc/causal_fresh_v10_quality_audit/execute.py",
+    "bytes": 9038,
+    "sha256": "93e2b82539314679596ee5226b65cb173606daafe4e1ebf80b23f5bde6ca0544"
+  },
+  "stage_helper": {
+    "path": "doc/causal_fresh_v10_quality_audit/stage.ps1",
+    "bytes": 8342,
+    "sha256": "c57f5d3737d2df0c19b8bbbcb3d0e4f70c7323f733847089be4a2241320fc633"
+  },
+  "mirror_helper": {
+    "path": "doc/causal_fresh_v10_quality_audit/mirror.ps1",
+    "bytes": 10337,
+    "sha256": "96cc9a6d3bb3559e8dfb648fdbc34b21c2256c11cf91f7ce68c7f1494d2c9dc0"
+  },
+  "card_generator": {
+    "path": "doc/causal_fresh_v10_quality_audit/prepare-card.ps1",
+    "bytes": 12692,
+    "sha256": "f170c4942160f4fc9e7fe694aa9c2cd0e3c343986c75dd8e70e38727d5a7c155"
+  },
+  "forbidden": [
+    "Torch/NumPy or producer imports",
+    "Encoder/decoder/head forward or fitting",
+    "Old trained checkpoint numeric reads",
+    "Partial-only current initial pairing",
+    "Current reporting recovery arguments or prior-failure assumptions",
+    "PCA/tuning/selection",
+    "Mutation of source/cards/results/old evidence"
+  ]
+}

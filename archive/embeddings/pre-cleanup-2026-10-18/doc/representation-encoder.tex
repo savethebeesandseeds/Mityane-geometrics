@@ -1,0 +1,104 @@
+\input{ieee-preamble}
+\hypersetup{
+  pdftitle={MTF-JEPA-MAE-VICReg: A Representation Encoder for World Models},
+  pdfauthor={Santiago Restrepo},
+  pdfsubject={Research and development brief, September 2026},
+  pdfkeywords={robotics, world models, representation learning, sensor fusion,
+    self-supervised learning, time-frequency encoding}
+}
+
+\title{MTF-JEPA-MAE-VICReg\\[4pt]
+{\Large A Representation Encoder for World Models}}
+\author{\IEEEauthorblockN{Santiago Restrepo}
+\IEEEauthorblockA{\href{mailto:contact@waajacu.com}{contact@waajacu.com}\quad
+\url{https://waajacu.com/}\\[3pt]
+\textit{Research and development brief --- September 2026}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+MTF-JEPA-MAE-VICReg is a C++20/LibTorch encoder that learns numerical
+representations of sensor histories without manually labeled targets. It combines
+temporal statistics and frequency information, handles missing measurements, and
+produces vectors for each history and sensor channel. The core encoder and
+CPU/CUDA training pipeline are implemented and working. We seek support to refine
+and validate this foundation as an observation component for robotic world models.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Robotics, world models, representation learning, sensor histories.
+\end{IEEEkeywords}
+
+\balance
+\section{The Robotics Opportunity}
+A robotic world model predicts the effects of actions. Its observation encoder
+turns sensor histories into embeddings: learned numerical vectors used by a
+predictor. Inputs could include joint motion, inertial measurements, motor current,
+and force readings. This could complement a separate vision encoder.
+
+\section{Representation and Learning}
+The input $X$ is a rank-four real-valued array with shape $[B,C,H,F]$:
+\begin{center}
+\begin{tabular}{@{}l@{\quad}p{0.86\columnwidth}@{}}
+$B$ & histories processed together (batch size) \\
+$C$ & sensor streams or groups (channels) \\
+$H$ & time steps in each history \\
+$F$ & measurements per channel at each time step
+\end{tabular}
+\end{center}
+A Boolean mask of the same shape marks each measurement as observed or missing.
+
+MTF (multiscale time-frequency) analysis summarizes windows of several lengths
+using means, standard deviations, and oscillation strengths. These summaries
+become tokens: learned vectors tagged by channel, window length, time/frequency
+type, and position. The shared encoder mixes information across valid tokens.
+Averaging its outputs yields a vector per history and per channel; flags identify
+outputs with no observations.
+
+Learning combines four objectives. JEPA (joint-embedding predictive architecture)
+predicts hidden token embeddings from visible context~\cite{assran2023}. Targets
+come from a teacher: a slowly averaged copy of the token builder and encoder.
+MAE (masked autoencoder) reconstructs window summaries~\cite{he2022}.
+Time--frequency alignment encourages agreement between the two views. VICReg
+(variance-invariance-covariance regularization) aligns lightly perturbed
+views while preserving variation across examples and reducing redundant vector
+dimensions~\cite{bardes2022}.
+
+\section{Development Toward a World Model}
+The proposed next step learns how embeddings change under robot actions:
+\begin{equation}
+\widehat{z}_{t+1}=f_{\phi}(z_t,a_t).
+\end{equation}
+Here $t$ is a time step, $z_t$ the current history's embedding, $a_t$ the action,
+$f_{\phi}$ a predictor with learned parameters $\phi$, and $\widehat{z}_{t+1}$
+the predicted next embedding. Current training reconstructs information within
+an observed history; future prediction and control integration remain next steps.
+
+A manipulation-task pilot would compare learned and hand-designed baselines on
+unseen robot trajectories, measuring prediction accuracy, missing-sensor
+robustness, inference time, and control utility. Training and evaluation histories
+must be temporally separated to avoid overlap.
+
+\section{Readiness and Completion}
+The implementation supports CPU/CUDA training, saving and resuming training
+state, and embedding export in a Debian environment. Tests cover missing data,
+teacher updates, and numerical consistency. Robotics performance and real-time
+suitability remain to be measured.
+
+This implemented core demonstrates our capability to build and test
+self-supervised representation systems. We seek support to refine it through
+completion as a robotic world-model component, including validation on real
+robot trajectories and downstream tasks.
+
+\section{Source Code}
+The repository contains the standalone encoder, training workflow, and setup
+instructions for review and further refinement.
+
+\noindent{\footnotesize
+\url{https://github.com/savethebeesandseeds/cuwacunu_embedding}\par}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

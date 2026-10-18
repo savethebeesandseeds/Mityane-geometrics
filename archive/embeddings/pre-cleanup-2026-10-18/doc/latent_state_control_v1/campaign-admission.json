@@ -1,0 +1,563 @@
+{
+  "schema": "latent_state_control_campaign_admission_v1",
+  "date": "2026-10-18",
+  "datasetId": "MKT-CAUSAL-STATE-CONTROL-V1-DEV",
+  "scope": "Prospective conditional development source/support admission; no market fit, embedding capture or quality measurement",
+  "runtime": {
+    "containerName": "cuwacunu",
+    "containerId": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "observedContainerHostname": "82d102f2ef3f",
+    "launcher": "container.ps1",
+    "python": "3.11.2"
+  },
+  "availability": {
+    "id": "ASSUMED-CANDLE-CLOSE-ZERO-LATENCY-V1",
+    "measuredReceiptLatency": false,
+    "closeKey": "Exchange candle close_time in epoch milliseconds",
+    "assumedReceiptTime": "close_time",
+    "decisionTime": "origin close_time",
+    "latencyMs": 0,
+    "legalObservationRule": "close_time <= decision_time",
+    "limitations": "Historical close keys do not establish actual feed arrival or execution latency; this is conditional development evidence, with no live-use or live-causality claim",
+    "missingStalePolicy": "Require every exact one-minute tick across all BTC/ETH/SOL channels; never forward-fill stale rows; preserve invalid/unavailable associations and reject unsupported origins"
+  },
+  "encoderNomination": {
+    "outcome": "eligible",
+    "instance": "CPB-v3.market-01",
+    "family": "causal_patch_bottleneck_mae",
+    "version": "v3",
+    "geometry": {
+      "channels": 3,
+      "history": 128,
+      "features": 9,
+      "patch": 8,
+      "nativeWidth": 36,
+      "cadenceMs": 60000
+    },
+    "checkpoint": {
+      "path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+      "bytes": 1290625
+    },
+    "sidecar": {
+      "path": "output/baselines/CPB-v3.market-01/inference.pt.manifest.json",
+      "sha256": "05ce98a37370b362cf718da998ccd18e1345026daf58ae258ed091fb220e98f7"
+    },
+    "modelRef": "2d61978bbf601e9050f97bb22387e688acba523d772ea0c540715fb93a260f09",
+    "artifactComponent": {
+      "module_ref": {
+        "component": "Encoder",
+        "implementation_version": "v3",
+        "source_sha256": "b748448814c65b05543df1f1eebdc8016e13a4526fe29b1a4194ddd93c2f52f3"
+      },
+      "weights_ref": {
+        "state_sha256": "0f8ac29c752389df65536896fcf756be9a62d9895da235fe01238e8bd4e3cfd3"
+      },
+      "inference_config_sha256": "18626a4d572c9c9e585d27643f0f92040b96cf09a667376e965c4dc5158a0851",
+      "model_ref": "2d61978bbf601e9050f97bb22387e688acba523d772ea0c540715fb93a260f09",
+      "parents": []
+    },
+    "fitCutoffMs": 1705881599999,
+    "fitCutoffUtc": "2024-01-21T23:59:59.999Z",
+    "recordedProvenance": {
+      "sourceUpdates": 0,
+      "causalUpdates": 2048,
+      "seed": 943001,
+      "inputScaler": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+      "bankNormalizer": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-4d6d0b5761eaad8f"
+    },
+    "rationale": "Disclosed convenience baseline: reuse the exact selected clean causal native36 interface and saved TRAIN statistics to bound downstream implementation and comparison cost. No new candidate search or measured retention claim on future latent-state/risk targets is made.",
+    "reusedEvidence": "doc/CAUSAL_PRIMARY_INTEGRATION.md cites existing v3 results/review: strong volatility/linear activity and TEMPO-5 timing; weak neural trend/relation, neural activity decline, improved MAE but worse known-VALIDATION NLL. These mixed findings do not establish downstream usefulness or an overall winner.",
+    "cost": "Recorded 293672 learned values, native36 exports, H128 inference; no new throughput or compute benchmark. The existing candidate avoids a new Encoder fit; saved captures, once separately admitted, are reusable.",
+    "frozenContract": "Weights/scaler/bank remain frozen; genuine raw CPU F64, Boolean masks, semantic channel IDs 0/1/2, actual close grids and explicit per-row cutoff; no PCA, statistic fit, fallback or Encoder update.",
+    "separateDecision": "Campaign eligibility is a disclosed baseline nomination, distinct from application selection. Current-chain engineering and final campaign closure remain separate prerequisites for capture/fitting.",
+    "replacementPolicy": "A changed Encoder requires a new admitted campaign, compatible capture/state/readout artifacts and common-observable comparisons under the same periods/budgets; latent losses cannot rank different coordinate spaces."
+  },
+  "sources": [
+    {
+      "semanticId": 0,
+      "instrument": "BTCUSDT",
+      "csv": {
+        "path": "data/mkt-hist-1/csv/BTCUSDT-1m-2024-01.csv",
+        "sha256": "acdcd5dee054732c93d60094c4be319447661dd5cc341fd206a6d9f87eb48c21",
+        "bytes": 6699071
+      },
+      "cache": {
+        "path": "data/mkt-hist-1/csv/BTCUSDT-1m-2024-01.cache.bin",
+        "sha256": "67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58",
+        "bytes": 3928320,
+        "recordBytes": 88,
+        "physicalRecordCount": 44640,
+        "openedReadOnly": true,
+        "freshRelativeToCsv": true
+      },
+      "inspectedDevelopmentPrefix": {
+        "firstCloseMs": 1704067259999,
+        "lastCloseMs": 1706486399999,
+        "firstCloseUtc": "2024-01-01T00:00:59.999Z",
+        "lastCloseUtc": "2024-01-28T23:59:59.999Z",
+        "rows": 40320,
+        "validFinitePositiveCloseRows": 40320,
+        "invalidRows": 0,
+        "missingRows": 0,
+        "duplicateRows": 0,
+        "csvCacheF64FieldMismatches": 0
+      }
+    },
+    {
+      "semanticId": 1,
+      "instrument": "ETHUSDT",
+      "csv": {
+        "path": "data/mkt-hist-1/csv/ETHUSDT-1m-2024-01.csv",
+        "sha256": "dec457e8d45557aef0106dfce9f0787b95691bd25bb7ba7a6716d5879258a6e0",
+        "bytes": 6571961
+      },
+      "cache": {
+        "path": "data/mkt-hist-1/csv/ETHUSDT-1m-2024-01.cache.bin",
+        "sha256": "0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa",
+        "bytes": 3928320,
+        "recordBytes": 88,
+        "physicalRecordCount": 44640,
+        "openedReadOnly": true,
+        "freshRelativeToCsv": true
+      },
+      "inspectedDevelopmentPrefix": {
+        "firstCloseMs": 1704067259999,
+        "lastCloseMs": 1706486399999,
+        "firstCloseUtc": "2024-01-01T00:00:59.999Z",
+        "lastCloseUtc": "2024-01-28T23:59:59.999Z",
+        "rows": 40320,
+        "validFinitePositiveCloseRows": 40320,
+        "invalidRows": 0,
+        "missingRows": 0,
+        "duplicateRows": 0,
+        "csvCacheF64FieldMismatches": 0
+      }
+    },
+    {
+      "semanticId": 2,
+      "instrument": "SOLUSDT",
+      "csv": {
+        "path": "data/mkt-hist-1/csv/SOLUSDT-1m-2024-01.csv",
+        "sha256": "5e61e86631e534cafcdc67ec51beb298ef35f5e90cc73bc76dbe9d51eb0863ae",
+        "bytes": 6347418
+      },
+      "cache": {
+        "path": "data/mkt-hist-1/csv/SOLUSDT-1m-2024-01.cache.bin",
+        "sha256": "364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7",
+        "bytes": 3928320,
+        "recordBytes": 88,
+        "physicalRecordCount": 44640,
+        "openedReadOnly": true,
+        "freshRelativeToCsv": true
+      },
+      "inspectedDevelopmentPrefix": {
+        "firstCloseMs": 1704067259999,
+        "lastCloseMs": 1706486399999,
+        "firstCloseUtc": "2024-01-01T00:00:59.999Z",
+        "lastCloseUtc": "2024-01-28T23:59:59.999Z",
+        "rows": 40320,
+        "validFinitePositiveCloseRows": 40320,
+        "invalidRows": 0,
+        "missingRows": 0,
+        "duplicateRows": 0,
+        "csvCacheF64FieldMismatches": 0
+      }
+    }
+  ],
+  "supportRecipe": {
+    "history": 128,
+    "historySteps": 4,
+    "spacingTicks": 1,
+    "forecastHorizonsTicks": [
+      1,
+      16,
+      128
+    ],
+    "futureRiskHorizonTicks": 128,
+    "fullEnvelopeTicks": [
+      -130,
+      128
+    ],
+    "fullEnvelopeInclusiveTicks": 259,
+    "rolePolicy": "The complete raw envelope must lie within the stage; purge 130 leading and 128 trailing origin ticks per stage",
+    "riskSupportOnly": "No future-risk values or forecast errors are computed. Support requires all 128 future minute closes, source-valid finite F64 features and positive closes on every channel."
+  },
+  "stages": [
+    {
+      "stage": "representation_train",
+      "rawRoleFirstCloseMs": 1705881659999,
+      "rawRoleLastCloseMs": 1706054399999,
+      "rawRoleFirstCloseUtc": "2024-01-22T00:00:59.999Z",
+      "rawRoleLastCloseUtc": "2024-01-23T23:59:59.999Z",
+      "rawMinuteTicks": 2880,
+      "firstEligibleOriginMs": 1705889459999,
+      "lastEligibleOriginMs": 1706046719999,
+      "firstEligibleOriginUtc": "2024-01-22T02:10:59.999Z",
+      "lastEligibleOriginUtc": "2024-01-23T21:51:59.999Z",
+      "candidateOriginsAfterEnvelopePurge": 2622,
+      "eligibleOrigins": 2622,
+      "invalidOrMissingFullSupportOrigins": 0,
+      "minimumLegalOrigins": 512,
+      "minimumSatisfied": true,
+      "leadingPurgedOrigins": 130,
+      "trailingPurgedOrigins": 128,
+      "lastFeatureModelFitCutoffMs": 1705881599999,
+      "stageFitOrScoringCutoffMs": 1706054399999,
+      "mature128MinuteLabelOriginsByStageCutoff": 2622,
+      "assetLabelAssociationsPerRiskTarget": 7866,
+      "allHorizonPairAssociations": 7866,
+      "perHorizonPairAssociations": {
+        "1": 2622,
+        "16": 2622,
+        "128": 2622
+      }
+    },
+    {
+      "stage": "later_risk_head_train",
+      "rawRoleFirstCloseMs": 1706054459999,
+      "rawRoleLastCloseMs": 1706227199999,
+      "rawRoleFirstCloseUtc": "2024-01-24T00:00:59.999Z",
+      "rawRoleLastCloseUtc": "2024-01-25T23:59:59.999Z",
+      "rawMinuteTicks": 2880,
+      "firstEligibleOriginMs": 1706062259999,
+      "lastEligibleOriginMs": 1706219519999,
+      "firstEligibleOriginUtc": "2024-01-24T02:10:59.999Z",
+      "lastEligibleOriginUtc": "2024-01-25T21:51:59.999Z",
+      "candidateOriginsAfterEnvelopePurge": 2622,
+      "eligibleOrigins": 2622,
+      "invalidOrMissingFullSupportOrigins": 0,
+      "minimumLegalOrigins": 512,
+      "minimumSatisfied": true,
+      "leadingPurgedOrigins": 130,
+      "trailingPurgedOrigins": 128,
+      "lastFeatureModelFitCutoffMs": 1706054399999,
+      "stageFitOrScoringCutoffMs": 1706227199999,
+      "mature128MinuteLabelOriginsByStageCutoff": 2622,
+      "assetLabelAssociationsPerRiskTarget": 7866,
+      "allHorizonPairAssociations": 7866,
+      "perHorizonPairAssociations": {
+        "1": 2622,
+        "16": 2622,
+        "128": 2622
+      }
+    },
+    {
+      "stage": "development_evaluation",
+      "rawRoleFirstCloseMs": 1706227259999,
+      "rawRoleLastCloseMs": 1706486399999,
+      "rawRoleFirstCloseUtc": "2024-01-26T00:00:59.999Z",
+      "rawRoleLastCloseUtc": "2024-01-28T23:59:59.999Z",
+      "rawMinuteTicks": 4320,
+      "firstEligibleOriginMs": 1706235059999,
+      "lastEligibleOriginMs": 1706478719999,
+      "firstEligibleOriginUtc": "2024-01-26T02:10:59.999Z",
+      "lastEligibleOriginUtc": "2024-01-28T21:51:59.999Z",
+      "candidateOriginsAfterEnvelopePurge": 4062,
+      "eligibleOrigins": 4062,
+      "invalidOrMissingFullSupportOrigins": 0,
+      "minimumLegalOrigins": 1024,
+      "minimumSatisfied": true,
+      "leadingPurgedOrigins": 130,
+      "trailingPurgedOrigins": 128,
+      "lastFeatureModelFitCutoffMs": 1706227199999,
+      "stageFitOrScoringCutoffMs": 1706486399999,
+      "mature128MinuteLabelOriginsByStageCutoff": 4062,
+      "assetLabelAssociationsPerRiskTarget": 12186,
+      "allHorizonPairAssociations": 12186,
+      "perHorizonPairAssociations": {
+        "1": 4062,
+        "16": 4062,
+        "128": 4062
+      }
+    }
+  ],
+  "chronologyAdmission": {
+    "outcome": "eligible",
+    "scope": "Feasible fixed-stage development chronology at registered minimum legal origin counts 512/512/1024; conditional on the assumed availability policy",
+    "stateAndControlFitEndsMs": 1706054399999,
+    "riskHeadFitEndsMs": 1706227199999,
+    "guarantee": "All retained history/target envelopes lie within disjoint stages; Encoder fit precedes representation history, representation/control fitting precedes later forecast issuance/risk fitting, and risk fitting precedes development evaluation. No cross-fitting is needed for this declared feasibility assessment.",
+    "limits": "Counts establish support and chronology, not statistical power, component retention, forecast skill or risk utility; future learned methods must still meet numeric protocol and frozen-output gates."
+  },
+  "exposure": {
+    "2024-01-01/2024-01-21": "Encoder fitting/statistics exposure; no independent evidence",
+    "2024-01-22/2024-01-28": "Previously development-exposed; conditional development reuse only",
+    "2024-01-29/2024-01-31": "Preserved, unassigned; no price/label/outcome decoding or TEST designation in this inventory. Whole-file hashes include these bytes only as immutable source identity."
+  },
+  "execution": {
+    "encoderCalls": 0,
+    "encoderUpdates": 0,
+    "statisticFits": 0,
+    "modelFits": 0,
+    "captureCalls": 0,
+    "qualityMetricsComputed": 0,
+    "sourceOrCacheWrites": 0
+  },
+  "sourceFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "49a560900f9570704551417c5be3da1e4e7ceff5bd48ba06b86e8d0b276e2f60"
+    },
+    {
+      "path": "code/data/README.md",
+      "sha256": "bf1c315d0077bf5f46ccda6bc6f9aea8c4766a70077b45ad33a1e4341b33d804"
+    },
+    {
+      "path": "code/data/include/cuwacunu/data/record_types.h",
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+    },
+    {
+      "path": "code/data/src/record_types.cpp",
+      "sha256": "f3e065cf635f55af71456dbf043f26165cd7b791942cff1d8e3dd977eadc0260"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/README.md",
+      "sha256": "8c25da22086e000978990ed465f3e5583c1df30458dea73f0876eac8371f50e2"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/config/v3.conf",
+      "sha256": "01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/conditioned_change_bank.h",
+      "sha256": "f40951571c54534601b64b169654c9c0d46cb58fcede15444ea8ab2e94ade455"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/conditioned_change_config.h",
+      "sha256": "2841b81a957ef2b3228e5fa25fb834bbe7286c125f8924634265455470fc3dd4"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/conditioned_change_normalizer.h",
+      "sha256": "9a7a59c4f6c3504c8426da354bbb495fdba32224aeb34a5329f93c4073f06102"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/config.h",
+      "sha256": "e16ffeb7625bf019f05ac0b5c837f2878c1a771e7656944e62e6f6d23ef19dd5"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/configurable_spectral_checkpoint.h",
+      "sha256": "358e7bbc9b6befea40f457f03cd2ab1533e9382135bbf775a4a4f006b3e0978c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/configurable_spectral_checkpoint_io.h",
+      "sha256": "4c6d1fa03ed7ded045338c29bbfec8e9c99f542152a1734eada7db9c60874306"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/configurable_spectral_config.h",
+      "sha256": "d5427f909dad6e7c07c34eb2b3de462fe09895e5a624c3f580cdbc061fbf296e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/configurable_spectral_model.h",
+      "sha256": "4ea0ad4bafaa6a8e1d2188ccfe965dc10e0cd88035d6c2476c863cb7340e3d5d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/configurable_spectral_relation.h",
+      "sha256": "1f74ee6ea087ea4a6410ee0b62db065fd4d42d5eb0504b8d54e0945085d7f84a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/consecutive_change_bank.h",
+      "sha256": "7718939a7a083219bb67686a05337ecaaa7756d11f7f1367df6d4f2a54e0704a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/consecutive_change_checkpoint.h",
+      "sha256": "2133845898eca4ba046cba4fb053414140d4a99437f344c5ea57c9253fb9cbc0"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/consecutive_change_config.h",
+      "sha256": "f3ace4691005cecc2f0830ba234995cd4e776199d7485dbb48693e2adfd57a7f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/consecutive_change_model.h",
+      "sha256": "db248ebe07230f17993a241bacd7a9d498b6e9bfb18ba091368fd270d3a95a14"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/consecutive_change_training_state.h",
+      "sha256": "f3c27fe8676cd67080f0404e839e027120bd58f65c515cac06b744a4a44b107f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/content_ordered_relation_bank.h",
+      "sha256": "503c40e5327228db8aea80eeb0b01b275e7987f54c176c23b56e02e5b32a768b"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/content_ordered_relation_checkpoint.h",
+      "sha256": "9081b289107165b20368704220da7abf55983833d15031175061d59d3153652f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/content_ordered_relation_config.h",
+      "sha256": "6b0b20bb6303c7b966d3395060fdc89d269fde3545fe04628dbd496c9eadbf87"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/content_ordered_relation_model.h",
+      "sha256": "a430a4ddc2071d6806d56b913750150598a67e87ed05c146950ce005cff8b43d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/document.h",
+      "sha256": "49523c0d66f3bdf0ee4118a8b07c260a9760c3fe86c655a2458322a75c864a1d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/encoder.h",
+      "sha256": "855049c7c8b064d9eb133ff32bec1dc243660c158ff843fce62b5aabdfbcb1d8"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/location_scale_decoder_checkpoint.h",
+      "sha256": "8c3b5d3750c2b714310b9644c9b372e47971a878db1cb9aef249674f206ec0f7"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/location_scale_decoder_config.h",
+      "sha256": "0e41dc260f80c03a41a1bcd46cb1badef571dc9e862d546ea17968ad75bd5df3"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/location_scale_decoder_model.h",
+      "sha256": "910c86729393494ed8aff21fdf3f41c620bb5bbcf8795855f5c724b1027873c2"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/location_scale_decoder_settings.h",
+      "sha256": "e7450bf22eb29e0f3a040c0e9916a3d4eba82e8b6a7d337de5f3e60195ca5ad6"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/location_scale_decoder_training_state.h",
+      "sha256": "959d496d6676cb5014c6446e86ab1354568d661b4f77a6ebe57e0b4dead00a68"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/masking.h",
+      "sha256": "ca1e97c022a847dddab98fcf761c46d28cc8d8a7edd8126fc502cb3876671172"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/model.h",
+      "sha256": "f1df13d7be52d588d6647fc930446c47e31813a1ebd4feb24b3eeaa0d65476b1"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/objectives.h",
+      "sha256": "a62b5458db96175f482157354d8b7b8bbf15df8132d53dc0e1c3b854b775779a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/preprocessing.h",
+      "sha256": "f29159cc67cf00917d021f383ec25d6cc3af676283fdce82933d330c9848f300"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/relative_change_bank.h",
+      "sha256": "b9ec437d4c16f022fe5f1edd2c072c623b70bf5d46f41eb32a2b5981196e74cf"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/relative_change_config.h",
+      "sha256": "e1bc0119bb1e547d93489a08a66499e145d7917cd9b71465bfb0db1b4ef4a2c1"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/relative_change_normalizer.h",
+      "sha256": "791085f8feb406782c9ec483861cf68bd821f0eb925c8f79ae34b457a4e50419"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/separated_change_checkpoint.h",
+      "sha256": "bf9069806cb2bcd604abcc7c52369590d389872b3b91dac77bd4e05ee754ea13"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/separated_change_config.h",
+      "sha256": "3883d251abda3fa39af0beb7f8fe6e5d08bb20c5d99d567e9232f993de8a1795"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/separated_change_frozen_level.h",
+      "sha256": "f68cb632d4d5817a382d77a9c0949f8c7b03d5b4c2e23ddbb1c7eec115533c0f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/separated_change_model.h",
+      "sha256": "ca5e14a9acf091f727f7b033e25d90920060ff0eb3ac3a044b0cd1cf6a6e054b"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/separated_change_training_state.h",
+      "sha256": "8297707613ee7fc6296f80372479783964a2ef476b7e4ffc899d5a779c6d1225"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/simple_kv_block.h",
+      "sha256": "19afb80ff4886b3867d758dec529ec44f6c546deceadc1599c2edcc41bdb55af"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/tokenization.h",
+      "sha256": "b2575792e137c935ce91499450160137cc0bf0b632bc5757c99507d939840ebf"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/types.h",
+      "sha256": "7fc24f12eaf827a213b4bcf4b901ef2faf103ec75d6641d9121c3cbe3681759f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v3/visible_difference.h",
+      "sha256": "7830283b6291fd54358470245d116a62232744e06d6153ed0eeac2f7ad71252e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v3.h",
+      "sha256": "e54599c4556ee2dca1637380f8ab27c6e6bbbe6b56cfd1c2fdf2c7ac23b34b33"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/provenance.json",
+      "sha256": "2770e3e3436acbe390d0601861979f3070b57a3dfc98602719e944f12f776ee9"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/tests/v3_test.cpp",
+      "sha256": "1bc616190725fda8492a4303e63569862c6fb08c11ed172477fa09c7c235ad0e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/v3.mk",
+      "sha256": "e7d0306386beaa2b7732051ddbb5cd2ba1b9ed3fb54329040f29c5ae80602199"
+    },
+    {
+      "path": "code/integration/include/cuwacunu/encoder/encoder.h",
+      "sha256": "23b15a46e69c8f16ff6354638a0a93487a5789a3f81d4121050c60a6fb7cda4c"
+    },
+    {
+      "path": "code/latent_market/versions/v1/include/cuwacunu/latent_market/risk_targets.h",
+      "sha256": "74bba2e1ae6af98c379d26575c5696b48d391e67fd606b0ebb346f4aba142c86"
+    },
+    {
+      "path": "code/latent_market/versions/v1/include/cuwacunu/latent_market/timeline.h",
+      "sha256": "3a9c87dae32756d979cbfd329a0ff37a023947e9483fdd5e34da828f8b80b273"
+    },
+    {
+      "path": "config/encoder.conf",
+      "sha256": "01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2"
+    },
+    {
+      "path": "config/encoder_runtime.conf",
+      "sha256": "301eea26582f4f5e5212420bc6401d95a5fdeaeb8cfdaf6bc4fe082f2352b8f5"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/BTCUSDT-1m-2024-01.cache.bin",
+      "sha256": "67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/BTCUSDT-1m-2024-01.csv",
+      "sha256": "acdcd5dee054732c93d60094c4be319447661dd5cc341fd206a6d9f87eb48c21"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/ETHUSDT-1m-2024-01.cache.bin",
+      "sha256": "0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/ETHUSDT-1m-2024-01.csv",
+      "sha256": "dec457e8d45557aef0106dfce9f0787b95691bd25bb7ba7a6716d5879258a6e0"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/SOLUSDT-1m-2024-01.cache.bin",
+      "sha256": "364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7"
+    },
+    {
+      "path": "data/mkt-hist-1/csv/SOLUSDT-1m-2024-01.csv",
+      "sha256": "5e61e86631e534cafcdc67ec51beb298ef35f5e90cc73bc76dbe9d51eb0863ae"
+    },
+    {
+      "path": "doc/CAUSAL_PRIMARY_INTEGRATION.md",
+      "sha256": "8a1024d79a2d39dad29deb82a8764c02ceb189580b6dfa28cc63c3563b2838cd"
+    },
+    {
+      "path": "doc/latent_state_control_v1/inventory_admission.py",
+      "sha256": "4079811ca67e6e48a68c90fe0425e8859b108430533f88f0cf6698b531cfd306"
+    },
+    {
+      "path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "path": "output/baselines/CPB-v3.market-01/inference.pt.manifest.json",
+      "sha256": "05ce98a37370b362cf718da998ccd18e1345026daf58ae258ed091fb220e98f7"
+    }
+  ]
+}

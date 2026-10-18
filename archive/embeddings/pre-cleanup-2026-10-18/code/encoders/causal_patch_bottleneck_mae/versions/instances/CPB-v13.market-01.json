@@ -1,0 +1,670 @@
+{
+  "kind": "causal_encoder_measured_instance_v1",
+  "date": "2026-10-18",
+  "version": "CPB-v13",
+  "instance": "CPB-v13.market-01",
+  "initial_quality_label": "CPB-v13.market-01.init",
+  "protocol": "causal-fresh-v13",
+  "procedure_status": "complete_stopped_failed_stronger_goal22",
+  "clean_causal_candidate_measured": true,
+  "measured_candidate_established": true,
+  "overall_establishment_passed": false,
+  "clean_baseline": "CPB-v3.market-01",
+  "clean_baseline_unchanged": true,
+  "application_selection": "CPB-v3.market-01",
+  "application_selection_changed": false,
+  "historical_reference_is_quality_gate": false,
+  "overall_winner": false,
+  "advancement_passed": false,
+  "new_research_published": false,
+  "version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v13",
+  "prospective_descriptor": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v13.json",
+    "bytes": 5575,
+    "sha256": "0c90bc5f673283ca463b3652e3c53899238bb6a9628833e03498c0cc8f4b3349"
+  },
+  "prospective_descriptor_rewritten": false,
+  "physical_owned_family_files": 51,
+  "physical_owned_research_files": 31,
+  "frozen_source_capsule_files": 143,
+  "source_manifest": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/source-manifest.json",
+    "bytes": 33178,
+    "sha256": "308c30565d8146dfc1582720f828f7237db289646093128cea91f7596341bf81"
+  },
+  "source_capsule": [
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/source.zip",
+      "bytes": 3530442,
+      "sha256": "135783596b8b7db09aa3dc226f8c8588a2ea8528f2676d625d42f3f196be3c9f"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/source-manifest.json",
+      "bytes": 33178,
+      "sha256": "308c30565d8146dfc1582720f828f7237db289646093128cea91f7596341bf81"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/package.json",
+      "bytes": 561,
+      "sha256": "51460bfc4322ae18f5febbd6794bbf3d24fbe5c4e4d8be63eb2e0f6767c47396"
+    }
+  ],
+  "build_admission": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/build-admission.json",
+    "bytes": 40119,
+    "sha256": "f6c30058aa024ce47926336b08973ab8e79dabc81be5f873169daeba540e0d4a"
+  },
+  "binaries": [
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/test_causal_patch_bottleneck_mae_v13",
+      "bytes": 1056808,
+      "sha256": "6a17d419dcafaa604fef2c15969198564b7e2989487fe9ff19cc91752cb58522"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/test_cpb_v13_variance_gradient",
+      "bytes": 584776,
+      "sha256": "299023f2251962ce32b3080c9e076a00d6352440de8f374663438bf54606a2d0"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/test_cpb_v13_temporal_pooling",
+      "bytes": 494760,
+      "sha256": "ae6592c805097dabc58673a6b9825ede5316df703f321af6dd2fe99b245b228a"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/causal_fresh_v13_train",
+      "bytes": 1022872,
+      "sha256": "62f18ebd56c9e20652cf0792ac26c7bb066ebecf4d8395db27cbe282e35cb2d5"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/causal_fresh_v13_extract",
+      "bytes": 716032,
+      "sha256": "d069b91d53a693de5b95ff37f42eed21046ef050658292656ab3ead61fda7012"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/causal_fresh_v13_market_read",
+      "bytes": 205560,
+      "sha256": "b7b70ac4d71565e93a55ae645289e792c3bdfea1ee782a509a1ed5820e4e2b78"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v13-attempt001/causal_fresh_v13_synthetic_read",
+      "bytes": 384328,
+      "sha256": "9ad9016e128fa8abe300004571e88be941c5aed9e837850268eb5ba4a2edbf2b"
+    }
+  ],
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V13_CARD.json",
+    "bytes": 137257,
+    "sha256": "4d07167ac6dcd746215cb93d2487f016acf3e038df9ddbe5054bb7d372b617df"
+  },
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-regularized-stddev4-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+  "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+  "temporal_dispersion_regularizer": 0.0009765625,
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "registered_learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "encoder_gradient_kind": "Huber1-mean-gradient;detached-error-Gaussian-variance;live-uncertainty4;shared-global-clip1",
+  "single_AdamW": true,
+  "shared_global_clip": true,
+  "optimizer_independence_claimed": false,
+  "temporal_pooling_learning": {
+    "path": "doc/results/causal_fresh_v13/temporal-projection-learning.json",
+    "bytes": 6596,
+    "sha256": "28bb48cb083e0e7e1718b012fe1892e2ff25ff09873d13e7842778ad7eb4b736"
+  },
+  "temporal_pooling_proof": {
+    "path": "doc/results/causal_fresh_v13/temporal-pooling-proof.json",
+    "bytes": 4277,
+    "sha256": "7ad8e0af904c31ebbf9687a26e43d85f356d46d760b1c19d68ad6b30272b8448"
+  },
+  "temporal_moment_saved_learning": {
+    "status": "passed",
+    "checks": 239469,
+    "mismatches": [],
+    "moment_subgroup_rows_checked": 16384,
+    "moment_subgroup_event_counts": [
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      }
+    ],
+    "whole_group_two_moment_partition_rows_checked": 8192,
+    "whole_group_partition_squared_norms_and_counts_verified": true,
+    "actual_same_forward_moment_witnesses": [
+      {
+        "update": 1,
+        "artifact": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/witnesses/training-update-1-components.pt",
+          "bytes": 891772,
+          "sha256": "df1167ccff468ce3c39ad189acdbdb1b9501675fbed760a9b9fbc340d999393d"
+        },
+        "new_temporal_trace_fields": 25,
+        "total_component_archive_fields": 60,
+        "parameter_array_fields": 12,
+        "new_regularized_dispersion_trace_fields": 4,
+        "regularized_sqrt_uses_actual_saved_root": true,
+        "attention_dispersion_score_and_position_routes_live": true,
+        "same_forward_only": true,
+        "upstream_stage": "PRECLIP-post-empty-export",
+        "upstream_gradient_defined_by_route": [
+          false,
+          true
+        ],
+        "recorded_clip_factor_applied_once": 1.0,
+        "local_export_and_positions_adjoint_verified": true,
+        "local_adjoint_absolute_tolerance": 1e-09,
+        "local_adjoint_relative_tolerance": 0.0003,
+        "postclip_export_nonvacuity_threshold": 1e-06,
+        "postclip_export_expected_maximum": 0.00021972600051804107,
+        "local_parameter_gradient_error_summaries": {
+          "temporal_export_weight": {
+            "maximum_expected_absolute": 0.00021972600051804107,
+            "maximum_actual_absolute": 0.00021972598915454,
+            "maximum_absolute_error": 1.7786659379506395e-11,
+            "maximum_scaled_error": 0.005362088113392487
+          },
+          "temporal_export_bias": {
+            "maximum_expected_absolute": 0.0001222167238665861,
+            "maximum_actual_absolute": 0.00012221673387102783,
+            "maximum_absolute_error": 1.000444171950221e-11,
+            "maximum_scaled_error": 0.0015447009391715164
+          },
+          "temporal_pool_positions": {
+            "maximum_expected_absolute": 1.2189467974795742e-05,
+            "maximum_actual_absolute": 1.2189468179713003e-05,
+            "maximum_absolute_error": 1.6578659340396032e-12,
+            "maximum_scaled_error": 0.0008558228035890625
+          }
+        },
+        "common_score_bias_gauge_descriptive": {
+          "actual": 2.7284841053187847e-12,
+          "reference": -1.4815212898827284e-12,
+          "absolute_error": 4.210005395201513e-12,
+          "parity_gate": false,
+          "nonzero_gradient_required": false,
+          "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+        },
+        "full_hidden_encoder_or_global_norm_reconstruction": false,
+        "matched_pre_step_decoder_adjoint_replay": false
+      },
+      {
+        "update": 2048,
+        "artifact": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+          "bytes": 891973,
+          "sha256": "99d84006a455c2021bd9fdbc1e941e203f30b843d6e801a15db2489d5dda5bfa"
+        },
+        "new_temporal_trace_fields": 25,
+        "total_component_archive_fields": 60,
+        "parameter_array_fields": 12,
+        "new_regularized_dispersion_trace_fields": 4,
+        "regularized_sqrt_uses_actual_saved_root": true,
+        "attention_dispersion_score_and_position_routes_live": true,
+        "same_forward_only": true,
+        "upstream_stage": "PRECLIP-post-empty-export",
+        "upstream_gradient_defined_by_route": [
+          false,
+          true
+        ],
+        "recorded_clip_factor_applied_once": 0.778486133962678,
+        "local_export_and_positions_adjoint_verified": true,
+        "local_adjoint_absolute_tolerance": 1e-09,
+        "local_adjoint_relative_tolerance": 0.0003,
+        "postclip_export_nonvacuity_threshold": 1e-06,
+        "postclip_export_expected_maximum": 0.001636565180136467,
+        "local_parameter_gradient_error_summaries": {
+          "temporal_export_weight": {
+            "maximum_expected_absolute": 0.001636565180136467,
+            "maximum_actual_absolute": 0.0016365650808438659,
+            "maximum_absolute_error": 1.5827770973204924e-10,
+            "maximum_scaled_error": 0.017416368321777054
+          },
+          "temporal_export_bias": {
+            "maximum_expected_absolute": 0.00047851018418396785,
+            "maximum_actual_absolute": 0.00047851019189693034,
+            "maximum_absolute_error": 3.947222987376632e-11,
+            "maximum_scaled_error": 0.005359769616474182
+          },
+          "temporal_pool_positions": {
+            "maximum_expected_absolute": 0.000156069886523179,
+            "maximum_actual_absolute": 0.00015606984379701316,
+            "maximum_absolute_error": 4.2726165839926736e-11,
+            "maximum_scaled_error": 0.0063710228158110616
+          }
+        },
+        "common_score_bias_gauge_descriptive": {
+          "actual": -3.065765696863565e-10,
+          "reference": -3.250110777716545e-10,
+          "absolute_error": 1.8434508085297985e-11,
+          "parity_gate": false,
+          "nonzero_gradient_required": false,
+          "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+        },
+        "full_hidden_encoder_or_global_norm_reconstruction": false,
+        "matched_pre_step_decoder_adjoint_replay": false
+      }
+    ],
+    "manual_F32_absolute_tolerance": 3e-05,
+    "manual_F32_relative_tolerance": 3e-05,
+    "per_scalar_gradient_proof_claimed": false,
+    "other2046_raw_gradients_reconstructed": false,
+    "pool_centered_variance_is_native_uncertainty": false,
+    "limits": [
+      "Observed2048 subgroup rows are scalar evidence; only actual1/2048 have raw arrays.",
+      "Raw variance/root/dispersion and three local exportW/exportbias/position adjoints use saved same-forward evidence, not a model replay;common scorebias gauge is descriptive.",
+      "beta=c/(2*saved_actual_F32_root); keep learned attention and finite-F32 two-sum center residual live. Rounded-zero tiny dispersion does not justify detaching its analytic/autograd route.",
+      "Undefined unused-route u has explicit zero fallback; PRECLIP u is summed and clipped once. No full hidden/encoder/global-norm reconstruction.",
+      "Intermediate pool variance is distinct from native uncertainty4/decoder variance."
+    ]
+  },
+  "all_eight_temporal_moment_subgroups_learned": true,
+  "scientific_recipe_parent": "CPB-v11.market-01",
+  "scientific_recipe_parent_is_source_only": true,
+  "scoped_reference": "CPB-v11.market-01",
+  "mandatory_identifiable_tensor_value_capacity": 294751,
+  "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+  "per_scalar_nonzero_gradient_proof_claimed": false,
+  "weight_decay_counted_as_data_learning": false,
+  "training_objective": "R[Huber_delta1(mu-y)] + R[0.5*(stopgrad(mu-y)^2/v+log(v))], unit coefficients",
+  "reporting_metrics": "Unchanged saved Gaussian NLL/standardized and physical MAE; reporting NLL is never backpropagated",
+  "native_width": 40,
+  "native_layout": "parent32[0:32];mean4[32:36];uncertainty4[36:40];independent-frozen-bank270-projections;mean-reads-parent32-and-mean4;variance-reads-live-uncertainty4-only",
+  "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+  "initialization_seed": 943001,
+  "pretrained_ancestor": "none",
+  "source_updates": 0,
+  "inherited_learned_values": 0,
+  "fresh_learned_values": 294752,
+  "fresh_learned_tensors": 76,
+  "analytic_prior_values": 3888,
+  "total_parameters": 298640,
+  "fresh_initialization": {
+    "path": "output/runs/causal-fresh-v13/run-001/fresh-initialization.json",
+    "bytes": 2233,
+    "sha256": "9a15354a76a96e22a62d068b6a100472212b2532b356a0feb0eac7f3b74c874c"
+  },
+  "fresh_calibration": {
+    "path": "output/runs/causal-fresh-v13/run-001/calibration/summary.json",
+    "bytes": 889,
+    "sha256": "44ac4bb70084de9015abbed418aaa43aded494813314f60d47bf81aade856f74"
+  },
+  "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+  "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-2dcfa7e7008d891d",
+  "initial_native20_40_and_statistics_pairings": {
+    "path": "doc/causal_fresh_v13/quality-independent-audit.json",
+    "bytes": 248064,
+    "sha256": "969c0de07f02b114bd9ea280e09753e65d703a45bb5dce917bac5619c243b59b"
+  },
+  "initial_pairing_native_coordinate_slice": [
+    20,
+    40
+  ],
+  "whole_native40_initial_equality_claimed": false,
+  "new_causal_updates": 2048,
+  "attempts": 2048,
+  "successful_updates": 2048,
+  "skipped_ineligible_attempts": 0,
+  "batch_size": 8,
+  "training_runs": 1,
+  "training_replays": 0,
+  "training_summary": {
+    "path": "output/runs/causal-fresh-v13/run-001/training-summary.json",
+    "bytes": 38515,
+    "sha256": "1cef4a218fb707ed58616e1e2a4229a146ec5d640216786280de7ac053ceb724"
+  },
+  "typed_resume": {
+    "path": "output/runs/causal-fresh-v13/run-001/typed-resume-512.json",
+    "bytes": 1494,
+    "sha256": "efec2fe303544509edbc4dd15065b2e08c738295fd3ec2318fbe6b67219412e8"
+  },
+  "all_75_mandatory_identifiable_tensors_with_nonzero_CUDA_gradients_and_movement": true,
+  "data_learning_is_tensor_event_evidence_not_every_scalar": true,
+  "all_four_temporal_export_row_groups_learned": true,
+  "all_four_pool_position_contrasts_learned": true,
+  "all_three_between_bin_position_directions_learned": true,
+  "final_between_bin_position_projection_changed": true,
+  "individual_final_coefficient_nonzero_gate": false,
+  "fixed_prior_scaler_normalizer_unchanged": true,
+  "GPU_compute_seconds": 163.96149416799994,
+  "training_trajectory_wall_seconds": 226.093972196,
+  "calibration_seconds": 2.193238517,
+  "timing_scope": "forward_at+F64_Huber+detached-error-variance-NLL+detached-reporting-NLL-copy+backward+joint-clip+AdamW;synchronized_wall;includes_in_step_contract_checks;excludes_loader_masks_checkpoints_evidence_logging",
+  "main_checkpoints": [
+    {
+      "path": "output/runs/causal-fresh-v13/run-001/checkpoints/inference-0.pt",
+      "bytes": 1305740,
+      "sha256": "566c4d96cead3bb1bcf0c1a52b407733e7c5cf22049935746076966e3d86338d"
+    },
+    {
+      "path": "output/runs/causal-fresh-v13/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1306929,
+      "sha256": "ba972212bfa4eadda714509fb537b84dc96c55da503f9670550068f1fea537c0"
+    },
+    {
+      "path": "output/runs/causal-fresh-v13/run-001/checkpoints/training-1024.pt",
+      "bytes": 3791593,
+      "sha256": "5cf7c6ddcebeff7ecf2c6887c52c9781cd736844d3d67d02620873fd50d7fbe5"
+    },
+    {
+      "path": "output/runs/causal-fresh-v13/run-001/checkpoints/training-2048.pt",
+      "bytes": 3791593,
+      "sha256": "5f5cad1bf3008041b79c5467de464f1523218043c74dae9a2f6ecd2072a9397f"
+    },
+    {
+      "path": "output/runs/causal-fresh-v13/run-001/checkpoints/training-512.pt",
+      "bytes": 3790871,
+      "sha256": "d3a9d3e61062ec007a970a4d5a800c0a414e0941aea928088cb569245f12d7a8"
+    }
+  ],
+  "checkpoints_local_git_ignored": true,
+  "initial_checkpoint": {
+    "path": "output/runs/causal-fresh-v13/run-001/checkpoints/inference-0.pt",
+    "bytes": 1305740,
+    "sha256": "566c4d96cead3bb1bcf0c1a52b407733e7c5cf22049935746076966e3d86338d"
+  },
+  "usable_final_checkpoint": {
+    "path": "output/runs/causal-fresh-v13/run-001/checkpoints/inference-2048.pt",
+    "bytes": 1306929,
+    "sha256": "ba972212bfa4eadda714509fb537b84dc96c55da503f9670550068f1fea537c0"
+  },
+  "stable_clean_baseline_checkpoint": {
+    "path": "output/baselines/CPB-v3.market-01/inference.pt",
+    "bytes": 1290625,
+    "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+  },
+  "engineering_proof": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/engineering-proof/proof.json",
+    "bytes": 5379,
+    "sha256": "fe1cb0adb33fb6e8d0e7ec5ecd59c9eb3665f0daa589f13e7a69daa2434197b3"
+  },
+  "variance_gradient_proof": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/variance-gradient-proof.json",
+    "bytes": 1659,
+    "sha256": "2fc220a82673d29749ee2a2b37208e6dc024c4fb2d2be05be41c6ce6f5e497c8"
+  },
+  "initial_causal_proof": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/initial-proof/proof.json",
+    "bytes": 1920,
+    "sha256": "e7d79f7c7b83b017d42e532263ea94c5959ce0500689993b8930f958c2619642"
+  },
+  "final_causal_proof": {
+    "path": "output/engineering/causal-fresh-v13/attempt-001/final-proof/proof.json",
+    "bytes": 1926,
+    "sha256": "de18271681493fd06e36353b4c001cc7a449b3933612c4b97c08219cbcf39755"
+  },
+  "causal_proof_scope": {
+    "cutoffs": 128,
+    "suffix_cases_per_stage": 2350,
+    "internal_temporal_cases_per_stage": 30,
+    "state_unchanged": true
+  },
+  "independent_training_audit": {
+    "path": "doc/causal_fresh_v13/independent-training-audit.json",
+    "bytes": 80738,
+    "sha256": "eae109fb33c85327bcdc619ec4339f0e6d3a943cca3e6ad9103f66c97d08fb7a"
+  },
+  "independent_training_audit_checks": 25634,
+  "independent_training_audit_core_checks": 25634,
+  "independent_training_audit_module_checks": {
+    "numeric_statistics": 61153,
+    "saved_tensor_state": 1242,
+    "manual_saved_Gaussian": 117864,
+    "actual_pre_step_composite_objective": 69301,
+    "temporal_pooling_saved_learning": 290888
+  },
+  "independent_training_audit_core_plus_modules_checks": 566082,
+  "independent_quality_audit": {
+    "path": "doc/causal_fresh_v13/quality-independent-audit.json",
+    "bytes": 248064,
+    "sha256": "969c0de07f02b114bd9ea280e09753e65d703a45bb5dce917bac5619c243b59b"
+  },
+  "independent_quality_audit_checks": 13624,
+  "postmeasurement_establishment": {
+    "path": "doc/causal_fresh_v13/final-establishment.json",
+    "bytes": 10158,
+    "sha256": "ca8eb76e9659b0b18b96b557b192970a1f0f14b00e2738cea34e70df81b13f7a"
+  },
+  "producer_pending_trust_preserved": true,
+  "final_quality_report": "doc/CAUSAL_FRESH_V13_RESULTS.md",
+  "review": "doc/CAUSAL_FRESH_V13_REVIEW.md",
+  "detail": "doc/CAUSAL_FRESH_V13_DETAIL.md",
+  "human_report_assets": {
+    "results": {
+      "path": "doc/CAUSAL_FRESH_V13_RESULTS.md",
+      "bytes": 33325,
+      "sha256": "26fd4a82356f94412d196d84883ec04fb7a7b52174c262bd23084afb18569811"
+    },
+    "review": {
+      "path": "doc/CAUSAL_FRESH_V13_REVIEW.md",
+      "bytes": 5690,
+      "sha256": "f860523c8ea6319df07ccb7839f007e6504c56a00fcfef81c087e2433fd80fad"
+    },
+    "detail": {
+      "path": "doc/CAUSAL_FRESH_V13_DETAIL.md",
+      "bytes": 28349,
+      "sha256": "da2fa00434d7f8fdca2ffc5278e9a585c806c6755b772ddda4416c4eec5e75fd"
+    }
+  },
+  "table_rows": {
+    "path": "doc/results/causal_fresh_v13/table_rows.json",
+    "bytes": 402248,
+    "sha256": "9c004fd29fc130f09cf05685309ee632146015399c7c5742cb0c85dc8658c006"
+  },
+  "comparison": {
+    "path": "doc/results/causal_fresh_v13/comparison.json",
+    "bytes": 610958,
+    "sha256": "0b2c67fd17ce8ee854ab4fd56d9c9e009b5995b3c399d4b4598f71321c444d7d"
+  },
+  "quality_execution_receipt": {
+    "path": "output/runs/causal-fresh-v13/run-001/quality-001/quality-receipt.json",
+    "bytes": 5453,
+    "sha256": "1098c64cb15bbcb3210c0ef2cfe66980cd22e7057d2c8baf6fbc9ebff64b4a55"
+  },
+  "quality": {
+    "numeric_passed": 8,
+    "numeric_total": 22,
+    "runtime_trust_admission_passed": true,
+    "trust_admission_passed": true,
+    "full_coverage": true,
+    "advancement_passed": false,
+    "failed_conditions": [
+      "past_volatility:linear_r2",
+      "past_volatility:neural_mean_r2",
+      "past_trend:linear_r2",
+      "past_trend:neural_mean_r2",
+      "past_activity:linear_r2",
+      "past_relation:linear_r2",
+      "synthetic_train:validation_intact:neural_head_accuracy",
+      "market_scaler:validation_intact:linear_head_accuracy",
+      "market_scaler:validation_intact:neural_head_accuracy",
+      "market_scaler:validation_deleted:linear_head_accuracy",
+      "market_scaler:validation_deleted:neural_head_accuracy",
+      "train:standardized_MAE",
+      "validation:standardized_MAE",
+      "known_validation:Gaussian_NLL_F64"
+    ],
+    "gate_scope": "V13 prospective strongest-final-V3-through-V11 retention22; historical counts retain their own cards",
+    "strict_new_scoped_quality_leaders": 5,
+    "initial_and_final_descriptive_scorecards_retained": true
+  },
+  "next_direction": {
+    "status": "proposal_only_after_completed_measurements_no_scientific_execution_admitted",
+    "action": "Separately declare saved TRAIN-only V11/V13 diagnosis of regularized dispersion scales and gradients, native blocks, each encoder own saved readout contributions and reconstruction before selecting a new mechanism. Protect all five V13 scoped gains and every earlier leader in any later prospective criteria. No V14 is selected, no old model or head replay or refit, no held-out diagnostic tensor selection and no validation-cause claim.",
+    "goal_active": true,
+    "goal_criteria_satisfied": false,
+    "validation_in_diagnosis": false,
+    "encoder_calls": 0,
+    "head_fits": 0,
+    "head_tuning": false,
+    "later_training_authorized_by_this_finalization": false,
+    "exact_V13_recipe_complete": true,
+    "exact_V13_recipe_stopped": true
+  },
+  "local_run_root": "output/runs/causal-fresh-v13/run-001",
+  "local_quality_root": "output/runs/causal-fresh-v13/run-001/quality-001",
+  "local_engineering_root": "output/engineering/causal-fresh-v13/attempt-001",
+  "container_root": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001",
+  "normal_prospective_source_admission": {
+    "source_files": 143,
+    "owner_source_files": 82,
+    "freeze_and_preflight_bound": true,
+    "normal_quality_all_stages_passed": true,
+    "scientific_model_head_or_training_replay": false
+  },
+  "historical_V9_reporting_recovery": {
+    "card": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+      "bytes": 203096,
+      "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+    },
+    "receipt": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+      "bytes": 268051,
+      "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+    },
+    "failure_mirror": {
+      "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+      "bytes": 208493,
+      "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+    },
+    "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V13 recovery or recipe change"
+  },
+  "prospective_freeze": {
+    "path": "doc/causal_fresh_v13/prospective-freeze.json",
+    "bytes": 2072,
+    "sha256": "de2fb314c25584e03974f42ac209435fb8b4da236cb4e1828f209e4f32a805ee"
+  },
+  "protocol_preflight": {
+    "path": "doc/causal_fresh_v13/protocol-preflight.json",
+    "bytes": 32659,
+    "sha256": "bb99f0c8c413dd654be7cb4410d22ab3d8b2fa351a2f9b8fce81693ca77294f0"
+  },
+  "preservation": {
+    "complete_mirror": {
+      "path": "doc/causal_fresh_v13/complete-mirror-attempt-001.json",
+      "bytes": 344830,
+      "sha256": "b8efa9d0b81b508907a0929001b26dfab9b30ccc7937f0e226586e5d66740b7f"
+    },
+    "baseline_changed": false,
+    "V4_reference_intact": true,
+    "V5_reference_intact": true,
+    "V6_reference_intact": true,
+    "V7_reference_intact": true,
+    "V8_reference_intact": true,
+    "V9_reference_intact": true,
+    "V10_reference_intact": true,
+    "V11_reference_intact": true,
+    "V12_reference_intact": true,
+    "V6_separate_establishment": {
+      "path": "doc/causal_fresh_v6/final-establishment.json",
+      "bytes": 3938,
+      "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd"
+    },
+    "V7_separate_establishment": {
+      "path": "doc/causal_fresh_v7/final-establishment.json",
+      "bytes": 2923,
+      "sha256": "7678e84a676453c0294f0654af6117e06246f1639f4e67f9ff78e9cf51049512"
+    },
+    "V8_separate_establishment": {
+      "path": "doc/causal_fresh_v8/final-establishment.json",
+      "bytes": 6452,
+      "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba"
+    },
+    "V9_separate_establishment": {
+      "path": "doc/causal_fresh_v9/final-establishment.json",
+      "bytes": 8847,
+      "sha256": "aeb9fbadcf8afad2bb48812b957ca23b122c3df92d5459c18859dd16637e4cdf"
+    },
+    "V10_separate_establishment": {
+      "path": "doc/causal_fresh_v10/final-establishment.json",
+      "bytes": 7709,
+      "sha256": "551f7a31be44dcc68e61f4d0be7390843e66ac8138b542a3e47bd3526128946b"
+    },
+    "V11_separate_establishment": {
+      "path": "doc/causal_fresh_v11/final-establishment.json",
+      "bytes": 8729,
+      "sha256": "01f96fea179f6f7d8a7bb28befca9271cd048ac8d83f05f9e64418276c47dda2"
+    },
+    "V12_separate_establishment": {
+      "path": "doc/causal_fresh_v12/final-establishment.json",
+      "bytes": 9460,
+      "sha256": "65799b6b3ca58a3811fa1c3b8ab5beef1e198e1840734fc14e6bfcb578511cba"
+    },
+    "prior_live_snapshot": {
+      "path": "output/engineering/causal-fresh-v13-finalization/prior-live-001/manifest.json",
+      "bytes": 1993,
+      "sha256": "bbb44c8364f513c84f8d1f0411628acae4018cfcec0b6c512b2b143a9216e988"
+    }
+  }
+}

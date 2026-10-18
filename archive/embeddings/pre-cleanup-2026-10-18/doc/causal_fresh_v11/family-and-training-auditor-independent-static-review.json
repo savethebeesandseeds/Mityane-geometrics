@@ -1,0 +1,138 @@
+{
+  "kind": "cpb_v11_family_and_training_auditor_independent_static_review_v1",
+  "status": "passed",
+  "scope": "Independent file/hash/source/schema/scalar-formula review only;no AST/import/build/test/Docker/model/head/metric or tensor execution;not runtime admission",
+  "reviewed_utc": "2026-10-16T14:30:36.7064418Z",
+  "reviewer": "/root/causal_training_path",
+  "source_provenance": {
+    "path": "doc/causal_fresh_v11/family-source-provenance.json",
+    "bytes": 56329,
+    "sha256": "4daff58001ae76c48493bd8284cd3599b6a3c5af2e0ae9bf9cd463a2dba6ed4a"
+  },
+  "auditor_sources": [
+    {
+      "path": "code/research/causal_fresh_v11_training_audit/audit_training.py",
+      "bytes": 141694,
+      "sha256": "12faca04f410c7d78e73b8348143a346b1a809e9ddff31921af8996f0a621b52"
+    },
+    {
+      "path": "code/research/causal_fresh_v11_training_audit/README.md",
+      "bytes": 6401,
+      "sha256": "cc2cf8ca02e3b1dcf1ef9849105fff35db7dce29c990d0afae6102cef07ef5ce"
+    },
+    {
+      "path": "code/research/causal_fresh_v11_training_audit/provenance.json",
+      "bytes": 6419,
+      "sha256": "098e0521f15e99c84e51027b519aa4be89ac5bdcb141491a395fe140b6fe5ee8"
+    }
+  ],
+  "critical_sources": [
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11.h",
+      "bytes": 35688,
+      "sha256": "ce40fede83dc9049036db09125fee8b277d7f7ef86ab935132f15b8aaa1397ba"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v11/temporal_pooling.h",
+      "bytes": 7749,
+      "sha256": "6c2eb9081c72d0d7a42f5b6af1b11028af857fcced67a8eaf715155f7c8c2841"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v11/model.h",
+      "bytes": 22683,
+      "sha256": "414fa0d486fd8b04fc2d5ff05233f28b3e7d1894154499274e00dc82a86b289a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v11/location_scale_decoder_model.h",
+      "bytes": 17650,
+      "sha256": "0f9f9696416815f3c70b3e73c131d6d3a81b66cb078c2ef8cceb14771e63f1f0"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v11/location_scale_decoder_config.h",
+      "bytes": 3588,
+      "sha256": "f0d5be101abfefac35b47f5effa7d53b6a35fb7ba41bf06be0b0e8b70b7319d8"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v11/location_scale_decoder_checkpoint.h",
+      "bytes": 12978,
+      "sha256": "771c3fc0aab48b1fdf09c7c6add9d4fa650a862bfca8731fe64217a10a8e0cb5"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/tests/v11_test.cpp",
+      "bytes": 61558,
+      "sha256": "963c4f006a2598af4602b23f7c9dfc8277f57fa68ca13fa0e8439ce777ca85da"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v11/tests/v11_temporal_pooling_test.cpp",
+      "bytes": 25319,
+      "sha256": "9afb33ee0bdb8f1a3d476d69ef0bf65c6e612d9ba7732b129cd34d45ee996acb"
+    }
+  ],
+  "schema_reference_trainer": {
+    "path": "code/research/causal_fresh_v11/train_main.cpp",
+    "bytes": 62311,
+    "sha256": "84509ce6efc3837f0a19820e2632f0787530ec1f7cb464c5bfdb6c9e6ea5c649"
+  },
+  "schema_reference_wrapper": {
+    "path": "doc/causal_fresh_v11/execute-stage.py",
+    "bytes": 7793,
+    "sha256": "bcc264f2a96290c81c8db5d915fd551632653dc5a64374ab20506ab7ec1d1e3c"
+  },
+  "family_closure": {
+    "physical_owned_files": 51,
+    "physical_parent_files": 51,
+    "parent_preserved_current_pin_checks": 154,
+    "internal_external_public_header_exact": true,
+    "no_old_version_implementation_includes": true,
+    "backbone_and_decoder_constructor_bodies_equal_to_V9_after_namespace_rename": true,
+    "remaining_parameter_constructors_and_shapes_preserved": true,
+    "new_learned_values": 0,
+    "declared_total_value_capacity": 298640,
+    "declared_learned_tensor_value_capacity": 294752,
+    "registered_learned_tensors": 76,
+    "mandatory_identifiable_tensors": 75,
+    "scalar_scorebias_gauge_exemption_only": true
+  },
+  "family_findings": [
+    "Actual kernel uses original valid positions, four fixed bins, unchanged normalized half-local/half-global attention, parent two-sum mean for first4 export rows and sum p*(h-mu)^2 for last4. Attention and centering remain live;no detach/sqrt/Bessel/epsilon/raw-second-moment substitution.",
+    "Invalid hidden is cleared before subtraction/product; all-empty softmax evaluates finite fallback, empty-bin outputs and saved moments zero after bias. D32-only standalone validation matches the fixed4/4 typed layout;K divisible4;both actual temporal routes use this owned kernel.",
+    "Full manual adjoint preserves residual r=sum p*(h-mu), effective mean adjoint a-2*b*r, direct mixture hidden terms and both local/global softmax-score and tanh-score routes. No zero-residual assumption or detached attention surrogate.",
+    "Dedicated fixture declares one backbone encode,44 direct kernel calls,zero publicEncoder/head calls and one AdamW.18 F64 full-expression central differences(step1e-5,tol2e-8 abs/rel) plus18 actual CUDAF32 differences(step2e-3,tol2e-3);manualF32 abs/rel3e-5;gauge2e-6;constant variance bound1e-10*(1+max_abs_hidden_squared).No actual test result is claimed.",
+    "Fixture includes original-position packing/unequal support/unsupported NaNs/all-padding/empty-bin bias,constant-present dtype tolerance,equal mean/different spread,common gauge/three Hadamard sensitivities,8 moment subgroup gradients/movement and four within-bin contrasts.",
+    "Restored exact V9 Huber1 mean plus detached-error variance objective,unit components,F64 supported reduction,total-only backward and separately detached diagnostic NLL. Native40/positive link/mean-vs-uncertainty direct routes unchanged.",
+    "Inference root/payload and TRAIN root/encoder/encoder.payload strictly serialize/read seven temporal tags including Long[2]=[4,4],objective/delta/weights/detachLong1/reportLong0/routes/version kinds. Missing/wrong value/dtype/shape and older-policy negative cases cover all five nodes."
+  ],
+  "auditor_findings": [
+    "Full physical finalV10 auditor parents preserved;stdlib-only embedded inert archive reader retains whitelist and creates no Torch/model/module/optimizer. Current source/card/MD/input/ZIP/manifest/source count and typed actual stage/binary bindings precede numeric access.",
+    "Preserves independent TRAIN statistics,checkpoint hashes/fixedprior/optimizer/order/state,manual Gaussian/Huber and actual first/last component modules.2048 successful updates derive from actual2048..4096 attempted CSV schedule,explicit skipped rows and raw_load_calls=512+attempted+36;no zero-skip oracle.",
+    "Exact56 actual archive fields match producer23base+12 parameter arrays+21 temporal traces. Dynamic compacted R/T,original support/positions,FloatCPU hidden/weights/moments and Long upstream-defined flags are checked;unused route requires exactzero fallback.",
+    "Independently reduces16384 subgroup rows/eight weight+bias event totals and pinned final subgroup changes.8192 whole8 versus two4 records join actual update/bin: squared norms sum and scalar nonzero/movement counts add. Event counts are independently reduced,never summed across subgroups.",
+    "At actual1/2048 independently recomputes saved moments and sums both saved PRECLIP route local adjoints with residual correction. Applies recorded global clip_factor ONCE to compare export weight,bias,pool_positions;no whole-hidden/backbone/encoder gradient or globalnorm reconstruction.",
+    "Prospective tight actual parity is abs1e-9+rel3e-4 per coordinate on three local parameters. Each witness reconstructed postclip export weight OR bias maxabs must exceed1e-6. Reports maxima,absolute/scaled errors. Common scorebias actual/reference/error is finite descriptive only,without parity/nonzero gate; exact old gauge CSV/raw checks remain.",
+    "Proof selectors match actual wrapper present_constant_variance_bound string and18+18 FD metadata. Fresh constructor JSON omits only gradient_policy;strict common routes/objective/moment fields and typed flags remain. Moment checks nest within temporal module; CORE plus five module totals are distinct,with no predicted counts."
+  ],
+  "preserved_preexecution_refinements": [
+    {
+      "path": "output/engineering/causal-fresh-v11-family-preparation/preflight-repairs/attempt-001/before-export-layout-guard/manifest.json",
+      "bytes": 2505,
+      "sha256": "2f41a318a08911c5800507472b5297c3a51cabc85cb518a2865316e9010491d3"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-preflight-repairs/attempt-001/before-actual-local-adjoint-contract/manifest.json",
+      "bytes": 1663,
+      "sha256": "e1a7d94ceba23cca9fc25545e9cd2a8ef18d5ba38c2bcc8a38e54a5bbf57252c"
+    }
+  ],
+  "findings": [],
+  "blockers": [],
+  "AST_calls": 0,
+  "imports": 0,
+  "builds": 0,
+  "test_calls": 0,
+  "Docker_calls": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "old_sources_changed": false,
+  "execution_admitted": false
+}

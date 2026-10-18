@@ -1,0 +1,520 @@
+{
+  "kind": "causal_fresh_v12_design_source_preparation_declaration_v1",
+  "status": "ADMITTED_SOURCE_PREPARATION_ONLY_NOT_FROZEN_EXPERIMENT_CARD",
+  "created_utc": "2026-10-17T18:24:28.8680994Z",
+  "model": "CPB-v12",
+  "instance": "CPB-v12.market-01",
+  "source_preparation_admitted": true,
+  "scientific_execution_admitted": false,
+  "AST_or_build_admitted": false,
+  "quality_testing_admitted": false,
+  "application_selection_changed": false,
+  "baseline": "CPB-v3.market-01",
+  "goal_remains_active": true,
+  "scientific_and_normal_pipeline_source_parent": {
+    "instance": "CPB-v11.market-01",
+    "card": {
+      "path": "doc/CAUSAL_FRESH_V11_CARD.json",
+      "bytes": 126555,
+      "sha256": "aa0c8cf06e10b4da7ce1ede0d2cc914bc05b244043ad4f0d3039305499a10aaa"
+    },
+    "source_manifest": {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source-manifest.json",
+      "bytes": 30854,
+      "sha256": "b9a701bbfa3e98e4719853dfb1b2fad8d7610b3a86b475e43398ab43fea15778"
+    },
+    "source_archive": {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source.zip",
+      "bytes": 2585105,
+      "sha256": "7c76afbbce09eb84e17ce865d942ab340988d4127d5a06839ccb1634babf6a26"
+    },
+    "scope": "Complete physical SOURCE copies only. All learned values, optimizer and TRAIN statistics start fresh; no trained weights, teacher, fitted statistics or old training/head replay."
+  },
+  "completed_predecessor": {
+    "path": "doc/causal_fresh_v11/final-preservation.json",
+    "bytes": 1066891,
+    "sha256": "805aa2183f14dbfd3a7bb521a67f5d01e33b22008b5244da45745baa8c51bab0"
+  },
+  "completed_saved_TRAIN_diagnosis": {
+    "result": {
+      "path": "doc/causal_v9_v11_train_diagnosis/diagnosis.json",
+      "bytes": 4218354,
+      "sha256": "62f80b93ef4ad7b2a2a994832ab3f2f6921e09f37e96aca441ec283064f3b742"
+    },
+    "independent_audit": {
+      "path": "doc/causal_v9_v11_train_diagnosis/independent-audit.json",
+      "bytes": 48403,
+      "sha256": "70697acc72fd010b48431516cb15dc1537b615cde5835ed90536cd4de625bc8c"
+    },
+    "checks": 68264,
+    "mismatches": 0,
+    "human_report": {
+      "path": "doc/CAUSAL_V9_V11_TRAIN_DIAGNOSIS.md",
+      "bytes": 38911,
+      "sha256": "cfe0ddaa1e5b67835516785aab6f10aacc084a3014ddf63b17c5ec84973dac6e"
+    },
+    "completion_required_before_source_admission": true
+  },
+  "design_memo": {
+    "path": "doc/causal_v9_v11_train_diagnosis/mechanism-alternatives-002.PROPOSED.md",
+    "bytes": 17675,
+    "sha256": "a1238e65bc1d32fa9484d1bdf677caac2caea71eddbd1538e7c55e5956dcd99c"
+  },
+  "scoped_reference": "CPB-v11.market-01",
+  "historical_controls": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "geometry": {
+    "channels": 3,
+    "history": 128,
+    "features": 9,
+    "patch": 8,
+    "native_width": 40,
+    "level_width": 32,
+    "change_width": 4,
+    "encoder_width": 64,
+    "layers": 3,
+    "heads": 4,
+    "feedforward": 256,
+    "decoder_hidden": 128,
+    "uncertainty_width": 4,
+    "native_layout": [
+      "learned20",
+      "literal_spectral12",
+      "mean_change4",
+      "uncertainty4"
+    ],
+    "temporal_pooling_policy": "original-position-four-bin-attention-mean4-uniform-centered-variance4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "coordinate_cutoff": "All four slices are coordinates of the current endpoint embedding at cutoff t; shared global history valid only at or before t, not separate bin-endpoint embeddings",
+    "temporal_moment_policy": "componentwise-centered-variance-half-local-global-uniform-own-two-sum-mean-v1",
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ]
+  },
+  "change": {
+    "only_scientific_change": "For the four existing dispersion rows per original temporal bin, replace learned attention support and center with a fixed half-local/half-global UNIFORM support and its own corresponding actual two-sum center. Keep all four learned-attention mean rows and existing projection matrices/bias.",
+    "valid_support": "V is the currently valid retained original-position patch set at the requested causal cutoff. L_j is its intersection with original bin j. Uniform mass is per valid patch, not raw tick/feature.",
+    "mean_rows": "The V11 attention two-sum mu_a,j=0.5*sum(local_softmax_j*h)\u002B0.5*sum(global_softmax*h) remains byte-expression equivalent.",
+    "variance_weights": "For nonempty L_j: u_j=0.5*1[L_j]/|L_j|\u002B0.5*1[V]/|V|; absent L_j gives an exact zero entire export slice after bias.",
+    "variance_center": "mu_u,j=0.5*sum(local_uniform_j*safe_h)\u002B0.5*sum(global_uniform*safe_h), its OWN two-sum uniform mean; never center around the attention mean.",
+    "dispersion": "v_j=sum_t u_jt*(safe_h_t-mu_u,j)^2 componentwise population second central moment.",
+    "rows": "Keep each existing eight-row projection slice: first4 attention mean, last4 uniform centered variance; biases once, exact whole8 zero after bias for locally absent bins.",
+    "support_safety": "Sanitize unsupported hidden operands before subtraction/square, use safe count denominators and exact support masks, preserve finite all-padding behavior and original positions.",
+    "gradient": "Uniform support/counts are mask/geometry only. Hidden and its own uniform center stay live, including full finite-F32 centering derivative. No direct dispersion-to-temporal-pool-score/position-offset derivative. Attention mean route and hidden Transformer-attention derivatives remain live; no detach shortcut.",
+    "finite_precision": "The scalar/F64 reference and adjoints must retain the actual two-sum F32 center and nonzero weighted centered residual correction, rather than assuming exact algebraic cancellation.",
+    "typed_identity": "Own CPB-v12 model tag and new temporal_pooling_policy/temporal_moment_policy values at all required checkpoint nodes; preserve strict existing layout/partition fields and reject wrong/missing/old/dtype/shape values.",
+    "capacity": "Intend identical76 learned tensors/294752 learned values,3888 fixed values, native40, registration order and constructor RNG draw sequence. Verify actual source/build counts prospectively, never fabricate parity.",
+    "confounds": "Changed support/feature scale/gradient routes and extra uniform arithmetic can change all later shared/clipped AdamW states. Equal parameters is not equal compute or guaranteed retention. Nonzero saved moments/high TRAIN volatility weaken a diagnosed-collapse claim.",
+    "excluded": [
+      "new learned parameter or pool",
+      "new fitted statistic or post-encoder transform",
+      "sqrt/RMS/Bessel/epsilon rescue",
+      "attention-mean centering of uniform variance",
+      "detached hidden/center",
+      "head/seed/rate/budget/checkpoint tuning",
+      "coefficient/support sweep",
+      "V7 split clipping",
+      "V10 live joint Gaussian mean loss",
+      "oracle or trained parent initialization"
+    ]
+  },
+  "training": {
+    "dataset_id": "MKT-HIST-2",
+    "task": "masked_waveform_location_scale_reconstruction",
+    "designed_complexity_level": 4,
+    "complexity_scale_max": 5,
+    "view": "unlabeled chronological TRAIN",
+    "train_anchors": 4096,
+    "train_probes": 112,
+    "validation_probes": 32,
+    "updates": 2048,
+    "batch_size": 8,
+    "maximum_attempts": 4096,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "global_gradient_clip": 1.0,
+    "query_fraction": 0.25,
+    "extra_context_deletion": 0.15,
+    "dropout": 0.0,
+    "initialization_seed": 943001,
+    "row_seed": 943002,
+    "mask_seed": 943003,
+    "context_seed": 943004,
+    "objective": "R[Huber_delta1(mu-y)] \u002B R[0.5*(stopgrad(mu-y)^2/v \u002B log(v))]; both coefficients1; support sanitized,F32 operands promoted separately to CUDAF64 before subtraction,original equal-example/equal-channel/supported-cell reduction",
+    "fixed_query_metric": "standardized MAE",
+    "scaler_fits": 1,
+    "bank_fits": 1,
+    "inference_checkpoints": [
+      0,
+      2048
+    ],
+    "typed_training_checkpoints": [
+      512,
+      1024,
+      2048
+    ],
+    "fixed_query_source": "Immutable saved query-plan-train/validation.pt, fraction1/16; no new query seed draws",
+    "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "encoder_gradient_kind": "Huber1-mean-gradient;detached-error-Gaussian-variance;live-uncertainty4;shared-global-clip1",
+    "mean_huber_delta": 1.0,
+    "loss_coefficients": [
+      1.0,
+      1.0
+    ],
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "direct_gradient_routes": "mean-\u003Eparent32\u002Bmean4;variance-\u003Euncertainty4;no-direct-cross-paths;shared-global-clip1",
+    "raw_load_counter_contract": {
+      "successful_updates": 2048,
+      "attempts_min": 2048,
+      "attempts_max": 4096,
+      "calibration_loader_calls": 512,
+      "initial_and_final_query_loader_calls": 36,
+      "raw_load_calls_formula": "512 \u002B attempted_batches \u002B 36",
+      "skipped_attempts": "attempted_batches - new_causal_updates;derived,not a fabricated summary field"
+    }
+  },
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "linear_parameters": 164,
+      "neural_parameters": 724,
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "Unchanged dimension/repetition stream function copied as owned code; no historical encoder execution",
+      "linear_parameters": 82,
+      "neural_parameters": 690,
+      "input_scaler_policy": "Fresh cohortTRAIN fit once/cohort shared across initial/final, or freshly refitted marketTRAIN scaler; same numerical recipe as v3",
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "dimension_policy": "Same unchanged stream_seed(repetition,native_width) implementation for D40; widths/parameter counts differ from native36 references; no tuning"
+  },
+  "prospective_criteria": {
+    "protocol": {
+      "path": "doc/clean_causal_encoder_search_goal_v11_retention.json",
+      "bytes": 48667,
+      "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+    },
+    "independent_review": {
+      "path": "doc/causal_v11_retention_review/independent-review.json",
+      "bytes": 3839,
+      "sha256": "9d15d8df155460787270df8fedc75f08ea31ad1381d6061a73e264343c5c78ee"
+    },
+    "application": {
+      "path": "doc/causal_v11_retention_review/applied-future-protocol.json",
+      "bytes": 3032,
+      "sha256": "e59f8eeaa4993ec116eca2751c2cbb9a957c6ae81b95047917b71e01485f3035"
+    },
+    "criterion_count": 22,
+    "numeric_tolerance": 1E-12,
+    "criteria": [
+      {
+        "id": "past_volatility:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.964673433811061,
+        "floor_source": "CPB-v3.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_volatility:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.7359692462937604,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_trend:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.9072134297036245,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_trend:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.5698752307038314,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_activity:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.9094387755129657,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_activity:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.7324899092829259,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_relation:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.6221006868548108,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "past_relation:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.4487745118258597,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.98828125,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9848090277777778,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9557291666666666,
+        "floor_source": "CPB-v9.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9427083333333334,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9986979166666666,
+        "floor_source": "CPB-v9.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9926215277777778,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.97265625,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9561631944444444,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate \u002B 1e-12 \u003E= floor"
+      },
+      {
+        "id": "train:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.24180533789857825,
+        "floor_source": "CPB-v7.market-01",
+        "rule": "candidate \u003C= floor \u002B 1e-12"
+      },
+      {
+        "id": "validation:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.30831692401624544,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate \u003C= floor \u002B 1e-12"
+      },
+      {
+        "id": "known_validation:Gaussian_NLL_F64",
+        "category": "variance_quality",
+        "dataset_id": "MKT-HIST-2",
+        "floor": -0.04538148809081624,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate \u003C floor - 1e-12"
+      },
+      {
+        "id": "past_trend:all3_neural_R2_positive",
+        "category": "neural_trend_robustness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "all three final neural trend R2 values \u003E 0"
+      },
+      {
+        "id": "past_relation:linear_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate \u003E 0"
+      },
+      {
+        "id": "past_relation:neural_mean_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate \u003E 0"
+      }
+    ],
+    "policy": "Exact applied strongest saved V3-V11 floors/operators, including five stronger V11 floors, all positivity/trust/fullcoverage rules. No historical rescore and no TRAIN-NLL gate. Raw protocol pending-state strings remain immutable; passed external review/application supplies future eligibility."
+  },
+  "initial_pairing": {
+    "reference": "Saved V11 initial DATA20:40 plus five whole fresh-statistic archives, prospective exact paths to be reviewed before freeze",
+    "feature_value_coordinate_slice": [
+      20,
+      40
+    ],
+    "unpaired_learned_content_slice": [
+      0,
+      20
+    ],
+    "whole_native40_equality_required": false,
+    "content20_equality_required": false,
+    "reference_feature_archives": 8,
+    "reference_statistic_archives": 5,
+    "old_encoder_or_head_execution_allowed": false
+  },
+  "evidence_requirements": [
+    "All128 cutoff suffix-value AND suffix-mask invariance, initial/final saved, internal poisoned unsupported/missing/boundary cases and causal Transformer/masked banks",
+    "Independent full scalar reference and finite-F32-aware local adjoints of new uniform dispersion, scores-only mean derivative, hidden/input/export/bias gradient checks and finite differences with statically declared tolerance",
+    "Equal-mean/different-dispersion and score-perturbation fixtures: mean changes with scores, variance statistic does not at fixed hidden/support; sparse original bins, constant support, empty local with nonempty global, all-padding/unsupported NaNs",
+    "Both actual ordinary/contextual call paths use the single OWN kernel; fresh initialization/registration/RNG shape parity and no imported state",
+    "All76 tensors/projection groups actual CUDA learning, eight moment group data-gradient/update events, gauge/Hadamard evidence with honest identifiable-capacity semantics",
+    "Same-existing-forward witnesses at actual steps1/2048 add explicit uniform weights and own uniform centers for BOTH routes. Exact new archive fields/counts/trace linkage frozen after static source review; no extra encoder forward",
+    "Independent actual-step adjoints must use saved before-step coefficients and support. Actual2048 is pre-step2047; no final2048 decoder substitution",
+    "Strict typed causal/fresh/policy/layout metadata and exact resume512; same one fresh2048/B8 trajectory",
+    "Initial/final saved embedding quality only after engineering/learning/causality/resume pass; frozen same D40 head recipes and all historical scoped leaders protected",
+    "Complete source/log/failure/checkpoint/result preservation, independent training and quality audits, final trust/retention join before measured candidate or winner claim"
+  ],
+  "source_ownership": "Physically preserve complete V11 parent files before owned copies/edits. New v12 family/wrapper/descriptor, research/training/auditor/evaluation/workflow sources own full bodies and use only v12 includes/namespaces for learned implementation. No forwarding to old family/source. One discoverable version descriptor; DEV unchanged.",
+  "execution_container": {
+    "name": "cuwacunu",
+    "id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "image": "sha256:ed0d8a5141f073d5c961b95e65e9b3528a66e122bda4971ec8f47d925d717de7",
+    "GPU": "Existing CUDA:0 only for project model/build/test/train",
+    "lifecycle_changes": 0
+  },
+  "next_admission": "Root review of actual completed diagnosis/report and this explicit source-only plan, then separate admitted copy. All sources/criteria/shape-dependent head settings and static independent review must be frozen before AST/build/proofs/one CUDA trajectory; this proposal admits no helper invocation or scientific execution.",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "git_operations": 0,
+  "dev_changes": 0,
+  "separate_root_admission": {
+    "kind": "separate_root_cpb_v12_source_only_admission",
+    "admitted_utc": "2026-10-17T18:25:18.7543848Z",
+    "proposal": {
+      "path": "doc/causal_fresh_v12/design-source-plan.PROPOSED-001.json",
+      "bytes": 21723,
+      "sha256": "449f9665a7889a80368662806d78aa57cfd7ecec87ff43603fd54164ba6bbe79"
+    },
+    "completed_diagnosis": {
+      "path": "doc/causal_v9_v11_train_diagnosis/completion.json",
+      "bytes": 5871,
+      "sha256": "62f63261567763a25ee7d55801156e2568b783432039a576e34fd19929e21f9d"
+    },
+    "human_report_peer": {
+      "path": "doc/causal_v9_v11_train_diagnosis/human-report-independent-review-001.json",
+      "bytes": 5322,
+      "sha256": "94d9f916cdbf84f0c38091165b3feddb6f5e559a003607549725ec0d851036ef"
+    },
+    "choice": "One parameter-neutral V11-source uniform-support dispersion test, CPB-v12.market-01. Preserve four learned-attention mean and four variance rows. No alternative coefficient/support policy/contrast/activation sweep.",
+    "scope": "Physical parent preservation, own complete source copies, static edits/reviews/provenance only. No helper invocation, AST, compiler/build, C\u002B\u002B/Python scientific body, proof/model/fit/update/quality execution. Separate exact source/card freeze and review required.",
+    "DEV_and_publication_changes": 0
+  }
+}

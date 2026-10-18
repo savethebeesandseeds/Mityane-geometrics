@@ -1,0 +1,241 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 25,
+  "design_slot": "RPB-v25",
+  "canonical_registered_tag": "RPB-v25",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Same exact native36 initialization/export plus training-only balanced signed-change/RMS reconstruction with coefficient0.1",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h",
+      "sha256": "8360c32097ee34cb908c64075f554548b65d045d7baec3500750e610191ddf06",
+      "bytes": 3299,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "EnergyChangeModel",
+      "EnergyChangeModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/energy_changes.conf",
+      "sha256": "ad99c3084826762af5e745c9b66e3d9288c01ca81863643c273da3732a8ce6e3",
+      "bytes": 602,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/energy_changes.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_change_energy_v1/completion.json",
+        "sha256": "eda8887bae08a9c0a1bd9b8a9827e52e5b6dba3c37aec4d61636ff299d32f8a5",
+        "bytes": 34348
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h",
+        "sha256": "8360c32097ee34cb908c64075f554548b65d045d7baec3500750e610191ddf06",
+        "bytes": 3299
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/change_energy_embedding_versions.json",
+      "sha256": "9788b29be74d17624dc3315a5d0818187fcb7756f1e492526ce29a392c3e1cb9",
+      "bytes": 38452,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/change_energy_embedding_versions.json",
+        "sha256": "9788b29be74d17624dc3315a5d0818187fcb7756f1e492526ce29a392c3e1cb9",
+        "bytes": 38452,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v25.market-01",
+        "model_tag": "RPB-v25",
+        "status": "completed_stopped_original7of9_strict6of8_both_volatility_heads_failed",
+        "description": "Exact protected trained v22 native32 prefix plus unchanged v24 learned4/native36 forward geometry; training-only balanced moment reconstruction auxiliary.",
+        "batch_size": 8,
+        "checkpoints": [
+          {
+            "filename": "inference-0.pt",
+            "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/inference-0.pt",
+            "updates": 0,
+            "inherited_parent_updates": 2048,
+            "kind": "rpb_energy_change_inference_checkpoint_v1",
+            "sha256": "8428dfc3daf6fa63516332b01f263a50666a22482ae48dd0aed30ea2cba4f8bd",
+            "bytes": 1276132,
+            "availability_verified": true,
+            "local_and_git_ignored": true
+          },
+          {
+            "filename": "inference-2048.pt",
+            "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/inference-2048.pt",
+            "updates": 2048,
+            "inherited_parent_updates": 2048,
+            "kind": "rpb_energy_change_inference_checkpoint_v1",
+            "sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa",
+            "bytes": 1276877,
+            "availability_verified": true,
+            "local_and_git_ignored": true
+          },
+          {
+            "filename": "training-1024.pt",
+            "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-1024.pt",
+            "updates": 1024,
+            "inherited_parent_updates": 2048,
+            "kind": "rpb_energy_change_training_state_v1",
+            "sha256": "79603d473e6ecc51dccca73fd55264df71112c104f23928688f4abbbdb4aac36",
+            "bytes": 1427953,
+            "availability_verified": true,
+            "local_and_git_ignored": true
+          },
+          {
+            "filename": "training-2048.pt",
+            "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-2048.pt",
+            "updates": 2048,
+            "inherited_parent_updates": 2048,
+            "kind": "rpb_energy_change_training_state_v1",
+            "sha256": "d0a1f10957ee1e543c41fdd68a3f80a983c85bf79c1fc8b4c0ae448715d540f4",
+            "bytes": 1427953,
+            "availability_verified": true,
+            "local_and_git_ignored": true
+          },
+          {
+            "filename": "training-512.pt",
+            "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-512.pt",
+            "updates": 512,
+            "inherited_parent_updates": 2048,
+            "kind": "rpb_energy_change_training_state_v1",
+            "sha256": "85774a3feecfe0be630e046356db7e56ca3cc7e732635204b9c4c5ded5e86deb",
+            "bytes": 1427691,
+            "availability_verified": true,
+            "local_and_git_ignored": true
+          }
+        ],
+        "card_sha256": "c67e5c37d56e5bc2801a9d32152589e3067ae11f8b18c8c804418b8cca807938"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v25.market-01",
+      "description": "Same exact native36 initialization/export plus training-only balanced signed-change/RMS reconstruction with coefficient0.1",
+      "status": "stopped measured objective; stronger trend/activity/relation reference; both volatility heads fail",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 36,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_CHANGE_ENERGY_CARD.md",
+        "sha256": "c67e5c37d56e5bc2801a9d32152589e3067ae11f8b18c8c804418b8cca807938",
+        "bytes": 12441
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_CHANGE_ENERGY_RESULTS.md",
+        "sha256": "42a50ac642600538a7ec1e365e337802e006d681b1bcf0e4b5aa67965eb38f08",
+        "bytes": 25325
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_change_energy_v1/completion.json",
+        "sha256": "eda8887bae08a9c0a1bd9b8a9827e52e5b6dba3c37aec4d61636ff299d32f8a5",
+        "bytes": 34348
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_change_energy_v1/table_rows.json",
+        "sha256": "7d11f577beb61b924a9b896fe3f5dea9c464b779fc34bde19f99ef80751109de",
+        "bytes": 225314
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/inference-0.pt",
+          "sha256": "8428dfc3daf6fa63516332b01f263a50666a22482ae48dd0aed30ea2cba4f8bd",
+          "bytes": 1276132,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/inference-2048.pt",
+          "sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa",
+          "bytes": 1276877,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-1024.pt",
+          "sha256": "79603d473e6ecc51dccca73fd55264df71112c104f23928688f4abbbdb4aac36",
+          "bytes": 1427953,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-2048.pt",
+          "sha256": "d0a1f10957ee1e543c41fdd68a3f80a983c85bf79c1fc8b4c0ae448715d540f4",
+          "bytes": 1427953,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-512.pt",
+          "sha256": "85774a3feecfe0be630e046356db7e56ca3cc7e732635204b9c4c5ded5e86deb",
+          "bytes": 1427691,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

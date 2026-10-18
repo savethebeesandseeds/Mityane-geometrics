@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "id": "encoder-mtf",
+  "number": 15,
+  "title": "Encoder · MTF-JEPA-MAE-VICReg",
+  "summary": "Preserve the retained MTF-v1 reference and its model-owned evidence; expose an explicitly versioned representation source for future operations.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "encoder-mtf-preservation",
+      "title": "Preserve source and engineering behavior",
+      "description": "Separate retained implementation and baseline engineering checks from research quality claims.",
+      "milestones": [
+        {
+          "id": "encoder-mtf-source-preserved",
+          "title": "Preserve the MTF reference implementation",
+          "status": "done",
+          "description": "The encoder family and its original version identities were retained in the verified component migration.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "The family guide and source are present in the imported component; migration records verify preservation without model C++/header edits."
+          ],
+          "evidence": [
+            {
+              "label": "MTF family guide",
+              "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"
+            },
+            {
+              "label": "Migration verification",
+              "path": "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        },
+        {
+          "id": "encoder-mtf-baseline-checks",
+          "title": "Pass retained baseline engineering checks",
+          "status": "done",
+          "description": "The migrated CLI and eight existing baseline test executables passed, including small synthetic fixtures. This establishes engineering behavior for that scope, not operation quality.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "The migration receipt records CLI build/startup and eight passing baseline test executables with explicit engineering-only scope."
+          ],
+          "evidence": [
+            {
+              "label": "Baseline verification receipt",
+              "path": "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json"
+            },
+            {
+              "label": "Retained test definitions",
+              "path": "archive/embeddings/pre-cleanup-2026-10-18/Makefile"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "encoder-mtf-provider",
+      "title": "Expose a versioned operation-facing provider",
+      "description": "Preserve native shape, preprocessing, masks, checkpoint identity and source provenance.",
+      "milestones": [
+        {
+          "id": "encoder-mtf-provider-contract",
+          "title": "Define and verify the MTF provider contract",
+          "status": "proposed",
+          "description": "Choose an explicit MTF instance and return source-linked embedding records under a declared SpaceRef and temporal interpretation. Verify native shape, output selection, masks, preprocessing and fitted-artifact identity without changing frozen historical protocols.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "MTF family guide",
+              "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"
+            },
+            {
+              "label": "Representation contracts",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Resolve exact version/checkpoint, fit provenance or its explicit limits, source hashes, output selector/native layout, pooling and normalization before an admitted operation consumes this provider; preservation and passing retained tests do not establish this provider contract or operation quality.",
+            "Use foundations-record-validation and foundations-temporal-integrity. Record actual per-output support and availability, distinguishing a complete-window embedding from a prefix-valid representation; masks must have documented dependency semantics.",
+            "Record-level fixtures cover shape, non-finite/missing data, mask behavior, source lineage, preprocessing changes and the temporal claim actually made. Provider replay and operation utility have separate receipts.",
+            "Any diagnostic probe uses or-05-readouts-probe-protocol with an explicitly bound scope; no historical protocol or instance is silently replaced by a comparative default."
+          ]
+        }
+      ]
+    }
+  ]
+}

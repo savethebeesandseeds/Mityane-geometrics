@@ -1,0 +1,3546 @@
+{
+  "kind": "rpb_location_scale_decoder_embedding_versions_v1",
+  "date": "2026-10-15",
+  "instance": "RPB-v30.market-01",
+  "design": "RPB-v30",
+  "status": "verified_market_pass_transfer_pending",
+  "local_unpublished": true,
+  "primary": "RPB-v22",
+  "balanced_research_reference": "RPB-v24.market-01.alt-01",
+  "balanced_promotion_pending_transfer": "RPB-v30.market-01",
+  "primary_changed": false,
+  "run": "output/runs/market-location-scale-decoder/run-MAmvTJ",
+  "dataset_id": "MKT-HIST-2",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "task": "separate past-window volatility/trend/activity/relation",
+  "recipe_id": "market-location-scale-decoder-v1",
+  "view": "intact chronological VALIDATION",
+  "fit_dataset_id": "MKT-HIST-2",
+  "score_dataset_id": "MKT-HIST-2",
+  "evidence_stage": "known-source development",
+  "geometry": {
+    "C": 3,
+    "H": 128,
+    "F": 9,
+    "parent_width": 32,
+    "change_width": 4,
+    "native_width": 36
+  },
+  "scoring": {
+    "TRAIN_rows": 112,
+    "VALIDATION_rows": 32,
+    "ridge_penalty": 1,
+    "neural_hidden": 16,
+    "neural_activation": "tanh",
+    "neural_optimizer": "Adam",
+    "neural_rate": 0.01,
+    "neural_updates": 100,
+    "repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "D36_actual_seeds": [
+      13088411117524848790,
+      10018485049408248344,
+      9083751155097190455
+    ],
+    "D36_head_parameters": {
+      "linear": 148,
+      "neural": 660
+    },
+    "initial_head_fits": 0,
+    "new_final_ridge_pipelines": 1,
+    "new_final_ridge_target_fits": 4,
+    "new_final_neural_fits": 3,
+    "initial_scores_reused_from": "RPB-v28.market-01.init",
+    "initial_scoring_source_report_sha256": "0f9199d88e7d3a90039d8a555873fb74399b8b79f6505798a58c3fcc5bae4156",
+    "initial_full36_values_valid_row_ids_exact": true,
+    "historical_rows_preserved": 88,
+    "reused_initial_rows": 4,
+    "new_final_rows": 4,
+    "full_table_rows": 96,
+    "post_encoder_PCA": false
+  },
+  "quality_rows": [
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01.init",
+      "source_method": "initialized_v28",
+      "reused": true,
+      "size": 36,
+      "linear_r2": 0.45540308959598086,
+      "linear_mae": 0.00019154694898991737,
+      "linear_rmse": 0.0002493175227195677,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn",
+      "report_path": "output/runs/market-relative-changes/run-vaPC4X/readouts/report.json",
+      "report_sha256": "0f9199d88e7d3a90039d8a555873fb74399b8b79f6505798a58c3fcc5bae4156",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00019154694898991737,
+              "rmse": 0.0002493175227195677,
+              "r2": 0.45540308959598086
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.0002783395187209842,
+              "rmse": 0.0003266446769734943,
+              "r2": 0.06519562174916227
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00019154694898991737,
+              "rmse": 0.0002493175227195677,
+              "r2": 0.45540308959598086
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00015887398067155698,
+              "rmse": 0.00021284219966524924,
+              "r2": 0.6030963942222622
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00019154694898991737,
+              "rmse": 0.0002493175227195677,
+              "r2": 0.45540308959598086
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.0002667596781389443,
+              "rmse": 0.0003350815856280792,
+              "r2": 0.016281835028588265
+            }
+          }
+        }
+      ],
+      "new_head_measurement": false,
+      "representation_method": "initialized_v30",
+      "scoring_provenance": "reused V28 initial scoring after exact new full36/row/support parity",
+      "scoring_source_model": "RPB-v28.market-01.init",
+      "initial_scoring_reuse": {
+        "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+        "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+        "bytes": 1115
+      },
+      "newly_extracted_feature_assets": [
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train.pt",
+          "sha256": "3e71a8d2af549f5bd8dbf167c6bb7d9464a42ab8c85ace316fa079038a3c15a2",
+          "bytes": 19993
+        },
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation.pt",
+          "sha256": "ef70e84b385dd82be6fe05dd5f4237f1cb41e48afac7f877cc4b3f396884db0b",
+          "bytes": 7755
+        }
+      ],
+      "neural_r2_each": [
+        0.06519562174916227,
+        0.6030963942222622,
+        0.016281835028588265
+      ],
+      "neural_mean_r2": 0.22819128366667094,
+      "neural_mae_each": [
+        0.0002783395187209842,
+        0.00015887398067155698,
+        0.0002667596781389443
+      ],
+      "neural_mean_mae": 0.0002346577258438285,
+      "neural_rmse_each": [
+        0.0003266446769734943,
+        0.00021284219966524924,
+        0.0003350815856280792
+      ],
+      "neural_mean_rmse": 0.0002915228207556076
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01.init",
+      "source_method": "initialized_v28",
+      "reused": true,
+      "size": 36,
+      "linear_r2": -0.07834932866526612,
+      "linear_mae": 5.884742777078886e-05,
+      "linear_rmse": 6.953749780003428e-05,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn/tick",
+      "report_path": "output/runs/market-relative-changes/run-vaPC4X/readouts/report.json",
+      "report_sha256": "0f9199d88e7d3a90039d8a555873fb74399b8b79f6505798a58c3fcc5bae4156",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.884742777078886e-05,
+              "rmse": 6.953749780003428e-05,
+              "r2": -0.07834932866526612
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.903626894742278e-05,
+              "rmse": 8.447409572226593e-05,
+              "r2": -0.5913600703606425
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.884742777078886e-05,
+              "rmse": 6.953749780003428e-05,
+              "r2": -0.07834932866526612
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.023384216546575e-05,
+              "rmse": 7.472148371946462e-05,
+              "r2": -0.24512320716051383
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.884742777078886e-05,
+              "rmse": 6.953749780003428e-05,
+              "r2": -0.07834932866526612
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.529996380209472e-05,
+              "rmse": 8.242003621943527e-05,
+              "r2": -0.514910430982706
+            }
+          }
+        }
+      ],
+      "new_head_measurement": false,
+      "representation_method": "initialized_v30",
+      "scoring_provenance": "reused V28 initial scoring after exact new full36/row/support parity",
+      "scoring_source_model": "RPB-v28.market-01.init",
+      "initial_scoring_reuse": {
+        "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+        "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+        "bytes": 1115
+      },
+      "newly_extracted_feature_assets": [
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train.pt",
+          "sha256": "3e71a8d2af549f5bd8dbf167c6bb7d9464a42ab8c85ace316fa079038a3c15a2",
+          "bytes": 19993
+        },
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation.pt",
+          "sha256": "ef70e84b385dd82be6fe05dd5f4237f1cb41e48afac7f877cc4b3f396884db0b",
+          "bytes": 7755
+        }
+      ],
+      "neural_r2_each": [
+        -0.5913600703606425,
+        -0.24512320716051383,
+        -0.514910430982706
+      ],
+      "neural_mean_r2": -0.45046456950128744,
+      "neural_mae_each": [
+        6.903626894742278e-05,
+        6.023384216546575e-05,
+        6.529996380209472e-05
+      ],
+      "neural_mean_mae": 6.485669163832775e-05,
+      "neural_rmse_each": [
+        8.447409572226593e-05,
+        7.472148371946462e-05,
+        8.242003621943527e-05
+      ],
+      "neural_mean_rmse": 8.053853855372194e-05
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01.init",
+      "source_method": "initialized_v28",
+      "reused": true,
+      "size": 36,
+      "linear_r2": 0.7296774264959323,
+      "linear_mae": 0.22833703486198617,
+      "linear_rmse": 0.2987938519993359,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "log1p(base_volume)",
+      "report_path": "output/runs/market-relative-changes/run-vaPC4X/readouts/report.json",
+      "report_sha256": "0f9199d88e7d3a90039d8a555873fb74399b8b79f6505798a58c3fcc5bae4156",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22833703486198617,
+              "rmse": 0.2987938519993359,
+              "r2": 0.7296774264959323
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.23114678978910044,
+              "rmse": 0.2765557187054601,
+              "r2": 0.7684182743739734
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22833703486198617,
+              "rmse": 0.2987938519993359,
+              "r2": 0.7296774264959323
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.2261180855947992,
+              "rmse": 0.27049295448000554,
+              "r2": 0.7784606311681391
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22833703486198617,
+              "rmse": 0.2987938519993359,
+              "r2": 0.7296774264959323
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.29517153866789014,
+              "rmse": 0.35101151693067806,
+              "r2": 0.6269373838957738
+            }
+          }
+        }
+      ],
+      "new_head_measurement": false,
+      "representation_method": "initialized_v30",
+      "scoring_provenance": "reused V28 initial scoring after exact new full36/row/support parity",
+      "scoring_source_model": "RPB-v28.market-01.init",
+      "initial_scoring_reuse": {
+        "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+        "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+        "bytes": 1115
+      },
+      "newly_extracted_feature_assets": [
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train.pt",
+          "sha256": "3e71a8d2af549f5bd8dbf167c6bb7d9464a42ab8c85ace316fa079038a3c15a2",
+          "bytes": 19993
+        },
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation.pt",
+          "sha256": "ef70e84b385dd82be6fe05dd5f4237f1cb41e48afac7f877cc4b3f396884db0b",
+          "bytes": 7755
+        }
+      ],
+      "neural_r2_each": [
+        0.7684182743739734,
+        0.7784606311681391,
+        0.6269373838957738
+      ],
+      "neural_mean_r2": 0.7246054298126288,
+      "neural_mae_each": [
+        0.23114678978910044,
+        0.2261180855947992,
+        0.29517153866789014
+      ],
+      "neural_mean_mae": 0.25081213801726326,
+      "neural_rmse_each": [
+        0.2765557187054601,
+        0.27049295448000554,
+        0.35101151693067806
+      ],
+      "neural_mean_rmse": 0.29935339670538125
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01.init",
+      "source_method": "initialized_v28",
+      "reused": true,
+      "size": 36,
+      "linear_r2": 0.37908572641284277,
+      "linear_mae": 0.05763518051674643,
+      "linear_rmse": 0.0679159600953831,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "correlation",
+      "report_path": "output/runs/market-relative-changes/run-vaPC4X/readouts/report.json",
+      "report_sha256": "0f9199d88e7d3a90039d8a555873fb74399b8b79f6505798a58c3fcc5bae4156",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05763518051674643,
+              "rmse": 0.0679159600953831,
+              "r2": 0.37908572641284277
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05902813884550383,
+              "rmse": 0.07349502209978889,
+              "r2": 0.27288382767062946
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05763518051674643,
+              "rmse": 0.0679159600953831,
+              "r2": 0.37908572641284277
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.058908500466939726,
+              "rmse": 0.07071299274296117,
+              "r2": 0.3268894607530305
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05763518051674643,
+              "rmse": 0.0679159600953831,
+              "r2": 0.37908572641284277
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.07025916747897695,
+              "rmse": 0.08686359130216392,
+              "r2": -0.015695472178561376
+            }
+          }
+        }
+      ],
+      "new_head_measurement": false,
+      "representation_method": "initialized_v30",
+      "scoring_provenance": "reused V28 initial scoring after exact new full36/row/support parity",
+      "scoring_source_model": "RPB-v28.market-01.init",
+      "initial_scoring_reuse": {
+        "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+        "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+        "bytes": 1115
+      },
+      "newly_extracted_feature_assets": [
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train.pt",
+          "sha256": "3e71a8d2af549f5bd8dbf167c6bb7d9464a42ab8c85ace316fa079038a3c15a2",
+          "bytes": 19993
+        },
+        {
+          "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation.pt",
+          "sha256": "ef70e84b385dd82be6fe05dd5f4237f1cb41e48afac7f877cc4b3f396884db0b",
+          "bytes": 7755
+        }
+      ],
+      "neural_r2_each": [
+        0.27288382767062946,
+        0.3268894607530305,
+        -0.015695472178561376
+      ],
+      "neural_mean_r2": 0.19469260541503286,
+      "neural_mae_each": [
+        0.05902813884550383,
+        0.058908500466939726,
+        0.07025916747897695
+      ],
+      "neural_mean_mae": 0.06273193559714017,
+      "neural_rmse_each": [
+        0.07349502209978889,
+        0.07071299274296117,
+        0.08686359130216392
+      ],
+      "neural_mean_rmse": 0.07702386871497133
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01",
+      "source_method": "trained_v30",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.9539128652969817,
+      "linear_mae": 5.515113434489571e-05,
+      "linear_rmse": 7.252789459441617e-05,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn",
+      "report_path": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/report.json",
+      "report_sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.515113434489571e-05,
+              "rmse": 7.252789459441617e-05,
+              "r2": 0.9539128652969817
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00016596958899691268,
+              "rmse": 0.00020026833858612393,
+              "r2": 0.6486061493538446
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.515113434489571e-05,
+              "rmse": 7.252789459441617e-05,
+              "r2": 0.9539128652969817
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00015348179148823426,
+              "rmse": 0.00019235190460041227,
+              "r2": 0.6758376672339298
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.515113434489571e-05,
+              "rmse": 7.252789459441617e-05,
+              "r2": 0.9539128652969817
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00020953937999720814,
+              "rmse": 0.00025273160147839597,
+              "r2": 0.44038587743070645
+            }
+          }
+        }
+      ],
+      "new_head_measurement": true,
+      "representation_method": "trained_v30",
+      "scoring_provenance": "new final saved-bank fixed-head fits",
+      "neural_r2_each": [
+        0.6486061493538446,
+        0.6758376672339298,
+        0.44038587743070645
+      ],
+      "neural_mean_r2": 0.588276564672827,
+      "neural_mae_each": [
+        0.00016596958899691268,
+        0.00015348179148823426,
+        0.00020953937999720814
+      ],
+      "neural_mean_mae": 0.00017633025349411837,
+      "neural_rmse_each": [
+        0.00020026833858612393,
+        0.00019235190460041227,
+        0.00025273160147839597
+      ],
+      "neural_mean_rmse": 0.00021511728155497738
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01",
+      "source_method": "trained_v30",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.7943655016246851,
+      "linear_mae": 2.4230709341539103e-05,
+      "linear_rmse": 3.0365980660320684e-05,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn/tick",
+      "report_path": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/report.json",
+      "report_sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 2.4230709341539103e-05,
+              "rmse": 3.0365980660320684e-05,
+              "r2": 0.7943655016246851
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.157345836871364e-05,
+              "rmse": 6.667261169396198e-05,
+              "r2": 0.008674474092963624
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 2.4230709341539103e-05,
+              "rmse": 3.0365980660320684e-05,
+              "r2": 0.7943655016246851
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 3.476212952732456e-05,
+              "rmse": 4.565916015265491e-05,
+              "r2": 0.5350811106482072
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 2.4230709341539103e-05,
+              "rmse": 3.0365980660320684e-05,
+              "r2": 0.7943655016246851
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 4.1468280182549494e-05,
+              "rmse": 5.113527588411806e-05,
+              "r2": 0.4168737921607343
+            }
+          }
+        }
+      ],
+      "new_head_measurement": true,
+      "representation_method": "trained_v30",
+      "scoring_provenance": "new final saved-bank fixed-head fits",
+      "neural_r2_each": [
+        0.008674474092963624,
+        0.5350811106482072,
+        0.4168737921607343
+      ],
+      "neural_mean_r2": 0.320209792300635,
+      "neural_mae_each": [
+        5.157345836871364e-05,
+        3.476212952732456e-05,
+        4.1468280182549494e-05
+      ],
+      "neural_mean_mae": 4.260128935952923e-05,
+      "neural_rmse_each": [
+        6.667261169396198e-05,
+        4.565916015265491e-05,
+        5.113527588411806e-05
+      ],
+      "neural_mean_rmse": 5.4489015910244984e-05
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01",
+      "source_method": "trained_v30",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.8657318768925227,
+      "linear_mae": 0.17204336315408053,
+      "linear_rmse": 0.21057992154616248,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "log1p(base_volume)",
+      "report_path": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/report.json",
+      "report_sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.17204336315408053,
+              "rmse": 0.21057992154616248,
+              "r2": 0.8657318768925227
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.3177792027669386,
+              "rmse": 0.39550528061504375,
+              "r2": 0.5263652355780768
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.17204336315408053,
+              "rmse": 0.21057992154616248,
+              "r2": 0.8657318768925227
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.2555919486646797,
+              "rmse": 0.316392601047499,
+              "r2": 0.6968960216889721
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.17204336315408053,
+              "rmse": 0.21057992154616248,
+              "r2": 0.8657318768925227
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.28041698293992123,
+              "rmse": 0.3554439160648593,
+              "r2": 0.6174561986987163
+            }
+          }
+        }
+      ],
+      "new_head_measurement": true,
+      "representation_method": "trained_v30",
+      "scoring_provenance": "new final saved-bank fixed-head fits",
+      "neural_r2_each": [
+        0.5263652355780768,
+        0.6968960216889721,
+        0.6174561986987163
+      ],
+      "neural_mean_r2": 0.6135724853219218,
+      "neural_mae_each": [
+        0.3177792027669386,
+        0.2555919486646797,
+        0.28041698293992123
+      ],
+      "neural_mean_mae": 0.2845960447905132,
+      "neural_rmse_each": [
+        0.39550528061504375,
+        0.316392601047499,
+        0.3554439160648593
+      ],
+      "neural_mean_rmse": 0.35578059924246735
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "market-location-scale-decoder-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v30.market-01",
+      "source_method": "trained_v30",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.48747626119524834,
+      "linear_mae": 0.04992962898357469,
+      "linear_rmse": 0.061703956974893316,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "correlation",
+      "report_path": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/report.json",
+      "report_sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.04992962898357469,
+              "rmse": 0.061703956974893316,
+              "r2": 0.48747626119524834
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05434808702281226,
+              "rmse": 0.06481048039189123,
+              "r2": 0.43457053564584935
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.04992962898357469,
+              "rmse": 0.061703956974893316,
+              "r2": 0.48747626119524834
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.047197335667970484,
+              "rmse": 0.06067954759181333,
+              "r2": 0.5043528390709461
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.04992962898357469,
+              "rmse": 0.061703956974893316,
+              "r2": 0.48747626119524834
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.060550206526066956,
+              "rmse": 0.07305395965732067,
+              "r2": 0.2815848611143552
+            }
+          }
+        }
+      ],
+      "new_head_measurement": true,
+      "representation_method": "trained_v30",
+      "scoring_provenance": "new final saved-bank fixed-head fits",
+      "neural_r2_each": [
+        0.43457053564584935,
+        0.5043528390709461,
+        0.2815848611143552
+      ],
+      "neural_mean_r2": 0.40683607861038357,
+      "neural_mae_each": [
+        0.05434808702281226,
+        0.047197335667970484,
+        0.060550206526066956
+      ],
+      "neural_mean_mae": 0.05403187640561657,
+      "neural_rmse_each": [
+        0.06481048039189123,
+        0.06067954759181333,
+        0.07305395965732067
+      ],
+      "neural_mean_rmse": 0.06618132921367507
+    }
+  ],
+  "training_rows": [
+    {
+      "encoder": "RPB-v30.market-01.init",
+      "updates": 0,
+      "inherited_updates": 2048,
+      "reused": false,
+      "train_error": 0.27862535204206196,
+      "validation_error": 0.39052824676036835,
+      "gpu_training_seconds": null,
+      "batch_size": 8,
+      "device": "cuda:0",
+      "timing_includes_checkpoint_IO": true
+    },
+    {
+      "encoder": "RPB-v30.market-01",
+      "updates": 2048,
+      "inherited_updates": 2048,
+      "reused": false,
+      "train_error": 0.28209757645215305,
+      "validation_error": 0.3901873007416725,
+      "gpu_training_seconds": 131.75605979,
+      "batch_size": 8,
+      "device": "cuda:0",
+      "timing_includes_checkpoint_IO": true
+    }
+  ],
+  "original_criteria": [
+    {
+      "criterion": "positive_linear_r2_trend",
+      "candidate": 0.7943655016246851,
+      "floor": 0.0,
+      "difference": 0.7943655016246851,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "positive_neural_mean_r2_trend",
+      "candidate": 0.320209792300635,
+      "floor": 0.0,
+      "difference": 0.320209792300635,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "past_volatility_linear_r2_v22_retention",
+      "baseline": 0.7281069298378846,
+      "candidate": 0.9539128652969817,
+      "floor": 0.6781069298378846,
+      "difference": 0.2258059354590971,
+      "difference_from_floor": 0.27580593545909715,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_volatility_neural_mean_r2_v22_retention",
+      "baseline": 0.38033644247607556,
+      "candidate": 0.588276564672827,
+      "floor": 0.3303364424760756,
+      "difference": 0.2079401221967514,
+      "difference_from_floor": 0.2579401221967514,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_linear_r2_v22_retention",
+      "baseline": 0.7284311857420709,
+      "candidate": 0.8657318768925227,
+      "floor": 0.6784311857420708,
+      "difference": 0.13730069115045185,
+      "difference_from_floor": 0.1873006911504519,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_neural_mean_r2_v22_retention",
+      "baseline": 0.5121674596517269,
+      "candidate": 0.6135724853219218,
+      "floor": 0.46216745965172695,
+      "difference": 0.10140502567019483,
+      "difference_from_floor": 0.15140502567019481,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_linear_r2_v22_retention",
+      "baseline": 0.3885830932968374,
+      "candidate": 0.48747626119524834,
+      "floor": 0.3385830932968374,
+      "difference": 0.09889316789841096,
+      "difference_from_floor": 0.14889316789841095,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_neural_mean_r2_v22_retention",
+      "baseline": 0.2579958329149307,
+      "candidate": 0.40683607861038357,
+      "floor": 0.20799583291493073,
+      "difference": 0.14884024569545284,
+      "difference_from_floor": 0.19884024569545283,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "linear_trend_exceeds_saved_v23",
+      "baseline": 0.3871309972495327,
+      "floor": 0.3871309972495327,
+      "candidate": 0.7943655016246851,
+      "difference": 0.4072345043751524,
+      "comparison": ">",
+      "passed": true
+    }
+  ],
+  "strict_native36_criteria": [
+    {
+      "criterion": "past_volatility_linear_r2_native36_guard",
+      "candidate": 0.9539128652969817,
+      "floor": 0.6781069298378846,
+      "difference": 0.27580593545909715,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_volatility_neural_mean_r2_native36_guard",
+      "candidate": 0.588276564672827,
+      "floor": 0.3926141918082198,
+      "difference": 0.19566237286460714,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_trend_linear_r2_native36_guard",
+      "candidate": 0.7943655016246851,
+      "floor": 0.6549112553681312,
+      "difference": 0.1394542462565539,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_trend_neural_mean_r2_native36_guard",
+      "candidate": 0.320209792300635,
+      "floor": 0.1342955201053261,
+      "difference": 0.1859142721953089,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_linear_r2_native36_guard",
+      "candidate": 0.8657318768925227,
+      "floor": 0.7514296819362523,
+      "difference": 0.11430219495627048,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_neural_mean_r2_native36_guard",
+      "candidate": 0.6135724853219218,
+      "floor": 0.5631529010630465,
+      "difference": 0.05041958425887527,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_linear_r2_native36_guard",
+      "candidate": 0.48747626119524834,
+      "floor": 0.3406853885730756,
+      "difference": 0.14679087262217272,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_neural_mean_r2_native36_guard",
+      "candidate": 0.40683607861038357,
+      "floor": 0.3495834881128966,
+      "difference": 0.05725259049748699,
+      "comparison": ">=",
+      "passed": true
+    }
+  ],
+  "individual_neural_trend_criteria": [
+    {
+      "criterion": "final_neural_trend_rep_2701_positive",
+      "repetition": 2701,
+      "actual_seed": 13088411117524848790,
+      "candidate": 0.008674474092963624,
+      "floor": 0.0,
+      "difference": 0.008674474092963624,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "final_neural_trend_rep_2802_positive",
+      "repetition": 2802,
+      "actual_seed": 10018485049408248344,
+      "candidate": 0.5350811106482072,
+      "floor": 0.0,
+      "difference": 0.5350811106482072,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "final_neural_trend_rep_2903_positive",
+      "repetition": 2903,
+      "actual_seed": 9083751155097190455,
+      "candidate": 0.4168737921607343,
+      "floor": 0.0,
+      "difference": 0.4168737921607343,
+      "comparison": ">",
+      "passed": true
+    }
+  ],
+  "coverage_criterion": {
+    "criterion": "every_new_task_head_view_has_32_of_32_coverage",
+    "passed": true,
+    "required_valid": 32,
+    "required_total": 32,
+    "required_coverage": 1.0
+  },
+  "comparison_absolute_arithmetic_tolerance": 1e-12,
+  "counts": {
+    "original_passed": 9,
+    "original_total": 9,
+    "strict_passed": 8,
+    "strict_total": 8,
+    "positive_neural_trend_repetitions": 3,
+    "full_coverage": true,
+    "full_market_gate_passed": true
+  },
+  "model_and_learning_summary": {
+    "kind": "market_location_scale_decoder_v1",
+    "protocol": "market-location-scale-decoder-v1",
+    "bank_normalizer_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-a79ac4a6bfe8d476",
+    "dataset": "MKT-HIST-2",
+    "instance": "RPB-v30.market-01",
+    "H": 128,
+    "W": 64,
+    "D": 36,
+    "level_width": 32,
+    "change_width": 4,
+    "parameters": 297560,
+    "requires_grad_flagged_parameters": 293672,
+    "optimizer_updated_parameters": 15039,
+    "protected_parameters": 282521,
+    "completed_updates": 2048,
+    "attempted_batches": 2048,
+    "segment_updates": 2048,
+    "window_presentations": 16384,
+    "target_cells": 14155776,
+    "first_loss": 0.3399173832780379,
+    "last_loss": -0.27151144758246093,
+    "raw_source_dtype": "float64",
+    "parent_rounding_dtype": "float32",
+    "raw_loader_source_sha256": "4165ee929445d0bce9cac2191b63bdde72555315fbb6d0e6bd1b022c87f3b4a6",
+    "bank_family": "raw-symmetric-relative-f64-rounded32-global-quarter-v1",
+    "raw_contract": "genuine-raw-f64;parent-cpu-raw-f32-before-scaler-v1",
+    "increment_recipe": "cuda-f64-maxabs-scaled-symmetric-relative;u64-to-f32-to-f64;visible-adjacent-zero-safe-v1",
+    "moment_layout": "canonical-channel-feature-moment;global-mean,rms;quarter0-mean,rms;quarter1-mean,rms;quarter2-mean,rms;quarter3-mean,rms;quarter-normalized-by-global-rms;visible-adjacent-min2-v1",
+    "genuine_F64_differs_from_F32_count": 48625146,
+    "historical_parent_preprocessing_exact": true,
+    "training_seconds_includes_raw_loader_audit": true,
+    "bank_normalizer_fit_seconds_including_io": 0,
+    "bank_normalizer_TRAIN_anchors": 4096,
+    "bank_normalizer_validation_anchors": 0,
+    "bank_normalizer_encoder_calls": 0,
+    "bank_normalizer_sha256": "c3e4f9e850ebbb355ae58e8b434173e4db0d1ff98055c844af4fe16ba7879fbc",
+    "bank_normalizer_source_identity": "RPB-v28;raw-symmetric-relative-f64-v1;MKT-HIST-2;full-natural-TRAIN4096;recent128;ordered-B8;no-query-no-context;shared-ledger:dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10;input:BTC:acdcd5dee054732c93d60094c4be319447661dd5cc341fd206a6d9f87eb48c21;ETH:dec457e8d45557aef0106dfce9f0787b95691bd25bb7ba7a6716d5879258a6e0;SOL:5e61e86631e534cafcdc67ec51beb298ef35f5e90cc73bc76dbe9d51eb0863ae;manifest:828154b335670d4d97aeaac2f4a3839099abcdd31ef8bec1f031f54ff8ed3cd8;mmap:BTCUSDT-1m-2024-01.csv:67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58;mmap:ETHUSDT-1m-2024-01.csv:0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa;mmap:SOLUSDT-1m-2024-01.csv:364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7;input-scaler:rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969;raw-loader:pinned-raw-kline-cache88-direct-double-registry;strict-minute-past-role;legacy-f32-equality-v1;raw-loader-source:4165ee929445d0bce9cac2191b63bdde72555315fbb6d0e6bd1b022c87f3b4a6;genuine-raw-F64-symmetric-relative-F32-increments-F64-moments;population-mean-std-f64-floor1e-6-countge2",
+    "bank_normalizer_input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+    "initial_weights_match_saved_v24_init": true,
+    "initial_all36_equality_to_v24_not_expected": true,
+    "projection_weight_updates": 2048,
+    "decoder_weight_updates": 2048,
+    "training_seconds_including_checkpoints": 131.75605979,
+    "nonzero_decoder_gradient_updates": 2048,
+    "nonzero_change_gradient_updates": 2047,
+    "cuda_learning_verified": true,
+    "CPU_encoder_calls": 0,
+    "initial_prefix_matches_saved_trained_v22": true,
+    "initial_all36_equal_to_v28": true,
+    "new_bank_normalizer_fits": 0,
+    "new_initial_head_fits": 0,
+    "new_final_ridge_pipelines": 1,
+    "new_final_ridge_task_fits": 4,
+    "new_final_neural_fits": 3,
+    "variance_parameters": 135,
+    "variance_matrix_parameters": 108,
+    "variance_bias_parameters": 27,
+    "nonzero_variance_matrix_gradient_updates": 2048,
+    "nonzero_variance_bias_gradient_updates": 2048,
+    "variance_matrix_weight_updates": 2048,
+    "variance_bias_weight_updates": 2048,
+    "first_projection_gradient_zero": true,
+    "first_variance_matrix_and_bias_learn": true,
+    "initial_unit_variance": true,
+    "wave_eligible_exposures": 16384,
+    "loss_recipe": "hierarchical_diagonal_Gaussian_NLL_without_constant_v1",
+    "likelihood_recipe": "target-mean-variance-cast-cuda-f64-before-arithmetic;half-squared-error-over-variance-plus-log-variance;omit-log2pi;sanitize-nontarget-first;cell-channel-example-mean;negative-nll-valid-v1",
+    "variance_recipe": "cuda-f32-linear-change-CF-variance-plus-learned-bias;anchored-softplus-beta1-threshold20;eps-plus-coefficient-times-u-div-u0;broadcast-H-before-semantic-gather-v1",
+    "loss_dtype": "float64",
+    "distribution_dtype": "float32",
+    "variance_epsilon": 1e-06,
+    "variance_c": 0.5413232726357509,
+    "softplus_beta": 1,
+    "softplus_threshold": 20,
+    "variance_link_operation_order": "divide,multiply,add",
+    "target_sanitization": "outside-mask0 before float64 arithmetic",
+    "training_loss_witnesses": 2,
+    "final_prefix_matches_saved_trained_v22": true,
+    "protected_level_exact": true,
+    "protected_optimizer_states": 0,
+    "parent_updates": 2048,
+    "parent_inference_sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c",
+    "probe_train_rows": 112,
+    "probe_validation_rows": 32,
+    "host_peak_rss_kib": 1113012,
+    "cuda_peak_allocated_bytes": 41903616,
+    "cuda_peak_reserved_bytes": 56623104,
+    "trained_query": {
+      "train": {
+        "mae_train_scaled": 0.28209757645215305,
+        "eligible_rows": 112,
+        "total_rows": 112,
+        "target_cells": 24192,
+        "gaussian_nll64": -0.377379472447889,
+        "variance_min": 0.0017787162214517593,
+        "variance_max": 24.867910385131836,
+        "variance_mean": 1.08737457336778,
+        "variance_statistics_population": "all_query_cells",
+        "target_history": 128,
+        "feature_seconds_including_io": 0.574357078,
+        "query_seconds_including_io": 0.56955723,
+        "CUDA_encoder_calls": 28,
+        "CPU_encoder_calls": 0,
+        "row_nll64": [
+          -0.5275804531004794,
+          -1.102690992136547,
+          -0.8267934810458936,
+          -0.6096234034110825,
+          0.01802276807280027,
+          0.43434996707207185,
+          -0.9616151208426919,
+          0.23074178254688574,
+          -0.5540871780341349,
+          -0.5597472173269626,
+          -0.24941457202830905,
+          -0.9859686609812762,
+          -0.8199978369528228,
+          0.5311771250577806,
+          0.7297715095889683,
+          0.2784697911134577,
+          -0.6236591746039063,
+          -0.14633377286819313,
+          0.011620897681964634,
+          0.21793003383744192,
+          0.2151915776114637,
+          1.251608526228673,
+          -0.7379648790600853,
+          0.6953867188483707,
+          0.6838467053075661,
+          -0.586262747289735,
+          -0.46999882843853547,
+          -1.060653989920665,
+          0.48353244493135517,
+          -0.9268085921138218,
+          -1.0918733704381878,
+          -0.7555903266509505,
+          -0.16060302461324874,
+          -0.9618138626712428,
+          -1.0420526419067133,
+          -0.8131136119845469,
+          -0.8438264608099294,
+          0.193984024462182,
+          0.438208984369503,
+          -0.6135334646638507,
+          -0.15993610676530032,
+          0.7445115666414366,
+          -0.733453289403761,
+          -0.34915130238762476,
+          -0.9098431978755368,
+          -0.2894924201230881,
+          0.2055929032331304,
+          1.3231689067666206,
+          0.49682573904685934,
+          -0.5092811912699919,
+          -0.023613516317528237,
+          0.8784332153935303,
+          0.5201070178870544,
+          1.0859167968603627,
+          -0.2271935116826885,
+          -0.3527806806945843,
+          1.2658673983202107,
+          -0.31604397193630535,
+          -0.33001816698093606,
+          -0.282223925666041,
+          -0.28210504755895677,
+          0.666773774977005,
+          1.190304180501668,
+          0.5456883137034807,
+          0.13197184793343505,
+          -0.7667620390694997,
+          -0.4740362349605376,
+          -0.7077538009491843,
+          -0.6028941857983373,
+          -0.8878881280099314,
+          -0.7501665112149064,
+          -1.0651783396584085,
+          -1.1386032759434428,
+          -0.4455124223176618,
+          0.4722776943104767,
+          -0.8343255649399381,
+          -1.18538262200281,
+          -0.560330569063045,
+          -0.9425119822829107,
+          -0.7872134946727933,
+          -0.7022760111029885,
+          -0.7217631954866602,
+          -1.1211054850356055,
+          0.5145017405788389,
+          -0.9751139870334793,
+          -1.1445334562166394,
+          -1.1086836329445904,
+          -0.2420293775945349,
+          -0.7000672507291955,
+          0.08708003832553181,
+          -0.7031352653230388,
+          -0.7794326647042351,
+          -1.0957111459148468,
+          -0.6526947451668876,
+          0.7974628662648806,
+          -0.3681664595492487,
+          -1.0989918481187053,
+          -0.572943586125921,
+          -1.074682570552026,
+          0.3465740934562263,
+          0.7925138187776258,
+          -1.0406176069298303,
+          -1.2075713339039438,
+          -1.2237594534575578,
+          -1.316424842445176,
+          -1.0097559549325117,
+          -1.0809557207534422,
+          -1.2288222408320848,
+          -1.5526435104870826,
+          -1.3711342191667393,
+          -1.3687184554208276,
+          -1.3388785005050614
+        ],
+        "row_variance_mean": [
+          0.3196735762887531,
+          0.13851103779894333,
+          0.1300409343783502,
+          0.3235947462143721,
+          0.2975388166529161,
+          1.482353572492246,
+          0.18104714024122112,
+          0.4593209828491564,
+          0.28842347777552074,
+          0.3472559703169045,
+          0.5284890090977704,
+          0.14001840753135858,
+          0.17628802779923985,
+          1.3761303888426886,
+          3.442000283135308,
+          1.5426601392251473,
+          0.30231334103478325,
+          0.4731049460393411,
+          0.8558428464112458,
+          1.14476650291019,
+          1.455046053285952,
+          11.98519907174287,
+          0.24182868183211043,
+          0.43880798971211465,
+          3.646141626216747,
+          0.372690236126935,
+          0.40461104170039847,
+          0.11050595056817487,
+          0.47689905983430364,
+          0.12476220206116084,
+          0.1414721991383919,
+          0.2174346336611995,
+          0.3317761252875681,
+          0.17532486351275883,
+          0.13076026510033342,
+          0.2418031209596881,
+          0.2431585118174553,
+          1.3734126444216126,
+          2.336259462215282,
+          0.27721525563134086,
+          0.5249986328460552,
+          3.227388894116437,
+          0.16330340704708188,
+          0.4895424737974449,
+          0.1306281054340717,
+          0.34414154373937184,
+          0.9829999296753494,
+          14.71810683497676,
+          1.6019164588716295,
+          0.3309355444378323,
+          0.7785738905270894,
+          5.440202920525162,
+          2.5293826615368875,
+          8.05287707293475,
+          0.5149472035743572,
+          0.2625322510246877,
+          8.407266466705886,
+          0.45451092085352646,
+          0.40876731828407004,
+          0.4668020274904039,
+          0.45387713997452345,
+          1.491608385686521,
+          9.716619164855391,
+          2.932346074669449,
+          1.1682977234875713,
+          0.2519418237109979,
+          0.3423796456169199,
+          0.23316175338846665,
+          0.3056122478511598,
+          0.19881919357511732,
+          0.21036459864289672,
+          0.13711046820713413,
+          0.1287756181080584,
+          0.2623717123987498,
+          1.5422772257416335,
+          0.193792556171064,
+          0.12875061568424656,
+          0.16027756400958254,
+          0.1913322457284839,
+          0.20374012379734605,
+          0.20277937460276815,
+          0.10642469622608687,
+          0.10869425345488168,
+          2.464009413012752,
+          0.17878288927453534,
+          0.12183563114592322,
+          0.1410006729678975,
+          0.2061781855645003,
+          0.2706598206250756,
+          0.661975387069914,
+          0.3121017057586599,
+          0.21823047046308164,
+          0.1286344149460395,
+          0.2559425189263291,
+          3.1123019324408636,
+          0.46190843758759675,
+          0.13480965906961095,
+          0.1405817616937889,
+          0.16393813766815044,
+          1.8091921497274328,
+          0.8292872188267884,
+          0.14366774129922744,
+          0.08867910014534437,
+          0.09530444139683687,
+          0.09296806844779186,
+          0.07678142766019812,
+          0.12760336310775192,
+          0.10234988780899179,
+          0.05384826218640362,
+          0.0730799114573057,
+          0.0666355850752788,
+          0.07800211598751722
+        ],
+        "row_mae": [
+          0.15723596513271332,
+          0.09722673892974854,
+          0.2095322161912918,
+          0.16696862876415253,
+          0.39839544892311096,
+          0.7382352948188782,
+          0.2441614717245102,
+          0.6006032824516296,
+          0.32837679982185364,
+          0.2069283127784729,
+          0.26565441489219666,
+          0.22342060506343842,
+          0.2606019079685211,
+          0.7117905616760254,
+          0.6839407086372375,
+          0.34283336997032166,
+          0.1807241588830948,
+          0.38554179668426514,
+          0.22144179046154022,
+          0.37902379035949707,
+          0.24380527436733246,
+          0.7605438828468323,
+          0.1719316691160202,
+          0.3798375427722931,
+          0.3932380974292755,
+          0.1928231567144394,
+          0.13920734822750092,
+          0.1450377255678177,
+          0.4730401039123535,
+          0.13496042788028717,
+          0.14589717984199524,
+          0.11229473352432251,
+          0.3219880759716034,
+          0.13869507610797882,
+          0.15335015952587128,
+          0.13324053585529327,
+          0.09619978070259094,
+          0.1935369223356247,
+          0.23646700382232666,
+          0.20737417042255402,
+          0.3065090775489807,
+          0.7151989936828613,
+          0.22814255952835083,
+          0.24622972309589386,
+          0.16436274349689484,
+          0.31099048256874084,
+          0.3939290940761566,
+          0.5987160205841064,
+          0.4703636169433594,
+          0.22226230800151825,
+          0.3293702304363251,
+          0.515383780002594,
+          0.46389737725257874,
+          0.884263277053833,
+          0.30211567878723145,
+          0.3498646020889282,
+          0.8959439396858215,
+          0.3626302480697632,
+          0.3505830466747284,
+          0.2647324502468109,
+          0.29828009009361267,
+          0.5699126720428467,
+          0.8341014385223389,
+          0.32577797770500183,
+          0.2783510386943817,
+          0.21970896422863007,
+          0.2100803107023239,
+          0.17354147136211395,
+          0.2097793072462082,
+          0.14036373794078827,
+          0.1752576231956482,
+          0.15099936723709106,
+          0.1531379073858261,
+          0.28767284750938416,
+          0.3726160526275635,
+          0.14662136137485504,
+          0.11847636848688126,
+          0.19740939140319824,
+          0.18149392306804657,
+          0.18935047090053558,
+          0.2665945291519165,
+          0.1780196577310562,
+          0.13626021146774292,
+          0.43705710768699646,
+          0.16215337812900543,
+          0.13373933732509613,
+          0.13421882688999176,
+          0.28979989886283875,
+          0.16906201839447021,
+          0.36964571475982666,
+          0.13373129069805145,
+          0.1935499757528305,
+          0.14713163673877716,
+          0.193658247590065,
+          0.5156082510948181,
+          0.21424122154712677,
+          0.14554418623447418,
+          0.21965865790843964,
+          0.10257277637720108,
+          0.28496766090393066,
+          0.6635616421699524,
+          0.1382625699043274,
+          0.11821066588163376,
+          0.13310721516609192,
+          0.12035920470952988,
+          0.16569669544696808,
+          0.1455351561307907,
+          0.10620703548192978,
+          0.08299445360898972,
+          0.10374409705400467,
+          0.10287878662347794,
+          0.10262873023748398
+        ],
+        "row_target_cells": [
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216
+        ],
+        "row_eligible_channels": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      "validation": {
+        "mae_train_scaled": 0.3901873007416725,
+        "eligible_rows": 32,
+        "total_rows": 32,
+        "target_cells": 6912,
+        "gaussian_nll64": 0.8069935194957315,
+        "variance_min": 0.0032134358771145344,
+        "variance_max": 8.104427337646484,
+        "variance_mean": 0.5942898345566829,
+        "variance_statistics_population": "all_query_cells",
+        "target_history": 128,
+        "feature_seconds_including_io": 0.20776388299999998,
+        "query_seconds_including_io": 0.229439982,
+        "CUDA_encoder_calls": 8,
+        "CPU_encoder_calls": 0,
+        "row_nll64": [
+          -0.5077161961883684,
+          -0.5753828581663117,
+          -0.34034056311144356,
+          0.31657598405678006,
+          0.5815708530478843,
+          2.5443020054522574,
+          0.9200535233384107,
+          0.5233674406268968,
+          0.7164367760944247,
+          2.4834440850096233,
+          1.3502345048552824,
+          0.2629048993083423,
+          0.3193602783490297,
+          0.1377739506958878,
+          2.5400415553701827,
+          12.104444650619902,
+          0.24652618186406083,
+          0.2634197942152015,
+          0.9867258951572725,
+          5.060114634222107,
+          0.9408283767042347,
+          -0.49238934370406406,
+          -0.5506324377903922,
+          -1.0085828244628796,
+          -0.7201351381623505,
+          -0.8807775601748852,
+          -0.9347674822190278,
+          0.12073595320774588,
+          -0.3357633449448419,
+          1.36838699531157,
+          -0.7637104665743996,
+          -0.8532574981447286
+        ],
+        "row_variance_mean": [
+          0.2985316349400414,
+          0.26729013301708077,
+          0.3992027965960679,
+          1.6058529527099044,
+          2.873358576386063,
+          0.11785823341321061,
+          4.816173195838928,
+          1.4749009609222412,
+          1.8759815560446844,
+          0.2456528533388067,
+          0.2628020005369628,
+          0.4290601782224796,
+          0.8321742117404938,
+          0.4322770723590144,
+          0.1011129986770727,
+          0.06697961117175442,
+          0.23580936425262025,
+          0.45682254654389837,
+          0.18066180221460482,
+          0.07889848952699038,
+          0.2021386536459128,
+          0.24551792760138158,
+          0.19310278362698025,
+          0.06586493591398553,
+          0.12586408239547853,
+          0.102318346845331,
+          0.07327075116336346,
+          0.09513106528255674,
+          0.39584796241036163,
+          0.09926313644757977,
+          0.15387770264512962,
+          0.21367618938287097
+        ],
+        "row_mae": [
+          0.16617190837860107,
+          0.154622882604599,
+          0.2646191418170929,
+          0.36882779002189636,
+          0.5317596197128296,
+          0.4855954647064209,
+          0.9344136714935303,
+          0.742729663848877,
+          0.7404703497886658,
+          0.7947586178779602,
+          0.5706623196601868,
+          0.4450513422489166,
+          0.5586556792259216,
+          0.4046100676059723,
+          0.3237256109714508,
+          0.4621588885784149,
+          0.4222829341888428,
+          0.5632363557815552,
+          0.38284993171691895,
+          0.4097219705581665,
+          0.39414992928504944,
+          0.24874329566955566,
+          0.2877486050128937,
+          0.14665110409259796,
+          0.23953081667423248,
+          0.1919413059949875,
+          0.15120573341846466,
+          0.17896847426891327,
+          0.26410821080207825,
+          0.30525684356689453,
+          0.19088025391101837,
+          0.15988488495349884
+        ],
+        "row_target_cells": [
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216
+        ],
+        "row_eligible_channels": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      }
+    },
+    "scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+    "shared_ledger_sha256": "dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10",
+    "card_sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+    "config_sha256": "a47e101a7f62c00a9a0dfc293aa32eac2a886fc40194c28b6f96e7eab1389658",
+    "settings_sha256": "43320396447ca80be5fde4324d17c3a9ab129e116bf184455fcb6261aeb6923c",
+    "input_manifest_sha256": "828154b335670d4d97aeaac2f4a3839099abcdd31ef8bec1f031f54ff8ed3cd8",
+    "source_closure_sha256": "16291b8655b9de327a3d62b3a805c30181290d876e7455884003a27a6bc13019",
+    "binary_sha256": "b8d90a103f6f847b2fd59c844e9e5c9046572de027768021a56386feab7038e5"
+  },
+  "distribution_diagnostics": {
+    "objective": "hierarchical proper diagonal Gaussian NLL64; constant omitted; negative values retained",
+    "first": 0.3399173832780379,
+    "last": -0.27151144758246093,
+    "first64_mean": 0.21427880773368144,
+    "last64_mean": -0.26330228646329235,
+    "negative_minibatches": 1449,
+    "first_variance": {
+      "min": 1.0,
+      "mean": 1.0,
+      "max": 1.0
+    },
+    "final_variance": {
+      "min": 0.002306993817910552,
+      "mean": 0.7960859330756918,
+      "max": 6.173368453979492
+    },
+    "first_linear_score_abs_mean": 0.0,
+    "final_linear_score_abs_mean": 1.6719104253893924,
+    "first_variance_bias_abs_mean": 0.0,
+    "final_variance_bias_abs_mean": 0.9545956364384404
+  },
+  "new_calibration": {
+    "fits": 0,
+    "encoder_calls": 0,
+    "seconds": 0,
+    "reused_original_seconds": 2.929513154,
+    "normalizer_sha256": "c3e4f9e850ebbb355ae58e8b434173e4db0d1ff98055c844af4fe16ba7879fbc",
+    "normalizer_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-a79ac4a6bfe8d476",
+    "source_instance": "RPB-v28.market-01"
+  },
+  "costs": {
+    "new_branch_GPU_seconds_including_checkpoint_witness_loader_IO": 131.75605979,
+    "initial_feature_seconds": 1.1259591679999998,
+    "final_feature_seconds": 0.782120961,
+    "final_head_fit_score_IO_seconds": 2.177286234,
+    "pure_head_fit_seconds": null,
+    "scalar_audit_seconds": 1.1815329909986758,
+    "wrapper_seconds": 286.8784265200011,
+    "fair_speed_benchmark": false
+  },
+  "checkpoint_assets": [
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-0.pt",
+      "sha256": "52b6c9881f13e852a86e3e7b22558f27d68616e06c6d638ebbd97344e20ac3c5",
+      "bytes": 1284638,
+      "available": true,
+      "git_ignored": true,
+      "git_tracked": false
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+      "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb",
+      "bytes": 1285583,
+      "available": true,
+      "git_ignored": true,
+      "git_tracked": false
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-1024.pt",
+      "sha256": "8728c3908b95c9685bc28ade55b47e2eecc22be6cfbfb15d4b57f9ce9dfba691",
+      "bytes": 1430905,
+      "available": true,
+      "git_ignored": true,
+      "git_tracked": false
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-2048.pt",
+      "sha256": "57c01efe74e2fadf3941ca6c713ddcb8976074c156904372fa2af87e0e777907",
+      "bytes": 1430905,
+      "available": true,
+      "git_ignored": true,
+      "git_tracked": false
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-512.pt",
+      "sha256": "bc383e51f7e8dc411acb568b0428d1a7cb8fc10267d3d5cc750e5635603a90d3",
+      "bytes": 1430551,
+      "available": true,
+      "git_ignored": true,
+      "git_tracked": false
+    }
+  ],
+  "all_candidate_checkpoint_count": 55,
+  "portable_sync": {
+    "pairs": 99,
+    "preserved": 91,
+    "new": 8,
+    "all_pairs_byte_identical": true,
+    "embedding_execution": false,
+    "receipt": {
+      "path": "doc/results/market_location_scale_decoder_v1/portable-sync-final.json",
+      "sha256": "139be9414c0d1c2a1dd70493b26d4e7b135c4706da609df4fb097a0bd70e040f",
+      "bytes": 63663
+    }
+  },
+  "engineering": {
+    "build_attempts": 2,
+    "failed_build_attempts": 0,
+    "GPU_fixture_invocations": 1,
+    "failed_GPU_fixture_invocations": 0,
+    "compile_attempts": [
+      {
+        "attempt": 1,
+        "status": "passed",
+        "warnings": 1,
+        "gpu_invocations": 0,
+        "warning": "Fixture semantic-search for loop and following check shared one line; behavior reviewed correct; root requested braces/newline before first GPU",
+        "source_capture": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-01-sources.json",
+          "sha256": "e746c203f3362e70f4a0d256f5bb39b7d5678f148476a637b5e994656d43e6f2",
+          "bytes": 12805
+        },
+        "source_root": "doc/results/market_location_scale_decoder_v1/engineering-01-sources",
+        "build_log": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-build-01.log",
+          "sha256": "604841c0dfb5345a595510a3e477d99444c7a80cff2543d898fde14f57da8ea6",
+          "bytes": 2104
+        },
+        "preinvoke": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-preinvoke-01.json",
+          "sha256": "c50bf717ff532de2004777dddb0fe09f5f109584b82f750a831633990c988a2e",
+          "bytes": 13750
+        },
+        "binary": {
+          "path": "output/engineering/location-scale-decoder-fixture/attempt-01/fixture-binary",
+          "sha256": "ac801c15bc5d573f6a00f15a43176be4f133f21e55e75727d93d0a1882157d21",
+          "bytes": 965152
+        }
+      },
+      {
+        "attempt": 2,
+        "status": "passed",
+        "warnings": 0,
+        "gpu_invocations": 1,
+        "fixture_only_formatting_change": true,
+        "headers_core_protocol_tolerances_unchanged": true,
+        "source_capture": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-02-sources.json",
+          "sha256": "d9c0ab55b1bec0d83eb35393586857f76d83c0c1c4114a12aa44aa37286d75ec",
+          "bytes": 13392
+        },
+        "build_log": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-build-02.log",
+          "sha256": "e4150e0d276528d1d2a13694dc54fc2cff56fad30b426c218f37a2ba54a1f1b0",
+          "bytes": 1189
+        },
+        "preinvoke": {
+          "path": "doc/results/market_location_scale_decoder_v1/engineering-preinvoke-02.json",
+          "sha256": "42912f5cab3e93efc390ab7e15b957ed604e9d7b3361bfb86f840095dd4253a1",
+          "bytes": 13639
+        },
+        "binary": {
+          "path": "output/engineering/location-scale-decoder-fixture/attempt-02/fixture-binary",
+          "sha256": "ac801c15bc5d573f6a00f15a43176be4f133f21e55e75727d93d0a1882157d21",
+          "bytes": 965152
+        }
+      }
+    ],
+    "admission_receipt": {
+      "path": "doc/results/market_location_scale_decoder_v1/engineering-admission.json",
+      "sha256": "474cb34bb96f221e195c1435e60fc162ff684522fc0e3ba0db5dca55e17950b0",
+      "bytes": 11263
+    }
+  },
+  "verification": {
+    "arithmetic_checks": 941513,
+    "report_assets": 198,
+    "durable_members": 570,
+    "preexisting_integration_files_unchanged": 3219,
+    "prior_checkpoint_pins": 50,
+    "all_prior_candidate_entries_unchanged": 10,
+    "tensor_deserialization_for_documentation": 0,
+    "new_encoder_calls_for_documentation": 0,
+    "new_head_fits_for_documentation": 0
+  },
+  "evidence": [
+    {
+      "path": "doc/MARKET_LOCATION_SCALE_DECODER_CARD.md",
+      "sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+      "bytes": 15300
+    },
+    {
+      "path": "doc/MARKET_LOCATION_SCALE_DECODER_RESULTS.md",
+      "sha256": "f5519bc661fb5072a74f36ebe4258c25862ebfb5c13117056ab000533a296ff8",
+      "bytes": 29946
+    },
+    {
+      "path": "doc/MARKET_LOCATION_SCALE_SYNTHETIC_TRANSFER_CARD.md",
+      "sha256": "c3cfe0a04b174734599b2b01363c90c3f9b81fd5964fb30ffd4ce8a21976260e",
+      "bytes": 11224
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/completion.json",
+      "sha256": "0b91cded8a9f6cd9829886724e240eb2ce770a6fd60c31ec04d5db8ae59d7602",
+      "bytes": 44314
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/table_rows.json",
+      "sha256": "b73008d6eb2796570de60914365582a916237348958a54156f9745b2666cb46b",
+      "bytes": 344722
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/asset_hashes.json",
+      "sha256": "a0f376ed56dcbaef9376e738015431c49ce1fa67e617c3fd1b2c3c5fe78f900a",
+      "bytes": 44362
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/durable_files.json",
+      "sha256": "eceb476390b599da019b85ebc65b9d99c4a8ef1aebb621cdf8ff76510aca08a0",
+      "bytes": 128505
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/candidate-record.json",
+      "sha256": "19a868878301c838eafbcc0577b36e919e01a2dd15eadf60d63f915109875667",
+      "bytes": 34337
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/report-verification.json",
+      "sha256": "a7510eb0fb8bd8f117347159a67aa64288efe8e29e3fd24e37b7ae78d2f4d517",
+      "bytes": 1162
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/portable-sync-final.json",
+      "sha256": "139be9414c0d1c2a1dd70493b26d4e7b135c4706da609df4fb097a0bd70e040f",
+      "bytes": 63663
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/engineering-admission.json",
+      "sha256": "474cb34bb96f221e195c1435e60fc162ff684522fc0e3ba0db5dca55e17950b0",
+      "bytes": 11263
+    },
+    {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/summary.json",
+      "sha256": "8f2d2da319d1f74615772c16c4533e8dc7bb57dc04d624dbd93df5462acf2a73",
+      "bytes": 16249
+    },
+    {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/independent-audit.json",
+      "sha256": "bfc64c36a98eaa823b6129d31044be225fb28d2e989db884c27a0ba9ac5a97da",
+      "bytes": 9859
+    },
+    {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/verification.json",
+      "sha256": "b4809cf67ea620c6748f5ebde1245bce9d8b48b0bf1a05ea8b90f359888dc538",
+      "bytes": 1198
+    },
+    {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+      "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+      "bytes": 1115
+    },
+    {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/calibration-reuse.json",
+      "sha256": "965a57549cd53cc2b82f1ac72bdfead439da8ac63c871ea67038b3d220b5baf0",
+      "bytes": 58643
+    },
+    {
+      "path": "doc/results/market_location_scale_decoder_v1/search-ledger-update.json",
+      "sha256": "d9126a104256eb8e544cb4353d544340a954a0b1769d4833281a60b69351d070",
+      "bytes": 1914
+    }
+  ],
+  "local_asset_hashes": [
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/audit.log",
+      "sha256": "c8fa772b9d856f0605958e32312b8125ac8a7683b2114cbeeee6e7e5d5af78c7",
+      "bytes": 697
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/bank-standardizer.json",
+      "sha256": "782128503036956beb1ec87e39ceb3c502395f00f1d0e8a6138e9d8e52d933ee",
+      "bytes": 25895
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/bank-standardizer.pt",
+      "sha256": "c3e4f9e850ebbb355ae58e8b434173e4db0d1ff98055c844af4fe16ba7879fbc",
+      "bytes": 20660
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/build.log",
+      "sha256": "e6b5cfbe66b58dabba038abc44ea65ad0f3645c233ac8e7a8d8664aeaae34c77",
+      "bytes": 68
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/calibration-reuse.json",
+      "sha256": "965a57549cd53cc2b82f1ac72bdfead439da8ac63c871ea67038b3d220b5baf0",
+      "bytes": 58643
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-0.pt",
+      "sha256": "52b6c9881f13e852a86e3e7b22558f27d68616e06c6d638ebbd97344e20ac3c5",
+      "bytes": 1284638
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+      "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb",
+      "bytes": 1285583
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-1024.pt",
+      "sha256": "8728c3908b95c9685bc28ade55b47e2eecc22be6cfbfb15d4b57f9ce9dfba691",
+      "bytes": 1430905
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-2048.pt",
+      "sha256": "57c01efe74e2fadf3941ca6c713ddcb8976074c156904372fa2af87e0e777907",
+      "bytes": 1430905
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-512.pt",
+      "sha256": "bc383e51f7e8dc411acb568b0428d1a7cb8fc10267d3d5cc750e5635603a90d3",
+      "bytes": 1430551
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/encoder.conf",
+      "sha256": "43320396447ca80be5fde4324d17c3a9ab129e116bf184455fcb6261aeb6923c",
+      "bytes": 633
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train-conditioning-witness.json",
+      "sha256": "07ca0dc95734d3a994ec5ac4ef1b00e1d6b8d6183be8291f2e86b07e8756e5ca",
+      "bytes": 1403952
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train-decoder-witness.json",
+      "sha256": "655d8a44c37679c1a45e567410e1f85c1e70e7c2e3966d4420213ed13a6d8408",
+      "bytes": 1283987
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-train.pt",
+      "sha256": "3e71a8d2af549f5bd8dbf167c6bb7d9464a42ab8c85ace316fa079038a3c15a2",
+      "bytes": 19993
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation-conditioning-witness.json",
+      "sha256": "32ee530bd0ead60527b4926f53bb27d6b35eaa1ce69f9ecde8cdd6733ee9be3d",
+      "bytes": 418501
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation-decoder-witness.json",
+      "sha256": "93d3d6e2fefd06964cebdacba1bf778d3baea76b9d3181dea72ddc358e9abc7c",
+      "bytes": 1290766
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/initialized_v30-validation.pt",
+      "sha256": "ef70e84b385dd82be6fe05dd5f4237f1cb41e48afac7f877cc4b3f396884db0b",
+      "bytes": 7755
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-train-conditioning-witness.json",
+      "sha256": "b9f9f18c7091c0ee7dfa8cc479cf430f61601b3bac32278e764383f2d88c0831",
+      "bytes": 1403564
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-train-decoder-witness.json",
+      "sha256": "63340c55514cc13823c30a9f055f53159f8bac7ad3844efc07eaa6fa7b8975b4",
+      "bytes": 2611741
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-train.pt",
+      "sha256": "242d47240b817fd6c7c6badfcb02cb10c2b2c79cef5cc1db58ec370c34df104a",
+      "bytes": 19761
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-validation-conditioning-witness.json",
+      "sha256": "7a14eb15f599a1ac6d89b0a238ac280d4c63330360914b74dca6a6a051108d19",
+      "bytes": 418401
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-validation-decoder-witness.json",
+      "sha256": "05ddd335c507ecbda68ff43131ba62ac29cd01c9d884f6d0fde59da34b9a0e0b",
+      "bytes": 2597301
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/features/trained_v30-validation.pt",
+      "sha256": "2c332233e0d7aa54aba292f7a01646487350dc46d2d6f25c3cb267a72e3bab14",
+      "bytes": 7715
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/final-prefix-parity.json",
+      "sha256": "a1a300967829afae268205be511ae86bc1c1df54edd8db571ebd31c6e490db14",
+      "bytes": 104
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/identities.json",
+      "sha256": "f5118722af4bdb814490cd296decff2cf5e89a3698b7680ce519518b35b25d64",
+      "bytes": 2989
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/independent-audit.json",
+      "sha256": "bfc64c36a98eaa823b6129d31044be225fb28d2e989db884c27a0ba9ac5a97da",
+      "bytes": 9859
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-parameter-parity.json",
+      "sha256": "aad57e4de50042fb7efc1249b5a5c59ae9f6e118c08b3a2a3818875e8f020e1c",
+      "bytes": 194
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-query.json",
+      "sha256": "e1bd1a03717411b8b059c4420ede8d6d3a22112f0b268cb8ed988abaa88c2416",
+      "bytes": 7993
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initial-scoring-reuse.json",
+      "sha256": "9d21083f660dd16492b3342d0fba97ee99570718b6163556865a53ddc4ea27cb",
+      "bytes": 1115
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/initialization-parity.json",
+      "sha256": "f37ed6daedeb5fdd3b43126d9f5db81479c895dde708ed8939aa3a18e69cc749",
+      "bytes": 306
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/input-manifest.json",
+      "sha256": "828154b335670d4d97aeaac2f4a3839099abcdd31ef8bec1f031f54ff8ed3cd8",
+      "bytes": 2216
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/loaded-inputs.sha256",
+      "sha256": "0e4bc6058d637701c0bd45e12f215a650129c1e72ec734ef639f87cdd80c685f",
+      "bytes": 732
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/prospective-card.md",
+      "sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+      "bytes": 15300
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/raw-loading-provenance.json",
+      "sha256": "a9cac0cea84aeef104a7a4e29ea1b17786b56d9133ed37eac313fbc669436c99",
+      "bytes": 1444
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readout-timing.json",
+      "sha256": "7e0431f18d32830ce5398a7cf14899eb0b4ab77a011c89333c4b41aa38bb9b7b",
+      "bytes": 196
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readout.log",
+      "sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "bytes": 7697
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2701/fit.pt",
+      "sha256": "cd2aa26e1addfee74c65fa65e5ef66f378143e7655b90dc5a8bf6adb64db6034",
+      "bytes": 12458
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2701/predictions_train.pt",
+      "sha256": "c17235ba442635d4a65fd5886a02b1a35f1947de9f8e779c3511048763966466",
+      "bytes": 17173
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2701/predictions_validation.pt",
+      "sha256": "0e40fc2ada352f8aa8c51c65eb18deb99a17c4bfbc7a2116a1a8fd2990c05071",
+      "bytes": 7771
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2802/fit.pt",
+      "sha256": "22de46a32f537b8297b7ad48b196524d996bd98ca283441fb1d0304f4cb6ce87",
+      "bytes": 12458
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2802/predictions_train.pt",
+      "sha256": "ae8fa6a6faad3eb30976bfe519688d06de44c83f541908b189d0458175464a95",
+      "bytes": 17173
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2802/predictions_validation.pt",
+      "sha256": "b0f6102a7c4bfe164c8b41d9c3d6d47c263667896296bca5fb9902b5723cfab7",
+      "bytes": 7771
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2903/fit.pt",
+      "sha256": "b3ffcc7167f43f608d2ae1b1ae40f2b3f7aa231564e3fd033d8e696fed876400",
+      "bytes": 12458
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2903/predictions_train.pt",
+      "sha256": "e6f718855693b3c74286b68d017b3e8709258a2fdd5c2efbda5510fc598953a7",
+      "bytes": 17173
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/models/trained_v30/rep-2903/predictions_validation.pt",
+      "sha256": "5e187b97b4d16bb1834df2cf7fb207a5be3744978ab72cc01925926a7763918a",
+      "bytes": 7771
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/readouts/report.json",
+      "sha256": "8d362f74d244def4bae48a191b80097bab8de2577ceefa4898840c5fb6f4684c",
+      "bytes": 7697
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/runner.log",
+      "sha256": "9fb960e103c2aaf83fab9ab045f09074057d92c43efe64e9276ff4fbb44e4a18",
+      "bytes": 802
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/source-closure.sha256",
+      "sha256": "16291b8655b9de327a3d62b3a805c30181290d876e7455884003a27a6bc13019",
+      "bytes": 16417
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/study.conf",
+      "sha256": "a47e101a7f62c00a9a0dfc293aa32eac2a886fc40194c28b6f96e7eab1389658",
+      "bytes": 1521
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/summary.json",
+      "sha256": "8f2d2da319d1f74615772c16c4533e8dc7bb57dc04d624dbd93df5462acf2a73",
+      "bytes": 16249
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/training-loss-1-witness.json",
+      "sha256": "603e4bea5d2ad7078246cfb15011190cc8a63cc9f45d3af66630c0e165e37ab2",
+      "bytes": 1771107
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/training-loss-2-witness.json",
+      "sha256": "b90fbe1f9bf01341891602bce38592090dc2126dff39c8d22b50e6b5bf12aae8",
+      "bytes": 2963270
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/training.csv",
+      "sha256": "45e8ecd7e8c04680e538794ce272cf0781d9eeb5b8d722a7b0d1e8c2c51daf9d",
+      "bytes": 625763
+    },
+    {
+      "source": "output/runs/market-location-scale-decoder/run-MAmvTJ/verification.json",
+      "sha256": "b4809cf67ea620c6748f5ebde1245bce9d8b48b0bf1a05ea8b90f359888dc538",
+      "bytes": 1198
+    }
+  ],
+  "source_closure": [
+    {
+      "source": "Makefile",
+      "sha256": "9c4dfdda71171f28820eadde3e556d4153c5ab8e78a26c828ff4cea0069ec2d1",
+      "bytes": 7554
+    },
+    {
+      "source": "code/config/include/cuwacunu/config/document.h",
+      "sha256": "193c74a3e69e9a61aa3bd7dd272972b688bb327772cae8cd7f47ef82e73db3ce",
+      "bytes": 7118
+    },
+    {
+      "source": "code/config/include/piaabo/parse/simple_kv_block.h",
+      "sha256": "4db53391d4429c3b39c511ca6a1eb2ede4c67166f9a11c865fff0cc9468a55d8",
+      "bytes": 8235
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/cache_freshness.h",
+      "sha256": "eb781f644572620399a707a6beb28b16635315398cecb782c5b0eae8397b7333",
+      "bytes": 6078
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/cache_publication.h",
+      "sha256": "0f410e0531065c0d01cc99b5ad73451740bd02902bb0a9c9be6affaf262cff7a",
+      "bytes": 3648
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/dataloader.h",
+      "sha256": "95d19af40500949ff0155fa832e0464d0d575a96cea78114270116ac63bc5e92",
+      "bytes": 6346
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/instrument_signature.h",
+      "sha256": "d89b8c0f3aa4cc014f2d7ea1ecc830e624f241123e6062e50a7689211c1bda43",
+      "bytes": 8662
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/interval.h",
+      "sha256": "f4f709f0cb332aff0b5e330b78cc32f488ec00f7b9826f2931e3e095720899a2",
+      "bytes": 4478
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/kline_feature_registry.h",
+      "sha256": "507968b38f5f3312cfb7286730201e051fc0d9da102138308ce7ddc4eb14a245",
+      "bytes": 5966
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/memory_mapped_datafile.h",
+      "sha256": "da5756201afbc0fb2dbd48b7a7acfb3307a9cef8976fcaa716589fc98ba80efa",
+      "bytes": 42238
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/memory_mapped_dataloader.h",
+      "sha256": "6d78486d7834fae235ce4fc6ff20ae405d6bad37c101833be4eaf90a60c3eb71",
+      "bytes": 10243
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/memory_mapped_dataset.h",
+      "sha256": "f43ab998e27e3bc4ca41fe4644a515e2bcda800fc73b03f8935b42d8b8d888ce",
+      "bytes": 66925
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/memory_mapped_error.h",
+      "sha256": "5df8c594d66067338536cb25e41172dc4cb4d80055a1514bc46c538744e1b3d5",
+      "bytes": 2044
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/record_types.h",
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7",
+      "bytes": 6598
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/sample.h",
+      "sha256": "4a842c468a93a0e4e515a46ad26990a14cba61f217cd05ec5e872ae6eba5edf9",
+      "bytes": 22692
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/source_config.h",
+      "sha256": "ad8f86ee3bb5acce4c4e8d4faaa6333012b37fe618da37ee0749b6011496c2d0",
+      "bytes": 1095
+    },
+    {
+      "source": "code/data/include/cuwacunu/data/support.h",
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682",
+      "bytes": 329
+    },
+    {
+      "source": "code/data/src/record_types.cpp",
+      "sha256": "f3e065cf635f55af71456dbf043f26165cd7b791942cff1d8e3dd977eadc0260",
+      "bytes": 23126
+    },
+    {
+      "source": "code/encoders/rpb_changes/consecutive_change.mk",
+      "sha256": "aeeff8ecf03ab78bd794f2fe32123b3fd26ee85cd98e5c77b9230d438cb9c8f4",
+      "bytes": 615
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/cuwacunu/encoder/change_encoder.h",
+      "sha256": "3cef05bf8245d462b63bafc3ff91fc82d8efe50dc281b62e496472df460a83bb",
+      "bytes": 1381
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h",
+      "sha256": "50fd7c1206082102ba9125e5b527db55e1479896796e8e8a935dc8681e946291",
+      "bytes": 3523
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h",
+      "sha256": "4b41630122506daae2a1b03e06c1582d23fc6d8a3f3b389d5de12754c0bae81f",
+      "bytes": 5128
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h",
+      "sha256": "81112bea262023552b651ed15e09cd1200e4e43b5723f90ddc01501dfcbd3496",
+      "bytes": 1661
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h",
+      "sha256": "733b1b2361eb2b7f5bd96524dd78d67be1a72247d77f83031cc422ea47476b3e",
+      "bytes": 4476
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h",
+      "sha256": "80981b135155cea8be2a1ddd88d05c981c403d463b5ab83332127fdee71e2d12",
+      "bytes": 3960
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h",
+      "sha256": "771f1e31dca730291c281abeee49ead4efafdc1cbeedb6a716806390d982a7e6",
+      "bytes": 2710
+    },
+    {
+      "source": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h",
+      "sha256": "bf17018aa2d8b41eafcb7ec37e8c1d80404eb89af4d7bf3afc05ec16466b56f3",
+      "bytes": 14145
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/cuwacunu/encoder/conditioned_encoder.h",
+      "sha256": "5c7b15d606d4edc54f079991b110c3d64bd74d297212e1660b1d96d6760cd2f1",
+      "bytes": 1765
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h",
+      "sha256": "70d2294c7f262cb6f7942e1392477bc82d6e9a6363ab03dd96cafe68912a8eb8",
+      "bytes": 1595
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h",
+      "sha256": "b405558defbc7093dbd1fa100c2ff7c9d3b5dbb8c82d8fcf44a2db6e1e8ebaaa",
+      "bytes": 7686
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h",
+      "sha256": "730e962e71e41cfa8351f2e90fccd6533facc4bd908a1d7695478543fff0d9b9",
+      "bytes": 1437
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h",
+      "sha256": "36d3beb1117582b77100ddaef5b55b77ff2b3759a63dd193a36e726cb16d7321",
+      "bytes": 5041
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h",
+      "sha256": "4f63792ac8a5e3d6d391712619a54aab88c879cf2f7362f5125e836c1e74abfb",
+      "bytes": 11337
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h",
+      "sha256": "d540001515948c29dc2a952b8356c429911499a99e9f111be03a13f829fdae65",
+      "bytes": 2954
+    },
+    {
+      "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h",
+      "sha256": "007365bddfddde59f043b312664cb297e005ef4ab53c93be948176187c5d8ef0",
+      "bytes": 9557
+    },
+    {
+      "source": "code/encoders/rpb_content/include/cuwacunu/encoder/content_artifact.h",
+      "sha256": "e35a1ec323ae6f01bc408b2f97704dd8302759be1af03f07f8d7c27d8f8ed9e1",
+      "bytes": 2620
+    },
+    {
+      "source": "code/encoders/rpb_content/include/cuwacunu/encoder/primary_encoder.h",
+      "sha256": "4fbeb4aa816d2ce21725cf1c397352c2996e021a15f0e6cd488d5f56a1325efd",
+      "bytes": 385
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "sha256": "a9f0c8ac46332d85f4b1d6e949c9a2e76fc411992fb2ed29d380624023d958b7",
+      "bytes": 5585
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "sha256": "3ab9f57a0928f2d7a93fb22876a37914b56cd148a0361cac8cc6acd5aaa07557",
+      "bytes": 5351
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "sha256": "0b77d51105c7aa9e50aa525573f1dba101330563013f5074a9f891668a56c131",
+      "bytes": 2549
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "sha256": "7358647e99d2ffaa8d5739416f9562c12b400db62e5b1559c7f47bec4b48819f",
+      "bytes": 6123
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "sha256": "b3624509bd2b61e64eb348344d81cf219d30d5141833d75b2bf4f363ae593d1f",
+      "bytes": 2637
+    },
+    {
+      "source": "code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "sha256": "cfef615a21a2c48ccce2628d93ccc3d0a070ee22ab419c9be1d3f985c66167a4",
+      "bytes": 17563
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/cuwacunu/encoder/location_scale_encoder.h",
+      "sha256": "a503b6d26f624d84348776493d90bdb027a1a9b82f2b85aa5bbe5e7592b6bd24",
+      "bytes": 1796
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h",
+      "sha256": "a672c95b41fd05d2494c7ce76e12e864a673e8d8044bef2a79de78241300d150",
+      "bytes": 9487
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h",
+      "sha256": "411bacdd24ce9ecfd1edd6d1edd4bc60f79f45bf2859b6595716d63fb31a4f56",
+      "bytes": 1939
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h",
+      "sha256": "79d4644e19affbb314cc4da36ff5e34b362205407828f4601afcb319609c7fb6",
+      "bytes": 12819
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h",
+      "sha256": "e655f4fba67a84183dda4f3a00f0d403f8a1ac0ccea86b3a61b27eb8cdc4388f",
+      "bytes": 2986
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h",
+      "sha256": "dd944768a443f964d999deab7984022b5d440f8f5b451683e038463b71ca731c",
+      "bytes": 10071
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/location_scale_decoder_test.mk",
+      "sha256": "34cc2b8b4a84532b7605bb38eb4e6851f412e0017a799935dfc8159c97ffe8f3",
+      "bytes": 775
+    },
+    {
+      "source": "code/encoders/rpb_location_scale/tests/location_scale_decoder_test.cpp",
+      "sha256": "076b2bbe71398494d4d4ff7dde7eb95f5825ebe4626e5d78e4681d6aae463778",
+      "bytes": 47488
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/cuwacunu/encoder/relative_encoder.h",
+      "sha256": "91ab3d76b3e542a1f1635c6b8670bfe8fa91cff46c18833e315fda89c0bca681",
+      "bytes": 1737
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h",
+      "sha256": "3de78acc771d8c7863a71e78c52e49514ad111810f0cc5ceceb85fe51fddd7ff",
+      "bytes": 4715
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h",
+      "sha256": "baa7f79e4ea055da42e66d9af109efd8982fd40d2c9341294e22c63fe792f3a9",
+      "bytes": 8012
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h",
+      "sha256": "5359a1a71dc268f103de8355e84f26d667d111c2f8ce0d603c9b1c7223690a64",
+      "bytes": 1884
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h",
+      "sha256": "43cfd8a989166fef28c6a65114e152f0055e87619d93ea73ae0ac79c09d8b83f",
+      "bytes": 5147
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h",
+      "sha256": "0321de518588ba5dc5bacfdea0766e34d9638436110a44bd2e523cfc5f9fd5e9",
+      "bytes": 2991
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h",
+      "sha256": "332028bc45518961c41adab66cefb9db7bdb45970c06be085b80787c66bb9d24",
+      "bytes": 2927
+    },
+    {
+      "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h",
+      "sha256": "767cb961fbb79d49104ca0d28dd167675103fee03eb593bfe7c532930a1630ef",
+      "bytes": 9506
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/cuwacunu/encoder/separate_encoder.h",
+      "sha256": "cfa0ba64fc51611ed27c41097d7dec009f51c85784b0e4520e6cccc8d6aea122",
+      "bytes": 1591
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h",
+      "sha256": "645d5cb61daf49f6c9950f25d3ca7b6763e13d51312b2e0589637a85af16289b",
+      "bytes": 5323
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h",
+      "sha256": "8e75a5df1858a35316b9702b21367faed48f16654b8c7f5c6158d7a01b14f2e2",
+      "bytes": 1586
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h",
+      "sha256": "8648dfdd73e4f23968bf59c6539533a416577d537ff0249ea65eb28bfa3f2f15",
+      "bytes": 4478
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+      "sha256": "9249562c9f45686bf3f04f90a1cab318b229862dbc2b9f9f7f3c5718303eed18",
+      "bytes": 5737
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h",
+      "sha256": "47c92bcd7d9cabcfb54f2cfd920189b3a3af6c0c354b2f5b16d939bb1b4f9148",
+      "bytes": 3196
+    },
+    {
+      "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h",
+      "sha256": "6619704df33020e0d50c9254146468ae1b305f3db5561d0951b194c292378111",
+      "bytes": 7286
+    },
+    {
+      "source": "code/encoders/rpb_separate/tests/separated_change_test.cpp",
+      "sha256": "f50ff96939ce040226c7c20da5015c9e99e250abc4997eb3e0b5f9b3afc3b992",
+      "bytes": 10984
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_artifact.h",
+      "sha256": "e5dbcacb79ed16d9d1a3521c0a06530335b5c24b4469176b95517bacc3d3bae5",
+      "bytes": 1136
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_encoder.h",
+      "sha256": "9d137f4759d7886f0672753a91ba13078170d90edd9991285f1139ee72deddde",
+      "bytes": 2873
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "sha256": "fe699579d57311bbf71c8ac1ee260c28a57aeba161f3fb01b54f3e977981cd7e",
+      "bytes": 7183
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "sha256": "5a89c147769f9df252e423c1a7ac32c64038a27d616e3a955967acbf8f6e9a0c",
+      "bytes": 2959
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "sha256": "3e3b543e25dd18ab9392f93367ea3172b09513d4194fbb1e823ff2f4aae02f1b",
+      "bytes": 4679
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "sha256": "957c72d1fa2eaa3880446575da078488b26292fea9f48b62c9dff67e79b67e3f",
+      "bytes": 13390
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "sha256": "9758403ee75cfaf9420c5dad0bc2faa491d6c0774e62014d744887601433cbcd",
+      "bytes": 8011
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "sha256": "08bdaf90f27aa3b643f52c76010c21d1839ee5e15109865deaa77c8bbfff117a",
+      "bytes": 2698
+    },
+    {
+      "source": "code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "sha256": "6fbefe84aaab7d630d037846637893a71407f445e7ca58b312efa461a97ee104",
+      "bytes": 6651
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/cuwacunu/encoder/encoder.h",
+      "sha256": "0ab0a95cb065e5694f813202a6d290345ce110197defc9336a4b2cf34d79bf42",
+      "bytes": 6001
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "sha256": "f8fee8cfbdef1d7202c416382e550e2127814c81773bd3f2d3b5e3c9706e1c97",
+      "bytes": 5816
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h",
+      "sha256": "1a7a8f6f2528675b104eb2de698e7b13c487168817af0c4c3254db303cfd413e",
+      "bytes": 10830
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "sha256": "a29222ca3533abada58ffd5816fe15c8ef1f11c2ce052036923c84a75aabc33d",
+      "bytes": 2145
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "sha256": "d13f35bdb228ee8c84cbc7be421c6f13eb7a55a5e42209b9e2d6db95124fd9bf",
+      "bytes": 2974
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "sha256": "a0819d4093d2f47458305cf433791a7b1e9d7833783e7d168cda822a8358e0f3",
+      "bytes": 3721
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "a76dc9fb9e767b56a5a3e7eeeb7de7742bdb2399cd9afb21b075fcb9a3ea3d01",
+      "bytes": 19785
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "sha256": "49b324d8415901f16e56ce19ce65fed5f11b9a153c4ad3b327a72273ee217905",
+      "bytes": 3003
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "sha256": "fcb642765a12128afdc94e4e2a69a0c0e0a574fc168bf8ed5697e173b1edbd1b",
+      "bytes": 5996
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "sha256": "82b85cf92e38953d882ba4fca225916a02a8d8ea5aad0eca9481b650899208a3",
+      "bytes": 10190
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "sha256": "f5790bd8c0f689ca3092dc9045dac01e095f893a585b823b5458ff3f1bc0a86a",
+      "bytes": 9176
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "sha256": "32d6b5b0446f663aa2a36826120d64588c3cfe7653f7471cb77708fe21fadf14",
+      "bytes": 3742
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "sha256": "5be51ed4e0b34cbf058c8e0824503312cdcf748ee4d71a75d19d043e40087286",
+      "bytes": 10472
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "sha256": "d35a4069c3639220b699e8f5bc5d26846d98374d9c42bcea5b6a844f199c9556",
+      "bytes": 2728
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h",
+      "sha256": "ccff61ffbd98d414d4d650e45673489ae398e5a8c90b714b4ca07c9ae41d13a9",
+      "bytes": 1528
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "sha256": "8a32ba76020336aef0d54e27ff84e15d658bc34b957f51f8f4bfc96e0c7a3074",
+      "bytes": 5554
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "sha256": "e7461311768c67208f0c915ec5777495c3c246b378d4e9a38ef012fc9589ef8c",
+      "bytes": 4189
+    },
+    {
+      "source": "code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "sha256": "7431b8f74b3ea3d97ec3ffe8c5f80067dbc85ebee53a5a4f3a517bb41b040b65",
+      "bytes": 4658
+    },
+    {
+      "source": "code/evaluation/include/cuwacunu/evaluation/fixed_regression.h",
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10",
+      "bytes": 2922
+    },
+    {
+      "source": "code/evaluation/src/fixed_regression.cpp",
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5",
+      "bytes": 22417
+    },
+    {
+      "source": "code/integration/include/cuwacunu/integration/configurable_encoder_input.h",
+      "sha256": "7ac7279c84875c0ce64da7d2a4348eb2af6af5ca4121c788a928b908f60a9f19",
+      "bytes": 3778
+    },
+    {
+      "source": "code/integration/include/cuwacunu/integration/encoder_input.h",
+      "sha256": "caa83d19a97079457e957f60bae3429a068d8b2a4f247ce2fb2914e94e82cf87",
+      "bytes": 3684
+    },
+    {
+      "source": "code/scripts/run-market-location-scale-decoder.sh",
+      "sha256": "c1bacccaadc3ae2f34589c655c92f8a598f94471ffce478d13c6f7f9eb50a88b",
+      "bytes": 3992
+    },
+    {
+      "source": "code/scripts/run-market-separate-changes.sh",
+      "sha256": "9220e06a83cff708c98247e5b72b3d176b391d8cda9c46145df15194afbe0914",
+      "bytes": 2639
+    },
+    {
+      "source": "code/scripts/task.sh",
+      "sha256": "6b35b3e15fe9b4069dddfb24995f494ac655d4e7d986a079a093e0e1215b0c3b",
+      "bytes": 748
+    },
+    {
+      "source": "code/training/include/cuwacunu/training/market_data.h",
+      "sha256": "78d2f676bb4f32546f794e66878f34528418eae3b946d6eb541882fde1c31348",
+      "bytes": 5102
+    },
+    {
+      "source": "code/training/include/cuwacunu/training/market_raw_f64_data.h",
+      "sha256": "4165ee929445d0bce9cac2191b63bdde72555315fbb6d0e6bd1b022c87f3b4a6",
+      "bytes": 6794
+    },
+    {
+      "source": "code/training/market_location_scale_decoder.mk",
+      "sha256": "0e94446aeb3c79d5d67da0c9329a5324a6a0c2609678cfa8f0f4fc7c5ef682b9",
+      "bytes": 1028
+    },
+    {
+      "source": "code/training/market_separate_changes.mk",
+      "sha256": "bc50dc93bc988a9fbadd8655efad0ca5705c6a055447f7f7d67d1886073ac2be",
+      "bytes": 1135
+    },
+    {
+      "source": "code/training/src/market_location_scale_decoder_main.cpp",
+      "sha256": "6d32553b4b8e820e704151ab0742576da17bd0bd853a247bda5e4990ee8385d4",
+      "bytes": 59167
+    },
+    {
+      "source": "code/training/src/market_separate_changes_main.cpp",
+      "sha256": "905a7ca4c9311afbe1e8a1b7cccc12d4fce997842b7fe0003dd04836ef63cca7",
+      "bytes": 33630
+    },
+    {
+      "source": "config/market_studies/encoder_location_scale_decoder.conf",
+      "sha256": "43320396447ca80be5fde4324d17c3a9ab129e116bf184455fcb6261aeb6923c",
+      "bytes": 633
+    },
+    {
+      "source": "config/market_studies/location_scale_decoder.conf",
+      "sha256": "a47e101a7f62c00a9a0dfc293aa32eac2a886fc40194c28b6f96e7eab1389658",
+      "bytes": 1521
+    },
+    {
+      "source": "doc/MARKET_LOCATION_SCALE_DECODER_CARD.md",
+      "sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+      "bytes": 15300
+    },
+    {
+      "source": "code/scripts/report-market-location-scale-decoder.py",
+      "sha256": "5ae13c943dbc5eb39599c5f597e084d612ce3da8f0e5c201619fbe76eaefb6e3",
+      "bytes": 72143
+    },
+    {
+      "source": "code/scripts/audit-market-location-scale-decoder.py",
+      "sha256": "ec3d03995b13ad1a46a988a0a0f89a6e8015ac75ff8c8dd5d9abb34135e68d35",
+      "bytes": 32372
+    },
+    {
+      "source": "code/scripts/execute-market-location-scale-decoder.py",
+      "sha256": "76adc395884bff2f35ee10f036ac7397dd243050725e15ca9c4dce024ac92267",
+      "bytes": 7355
+    },
+    {
+      "source": "code/scripts/preflight-market-location-scale-decoder.ps1",
+      "sha256": "798d75746135bec82e7f6cabed38cd9c9d51fc0aa9e31cb1e6c4fb5ae4e03be6",
+      "bytes": 7701
+    },
+    {
+      "source": "code/scripts/declare-market-location-scale-decoder.py",
+      "sha256": "4b0e5b144dd21e7d483349dba53e759f3799a4fca77da02b38d9fd29e153fa1f",
+      "bytes": 3418
+    },
+    {
+      "source": "code/scripts/seal-market-location-scale-admission.py",
+      "sha256": "8588ba4f460be1a546981d94ffc939942f26e37bb7be609dce55121a94f4e396",
+      "bytes": 7262
+    },
+    {
+      "source": "code/scripts/sync-receipt-market-location-scale-decoder.ps1",
+      "sha256": "8b3d5a11bc0926d725f45030ebf59ef5fbab1c2786d2c6dd03c1f7d832c13e90",
+      "bytes": 4031
+    },
+    {
+      "source": "code/scripts/append-encoder-search-ledger-v3.py",
+      "sha256": "af4585c26a4d4025c3f79b804cb88d659e9400c23e9f28ae0f0e4f38f7356846",
+      "bytes": 40731
+    }
+  ],
+  "preserved_partial_neural_leaders": {
+    "past_trend": {
+      "instance": "RPB-v25.market-01",
+      "r2": 0.4884646605379312
+    },
+    "past_activity": {
+      "instance": "RPB-v24.market-01",
+      "r2": 0.6781894013517937
+    },
+    "past_relation": {
+      "instance": "RPB-v25.market-01",
+      "r2": 0.4071495455067296
+    }
+  },
+  "new_recorded_scope_leaders": [
+    "all four linear heads",
+    "neural past_volatility"
+  ],
+  "transfer": {
+    "dataset_id": "TEMPO-5",
+    "designed_complexity_level": 5,
+    "complexity_scale_max": 5,
+    "status": "declared_pending_admission_extraction_scoring",
+    "measured": false,
+    "encoder_updates": 0,
+    "scaler_policies": [
+      "synthetic_train",
+      "market_scaler"
+    ],
+    "required_native36_head_view_floors": 8,
+    "card": {
+      "path": "doc/MARKET_LOCATION_SCALE_SYNTHETIC_TRANSFER_CARD.md",
+      "sha256": "c3cfe0a04b174734599b2b01363c90c3f9b81fd5964fb30ffd4ce8a21976260e",
+      "bytes": 11224
+    }
+  },
+  "limitations": [
+    "known chronological development, not unseen confirmation or forecasting",
+    "one trained encoder; three head fits are not independent encoder cohorts",
+    "objective and distribution both change; no causal attribution to variance head",
+    "learned variance includes mean error and is not realized market volatility",
+    "mean query MAE does not improve uniformly",
+    "raw-loader parity and CPU parent preprocessing prevent a fair speed claim",
+    "V30 synthetic quality is not yet measured",
+    "no primary or balanced-reference promotion, publication or serving acceptance"
+  ]
+}

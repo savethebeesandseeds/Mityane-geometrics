@@ -1,0 +1,1243 @@
+{
+  "kind": "causal_fresh_v6_saved_quality_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-15T22:56:03.8698065Z",
+  "execution_pending": true,
+  "stage": "Declared before candidate quality and before independent numeric execution",
+  "model": "CPB-v6.market-01",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "old_model_numeric_reads": 0,
+  "main_card": {
+    "path": "doc/CAUSAL_FRESH_V6_CARD.json",
+    "bytes": 74773,
+    "sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d"
+  },
+  "input_manifest": {
+    "path": "doc/causal_fresh_v6/input-manifest.json",
+    "bytes": 5463,
+    "sha256": "bdb9892e9a817ea470e8743b16a5075ea4127ab96bfea53b4c2d76e7ba7f3b7d"
+  },
+  "main_source_manifest_sha256": "ee145b968d430c7c63544539c173ea18b232f6fdba1238cf41fdcc15bacd4b9c",
+  "main_source_zip_sha256": "7ecf64630328ae00aa5dd4029bc595633cfebe2aa0c25ed516f44a150722a20e",
+  "main_source_files": 102,
+  "main_attempt": "attempt-001",
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 60750,
+      "sha256": "a56a894563bc7dc3c6bc8c57cbee8597fcbb697a29f7d123ca4fb188f63e7976"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 1724,
+      "sha256": "7a158a552bb38a94220196db11238eec7e0293ba5583da61aaf910d6182610bc"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 1569,
+      "sha256": "afa7a9a2b7ee52d2042fbbed37a7151d286237a47313024511f698414c52bdaf"
+    }
+  ],
+  "paired_initial_reference_inputs": [
+    {
+      "id": "market_initial_train",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/market/cpb_v5-train.pt",
+        "bytes": 39393,
+        "sha256": "b9601715631d51af99401ef7b628fc7ac37dd5be8bd6f487ecffc300e7d12357"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            112,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            112
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            112
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v6-train.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "market_initial_validation",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/market/cpb_v5-validation.pt",
+        "bytes": 13139,
+        "sha256": "b7688a877c91edefb62c749dd1af0adf4abe152fd46509ba80a76a8d0aeb5464"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            32,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            32
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            32
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v6-validation.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "d7c04e20cd186804ec08f7f3ecc2dd7aa121327a726d22cc31fc12d28890fe4b"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "1fab65be8061f9d0425c77f91bd18696b346482ef63a2a466bab0c8858fb5149"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "cef391a1fb82a9de5a10c7eeeac38f48f10c2ab2b6c84d9136bce148c4c95fd5"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_market_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "3ee2ee73d3f45fad058bfb48037e2f642113c5163c43f05a2346f281b8b27905"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_market_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "0bf7a11cde89b381aa64782c511cabb77f914751282463a525e7e6b982a8a3c4"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "tempo_initial_market_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "3609b6974ebfcaf07a37f5efd25506263b4402baac212d8315e5e5a461bd121d"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "fresh_market_input_scaler",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/calibration/input-scaler.pt",
+        "bytes": 39988,
+        "sha256": "e8df82b035a36c88bbdc9ae9c7c937894fc75d98a43ebf8f5f5ea5dbddaac12b"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "sum",
+        "sumsq",
+        "scaler.mean",
+        "scaler.scale",
+        "scaler.count",
+        "scaler.channel_ids",
+        "scaler.floor_applied",
+        "scaler.scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "sum",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "sumsq",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scaler.scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/input-scaler.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "fresh_market_bank_normalizer",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/calibration/bank-standardizer.pt",
+        "bytes": 53951,
+        "sha256": "736ed6cc4feae4977fad333e26f06bdc5448f189b4facf5a2b38a42f50a25618"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "bank.bank.counts",
+        "bank.bank.sum",
+        "bank.bank.sumsq",
+        "bank.bank.mean",
+        "bank.bank.scale",
+        "bank.bank.support",
+        "bank.bank.input_geometry",
+        "bank.bank.sampling_interval",
+        "bank.bank.floor",
+        "bank.bank.minimum_support"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.counts",
+          "shape": [
+            270
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sum",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.sumsq",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.mean",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.scale",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.support",
+          "shape": [
+            270
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "bank.bank.input_geometry",
+          "shape": [
+            6
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sampling_interval",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.minimum_support",
+          "shape": [],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/bank-standardizer.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "fresh_synthetic_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/synthetic-scalers/master-941101.pt",
+        "bytes": 3953,
+        "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941101.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "fresh_synthetic_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/synthetic-scalers/master-941102.pt",
+        "bytes": 3953,
+        "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941102.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    },
+    {
+      "id": "fresh_synthetic_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/synthetic-scalers/master-941103.pt",
+        "bytes": 3953,
+        "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941103.pt",
+      "comparison": "Whole logical numeric tensors,all native40 where present;not file/metadata equality"
+    }
+  ],
+  "independent_checks": [
+    "Saved TRAIN112/VALIDATION32 predictions for four market tasks and all three fixed heads, physical errors/R2/coverage, saved ridge coefficient reconstruction without refitting",
+    "Three TEMPO5 cohorts, two scaler policies and intact/deleted views; exact correct/valid/source-group counts, repetition/cohort means, fixed recipe budgets and D40 seeds",
+    "New initial0/final2048 export1572 and head fitting provenance; ordinary fixed-query MAE/NLL and declared component scalar/row reductions",
+    "Actual initial/final causality, source102/six admitted binaries, mechanism CUDA composite/direct routing/clip receipt, fresh TRAIN calibration and exact typed-resume evidence",
+    "All13 saved V5 initial DATA/statistic logical numeric pairings: whole native40, no old model/head execution or reuse of initial quality scores",
+    "Independent max16/min2/strictV4NLL/three positivity operators and threshold source labels from three final clean controls; unchanged22 frozen criteria",
+    "Frozen producer runtime admission versus mandatory pending pairing/training/quality audit/full advancement distinction"
+  ],
+  "numeric_tolerance": "Inherited absolute1e-12 for saved scalar reductions; existing saved-array reconstruction tolerances unchanged; logical tensor byte equality for initial pairings",
+  "fixed_protocol": {
+    "native_width": 40,
+    "updates": 2048,
+    "batch_size": 8,
+    "ridge_penalty": 1,
+    "neural_hidden": 16,
+    "neural_updates": 100,
+    "neural_rate": 0.01,
+    "repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "head_seeds": [
+      "6049515622977958931",
+      "8262941649267994858",
+      "2095371932330426401"
+    ],
+    "goal": {
+      "path": "doc/causal_fresh_v6/goal-protocol.json",
+      "bytes": 12897,
+      "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+    },
+    "control_files": [
+      {
+        "path": "doc/causal_fresh_v6/baseline-control-v3.json",
+        "bytes": 336076,
+        "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+      },
+      {
+        "path": "doc/causal_fresh_v6/baseline-control-v4.json",
+        "bytes": 336377,
+        "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+      },
+      {
+        "path": "doc/causal_fresh_v6/baseline-control-v5.json",
+        "bytes": 336740,
+        "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+      }
+    ]
+  },
+  "scope": "Saved JSON and inert permitted DATA tensors only. No Torch/NumPy/numerical framework, neural/encoder call, fitting, gradients, old model numeric reads or application changes.",
+  "container": {
+    "name": "cuwacunu",
+    "id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "host_project_execution": false
+  },
+  "failures": "Preserve every failed attempt; additive audit-only corrections, never change frozen main sources/cards/results or replay encoders/heads.",
+  "overall_establishment_policy": "This quality/pairing audit supplies one postmeasurement trust component. Separate passed independent training audit and root final synthesis remain required; frozen producer pending statuses stay unchanged."
+}

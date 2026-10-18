@@ -1,0 +1,76 @@
+{
+  "schema": "cuwacunu-latent-state-prospective-amendment-v1",
+  "id": "latent-state-development-2026-10-18-v1-scientific-rules-002",
+  "registeredOn": "2026-10-18",
+  "originalCardSha256": "38a551055a0bc329dde059e403d7f791cc812c123e6f5837f7840fc273287325",
+  "priorAmendmentSha256": "741bd04669b89724d6eeb5dafe76917666cca16499c987896a2838b3f388f784",
+  "reason": "Complete the independent prospective registration review before market capture/fitting or quality observations. No residual-MLP recipe or implementation budget changes. Original registration and first amendment remain immutable evidence.",
+  "supersedes": ["uncertainty.replicates", "uncertainty.multiplicity", "retentionAndDiversity", "decisions.stateOnly", "riskComparisonRegistration.capacityControl", "riskComparisonRegistration.placebo", "riskComparisonRegistration.conventional"],
+  "dataset": {
+    "id": "MKT-CAUSAL-STATE-CONTROL-V1-DEV",
+    "designedComplexity": 4,
+    "complexityScaleMaximum": 5,
+    "designRationale": "Aligned three-asset minute observations, H128 histories, multiple temporal horizons, separately fitted chronological stages, common future observables and dependence-aware comparisons. This is a prospective design label, not measured difficulty or accuracy.",
+    "rowWeight": 1.0,
+    "stagePolicy": "All origins/targets retain the exact admitted source bytes and complete-envelope purges; model-derived arrays are not yet captured. Retain every excluded row and reason."
+  },
+  "uncertainty": {
+    "replicates": 262144,
+    "blockLengthOrigins": 512,
+    "minimumCompleteBlocks": 6,
+    "seed": 944601,
+    "familywiseAlpha": 0.05,
+    "fixedFamilyCap": 256,
+    "perComparisonTwoSidedAlpha": 0.0001953125,
+    "perTailAlpha": 0.00009765625,
+    "quantile": "Inverse empirical CDF (nearest-rank type1): sorted bootstrap statistic at one-based ceil(B*p), clamped1..B. Lower p=alpha/2, upper p=1-alpha/2. B262144 supplies25.6 expected order-statistic observations per extreme tail. Require B*perTailAlpha>=20 and at least6 full chronological512-origin blocks; otherwise the affected scientific claim is inconclusive.",
+    "pairedPolicy": "Use circular moving blocks of entire origin vectors. Retain all assets, horizons, arms and methods together in each draw; average per-origin losses over all3 declared seeds before paired resampling. Publish every per-seed result and excluded-origin count. Enumerate at most256 claim/observable/horizon contrasts in the prospective execution closure; unused family slots never loosen alpha."
+  },
+  "retentionAndDiversity": {
+    "sourceFiles": [
+      {"path": "code/evaluation/include/cuwacunu/evaluation/fixed_regression.h", "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"},
+      {"path": "code/evaluation/src/fixed_regression.cpp", "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"},
+      {"path": "code/evaluation/latent_dynamics/versions/v1/src/baselines.cpp", "sha256": "933a13b84bbe4449e15e69b3d844e1591eaeddb6916b62801b1b8fce94cbd41c"}
+    ],
+    "targets": {
+      "input": "Each origin's original intact raw H128 window, semantic channel orderBTC/ETH/SOL and nine-feature registry order; observed finite source values only, no synthetic mask change. Adjacent positive observed closes produce log(close[j])-log(close[j-1]); never bridge a missing tick.",
+      "pastVolatility": "Across-channel mean of per-channel population std of adjacent log close returns; at least8 eligible returns in every channel; units logreturn",
+      "pastTrend": "Across-channel mean of per-channel mean adjacent log close returns; at least8 eligible returns in every channel; units logreturn/tick",
+      "pastActivity": "Across-channel mean of per-channel mean log1p(nonnegative observed base_volume); at least8 eligible volumes in every channel; units log1p(base_volume)",
+      "pastRelation": "Mean Pearson correlation over eligible channel pairs on each pair's common adjacent-return support; at least2 pairs each with at least8 returns and both population variances>=1e-12; units correlation",
+      "unsupported": "Keep per-target invalid masks; stored zero is not an observed label. Compare methods on the same eligible origin/target intersection."
+    },
+    "probeFitting": "Fit a new fixed probe on later January24-25 risk-head TRAIN origins after the representation/control cutoff. Predict January26-28 development-evaluation origins after the probe fit cutoff. Fit the same4-target probes independently for native-e, online-state and target-state features of each arm/seed. Reuse only the unchanged algorithm, never historical scores or fitted heads.",
+    "normalization": "For each method, freeze equal-weight TRAIN feature means and population std with floor1e-8. For each target, freeze mean/population std on its common valid TRAIN rows with floor1e-8. Reject fewer than2 eligible fit rows. Report raw-unit MAE/RMSE/R2 plus normalized MSE using frozen TRAIN target scale; target TRAIN variance<=1e-12 makes relative/normalized claim unsupported and inconclusive.",
+    "heads": "Exactly the source-pinned fixed_regression algorithm: ridge penalty1; independent tanh16 neural head with4 outputs,100 full-batch Adam0.01 updates, default beta0.9/0.999 eps1e-8 and no weight decay. Repetition stream labels2701/2802/2903 are mapped through pinned stream_seed(repetition,input_width36); no seed selection. Initialization and all mask/reduction semantics are fixed by the pinned source.",
+    "parameters": {"ridge": 148, "neural": 660},
+    "retentionRule": "Per observable/head family, upper simultaneous95% bound on relative normalized MSE degradation versus the newly fitted same-recipe native-e probe is at most0.05; unsupported reference variance/coverage makes eligibility inconclusive",
+    "diversityPopulation": "All distinct complete mature representation-TRAIN windows admitted at the representation cutoff, equal row weight1, evaluated separately for online and target states of every arm/seed after fitting. Never use evaluation or risk-TRAIN rows to fit/adapt the reference scale.",
+    "diversityArithmetic": "Pinned diversity(): center the selected F64 saved state array and form sample covariance Xc^T*Xc/(N-1). Native std=sqrt(max(diag(cov),0)); reference ratio=nativeStd/frozenInitialTrainReference. Reference scales are initial-state TRAIN population std floored1e-8. Normalize cov by outer product of reference scales; clamp eigvalsh eigenvalues below0 to0, p=eig/sum(eig). Effective rank=exp(-sum_{p>0} p*log(p)); largest factor=max(p). Require N>=2 and positive eigenvalue sum>1e-12; otherwise unsupported/inconclusive. The rank bound is min(D,N-1).",
+    "diversityLimits": {"minimumEveryCoordinateReferenceStdRatio": 0.1, "minimumEffectiveRank": 18.0, "maximumLargestFactorFraction": 0.5},
+    "coverage": 0.99
+  },
+  "stateOnlyEligibility": "Eligibility to ENTER a separately scored risk comparison requires current correctness, chronology, coverage, registered retention and diversity safeguards. It does not require already supported risk utility. The predeclared state-only branch may remain eligible when latent point skill fails; actual common-observable utility is decided later and cannot be inferred from eligibility.",
+  "riskForecastIncrement": "Compare forecast-augmented K4 e against the identical unaugmented K4 e, and forecast-augmented K4 online z against the identical unaugmented K4 online z, alongside every declared conventional/direct-embedding/capacity/placebo reference. An improvement only over another input history does not establish forecast increment. Require the same registered useful5% bound for the exact increment claim; affine-folding identity, normalization/bias accounting and regularization/parameterization limitations remain mandatory. A narrower state-only utility claim stays separately assessable.",
+  "capacityControl": {
+    "architecture": "Linear(144,126)-tanh-Linear(126,6), K4 embedding history only",
+    "parameters": 19032,
+    "forecastAssistedReferenceParameters": "17484 residual-MLP forecast parameters plus1518 for a252-input six-target affine readout =19002",
+    "budgetInterpretation": "30 additional parameters, about0.16% larger than the forecast-assisted reference, within a19200 cap. Disclose both totals; no exact parameter-equality claim. All upstream-control parameters and readout parameters count.",
+    "initialization": "Local per-repetition Xavier-uniform gain1 for both weights, zero biases; fixed tanh activation",
+    "updates": 2048,
+    "microbatch": 32,
+    "optimizer": "Original registered residual-MLP AdamW recipe",
+    "seeds": [944101, 944202, 944303],
+    "fitStage": "Later risk-head TRAIN only, with complete mature common-observable targets; no representation/control refit"
+  },
+  "placebo": "For each matched forecast arm, estimate per-coordinate forecast means/population std only from its legal issued later risk-TRAIN features (no future labels), floor std1e-8 and freeze. Generate label-independent standard-normal values by deterministic Box-Muller from SHA256(seed944501, immutable origin ID, coordinate, draw index), mapping unsigned64 bits to open(0,1) by (u+0.5)/2^64. Apply those frozen moments and retain matched dimensionality108. Same readout, common populations, stage cutoffs and comparison pins; never derive noise from outcomes.",
+  "conventional": {
+    "lookbackTicks": 131,
+    "trailingReference": "Trailing128 adjacent close returns within the identical permitted131-close raw envelope. Compute population return dispersion and max(0,-minimum log close ratio to the start of that trailing128-return window)); report declared historical downside proxy, not an unbiased future estimator",
+    "ewma": "Use all130 adjacent positive-close returns in the131-close history. alpha=2^(-1/32), weight of j-th previous return=(1-alpha)*alpha^j for j0..129, renormalized by finite sum of weights. Weighted mean=sum(w*r)/sumw and variance=sum(w*(r-mean)^2)/sumw; std in one-minute logreturn units. No hidden initial variance or carried pre-window state, no annualization. The finite normalized window is the complete initialization.",
+    "policy": "Same legal source/support/missingness policy and no extra context. Record per-target matching and conventional recipe identities."
+  },
+  "executionPolicy": "Pin the original card and both amendments in the future execution closure. Registration does not close engineering, control/reporting implementation, capture or shared-study gates. This bounded source/synthetic task produces no market quality, state/point-skill/risk decision, or independent confirmation.",
+  "outcome": "prospective-registration-only"
+}

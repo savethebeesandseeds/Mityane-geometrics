@@ -1,0 +1,83 @@
+{
+  "kind": "cpb_v11_v13_TRAIN_diagnosis_actual_admitted_card_independent_review_v1",
+  "status": "passed",
+  "reviewed_utc": "2026-10-17T23:16:58.6336005Z",
+  "metadata_only": true,
+  "independent_of_card_author": true,
+  "actual_card": {
+    "path": "doc/CAUSAL_V11_V13_TRAIN_DIAGNOSIS_CARD.ADMITTED.json",
+    "bytes": 74190,
+    "sha256": "6b2d4c3b995bc4904cbeaddf97a73a930866838a2338e15744b472da42bf232f"
+  },
+  "unchanged_false_proposal": {
+    "path": "doc/CAUSAL_V11_V13_TRAIN_DIAGNOSIS_CARD.PROPOSED.json",
+    "bytes": 73622,
+    "sha256": "2c0420e6e68ef42907b24829eb60f686f281fba296d6b095a446893742cbb8c1"
+  },
+  "source_review": {
+    "path": "doc/causal_v11_v13_train_diagnosis/source-root-review-001.json",
+    "bytes": 7905,
+    "sha256": "ba0f516d9d9efe552f9ca1967fe8787b85de2623391d45094b3474785b7faf10"
+  },
+  "root_false_card_admission": {
+    "path": "doc/causal_v11_v13_train_diagnosis/actual-proposed-card-root-admission-001.json",
+    "bytes": 1371,
+    "sha256": "a4eb3643e9601c2918ad69978f5b35e0b45f5ef6d7c3d15161cbb25d6471deba"
+  },
+  "checks": {
+    "whole_JsonNode_DeepEquals_after_reversing_exact_two_changes": true,
+    "execution_admitted_false_to_true_Boolean_only": true,
+    "one_new_separate_root_admission_object": true,
+    "root_object_exact_four_keys": [
+      "prospective_card",
+      "source_review",
+      "admitted_utc",
+      "separate_Stage_Schema_Run_admissions_required"
+    ],
+    "prospective_card_and_source_review_pins_exact": true,
+    "admitted_utc_raw_JSON_string_preserved": true,
+    "later_Stage_Schema_Run_required_true": true,
+    "all_other_fields_retained_whole": true,
+    "false_proposal_true_card_and_root_receipt_hashes_exact": true,
+    "prior_source_and_input_reviews_reused_opaque": true
+  },
+  "permitted_changes": [
+    "execution_admitted:false to true",
+    "Added separate_root_admission only"
+  ],
+  "inspector_refusals_preserved": [
+    {
+      "operation": "First read-only host metadata inspection",
+      "error": "Cannot overwrite variable false because it is read-only or constant.",
+      "cause": "Reviewer used reserved PowerShell variable false for proposal path",
+      "stopped_before_card_reads_or_file_writes": true,
+      "correction": "Task-specific proposalPath variable",
+      "source_card_helper_or_scientific_mutations": 0
+    },
+    {
+      "operation": "Review receipt checker before writing",
+      "error": "Root admission object mismatch",
+      "cause": "ConvertFrom-Json parsed admitted_utc as DateTime; reviewer incorrectly matched it as the raw JSON string",
+      "stopped_before_file_write": true,
+      "correction": "Raw JsonNode timestamp string inspected directly; no source/card timestamp or requirement changed",
+      "source_card_helper_or_scientific_mutations": 0
+    }
+  ],
+  "blockers": [],
+  "scope": "Exact metadata admission delta only;no repeated source-math/input audit or archive hash. Separate phase admissions remain required.",
+  "Stage_Schema_Run_execution_admitted_by_this_review": false,
+  "actions": {
+    "helpers": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "schema": 0,
+    "runtime_copies": 0,
+    "CP_CSV_archive_binary_hashes": 0,
+    "tensor_or_numerical_reads": 0,
+    "source_card_DEV_Git_writes": 0,
+    "files_written": [
+      "doc/causal_v11_v13_train_diagnosis/actual-admitted-card-independent-review-001.json"
+    ]
+  }
+}

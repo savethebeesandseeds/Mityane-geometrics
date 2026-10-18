@@ -1,0 +1,19 @@
+Session: rpb-v21-engineering
+Build: /opt/cuwacunu_embedding/build/rpb-v21-engineering
+Runs: /embedding/output/runs/rpb-v21-engineering
+mkdir -p "/opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation"
+g++ -Icode/encoders/raw_patch_bottleneck_mae/include -Icode/shared/include -Icode/shared/tests -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/encoders/raw_patch_bottleneck_mae/tests/learned_ordered_relation_test.cpp -o /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test.o
+g++ /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test
+/opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test code/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf
+[rpb-v21 CUDA test] semantic identity preserves export across storage permutation with nonzero relation weights
+Exception raised from check at code/encoders/raw_patch_bottleneck_mae/tests/learned_ordered_relation_test.cpp:19 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xb0 (0x7160a5d90170 in /opt/cuwacunu_embedding/libtorch/lib/libc10.so)
+frame #1: c10::detail::torchCheckFail(char const*, char const*, unsigned int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0xfa (0x7160a5d336dc in /opt/cuwacunu_embedding/libtorch/lib/libc10.so)
+frame #2: <unknown function> + 0x11970 (0x647a74eab970 in /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test)
+frame #3: <unknown function> + 0x16307 (0x647a74eb0307 in /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test)
+frame #4: <unknown function> + 0x17a48 (0x647a74eb1a48 in /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test)
+frame #5: <unknown function> + 0x2724a (0x7160a582a24a in /usr/lib/x86_64-linux-gnu/libc.so.6)
+frame #6: __libc_start_main + 0x85 (0x7160a582a305 in /usr/lib/x86_64-linux-gnu/libc.so.6)
+frame #7: <unknown function> + 0x102d1 (0x647a74eaa2d1 in /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test)
+
+make: *** [code/encoders/raw_patch_bottleneck_mae/learned_ordered_relation.mk:10: test-rpb-v21] Error 1

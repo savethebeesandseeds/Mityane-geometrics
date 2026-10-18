@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-01-retrieval",
+  "number": 1,
+  "title": "OR-01 · Retrieval and similarity matching",
+  "summary": "Rank source observations for a query under a declared representation, geometry and relevance definition.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-01-retrieval-contract",
+      "title": "Define the operation contract",
+      "description": "Define queries, searchable populations, relevance, source references, metric, ranking output and abstention conditions.",
+      "milestones": [
+        {
+          "id": "or-01-retrieval-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define queries, searchable populations, relevance, source references, metric, ranking output and abstention conditions. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Declare a frozen candidate-corpus snapshot, query eligibility and as-of policy, an independently defined relevance target, allowed query/document role pairs, and exclusions for self-matches, duplicates and source-window overlap where required by the evaluation design."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-01-retrieval-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide version-aware search with explicit index configuration, source identities, exclusion rules and failure reporting.",
+      "milestones": [
+        {
+          "id": "or-01-retrieval-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide version-aware search with explicit index configuration, source identities, exclusion rules and failure reporting. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Use an exact-search reference with explicit metric, normalization, deterministic tie handling and source IDs before judging an approximate index. Reject stale or incompatible index/query combinations; a legitimate empty result remains distinct from execution failure."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-01-retrieval-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Evaluate relevance and cost against meaningful retrieval baselines; control duplicates, leakage, population and representation version.",
+      "milestones": [
+        {
+          "id": "or-01-retrieval-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Evaluate relevance and cost against meaningful retrieval baselines; control duplicates, leakage, population and representation version. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Measure relevance against independent labels or a declared external rule, not the embedding distance used to rank candidates. Assess approximate-neighbor fidelity separately from application relevance; preserve the same eligible corpus, input information and query population for baselines."
+          ]
+        }
+      ]
+    }
+  ]
+}

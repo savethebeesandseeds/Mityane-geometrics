@@ -1,0 +1,84 @@
+{
+  "kind": "causal_fresh_v11_non_evaluation_independent_static_followup_v1",
+  "status": "passed",
+  "prior_review": {
+    "path": "doc/causal_fresh_v11/non-eval-independent-static-review-causal-next-design.json",
+    "bytes": 4370,
+    "sha256": "5922f2b06aaeec89e0456a43debac4395e74a863f07d4614da7c3eb640b2ac63"
+  },
+  "current_source_provenance": {
+    "path": "code/research/causal_fresh_v11/training-helper-provenance.json",
+    "bytes": 6055,
+    "sha256": "5a16324ea1b807b0283e648767c27695f14c517ba0b2a92710f5545aefeb5272"
+  },
+  "sources": [
+    {
+      "path": "code/research/causal_fresh_v11/train_main.cpp",
+      "bytes": 62311,
+      "sha256": "84509ce6efc3837f0a19820e2632f0787530ec1f7cb464c5bfdb6c9e6ea5c649"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/Makefile",
+      "bytes": 2781,
+      "sha256": "feb43f73e7489251b6356dff578b31a78e1c79cc4d57fee1d77a80ce5ee622bc"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/README.md",
+      "bytes": 7275,
+      "sha256": "2b2d24031f0301577c210c83cf1d95990ea07eca25862b93aac35ad044d61e4f"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/include/calibration.h",
+      "bytes": 6467,
+      "sha256": "ef48d6f72ac9c5950fdb5d9340bd1ce6b5776328ef1bb55831946fbc04474f92"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/include/context_deletion.h",
+      "bytes": 10832,
+      "sha256": "e6a0f2217b76a922dd9809f93969421a990db4467faa1e21e290121ac51c01f0"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/include/market_data.h",
+      "bytes": 5025,
+      "sha256": "58c916edf736b94256c1ba524fccf3d52ae9119271119c04a55eec79d01a44c7"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/include/training_utils.h",
+      "bytes": 1574,
+      "sha256": "f16af6ef3659db06ca17b7bd20c1fd70b6ec8b6379affaa86d1e273af8321c6f"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/tests/v11_test.cpp",
+      "bytes": 71121,
+      "sha256": "8a55b9ce041e6eca84b91300ad3d44f9bd77b1a3ffd077a2dfd3a8d4e84f1b20"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/tests/v11_separation_test.cpp",
+      "bytes": 16472,
+      "sha256": "2aa668d7d3878c47469448ec596df3fd2e2c4227cf47521f1bdaad2eacdfaa37"
+    },
+    {
+      "path": "code/research/causal_fresh_v11/training-helper-provenance.json",
+      "bytes": 6055,
+      "sha256": "5a16324ea1b807b0283e648767c27695f14c517ba0b2a92710f5545aefeb5272"
+    }
+  ],
+  "scope": "Root-authorized README/provenance actual-local-adjoint clarification only;trainer84509/richmain8a55/objective2aa6 unchanged",
+  "actual_adjoint_contract": {
+    "strict_parameter_tensors": [
+      "export weight",
+      "export bias",
+      "pool_positions"
+    ],
+    "absolute_tolerance": 1E-09,
+    "relative_tolerance": 0.0003,
+    "each_witness_expected_exportW_or_bias_maximum_threshold": 1E-06,
+    "common_score_bias": "finite descriptive only",
+    "upstream": "PRECLIP;sum routes then apply factoronce",
+    "forward_moment_abs_rel_tolerance": 3E-05
+  },
+  "blockers": [],
+  "source_edits": 0,
+  "AST": 0,
+  "body": 0
+}

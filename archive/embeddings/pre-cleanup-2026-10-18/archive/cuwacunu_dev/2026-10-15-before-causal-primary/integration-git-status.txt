@@ -1,0 +1,406 @@
+ M Makefile
+ M code/data/include/cuwacunu/data/dataloader.h
+ M code/data/include/cuwacunu/data/memory_mapped_dataloader.h
+ M code/data/include/cuwacunu/data/memory_mapped_dataset.h
+ M code/encoders/raw_patch_bottleneck_mae/versions/README.md
+ M code/encoders/raw_patch_bottleneck_mae/versions/index.json
+ D code/encoders/rpb_changes/consecutive_change.mk
+ M code/encoders/rpb_changes/include/cuwacunu/encoder/change_encoder.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+ M code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+ D code/encoders/rpb_changes/tests/consecutive_change_test.cpp
+ D code/encoders/rpb_changes/tests/frozen_level_test.cpp
+ M code/encoders/rpb_conditional/include/cuwacunu/encoder/parent_conditional_encoder.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+ M code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+ D code/encoders/rpb_conditional/parent_conditional_change_test.mk
+ D code/encoders/rpb_conditional/tests/parent_conditional_change_test.cpp
+ D code/encoders/rpb_conditioned/conditioned_change_test.mk
+ M code/encoders/rpb_conditioned/include/cuwacunu/encoder/conditioned_encoder.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+ M code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+ D code/encoders/rpb_conditioned/tests/conditioned_change_test.cpp
+ D code/encoders/rpb_content/content_ordered_relation.mk
+ M code/encoders/rpb_content/include/cuwacunu/encoder/content_artifact.h
+ M code/encoders/rpb_content/include/cuwacunu/encoder/primary_encoder.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+ M code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+ D code/encoders/rpb_content/tests/content_encoder_input_test.cpp
+ D code/encoders/rpb_content/tests/primary_encoder_input_test.cpp
+ D code/encoders/rpb_content/tests/training_state_test.cpp
+ D code/encoders/rpb_content/training_state.mk
+ D code/encoders/rpb_energy/energy_change_test.mk
+ M code/encoders/rpb_energy/include/cuwacunu/encoder/energy_encoder.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+ M code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+ D code/encoders/rpb_energy/tests/energy_change_test.cpp
+ M code/encoders/rpb_location_scale/include/cuwacunu/encoder/location_scale_encoder.h
+ M code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+ M code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+ M code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+ M code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+ M code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+ D code/encoders/rpb_location_scale/location_scale_decoder_test.mk
+ D code/encoders/rpb_location_scale/tests/location_scale_decoder_test.cpp
+ M code/encoders/rpb_modulated/include/cuwacunu/encoder/parent_modulated_encoder.h
+ M code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+ M code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+ M code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+ M code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+ M code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+ D code/encoders/rpb_modulated/parent_modulated_decoder_test.mk
+ D code/encoders/rpb_modulated/tests/parent_modulated_decoder_test.cpp
+ M code/encoders/rpb_relative/include/cuwacunu/encoder/relative_encoder.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+ M code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+ D code/encoders/rpb_relative/relative_change_test.mk
+ D code/encoders/rpb_relative/tests/relative_change_test.cpp
+ M code/encoders/rpb_separate/include/cuwacunu/encoder/separate_encoder.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+ M code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+ D code/encoders/rpb_separate/tests/separated_change_native36_test.cpp
+ D code/encoders/rpb_separate/tests/separated_change_test.cpp
+ M code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_artifact.h
+ M code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_encoder.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+ M code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+ D code/encoders/rpb_spectral/streaming_scaler.mk
+ D code/encoders/rpb_spectral/tests/checkpoint_integrity_test.cpp
+ D code/encoders/rpb_spectral/tests/configurable_checkpoint_test.cpp
+ D code/encoders/rpb_spectral/tests/configurable_spectral_test.cpp
+ D code/encoders/rpb_spectral/tests/streaming_scaler_test.cpp
+ M code/encoders/rpb_v19/include/cuwacunu/encoder/encoder.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+ M code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+ D code/encoders/rpb_v19/tests/import_test.cpp
+ M code/scripts/run-market-synthetic-transfer.py
+ M code/scripts/seal-market-conditioned-admission.py
+ M code/scripts/seal-market-location-scale-admission.py
+ M code/scripts/seal-market-parent-conditional-admission.py
+ M code/scripts/seal-market-parent-modulated-admission.py
+ M code/scripts/seal-market-relative-admission.py
+ M code/training/market_frozen_changes.mk
+ M code/training/market_separate_changes.mk
+ M code/training/market_separate_native36_test.mk
+ M doc/ENCODER_BACKPORT.md
+ M doc/LATENT_MARKET_DYNAMICS_ROADMAP.md
+?? code/encoders/raw_patch_bottleneck_mae/README.md
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/change_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/conditioned_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/configurable_artifact.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/configurable_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/content_artifact.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/energy_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/location_scale_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/primary_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/relative_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/separate_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/README.md
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/streaming_scaler.mk
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.cpp
+?? code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v1/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v10/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v12/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v14/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v16/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v17/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v18/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/include/cuwacunu/encoder/encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/tests/import_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v2/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/cuwacunu/encoder/configurable_artifact.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/cuwacunu/encoder/configurable_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/config/content_ordered_relation.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/content_ordered_relation.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/cuwacunu/encoder/content_artifact.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/cuwacunu/encoder/primary_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_encoder_input_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/primary_encoder_input_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/training_state.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/config/consecutive_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/consecutive_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/cuwacunu/encoder/change_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/consecutive_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/frozen_level_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes_native36.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/cuwacunu/encoder/separate_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_native36_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/config/energy_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/energy_change_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/cuwacunu/encoder/energy_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/tests/energy_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/conditioned_change_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/config/conditioned_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/cuwacunu/encoder/conditioned_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/tests/conditioned_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/config/parent_conditional_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/parent_conditional_change_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/tests/parent_conditional_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/config/relative_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/cuwacunu/encoder/relative_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/relative_change_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/tests/relative_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/config/parent_modulated_decoder.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/parent_modulated_decoder_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/tests/parent_modulated_decoder_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v3/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/config/location_scale_decoder.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/cuwacunu/encoder/location_scale_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/location_scale_decoder_test.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/tests/location_scale_decoder_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v4/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v5/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v6/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v8/README.md
+?? code/integration/include/cuwacunu/encoder/encoder.h
+?? code/integration/include/cuwacunu/encoder/primary_encoder.h
+?? code/integration/include/cuwacunu/integration/causal_encoder_input.h
+?? code/scripts/apply-rpb-layout.ps1
+?? code/scripts/rpb-layout-plan.json
+?? code/scripts/verify-rpb-layout.ps1
+?? doc/rpb_layout_cleanup/README.md
+?? doc/rpb_layout_cleanup/additional-build-path-edits.json
+?? doc/rpb_layout_cleanup/configuration-aliases.json
+?? doc/rpb_layout_cleanup/consumer-path-edits.json
+?? doc/rpb_layout_cleanup/consumer-syntax.json
+?? doc/rpb_layout_cleanup/preservation-after.json
+?? doc/rpb_layout_cleanup/preservation-before.json
+?? doc/rpb_layout_cleanup/relocation.json
+?? doc/rpb_layout_cleanup/synchronization.json
+?? doc/rpb_layout_cleanup/verification.json

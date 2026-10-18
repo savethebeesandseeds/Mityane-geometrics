@@ -1,0 +1,101 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "family": "causal_patch_bottleneck_mae",
+  "version": "CPB-v7",
+  "instance": "CPB-v7.market-01",
+  "created_utc": "2026-10-15T23:57:53.6673772Z",
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "stage": "prospective_unmeasured",
+  "immutable_prospective_semantics": true,
+  "declaration_provenance": "Frozen prospective descriptor after the machine card hash and before source admission/build/measurement; measured instance record may be added later without changing this declaration",
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V7_CARD.json",
+    "bytes": 84463,
+    "sha256": "f913044fd4bdbeff637991087f91d0b47bca451b31dfe664fb70b9555bbae593"
+  },
+  "physical_version_root": "versions/v7",
+  "public_entry": "versions/v7/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v7.h",
+  "architecture_copy_parent": "CPB-v6",
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "fixed_prior_values": 3888,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;disjoint-mean-uncertainty-clip1-v1",
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "mechanism": "Same V6 native40 forward,objective,draws and fixed heads; clip disjoint mean and uncertainty learned parameter sets independently at norm2 max1 each,then one AdamW. Combined clipped-gradient norm can reachsqrt2 rather than1; future residual/optimizer history coupling remains. Fresh source0;no old model/stat initializer.",
+  "retention_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v6_retention.json",
+    "bytes": 18275,
+    "sha256": "0965842331056b61faee827a5ea782703205b23bd326298929ed3ecfca4604fb"
+  },
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "measured_results_in_this_descriptor": false,
+  "metadata_only": true,
+  "convenience_public_entry": "versions/v7.h",
+  "retention_independent_review": {
+    "path": "doc/causal_v6_retention_review/independent-review.json",
+    "bytes": 4080,
+    "sha256": "08f3d2c87ba2038f1a6a5ce07f7d4fda81749517d708c8618461dda7be5b3d70"
+  },
+  "retention_future_admission": {
+    "path": "doc/causal_v6_retention_review/applied-future-protocol.json",
+    "bytes": 1002,
+    "sha256": "89f4f7a111ef0ba15cd515a49056eed07e5ab086db5f2ae04964d05f79bc0ef7"
+  },
+  "mechanism_kind": "disjoint-mean-uncertainty-clipping-v1",
+  "clip_policy": "disjoint-mean-uncertainty-norm2-clip1-v1",
+  "gradient_clip_max_norms_f64": [
+    1.0,
+    1.0
+  ],
+  "gradient_clip_norm_type_f64": 2.0,
+  "gradient_clip_partition_v1": [
+    73,
+    293537,
+    3,
+    1215,
+    1,
+    3888
+  ],
+  "gradient_clip_parameter_names_policy": "Canonical newline text mean:* registration order,then uncertainty:* registration order,then fixed-excluded:*; exacttypedbinding at outer/payload/TRAIN",
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;disjoint-mean-uncertainty-clip1",
+  "uncertainty_parameter_names": [
+    "core.uncertainty_projection",
+    "core.variance_projection",
+    "core.variance_bias"
+  ],
+  "shared_global_clip": false,
+  "combined_post_clip_norm_upper_bound": "sqrt2",
+  "optimizer_independence_claimed": false,
+  "single_AdamW": true,
+  "descriptor_source_derivation": {
+    "parent": {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v6.json",
+      "bytes": 2435,
+      "sha256": "2e7ca755839090ea3d176492afa410f7261f866661975405b54b2469041505a7"
+    },
+    "operation": "Complete physical V6 descriptor copy then owned prospective V7 clipping-only metadata adaptation;V6 descriptor unchanged"
+  }
+}

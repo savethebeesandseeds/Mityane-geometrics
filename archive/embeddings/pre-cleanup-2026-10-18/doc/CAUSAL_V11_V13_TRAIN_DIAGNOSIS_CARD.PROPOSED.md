@@ -1,0 +1,3 @@
+# Prospective saved TRAIN V11/V13 diagnosis
+
+Execution is false. V13 initial/final saved TRAIN112, first8 query rows, fixed512 blocks and actual1/2048; exactly four audited V11 cached subtrees. Numeric25/hash35/context14; twelve assertions; witness24of60/checkpoint49. Cache1 + context14 + fresh preservation1 are copied explicitly into the source capsule; missing host_path uses the identical design path. Five manual affine families and captured-root slope scalar divisions are separate from zero model/head/module calls. V3 remains selected. Separate source/card/Stage/Schema/Run/audit admissions remain required.

@@ -1,0 +1,345 @@
+{
+  "kind": "causal_fresh_v4_saved_quality_audit_card_v1",
+  "declared_utc": "2026-10-15T12:18:49.6029085Z",
+  "stage": "declared_before_saved_quality_audit_execution",
+  "execution_pending": true,
+  "candidate": "CPB-v4.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "baseline_unchanged": true,
+  "frozen_experiment_card": {
+    "path": "doc/CAUSAL_FRESH_V4_CARD.json",
+    "sha256": "114026b2e6d11d84aee1855a8af673d84e782ab057eb45d398a5d66fa94b1dce"
+  },
+  "frozen_input_manifest_sha256": "a6bff90ffc9dd917c6a9c446659c52e0c76b5fb34a9f67201788eb3168948eb9",
+  "baseline_control_sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c",
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 53228,
+      "sha256": "446bda19c1ae7d2933726492412c032f27884b70ae2a5d09224e82feab22e8a4"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "doc/causal_fresh_v3/audit-quality.py",
+      "bytes": 28884,
+      "sha256": "fb7fd2e40cf79b2672d797b9edf2b2df89cca6460e16f7a523fb5cb8f63f801d"
+    },
+    {
+      "path": "code/research/causal_v3_train_diagnosis/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "source_ownership": "Complete owned auditor and inert reader outside frozen88-source V4 capsule; no V3 source edits",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "Torch_imports": 0,
+    "new_containers": 0,
+    "host_project_execution": false,
+    "execute_only_after_root_supplies_actual_quality_paths": true
+  },
+  "scope": [
+    "All initial/final saved market linear and three neural predictions on112TRAIN+32VALIDATION,4tasks; independent physical R2/MAE/RMSE/support arithmetic",
+    "Fresh TRAIN feature/target normalization moments and head coefficient/shape/seed bindings; reconstruct saved ridge outputs algebraically without fitting or neural forward",
+    "Both stages3TEMPOcohorts,2scalerpolicies,3fixed repetitions; saved correct/count/coverage/group arithmetic, means and retained intervals; no classification prediction regeneration",
+    "All112TRAIN/32VALIDATION fixed-query row/support aggregation plus first8 saved query cell witnesses per stage/split for independent MAE/GaussianNLL reductions",
+    "Exactly22 prospective clean-V3 advancement conditions independently coded without importing V4 reporter/comparator; trust and coverage separate",
+    "Card/input/source/artifact/checkpoint/proof/log/binary hashes and explicit variance input gradient policy;6admitted binaries; baseline controls reused without old execution",
+    "Read-only paired initial equality across8 feature archives+5 scaler/normalizer archives; compare dtype/shape/logical tensor bits, report file and provenance metadata separately"
+  ],
+  "model_calls": 0,
+  "head_fits": 0,
+  "neural_head_forward_calls": 0,
+  "encoder_training_updates": 0,
+  "post_encoder_PCA_fits": 0,
+  "raw_cache_numeric_reads": 0,
+  "checkpoint_numeric_deserializations": 0,
+  "allowed_numeric_arrays": "Current V4 saved feature/target/prediction/fit/query arrays, clean V3 baseline JSON and exactly13 pinned V3 initial-feature/fitted-statistic data archives for pairing only; no old model weights",
+  "independence": "V3 saved-quality audit copied and adapted; inert reader copied unchanged. No V4 reporter/comparator function is imported.",
+  "failure_policy": "Exclusive output receipt; preserve mismatches and failed attempts. No automatic fits, reruns, rescue, promotion or publication.",
+  "quality_interpretation": "Audit saved evidence only; no new encoder trajectory, readout fit, confirmation or forecasting result",
+  "paired_initial_reference_inputs": [
+    {
+      "id": "market_initial_train",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/market/cpb_v3-train.pt",
+      "bytes": 35809,
+      "sha256": "4a285524d58060fea659acac70e6c49a41859e37d328451ea82f4217c42a7da3",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/market/cpb_v4-train.pt",
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "market_initial_validation",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/market/cpb_v3-validation.pt",
+      "bytes": 12115,
+      "sha256": "803495c0b1f968c0ac662854b4e67b205b64292ed0377e7074eb714af6a002af",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/market/cpb_v4-validation.pt",
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941101",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "bytes": 345754,
+      "sha256": "9ac72cd8d3c781abc7ecef975ff170eeced06e5a55a7be20433f9e519a61839b",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941102",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "bytes": 345754,
+      "sha256": "b92431b166e2c3bf1c0e3901b8fd7b27ffdffe5fcb4dfd764a384b58f6ae824a",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941103",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "bytes": 345754,
+      "sha256": "3629a3bbc47fe02e75fe65ad921466ab763ab2b5ad6245ba0b30ad3e054416ec",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941101",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "bytes": 345754,
+      "sha256": "d6dcdad2e21035885e318e66cc57e112cf2bdbb43fd477bd3d4d9eb13138cd37",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941102",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "bytes": 345754,
+      "sha256": "c35be75b7bb891418c5310f0e67a4217d44042f7ab698bc1b14500290774ce67",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941103",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "bytes": 345754,
+      "sha256": "aa8afdd029efee13bd182fac17360648ba0e6216b1a7ffea3c57daa07f57a631",
+      "v4_root": "quality",
+      "v4_relative_path": "features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_market_input_scaler",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "3a5452926f8dee5516a2369c9eb8867fabd65b636d00ab502856fda2c85fec92",
+      "v4_root": "training",
+      "v4_relative_path": "calibration/input-scaler.pt",
+      "numeric_fields": [
+        "fit_row_ids",
+        "sum",
+        "sumsq",
+        "scaler.mean",
+        "scaler.scale",
+        "scaler.count",
+        "scaler.channel_ids",
+        "scaler.floor_applied",
+        "scaler.scale_floor"
+      ],
+      "metadata_text_fields": [
+        "artifact_kind",
+        "source_identity",
+        "scaler_identity"
+      ]
+    },
+    {
+      "id": "fresh_market_bank_normalizer",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "b59b404668fda6b529c446a73785e90f97158c96e9f1f26ce41e32235581bf9f",
+      "v4_root": "training",
+      "v4_relative_path": "calibration/bank-standardizer.pt",
+      "numeric_fields": [
+        "fit_row_ids",
+        "bank.bank.counts",
+        "bank.bank.sum",
+        "bank.bank.sumsq",
+        "bank.bank.mean",
+        "bank.bank.scale",
+        "bank.bank.support",
+        "bank.bank.input_geometry",
+        "bank.bank.sampling_interval",
+        "bank.bank.floor",
+        "bank.bank.minimum_support"
+      ],
+      "metadata_text_fields": [
+        "artifact_kind",
+        "source_identity",
+        "bank.relative_identity",
+        "bank.bank.source_identity",
+        "bank.bank.normalizer_identity"
+      ]
+    },
+    {
+      "id": "fresh_synthetic_scaler_941101",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/synthetic-scalers/master-941101.pt",
+      "bytes": 3953,
+      "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69",
+      "v4_root": "quality",
+      "v4_relative_path": "features/synthetic-scalers/master-941101.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_synthetic_scaler_941102",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/synthetic-scalers/master-941102.pt",
+      "bytes": 3953,
+      "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71",
+      "v4_root": "quality",
+      "v4_relative_path": "features/synthetic-scalers/master-941102.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_synthetic_scaler_941103",
+      "v3_container_path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/features/synthetic-scalers/master-941103.pt",
+      "bytes": 3953,
+      "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55",
+      "v4_root": "quality",
+      "v4_relative_path": "features/synthetic-scalers/master-941103.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    }
+  ],
+  "paired_initial_scope": "Explicit later user/root request: compare existing clean V3 initial data/scalers against new V4 initial exports and freshly fitted stats; no checkpoint weights, replay or refit. Tensor bytes, file bytes and metadata identities are separate.",
+  "prior_pre_pairing_declaration": {
+    "path": "doc/causal_fresh_v4/quality-audit-card.pre-pairing.json",
+    "sha256": "76e11fcf12d2d72cae6844b6378d0f589827a8f6dd55257a462652cdebf5951a"
+  }
+}

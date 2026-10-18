@@ -1,0 +1,778 @@
+{
+  "kind": "causal_encoder_finetune_v2_prospective_card",
+  "protocol": "causal-finetune-v2",
+  "declared_utc": "2026-10-15T09:55:06.1585371Z",
+  "stage": "declared_before_compilation_training_or_quality",
+  "model": "CPB-v2",
+  "instance": "CPB-v2.market-01",
+  "baseline": "CPB-v1.market-01",
+  "application_selection_changed": false,
+  "geometry": {
+    "channels": 3,
+    "history": 128,
+    "features": 9,
+    "patch": 8,
+    "native_width": 36,
+    "level_width": 32,
+    "change_width": 4,
+    "encoder_width": 64,
+    "layers": 3,
+    "heads": 4,
+    "feedforward": 256,
+    "decoder_hidden": 128
+  },
+  "mechanism": "Exact CPB-v1 initialization; enable end-to-end learned parent encode/decode gradients; preserve arithmetic and fixed spectral prior, scaler and bank; no auxiliary loss",
+  "training": {
+    "dataset_id": "MKT-HIST-2",
+    "recipe_id": "consecutive-changes-v1",
+    "task": "masked_waveform_location_scale_reconstruction",
+    "designed_complexity_level": 4,
+    "complexity_scale_max": 5,
+    "view": "unlabeled chronological TRAIN",
+    "train_anchors": 4096,
+    "train_probes": 112,
+    "validation_probes": 32,
+    "updates": 2048,
+    "batch_size": 8,
+    "maximum_attempts": 4096,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "global_gradient_clip": 1.0,
+    "query_fraction": 0.25,
+    "extra_context_deletion": 0.15,
+    "dropout": 0.0,
+    "initialization_seed": 942001,
+    "row_seed": 942002,
+    "mask_seed": 942003,
+    "context_seed": 942004,
+    "query_seed": 942005,
+    "objective": "same supported standardized Gaussian waveform NLL",
+    "fixed_query_metric": "standardized MAE",
+    "scaler_fits": 0,
+    "bank_fits": 0,
+    "inference_checkpoints": [
+      0,
+      2048
+    ],
+    "typed_training_checkpoints": [
+      512,
+      1024,
+      2048
+    ]
+  },
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "dimension36_seeds": [
+        "13088411117524848790",
+        "10018485049408248344",
+        "9083751155097190455"
+      ],
+      "linear_parameters": 148,
+      "neural_parameters": 660
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "unchanged CPB-v1 stream_seed(repetition,width)",
+      "linear_parameters": 74,
+      "neural_parameters": 626
+    }
+  },
+  "criteria": {
+    "mandatory": "all correctness/actual CUDA learning/typed resume and full coverage",
+    "original9": [
+      {
+        "criterion": "positive_linear_r2_trend",
+        "floor": 0.0
+      },
+      {
+        "criterion": "positive_neural_mean_r2_trend",
+        "floor": 0.0
+      },
+      {
+        "criterion": "past_volatility_linear_r2_v22_retention",
+        "floor": 0.6781069298378846
+      },
+      {
+        "criterion": "past_volatility_neural_mean_r2_v22_retention",
+        "floor": 0.3303364424760756
+      },
+      {
+        "criterion": "past_activity_linear_r2_v22_retention",
+        "floor": 0.6784311857420708
+      },
+      {
+        "criterion": "past_activity_neural_mean_r2_v22_retention",
+        "floor": 0.46216745965172695
+      },
+      {
+        "criterion": "past_relation_linear_r2_v22_retention",
+        "floor": 0.3385830932968374
+      },
+      {
+        "criterion": "past_relation_neural_mean_r2_v22_retention",
+        "floor": 0.20799583291493073
+      },
+      {
+        "criterion": "linear_trend_exceeds_saved_v23",
+        "floor": 0.3871309972495327
+      }
+    ],
+    "strict_native36_8": [
+      {
+        "criterion": "past_volatility_linear_r2_native36_guard",
+        "floor": 0.6781069298378846
+      },
+      {
+        "criterion": "past_volatility_neural_mean_r2_native36_guard",
+        "floor": 0.3926141918082198
+      },
+      {
+        "criterion": "past_trend_linear_r2_native36_guard",
+        "floor": 0.6549112553681312
+      },
+      {
+        "criterion": "past_trend_neural_mean_r2_native36_guard",
+        "floor": 0.1342955201053261
+      },
+      {
+        "criterion": "past_activity_linear_r2_native36_guard",
+        "floor": 0.7514296819362523
+      },
+      {
+        "criterion": "past_activity_neural_mean_r2_native36_guard",
+        "floor": 0.5631529010630465
+      },
+      {
+        "criterion": "past_relation_linear_r2_native36_guard",
+        "floor": 0.3406853885730756
+      },
+      {
+        "criterion": "past_relation_neural_mean_r2_native36_guard",
+        "floor": 0.3495834881128966
+      }
+    ],
+    "all_three_neural_trend_positive": true,
+    "causal_baseline_market": [
+      {
+        "task": "past_volatility",
+        "linear_floor": 0.954421680571244,
+        "neural_mean_floor": 0.6059305827863365,
+        "baseline_neural_repetitions": [
+          0.624805518073028,
+          0.6614974721031207,
+          0.5314887581828607
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_trend",
+        "linear_floor": 0.7968036456603806,
+        "neural_mean_floor": 0.24368774940638713,
+        "baseline_neural_repetitions": [
+          -0.33939984380671695,
+          0.657262428919963,
+          0.4132006631059153
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_activity",
+        "linear_floor": 0.8751252139115532,
+        "neural_mean_floor": 0.6866466216076083,
+        "baseline_neural_repetitions": [
+          0.6866727610844631,
+          0.6900023672032143,
+          0.6832647365351475
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_relation",
+        "linear_floor": 0.49370525358462336,
+        "neural_mean_floor": 0.38971630978947336,
+        "baseline_neural_repetitions": [
+          0.3546264613165948,
+          0.48288169743556975,
+          0.3316407706162555
+        ],
+        "coverage_floor": 1.0
+      }
+    ],
+    "strictly_improve_mean_neural_trend": 0.24368774940638713,
+    "synthetic_max_baseline_and_native36": [
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "ridge",
+        "baseline": 0.98828125,
+        "native36_floor": 0.9895833333333334,
+        "floor": 0.9895833333333334,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "baseline": 0.978732638888889,
+        "native36_floor": 0.9774305555555556,
+        "floor": 0.978732638888889,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "baseline": 0.9270833333333334,
+        "native36_floor": 0.93359375,
+        "floor": 0.93359375,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "baseline": 0.9214409722222222,
+        "native36_floor": 0.9253472222222222,
+        "floor": 0.9253472222222222,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "ridge",
+        "baseline": 1,
+        "native36_floor": 1.0,
+        "floor": 1.0,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "baseline": 0.9934895833333334,
+        "native36_floor": 0.9952256944444444,
+        "floor": 0.9952256944444444,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "baseline": 0.9609375,
+        "native36_floor": 0.9609375,
+        "floor": 0.9609375,
+        "coverage_floor": 1.0
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "baseline": 0.9487847222222222,
+        "native36_floor": 0.9505208333333334,
+        "floor": 0.9505208333333334,
+        "coverage_floor": 1.0
+      }
+    ],
+    "arithmetic_absolute_tolerance": 1E-12,
+    "posthoc_rescue": false,
+    "checkpoint_selection": "final2048 only"
+  },
+  "baseline_frozen_files": [
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/config/v1.conf",
+      "bytes": 631,
+      "sha256": "8946440d0e9834465d7d8e7fcc973bb42f462edb1342e6f618f314f5f67a6f11"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/conditioned_change_bank.h",
+      "bytes": 1651,
+      "sha256": "42dd85b297618e49bace46dec6429835b5668b34e071250fc00de3d539be8412"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/conditioned_change_config.h",
+      "bytes": 1480,
+      "sha256": "d06e4bad1ec16e0940d2e67f78e378ea63ee2383ef04413205dec3e5b729c721"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/conditioned_change_normalizer.h",
+      "bytes": 11393,
+      "sha256": "42b3588ff644a45381b3d9f4f2e3a0dba7791759317ced3bec171880e9dc6c05"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/config.h",
+      "bytes": 5959,
+      "sha256": "1806ee07354e37933d6a98c66fd96f7fa44a4b2248391337f0be74ea5153ff01"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/configurable_spectral_checkpoint_io.h",
+      "bytes": 3102,
+      "sha256": "5c02ae6363dc8ce51ce1421022f722c3f1c360aedc905afa41bde03daee7fbf1"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/configurable_spectral_checkpoint.h",
+      "bytes": 7352,
+      "sha256": "8354a51316be656d4a58fe2431c2b2f47cc0ea36ad923fb53edec9004c39cf24"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/configurable_spectral_config.h",
+      "bytes": 4835,
+      "sha256": "ad71841f10adee8bc5556f4e35464c135aa2a2a2f21caeb7950fecc18d63b041"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/configurable_spectral_model.h",
+      "bytes": 13751,
+      "sha256": "b2d35ff8be13e7f3377a665bd3427a9a392a57076c1951c224af1991912a3e3e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/configurable_spectral_relation.h",
+      "bytes": 8180,
+      "sha256": "0291ae2ff8186e025bb62027384e1dce30479135d3423073ab38740cb8d20058"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/consecutive_change_bank.h",
+      "bytes": 3579,
+      "sha256": "4da04e893940a443588b6f6c184ce901ffeace3ce037946d4532b972d5e4c23b"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/consecutive_change_checkpoint.h",
+      "bytes": 5184,
+      "sha256": "8b878f2b29af534c87a967faf2cd5e4b67eb742fe344aa651ee498b91298b262"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/consecutive_change_config.h",
+      "bytes": 1704,
+      "sha256": "913aea08a95aaaa0eab64d8fb69d07672e80e59d8749124ba755f0909f912b61"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/consecutive_change_model.h",
+      "bytes": 4016,
+      "sha256": "9bba3e8cef87b9a0227b66232151e53088c543dc03ff3ba2969fbf3985c4ad1c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/consecutive_change_training_state.h",
+      "bytes": 14188,
+      "sha256": "c76e703bbdde65ca653e7b8bca72200bb201955ea8ff5cd642d78b7042584355"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/content_ordered_relation_bank.h",
+      "bytes": 5882,
+      "sha256": "993d8ce4cd281f8cb400c80e866a7f2c32905d2bb3b328948d199104a6a84df3"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/content_ordered_relation_checkpoint.h",
+      "bytes": 5520,
+      "sha256": "5877748333811da2ce1b6465c2550f1ba8ee2de9c0977067db67806a7d6fa5c4"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/content_ordered_relation_config.h",
+      "bytes": 2705,
+      "sha256": "276254a6c27d7618257b42c78bd9e88419ad54be7b037134007b25b7a1fce1c9"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/content_ordered_relation_model.h",
+      "bytes": 6468,
+      "sha256": "2dbe21a632adcc0021af88c90266a470a98b62f83a236793da5b2153bc852d48"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/document.h",
+      "bytes": 8087,
+      "sha256": "b689e62a3612c85863c0e37ad4680052adc32e87e2bc584ae759e3c2f917e518"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/encoder.h",
+      "bytes": 3775,
+      "sha256": "bec505e82b4cc6e6450f2e02ae704b85744921fcac0c56768ee231b7b0a8527c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/location_scale_decoder_checkpoint.h",
+      "bytes": 9543,
+      "sha256": "c7805be0b82d4fd74cd15ca1cabd4e551cde308f39a253c7aa68f9c3ee433102"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/location_scale_decoder_config.h",
+      "bytes": 1982,
+      "sha256": "213be908fffd8162c70d4c8205e1bec894d76a22d5cd9368d96d51ed6d374834"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/location_scale_decoder_model.h",
+      "bytes": 13119,
+      "sha256": "814d9fd6c4c622e859ead2e56f0b12dc64b10640c5a089374360c4c9aa27afb1"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/location_scale_decoder_settings.h",
+      "bytes": 3165,
+      "sha256": "717066f83f535d5898e4106ab50cf737840b00d08cf9571eb07c4eda8b3b4f68"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/location_scale_decoder_training_state.h",
+      "bytes": 10127,
+      "sha256": "cdb088601e5b1d51ec5bd46bd8fb80690d7811c418dd4cc09733a6c7b865fd69"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/masking.h",
+      "bytes": 3877,
+      "sha256": "483c840ccca4248b960782a5e06263d0b2e1d313bd912adefbedb97bd8f97e4e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/model.h",
+      "bytes": 20895,
+      "sha256": "c08092c77f14f44e8999dce4026b7df3953f4fcaadabad549a100c9882abee16"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/objectives.h",
+      "bytes": 3159,
+      "sha256": "e1defd4aa34e9fac371c45a833a3ae834fc0dfa5661c726251e82341f398941e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/preprocessing.h",
+      "bytes": 10346,
+      "sha256": "f191ecd79241873a2a9964a951bb171b87a75205b20d711068a648b08af5a99d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/relative_change_bank.h",
+      "bytes": 4784,
+      "sha256": "b1d7a34967e5950a06dd3c86ce783937f6ba4696b9d53a27d73ac31771368b09"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/relative_change_config.h",
+      "bytes": 1927,
+      "sha256": "c7a242531c08002a45ded821cde6160a528d129fda1c0c77871e0f4657adda3a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/relative_change_normalizer.h",
+      "bytes": 3047,
+      "sha256": "1a82e08ad4e940f93a42ec3e5d9ca3bfb9432e0d7a52c159564e02494b628e0f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/separated_change_checkpoint.h",
+      "bytes": 5379,
+      "sha256": "65d226f2ccdc0f4026730b42ed1fd8dcddb98bddd0697c9d1e797044c7a79e38"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/separated_change_config.h",
+      "bytes": 1629,
+      "sha256": "5c9cd456ec861ddd8b64ee15e5bcff74c738b4fa9eec42b4dadb6789a02eaed2"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/separated_change_frozen_level.h",
+      "bytes": 4534,
+      "sha256": "a1ef2d7adce5fa8dcf7c524d88fdb18cce260f43deb09a0590ac0def0d355e0f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/separated_change_model.h",
+      "bytes": 5806,
+      "sha256": "2427be549f235bd65ea694318245c7350526848615683d2f123a41d1fc6f7aa6"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/separated_change_training_state.h",
+      "bytes": 7342,
+      "sha256": "b99a77cb133501236f83682d6ba6c384960ceb807194385753133b260c1d560c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/simple_kv_block.h",
+      "bytes": 8406,
+      "sha256": "65882d08602348f76813624900b69ecb6dc4ad62b69aa0bf2e9d36c297884f18"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/tokenization.h",
+      "bytes": 3455,
+      "sha256": "4fcfab2781b5bb3f7941050e03110b3495ff18d173db85a7df5ac48082a9157d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/types.h",
+      "bytes": 5710,
+      "sha256": "5db1bd52e3d7c2edc604e0b8c7fdddaade66e56c9d01a04c2cdd5bb889383e28"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1/visible_difference.h",
+      "bytes": 4814,
+      "sha256": "87e4b8c8aa851e4581155d2ac20c674642ff57b90015d7b83785bcec000b7c6a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h",
+      "bytes": 23039,
+      "sha256": "0f0470d2b990459ec724784136c850aae97d3740de90bded4b18007bdd5c4d61"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/provenance.json",
+      "bytes": 25245,
+      "sha256": "a901f7334a7643a680d6a1ab80601539b3f36358a8bf429f5ac669204790539c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/README.md",
+      "bytes": 3428,
+      "sha256": "dde9520d74b2533013ca62cea96d6dcf45054f9aff2d0d44a16cf389e76b2187"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/tests/v1_test.cpp",
+      "bytes": 42205,
+      "sha256": "bf41a2e9b892fab5ad244fb29b7ef8cef3817fd774a32161cef69822bc1fdd9a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/v1.mk",
+      "bytes": 880,
+      "sha256": "58a5fd06a3dce82d51715c7a0e3951cb48d541d77acf375f2f25355cc3a62c25"
+    }
+  ],
+  "input_pins": [
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/selections.pt",
+      "bytes": 36845,
+      "sha256": "10df626e83cc652edfdce2f0cb2eae72ccf802a3a0081cf5db8db71a7ef8bdb2"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/scaler.pt",
+      "bytes": 5177,
+      "sha256": "da00fba92334a5eed4521ded1b4d579f7a042317660be64d6decfcf80a00aa3d"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/query-plan-train.pt",
+      "bytes": 778351,
+      "sha256": "1853a271a32bd6635c122b36dfd6373247815178cff1525e95d852c5aafc137e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/query-plan-validation.pt",
+      "bytes": 224678,
+      "sha256": "5a98906368f3b56508d81b254d598594573545babd3c8e8ff67979a30b12018d"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/features/train-targets.pt",
+      "bytes": 8782,
+      "sha256": "521d8662f498bce27ad26a41c4723bbebb9d2ab6b924cfbcce7132c25b7e43e6"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/features/validation-targets.pt",
+      "bytes": 4677,
+      "sha256": "cbd08bd01c728cfbb7a500922852573c45f87dd98821b42e20ee202a7a743181"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/shared-assets.sha256",
+      "bytes": 1083,
+      "sha256": "dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/causal-patch-bottleneck-mae-v1/run-001/features/market/cpb_v1-train.pt",
+      "bytes": 35809,
+      "sha256": "ed7cedecd712d2f38405780b14dec76c5495a4d644a25b8507952da8fb088210"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/causal-patch-bottleneck-mae-v1/run-001/features/market/cpb_v1-validation.pt",
+      "bytes": 12115,
+      "sha256": "5f4fcd90d52afdcdf6310ee88cbad5a535aa59b902ba486f1bcda5dd934c978f"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/manifest.json",
+      "bytes": 7035,
+      "sha256": "fdd8b04917b1d4580fea760e4c6d2dedf8a9d47b14271758174da86859d62ccb"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/table_rows.json",
+      "bytes": 693935,
+      "sha256": "905c2fcd69e8c0d513db589213a5c1e4da67b51407d2fcea0bcfcf389f61c6f6"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/completion.json",
+      "bytes": 6746,
+      "sha256": "cc4948effa5920aae6b3204eee754cbe352559401a88217074f1beee687fed0c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "doc/causal_primary_integration/preservation.json",
+      "bytes": 4290,
+      "sha256": "82e01d14c013d3616ea244ffce824f296528fd42737351a8981d91a2b76ee6cb"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "doc/encoder_search_ledger.json",
+      "bytes": 593709,
+      "sha256": "b8d3ab33dae4937a0202ac64302f58a5b6c803c024b7277604f26855c76a4012"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "data/mkt-hist-1/csv/BTCUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "data/mkt-hist-1/csv/ETHUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "data/mkt-hist-1/csv/SOLUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941101/training.pt",
+      "bytes": 15950423,
+      "sha256": "d6ae4a383014b5c7ea0b800279406f152bc69d51e21757f8322c57d877887b4c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941101/validation.pt",
+      "bytes": 7976815,
+      "sha256": "82ce4501ee20043a318bb685473b933af380a98a6da6433d00713893aab587f7"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941101/validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "7e94e74007607e3e7bea8ca2b34908897900930c1d3e7847fe412942216a9f34"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941101/scaler-witness.pt",
+      "bytes": 27857,
+      "sha256": "6ec52825cb4ea799b647ec67dafcf7693ea9af48c609a7a1a48e3e689c94f8c2"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/master-941101/report.json",
+      "bytes": 16291,
+      "sha256": "89c32b98807e6a3a18fb18d5b551a3fe2b45bd5fd2b4d4899853953624be6b4c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941102/training.pt",
+      "bytes": 15950423,
+      "sha256": "9db9ebac5e2d4fae5915fc72b104d7b38cdef528ab84e11aab9bbe7c17760c6c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941102/validation.pt",
+      "bytes": 7976815,
+      "sha256": "0382d4896751a02d5708eae35be74b3634a2bed18588492d934072cf5e6bfdee"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941102/validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "953f490885290074c764c629a9a5d83cd1e071d77c45e62d6af0fff8556acd52"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941102/scaler-witness.pt",
+      "bytes": 27857,
+      "sha256": "d9897a0d7900aaea35ad741791401454ff84dfdeee54b472ef928bf0a75b6054"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/master-941102/report.json",
+      "bytes": 16283,
+      "sha256": "dac9d01429d7b02cd1c521e5b771bf1e4793124d35adee873d89c287b00d923d"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941103/training.pt",
+      "bytes": 15950423,
+      "sha256": "f35b3f6bc6e9c957425cc1b2aa7a752a1a2081f0b4169f8e48a8159f5d3557dd"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941103/validation.pt",
+      "bytes": 7976815,
+      "sha256": "3c406e63129752dffc0a76240d10b3200bb1952338612264b0da653bf735b619"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941103/validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "962b7fa047fc87c4e9c05dfcd2fbb69eccca319ea373e024a8d606f34f8d88bb"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/master-941103/scaler-witness.pt",
+      "bytes": 27857,
+      "sha256": "90122a1c564cbb66f7190bbd12f4bca40983108bd45c27cbb66971c1cb666870"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/master-941103/report.json",
+      "bytes": 16275,
+      "sha256": "2a3def873514236eef0f83f28ca5232e358347f926ee73c541d2c4a0a4df786a"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/original-inputs.sha256",
+      "bytes": 864,
+      "sha256": "6121773c0b97e5490f191a9f8ff013e90f27a9a557376ac8256bdbb2d6af6091"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/capacity-artifacts.sha256",
+      "bytes": 109217,
+      "sha256": "62f7e52a1d94815ec44ec90bae052c52ba2e89e9e809f851afdb11a15da0aa83"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/inputs/market-synthetic-transfer-v1/controls/v22-summary.json",
+      "bytes": 53629,
+      "sha256": "c0a28ae390df75d647b90fafcc6a9755c42ce36e159c316f4e0173ce71dfa88f"
+    }
+  ],
+  "baseline_checkpoint_sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895",
+  "published_heads": {
+    "integration": "486886c361fe124b97659ba16c22857aae303d6d",
+    "research": "e6bdd56ea16ddbb82444283e984158948e69032e"
+  },
+  "encoder_quality_stage": "not_started",
+  "results": [],
+  "execution_container": "cuwacunu",
+  "source_capsule": "exclusive /opt/cuwacunu/research/causal-finetune-v2/attempt-NNN/source; no change to container mounts or active dev code"
+}

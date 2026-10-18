@@ -1,0 +1,57 @@
+{
+  "kind": "causal_fresh_v4_saved_reporting_correction_card_v1",
+  "declared_utc": "2026-10-15T12:45:16.0082606Z",
+  "status": "declared_before_correction_execution",
+  "candidate": "CPB-v4.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "frozen_card_sha256": "114026b2e6d11d84aee1855a8af673d84e782ab057eb45d398a5d66fa94b1dce",
+  "failure": "Original reporter stopped before output creation because the exact prospectively reused V3 raw-control file retains kind causal_fresh_v3_raw_controls_v1",
+  "original_source": {
+    "sha256": "103060ff9dc3a8177cc9f20ee4c51fdba6dddb7f6e663c773d10d4f5c7652007",
+    "path": "code/research/causal_fresh_v4/evaluation/report.py",
+    "bytes": 40611
+  },
+  "corrected_source": {
+    "sha256": "8477b0c817476bf9adb49852c4ba88a152470d4e76bd5312d7b03b091a09026b",
+    "path": "code/research/causal_fresh_v4_reporting_attempt_002/report.py",
+    "bytes": 40884
+  },
+  "raw_control_snapshot": {
+    "expected_kind": "causal_fresh_v3_raw_controls_v1",
+    "sha256": "c37d484cde4ddf9ae551b35aad8b2595865e109d566dab2ba7c1872e814e8077",
+    "path": "doc/causal_fresh_v4/raw-controls.json",
+    "bytes": 11461
+  },
+  "raw_numeric_source": {
+    "sha256": "a3c6bc69b9a0c1462d2d667fb2df215a486036283b900c1b8bf234a5eae5770d",
+    "path": "doc/results/market_parent_modulated_decoder_v1/table_rows.json",
+    "bytes": 300529
+  },
+  "changes": [
+    "Accept the exact preserved V3 raw-control kind rather than claiming V4 created it.",
+    "Require the unchanged full raw-control snapshot SHA256 in addition to existing source/rows/population checks."
+  ],
+  "unchanged": [
+    "All numeric metrics, populations, fits, fixed recipes, quality/proof/trust predicates and frozen22 conditions.",
+    "Frozen88 source capsule, raw controls, original failed attempt and all saved feature/head/checkpoint bytes."
+  ],
+  "execution": {
+    "fits": 0,
+    "extraction_replays": 0,
+    "quality": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001",
+    "comparison_output": "comparison-attempt002",
+    "models": 0,
+    "container": "cuwacunu",
+    "exclusive_outputs": true,
+    "report_output": "report-attempt002",
+    "training_updates": 0,
+    "existing_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e"
+  },
+  "comparator": {
+    "unchanged": true,
+    "sha256": "a9739760f795b964ba88b1bdb5d1b9269e28290eff6d24bccc55830597524fe8",
+    "source": "code/research/causal_fresh_v4/evaluation/compare_baseline.py",
+    "bytes": 24612
+  },
+  "independent_audit_card_sha256": "2d3d70612d89ef527bd395c0362244e716a16fb26734e3ae8d5c21ed850ecd5e"
+}

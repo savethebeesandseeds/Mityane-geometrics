@@ -1,0 +1,144 @@
+{
+  "kind": "cpb_v11_owned_independent_quality_audit_source_preparation_v1",
+  "status": "SOURCE_ONLY_READY_FOR_INDEPENDENT_STATIC_REVIEW",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "direct_parent": "FINAL V10 normal independent saved-quality auditor",
+  "complete_physical_parent_copies": 4,
+  "parent_copy_manifest": {
+    "path": "output/engineering/causal-fresh-v11-evaluation-preparation/attempt-001/parent-copies/manifest.json",
+    "bytes": 20149,
+    "sha256": "d329ace1fab2f1dd2715023c571ea37e2ef5f2c7212453d3b57c7d112f088d70"
+  },
+  "parent_mapping": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_quality_audit/audit.py",
+        "bytes": 90694,
+        "sha256": "9c17b794c0d20a66a4e5b13161d013b9928ea62b372dde7a413813363c793fce"
+      },
+      "saved_parent": {
+        "path": "output/engineering/causal-fresh-v11-evaluation-preparation/attempt-001/parent-copies/code/research/causal_fresh_v10_quality_audit/audit.py",
+        "bytes": 90694,
+        "sha256": "9c17b794c0d20a66a4e5b13161d013b9928ea62b372dde7a413813363c793fce"
+      },
+      "owned_path": "code/research/causal_fresh_v11_quality_audit/audit.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_quality_audit/archive_reader.py",
+        "bytes": 4035,
+        "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+      },
+      "saved_parent": {
+        "path": "output/engineering/causal-fresh-v11-evaluation-preparation/attempt-001/parent-copies/code/research/causal_fresh_v10_quality_audit/archive_reader.py",
+        "bytes": 4035,
+        "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+      },
+      "owned_path": "code/research/causal_fresh_v11_quality_audit/archive_reader.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_quality_audit/README.md",
+        "bytes": 7299,
+        "sha256": "155333e9276f8ffda3d4bcede6990e870544050da8ea38de49687ed4a807ed10"
+      },
+      "saved_parent": {
+        "path": "output/engineering/causal-fresh-v11-evaluation-preparation/attempt-001/parent-copies/code/research/causal_fresh_v10_quality_audit/README.md",
+        "bytes": 7299,
+        "sha256": "155333e9276f8ffda3d4bcede6990e870544050da8ea38de49687ed4a807ed10"
+      },
+      "owned_path": "code/research/causal_fresh_v11_quality_audit/README.md"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_quality_audit/provenance.json",
+        "bytes": 10187,
+        "sha256": "2a298f7f3b9570bcb1758bdaf9921e250c72d6e234fb001abc4e9638e0e6de12"
+      },
+      "saved_parent": {
+        "path": "output/engineering/causal-fresh-v11-evaluation-preparation/attempt-001/parent-copies/code/research/causal_fresh_v10_quality_audit/provenance.json",
+        "bytes": 10187,
+        "sha256": "2a298f7f3b9570bcb1758bdaf9921e250c72d6e234fb001abc4e9638e0e6de12"
+      },
+      "owned_path": "code/research/causal_fresh_v11_quality_audit/provenance.json"
+    }
+  ],
+  "current_nonself": [
+    {
+      "path": "code/research/causal_fresh_v11_quality_audit/audit.py",
+      "bytes": 93953,
+      "sha256": "f76e930f2d346b4b1cd7d0bf73e3b83b51c615edc5beeca87f779eaa44d7e671"
+    },
+    {
+      "path": "code/research/causal_fresh_v11_quality_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_fresh_v11_quality_audit/README.md",
+      "bytes": 2916,
+      "sha256": "1399026080d1cf4b973f7c29017bf148b3c72a442fe31e00e75e6cb2d9d20a49"
+    }
+  ],
+  "self_path": "code/research/causal_fresh_v11_quality_audit/provenance.json",
+  "self_hash_excluded": "Future card pins this provenance",
+  "archive_reader_parent_byte_exact": true,
+  "objective_contract": {
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "loss_coefficients": [
+      1.0,
+      1.0
+    ],
+    "mean_huber_delta": 1.0
+  },
+  "temporal_contract": {
+    "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-centered-variance4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-v1",
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ]
+  },
+  "initial_pairing": "13 saved V9 DATA/statistic archives;currentfeature20:40 only and five whole statistics",
+  "historical_controls": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "historical_trust_joins": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "quality": "Normal5scientific+2aggregation stages; no current recovery; preserve opaque V9 historical recovery and historicalV10full40",
+  "numeric_kernels": "Inherited independent scalar reductions unchanged;current pairing slice and metadata/proof/learning receipts adapted only",
+  "moment_evidence": "Four CSV artifacts8192/2048/2048/16384;training auditor owns detailed saved-array traces and adjoints",
+  "imports": "Python standard library and owned inert reader only",
+  "actual_card_created": false,
+  "execution_admitted": false,
+  "AST_import_numeric_model_head_calls": 0
+}

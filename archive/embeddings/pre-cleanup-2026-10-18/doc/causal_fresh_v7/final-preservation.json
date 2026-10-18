@@ -1,0 +1,824 @@
+{
+  "kind": "causal_fresh_v7_final_preservation_v1",
+  "status": "passed",
+  "verified_utc": "2026-10-16T00:40:01.1042170Z",
+  "checks": 11391,
+  "baseline": "CPB-v3.market-01",
+  "candidate": "CPB-v7.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "prior_V6_final": {
+    "path": "doc/causal_fresh_v6/final-preservation.json",
+    "bytes": 48110,
+    "sha256": "aa99ac04f3c4bd013c617450c6fde2f99e96c041e6b4c8f5465e2d551abe42ce"
+  },
+  "old_before_inventory": {
+    "path": "doc/causal_v3_v4_train_diagnosis/preservation-before.json",
+    "bytes": 413677,
+    "sha256": "18ef6f002103e3f2f920cb41678e8913104175f7b14afc291b3e37f32b11b748"
+  },
+  "old_pins": 1030,
+  "old_authorized_snapshots": [
+    {
+      "path": "AGENTS.md",
+      "old_bytes": 41025,
+      "old_sha256": "94f81cdd199b99b5b77fc94f1dfbafa903573fababb35c1598759f882e11dd28",
+      "snapshot": "output/engineering/causal-fresh-v5-finalization/attempt-001/prior-live/AGENTS.md",
+      "current": {
+        "path": "AGENTS.md",
+        "bytes": 44487,
+        "sha256": "ed0110c03dcaf950aa749ffcca58b3298bbbba7958010873368e8229ec8c66c1"
+      }
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "old_bytes": 3015,
+      "old_sha256": "108bb4de60c8fc4d9dbe156b72970547865a30e03a2405d0db44ae4811490786",
+      "snapshot": "output/engineering/causal-fresh-v5-finalization/attempt-001/prior-live/code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "current": {
+        "path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+        "bytes": 9914,
+        "sha256": "d8e148c922c86294698d7881b325accbaf265d8efbba9768c3a2c5d363fbb102"
+      }
+    },
+    {
+      "path": "doc/clean_causal_encoder_research_ledger.json",
+      "old_bytes": 82352,
+      "old_sha256": "11204ceefe573b04ec9e778c122241a2b49546e1b437529f9e675054d0306a14",
+      "snapshot": "output/engineering/causal-fresh-v5-finalization/attempt-001/prior-live/doc/clean_causal_encoder_research_ledger.json",
+      "current": {
+        "path": "doc/clean_causal_encoder_research_ledger.json",
+        "bytes": 328278,
+        "sha256": "2a29cc96ba95031497475ed9f58cd631faa67bc9579cc4288d9acbdc60a93bab"
+      }
+    },
+    {
+      "path": "doc/CURRENT_STATUS.md",
+      "old_bytes": 39765,
+      "old_sha256": "96e7dbe0ad2d89a481627b9782a5123c65ce0f1fc51ef5babb4e79f91beace33",
+      "snapshot": "output/engineering/causal-fresh-v5-finalization/attempt-001/prior-live/doc/CURRENT_STATUS.md",
+      "current": {
+        "path": "doc/CURRENT_STATUS.md",
+        "bytes": 42045,
+        "sha256": "52ceeb49b92944912a22ef25c630fa6ec67ea2294c7b04957dead738313efb44"
+      }
+    },
+    {
+      "path": "doc/EMBEDDING_VERSIONS.md",
+      "old_bytes": 39254,
+      "old_sha256": "4e4a042793836fad4061cfea68417204c2c9d53a08a2da86425fe119e1f0d25a",
+      "snapshot": "output/engineering/causal-fresh-v5-finalization/attempt-001/prior-live/doc/EMBEDDING_VERSIONS.md",
+      "current": {
+        "path": "doc/EMBEDDING_VERSIONS.md",
+        "bytes": 41403,
+        "sha256": "cc9f24fb5fcf30a77da005a9c62e79e72740b46de30846c51c633d96a6a9b895"
+      }
+    }
+  ],
+  "V7_prior_snapshot": {
+    "path": "output/engineering/causal-fresh-v7-finalization/attempt-001/prior-live/manifest.json",
+    "bytes": 2149,
+    "sha256": "14a1d32feb36673436372808ffbd684de2975e5091209ad7a1b936dd19439da5"
+  },
+  "prior_whole_metadata_chain_preserved": true,
+  "critical_checkpoint_total": 89,
+  "historical_critical_checkpoints": 84,
+  "new_main_checkpoints": 5,
+  "critical_checkpoint_pins": [
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-0.pt",
+      "bytes": 1196590,
+      "sha256": "1074b99c1bd0c799d5b44636aa01e11b873dea5b859be2ada2195b1c87041ce9"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-2048.pt",
+      "bytes": 1197263,
+      "sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-1024.pt",
+      "bytes": 3536501,
+      "sha256": "583361d7d291927c311cd5ad8667c196ef029d57a7d7c1070115b81e621f0eef"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-2048.pt",
+      "bytes": 3536501,
+      "sha256": "ee0b274af9d562c7e4a034046ab71b77455a9696a07b2a972d481003d8b3f389"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-512.pt",
+      "bytes": 3535927,
+      "sha256": "d3edf1292e5409d6f9a8476f824a3973e4e0bf4fd619a8788ae5da0a99fa397e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/inference-0.pt",
+      "bytes": 1276132,
+      "sha256": "8428dfc3daf6fa63516332b01f263a50666a22482ae48dd0aed30ea2cba4f8bd"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/inference-2048.pt",
+      "bytes": 1276877,
+      "sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-1024.pt",
+      "bytes": 1427953,
+      "sha256": "79603d473e6ecc51dccca73fd55264df71112c104f23928688f4abbbdb4aac36"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-2048.pt",
+      "bytes": 1427953,
+      "sha256": "d0a1f10957ee1e543c41fdd68a3f80a983c85bf79c1fc8b4c0ae448715d540f4"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/training-512.pt",
+      "bytes": 1427691,
+      "sha256": "85774a3feecfe0be630e046356db7e56ca3cc7e732635204b9c4c5ded5e86deb"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/inference-0.pt",
+      "bytes": 1278673,
+      "sha256": "34ae05252ed1aa199e11f548f0646f4c81d9c1e1803e95697c2a585c4801f41a"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/inference-2048.pt",
+      "bytes": 1279445,
+      "sha256": "d34a56a6f4ccf8057c17f80b709f570359834173f1ec784dc48cbbc034d5013b"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-1024.pt",
+      "bytes": 1420626,
+      "sha256": "c71d9a2dc9fe83c6e661bead1d07ac60a286eef2e92eebd10b0696cd73d382db"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-2048.pt",
+      "bytes": 1420626,
+      "sha256": "e167433dceccefff2264c89c3ada3dfaa89004dcf286a778cb8ac0ad3e34eac1"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-512.pt",
+      "bytes": 1420359,
+      "sha256": "42640eab23625949326f8723f53263469559d50a30a20ec464f997f708521e89"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/inference-0.pt",
+      "bytes": 1219198,
+      "sha256": "d1c6d07da87dc7d3ddd04f3ab04d78903f77b4c84c27413019fccabc61d7e5d0"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/inference-2048.pt",
+      "bytes": 1219944,
+      "sha256": "50ade502e1da9b11b71fad60afbf7daee7ecd714a4e719cc5b397191207ba004"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-1024.pt",
+      "bytes": 3603950,
+      "sha256": "70693326e09d6f2fe4a80a9f23530c93230d6b3127a52f89ba4e34e21e96005e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-2048.pt",
+      "bytes": 3603950,
+      "sha256": "3299cf1f18359ac4f9fb58cd322586b1b218dbf043c7107deef233f47ccc5b19"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-512.pt",
+      "bytes": 3603433,
+      "sha256": "514418eb0c54ac1eac999032b3e7e461298a8be2eb59c002d49f026bf9ec15e9"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/inference-0.pt",
+      "bytes": 1219198,
+      "sha256": "e917278269a514f1e454919941f42614bc25db35d725acfad572400b78c304f5"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/inference-2048.pt",
+      "bytes": 1219944,
+      "sha256": "9f4a207b8eb22a6aad2d4ed0ebc36f8df6975e414e5961a3c22945b064f81649"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-1024.pt",
+      "bytes": 1282014,
+      "sha256": "583668af65dbe3d94d85df5b1f5d986f0a80654d517838a37fab09f5882422e6"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-2048.pt",
+      "bytes": 1282014,
+      "sha256": "f68731295e46e0cdeba7d084f31965a1854ed71744369339024021e1e9a8b7ec"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-512.pt",
+      "bytes": 1281781,
+      "sha256": "6905807c1afce6be37580696f549adf8df1ab8ab316d1463af168ee961ebf16a"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-0.pt",
+      "bytes": 1284638,
+      "sha256": "52b6c9881f13e852a86e3e7b22558f27d68616e06c6d638ebbd97344e20ac3c5"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+      "bytes": 1285583,
+      "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-1024.pt",
+      "bytes": 1430905,
+      "sha256": "8728c3908b95c9685bc28ade55b47e2eecc22be6cfbfb15d4b57f9ce9dfba691"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-2048.pt",
+      "bytes": 1430905,
+      "sha256": "57c01efe74e2fadf3941ca6c713ddcb8976074c156904372fa2af87e0e777907"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-512.pt",
+      "bytes": 1430551,
+      "sha256": "bc383e51f7e8dc411acb568b0428d1a7cb8fc10267d3d5cc750e5635603a90d3"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-0.pt",
+      "bytes": 3860393,
+      "sha256": "48fb7c71b87b3111ae8ab7dfda756563681a126cd3b5b2d14f7a65c469ee69ee"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-2048.pt",
+      "bytes": 3861383,
+      "sha256": "192cc9c7bf5e511aad6fcbf3745b127d16f500563b7942b885567e94dd996956"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-1024.pt",
+      "bytes": 4003046,
+      "sha256": "56508727ef7acec80bdf1c358f3db2b88875b0c5f5b1f45c75963895c1231a60"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-2048.pt",
+      "bytes": 4003046,
+      "sha256": "feadc430ce986ab046e3545b9f928c7b0405220448f148cd92e52edca135bc39"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-512.pt",
+      "bytes": 4002685,
+      "sha256": "f51de93f376c52917f6188ef98779eadfb41ca39eea90d23d68dd2307e81b367"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/inference-0.pt",
+      "bytes": 1286671,
+      "sha256": "6ab1c927075df1ceb20bc94abbd74f2a08bf9d9978d3adbf3e104d542b38cc8c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/inference-2048.pt",
+      "bytes": 1287607,
+      "sha256": "100a8bef1cf3ef57eafd9e2e58fe5fb2d3f8e7b62449250d9ee0ad10175a6975"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-1024.pt",
+      "bytes": 1437318,
+      "sha256": "aed7ddf376fb377eb6a837271c6a8f4fe451ab7f9bd61742a6408833382fe485"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-2048.pt",
+      "bytes": 1437318,
+      "sha256": "c0d881bc12cf1722a49b4008ff745bd96608fe48bc2ab55d8fa885af94af117e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-512.pt",
+      "bytes": 1436971,
+      "sha256": "8aba45e189742e87ee5dcb14674d49c640be91f1c3aa321c6efad74fd382e1c2"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/inference-0.pt",
+      "bytes": 1282373,
+      "sha256": "d0807e8d10ca0d5cd7f340eaae27bc0bf3e2d3d716d458bba2b04df28f158c88"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/inference-2048.pt",
+      "bytes": 1283303,
+      "sha256": "739e4fa87e32dfdcb911c09220e9c09944eabf8e1f87f21dce86adeacc2abf18"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-1024.pt",
+      "bytes": 1424666,
+      "sha256": "5467b7bfa61e1d7c1f1257e4e02a2c65aeadb174c5eedc5defdfbd9071bfdee7"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-2048.pt",
+      "bytes": 1424666,
+      "sha256": "3d4045a1a289f5a22cb0fdfdc3a348dc7fb0fc84dd8e1ca0d19507525b87064d"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-512.pt",
+      "bytes": 1424325,
+      "sha256": "a2df5f478e372754d2a4fba77041b1a790234a4e9ecfb7b6cbc3130820486385"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-0.pt",
+      "bytes": 1257994,
+      "sha256": "2b614ca9866048a850cdeb73dc719c5816fd04bb39e1746b626d1abf1ef68108"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-2048.pt",
+      "bytes": 1258685,
+      "sha256": "a3939b13df8b1704fc3621876cf3adc6efaddd98951147ff43ec6408978fa98c"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-1024.pt",
+      "bytes": 1398161,
+      "sha256": "59d5f71343c9f00aeac1bc3d68831b1175084b08bf00d38fdd4bf37c7d0f7a6e"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-2048.pt",
+      "bytes": 1398161,
+      "sha256": "81f6f700676d3afccdcf6e07923741dfc89fdd24b549443612b7dc5af330f4d2"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-512.pt",
+      "bytes": 1397921,
+      "sha256": "7976aca150801c792ba69bfa376ad3e6d6838f18186af393dc57cdef40b8c98b"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/inference-0.pt",
+      "bytes": 1317642,
+      "sha256": "ef905807d7793cb6082de35d18556ed1adddb72f4dcfbb23b2b067fae54e194b"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/inference-2048.pt",
+      "bytes": 1318333,
+      "sha256": "f2e0cb87de670b36fcabc5add7595ca1e4cfb79f9dafbdc5c9193622ba8263c6"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-1024.pt",
+      "bytes": 1577233,
+      "sha256": "81f2cb7278d53f7088f6918da86ca1606d1866aa9add1b567c9de59450bd2aef"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-2048.pt",
+      "bytes": 1577233,
+      "sha256": "d2dee0a4d05c7131fcf5ec478471ff2c8ebc753f472f5bc7a18d8ff108e9f328"
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-512.pt",
+      "bytes": 1576993,
+      "sha256": "949b46618cf276b7cbe333e8cc6085a8d8e466d393c6beb2ff954501ccffd52e"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/baselines/CPB-v1.market-01/inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-finetune-v2/run-001/checkpoints/inference-0.pt",
+      "bytes": 1291519,
+      "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-finetune-v2/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1292585,
+      "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-finetune-v2/run-001/checkpoints/training-1024.pt",
+      "bytes": 3759283,
+      "sha256": "15c60037715d3cdc3156da90227d1e637b5f7f4132cf5d669aca2f4408b88833"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-finetune-v2/run-001/checkpoints/training-2048.pt",
+      "bytes": 3759283,
+      "sha256": "73347f3fb03d301910acbb813f5776514bcfbf924ab0c92bff494da855d7e8b0"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-finetune-v2/run-001/checkpoints/training-512.pt",
+      "bytes": 3758623,
+      "sha256": "db262a3a7e0b22eb5b94299a60cb768e2ebff5f592e99b6bd65e1604cf4ca8e6"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-0.pt",
+      "bytes": 1289550,
+      "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-1024.pt",
+      "bytes": 3757832,
+      "sha256": "c2126e0569cd15277b3edeb8afc6c6f5b5ada516d0eec3d2a09c81342acc5ff5"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-2048.pt",
+      "bytes": 3757832,
+      "sha256": "73a69fbe1ed159b5d573bba4e3d8367e1cb24c0b0968ab6007090e4a40ebe1e9"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-512.pt",
+      "bytes": 3757169,
+      "sha256": "1226f8adeed519919d11cf5e84ad420a7bd64dc04e846bff33e91a64b22177a3"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v4/run-001/checkpoints/inference-0.pt",
+      "bytes": 1290136,
+      "sha256": "698458ff033a666ab8bbb2cab0fea26295f278936d6082884a229222cd34d0c0"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v4/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1291217,
+      "sha256": "ed1b2611f10f3cb0e14b5636e9fd07d6dbfbbce4ac9ed4769b8e98e792676fad"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v4/run-001/checkpoints/training-1024.pt",
+      "bytes": 3758806,
+      "sha256": "e65c64a9d0e0d1de0635e5d6f4747778d1d918e4da09bdba381540e6a9a5d849"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v4/run-001/checkpoints/training-2048.pt",
+      "bytes": 3758806,
+      "sha256": "f3ae29bb9fc211a8daeb3dd8613520f1e280a13413514bb9aaa993b81ab64eb8"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v4/run-001/checkpoints/training-512.pt",
+      "bytes": 3758141,
+      "sha256": "40b5bc04116b2d6b925d6db5dcafdd21a97fc68cd66af61da79a0fb875b78bf0"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v5/run-001/checkpoints/inference-0.pt",
+      "bytes": 1296374,
+      "sha256": "2cd42f70e46d1aebaf7580601665a335e4a141bad89b0ba7f8195353342f543f"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v5/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1297537,
+      "sha256": "65f52dfa3c3501bf2318426069214776cdfdad72d1f9add712ec2063a489805f"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v5/run-001/checkpoints/training-1024.pt",
+      "bytes": 3775918,
+      "sha256": "c5b7d618e1101d0775fe8ea2660f721ae1a709012b7c5a28d46889fe739f49c2"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v5/run-001/checkpoints/training-2048.pt",
+      "bytes": 3775918,
+      "sha256": "07ae58d64c4fb33f47b3a890cf0c28342c78f260281e7f1514b40e720deacc7d"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v5/run-001/checkpoints/training-512.pt",
+      "bytes": 3775305,
+      "sha256": "9b57f3549cfa44ba0fa3e823aa24778a8488d937e0177717364eef164b1b7c66"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v6/run-001/checkpoints/inference-0.pt",
+      "bytes": 1299890,
+      "sha256": "7fc69034f46682bfeb608c152368f2bbb23c10db9ccfecb93264b8d6e49e3ed1"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v6/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1301025,
+      "sha256": "8cf6f12609b647871c4c42df39fc1c1d36b53a908e962585f17fe515d8ef193e"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-1024.pt",
+      "bytes": 3781292,
+      "sha256": "2b6ac0100d093b14326fbaf124bb984c12f8930a36e2d4f6f15a943aa6ef546c"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-2048.pt",
+      "bytes": 3781292,
+      "sha256": "598fa2fe8cb1d4322e448cf35026f01a2deec090922b1b534b51393c3419d7b1"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-512.pt",
+      "bytes": 3780661,
+      "sha256": "7a1845f5675f8ef061beed66b04f5aa0e26bc337616cdc89d3a68df21f59a8d5"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v7/run-001/checkpoints/inference-0.pt",
+      "bytes": 1312612,
+      "sha256": "66b7d4bb29f9b18154f735ebd98c28c3ef69c10d41e8251a1adf38bc0a0c3727"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v7/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1313777,
+      "sha256": "25f082bb22076aea26739c8ec9157d385c45e4413b42668d51d14ef40ce1f6a6"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v7/run-001/checkpoints/training-1024.pt",
+      "bytes": 3800853,
+      "sha256": "0ee7e92829713e5a217b030094b0de9d65f7db349b6a611e1be702772e52a155"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v7/run-001/checkpoints/training-2048.pt",
+      "bytes": 3800853,
+      "sha256": "b74afefcde72a181a5a195901fdf07eaffebd848bfc36f9fc53de0d9983aa12f"
+    },
+    {
+      "repository": "cuwacunu_embedding",
+      "path": "output/runs/causal-fresh-v7/run-001/checkpoints/training-512.pt",
+      "bytes": 3800143,
+      "sha256": "7eb641d4067e8966d369e409855819a85e1d8eb03b6c3181a1526ae7cc8df326"
+    }
+  ],
+  "legacy_V5_repository_field_resolution": "Only five exact expected V5 main checkpoint paths default to cuwacunu_embedding",
+  "legacy_V5_missing_repository_count": 5,
+  "selected_V3_source_files_each_repo": 47,
+  "selected_V3_checkpoint_sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+  "complete_V6_mirror": {
+    "path": "doc/causal_fresh_v6/complete-mirror-proof-recovery-002-attempt-001.json",
+    "bytes": 158350,
+    "sha256": "6838663b49f8a77a9dfd4fd08bbb6a9a9758d8df3c090f963e1cffe82cbf17cb"
+  },
+  "complete_V7_mirror": {
+    "path": "doc/causal_fresh_v7/complete-mirror-attempt-001.json",
+    "bytes": 167879,
+    "sha256": "67e720225b5f45e16039c068f7f1516408766b33c46adf49e7f87adc5e4415d2"
+  },
+  "saved_V6_files_verified": 400,
+  "saved_V7_files_verified": 431,
+  "all_pinned_PT_ignored": [
+    {
+      "repository": "cuwacunu_embedding",
+      "unique_pinned_PT": 1148,
+      "all_ignored": true
+    },
+    {
+      "repository": "cuwacunu_dev",
+      "unique_pinned_PT": 71,
+      "all_ignored": true
+    }
+  ],
+  "V7_saved_PT": 340,
+  "PT_scope": "Includes heads/features/witnesses/tests/checkpoints; not trained-encoder count",
+  "source_ZIPs": [
+    {
+      "label": "V5 failed001",
+      "source_files": 97,
+      "archive": {
+        "path": "output/engineering/causal-fresh-v5/attempt-001/source.zip",
+        "bytes": 918897,
+        "sha256": "b258c87fb7002206998f3f472ba95d6efd3c692f88ce7d79a1c2d591739174c6"
+      },
+      "manifest": {
+        "path": "output/engineering/causal-fresh-v5/attempt-001/source-manifest.json",
+        "bytes": 23475,
+        "sha256": "15bc01a9375315af9514b730c25067e1e3def566e58dfa952f533adca3588a34"
+      },
+      "all_member_hashes_exact": true
+    },
+    {
+      "label": "V5 admitted003",
+      "source_files": 97,
+      "archive": {
+        "path": "output/engineering/causal-fresh-v5/attempt-003/source.zip",
+        "bytes": 919952,
+        "sha256": "d9f9844bd65e4022213cf9cdf291715f199a1c61a181d4bc4697c6c971f57a7d"
+      },
+      "manifest": {
+        "path": "output/engineering/causal-fresh-v5/attempt-003/source-manifest.json",
+        "bytes": 23486,
+        "sha256": "1f0993fdfdb20677acddeea18488edbe174f0583f24af6230d4df499aed60db6"
+      },
+      "all_member_hashes_exact": true
+    },
+    {
+      "label": "V6 admitted001",
+      "source_files": 102,
+      "archive": {
+        "path": "output/engineering/causal-fresh-v6/attempt-001/source.zip",
+        "bytes": 1199418,
+        "sha256": "7ecf64630328ae00aa5dd4029bc595633cfebe2aa0c25ed516f44a150722a20e"
+      },
+      "manifest": {
+        "path": "output/engineering/causal-fresh-v6/attempt-001/source-manifest.json",
+        "bytes": 24421,
+        "sha256": "ee145b968d430c7c63544539c173ea18b232f6fdba1238cf41fdcc15bacd4b9c"
+      },
+      "all_member_hashes_exact": true
+    },
+    {
+      "label": "V7 admitted001",
+      "source_files": 106,
+      "archive": {
+        "path": "output/engineering/causal-fresh-v7/attempt-001/source.zip",
+        "bytes": 1406915,
+        "sha256": "ac43ef587383cbe3d610a5f73736a4d10cc852a64ebca249602f37db4b716999"
+      },
+      "manifest": {
+        "path": "output/engineering/causal-fresh-v7/attempt-001/source-manifest.json",
+        "bytes": 25276,
+        "sha256": "09c151d24eb91ea4ce8e653601aeee9d5e42d098df2ecd7204af92e528d67f80"
+      },
+      "all_member_hashes_exact": true
+    }
+  ],
+  "V6_reviewed_sources": 101,
+  "V7_source_files": 106,
+  "V7_binary_files": 6,
+  "container_preservation": {
+    "status": "passed",
+    "source_files": 106,
+    "source_manifest_checked": true,
+    "binary_files": 6,
+    "model_calls": 0,
+    "head_fits": 0
+  },
+  "container_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+  "old_failed_preparations_preserved": true,
+  "prior_V6_receipt_and_all_referenced_pins_verified": true,
+  "authorized_metadata_application": {
+    "path": "doc/causal_fresh_v7_finalization/applied-metadata.json",
+    "bytes": 4389,
+    "sha256": "1e1761e47d7b277909e751c0c1dc660ce7a9744535a3d62420ceec1249119112"
+  },
+  "independent_metadata_proposal_review": {
+    "path": "doc/causal_fresh_v7_finalization/independent-proposal-review.json",
+    "bytes": 1838,
+    "sha256": "9028ca93542f8a24c6cdadd3eb3d69a34816236d7407c7d0e2e8db983792acb2"
+  },
+  "final_establishment": {
+    "path": "doc/causal_fresh_v7/final-establishment.json",
+    "bytes": 2923,
+    "sha256": "7678e84a676453c0294f0654af6117e06246f1639f4e67f9ff78e9cf51049512"
+  },
+  "current_ledger": {
+    "path": "doc/clean_causal_encoder_research_ledger.json",
+    "bytes": 472029,
+    "sha256": "74f45f5733f0432246e35d06d9eb5fedbaca4c4a1477f6c5dda783bc9c2d243b"
+  },
+  "current_catalog": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+    "bytes": 14801,
+    "sha256": "74bff165b7a192528e0cca07e556dd536d6a6067b13b67b3aabf3833a66f8660"
+  },
+  "current_instance": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v7.market-01.json",
+    "bytes": 15728,
+    "sha256": "245bde82a5f4b77c164f156c476f15901988e50e0ece6f98074163f7cdcf2ede"
+  },
+  "numeric_passed": 4,
+  "numeric_total": 22,
+  "trust_admission_passed": true,
+  "overall_establishment_passed": false,
+  "source": {
+    "path": "code/research/causal_fresh_v7_preservation/verify.ps1",
+    "bytes": 23136,
+    "sha256": "a5afaaf1188c35a35e8acbdd058b902aa6bc2a09478996a5eb95c9f5c571983e",
+    "parent": "code/research/causal_fresh_v6_preservation/verify.ps1",
+    "parent_sha256": "b5d16d3dafceecce9c4a883f6889504016fbbfc97b46bc554ad13239fb2eabd3"
+  },
+  "concurrency": {
+    "repository": "cuwacunu_dev",
+    "policy": "Read-only status; no concurrent source/config reset or old integration equality claim",
+    "git_status": [
+      " M .gitattributes",
+      " M Makefile",
+      " M README.md",
+      " M code/integration/README.md",
+      " M code/integration/include/cuwacunu/encoder/encoder.h",
+      " M code/integration/src/encode_history.cpp",
+      " M code/latent_market/versions/v1/config/preparation.conf.example",
+      " M code/latent_market/versions/v1/config/study.conf.example",
+      " M code/latent_market/versions/v1/include/cuwacunu/latent_market/plan.h",
+      " M code/latent_market/versions/v1/src/prepare_main.cpp",
+      " M code/latent_market/versions/v1/src/study_main.cpp",
+      " M code/latent_market/versions/v1/tests/make_capture_fixture.py",
+      " M code/latent_market/versions/v1/tests/pipeline_fixture.cpp",
+      " M code/latent_market/versions/v1/v1.mk",
+      " M code/networks/predictive_training/versions/v1/README.md",
+      " M code/scripts/latent-market-v1.sh",
+      " M config/encoder_runtime.conf",
+      " M doc/LATENT_MARKET_DYNAMICS_IMPLEMENTATION_V1.md",
+      " M doc/LATENT_MARKET_DYNAMICS_ROADMAP.md",
+      " D doc/MODULE_SNAPSHOT_VERSIONING_PLAN.md",
+      "?? code/artifacts/README.md",
+      "?? code/artifacts/versions/v1/include/cuwacunu/artifacts/v1/sidecar.h",
+      "?? code/artifacts/versions/v1/include/cuwacunu/artifacts/v1/tensor_state.h",
+      "?? code/artifacts/versions/v1/tests/sidecar_test.cpp",
+      "?? code/artifacts/versions/v1/v1.mk",
+      "?? code/integration/include/cuwacunu/artifacts/selected_encoder.h",
+      "?? code/integration/snapshot.mk",
+      "?? code/integration/src/adopt_encoder_snapshot.cpp",
+      "?? code/integration/tests/encoder_snapshot_test.cpp",
+      "?? code/latent_market/versions/v1/tests/snapshot_pipeline_test.py",
+      "?? code/networks/predictive_training/versions/v1/artifact.mk",
+      "?? code/networks/predictive_training/versions/v1/include/cuwacunu/networks/predictive_training/v1/artifact.h",
+      "?? code/networks/predictive_training/versions/v1/tests/artifact_test.cpp"
+    ]
+  },
+  "limitations": [
+    "File/hash preservation and saved metadata object checks only; no quality metric recalculation",
+    "No model/build/head/encoder/optimizer execution; existing-container Python hashes bytes only"
+  ],
+  "actions": {
+    "models": 0,
+    "fits": 0,
+    "builds": 0,
+    "training_updates": 0,
+    "Git_mutations": 0,
+    "deletions": 0,
+    "files_written": [
+      "doc/causal_fresh_v7/final-preservation.json"
+    ]
+  }
+}

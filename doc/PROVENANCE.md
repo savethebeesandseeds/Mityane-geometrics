@@ -1,13 +1,71 @@
 # Source provenance
 
-The research predecessor is `C:\Work\cuwacunu\cuwacunu_embedding`. Its models,
-measurements, datasets and checkpoints remain there. Initial setup imports no
-embedding model, trained weights, fitted preprocessing, datasets or application.
+## Project charter
+
+The [Operations over Representations design specification](operations_over_representations_design_spec_v0.1.0.md),
+`ORR-DESIGN-001` v0.1.0, defines Mityane geometrics' scope, capability families,
+contracts and evidence standards. Imported research and interface components
+retain the source identities below. Their provenance does not limit the project
+to one encoder family, representation source or application domain.
+
+## Dashboard backbone
+
+On 18 October 2026, the interface, model, schemas, bundling helpers, model tests
+and schema guide from `web/dashboard/` in
+`https://github.com/savethebeesandseeds/non-verba`, revision
+`b67d8a1e025dacfed8ac7aba2225d76cfa48f7e7`, were imported into
+`web/dashboard/`. [The import receipt](DASHBOARD_IMPORT_2026-10-18.json) records
+the original copied-file hashes. The source interface files had no local changes;
+the source's locally edited Hero data and generated HTML were excluded.
+
+The adaptation preserves the layout, styles and navigation. It changes project
+names, documentation links, container orchestration and branding input; allows
+an empty manifest; adds an explicit empty-project view; and keeps synthetic
+interaction records confined to tests. No Heroes, project milestones or
+Non-verba artwork were copied. The dashboard retains AGPL-3.0-only, with the
+[full license](licenses/non-verba-AGPL-3.0.txt). It is a local artifact, with no
+publication configured.
+
+Linux Node 22.23.3 uses the exact cached official archive and SHA256 pinned by
+the source project's `code/setup.sh`. The inspected source container was
+`fcb9461f2ccc1d76871ee40713fcc93752b72e51a454890188cf9b1f052d7d4e`, image
+`sha256:2fb1e6b1c3250aae15625a15c4496326bceb8487b26ac9f66cd94f7c2462bc1e`.
+Only its 31,001,304-byte Node archive was streamed into the Mityane container's
+`/opt/mityane-geometrics/web/downloads/` cache. The pinned binary and license are
+installed under `/opt/mityane-geometrics/web/tools/`. No source-container data,
+image or package was changed. See the dashboard guide for the artifact identity
+and dependency-only setup procedure.
+
+## Embeddings and environment
+
+The research predecessor was `C:\Work\cuwacunu\cuwacunu_embedding`. On
+18 October 2026 its complete working tree was moved to `code/embeddings/`.
+The recorded upstream base is revision
+`b15702b29753188482b11ca85e997006b503d0f0` of
+`https://github.com/savethebeesandseeds/cuwacunu_embedding`. That base revision
+alone is not the complete imported-tree identity; the migration's per-file
+hash inventories identify the actual bytes and local operational adaptations.
+Its MIT license,
+third-party notices, model family/version identities, configurations, reports,
+datasets, checkpoints and failed attempts are retained. This migration adds no
+research training, fitted preprocessing or new quality measurement.
+
+The original Git directory is retained, with its Windows ownership unchanged,
+at ignored `output/migration/embeddings-2026-10-18/source.git`. It is recovery
+history; the component is ordinary source in Mityane's existing repository,
+without a nested repository or submodule. The complete before/after file
+inventory and hashes are in that same local migration directory. Original
+versions of adapted operational files were retained under the component's
+`archive/mityane-migration-2026-10-18/`. The structural cleanup described below
+preserves that tree in the complete pre-cleanup snapshot.
 
 The development environment uses the already installed embedding snapshot made
 on 12 October 2026. `environment-image.json` preserves its immutable image ID,
 source container identity and original Debian base digest. A new tag reuses the
-same layers. Both original research containers are preserved.
+same layers. The original `cuwacunu` container is preserved. The obsolete
+`cuwacunu_embedding` container is retired by the migration after local recovery
+preservation and component verification; see the
+[migration record](EMBEDDINGS_MIGRATION_2026-10-18.md).
 
 Environment support comes from the MIT-licensed Waajacu source projects:
 
@@ -24,7 +82,48 @@ These revisions identify the inspected repositories; the copied support files
 are recorded by SHA256 in `environment-image.json` because local source edits
 can exist independently of a Git revision.
 
-When importing an embedding later, record its family/version, checkpoint hash,
+When importing another embedding, record its family/version, checkpoint hash,
 input layout, native output layout, masks, scaler and training provenance,
 evaluation protocol, source revision and license. Keep evidence from the
 predecessor intact and distinguish inherited measurements from new results.
+
+## Structural cleanup, 18 October 2026
+
+The initial import retained a standalone project hierarchy. The subsequent
+cleanup integrates maintained source by responsibility: encoder/state models
+and model evaluation in `code/embeddings/`, forecasting and its evaluation in
+`code/operations/forecasting/`, data handling in `code/data/`, and shared
+settings, tensor/evaluation utilities and artifact metadata in `code/shared/`.
+Root environment/build entries replace duplicate component configuration. The
+component MIT license was byte-identical to the root license; attribution and
+third-party obligations are consolidated in root `LICENSE` and
+`THIRD_PARTY_NOTICES.md`.
+
+The full source/documentation component immediately before this cleanup is retained
+byte-for-byte at `archive/embeddings/pre-cleanup-2026-10-18/`, including its
+`code/`, `doc/`, `archive/` and top-level files. Historical ignored `output/`,
+`.build/` and `.external/` stay in place under `code/embeddings/`. Original
+source capsules, evidence, model IDs, hashes and old path identities are not
+rewritten. Maintained source references/build inputs change with ownership;
+new source identities must not be substituted into historical receipts.
+
+The [archive guide](../archive/embeddings/README.md) and
+[current research guide](EMBEDDINGS.md) distinguish preserved records from
+current instructions. The earlier migration record and verification receipts
+remain dated accounts of that import. Cleanup supplies no new scientific
+measurement, metadata promotion or authorization to resume paused research.
+
+## External multimodal provider
+
+On 18 October 2026, Google's stable `gemini-embedding-2` service was registered as
+a documented integration target in
+[the Google multimodal provider folder](../code/embeddings/encoders/google_multimodal_embedding/README.md).
+Its adjacent `provider.json` records official model/API references, supported
+modalities, the proposed output contract and current integration state. This
+registration imports no weights or SDK and establishes no local operation
+quality. The API adapter and evaluation remain proposed.
+
+A hosted service model ID does not identify immutable model weights. Future
+requests must retain configuration, returned revision when available, execution
+date, source identity and response artifact identity. Service terms and dataset
+transmission permissions remain separate from the repository's source license.

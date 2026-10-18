@@ -1,0 +1,198 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 29,
+  "design_slot": "RPB-v29",
+  "canonical_registered_tag": "RPB-v29",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Unchanged raw-F64 relative bank and saved V28 normalizer; fresh V24 initialization and zero-start parent-modulated waveform residual decoder",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h",
+      "sha256": "1eb105f5a70181712e00b73bb722803cf98ee04fe1e1a8cc1d94e7a5fe1a04ed",
+      "bytes": 7277,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "ParentModulatedDecoderModel",
+      "ParentModulatedDecoderModelImpl",
+      "ParentModulatedDecoderTrace"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/parent_modulated_decoder.conf",
+      "sha256": "5a573d4b2be49361b90a352a768dda80333de147fe0fb7619588b7bfcf22c2cd",
+      "bytes": 635,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/parent_modulated_decoder.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_modulated_decoder_v1/completion.json",
+        "sha256": "d4d4e8dbb0bd39ca7431d6aceb7d47bc92263621c8509bbe3faf2cab6cfc457c",
+        "bytes": 42247
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h",
+        "sha256": "1eb105f5a70181712e00b73bb722803cf98ee04fe1e1a8cc1d94e7a5fe1a04ed",
+        "bytes": 7277
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/parent_modulated_decoder_embedding_versions.json",
+      "sha256": "b03ceae7d4eae836bd35c64314cd485556f3ec55513a7372384e3365c2d983ef",
+      "bytes": 54528,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/parent_modulated_decoder_embedding_versions.json",
+        "sha256": "b03ceae7d4eae836bd35c64314cd485556f3ec55513a7372384e3365c2d983ef",
+        "bytes": 54528,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v29.market-01",
+        "status": "measured stopped mechanism; original4/9, strict4/8; volatility and trend fail",
+        "batch_size": 8,
+        "geometry": {
+          "C": 3,
+          "H": 128,
+          "F": 9,
+          "P": 8,
+          "W": 64,
+          "canonical_channel_ids": [
+            0,
+            1,
+            2
+          ],
+          "sampling_interval_ms": 60000,
+          "parent_width": 32,
+          "change_width": 4,
+          "native_width": 36
+        }
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v29.market-01",
+      "description": "Unchanged raw-F64 relative bank and saved V28 normalizer; fresh V24 initialization and zero-start parent-modulated waveform residual decoder",
+      "status": "stopped exact declared mechanism; preserved task references",
+      "input_geometry": {
+        "C": 3,
+        "H": 128,
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "native_width": 36,
+        "output": "one native vector per window"
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_PARENT_MODULATED_DECODER_CARD.md",
+        "sha256": "fd900adeaf93fef6258ca2bfe344cd1dbb69ffa6cc03e00f697e2000b455f666",
+        "bytes": 12132
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_PARENT_MODULATED_DECODER_RESULTS.md",
+        "sha256": "554d1d839eb08c0221d3e93134192a873d8f46d4df994695890c5d822c1f65b3",
+        "bytes": 26645
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_modulated_decoder_v1/completion.json",
+        "sha256": "d4d4e8dbb0bd39ca7431d6aceb7d47bc92263621c8509bbe3faf2cab6cfc457c",
+        "bytes": 42247
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_modulated_decoder_v1/table_rows.json",
+        "sha256": "a3c6bc69b9a0c1462d2d667fb2df215a486036283b900c1b8bf234a5eae5770d",
+        "bytes": 300529
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/inference-0.pt",
+          "sha256": "6ab1c927075df1ceb20bc94abbd74f2a08bf9d9978d3adbf3e104d542b38cc8c",
+          "bytes": 1286671,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/inference-2048.pt",
+          "sha256": "100a8bef1cf3ef57eafd9e2e58fe5fb2d3f8e7b62449250d9ee0ad10175a6975",
+          "bytes": 1287607,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-1024.pt",
+          "sha256": "aed7ddf376fb377eb6a837271c6a8f4fe451ab7f9bd61742a6408833382fe485",
+          "bytes": 1437318,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-2048.pt",
+          "sha256": "c0d881bc12cf1722a49b4008ff745bd96608fe48bc2ab55d8fa885af94af117e",
+          "bytes": 1437318,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/training-512.pt",
+          "sha256": "8aba45e189742e87ee5dcb14674d49c640be91f1c3aa321c6efad74fd382e1c2",
+          "bytes": 1436971,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

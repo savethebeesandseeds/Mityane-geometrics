@@ -1,0 +1,346 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 24,
+  "design_slot": "RPB-v24",
+  "canonical_registered_tag": "RPB-v24",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Exact frozen trained parent32 plus eight learned change coordinates and separate zero-start residual decoder",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+      "sha256": "9249562c9f45686bf3f04f90a1cab318b229862dbc2b9f9f7f3c5718303eed18",
+      "bytes": 5737,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "SeparatedChangeModel",
+      "SeparatedChangeModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/separated_changes.conf",
+      "sha256": "d0b2a42e21671682219b4bcfc87c30682c714c2832a0b7fa7e968d527411e3fe",
+      "bytes": 593,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/separated_changes.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/separate_change_native36_v1/completion.json",
+        "sha256": "5ec72d17af995ff3d303b3a02988059b8c959885c78da53a6604ee9f738f6a43",
+        "bytes": 31158
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+        "sha256": "9249562c9f45686bf3f04f90a1cab318b229862dbc2b9f9f7f3c5718303eed18",
+        "bytes": 5737
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/separated_change_embedding_versions.json",
+      "sha256": "1297e7656604bce8cb46f94685a6161e6e3ee78ae9da77a242085b6b8a0e01a5",
+      "bytes": 4756,
+      "verified_available_at_indexing": true
+    },
+    {
+      "repository": "embedding",
+      "path": "doc/separated_change_native36_embedding_versions.json",
+      "sha256": "4282f4afd0c18b142a8ae46a70fe23f8e42676596e16304ec1f63e3f310a4a1f",
+      "bytes": 6081,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/separated_change_embedding_versions.json",
+        "sha256": "1297e7656604bce8cb46f94685a6161e6e3ee78ae9da77a242085b6b8a0e01a5",
+        "bytes": 4756,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v24.market-01",
+        "model_tag": "RPB-v24",
+        "status": "stronger_trend_development_goal_not_met_primary_unchanged",
+        "description": "Exact frozen v22 native32 prefix plus independent learned8 change block and residual decoder."
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/separated_change_native36_embedding_versions.json",
+        "sha256": "4282f4afd0c18b142a8ae46a70fe23f8e42676596e16304ec1f63e3f310a4a1f",
+        "bytes": 6081,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v24.market-01.alt-01",
+        "model_tag": "RPB-v24",
+        "status": "stronger_trend_eight_of_nine_linear_volatility_retention_failed_primary_unchanged",
+        "description": "Exact frozen v22 native32 prefix plus independent learned4 change block and residual decoder, native36.",
+        "batch_size": 8,
+        "checkpoints": [
+          {
+            "filename": "inference-0.pt",
+            "updates": 0,
+            "sha256": "2b614ca9866048a850cdeb73dc719c5816fd04bb39e1746b626d1abf1ef68108",
+            "bytes": 1257994
+          },
+          {
+            "filename": "inference-2048.pt",
+            "updates": 2048,
+            "sha256": "a3939b13df8b1704fc3621876cf3adc6efaddd98951147ff43ec6408978fa98c",
+            "bytes": 1258685
+          },
+          {
+            "filename": "training-512.pt",
+            "updates": 512,
+            "sha256": "7976aca150801c792ba69bfa376ad3e6d6838f18186af393dc57cdef40b8c98b",
+            "bytes": 1397921
+          },
+          {
+            "filename": "training-1024.pt",
+            "updates": 1024,
+            "sha256": "59d5f71343c9f00aeac1bc3d68831b1175084b08bf00d38fdd4bf37c7d0f7a6e",
+            "bytes": 1398161
+          },
+          {
+            "filename": "training-2048.pt",
+            "updates": 2048,
+            "sha256": "81f6f700676d3afccdcf6e07923741dfc89fdd24b549443612b7dc5af330f4d2",
+            "bytes": 1398161
+          }
+        ],
+        "card_sha256": "0ce8ce1a523150f5519945f4e484886dd22c7bbf212ebc15e0c1047bd04b3ca9"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v24.market-01",
+      "description": "Exact frozen trained parent32 plus eight learned change coordinates and separate zero-start residual decoder",
+      "status": "stopped native40 recipe; useful trend/activity reference",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 40,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_SEPARATE_CHANGE_CARD.md",
+        "sha256": "b236304e3f9bcab31501475732d275d45d8805c10601a25f2383282dc1dcd045",
+        "bytes": 4851
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_SEPARATE_CHANGE_RESULTS.md",
+        "sha256": "c7fb83ae77baf740721c6d1759a18cc75324697a50af8f12c3624f5cdba113ba",
+        "bytes": 11366
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/separate_change_v1/completion.json",
+        "sha256": "7ceb5daece0efb7200d01cb2cae642869264f83bdc52c37b6017dd1523ddc478",
+        "bytes": 10801
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/separate_change_v1/table_rows.json",
+        "sha256": "28c63e1ec4b7f0f8fbd72aec3e37c4324c9c5c9fda54ff36d32d83dddc619656",
+        "bytes": 44792
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/inference-0.pt",
+          "sha256": "ef905807d7793cb6082de35d18556ed1adddb72f4dcfbb23b2b067fae54e194b",
+          "bytes": 1317642,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/inference-2048.pt",
+          "sha256": "f2e0cb87de670b36fcabc5add7595ca1e4cfb79f9dafbdc5c9193622ba8263c6",
+          "bytes": 1318333,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-1024.pt",
+          "sha256": "81f2cb7278d53f7088f6918da86ca1606d1866aa9add1b567c9de59450bd2aef",
+          "bytes": 1577233,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-2048.pt",
+          "sha256": "d2dee0a4d05c7131fcf5ec478471ff2c8ebc753f472f5bc7a18d8ff108e9f328",
+          "bytes": 1577233,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/training-512.pt",
+          "sha256": "949b46618cf276b7cbe333e8cc6085a8d8e466d393c6beb2ff954501ccffd52e",
+          "bytes": 1576993,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    },
+    {
+      "instance": "RPB-v24.market-01.alt-01",
+      "description": "Exact frozen trained parent32 plus four learned change coordinates; same trained parent/data/budget as native40",
+      "status": "leading balanced research reference; original8/9 with linear-volatility failure",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 36,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_SEPARATE_CHANGE_NATIVE36_CARD.md",
+        "sha256": "0ce8ce1a523150f5519945f4e484886dd22c7bbf212ebc15e0c1047bd04b3ca9",
+        "bytes": 7056
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_SEPARATE_CHANGE_NATIVE36_RESULTS.md",
+        "sha256": "561b038217027073a0eb53ad82e46bdb07bc98e9f15ff6ca43e1305eb8ada84a",
+        "bytes": 10314
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/separate_change_native36_v1/completion.json",
+        "sha256": "5ec72d17af995ff3d303b3a02988059b8c959885c78da53a6604ee9f738f6a43",
+        "bytes": 31158
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/separate_change_native36_v1/table_rows.json",
+        "sha256": "1723aa555f22ec224f5ba44291e8ead8e5488d57c2441fa481dd83e3c3d1e1f8",
+        "bytes": 93169
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-0.pt",
+          "sha256": "2b614ca9866048a850cdeb73dc719c5816fd04bb39e1746b626d1abf1ef68108",
+          "bytes": 1257994,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-2048.pt",
+          "sha256": "a3939b13df8b1704fc3621876cf3adc6efaddd98951147ff43ec6408978fa98c",
+          "bytes": 1258685,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-1024.pt",
+          "sha256": "59d5f71343c9f00aeac1bc3d68831b1175084b08bf00d38fdd4bf37c7d0f7a6e",
+          "bytes": 1398161,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-2048.pt",
+          "sha256": "81f6f700676d3afccdcf6e07923741dfc89fdd24b549443612b7dc5af330f4d2",
+          "bytes": 1398161,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/training-512.pt",
+          "sha256": "7976aca150801c792ba69bfa376ad3e6d6838f18186af393dc57cdef40b8c98b",
+          "bytes": 1397921,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [
+    {
+      "instance": "RPB-v24.market-01",
+      "change_width": 8,
+      "native_width": 40
+    },
+    {
+      "instance": "RPB-v24.market-01.alt-01",
+      "change_width": 4,
+      "native_width": 36,
+      "configuration_template": {
+        "repository": "embedding",
+        "path": "code/encoders/raw_patch_bottleneck_mae/config/separated_changes_native36.conf",
+        "sha256": "52827353ff7dd327e61671d6d2ae1becfdc140671a5d84f11827bc0173fddc1d",
+        "bytes": 609,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

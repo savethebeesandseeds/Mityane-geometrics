@@ -1,0 +1,94 @@
+{
+  "kind": "separated_change_embedding_versions_v1",
+  "model_tag": "RPB-v24",
+  "instance": "RPB-v24.market-01",
+  "initial_instance": "RPB-v24.market-01.init",
+  "description": "Exact frozen v22 native32 prefix plus independent learned8 change block and residual decoder.",
+  "status": "stronger_trend_development_goal_not_met_primary_unchanged",
+  "architecture_id": "v22-native-prefix-plus-independent-change-bottleneck-linear-residual-v1",
+  "input_shape": [
+    "B",
+    3,
+    128,
+    9
+  ],
+  "native_shape": [
+    "B",
+    40
+  ],
+  "preserved_level_width": 32,
+  "change_width": 8,
+  "learned_coordinates": 28,
+  "fixed_coordinates": 12,
+  "optimizer_updated_parameters": 29808,
+  "protected_parameters": 282521,
+  "branch_updates": 2048,
+  "parent_updates": 2048,
+  "parent": "RPB-v22.market-02",
+  "parent_inference_sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c",
+  "inference_checkpoint_sha256": "f2e0cb87de670b36fcabc5add7595ca1e4cfb79f9dafbdc5c9193622ba8263c6",
+  "training_checkpoint_sha256": "d2dee0a4d05c7131fcf5ec478471ff2c8ebc753f472f5bc7a18d8ff108e9f328",
+  "initial_inference_checkpoint_sha256": "ef905807d7793cb6082de35d18556ed1adddb72f4dcfbb23b2b067fae54e194b",
+  "initial_and_final_prefix_exact": true,
+  "dataset_id": "MKT-HIST-2",
+  "designed_complexity_level": 4,
+  "report": "../cuwacunu_dev/doc/MARKET_SEPARATE_CHANGE_RESULTS.md",
+  "source_run": "../cuwacunu_dev/output/runs/market-separate-changes/run-Lr58TR",
+  "source_closure_sha256": "7c1d97d157db5d6339281cca4d8b4a2b3475bb0fa000c3fbe4821d8d9b4674b4",
+  "binary_sha256": "baeadf9ca2f3d85468c03f174702e87abc6c9656c0f8e762962cfa9df1a433f1",
+  "criteria_passed": 5,
+  "criteria_total": 9,
+  "primary_changed": false,
+  "head_width": 40,
+  "head_parameters": [
+    164,
+    724
+  ],
+  "actual_head_seeds": [
+    6049515622977958931,
+    8262941649267994858,
+    2095371932330426401
+  ],
+  "portable_pairs": [
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h",
+      "sha256": "8e75a5df1858a35316b9702b21367faed48f16654b8c7f5c6158d7a01b14f2e2"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+      "sha256": "9249562c9f45686bf3f04f90a1cab318b229862dbc2b9f9f7f3c5718303eed18"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h",
+      "sha256": "645d5cb61daf49f6c9950f25d3ca7b6763e13d51312b2e0589637a85af16289b"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h",
+      "sha256": "6619704df33020e0d50c9254146468ae1b305f3db5561d0951b194c292378111"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h",
+      "sha256": "8648dfdd73e4f23968bf59c6539533a416577d537ff0249ea65eb28bfa3f2f15"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h",
+      "sha256": "47c92bcd7d9cabcfb54f2cfd920189b3a3af6c0c354b2f5b16d939bb1b4f9148"
+    },
+    {
+      "integration_path": "code/encoders/rpb_separate/tests/separated_change_test.cpp",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/tests/separated_change_test.cpp",
+      "sha256": "f50ff96939ce040226c7c20da5015c9e99e250abc4997eb3e0b5f9b3afc3b992"
+    },
+    {
+      "integration_path": "config/market_studies/encoder_separate.conf",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/config/separated_changes.conf",
+      "sha256": "d0b2a42e21671682219b4bcfc87c30682c714c2832a0b7fa7e968d527411e3fe"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-15T21:56:53.9901235Z",
+  "stage": "declared_before_independent_saved_data_execution",
+  "execution_pending": true,
+  "model": "CPB-v5.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "scoped_reference": "CPB-v4.market-01",
+  "baseline_unchanged": true,
+  "gradient_policy": "separate-mean-and-uncertainty-bank-projections-live-gaussian-nll-v1",
+  "frozen_training_card_sha256": "a6da3a9501dd4247c40e3e24e42faf2c2c46620fda7e0a0568709276d0e84d09",
+  "frozen_training_markdown_sha256": "4afc10377a7a2711f0a4ae95615be050b5c405e5a53ada38ba234d7cb0d58955",
+  "frozen_input_manifest_sha256": "e85b01306634a9a6b2aa76fb31e560fdba807ddbca60c533ffd56c3103148ee7",
+  "main_source_manifest_sha256": "1f0993fdfdb20677acddeea18488edbe174f0583f24af6230d4df499aed60db6",
+  "main_source_zip_sha256": "d9f9844bd65e4022213cf9cdf291715f199a1c61a181d4bc4697c6c971f57a7d",
+  "outside_frozen97_source": true,
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "new_containers": 0,
+    "Torch_imports": 0,
+    "host_project_execution": false
+  },
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "forbidden": [
+    "Torch import",
+    "executable model/module deserialization",
+    "encoder/decoder/neural-head forward",
+    "training replay",
+    "optimizer mutation",
+    "new fit or head tuning",
+    "post-encoder PCA",
+    "changing frozen model/card/evaluation sources",
+    "Git mutation"
+  ],
+  "failure_policy": "Exclusive output; preserve every failed attempt. No automatic model/head replay, rescue, promotion or publication.",
+  "kind": "cpb_v5_saved_training_independent_audit_card_v1",
+  "auditor_source": {
+    "path": "code/research/causal_fresh_v5_training_audit/audit_training.py",
+    "bytes": 59873,
+    "sha256": "bb2ac0a6ca4f258f7e4132fbf36f2ed4d97cc9c22175ab4cf69ede159ace35f0"
+  },
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v4_training_audit/audit_training_attempt_003.py",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v4-training-audit/attempt-003/source/audit_training_attempt_003.py",
+      "bytes": 57933,
+      "sha256": "639fc9017ca6fb24ca288c938e1f36d0ba17e2850813b1924408fa8799e58050"
+    }
+  ],
+  "scope": [
+    "All2048 successful B8 updates, independent MT19937_64 row choice/counter-seed schedule and exact TRAIN4096 anchor legality",
+    "77total tensors:76learned294752values,3888fixed prior; nine groups including independent4x270 uncertainty projection; saved initial/final tensor movement versus producer CUDA events",
+    "Fresh TRAIN-only input27/bank270 statistics recomputed from4096 fixed windows; independent version-aware BankStandardizer FNV including fresh V5 source provenance; no old normalization identity oracle",
+    "Five main checkpoints, typed0/2048 policy/layout/mean4/uncertainty4/native40 geometry, all512/1024/2048 progress/seeds/moments and final training/inference identity; actual512 resume bound without replay",
+    "Full112TRAIN/32knownVALIDATION fixed-query scalar reductions and first8 per split/stage saved query cell GaussianNLL/MAE; casts before arithmetic; no other quality arrays",
+    "Source97/ten compiler units/six binary exact bindings; own dedicated actual CUDA full-gradient proof and observed native40/manual/full-NLL/one-step log tokens"
+  ],
+  "expected": {
+    "updates": 2048,
+    "batch_size": 8,
+    "native_width": 40,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "fixed_values": 3888,
+    "total_parameters": 298640,
+    "learned_groups": 9,
+    "optimizer_moment_tensors": 152,
+    "initialization_seed": 943001,
+    "row_seed": 943002,
+    "mask_seed": 943003,
+    "context_seed": 943004,
+    "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+    "bank_identity": "Recompute metadata-aware FNV from fresh V5 source and saved six TRAIN statistic tensors; no inherited bank provenance ID"
+  },
+  "tolerances": {
+    "query_manual_F64": "absolute2e-12+relative2e-12; promote saved F32 before subtraction/square/division/log",
+    "input_stats": "Preserved V4 cross-backend policy: sum/mean1e-12relative, scale2e-8relative",
+    "bank_stats": "Preserved V4 policy: F32 reductions2e-6/3e-6relative and stated absolute floors",
+    "state": "Exact logical dtype/shape/tensor bits for immutable state and final inference/training equality"
+  },
+  "allowed_numeric_arrays": "New V5 five checkpoints including parameters/moments/statistics, calibration artifacts and firstB8 calibration witness, firstB8 query arrays for TRAIN/knownVALIDATION, raw CACHE88 TRAIN-window cells; no old checkpoint or fixed-head quality arrays",
+  "limits": [
+    "Gradient values and exact live resume continuation are saved source-bound producer evidence; no training repeated",
+    "First8 query cells only; complete112/32 populations have scalar row reductions",
+    "Context batch masks are not saved: verify base streams in typed states/source and derive stream digest, without claiming every deletion observed",
+    "The V4 parent auditor and its failed earlier attempts remain historical; no new V5 audit failures are invented"
+  ],
+  "CLI": "--run RUN --attempt ATTEMPT --source MAIN_SOURCE --data-root /cuwacunu --audit-card CARD --engineering-proof PROOF --gradient-proof PROOF --output NEW_JSON",
+  "preserved_initial_auditor_declaration": {
+    "path": "doc/causal_fresh_v5/training-audit-card.json",
+    "bytes": 5580,
+    "sha256": "f8ea295ec2a84ba0cbce1118e4f05baef4367edd81b8cbff2488c3b0e6ff4f13"
+  },
+  "additive_source_admission_correction": "Main source attempt001 failed before models on dedicated-test ADL names; attempt002 host packaging failed before archive creation. Both preserved. Attempt003 changes fixture helper spellings and packager parameter name only. Auditor code, thresholds, data allowlists and all numeric checks unchanged; no numeric auditor execution yet.",
+  "selected_main_attempt": 3
+}

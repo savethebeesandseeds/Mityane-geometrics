@@ -1,0 +1,1512 @@
+{
+  "kind": "causal_fresh_v3_training_independent_audit_v1",
+  "status": "passed",
+  "recorded_utc": "2026-10-15T10:59:33.6519236Z",
+  "model": "CPB-v3.market-01",
+  "scope": "Independent completed saved TRAIN arithmetic, fresh statistics data and provenance; no encoder/decoder/head execution or replay.",
+  "execution": "Python standard library in existing cuwacunu container; PowerShell host file hashes and bounded Git diagnostics.",
+  "core_arithmetic_checks": 12584,
+  "numeric_statistic_checks": 61149,
+  "local_unique_pins_verified": 226,
+  "local_mismatches": [],
+  "container_saved_data_audit": {
+    "kind": "causal_fresh_v3_training_independent_audit_v1",
+    "status": "passed",
+    "core_saved_arithmetic_status": "passed",
+    "checks": 12584,
+    "mismatches": [],
+    "numeric_statistics": {
+      "status": "passed",
+      "checks": 61149,
+      "mismatches": [],
+      "raw_cache_records": [
+        30240,
+        30240,
+        30240
+      ],
+      "input_coordinates": 27,
+      "bank_coordinates": 270,
+      "independent_TRAIN_windows": 4096,
+      "first_witness_raw_coordinates": 27648,
+      "max_bank_sum_absolute_error": 7.105427357601002E-15,
+      "actual_typed_states": [
+        {
+          "update": 512,
+          "progress": [
+            512,
+            512,
+            943002,
+            943003,
+            943004
+          ],
+          "active_optimizer_states": 75
+        },
+        {
+          "update": 1024,
+          "progress": [
+            1024,
+            1024,
+            943002,
+            943003,
+            943004
+          ],
+          "active_optimizer_states": 75
+        },
+        {
+          "update": 2048,
+          "progress": [
+            2048,
+            2048,
+            943002,
+            943003,
+            943004
+          ],
+          "active_optimizer_states": 75
+        }
+      ],
+      "method": "Whitelisted inert C++ archive descriptors plus raw storage/struct; independent CACHE88 arithmetic, no torch import",
+      "tolerance_policy": "Input sums/means1e-12 relative, scale2e-8 relative; F32 bank cross-backend reduction2e-6/3e-6 relative with stated absolute floors; not quality-gate tolerance"
+    },
+    "model": "CPB-v3.market-01",
+    "source_updates": 0,
+    "pretrained_ancestor": "none",
+    "parameter_tensors": 76,
+    "learned_tensors": 75,
+    "learned_values": 293672,
+    "fixed_values": 3888,
+    "groups": {
+      "change_wave_decoder": {
+        "tensors": 1,
+        "values": 13824,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "change_projection": {
+        "tensors": 1,
+        "values": 1080,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "parent_backbone_projection": {
+        "tensors": 60,
+        "values": 213361,
+        "nonzero_gradient_tensors": 60,
+        "moved_tensors": 60,
+        "changed_final_tensors": 60
+      },
+      "parent_decoder": {
+        "tensors": 6,
+        "values": 17912,
+        "nonzero_gradient_tensors": 6,
+        "moved_tensors": 6,
+        "changed_final_tensors": 6
+      },
+      "parent_global_pool": {
+        "tensors": 4,
+        "values": 8480,
+        "nonzero_gradient_tensors": 4,
+        "moved_tensors": 4,
+        "changed_final_tensors": 4
+      },
+      "parent_content_relation": {
+        "tensors": 1,
+        "values": 38880,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "variance_bias": {
+        "tensors": 1,
+        "values": 27,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "variance_matrix": {
+        "tensors": 1,
+        "values": 108,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      }
+    },
+    "CSV_rows": 2048,
+    "independent_actual_CSV_stream_pairs": 2048,
+    "independent_MT19937_64_row_choices": 16384,
+    "context_stream": {
+      "base_seed": 943004,
+      "expected_derived_streams": 2048,
+      "expected_stream_sha256": "ce58f5b7899e7335e2cdb4c63c5ab7c318affe6dd51f04217c9bef7c6339ca85",
+      "evidence": "Base verified in3typed states and admitted make_plan source; per-batch context values are not in CSV"
+    },
+    "query_arithmetic": [
+      {
+        "stage": "initial",
+        "role": "train",
+        "MAE": 0.6641678566251075,
+        "NLL": 0.4238153534628793,
+        "rows": 112
+      },
+      {
+        "stage": "initial",
+        "role": "validation",
+        "MAE": 0.9580649343236182,
+        "NLL": 0.7953765111592087,
+        "rows": 32
+      },
+      {
+        "stage": "final",
+        "role": "train",
+        "MAE": 0.25904599043427573,
+        "NLL": -0.3801780798337577,
+        "rows": 112
+      },
+      {
+        "stage": "final",
+        "role": "validation",
+        "MAE": 0.376414230576159,
+        "NLL": 1.521796577918092,
+        "rows": 32
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/inference-0.pt",
+        "bytes": 1289550,
+        "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/inference-2048.pt",
+        "bytes": 1290625,
+        "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-1024.pt",
+        "bytes": 3757832,
+        "sha256": "c2126e0569cd15277b3edeb8afc6c6f5b5ada516d0eec3d2a09c81342acc5ff5"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-2048.pt",
+        "bytes": 3757832,
+        "sha256": "73a69fbe1ed159b5d573bba4e3d8367e1cb24c0b0968ab6007090e4a40ebe1e9"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-512.pt",
+        "bytes": 3757169,
+        "sha256": "1226f8adeed519919d11cf5e84ad420a7bd64dc04e846bff33e91a64b22177a3"
+      }
+    ],
+    "calibration": {
+      "kind": "cpb_v3_fresh_TRAIN_calibration_v1",
+      "status": "passed",
+      "TRAIN_anchors": 4096,
+      "history": 128,
+      "input_scaler_fits": 1,
+      "bank_normalizer_fits": 1,
+      "validation_rows_used": 0,
+      "test_rows_used": 0,
+      "encoder_calls": 0,
+      "old_normalization_artifacts_opened": 0,
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-4d6d0b5761eaad8f",
+      "loader_calls": 512,
+      "raw_record_cells": 14155776,
+      "seconds_including_loader_witness_IO": 2.991649873,
+      "artifacts": [
+        {
+          "file": "input-scaler.pt",
+          "bytes": 39988,
+          "sha256": "3a5452926f8dee5516a2369c9eb8867fabd65b636d00ab502856fda2c85fec92"
+        },
+        {
+          "file": "bank-standardizer.pt",
+          "bytes": 53951,
+          "sha256": "b59b404668fda6b529c446a73785e90f97158c96e9f1f26ce41e32235581bf9f"
+        },
+        {
+          "file": "first-TRAIN-batch-witness.pt",
+          "bytes": 493211,
+          "sha256": "8254b2ff5c7b889cd4248e8ebd14d311504136d689ed4c68135fe9264a79dea9"
+        }
+      ]
+    },
+    "fresh_initialization": {
+      "kind": "cpb_v3_fresh_initialization_v1",
+      "status": "passed",
+      "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+      "initialization_seed": 943001,
+      "pretrained_ancestor": "none",
+      "inherited_learned_parameters": 0,
+      "fresh_learned_parameter_values": 293672,
+      "analytic_fixed_prior_values": 3888,
+      "source_updates": 0,
+      "causal_updates": 0,
+      "old_model_artifacts_opened": 0,
+      "old_normalization_artifacts_opened": 0,
+      "all_initial_parameters_equal_direct_seeded_constructor": true,
+      "parameter_tensors_checked": 76,
+      "parameter_values_checked": 297560,
+      "buffer_tensors_checked": 0,
+      "direct_constructor_state_identity": "cpb-v3-state-fnv1a64-3f255a6fc97589f8",
+      "initial_state_identity": "cpb-v3-state-fnv1a64-3f255a6fc97589f8",
+      "fresh_input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+      "fresh_bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-4d6d0b5761eaad8f",
+      "initial_checkpoint": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/inference-0.pt",
+        "bytes": 1289550,
+        "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+      }
+    },
+    "evidence_pins": [
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/training-summary.json",
+        "bytes": 16650,
+        "sha256": "1ae18a1fc055b4d7bba0a66238f6bebebb0334a27980603c55bb6791bb31f373"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/training.csv",
+        "bytes": 402571,
+        "sha256": "5fd5fe17876f4f7cdf3aabb2232cb05ce20a19c495a99e146b891cfd50f389f6"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/parameter-learning.json",
+        "bytes": 17562,
+        "sha256": "b9bb62cf4832ac3ef7b655fc4e03b36ab0ae477035e76a23135064a91b0d47dc"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/fresh-initialization.json",
+        "bytes": 1067,
+        "sha256": "33bcdccab5d3b30c207342e1e5c807dddcd9b491ad00f09a83ee9a549c5efaa0"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/typed-resume-512.json",
+        "bytes": 221,
+        "sha256": "8add75a3eeb7cf30f03e18a13599adc27f890dd52265b3eb2dcd0bb44b468942"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/query-initial.json",
+        "bytes": 6810,
+        "sha256": "eac1ab211dfc272bdc2763a43649bb0ffcc571b2a79c285fc45835a21ad31017"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/query-final.json",
+        "bytes": 6913,
+        "sha256": "b942d1fead6ed1a345740de0bdabbade73ff535fc54b7f726cf63dfcaaafcefe"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/input-bindings.json",
+        "bytes": 1880,
+        "sha256": "27dbec5d280842773c5df207993256a002348f5869aa4f7e3b8298d1e48581a7"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/training-admission.json",
+        "bytes": 724,
+        "sha256": "3c49aca9a1f96206b5702efebda26a415e0943c99a1f84db9e674ae3c41cbb3a"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/build-evidence.json",
+        "bytes": 25527,
+        "sha256": "bb46b40d7bdac25f518eea2639c5a47377f6c4283609b5ac6496dd505ded35f2"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/source-stage.json",
+        "bytes": 496,
+        "sha256": "7b2db4a829edbb392ae6cfbcff07c26be6fdb8237cb56ebf54fe0010478e9033"
+      }
+    ],
+    "auditor": {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/audit-training-independent.py",
+      "bytes": 33244,
+      "sha256": "77043f470402eca9763f347302fc72dffe0066796100e899d67a4f72c6000540"
+    },
+    "elapsed_seconds": 4.930223837996891,
+    "encoder_calls": 0,
+    "decoder_calls": 0,
+    "head_fits": 0,
+    "encoder_updates": 0,
+    "method": "Existing-container pure standard-library saved arithmetic and data-only archive storage inspection; no torch import or module execution",
+    "limitations": [
+      "Gradient values and exact live resume continuation are source-bound producer evidence; this audit does not repeat training.",
+      "Git ignore and host copy availability are verified separately by bounded host diagnostics."
+    ]
+  },
+  "local_verified_pins": [
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\training-summary.json",
+      "bytes": 16650,
+      "sha256": "1ae18a1fc055b4d7bba0a66238f6bebebb0334a27980603c55bb6791bb31f373"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\training.csv",
+      "bytes": 402571,
+      "sha256": "5fd5fe17876f4f7cdf3aabb2232cb05ce20a19c495a99e146b891cfd50f389f6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\parameter-learning.json",
+      "bytes": 17562,
+      "sha256": "b9bb62cf4832ac3ef7b655fc4e03b36ab0ae477035e76a23135064a91b0d47dc"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\fresh-initialization.json",
+      "bytes": 1067,
+      "sha256": "33bcdccab5d3b30c207342e1e5c807dddcd9b491ad00f09a83ee9a549c5efaa0"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\typed-resume-512.json",
+      "bytes": 221,
+      "sha256": "8add75a3eeb7cf30f03e18a13599adc27f890dd52265b3eb2dcd0bb44b468942"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\query-initial.json",
+      "bytes": 6810,
+      "sha256": "eac1ab211dfc272bdc2763a43649bb0ffcc571b2a79c285fc45835a21ad31017"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\query-final.json",
+      "bytes": 6913,
+      "sha256": "b942d1fead6ed1a345740de0bdabbade73ff535fc54b7f726cf63dfcaaafcefe"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\input-bindings.json",
+      "bytes": 1880,
+      "sha256": "27dbec5d280842773c5df207993256a002348f5869aa4f7e3b8298d1e48581a7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-fresh-v3\\attempt-001\\training-admission.json",
+      "bytes": 724,
+      "sha256": "3c49aca9a1f96206b5702efebda26a415e0943c99a1f84db9e674ae3c41cbb3a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-fresh-v3\\attempt-001\\build-evidence.json",
+      "bytes": 25527,
+      "sha256": "bb46b40d7bdac25f518eea2639c5a47377f6c4283609b5ac6496dd505ded35f2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-fresh-v3\\attempt-001\\source-stage.json",
+      "bytes": 496,
+      "sha256": "7b2db4a829edbb392ae6cfbcff07c26be6fdb8237cb56ebf54fe0010478e9033"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\checkpoints\\inference-0.pt",
+      "bytes": 1289550,
+      "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\checkpoints\\inference-2048.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\checkpoints\\training-1024.pt",
+      "bytes": 3757832,
+      "sha256": "c2126e0569cd15277b3edeb8afc6c6f5b5ada516d0eec3d2a09c81342acc5ff5"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\checkpoints\\training-2048.pt",
+      "bytes": 3757832,
+      "sha256": "73a69fbe1ed159b5d573bba4e3d8367e1cb24c0b0968ab6007090e4a40ebe1e9"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\checkpoints\\training-512.pt",
+      "bytes": 3757169,
+      "sha256": "1226f8adeed519919d11cf5e84ad420a7bd64dc04e846bff33e91a64b22177a3"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\audit-training.py",
+      "bytes": 33244,
+      "sha256": "77043f470402eca9763f347302fc72dffe0066796100e899d67a4f72c6000540"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FRESH_V3_CARD.json",
+      "bytes": 27995,
+      "sha256": "f88fa9751ff9da0e808805da9975fb0bf3afd4433688f3cfb420686392e6396f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FRESH_V3_CARD.md",
+      "bytes": 7556,
+      "sha256": "d03c4f60f2eb270bc7d6ba77d575f998703c2c204a90b3df9d5ec0d938039446"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\input-manifest.json",
+      "bytes": 5462,
+      "sha256": "ce691b6ec2563cbf7a6b2a615c3912e3a9ec586f5198e1655450a22c9f9c9ffd"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\selections.pt",
+      "bytes": 36845,
+      "sha256": "10df626e83cc652edfdce2f0cb2eae72ccf802a3a0081cf5db8db71a7ef8bdb2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\query-plan-train.pt",
+      "bytes": 778351,
+      "sha256": "1853a271a32bd6635c122b36dfd6373247815178cff1525e95d852c5aafc137e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\query-plan-validation.pt",
+      "bytes": 224678,
+      "sha256": "5a98906368f3b56508d81b254d598594573545babd3c8e8ff67979a30b12018d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\features\\train-targets.pt",
+      "bytes": 8782,
+      "sha256": "521d8662f498bce27ad26a41c4723bbebb9d2ab6b924cfbcce7132c25b7e43e6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\features\\validation-targets.pt",
+      "bytes": 4677,
+      "sha256": "cbd08bd01c728cfbb7a500922852573c45f87dd98821b42e20ee202a7a743181"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\runs\\market-capacity-study\\shared-MKT-HIST-2-v1\\shared-assets.sha256",
+      "bytes": 1083,
+      "sha256": "dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\manifest.json",
+      "bytes": 7035,
+      "sha256": "fdd8b04917b1d4580fea760e4c6d2dedf8a9d47b14271758174da86859d62ccb"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\data\\mkt-hist-1\\csv\\BTCUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\data\\mkt-hist-1\\csv\\ETHUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\data\\mkt-hist-1\\csv\\SOLUSDT-1m-2024-01.cache.bin",
+      "bytes": 3928320,
+      "sha256": "364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941101\\training.pt",
+      "bytes": 15950423,
+      "sha256": "d6ae4a383014b5c7ea0b800279406f152bc69d51e21757f8322c57d877887b4c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941101\\validation.pt",
+      "bytes": 7976815,
+      "sha256": "82ce4501ee20043a318bb685473b933af380a98a6da6433d00713893aab587f7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941101\\validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "7e94e74007607e3e7bea8ca2b34908897900930c1d3e7847fe412942216a9f34"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941102\\training.pt",
+      "bytes": 15950423,
+      "sha256": "9db9ebac5e2d4fae5915fc72b104d7b38cdef528ab84e11aab9bbe7c17760c6c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941102\\validation.pt",
+      "bytes": 7976815,
+      "sha256": "0382d4896751a02d5708eae35be74b3634a2bed18588492d934072cf5e6bfdee"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941102\\validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "953f490885290074c764c629a9a5d83cd1e071d77c45e62d6af0fff8556acd52"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941103\\training.pt",
+      "bytes": 15950423,
+      "sha256": "f35b3f6bc6e9c957425cc1b2aa7a752a1a2081f0b4169f8e48a8159f5d3557dd"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941103\\validation.pt",
+      "bytes": 7976815,
+      "sha256": "3c406e63129752dffc0a76240d10b3200bb1952338612264b0da653bf735b619"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\inputs\\market-synthetic-transfer-v1\\master-941103\\validation-deleted.pt",
+      "bytes": 7976911,
+      "sha256": "962b7fa047fc87c4e9c05dfcd2fbb69eccca319ea373e024a8d606f34f8d88bb"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\doc\\results\\market_parent_modulated_decoder_v1\\table_rows.json",
+      "bytes": 300529,
+      "sha256": "a3c6bc69b9a0c1462d2d667fb2df215a486036283b900c1b8bf234a5eae5770d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\engineering\\causal-patch-bottleneck-mae-v1\\attempt-002\\proof\\inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\baselines\\CPB-v1.market-01\\inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-0.pt",
+      "bytes": 1291519,
+      "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-2048.pt",
+      "bytes": 1292585,
+      "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-1024.pt",
+      "bytes": 3759283,
+      "sha256": "15c60037715d3cdc3156da90227d1e637b5f7f4132cf5d669aca2f4408b88833"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-2048.pt",
+      "bytes": 3759283,
+      "sha256": "73347f3fb03d301910acbb813f5776514bcfbf924ab0c92bff494da855d7e8b0"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-512.pt",
+      "bytes": 3758623,
+      "sha256": "db262a3a7e0b22eb5b94299a60cb768e2ebff5f592e99b6bd65e1604cf4ca8e6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FINETUNE_V2_CARD.json",
+      "bytes": 31611,
+      "sha256": "30aa70ce6f3999d9f6a991c1b298516db41caf3db276cacb75d91c9d3dcba222"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FINETUNE_V2_RESULTS.md",
+      "bytes": 23427,
+      "sha256": "313bcb3c888aa741307ad5fca2aaeca271fa0aeae62cd877955946efe6ab9efd"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_finetune_v2\\finalization.json",
+      "bytes": 10901,
+      "sha256": "c92f915a26615fe91f4498ad9b484fbb95ec6281a7ab98e4552f13c196a4e5b0"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\config\\v1.conf",
+      "bytes": 631,
+      "sha256": "8946440d0e9834465d7d8e7fcc973bb42f462edb1342e6f618f314f5f67a6f11"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\config\\v1.conf",
+      "bytes": 631,
+      "sha256": "8946440d0e9834465d7d8e7fcc973bb42f462edb1342e6f618f314f5f67a6f11"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_bank.h",
+      "bytes": 1651,
+      "sha256": "42dd85b297618e49bace46dec6429835b5668b34e071250fc00de3d539be8412"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_bank.h",
+      "bytes": 1651,
+      "sha256": "42dd85b297618e49bace46dec6429835b5668b34e071250fc00de3d539be8412"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_config.h",
+      "bytes": 1480,
+      "sha256": "d06e4bad1ec16e0940d2e67f78e378ea63ee2383ef04413205dec3e5b729c721"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_config.h",
+      "bytes": 1480,
+      "sha256": "d06e4bad1ec16e0940d2e67f78e378ea63ee2383ef04413205dec3e5b729c721"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_normalizer.h",
+      "bytes": 11393,
+      "sha256": "42b3588ff644a45381b3d9f4f2e3a0dba7791759317ced3bec171880e9dc6c05"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\conditioned_change_normalizer.h",
+      "bytes": 11393,
+      "sha256": "42b3588ff644a45381b3d9f4f2e3a0dba7791759317ced3bec171880e9dc6c05"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\config.h",
+      "bytes": 5959,
+      "sha256": "1806ee07354e37933d6a98c66fd96f7fa44a4b2248391337f0be74ea5153ff01"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\config.h",
+      "bytes": 5959,
+      "sha256": "1806ee07354e37933d6a98c66fd96f7fa44a4b2248391337f0be74ea5153ff01"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_checkpoint_io.h",
+      "bytes": 3102,
+      "sha256": "5c02ae6363dc8ce51ce1421022f722c3f1c360aedc905afa41bde03daee7fbf1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_checkpoint_io.h",
+      "bytes": 3102,
+      "sha256": "5c02ae6363dc8ce51ce1421022f722c3f1c360aedc905afa41bde03daee7fbf1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_checkpoint.h",
+      "bytes": 7352,
+      "sha256": "8354a51316be656d4a58fe2431c2b2f47cc0ea36ad923fb53edec9004c39cf24"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_checkpoint.h",
+      "bytes": 7352,
+      "sha256": "8354a51316be656d4a58fe2431c2b2f47cc0ea36ad923fb53edec9004c39cf24"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_config.h",
+      "bytes": 4835,
+      "sha256": "ad71841f10adee8bc5556f4e35464c135aa2a2a2f21caeb7950fecc18d63b041"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_config.h",
+      "bytes": 4835,
+      "sha256": "ad71841f10adee8bc5556f4e35464c135aa2a2a2f21caeb7950fecc18d63b041"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_model.h",
+      "bytes": 13751,
+      "sha256": "b2d35ff8be13e7f3377a665bd3427a9a392a57076c1951c224af1991912a3e3e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_model.h",
+      "bytes": 13751,
+      "sha256": "b2d35ff8be13e7f3377a665bd3427a9a392a57076c1951c224af1991912a3e3e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_relation.h",
+      "bytes": 8180,
+      "sha256": "0291ae2ff8186e025bb62027384e1dce30479135d3423073ab38740cb8d20058"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\configurable_spectral_relation.h",
+      "bytes": 8180,
+      "sha256": "0291ae2ff8186e025bb62027384e1dce30479135d3423073ab38740cb8d20058"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_bank.h",
+      "bytes": 3579,
+      "sha256": "4da04e893940a443588b6f6c184ce901ffeace3ce037946d4532b972d5e4c23b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_bank.h",
+      "bytes": 3579,
+      "sha256": "4da04e893940a443588b6f6c184ce901ffeace3ce037946d4532b972d5e4c23b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_checkpoint.h",
+      "bytes": 5184,
+      "sha256": "8b878f2b29af534c87a967faf2cd5e4b67eb742fe344aa651ee498b91298b262"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_checkpoint.h",
+      "bytes": 5184,
+      "sha256": "8b878f2b29af534c87a967faf2cd5e4b67eb742fe344aa651ee498b91298b262"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_config.h",
+      "bytes": 1704,
+      "sha256": "913aea08a95aaaa0eab64d8fb69d07672e80e59d8749124ba755f0909f912b61"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_config.h",
+      "bytes": 1704,
+      "sha256": "913aea08a95aaaa0eab64d8fb69d07672e80e59d8749124ba755f0909f912b61"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_model.h",
+      "bytes": 4016,
+      "sha256": "9bba3e8cef87b9a0227b66232151e53088c543dc03ff3ba2969fbf3985c4ad1c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_model.h",
+      "bytes": 4016,
+      "sha256": "9bba3e8cef87b9a0227b66232151e53088c543dc03ff3ba2969fbf3985c4ad1c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_training_state.h",
+      "bytes": 14188,
+      "sha256": "c76e703bbdde65ca653e7b8bca72200bb201955ea8ff5cd642d78b7042584355"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\consecutive_change_training_state.h",
+      "bytes": 14188,
+      "sha256": "c76e703bbdde65ca653e7b8bca72200bb201955ea8ff5cd642d78b7042584355"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_bank.h",
+      "bytes": 5882,
+      "sha256": "993d8ce4cd281f8cb400c80e866a7f2c32905d2bb3b328948d199104a6a84df3"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_bank.h",
+      "bytes": 5882,
+      "sha256": "993d8ce4cd281f8cb400c80e866a7f2c32905d2bb3b328948d199104a6a84df3"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_checkpoint.h",
+      "bytes": 5520,
+      "sha256": "5877748333811da2ce1b6465c2550f1ba8ee2de9c0977067db67806a7d6fa5c4"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_checkpoint.h",
+      "bytes": 5520,
+      "sha256": "5877748333811da2ce1b6465c2550f1ba8ee2de9c0977067db67806a7d6fa5c4"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_config.h",
+      "bytes": 2705,
+      "sha256": "276254a6c27d7618257b42c78bd9e88419ad54be7b037134007b25b7a1fce1c9"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_config.h",
+      "bytes": 2705,
+      "sha256": "276254a6c27d7618257b42c78bd9e88419ad54be7b037134007b25b7a1fce1c9"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_model.h",
+      "bytes": 6468,
+      "sha256": "2dbe21a632adcc0021af88c90266a470a98b62f83a236793da5b2153bc852d48"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\content_ordered_relation_model.h",
+      "bytes": 6468,
+      "sha256": "2dbe21a632adcc0021af88c90266a470a98b62f83a236793da5b2153bc852d48"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\document.h",
+      "bytes": 8087,
+      "sha256": "b689e62a3612c85863c0e37ad4680052adc32e87e2bc584ae759e3c2f917e518"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\document.h",
+      "bytes": 8087,
+      "sha256": "b689e62a3612c85863c0e37ad4680052adc32e87e2bc584ae759e3c2f917e518"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\encoder.h",
+      "bytes": 3775,
+      "sha256": "bec505e82b4cc6e6450f2e02ae704b85744921fcac0c56768ee231b7b0a8527c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\encoder.h",
+      "bytes": 3775,
+      "sha256": "bec505e82b4cc6e6450f2e02ae704b85744921fcac0c56768ee231b7b0a8527c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_checkpoint.h",
+      "bytes": 9543,
+      "sha256": "c7805be0b82d4fd74cd15ca1cabd4e551cde308f39a253c7aa68f9c3ee433102"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_checkpoint.h",
+      "bytes": 9543,
+      "sha256": "c7805be0b82d4fd74cd15ca1cabd4e551cde308f39a253c7aa68f9c3ee433102"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_config.h",
+      "bytes": 1982,
+      "sha256": "213be908fffd8162c70d4c8205e1bec894d76a22d5cd9368d96d51ed6d374834"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_config.h",
+      "bytes": 1982,
+      "sha256": "213be908fffd8162c70d4c8205e1bec894d76a22d5cd9368d96d51ed6d374834"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_model.h",
+      "bytes": 13119,
+      "sha256": "814d9fd6c4c622e859ead2e56f0b12dc64b10640c5a089374360c4c9aa27afb1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_model.h",
+      "bytes": 13119,
+      "sha256": "814d9fd6c4c622e859ead2e56f0b12dc64b10640c5a089374360c4c9aa27afb1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_settings.h",
+      "bytes": 3165,
+      "sha256": "717066f83f535d5898e4106ab50cf737840b00d08cf9571eb07c4eda8b3b4f68"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_settings.h",
+      "bytes": 3165,
+      "sha256": "717066f83f535d5898e4106ab50cf737840b00d08cf9571eb07c4eda8b3b4f68"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_training_state.h",
+      "bytes": 10127,
+      "sha256": "cdb088601e5b1d51ec5bd46bd8fb80690d7811c418dd4cc09733a6c7b865fd69"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\location_scale_decoder_training_state.h",
+      "bytes": 10127,
+      "sha256": "cdb088601e5b1d51ec5bd46bd8fb80690d7811c418dd4cc09733a6c7b865fd69"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\masking.h",
+      "bytes": 3877,
+      "sha256": "483c840ccca4248b960782a5e06263d0b2e1d313bd912adefbedb97bd8f97e4e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\masking.h",
+      "bytes": 3877,
+      "sha256": "483c840ccca4248b960782a5e06263d0b2e1d313bd912adefbedb97bd8f97e4e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\model.h",
+      "bytes": 20895,
+      "sha256": "c08092c77f14f44e8999dce4026b7df3953f4fcaadabad549a100c9882abee16"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\model.h",
+      "bytes": 20895,
+      "sha256": "c08092c77f14f44e8999dce4026b7df3953f4fcaadabad549a100c9882abee16"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\objectives.h",
+      "bytes": 3159,
+      "sha256": "e1defd4aa34e9fac371c45a833a3ae834fc0dfa5661c726251e82341f398941e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\objectives.h",
+      "bytes": 3159,
+      "sha256": "e1defd4aa34e9fac371c45a833a3ae834fc0dfa5661c726251e82341f398941e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\preprocessing.h",
+      "bytes": 10346,
+      "sha256": "f191ecd79241873a2a9964a951bb171b87a75205b20d711068a648b08af5a99d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\preprocessing.h",
+      "bytes": 10346,
+      "sha256": "f191ecd79241873a2a9964a951bb171b87a75205b20d711068a648b08af5a99d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_bank.h",
+      "bytes": 4784,
+      "sha256": "b1d7a34967e5950a06dd3c86ce783937f6ba4696b9d53a27d73ac31771368b09"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_bank.h",
+      "bytes": 4784,
+      "sha256": "b1d7a34967e5950a06dd3c86ce783937f6ba4696b9d53a27d73ac31771368b09"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_config.h",
+      "bytes": 1927,
+      "sha256": "c7a242531c08002a45ded821cde6160a528d129fda1c0c77871e0f4657adda3a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_config.h",
+      "bytes": 1927,
+      "sha256": "c7a242531c08002a45ded821cde6160a528d129fda1c0c77871e0f4657adda3a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_normalizer.h",
+      "bytes": 3047,
+      "sha256": "1a82e08ad4e940f93a42ec3e5d9ca3bfb9432e0d7a52c159564e02494b628e0f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\relative_change_normalizer.h",
+      "bytes": 3047,
+      "sha256": "1a82e08ad4e940f93a42ec3e5d9ca3bfb9432e0d7a52c159564e02494b628e0f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_checkpoint.h",
+      "bytes": 5379,
+      "sha256": "65d226f2ccdc0f4026730b42ed1fd8dcddb98bddd0697c9d1e797044c7a79e38"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_checkpoint.h",
+      "bytes": 5379,
+      "sha256": "65d226f2ccdc0f4026730b42ed1fd8dcddb98bddd0697c9d1e797044c7a79e38"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_config.h",
+      "bytes": 1629,
+      "sha256": "5c9cd456ec861ddd8b64ee15e5bcff74c738b4fa9eec42b4dadb6789a02eaed2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_config.h",
+      "bytes": 1629,
+      "sha256": "5c9cd456ec861ddd8b64ee15e5bcff74c738b4fa9eec42b4dadb6789a02eaed2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_frozen_level.h",
+      "bytes": 4534,
+      "sha256": "a1ef2d7adce5fa8dcf7c524d88fdb18cce260f43deb09a0590ac0def0d355e0f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_frozen_level.h",
+      "bytes": 4534,
+      "sha256": "a1ef2d7adce5fa8dcf7c524d88fdb18cce260f43deb09a0590ac0def0d355e0f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_model.h",
+      "bytes": 5806,
+      "sha256": "2427be549f235bd65ea694318245c7350526848615683d2f123a41d1fc6f7aa6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_model.h",
+      "bytes": 5806,
+      "sha256": "2427be549f235bd65ea694318245c7350526848615683d2f123a41d1fc6f7aa6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_training_state.h",
+      "bytes": 7342,
+      "sha256": "b99a77cb133501236f83682d6ba6c384960ceb807194385753133b260c1d560c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\separated_change_training_state.h",
+      "bytes": 7342,
+      "sha256": "b99a77cb133501236f83682d6ba6c384960ceb807194385753133b260c1d560c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\simple_kv_block.h",
+      "bytes": 8406,
+      "sha256": "65882d08602348f76813624900b69ecb6dc4ad62b69aa0bf2e9d36c297884f18"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\simple_kv_block.h",
+      "bytes": 8406,
+      "sha256": "65882d08602348f76813624900b69ecb6dc4ad62b69aa0bf2e9d36c297884f18"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\tokenization.h",
+      "bytes": 3455,
+      "sha256": "4fcfab2781b5bb3f7941050e03110b3495ff18d173db85a7df5ac48082a9157d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\tokenization.h",
+      "bytes": 3455,
+      "sha256": "4fcfab2781b5bb3f7941050e03110b3495ff18d173db85a7df5ac48082a9157d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\types.h",
+      "bytes": 5710,
+      "sha256": "5db1bd52e3d7c2edc604e0b8c7fdddaade66e56c9d01a04c2cdd5bb889383e28"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\types.h",
+      "bytes": 5710,
+      "sha256": "5db1bd52e3d7c2edc604e0b8c7fdddaade66e56c9d01a04c2cdd5bb889383e28"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\visible_difference.h",
+      "bytes": 4814,
+      "sha256": "87e4b8c8aa851e4581155d2ac20c674642ff57b90015d7b83785bcec000b7c6a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v1\\visible_difference.h",
+      "bytes": 4814,
+      "sha256": "87e4b8c8aa851e4581155d2ac20c674642ff57b90015d7b83785bcec000b7c6a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\versions\\v1.h",
+      "bytes": 23039,
+      "sha256": "0f0470d2b990459ec724784136c850aae97d3740de90bded4b18007bdd5c4d61"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\versions\\v1.h",
+      "bytes": 23039,
+      "sha256": "0f0470d2b990459ec724784136c850aae97d3740de90bded4b18007bdd5c4d61"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\provenance.json",
+      "bytes": 25245,
+      "sha256": "a901f7334a7643a680d6a1ab80601539b3f36358a8bf429f5ac669204790539c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\provenance.json",
+      "bytes": 25245,
+      "sha256": "a901f7334a7643a680d6a1ab80601539b3f36358a8bf429f5ac669204790539c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\README.md",
+      "bytes": 3428,
+      "sha256": "dde9520d74b2533013ca62cea96d6dcf45054f9aff2d0d44a16cf389e76b2187"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\README.md",
+      "bytes": 3428,
+      "sha256": "dde9520d74b2533013ca62cea96d6dcf45054f9aff2d0d44a16cf389e76b2187"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\tests\\v1_test.cpp",
+      "bytes": 42205,
+      "sha256": "bf41a2e9b892fab5ad244fb29b7ef8cef3817fd774a32161cef69822bc1fdd9a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\tests\\v1_test.cpp",
+      "bytes": 42205,
+      "sha256": "bf41a2e9b892fab5ad244fb29b7ef8cef3817fd774a32161cef69822bc1fdd9a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\v1.mk",
+      "bytes": 880,
+      "sha256": "58a5fd06a3dce82d51715c7a0e3951cb48d541d77acf375f2f25355cc3a62c25"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v1\\v1.mk",
+      "bytes": 880,
+      "sha256": "58a5fd06a3dce82d51715c7a0e3951cb48d541d77acf375f2f25355cc3a62c25"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\config\\v3.conf",
+      "bytes": 624,
+      "sha256": "01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\conditioned_change_bank.h",
+      "bytes": 1651,
+      "sha256": "f40951571c54534601b64b169654c9c0d46cb58fcede15444ea8ab2e94ade455"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\conditioned_change_config.h",
+      "bytes": 1480,
+      "sha256": "2841b81a957ef2b3228e5fa25fb834bbe7286c125f8924634265455470fc3dd4"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\conditioned_change_normalizer.h",
+      "bytes": 11393,
+      "sha256": "9a7a59c4f6c3504c8426da354bbb495fdba32224aeb34a5329f93c4073f06102"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\config.h",
+      "bytes": 5959,
+      "sha256": "e16ffeb7625bf019f05ac0b5c837f2878c1a771e7656944e62e6f6d23ef19dd5"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\configurable_spectral_checkpoint_io.h",
+      "bytes": 3102,
+      "sha256": "4c6d1fa03ed7ded045338c29bbfec8e9c99f542152a1734eada7db9c60874306"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\configurable_spectral_checkpoint.h",
+      "bytes": 7352,
+      "sha256": "358e7bbc9b6befea40f457f03cd2ab1533e9382135bbf775a4a4f006b3e0978c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\configurable_spectral_config.h",
+      "bytes": 4835,
+      "sha256": "d5427f909dad6e7c07c34eb2b3de462fe09895e5a624c3f580cdbc061fbf296e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\configurable_spectral_model.h",
+      "bytes": 13751,
+      "sha256": "4ea0ad4bafaa6a8e1d2188ccfe965dc10e0cd88035d6c2476c863cb7340e3d5d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\configurable_spectral_relation.h",
+      "bytes": 8180,
+      "sha256": "1f74ee6ea087ea4a6410ee0b62db065fd4d42d5eb0504b8d54e0945085d7f84a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\consecutive_change_bank.h",
+      "bytes": 3579,
+      "sha256": "7718939a7a083219bb67686a05337ecaaa7756d11f7f1367df6d4f2a54e0704a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\consecutive_change_checkpoint.h",
+      "bytes": 5184,
+      "sha256": "2133845898eca4ba046cba4fb053414140d4a99437f344c5ea57c9253fb9cbc0"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\consecutive_change_config.h",
+      "bytes": 1704,
+      "sha256": "f3ace4691005cecc2f0830ba234995cd4e776199d7485dbb48693e2adfd57a7f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\consecutive_change_model.h",
+      "bytes": 4016,
+      "sha256": "db248ebe07230f17993a241bacd7a9d498b6e9bfb18ba091368fd270d3a95a14"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\consecutive_change_training_state.h",
+      "bytes": 14188,
+      "sha256": "f3c27fe8676cd67080f0404e839e027120bd58f65c515cac06b744a4a44b107f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\content_ordered_relation_bank.h",
+      "bytes": 5882,
+      "sha256": "503c40e5327228db8aea80eeb0b01b275e7987f54c176c23b56e02e5b32a768b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\content_ordered_relation_checkpoint.h",
+      "bytes": 5520,
+      "sha256": "9081b289107165b20368704220da7abf55983833d15031175061d59d3153652f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\content_ordered_relation_config.h",
+      "bytes": 2705,
+      "sha256": "6b0b20bb6303c7b966d3395060fdc89d269fde3545fe04628dbd496c9eadbf87"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\content_ordered_relation_model.h",
+      "bytes": 6468,
+      "sha256": "a430a4ddc2071d6806d56b913750150598a67e87ed05c146950ce005cff8b43d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\document.h",
+      "bytes": 8087,
+      "sha256": "49523c0d66f3bdf0ee4118a8b07c260a9760c3fe86c655a2458322a75c864a1d"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\encoder.h",
+      "bytes": 3775,
+      "sha256": "855049c7c8b064d9eb133ff32bec1dc243660c158ff843fce62b5aabdfbcb1d8"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\location_scale_decoder_checkpoint.h",
+      "bytes": 9003,
+      "sha256": "8c3b5d3750c2b714310b9644c9b372e47971a878db1cb9aef249674f206ec0f7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\location_scale_decoder_config.h",
+      "bytes": 1983,
+      "sha256": "0e41dc260f80c03a41a1bcd46cb1badef571dc9e862d546ea17968ad75bd5df3"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\location_scale_decoder_model.h",
+      "bytes": 13052,
+      "sha256": "910c86729393494ed8aff21fdf3f41c620bb5bbcf8795855f5c724b1027873c2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\location_scale_decoder_settings.h",
+      "bytes": 3165,
+      "sha256": "e7450bf22eb29e0f3a040c0e9916a3d4eba82e8b6a7d337de5f3e60195ca5ad6"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\location_scale_decoder_training_state.h",
+      "bytes": 341,
+      "sha256": "959d496d6676cb5014c6446e86ab1354568d661b4f77a6ebe57e0b4dead00a68"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\masking.h",
+      "bytes": 3877,
+      "sha256": "ca1e97c022a847dddab98fcf761c46d28cc8d8a7edd8126fc502cb3876671172"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\model.h",
+      "bytes": 20895,
+      "sha256": "f1df13d7be52d588d6647fc930446c47e31813a1ebd4feb24b3eeaa0d65476b1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\objectives.h",
+      "bytes": 3159,
+      "sha256": "a62b5458db96175f482157354d8b7b8bbf15df8132d53dc0e1c3b854b775779a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\preprocessing.h",
+      "bytes": 10346,
+      "sha256": "f29159cc67cf00917d021f383ec25d6cc3af676283fdce82933d330c9848f300"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\relative_change_bank.h",
+      "bytes": 4784,
+      "sha256": "b9ec437d4c16f022fe5f1edd2c072c623b70bf5d46f41eb32a2b5981196e74cf"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\relative_change_config.h",
+      "bytes": 1927,
+      "sha256": "e1bc0119bb1e547d93489a08a66499e145d7917cd9b71465bfb0db1b4ef4a2c1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\relative_change_normalizer.h",
+      "bytes": 3047,
+      "sha256": "791085f8feb406782c9ec483861cf68bd821f0eb925c8f79ae34b457a4e50419"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\separated_change_checkpoint.h",
+      "bytes": 5379,
+      "sha256": "bf9069806cb2bcd604abcc7c52369590d389872b3b91dac77bd4e05ee754ea13"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\separated_change_config.h",
+      "bytes": 1629,
+      "sha256": "3883d251abda3fa39af0beb7f8fe6e5d08bb20c5d99d567e9232f993de8a1795"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\separated_change_frozen_level.h",
+      "bytes": 4534,
+      "sha256": "f68cb632d4d5817a382d77a9c0949f8c7b03d5b4c2e23ddbb1c7eec115533c0f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\separated_change_model.h",
+      "bytes": 5806,
+      "sha256": "ca5e14a9acf091f727f7b033e25d90920060ff0eb3ac3a044b0cd1cf6a6e054b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\separated_change_training_state.h",
+      "bytes": 7342,
+      "sha256": "8297707613ee7fc6296f80372479783964a2ef476b7e4ffc899d5a779c6d1225"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\simple_kv_block.h",
+      "bytes": 8406,
+      "sha256": "19afb80ff4886b3867d758dec529ec44f6c546deceadc1599c2edcc41bdb55af"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\tokenization.h",
+      "bytes": 3455,
+      "sha256": "b2575792e137c935ce91499450160137cc0bf0b632bc5757c99507d939840ebf"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\types.h",
+      "bytes": 5710,
+      "sha256": "7fc24f12eaf827a213b4bcf4b901ef2faf103ec75d6641d9121c3cbe3681759f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v3\\visible_difference.h",
+      "bytes": 4814,
+      "sha256": "7830283b6291fd54358470245d116a62232744e06d6153ed0eeac2f7ad71252e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\versions\\v3.h",
+      "bytes": 32829,
+      "sha256": "e54599c4556ee2dca1637380f8ab27c6e6bbbe6b56cfd1c2fdf2c7ac23b34b33"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\provenance.json",
+      "bytes": 11826,
+      "sha256": "2770e3e3436acbe390d0601861979f3070b57a3dfc98602719e944f12f776ee9"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\README.md",
+      "bytes": 4283,
+      "sha256": "8c25da22086e000978990ed465f3e5583c1df30458dea73f0876eac8371f50e2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\tests\\v3_test.cpp",
+      "bytes": 52162,
+      "sha256": "1bc616190725fda8492a4303e63569862c6fb08c11ed172477fa09c7c235ad0e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v3\\v3.mk",
+      "bytes": 880,
+      "sha256": "e7d0306386beaa2b7732051ddbb5cd2ba1b9ed3fb54329040f29c5ae80602199"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\dependency-provenance.json",
+      "bytes": 5959,
+      "sha256": "61193ab0f1fa01e7e78ae49442ae0b36358e363d4d3359b0359191a1512ce77b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\cuwacunu\\data\\record_types.h",
+      "bytes": 6598,
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\cuwacunu\\data\\support.h",
+      "bytes": 329,
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\cuwacunu\\evaluation\\fixed_regression.h",
+      "bytes": 2922,
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\embedding\\shared\\data.h",
+      "bytes": 1292,
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\embedding\\shared\\evaluation.h",
+      "bytes": 1311,
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\embedding\\shared\\feature_harness.h",
+      "bytes": 5770,
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\embedding\\shared\\fixed_feature_readouts.h",
+      "bytes": 2428,
+      "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\include\\embedding\\shared\\types.h",
+      "bytes": 1083,
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\src\\data.cpp",
+      "bytes": 6133,
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\src\\feature_harness.cpp",
+      "bytes": 25946,
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\src\\fixed_feature_readouts.cpp",
+      "bytes": 21926,
+      "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\deps\\src\\fixed_regression.cpp",
+      "bytes": 22417,
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\evaluation.mk",
+      "bytes": 1853,
+      "sha256": "69b3d2be7a7d7c850540bfc309d2b30a85c9ba9e5b0e041d56dfffd9741ed7e3"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\extract_main.cpp",
+      "bytes": 19584,
+      "sha256": "5be6bec96c2d4db576406cbce200158fd65446fc5b9b5ff2e1e6c03829e2d9c2"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\market_read_main.cpp",
+      "bytes": 2438,
+      "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\README.md",
+      "bytes": 5001,
+      "sha256": "1fb748adf0c63391fb12156244f959ac3282c67c42698e88c9ef8d4d94f1d55b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\report.py",
+      "bytes": 37998,
+      "sha256": "9401d4c3a35a041c7902eec6b14f1a1d09242629cc6e63ab47737d4530b45bb1"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\evaluation\\synthetic_read_main.cpp",
+      "bytes": 12339,
+      "sha256": "e09ccc83d29c3e1f8e2c0597507ce8e218c278279a8427b42b505bafbd858fcb"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\include\\calibration.h",
+      "bytes": 6460,
+      "sha256": "f35ec2750fd8784f67a23ed10655fcc89239636ef29c89a4dd3a4bcba1bd8f5a"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\include\\context_deletion.h",
+      "bytes": 10829,
+      "sha256": "9e046907c5ddee901b5d6af9a51cb532634ece46177137da07100e126ab3d2ba"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\include\\market_data.h",
+      "bytes": 5020,
+      "sha256": "fb14e22058ea141e50d0f72b7adf464aa0cb000b8dd2dec5792c556863aa9844"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\include\\training_utils.h",
+      "bytes": 1571,
+      "sha256": "fe7715f0001264f018e5d24aaf485f9b053e35683b9234aa91f38f2ffe6f37cd"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\Makefile",
+      "bytes": 1308,
+      "sha256": "58b5d7d44c93f80dda041ae51d8dd660c3934a84eb0505fd42e65c5ffa3e4241"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\train_main.cpp",
+      "bytes": 34121,
+      "sha256": "a9a0242ffbd19559e6af7f339bbab902fab095988514a2338899482ba829a27c"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_fresh_v3\\training-helper-provenance.json",
+      "bytes": 1514,
+      "sha256": "5678f12cac594480c17eb9d6b651b966f2477f5b4ddf127f04b1fd32f7ed274f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\audit-build.py",
+      "bytes": 3280,
+      "sha256": "e0bb0e4c02fbfb8f1c91e47f1ed62648ca856e08587cec682dfb0a25ee3d64d7"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\raw-controls.json",
+      "bytes": 11461,
+      "sha256": "c37d484cde4ddf9ae551b35aad8b2595865e109d566dab2ba7c1872e814e8077"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\run-quality.py",
+      "bytes": 6962,
+      "sha256": "26226427537691362ae848661a0e22f4a49ba813fbbb6b15b924b1ec61123e62"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\stage-source.ps1",
+      "bytes": 5678,
+      "sha256": "bbe19c2c04106e1bc13863b62f95498519a5cbccfad474f5f65f56182c25aae4"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\unpack-source.py",
+      "bytes": 2302,
+      "sha256": "645c14360345f5ef3973392c2c06cea2f48386f2ce64f1786188b572f7d4d73b"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\LICENSE",
+      "bytes": 1085,
+      "sha256": "1e172347c1eeedb54928c97d79dd7b19bba447f8414f6467d722ead8dffcd5d8"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\calibration\\input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "3a5452926f8dee5516a2369c9eb8867fabd65b636d00ab502856fda2c85fec92"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\calibration\\bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "b59b404668fda6b529c446a73785e90f97158c96e9f1f26ce41e32235581bf9f"
+    },
+    {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-fresh-v3\\run-001\\calibration\\first-TRAIN-batch-witness.pt",
+      "bytes": 493211,
+      "sha256": "8254b2ff5c7b889cd4248e8ebd14d311504136d689ed4c68135fe9264a79dea9"
+    }
+  ],
+  "new_checkpoints_git": {
+    "expected": 5,
+    "ignored": 5,
+    "tracked": 0,
+    "check_ignore_exit": 0,
+    "ls_files_exit": 0,
+    "missing_ignored": [],
+    "paths": [
+      "output/runs/causal-fresh-v3/run-001/checkpoints/inference-0.pt",
+      "output/runs/causal-fresh-v3/run-001/checkpoints/inference-2048.pt",
+      "output/runs/causal-fresh-v3/run-001/checkpoints/training-1024.pt",
+      "output/runs/causal-fresh-v3/run-001/checkpoints/training-2048.pt",
+      "output/runs/causal-fresh-v3/run-001/checkpoints/training-512.pt"
+    ],
+    "method": "native argument array; no newline-delimited stdin"
+  },
+  "source_bindings": {
+    "card_sha256": "f88fa9751ff9da0e808805da9975fb0bf3afd4433688f3cfb420686392e6396f",
+    "admitted_source_files": 82,
+    "v1_file_pairs_unchanged": 47,
+    "data_pins_verified": 20,
+    "historical_preservation_pins": 10
+  },
+  "auditor_code": {
+    "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_fresh_v3\\audit-training.py",
+    "bytes": 33244,
+    "sha256": "77043f470402eca9763f347302fc72dffe0066796100e899d67a4f72c6000540"
+  },
+  "raw_container_audit": {
+    "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-fresh-v3\\attempt-001\\training-independent-audit-data.json",
+    "bytes": 10743,
+    "sha256": "d3e0e38fc4c426cc6e47d69b0cb623851b0a5af610fce90805db308b11492570"
+  },
+  "numeric_statistics_status": "passed",
+  "encoder_calls": 0,
+  "decoder_calls": 0,
+  "head_fits": 0,
+  "encoder_updates": 0,
+  "old_model_execution": 0,
+  "model_module_loads": 0,
+  "data_only_archive_parses": 6,
+  "limitations": [
+    "Gradient values and exact live resume continuation are source-bound producer evidence; this audit does not repeat training.",
+    "Git ignore and host copy availability are verified separately by bounded host diagnostics."
+  ]
+}

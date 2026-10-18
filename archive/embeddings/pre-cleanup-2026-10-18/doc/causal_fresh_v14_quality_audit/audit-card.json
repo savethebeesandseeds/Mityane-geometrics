@@ -1,0 +1,1422 @@
+{
+  "kind": "causal_fresh_v14_saved_quality_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-18T08:40:08.4966376Z",
+  "stage": "declared_after_static_review_before_any_saved_numeric_audit",
+  "execution_pending": true,
+  "model": "CPB-v14.market-01",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "old_model_numeric_reads": 0,
+  "main_card": {
+    "path": "doc/CAUSAL_FRESH_V14_CARD.json",
+    "bytes": 140239,
+    "sha256": "546e3c15488169b0d416c6264159234c5840fdb71a9e0739599c922de57ca4e1"
+  },
+  "input_manifest": {
+    "path": "doc/causal_fresh_v14/input-manifest.json",
+    "bytes": 5465,
+    "sha256": "822cd4498aef0b0bee288f7559545d6f3b4b15e63e0041d5a2dd6b3e3de4894b"
+  },
+  "main_source_manifest_sha256": "f305bf961474d8c1b11b11ffa37e67b9461de4b642b5ec603ea22089fbb74a16",
+  "main_source_zip_sha256": "e304b3460df2c70628caee53ad540079d76991f571f140a72e2958c0d5b74c50",
+  "main_source_files": 145,
+  "main_attempt": "attempt-001",
+  "audit_attempt": "attempt-001",
+  "outside_frozen_main_source": true,
+  "auditor_sources": [
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "audit.py",
+      "bytes": 99276,
+      "sha256": "2d4a808562266a26e5829ce75e71beddacd0eb2e7ce2be9eadd0db69d7ede6f5"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 10614,
+      "sha256": "a29d7ed74c9d986cb52c9eb3d701a29c650f068ac5410798d91007188854338c"
+    },
+    {
+      "file": "README.md",
+      "bytes": 5791,
+      "sha256": "512f645f71da6789d39cf8864db178eac97959097ee9d7e84e7e1e57bafb26c4"
+    }
+  ],
+  "expected_main_paths": {
+    "training": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/run-001",
+    "quality": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/quality-001",
+    "card": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/source/doc/CAUSAL_FRESH_V14_CARD.json"
+  },
+  "paired_initial_reference_inputs": [
+    {
+      "id": "market_initial_train",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/market/cpb_v13-train.pt",
+        "bytes": 39403,
+        "sha256": "617af4ddf05d879a04eb95d55fa85d39d6da9b8f043a9e3b2e1ef655752641fa"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            112,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            112
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            112
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v14-train.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "market_initial_validation",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/market/cpb_v13-validation.pt",
+        "bytes": 13149,
+        "sha256": "c2f51055058774059de949ba9420d1b978afcfb154cfd2a41e5be6ba0355cbfa"
+      },
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "values",
+          "shape": [
+            32,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "valid",
+          "shape": [
+            32
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "row_ids",
+          "shape": [
+            32
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/market/cpb_v14-validation.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "83da4ab81b81218bd41bdda748aea387bf361452a9dd6ebd16faf251b163b34d"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "6430e5ed47f6701f53f88a7746a413764d8044364288f8122fca494cd51f6ee3"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "05bb587fa9f8040848206d0867aba3c3913fed2dba1e811687a1049b3032d2a4"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+        "bytes": 378522,
+        "sha256": "fabbec302bb5d78be7afd227d396d0720129f04a80897f6da2e436acddd1bd1f"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+        "bytes": 378522,
+        "sha256": "cbbef4960c4a84682e06a0e515f0f6d6f40f9e005610c37875d4f54805091267"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "tempo_initial_market_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+        "bytes": 378522,
+        "sha256": "1f3bbf5fecf490e3a850a046cb844bb08ac5a7a288e0babb6e794837e5b31a80"
+      },
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "training_values",
+          "shape": [
+            512,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "training_valid",
+          "shape": [
+            512
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "training_source_ids",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "training_labels",
+          "shape": [
+            512
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "validation_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "validation_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "validation_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_values",
+          "shape": [
+            256,
+            40
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "deleted_valid",
+          "shape": [
+            256
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "deleted_source_ids",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "deleted_labels",
+          "shape": [
+            256
+          ],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution.",
+      "feature_value_coordinate_slice": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": "fresh_market_input_scaler",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/calibration/input-scaler.pt",
+        "bytes": 39988,
+        "sha256": "5398c05bfeb7d409976a86ba4612d1461d853347e19f2ad56a896b2708e2f698"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "sum",
+        "sumsq",
+        "scaler.mean",
+        "scaler.scale",
+        "scaler.count",
+        "scaler.channel_ids",
+        "scaler.floor_applied",
+        "scaler.scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "sum",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "sumsq",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scaler.count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "scaler.floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scaler.scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/input-scaler.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution."
+    },
+    {
+      "id": "fresh_market_bank_normalizer",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/calibration/bank-standardizer.pt",
+        "bytes": 53951,
+        "sha256": "5507866f4a52193c469b79add9d20857ee60fe74f63cb2a27c1b22fd7817e290"
+      },
+      "numeric_fields": [
+        "fit_row_ids",
+        "bank.bank.counts",
+        "bank.bank.sum",
+        "bank.bank.sumsq",
+        "bank.bank.mean",
+        "bank.bank.scale",
+        "bank.bank.support",
+        "bank.bank.input_geometry",
+        "bank.bank.sampling_interval",
+        "bank.bank.floor",
+        "bank.bank.minimum_support"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "fit_row_ids",
+          "shape": [
+            4096
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.counts",
+          "shape": [
+            270
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sum",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.sumsq",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.mean",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.scale",
+          "shape": [
+            270
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.support",
+          "shape": [
+            270
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "bank.bank.input_geometry",
+          "shape": [
+            6
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "bank.bank.sampling_interval",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "bank.bank.minimum_support",
+          "shape": [],
+          "dtype": "LongStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "run-001/calibration/bank-standardizer.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941101",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941101.pt",
+        "bytes": 3953,
+        "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941101.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941102",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941102.pt",
+        "bytes": 3953,
+        "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941102.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution."
+    },
+    {
+      "id": "fresh_synthetic_scaler_941103",
+      "reference_data_archive": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941103.pt",
+        "bytes": 3953,
+        "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+      },
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "numeric_reference_shapes": [
+        {
+          "field": "mean",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "scale",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "DoubleStorage"
+        },
+        {
+          "field": "count",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "channel_ids",
+          "shape": [
+            3
+          ],
+          "dtype": "LongStorage"
+        },
+        {
+          "field": "floor_applied",
+          "shape": [
+            3,
+            9
+          ],
+          "dtype": "BoolStorage"
+        },
+        {
+          "field": "scale_floor",
+          "shape": [],
+          "dtype": "DoubleStorage"
+        }
+      ],
+      "candidate_relative_to_attempt": "quality-001/features/synthetic-scalers/master-941103.pt",
+      "comparison": "Feature value matrices compare20:40 only;valid/IDs/labels and five fresh-statistic archives compare whole declared numeric tensors. Content20 intentionally unpaired;new own initial heads,no old model/head execution."
+    }
+  ],
+  "native_coordinate_slice": [
+    20,
+    40
+  ],
+  "native_coordinates_compared": 20,
+  "content20_equality_required": false,
+  "whole_native40_equality_claimed": false,
+  "goal_protocol": {
+    "path": "doc/causal_fresh_v14/goal-protocol.json",
+    "bytes": 17536,
+    "sha256": "4ace8b79a496ff24440ef1a269b63b45b746624f51dbd734e1b9c013b8a93245"
+  },
+  "source_parent": {
+    "path": "code/research/causal_fresh_v13_quality_audit/audit.py",
+    "bytes": 96206,
+    "sha256": "113a6e802848153f6701c34f3c0c9ed79bc6615d3e3ce86acfca8b161d36a5d9"
+  },
+  "independent_source_review": {
+    "path": "doc/causal_fresh_v14/source-reviews/root-complete-source-closure-002.json",
+    "bytes": 34562,
+    "sha256": "3ea3a0f0072157007416c15de2399ddee87c8c503310bec9fd2e6a6dfe62863a"
+  },
+  "helpers_provenance": {
+    "path": "doc/causal_fresh_v14_quality_audit/provenance.json",
+    "bytes": 17622,
+    "sha256": "31e9af78dea8f9a8aa0a3292bf9a42a63332e09c95a0c13c9ff799f89be86e07"
+  },
+  "independent_workflow_source_review": {
+    "path": "doc/causal_fresh_v14_quality_audit/independent-workflow-source-review-001.json",
+    "bytes": 10033,
+    "sha256": "a41c2c15a3aa6193169ff7a462a8341b3aa4484964a0bedd2c9c3383a60afeeb"
+  },
+  "independent_quality_source_review": {
+    "path": "doc/causal_fresh_v14/source-reviews/independent-quality-auditor-source-review-001.json",
+    "bytes": 16121,
+    "sha256": "b55fbc43392031b7abd16c531de6a200f7b289442686ac8eb3d1295540f8c943"
+  },
+  "independent_evaluation_source_review": {
+    "path": "doc/causal_fresh_v14/source-reviews/independent-training-evaluation-auditor-source-review-001.json",
+    "bytes": 15853,
+    "sha256": "51e4994d300e2e0d6bc6e1b8512c4c520751c92bef65ca3cdbf7d8d1eb2c1b5b"
+  },
+  "independent_source_review_scope": "Combined root104 closure links actual separate nonself independent quality4 and training/evaluation/auditor32 authority selecting evaluator20+documentary1;root review is not relabeled independent",
+  "staging_transport": {
+    "payload_files": [
+      "archive_reader.py",
+      "audit.py",
+      "provenance.json",
+      "README.md",
+      "audit-card.json",
+      "LICENSE",
+      "execute-audit.py",
+      "workflow-review.json",
+      "workflow-provenance.json",
+      "scientific-source-review.json",
+      "quality-source-review.json",
+      "evaluation-source-review.json"
+    ],
+    "payload_count": 12,
+    "ZIP_member_count": 13,
+    "python_AST_files": [
+      "archive_reader.py",
+      "audit.py",
+      "execute-audit.py"
+    ],
+    "python_AST_count": 3,
+    "workflow_review_file": "workflow-review.json",
+    "workflow_provenance_file": "workflow-provenance.json",
+    "scientific_source_review_file": "scientific-source-review.json",
+    "quality_source_review_file": "quality-source-review.json",
+    "evaluation_source_review_file": "evaluation-source-review.json",
+    "external_workflow_review_SHA_required_at_every_phase": true
+  },
+  "temporal_pooling_policy": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1",
+  "temporal_pooling_geometry": [
+    4,
+    16,
+    32,
+    8
+  ],
+  "temporal_pooling_trailing_lengths": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+  "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+  "temporal_dispersion_regularizer": 0.0009765625,
+  "required_new_temporal_flags": [
+    "mean4_regularized_stddev4_export_layout",
+    "full_attention_dependent_regularized_moment_adjoints",
+    "live_dispersion_score_gradient",
+    "raw_variance_root_dispersion_trace",
+    "zero_tiny_large_analytic_dispersion_adjoints",
+    "supported_nonfinite_and_variance_overflow_refused",
+    "absent_local_huge_singleton_sanitized",
+    "captured_F32_residual_correction",
+    "raw_root_absent_offset_exception",
+    "nested_trailing_supports_fixed_edge16",
+    "per_window_local_weights_captured",
+    "longest_local_equals_global_two_sum",
+    "packed_padding_membership_invariance"
+  ],
+  "temporal_fixture_kernel_calls": 53,
+  "F64_finite_difference_coordinates": 18,
+  "F32_finite_difference_coordinates": 18,
+  "isolated_autograd_grad_calls": 4,
+  "engineering_typed_negative_cases": 821,
+  "engineering_full_invalid_archive_files": 817,
+  "engineering_direct_loader_requests": 4,
+  "engineering_compact_archive_files": 0,
+  "engineering_restored_target_controls": 0,
+  "engineering_legacy_extra_partition_files": 5,
+  "actual_step_local_weight_fields": [
+    "temporal_pool_local_weights",
+    "temporal_contextual_pool_local_weights"
+  ],
+  "actual_step_local_weight_shape": [
+    "R",
+    4,
+    "T"
+  ],
+  "actual_step_archive_fields": 60,
+  "actual_step_temporal_trace_fields": 25,
+  "typed_transform_contract": "UTF8 String transform-policy plus Float64 vector[1] exact tau2^-10 at all5nodes;reject0-D/F32/wronglength/value;raw root unmasked1/32 at zero/absent,dispersion0,served absent whole8 zero afterbias",
+  "completed_quality_receipt": {
+    "path": "output/runs/causal-fresh-v14/run-001/quality-001/quality-receipt.json",
+    "bytes": 5544,
+    "sha256": "050799d46f953e40c295e4d53f60c21da09cf84e6327f701c58fb9e2f0ba7c6f"
+  },
+  "completed_quality_stage": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/quality-stage.json",
+    "bytes": 1698,
+    "sha256": "adcafe7ebc25e01ccf1e273263711f6d1715a8ac1d17dbce27024d11f33fd54e"
+  },
+  "completed_main_mirror": {
+    "path": "doc/causal_fresh_v14/complete-mirror-attempt-001.json",
+    "bytes": 405883,
+    "sha256": "24b6eacf71e4291a3880225c6e07669640dd4fde31497d8657667b3963cab7c9"
+  },
+  "completed_main_source_packages": [
+    {
+      "path": "output/engineering/causal-fresh-v14/attempt-001/source-manifest.json",
+      "bytes": 33680,
+      "sha256": "f305bf961474d8c1b11b11ffa37e67b9461de4b642b5ec603ea22089fbb74a16"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v14/attempt-001/source.zip",
+      "bytes": 3819939,
+      "sha256": "e304b3460df2c70628caee53ad540079d76991f571f140a72e2958c0d5b74c50"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v14/attempt-001/package.json",
+      "bytes": 561,
+      "sha256": "0044d1e030fba738aebccc17d076cd7174c72d17601685fdd4e2e15eb5767379"
+    }
+  ],
+  "report_only_recovery_required": false,
+  "scope": [
+    "All112TRAIN/32knownVALIDATION saved market predictions,physical errors,ridge reconstruction,all3repetitions,fixedD40recipes;no fitting",
+    "TEMPO5 saved count/group/interval/mean/coverage arithmetic;1572 recorded initial/final exports;no model or head implementation forward",
+    "13savedV13 DATA references:eight initial native20:40 tails with whole IDs/support/labels plus five whole fresh-statistic archives;content0:20 unpaired;no imported weights/statistics or old score reuse",
+    "Eleven saved clean V3-V13 controls,eight separate V6-V13 trust joins;historical FULL40/PARTIAL semantics plus opaqueV9 recovery unchanged;13methods52marketrows",
+    "Actual separately reviewed/applied V3-V13 strongest22 exact ordered max/min/positivity conditions,earlier chronological ties,noTRAINNLLgate;no automatic winner/application selection",
+    "Actual declared source count/sevenbinary11TU closure;unchanged V13 detached-error objective;53-call regularized-stddev proof with13flags,18F64/18F32/4isolated,821typedrefusals;75mandatory tensors plus scalar gauge capacity",
+    "Actual passed normal outerquality wrapper/five scientific receipt durations/seven local exit0 stage files and report/comparison outputs;no current recovery",
+    "Four temporal CSV artifacts8192/2048/2048/16384 and60-field same-existing-forward actual1/2048 witnesses;quality binds producer temporal-learning/proof, separate final join binds independentTRAINaudit;no every-scalar/full-hidden proof claim"
+  ],
+  "fresh_schema_contract": "Only main fresh-constructor JSON omits gradient_policy; requireabsence there and strict policies elsewhere.",
+  "execution_wrapper": {
+    "path": "doc/causal_fresh_v14_quality_audit/execute.py",
+    "bytes": 16565,
+    "sha256": "5a778c4f2378c005b8adcc8539ed4f30fd03fdea7df7f234f6c569d3530788ff"
+  },
+  "stage_helper": {
+    "path": "doc/causal_fresh_v14_quality_audit/stage.ps1",
+    "bytes": 20423,
+    "sha256": "e822d27d9c837b23d1f3afbc9bb7eead4dd8ec2870836d1e4d936170da45cda0"
+  },
+  "mirror_helper": {
+    "path": "doc/causal_fresh_v14_quality_audit/mirror.ps1",
+    "bytes": 17750,
+    "sha256": "2b30a759ddc46ca9f2be0a890edb39dbed04ad06d101f3fa3e0164b30ef45ba1"
+  },
+  "card_generator": {
+    "path": "doc/causal_fresh_v14_quality_audit/prepare-card.ps1",
+    "bytes": 31021,
+    "sha256": "e8bb7b131b913aa362a7fb4d702238c9d15797d5455c88c7ceb0afc81d3a67f1"
+  },
+  "forbidden": [
+    "Torch/NumPy or producer imports",
+    "Encoder/decoder/head forward or fitting",
+    "Old trained checkpoint numeric reads",
+    "Whole40 current initial equality claim",
+    "Current reporting recovery arguments or prior-failure assumptions",
+    "PCA/tuning/selection",
+    "Mutation of source/cards/results/old evidence"
+  ]
+}

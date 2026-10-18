@@ -1,0 +1,444 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-15T21:56:54.0410596Z",
+  "stage": "declared_before_independent_saved_data_execution",
+  "execution_pending": true,
+  "model": "CPB-v5.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "scoped_reference": "CPB-v4.market-01",
+  "baseline_unchanged": true,
+  "gradient_policy": "separate-mean-and-uncertainty-bank-projections-live-gaussian-nll-v1",
+  "frozen_training_card_sha256": "a6da3a9501dd4247c40e3e24e42faf2c2c46620fda7e0a0568709276d0e84d09",
+  "frozen_training_markdown_sha256": "4afc10377a7a2711f0a4ae95615be050b5c405e5a53ada38ba234d7cb0d58955",
+  "frozen_input_manifest_sha256": "e85b01306634a9a6b2aa76fb31e560fdba807ddbca60c533ffd56c3103148ee7",
+  "main_source_manifest_sha256": "1f0993fdfdb20677acddeea18488edbe174f0583f24af6230d4df499aed60db6",
+  "main_source_zip_sha256": "d9f9844bd65e4022213cf9cdf291715f199a1c61a181d4bc4697c6c971f57a7d",
+  "outside_frozen97_source": true,
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "new_containers": 0,
+    "Torch_imports": 0,
+    "host_project_execution": false
+  },
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "forbidden": [
+    "Torch import",
+    "executable model/module deserialization",
+    "encoder/decoder/neural-head forward",
+    "training replay",
+    "optimizer mutation",
+    "new fit or head tuning",
+    "post-encoder PCA",
+    "changing frozen model/card/evaluation sources",
+    "Git mutation"
+  ],
+  "failure_policy": "Exclusive output; preserve every failed attempt. No automatic model/head replay, rescue, promotion or publication.",
+  "kind": "causal_fresh_v5_saved_quality_audit_card_v1",
+  "candidate": "CPB-v5.market-01",
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 56930,
+      "sha256": "8f514142f7c7546cec318714838dd4d20f8f823e3f3d34305e738d3e6bd51107"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v4_audit/audit.py",
+      "bytes": 53228,
+      "sha256": "446bda19c1ae7d2933726492412c032f27884b70ae2a5d09224e82feab22e8a4"
+    },
+    {
+      "path": "code/research/causal_fresh_v4_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "scope": [
+    "All saved initial/final D40 market arrays112TRAIN/32VALIDATION; physical R2/MAE/RMSE/support from saved linear/three-neural predictions; TRAIN feature/target moments and algebraic saved ridge reconstruction only",
+    "Three TEMPO5cohorts941101/2/3, two freshly fitted scaler policies, intact/deleted views and three unchanged repetitions; saved correct/counts/labels/source groups/coverage/means/interval metadata",
+    "Native40 D40 head parameters164/724market and82/690TEMPO, unchanged ridge1/tanh16/Adam.01/100 and width-derived seeds2701/2802/2903",
+    "All112/32 fixed-query scalar reductions plus first8 saved masked cell mean/variance witnesses per stage/split",
+    "Both clean reference JSON controls and exactly22 frozen goal conditions independently recoded from maxhigher/minMAE/V4strictNLL/strictpositivity; no V5 reporter/comparator function imports",
+    "Both new saved checkpoint hashes, complete causal/typed/CUDA proof and exact binary/log/source receipt bindings; exactly1572exports and new initial/final fixed heads",
+    "Eight V4 initial saved feature DATA archives: compare first36 V5 coordinates bit-exactly, new uncertainty4 onlyfinite/nonzero; five fresh statistic archives compare every declared numeric tensor exactly; metadata/file equality separate"
+  ],
+  "fixed_heads": {
+    "dimension": 40,
+    "repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "actual_seeds": [
+      "6049515622977958931",
+      "8262941649267994858",
+      "2095371932330426401"
+    ],
+    "market_parameters": [
+      164,
+      724
+    ],
+    "TEMPO_parameters": [
+      82,
+      690
+    ],
+    "hidden": 16,
+    "ridge": 1,
+    "neural_steps": 100,
+    "neural_learning_rate": 0.01
+  },
+  "numeric_conditions": {
+    "count": 22,
+    "market_max_higher": 8,
+    "TEMPO_max_higher": 8,
+    "MAE_min_lower": 2,
+    "V4_strict_validation_NLL_lower": 1,
+    "all3_trend_positive": 1,
+    "relation_positive": 2,
+    "tolerance": 1E-12,
+    "trust_and_full_coverage_separate": true
+  },
+  "allowed_numeric_arrays": "New V5 saved feature/target/prediction/fit/query arrays and scalar reports; V3/V4 control JSON; exactly13 pinned V4 initial-feature/fitted-statistic DATA archives for prefix/statistic pairing only. No old learned checkpoint tensors or neural/classification forward.",
+  "paired_initial_reference_inputs": [
+    {
+      "id": "market_initial_train",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/market/cpb_v4-train.pt",
+        "bytes": 35809,
+        "sha256": "c71c7fe12413f9f4af632d7dc2d811930707a034abf7d2873df36597ed57f408"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/market/cpb_v4-train.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/market/cpb_v5-train.pt",
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "market_initial_validation",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/market/cpb_v4-validation.pt",
+        "bytes": 12115,
+        "sha256": "7992541c398f3643d387b46c21b7d16e4a2faa39a4391b41229cf8398492bbb5"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/market/cpb_v4-validation.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/market/cpb_v5-validation.pt",
+      "numeric_fields": [
+        "values",
+        "valid",
+        "row_ids"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941101",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+        "bytes": 345754,
+        "sha256": "9ac72cd8d3c781abc7ecef975ff170eeced06e5a55a7be20433f9e519a61839b"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/synthetic_train/master-941101/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941102",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+        "bytes": 345754,
+        "sha256": "b92431b166e2c3bf1c0e3901b8fd7b27ffdffe5fcb4dfd764a384b58f6ae824a"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/synthetic_train/master-941102/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_synthetic_train_941103",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+        "bytes": 345754,
+        "sha256": "3629a3bbc47fe02e75fe65ad921466ab763ab2b5ad6245ba0b30ad3e054416ec"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/synthetic_train/master-941103/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941101",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+        "bytes": 345754,
+        "sha256": "d6dcdad2e21035885e318e66cc57e112cf2bdbb43fd477bd3d4d9eb13138cd37"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/market_scaler/master-941101/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941102",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+        "bytes": 345754,
+        "sha256": "c35be75b7bb891418c5310f0e67a4217d44042f7ab698bc1b14500290774ce67"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/market_scaler/master-941102/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "tempo_initial_market_scaler_941103",
+      "kind": "initial_features",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+        "bytes": 345754,
+        "sha256": "aa8afdd029efee13bd182fac17360648ba0e6216b1a7ffea3c57daa07f57a631"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/initial/synthetic/market_scaler/master-941103/features.pt",
+      "numeric_fields": [
+        "training_values",
+        "training_valid",
+        "training_source_ids",
+        "training_labels",
+        "validation_values",
+        "validation_valid",
+        "validation_source_ids",
+        "validation_labels",
+        "deleted_values",
+        "deleted_valid",
+        "deleted_source_ids",
+        "deleted_labels"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_market_input_scaler",
+      "kind": "fresh_statistics",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/calibration/input-scaler.pt",
+        "bytes": 39988,
+        "sha256": "45ab47f8315c954d137c0c1a32100dfabc55fa6fb93b624f72e35194d8bbdd4f"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/calibration/input-scaler.pt",
+      "candidate_root": "training",
+      "candidate_relative_path": "calibration/input-scaler.pt",
+      "numeric_fields": [
+        "fit_row_ids",
+        "sum",
+        "sumsq",
+        "scaler.mean",
+        "scaler.scale",
+        "scaler.count",
+        "scaler.channel_ids",
+        "scaler.floor_applied",
+        "scaler.scale_floor"
+      ],
+      "metadata_text_fields": [
+        "artifact_kind",
+        "source_identity",
+        "scaler_identity"
+      ]
+    },
+    {
+      "id": "fresh_market_bank_normalizer",
+      "kind": "fresh_statistics",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/calibration/bank-standardizer.pt",
+        "bytes": 53951,
+        "sha256": "e10d05596db6347282e9c622440fcb3fc127d750b52c6c429e2efd52935d5130"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/calibration/bank-standardizer.pt",
+      "candidate_root": "training",
+      "candidate_relative_path": "calibration/bank-standardizer.pt",
+      "numeric_fields": [
+        "fit_row_ids",
+        "bank.bank.counts",
+        "bank.bank.sum",
+        "bank.bank.sumsq",
+        "bank.bank.mean",
+        "bank.bank.scale",
+        "bank.bank.support",
+        "bank.bank.input_geometry",
+        "bank.bank.sampling_interval",
+        "bank.bank.floor",
+        "bank.bank.minimum_support"
+      ],
+      "metadata_text_fields": [
+        "artifact_kind",
+        "source_identity",
+        "bank.relative_identity",
+        "bank.bank.source_identity",
+        "bank.bank.normalizer_identity"
+      ]
+    },
+    {
+      "id": "fresh_synthetic_scaler_941101",
+      "kind": "fresh_statistics",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/synthetic-scalers/master-941101.pt",
+        "bytes": 3953,
+        "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/synthetic-scalers/master-941101.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/synthetic-scalers/master-941101.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_synthetic_scaler_941102",
+      "kind": "fresh_statistics",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/synthetic-scalers/master-941102.pt",
+        "bytes": 3953,
+        "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/synthetic-scalers/master-941102.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/synthetic-scalers/master-941102.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    },
+    {
+      "id": "fresh_synthetic_scaler_941103",
+      "kind": "fresh_statistics",
+      "reference": {
+        "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/quality-001/features/synthetic-scalers/master-941103.pt",
+        "bytes": 3953,
+        "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+      },
+      "reference_local_path": "output/runs/causal-fresh-v4/run-001/quality-001/features/synthetic-scalers/master-941103.pt",
+      "candidate_root": "quality",
+      "candidate_relative_path": "features/synthetic-scalers/master-941103.pt",
+      "numeric_fields": [
+        "mean",
+        "scale",
+        "count",
+        "channel_ids",
+        "floor_applied",
+        "scale_floor"
+      ],
+      "metadata_text_fields": []
+    }
+  ],
+  "pairing_is_quality_selection": false,
+  "CLI": "--card CARD --input-manifest INPUT --raw-controls RAW --training RUN --run QUALITY --report REPORT --quality-receipt RECEIPT --comparison COMPARISON --audit-card CARD --data-root /cuwacunu --output NEW_JSON",
+  "preserved_initial_auditor_declaration": {
+    "path": "doc/causal_fresh_v5/quality-audit-card.json",
+    "bytes": 17903,
+    "sha256": "3d67fa8fd4b21f925a464a7b28cf9fb7afae37684848dbcb46f878c26039ac94"
+  },
+  "additive_source_admission_correction": "Main source attempt001 failed before models on dedicated-test ADL names; attempt002 host packaging failed before archive creation. Both preserved. Attempt003 changes fixture helper spellings and packager parameter name only. Auditor code, thresholds, data allowlists and all numeric checks unchanged; no numeric auditor execution yet.",
+  "selected_main_attempt": 3
+}

@@ -1,0 +1,136 @@
+{
+  "kind": "cpb_v3_v4_TRAIN_diagnosis_static_preflight_review_v1",
+  "status": "passed",
+  "verified_utc": "2026-10-15T21:37:53.2926538Z",
+  "checks": 161,
+  "scope": "Static source/card/hash/selector review only; no schema execution, storage values, numerical diagnosis, Torch/model/neural forwards or fitting.",
+  "files": [
+    {
+      "path": "doc/CAUSAL_V3_V4_TRAIN_DIAGNOSIS_CARD.json",
+      "bytes": 41490,
+      "sha256": "39d08ea87e28a5f7242128acde8f78ad434a7b6a973ba8da8be8ed36b549fa86"
+    },
+    {
+      "path": "doc/CAUSAL_V3_V4_TRAIN_DIAGNOSIS_CARD.md",
+      "bytes": 3255,
+      "sha256": "17b7dac02f4042fae9535b9e91ca573586baf668503006bfd9aee8449bcd8345"
+    },
+    {
+      "path": "code/research/causal_v3_v4_train_diagnosis/diagnose.py",
+      "bytes": 49894,
+      "sha256": "476dd3fa42292f45e18ecca74b75a44da693dbd7403cfe59ed8288714e676f19"
+    },
+    {
+      "path": "code/research/causal_v3_v4_train_diagnosis/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v3_v4_train_diagnosis/schema.py",
+      "bytes": 1285,
+      "sha256": "b8253110f3df70d9b9c20c0dcf7830626d12418d68a74ce5dc289510225d9497"
+    },
+    {
+      "path": "doc/causal_v3_v4_train_diagnosis/preservation-before.json",
+      "bytes": 413677,
+      "sha256": "18ef6f002103e3f2f920cb41678e8913104175f7b14afc291b3e37f32b11b748"
+    },
+    {
+      "path": "doc/clean_causal_encoder_search_goal.json",
+      "bytes": 8692,
+      "sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25"
+    },
+    {
+      "path": "doc/causal_v3_v4_train_diagnosis/goal-protocol-review.json",
+      "bytes": 6542,
+      "sha256": "4728c36e45796c9290fe2b6621e8ca136c795525317c2491a414bae3f8c5eb01"
+    }
+  ],
+  "source_derivation": {
+    "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_v3_v4_train_diagnosis\\provenance.json",
+    "bytes": 2715,
+    "sha256": "90181d85aff9480dbcd60fe456a374ed256e8b3cef8913fbd6584b743797a816"
+  },
+  "allowed_inputs": 41,
+  "TRAIN_archives": 37,
+  "aggregate_JSON_TRAIN_key_only": 4,
+  "preservation_only_inputs": 15,
+  "all_host_input_hashes_exact": true,
+  "population": {
+    "full_context_TRAIN_rows": 112,
+    "detailed_query_rows": 8,
+    "versions": [
+      "v3",
+      "v4"
+    ],
+    "stages": [
+      "initial0",
+      "final2048"
+    ],
+    "TRAIN_begin": 1704067259999,
+    "TRAIN_end": 1705881599999,
+    "canonical_channels": [
+      0,
+      1,
+      2
+    ],
+    "head_repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "native_block_widths": [
+      20,
+      12,
+      4
+    ]
+  },
+  "inertness": {
+    "explicit_per_file_tensor_fields": true,
+    "own_whitelisted_data_reader": true,
+    "no_held_out_tensor_paths": true,
+    "mixed_JSON_contains_both_splits": true,
+    "mixed_JSON_only_TRAIN_key_used": true,
+    "schema_reads_only_metadata": true,
+    "broad_preservation_verified_before_and_after": true,
+    "exclusive_output_and_failure_preservation": true
+  },
+  "math_review": {
+    "saved_ridge_components_no_fit": true,
+    "population_covariance_participation_ratio_scale_dependent": true,
+    "same_eligible_example_channel_cell_hierarchy": true,
+    "NLL_mean_derivative": "error/variance",
+    "MAE_derivative": "sign(error), zero at0",
+    "Huber_delta1_derivative": "clip(error,-1,1)",
+    "variance_derivative": "0.5*(1/v-error^2/v^2)",
+    "live_variance_head_derivative": true,
+    "V3_applied_variance_native": "live",
+    "V4_applied_variance_native": "exactlyzero",
+    "V4_hypothetical_forward_sensitivity_reported_separately": true,
+    "softplus_threshold": 20,
+    "no_full_encoder_parameter_gradient_claim": true,
+    "no_new_objective_selected": true
+  },
+  "pre_active_goal_metadata_snapshot": {
+    "manifest": {
+      "path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\clean-causal-search-2026-10-16\\prior-live\\manifest.json",
+      "bytes": 952,
+      "sha256": "8e856c23a98d4a7a9aa32a072b4bda9d91d7ca135a8054764058323e2d21420f"
+    },
+    "files_verified": 4,
+    "authorized_live_headers_may_change": true,
+    "frozen_source_result_checkpoint_bytes_remain_protected": true
+  },
+  "remaining": "Root admission/staging, metadata-only schema check, then one saved-data diagnosis. Independent saved arithmetic/finite-difference audit is separately prepared.",
+  "actions": {
+    "schema_calls": 0,
+    "numeric_storage_reads": 0,
+    "models": 0,
+    "fits": 0,
+    "updates": 0,
+    "Git_mutations": 0,
+    "files_written": [
+      "doc/causal_v3_v4_train_diagnosis/preflight-review.json"
+    ]
+  }
+}

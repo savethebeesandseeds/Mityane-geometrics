@@ -1,0 +1,65 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v11_v12_TRAIN_diagnosis_repair_admitted_card_independent_review_v1",
+  "status": "passed_metadata_semantic_delta_review",
+  "reviewed_utc": "2026-10-17T20:28:32.3694341Z",
+  "execution_admitted_by_this_review": false,
+  "preserved_false_card": {
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/independent-audit-card.PROPOSED.json",
+    "bytes": 8091,
+    "sha256": "963e466c6e9b37ebaa143657ea1db9789795aa52f71b6be28878763513cbbc2b"
+  },
+  "actual_true_card": {
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/independent-audit-card.ADMITTED.json",
+    "bytes": 8761,
+    "sha256": "2a6e3ba497e2aefb285d46af0ad0ca2611c35e65a6bf3ca970d26e812f63836b"
+  },
+  "prospective_peer_review": {
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/repair-prospective-card-independent-review-001.json",
+    "bytes": 5443,
+    "sha256": "9207bfc51fed7572c951b00f1ae5605ffecde977374a6c383a2c9bedc0279d60"
+  },
+  "unchanged_repair_source_root_review": {
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/source-root-review-001.json",
+    "bytes": 4532,
+    "sha256": "10a8ebe2e45bd7a471452847c3b753c38cd001ade1b17aebc481ac4178e51245"
+  },
+  "semantic_delta": {
+    "mechanism": "JsonNode DeepEquals after removing only separate_root_admission and resetting exact execution boolean",
+    "original_field_count": 40,
+    "all_original_values_types_and_declared_utc_preserved": true,
+    "execution_admitted_before_type": "boolean",
+    "execution_admitted_before_value": false,
+    "execution_admitted_after_type": "boolean",
+    "execution_admitted_after_value": true,
+    "added_object": "separate_root_admission",
+    "added_object_exact_fields": [
+      "admitted_utc",
+      "independent_review",
+      "prospective_card",
+      "separate_Stage_and_once_only_body_admissions_required"
+    ],
+    "admitted_utc_JSON_type": "string",
+    "separate_Stage_and_once_only_body_admissions_required": true,
+    "other_semantic_changes": 0
+  },
+  "binding_rechecks": {
+    "prior_false_and_peer_exact": true,
+    "repair_root_review_exact": true,
+    "repair_source_files": 10,
+    "repair_source_bytes_sha256_unchanged": true,
+    "broad_input_or_mirror_rehash_repeated": false
+  },
+  "blocking_findings": [],
+  "conclusion": "Only intended boolean true and exact four-field root admission object differ. Original40 fields/types/UTC, unchanged source10 and prior false card/review closure are preserved. Stage and first numerical body still require separate root admissions.",
+  "actions": {
+    "host_JSON_metadata_file_hash_only": true,
+    "helper_invocations": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "tensor_values_or_storage_reads": 0,
+    "numerical_reductions": 0,
+    "source_or_prior_evidence_changes": 0
+  }
+}

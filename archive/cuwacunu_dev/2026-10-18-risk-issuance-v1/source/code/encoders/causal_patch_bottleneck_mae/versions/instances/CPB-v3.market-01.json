@@ -1,0 +1,106 @@
+{
+  "kind": "cuwacunu_dev_selected_causal_encoder_instance_v1",
+  "date": "2026-10-15",
+  "family": "causal_patch_bottleneck_mae",
+  "version": "CPB-v3",
+  "instance": "CPB-v3.market-01",
+  "sole_active_application_encoder": true,
+  "clean_fresh_baseline_established": true,
+  "overall_winner": false,
+  "version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v3",
+  "public_entry": "include/embedding/encoders/causal_patch_bottleneck_mae/versions/v3.h",
+  "application_facade": "code/integration/include/cuwacunu/encoder/encoder.h",
+  "settings": {
+    "path": "config/encoder.conf",
+    "version_owned_source": "code/encoders/causal_patch_bottleneck_mae/versions/v3/config/v3.conf",
+    "sha256": "01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2",
+    "bytes": 624
+  },
+  "runtime_settings": "config/encoder_runtime.conf",
+  "usable_checkpoint": {
+    "path": "output/baselines/CPB-v3.market-01/inference.pt",
+    "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+    "bytes": 1290625,
+    "local_git_ignored": true
+  },
+  "checkpoint_kind": "cpb_v3_inference_checkpoint_v1",
+  "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+  "initialization_seed": 943001,
+  "pretrained_ancestor": "none",
+  "source_updates": 0,
+  "causal_updates": 2048,
+  "inherited_learned_values": 0,
+  "fresh_learned_values": 293672,
+  "fresh_learned_tensors": 75,
+  "literal_analytic_prior_values": 3888,
+  "fresh_input_and_bank_statistics": true,
+  "calibration_scope": "4096 declared TRAIN recent128 raw windows; no encoder calls, validation fitting or old statistics imported",
+  "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+  "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-4d6d0b5761eaad8f",
+  "native_width": 36,
+  "geometry": {
+    "channel_count": 3,
+    "history_length": 128,
+    "input_width": 9,
+    "patch_length": 8,
+    "level_width": 32,
+    "change_width": 4,
+    "device": "cuda:0",
+    "sampling_interval_ms": 60000
+  },
+  "inference_contract": "raw CPU F64 values, Boolean masks, semantic IDs, actual timestamps and explicit per-row cutoffs; frozen normalization and weights; native36 without PCA",
+  "causal_policy": "crop-before-validation;rolling-last-H;masked-left-pad;original-patch-end-causal-attention;prefix-only-banks-pooling-v1",
+  "research_evidence": {
+    "repository": "cuwacunu_embedding",
+    "reused_in_dev": true,
+    "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v3.market-01.json",
+    "initial_proof": {
+      "path": "doc/results/causal_fresh_v3/initial-causal-proof.json",
+      "sha256": "346663cb4eaed4eae7c235527107e475cb6f8f13ba856810da38fad2591be9f5",
+      "checkpoint_sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6",
+      "causal_updates": 0,
+      "status": "passed"
+    },
+    "final_proof": {
+      "path": "doc/results/causal_fresh_v3/final-causal-proof.json",
+      "sha256": "6692dbc56d026fac790cbf2e95e3ddc042740e37930e81f6d6e708bfa65affc9",
+      "checkpoint_sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+      "causal_updates": 2048,
+      "status": "passed"
+    },
+    "proof_counts_per_stage": {
+      "all_cutoffs": 128,
+      "suffix_cases": 2350,
+      "internal_temporal_cases": 30
+    },
+    "actual_GPU_learning": "All 75 learned tensors and 293672 values received gradients and moved; literal prior and fitted statistics exact",
+    "typed_resume": "Actual trajectory at512 preserved exact model/optimizer/moments/counters and next-step parity",
+    "quality_report": "doc/CAUSAL_FRESH_V3_RESULTS.md",
+    "review": "doc/CAUSAL_FRESH_V3_REVIEW.md",
+    "finalization": "doc/causal_fresh_v3/finalization.json",
+    "quality_summary": "Mixed: strong volatility and TEMPO-5 learning; weak neural trend/relation; validation NLL worsens despite better MAE; no overall winner",
+    "historical_reference_quality_gates": []
+  },
+  "integration_verification": {
+    "status": "passed_actual_container_checks",
+    "record": "doc/CAUSAL_PRIMARY_INTEGRATION.md",
+    "evidence_directory": "doc/cpb_v3_primary_integration",
+    "engineering_receipt": "doc/cpb_v3_primary_integration/engineering.json",
+    "build_test_log": "doc/cpb_v3_primary_integration/build-test.log",
+    "research_proof_does_not_replace_application_verification": true,
+    "new_encoder_updates": 0,
+    "new_head_fits": 0,
+    "engineering_receipt_sha256": "8e93542ea116d8e6c9dad1abbc07f06b4f2ed05e09261158a45ca005363a331c",
+    "primary_checks": 4389,
+    "future_value_mask_cases": 14,
+    "cuda_encode_attempts": 29,
+    "synthetic_downstream_cuda_captures": 18
+  },
+  "historical_reference": {
+    "instance": "CPB-v1.market-01",
+    "role": "pretrained historical reference only; not an active implementation or clean quality target",
+    "dev_source_archive_repository": "cuwacunu_embedding",
+    "dev_source_archive_manifest": "archive/cuwacunu_dev/2026-10-15-before-cpb-v3-primary/manifest.json",
+    "dev_source_archive_manifest_sha256": "fa7019bc998ffbdc14a6a1aeebaeba280f1fe07ba176ba57b1741acb035bf031"
+  }
+}

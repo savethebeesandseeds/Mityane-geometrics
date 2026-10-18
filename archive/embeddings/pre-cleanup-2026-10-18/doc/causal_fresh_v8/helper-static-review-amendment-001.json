@@ -1,0 +1,28 @@
+{
+  "kind": "causal_fresh_v8_helper_static_review_amendment_v1",
+  "status": "passed",
+  "reviewed_utc": "2026-10-16T01:08:40.0388671Z",
+  "parent_review": {
+    "path": "doc/causal_fresh_v8/helper-static-review.json",
+    "bytes": 4427,
+    "sha256": "67a5e3fe608ace50c004926b6e44a1e577effe87164e7f545a9fe6f4d39bab26"
+  },
+  "updated_helper": {
+    "path": "doc/causal_fresh_v8/run-container.ps1",
+    "bytes": 7544,
+    "sha256": "4baf983adb7296717e02f32d0bb854d8f717ebaaede3266a0f3e5dc822a6629e"
+  },
+  "scope": "Additive independent manual source review plus file hashes; no helper/container/project execution",
+  "finding": "The phase source verifier previously trusted the container manifest list without binding its bytes to the frozen host package manifest hash",
+  "resolution": "Every non-Stage phase passes frozen package.manifest_sha256 as the third verifier argument; verifier hashes raw container CAPSULE_MANIFEST.json bytes and refuses mismatch before parsing or checking members. Existing host manifest/self/extractor binding, ZIP/card guards and all phase CLIs remain intact.",
+  "other_five_parent_helper_hashes_unchanged": true,
+  "parent_review_bytes_preserved": true,
+  "unresolved_blockers": [],
+  "models_or_builds_executed": 0,
+  "container_mutations": 0,
+  "preserved_original_helper": {
+    "path": "doc/causal_fresh_v8/helper-review-original-run-container.ps1",
+    "bytes": 7345,
+    "sha256": "d05122426e1133f97303c461bb747ae403c362fc45019749227d60bf8bb3e79b"
+  }
+}

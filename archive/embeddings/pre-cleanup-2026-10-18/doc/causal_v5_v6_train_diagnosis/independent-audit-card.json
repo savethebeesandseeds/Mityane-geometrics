@@ -1,0 +1,137 @@
+{
+  "kind": "cpb_v5_v6_TRAIN_diagnosis_independent_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-15T23:44:47.7104976Z",
+  "stage": "Frozen before independent numeric execution; producer completed once and immutable",
+  "main_card": {
+    "path": "doc/CAUSAL_V5_V6_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 58713,
+    "sha256": "bf4c92e4edff4ba055a83ba6d699ace5e20dd4de654d55fc20e279cb389efff5"
+  },
+  "main_diagnosis": {
+    "path": "doc/causal_v5_v6_train_diagnosis/diagnosis.json",
+    "bytes": 2466550,
+    "sha256": "ca992a2a39dbcac5dd9c4a1f401ba4d2a779175a5cea91e9b33508f50e8e08dd"
+  },
+  "main_static_preflight": {
+    "path": "doc/causal_v5_v6_train_diagnosis/preflight-review.json",
+    "bytes": 27569,
+    "sha256": "f6da870a3b928170a8dd536b3727230adb9f8dd46ae7d96f2670e971fb5f3d0b"
+  },
+  "pre_execution_preservation": {
+    "path": "doc/causal_fresh_v6/final-preservation.json",
+    "bytes": 48110,
+    "sha256": "aa99ac04f3c4bd013c617450c6fde2f99e96c041e6b4c8f5465e2d551abe42ce"
+  },
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 55355,
+      "sha256": "399b290e60aacd8277443343b213e53ed88df9db7e76816f502b687b303361d3"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "component_math.py",
+      "bytes": 4732,
+      "sha256": "068a41990169a507526400f0017483ba7c4082c1bd1bc33e07536e0fbf7a3554"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3795,
+      "sha256": "898d3a64e81db204681c0cfe3e62e5f624585cbde1b6936debaaf5065edc5cee"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 1853,
+      "sha256": "48326c196a3c6a44bc9f96fc54d29acabfdf8dc0233897a8f110bbb890329436"
+    }
+  ],
+  "source_provenance": {
+    "path": "code/research/causal_v5_v6_train_diagnosis_audit/provenance.json",
+    "bytes": 1853,
+    "sha256": "48326c196a3c6a44bc9f96fc54d29acabfdf8dc0233897a8f110bbb890329436"
+  },
+  "parent_sources": [
+    {
+      "path": "code/research/causal_v4_v5_train_diagnosis_audit/audit.py",
+      "bytes": 40538,
+      "sha256": "4cfc9592a926dfcfce18a0a3e5b0bd671f600aef2ff9fa1090c4e70991d98e2a"
+    },
+    {
+      "path": "code/research/causal_v4_v5_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "numeric_input_scope": "Exactly the producer45 prospective roles and per-file selectors;39 inert DATA/selected decoder tensors +4TRAIN-only JSON subtrees +2binding/CSV roles. No new input or held-out values.",
+  "all112_scope": "Four tasks, three saved fixed heads, ridge contributions/covariances and native40 moments; fixed chronological56/56; no refit",
+  "first8_scope": "Four matched checkpoint/query stages; F64 supported kernels, per-channel feature errors, local mean4 NLL/Huber/MAE derivatives, independent uncertainty4 derivatives and approximate saved linear residual allocation",
+  "V5_full112_component_rows": "Absent; assert no invented components",
+  "V6_full112_components": "Only saved rows and means, first8 association, unit component identity and fixed56/56",
+  "actual_batch_scope": "V6 updates1/2048 pre-step DATA only; masks/timestamps/component hierarchy/pins/CSV scalar/update association. No decoder weights or adjoints for unmatched state2047",
+  "CSV_numeric_columns": [
+    "update",
+    "Gaussian_NLL_F64",
+    "mean_Huber_F64",
+    "variance_NLL_F64",
+    "total_objective_F64",
+    "pre_clip_global_norm",
+    "clip_factor"
+  ],
+  "CSV_successful_updates": 2048,
+  "CSV_groups": [
+    "all2048",
+    "updates1_512",
+    "updates513_1024",
+    "updates1025_1536",
+    "updates1537_2048"
+  ],
+  "CSV_statistics": [
+    "observed_clip_factor_below1_count",
+    "observed_clipping_frequency",
+    "six_scalars_minimum_mean_median_max",
+    "unit_component_and_reporting_identity",
+    "observed_factor_formula"
+  ],
+  "CSV_other_columns_read": false,
+  "gradient_limits": "No cross-basis/model/stage cosine or full encoder/optimizer Jacobian. Observed norm is not independently reconstructed; scalar loss magnitude does not establish gradient dominance. V6 Gaussian mean sensitivity is hypothetical, Huber is applied; both live uncertainty routes separate.",
+  "finite_differences": {
+    "checks": 256,
+    "cells_per_stage": 16,
+    "stages": 4,
+    "scalar_contracts": [
+      "Gaussian mean",
+      "Gaussian variance",
+      "MAE mean",
+      "Huber1 mean"
+    ],
+    "traversal": "canonical b,c,f,h first16 supported",
+    "step_policy": "Inherited positive step rules from complete neutral auditor; fixed before execution",
+    "tolerance_absolute": 1E-06,
+    "tolerance_relative": 0.0002
+  },
+  "saved_scalar_tolerance": {
+    "absolute": 1E-10,
+    "relative": 1E-09,
+    "recorded_component_identity_absolute": 2E-12,
+    "recorded_component_identity_relative": 2E-12
+  },
+  "container": {
+    "name": "cuwacunu",
+    "id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "output_root": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis-audit/attempt-001"
+  },
+  "model_calls": 0,
+  "neural_forwards": 0,
+  "head_fits": 0,
+  "calibration_fits": 0,
+  "training_updates": 0,
+  "new_quality_scores": 0,
+  "held_out_tensor_reads": 0,
+  "old_encoder_replays": 0,
+  "failures": "Preserve all failed attempts/source/cards/logs. Additive corrections only; no producer/head/model replay."
+}

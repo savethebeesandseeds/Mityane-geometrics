@@ -1,0 +1,445 @@
+{
+  "kind": "causal_finetune_v2_training_independent_audit_v1",
+  "status": "passed",
+  "recorded_utc": "2026-10-15T10:24:17.2721637Z",
+  "model": "CPB-v2.market-01",
+  "baseline": "CPB-v1.market-01",
+  "scope": "Independent saved JSON/CSV arithmetic and provenance; no encoder/decoder execution, no checkpoint module loading, no head fitting, no host project execution.",
+  "arithmetic_execution": "Python 3 standard library only inside existing cuwacunu container; PowerShell only local file hashes and Git ignore diagnostics.",
+  "arithmetic_checks": 12451,
+  "local_unique_mirror_pins_verified": 21,
+  "local_mismatches": [],
+  "container_saved_arithmetic": {
+    "status": "passed",
+    "checks": 12451,
+    "mismatches": [],
+    "parameter_tensors": 76,
+    "learned_tensors": 75,
+    "learned_values": 293672,
+    "fixed_values": 3888,
+    "groups": {
+      "change_wave_decoder": {
+        "tensors": 1,
+        "values": 13824,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "change_projection": {
+        "tensors": 1,
+        "values": 1080,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "parent_backbone_projection": {
+        "tensors": 60,
+        "values": 213361,
+        "nonzero_gradient_tensors": 60,
+        "moved_tensors": 60,
+        "changed_final_tensors": 60
+      },
+      "parent_decoder": {
+        "tensors": 6,
+        "values": 17912,
+        "nonzero_gradient_tensors": 6,
+        "moved_tensors": 6,
+        "changed_final_tensors": 6
+      },
+      "parent_global_pool": {
+        "tensors": 4,
+        "values": 8480,
+        "nonzero_gradient_tensors": 4,
+        "moved_tensors": 4,
+        "changed_final_tensors": 4
+      },
+      "parent_content_relation": {
+        "tensors": 1,
+        "values": 38880,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "variance_bias": {
+        "tensors": 1,
+        "values": 27,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      },
+      "variance_matrix": {
+        "tensors": 1,
+        "values": 108,
+        "nonzero_gradient_tensors": 1,
+        "moved_tensors": 1,
+        "changed_final_tensors": 1
+      }
+    },
+    "CSV_rows": 2048,
+    "independent_stream_pairs_checked": 2048,
+    "independent_MT19937_64_anchor_choices_checked": 16384,
+    "gradient_events": 153596,
+    "movement_events": 153600,
+    "training_target_cells": 14155776,
+    "query_arithmetic": [
+      {
+        "stage": "initial",
+        "role": "train",
+        "rows": 112,
+        "MAE": 0.27671297318712423,
+        "NLL": -0.37945965716361235,
+        "target_cells": 24192
+      },
+      {
+        "stage": "initial",
+        "role": "validation",
+        "rows": 32,
+        "MAE": 0.3887982074420022,
+        "NLL": 0.8059467304502378,
+        "target_cells": 6912
+      },
+      {
+        "stage": "final",
+        "role": "train",
+        "rows": 112,
+        "MAE": 0.2715756327864138,
+        "NLL": -0.5481519517395009,
+        "target_cells": 24192
+      },
+      {
+        "stage": "final",
+        "role": "validation",
+        "rows": 32,
+        "MAE": 0.4161775679380092,
+        "NLL": 1.107129785299853,
+        "target_cells": 6912
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-0.pt",
+        "bytes": 1291519,
+        "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-2048.pt",
+        "bytes": 1292585,
+        "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-1024.pt",
+        "bytes": 3759283,
+        "sha256": "15c60037715d3cdc3156da90227d1e637b5f7f4132cf5d669aca2f4408b88833"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-2048.pt",
+        "bytes": 3759283,
+        "sha256": "73347f3fb03d301910acbb813f5776514bcfbf924ab0c92bff494da855d7e8b0"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-512.pt",
+        "bytes": 3758623,
+        "sha256": "db262a3a7e0b22eb5b94299a60cb768e2ebff5f592e99b6bd65e1604cf4ca8e6"
+      }
+    ],
+    "initial_artifact_pins": [
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-0.pt",
+        "bytes": 1291519,
+        "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-feature-parity.pt",
+        "bytes": 46246,
+        "sha256": "f1585523cd4636c61b60a0c8c71b83e7a07741486950e1eb8ec53fc14587499e"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-train.pt",
+        "bytes": 35889,
+        "sha256": "f5f22b86bef9a7cf25a587d40897867b8906230df1aad581842d256f5b6bba70"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-validation.pt",
+        "bytes": 12323,
+        "sha256": "c3c2736a09d38e82f9532ba972d1046dd9e745e0b8359edefedf002ca14d2e55"
+      }
+    ],
+    "container_baseline": {
+      "path": "/cuwacunu/output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895"
+    },
+    "input_pins_verified": 12,
+    "raw_load_calls": 2102,
+    "raw_record_cells": 58116096,
+    "GPU_step_seconds": 126.55104771099985,
+    "trajectory_wall_seconds": 169.234710261,
+    "evidence_pins": [
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/training-summary.json",
+        "bytes": 16297,
+        "sha256": "e4d9ffc45c21779ae3c77554528ada65d381935fff3d00c8b498e4e4f9f4b8a2"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/training.csv",
+        "bytes": 402700,
+        "sha256": "af88bc9590e202ea0bf8927fb77715ecd214d5e11eaaeb4f6c3be7197d935c3e"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/parameter-learning.json",
+        "bytes": 17562,
+        "sha256": "4511d75774caf5e33a7753fcebfb56cb86051ba54c828743f03d601886098f07"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/initial-parity.json",
+        "bytes": 1270,
+        "sha256": "9afc10bedd07b09af8c0839aef500dee353623abcfd4f09b5829686ff02c7339"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/typed-resume-512.json",
+        "bytes": 221,
+        "sha256": "8add75a3eeb7cf30f03e18a13599adc27f890dd52265b3eb2dcd0bb44b468942"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-initial.json",
+        "bytes": 6915,
+        "sha256": "f27bcffd57488c7b133ac0bb71a30f88aea5507d54e3be19ca92df6066f6413e"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-final.json",
+        "bytes": 6911,
+        "sha256": "f8a7fe63e6e9fdbfff061061b7e227a04065da8567c6468a12246d0b75724935"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/input-bindings.json",
+        "bytes": 2050,
+        "sha256": "fa2d10422cba175b826064ce354a22fe1c7179a7b5d29c0cda8578d2f7e9d451"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/training-admission.json",
+        "bytes": 746,
+        "sha256": "818d623ff3b53ee087e047bb9177c7cb73d2d0f70997a54e9af4d4443104ac4f"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/engineering-proof/proof.json",
+        "bytes": 1572,
+        "sha256": "119cbd2e4ed98e2b628182311b68eec01a9675e8051719da85f5def5cb4c06f6"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/build-evidence.json",
+        "bytes": 27108,
+        "sha256": "5f89e08fd473383ae858bf2832d0d6694ecb7ffba11d44b09cfeaf0d7ea46744"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source-stage.json",
+        "bytes": 502,
+        "sha256": "fc89785d2c86176412a4988c3f918f21ff6dffa263299b4d417ed5144cc69f02"
+      }
+    ]
+  },
+  "mirrored_artifacts": [
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-0.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-0.pt",
+      "bytes": 1291519,
+      "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-2048.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-2048.pt",
+      "bytes": 1292585,
+      "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-1024.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-1024.pt",
+      "bytes": 3759283,
+      "sha256": "15c60037715d3cdc3156da90227d1e637b5f7f4132cf5d669aca2f4408b88833",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-2048.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-2048.pt",
+      "bytes": 3759283,
+      "sha256": "73347f3fb03d301910acbb813f5776514bcfbf924ab0c92bff494da855d7e8b0",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/training-512.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\training-512.pt",
+      "bytes": 3758623,
+      "sha256": "db262a3a7e0b22eb5b94299a60cb768e2ebff5f592e99b6bd65e1604cf4ca8e6",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-feature-parity.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-feature-parity.pt",
+      "bytes": 46246,
+      "sha256": "f1585523cd4636c61b60a0c8c71b83e7a07741486950e1eb8ec53fc14587499e",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-native-train.pt",
+      "bytes": 35889,
+      "sha256": "f5f22b86bef9a7cf25a587d40897867b8906230df1aad581842d256f5b6bba70",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-native-validation.pt",
+      "bytes": 12323,
+      "sha256": "c3c2736a09d38e82f9532ba972d1046dd9e745e0b8359edefedf002ca14d2e55",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/training-summary.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\training-summary.json",
+      "bytes": 16297,
+      "sha256": "e4d9ffc45c21779ae3c77554528ada65d381935fff3d00c8b498e4e4f9f4b8a2",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/training.csv",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\training.csv",
+      "bytes": 402700,
+      "sha256": "af88bc9590e202ea0bf8927fb77715ecd214d5e11eaaeb4f6c3be7197d935c3e",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/parameter-learning.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\parameter-learning.json",
+      "bytes": 17562,
+      "sha256": "4511d75774caf5e33a7753fcebfb56cb86051ba54c828743f03d601886098f07",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/initial-parity.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\initial-parity.json",
+      "bytes": 1270,
+      "sha256": "9afc10bedd07b09af8c0839aef500dee353623abcfd4f09b5829686ff02c7339",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/typed-resume-512.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\typed-resume-512.json",
+      "bytes": 221,
+      "sha256": "8add75a3eeb7cf30f03e18a13599adc27f890dd52265b3eb2dcd0bb44b468942",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-initial.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\query-initial.json",
+      "bytes": 6915,
+      "sha256": "f27bcffd57488c7b133ac0bb71a30f88aea5507d54e3be19ca92df6066f6413e",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-final.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\query-final.json",
+      "bytes": 6911,
+      "sha256": "f8a7fe63e6e9fdbfff061061b7e227a04065da8567c6468a12246d0b75724935",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/input-bindings.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\input-bindings.json",
+      "bytes": 2050,
+      "sha256": "fa2d10422cba175b826064ce354a22fe1c7179a7b5d29c0cda8578d2f7e9d451",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/training-admission.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\training-admission.json",
+      "bytes": 746,
+      "sha256": "818d623ff3b53ee087e047bb9177c7cb73d2d0f70997a54e9af4d4443104ac4f",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/engineering-proof/proof.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\engineering-proof\\proof.json",
+      "bytes": 1572,
+      "sha256": "119cbd2e4ed98e2b628182311b68eec01a9675e8051719da85f5def5cb4c06f6",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/build-evidence.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\build-evidence.json",
+      "bytes": 27108,
+      "sha256": "5f89e08fd473383ae858bf2832d0d6694ecb7ffba11d44b09cfeaf0d7ea46744",
+      "matches_original": true
+    },
+    {
+      "original_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source-stage.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\source-stage.json",
+      "bytes": 502,
+      "sha256": "fc89785d2c86176412a4988c3f918f21ff6dffa263299b4d417ed5144cc69f02",
+      "matches_original": true
+    },
+    {
+      "original_path": "/cuwacunu/output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\output\\engineering\\causal-patch-bottleneck-mae-v1\\attempt-002\\proof\\inference.pt",
+      "bytes": 1290592,
+      "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895",
+      "matches_original": true
+    }
+  ],
+  "checkpoint_git_ignore": {
+    "new_checkpoints_ignored": [
+      "output/runs/causal-finetune-v2/run-001/checkpoints/inference-0.pt",
+      "output/runs/causal-finetune-v2/run-001/checkpoints/inference-2048.pt",
+      "output/runs/causal-finetune-v2/run-001/checkpoints/training-1024.pt",
+      "output/runs/causal-finetune-v2/run-001/checkpoints/training-2048.pt",
+      "output/runs/causal-finetune-v2/run-001/checkpoints/training-512.pt"
+    ],
+    "baseline_ignored": [
+      "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt"
+    ],
+    "all_five_new_ignored": true,
+    "method": "Direct argv paths; no native stdin line conversion"
+  },
+  "source_bindings": {
+    "card_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FINETUNE_V2_CARD.json",
+    "card_sha256": "30aa70ce6f3999d9f6a991c1b298516db41caf3db276cacb75d91c9d3dcba222",
+    "manifest_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\source-manifest.json",
+    "manifest_sha256": "6a64e9609eeca4747e266dc08709006cc9c739b5e72ffca2e3817b4a708c6945",
+    "archive_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\source.zip",
+    "archive_sha256": "578fab559138bb506837cfed77c54b27a76c28dd751366f5ebc02c38704dd5fb"
+  },
+  "limitations": [
+    "Fixed prior/scaler/bank preservation and actual typed next-step equality are independently bound runtime proof/guard claims; this arithmetic audit does not deserialize model tensors.",
+    "Row means are independently recalculated from full saved per-row values; 2e-15 absolute tolerance permits summation order differences.",
+    "MT19937_64 and SplitMix64 are independently implemented in the auditor; 16,384 row choices and 2,048 stream pairs match exactly."
+  ],
+  "auditor_source_sha256": "b5487a8f5651efe4fd7f970e01f8c10b767b7565e6eb8e37d52186de8ecb268a",
+  "auditor_source": "import json,csv,hashlib,math\nfrom pathlib import Path\nfrom collections import defaultdict\nR=Path('/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001');E=R.parent\nbad=[];checks=0\ndef ck(b,s):\n global checks\n checks+=1\n if not b:bad.append(s)\ndef ld(p):return json.loads(p.read_text())\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\ndef pin(p):return dict(path=str(p),bytes=p.stat().st_size,sha256=sha(p))\nS=ld(R/'training-summary.json');P=ld(R/'parameter-learning.json');I=ld(R/'initial-parity.json');T=ld(R/'typed-resume-512.json')\nfor k,v in dict(status='passed',new_causal_updates=2048,attempted_batches=2048,batch_size=8,TRAIN_windows=4096,probe_TRAIN_windows=112,probe_VALIDATION_windows=32,native_width=36,device='cuda:0',parameters=297560,parameters_with_recorded_updates=293672,fixed_prior_parameters=3888,typed_resume_512_exact=True,fixed_prior_scaler_normalizer_unchanged=True,new_scaler_fits=0,new_normalizer_fits=0,CPU_encoder_calls=0,old_encoder_calls=0,head_fits=0,training_replays=0).items():ck(S[k]==v,'summary '+k)\nL=[p for p in P if p['requires_grad']];F=[p for p in P if not p['requires_grad']]\nck(len(P)==len({p['name'] for p in P})==76 and len(L)==75 and len(F)==1,'76 unique tensors, 75 learned')\nck(sum(p['values'] for p in L)==293672 and sum(p['values'] for p in F)==3888,'learned/fixed values')\nG=defaultdict(lambda:dict(tensors=0,values=0,nonzero_gradient_tensors=0,moved_tensors=0,changed_final_tensors=0))\nfor p in P:\n if p['requires_grad']:\n  ck(0<p['nonzero_CUDA_gradient_steps']<=2048 and p['weight_movement_steps']==2048 and p['changed_from_initial'],'learned evidence '+p['name'])\n  g=G[p['group']];g['tensors']+=1;g['values']+=p['values'];g['nonzero_gradient_tensors']+=p['nonzero_CUDA_gradient_steps']>0;g['moved_tensors']+=p['weight_movement_steps']>0;g['changed_final_tensors']+=p['changed_from_initial']\n else:ck(p['nonzero_CUDA_gradient_steps']==p['weight_movement_steps']==0 and not p['changed_from_initial'],'fixed prior evidence')\nck(len(G)==8,'8 learning categories')\nfor g in S['parameter_groups']:ck({k:v for k,v in g.items() if k!='group'}==G[g['group']],'category '+g['group'])\nM=(1<<64)-1\ndef stream(b,a):\n x=(b+0x9e3779b97f4a7c15*(a+1))&M;x=((x^(x>>30))*0xbf58476d1ce4e5b9)&M;x=((x^(x>>27))*0x94d049bb133111eb)&M\n return (x^(x>>31))&((1<<63)-1)\nclass MT:\n def __init__(self,s):\n  self.x=[s]\n  for i in range(1,312):self.x.append((6364136223846793005*(self.x[-1]^(self.x[-1]>>62))+i)&M)\n  self.p=312\n def next(self):\n  if self.p==312:\n   for i in range(312):\n    y=(self.x[i]&0xffffffff80000000)|(self.x[(i+1)%312]&0x7fffffff)\n    self.x[i]=self.x[(i+156)%312]^(y>>1)^(0xb5026f5aa96619e9 if y&1 else 0)\n   self.p=0\n  y=self.x[self.p];self.p+=1;y^=(y>>29)&0x5555555555555555;y^=(y<<17)&0x71d67fffeda60000;y^=(y<<37)&0xfff7eee000000000;y^=y>>43\n  return y&M\ntb,te=1704067259999,1705881599999;first=tb+255*60000;n=(te-first)//60000+1\nA=[first+(i*(n-1)//4095)*60000 for i in range(4096)];aset=set(A)\nC=list(csv.DictReader((R/'training.csv').open()));ck(len(C)==2048,'2048 CSV rows')\nng=nm=tc=0\nfor a,r in enumerate(C):\n ck(int(r['attempt'])==a and int(r['update'])==a+1,'monotonic counters '+str(a));rs,ms=stream(942002,a),stream(942003,a)\n ck(int(r['row_seed'])==rs and int(r['mask_seed'])==ms,'independent SplitMix64 streams '+str(a))\n got=list(map(int,r['anchors'].split(';')));rng=MT(rs);want=[A[(rng.next()*4096)>>64] for _ in range(8)]\n ck(got==want,'independent MT19937_64 row choices '+str(a));ck(len(got)==8 and all(x in aset and x-127*60000>=tb and x<=te for x in got),'legal TRAIN batch '+str(a))\n ck(math.isfinite(float(r['Gaussian_NLL_F64'])) and int(r['eligible_examples'])==8 and int(r['target_cells'])==6912,'finite NLL/target population '+str(a))\n ck(0<int(r['nonzero_gradient_tensors'])<=75 and int(r['changed_tensors'])==75,'CUDA tensor events '+str(a));ng+=int(r['nonzero_gradient_tensors']);nm+=int(r['changed_tensors']);tc+=int(r['target_cells'])\nck(tc==S['training_target_cells']==14155776,'training target cells')\nck(float(C[0]['Gaussian_NLL_F64'])==S['first_training_NLL'] and float(C[-1]['Gaussian_NLL_F64'])==S['last_training_NLL'],'CSV first/final loss')\nck(ng==sum(p['nonzero_CUDA_gradient_steps'] for p in L) and nm==sum(p['weight_movement_steps'] for p in L),'gradient/movement aggregate')\nQ=[]\nfor stage in ['initial','final']:\n qf=ld(R/('query-'+stage+'.json'))\n for role,n in [('train',112),('validation',32)]:\n  q=S['fixed_query_'+stage][role];ck(q==qf[role],'query JSON association '+stage+role);ck(q['valid_rows']==len(q['row_mae'])==len(q['row_nll'])==len(q['row_target_cells'])==n,'query row count '+stage+role)\n  mae=math.fsum(q['row_mae'])/n;nll=math.fsum(q['row_nll'])/n\n  ck(all(math.isfinite(x) and x>=0 for x in q['row_mae']) and all(math.isfinite(x) for x in q['row_nll']),'query finiteness '+stage+role)\n  ck(abs(mae-q['standardized_fixed_query_MAE'])<2e-15 and abs(nll-q['Gaussian_NLL_F64'])<2e-15,'query mean arithmetic '+stage+role)\n  ck(q['target_cells']==sum(q['row_target_cells'])==n*216 and all(x==216 for x in q['row_target_cells']) and q['CUDA_encoder_decoder_calls']==n//8,'query support/calls '+stage+role);Q.append(dict(stage=stage,role=role,rows=n,MAE=mae,NLL=nll,target_cells=q['target_cells']))\nfor k in ['same_parameters_buffers_moments_steps_order','same_attempt_counter_and_three_seeds','continued_actual_trajectory_from_saved_state']:ck(T[k] is True,'resume '+k)\nck(T['status']=='passed' and T['completed_updates']==512 and T['repeated_training_updates']==0,'typed resume 512')\nfor k in ['all_initial_weights_exact','all_initial_scaler_bank_exact','initial_feature_witness_exact','initial_saved_features_reused']:ck(I[k] is True,'initial '+k)\nck(I['status']=='passed' and I['rows_checked']==144 and I['native_coordinates_checked']==5184 and I['CUDA_parity_calls']==18 and I['new_initial_head_fits']==I['old_encoder_calls']==0,'initial parity scope')\nIP=[]\nfor x in [I['initial_checkpoint'],I['feature_witness']]+I['witnesses']:\n p=Path(x['path']);ck(p.is_file() and p.stat().st_size==x['bytes'] and sha(p)==x['sha256'],'initial artifact '+p.name);IP.append(pin(p))\nCP=[pin(p) for p in sorted((R/'checkpoints').iterdir())];ck([Path(p['path']).name for p in CP]==['inference-0.pt','inference-2048.pt','training-1024.pt','training-2048.pt','training-512.pt'],'five checkpoints')\nIN=ld(R/'input-bindings.json')\nfor x in IN:ck(sha(Path(x['path']))==x['sha256'],'immutable input '+x['path'])\nAD=ld(E/'training-admission.json');PR=ld(E/'engineering-proof/proof.json')\nck(AD['status']=='passed' and AD['quality_updates_allowed']==2048 and AD['batch_size']==8 and AD['maximum_attempts']==4096,'prospective admission')\nck(sha(E/'build-evidence.json')==AD['build_evidence_sha256'] and sha(E/'engineering-proof/proof.json')==AD['engineering_proof_sha256'],'admission hashes')\nck(PR['status']=='passed' and PR['typed_resume_next_loss_model_moments_bitwise_exact'] and PR['quality_updates']==PR['CPU_encoder_calls']==0,'prior actual CUDA engineering proof')\nck(S['raw_load_calls']==2048+18+36==2102 and S['direct_F64_record_cells_checked']==2102*8*3*128*9 and 0<S['genuine_F64_differs_from_F32_cells']<=S['direct_F64_record_cells_checked'],'raw loader counts')\nck(0<S['GPU_step_seconds_synchronized']<S['training_trajectory_wall_seconds'],'compute/wall ordering')\nB=Path('/cuwacunu/output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt')\nck(sha(B)==S['baseline_checkpoint_sha256']==I['baseline_checkpoint_sha256']==AD['baseline_checkpoint_sha256']=='54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895','baseline unchanged')\nprint(json.dumps(dict(status='passed' if not bad else 'failed',checks=checks,mismatches=bad,parameter_tensors=len(P),learned_tensors=len(L),learned_values=293672,fixed_values=3888,groups=dict(G),CSV_rows=len(C),independent_stream_pairs_checked=len(C),independent_MT19937_64_anchor_choices_checked=len(C)*8,gradient_events=ng,movement_events=nm,training_target_cells=tc,query_arithmetic=Q,checkpoints=CP,initial_artifact_pins=IP,container_baseline=pin(B),input_pins_verified=len(IN),raw_load_calls=S['raw_load_calls'],raw_record_cells=S['direct_F64_record_cells_checked'],GPU_step_seconds=S['GPU_step_seconds_synchronized'],trajectory_wall_seconds=S['training_trajectory_wall_seconds'],evidence_pins=[pin(R/x) for x in ['training-summary.json','training.csv','parameter-learning.json','initial-parity.json','typed-resume-512.json','query-initial.json','query-final.json','input-bindings.json']]+[pin(E/x) for x in ['training-admission.json','engineering-proof/proof.json','build-evidence.json','source-stage.json']]),allow_nan=False))\n",
+  "reporting_only_repair": {
+    "preserved_draft_sha256": "a6be1b0a7be4a1df9d6dab736a15b66ba39b667bb0512e3f745250f290ec5a29",
+    "draft_status": "failed",
+    "draft_mismatches": [
+      "Checkpoint not ignored output/runs/causal-finetune-v2/run-001/checkpoints/inference-0.pt",
+      "Checkpoint not ignored output/runs/causal-finetune-v2/run-001/checkpoints/inference-2048.pt",
+      "Checkpoint not ignored output/runs/causal-finetune-v2/run-001/checkpoints/training-1024.pt",
+      "Checkpoint not ignored output/runs/causal-finetune-v2/run-001/checkpoints/training-2048.pt",
+      "Checkpoint not ignored output/runs/causal-finetune-v2/run-001/checkpoints/training-512.pt",
+      "Baseline ignore pin mismatch"
+    ],
+    "draft_ignore_outputs": {
+      "new_checkpoints_ignored": [
+        "\"output/runs/causal-finetune-v2/run-001/checkpoints/inference-0.pt\\r\"",
+        "\"output/runs/causal-finetune-v2/run-001/checkpoints/inference-2048.pt\\r\"",
+        "\"output/runs/causal-finetune-v2/run-001/checkpoints/training-1024.pt\\r\"",
+        "\"output/runs/causal-finetune-v2/run-001/checkpoints/training-2048.pt\\r\"",
+        "\"output/runs/causal-finetune-v2/run-001/checkpoints/training-512.pt\\r\""
+      ],
+      "baseline_ignored": [
+        "\"output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt\\r\""
+      ],
+      "all_five_new_ignored": true
+    },
+    "cause": "PowerShell native stdin pipeline emitted CRLF. Git treated trailing CR as part of each stdin path and quoted it; this reporting check was incorrect. Direct argument paths below verify real tracked paths, without changing any project or artifact bytes.",
+    "effect": "Reporting-only correction; no encoder/head execution, no source or training changes."
+  }
+}

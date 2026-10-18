@@ -1,0 +1,58 @@
+{
+  "kind": "cpb_v13_final_preservation_verifier_root_admission_v1",
+  "status": "admitted",
+  "admitted_utc": "2026-10-17T22:27:56.6431046Z",
+  "reviewed_inputs": [
+    {
+      "path": "doc/causal_fresh_v13/preservation-card.json",
+      "bytes": 2011593,
+      "sha256": "6a25dc5c5f50029b72104c4bd9ee45948cf28bc285d155ecfc0114f51ad3d551"
+    },
+    {
+      "path": "doc/causal_fresh_v13/preservation-actual-card-independent-review-001.json",
+      "bytes": 4710,
+      "sha256": "d454ec33cc6f561c64848d3cf5cf0ebb15e30636773b2434d2306f67ac201e4d"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_preservation/verify.ps1",
+      "bytes": 42795,
+      "sha256": "b84e858e7dd845f08f428f7743e0c8373f94642a26a9942e5b8804f5e6787299"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_preservation/prepare-card.ps1",
+      "bytes": 24092,
+      "sha256": "c40c371403a72db61baec20a146cd5d8e1ba8cdb2e58a610d45ee64f10c42da1"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/applied-metadata.json",
+      "bytes": 4514,
+      "sha256": "2afc7af8f9ee21b8a61f2f081d8bc3c880910d9d059531c2e2374e2226aba5f9"
+    }
+  ],
+  "root_prior_actual_card_metadata_checks": 6493,
+  "independent_card_review_passed": true,
+  "final_metadata_applied": true,
+  "authorized_action": "One exact final preservation verifier invocation; read-only file/hash/JSON/Git-ignore and existing-container source/ZIP/binary checks",
+  "container": "cuwacunu",
+  "container_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+  "expected_critical_checkpoint_total": 119,
+  "actual_119_verified_claimed": false,
+  "output": "doc/causal_fresh_v13/final-preservation.json",
+  "excluded_actions": [
+    "model or head execution",
+    "tensor numerical diagnosis",
+    "build or training",
+    "source or checkpoint mutation",
+    "DEV replacement",
+    "Git publication",
+    "deletion",
+    "container lifecycle changes"
+  ],
+  "closed_completed_roots": [
+    "output/engineering/causal-fresh-v13-training-audit/attempt-001",
+    "output/engineering/causal-fresh-v13-quality-audit/attempt-001",
+    "output/engineering/causal-fresh-v13-establishment/attempt-001",
+    "output/engineering/causal-fresh-v13-finalization/attempt-001"
+  ],
+  "retry_policy": "Preserve any failed first attempt and declare an additive repair; no silent replay"
+}

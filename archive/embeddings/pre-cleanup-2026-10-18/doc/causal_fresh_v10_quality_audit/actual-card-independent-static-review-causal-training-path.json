@@ -1,0 +1,127 @@
+{
+  "kind": "cpb_v10_actual_quality_audit_card_independent_static_review_v1",
+  "status": "passed",
+  "reviewer": "causal_training_path",
+  "reviewed_utc": "2026-10-16T13:33:00.7637045Z",
+  "scope": "Actual card, source interfaces, opaque file hashes and completed stage JSON only; no saved-numeric audit or tensor deserialization",
+  "card": {
+    "path": "doc/causal_fresh_v10_quality_audit/audit-card.json",
+    "bytes": 37495,
+    "sha256": "5b67816fdff6ba4f490129492152972e7ecafd114688c2bf19eeb701edf042db"
+  },
+  "frozen_main_card": {
+    "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+    "bytes": 119685,
+    "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+  },
+  "completed_main_mirror": {
+    "path": "doc/causal_fresh_v10/complete-mirror-attempt-001.json",
+    "bytes": 263638,
+    "sha256": "7819d652e06750827176d8a42e3dbc00a0f1dae621545f51f126c8788d74d587"
+  },
+  "completed_quality_receipt": {
+    "path": "output/runs/causal-fresh-v10/run-001/quality-001/quality-receipt.json",
+    "bytes": 4801,
+    "sha256": "5026c89f422b1a20cd8f3de08c92bf3f7b72879bd2b378f56596cc390971fb6b"
+  },
+  "completed_quality_stage": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/quality-stage.json",
+    "bytes": 1697,
+    "sha256": "c7500a068d01bb1e8d6b0553a0973fa5104ab4f40c3f5427a1276cd00827870f"
+  },
+  "main_manifest": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/source-manifest.json",
+    "bytes": 29659,
+    "sha256": "66b9563b987011833678a231409574ecff46e4e22c71764bef07e5782ca5dc98"
+  },
+  "main_zip": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/source.zip",
+    "bytes": 2267100,
+    "sha256": "d66418fca82f81abe60c35f8184ef0d0bb8a51d94f66ce9e4d67df5e56c3b30f"
+  },
+  "auditor_sources": [
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "audit.py",
+      "bytes": 90694,
+      "sha256": "9c17b794c0d20a66a4e5b13161d013b9928ea62b372dde7a413813363c793fce"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 10187,
+      "sha256": "2a298f7f3b9570bcb1758bdaf9921e250c72d6e234fb001abc4e9638e0e6de12"
+    },
+    {
+      "file": "README.md",
+      "bytes": 7299,
+      "sha256": "155333e9276f8ffda3d4bcede6990e870544050da8ea38de49687ed4a807ed10"
+    }
+  ],
+  "prior_source_review": {
+    "path": "doc/causal_fresh_v10/quality-auditor-independent-static-review.json",
+    "bytes": 7074,
+    "sha256": "744fb349fa5839f89a18452272c4b4f07ecbc24cb7ea57b1aa3901c883649a92"
+  },
+  "prior_transport_review": {
+    "path": "doc/causal_fresh_v10_quality_audit/workflow-independent-static-review-causal-training-path.json",
+    "bytes": 5213,
+    "sha256": "352c572e7f91ff1a16e8189e0467ad86844491d273b6f3d96bc69aa66ca2b5c4"
+  },
+  "transport_pins": [
+    {
+      "path": "doc/causal_fresh_v10_quality_audit/execute.py",
+      "bytes": 9038,
+      "sha256": "93e2b82539314679596ee5226b65cb173606daafe4e1ebf80b23f5bde6ca0544"
+    },
+    {
+      "path": "doc/causal_fresh_v10_quality_audit/stage.ps1",
+      "bytes": 8342,
+      "sha256": "c57f5d3737d2df0c19b8bbbcb3d0e4f70c7323f733847089be4a2241320fc633"
+    },
+    {
+      "path": "doc/causal_fresh_v10_quality_audit/mirror.ps1",
+      "bytes": 10337,
+      "sha256": "96cc9a6d3bb3559e8dfb648fdbc34b21c2256c11cf91f7ce68c7f1494d2c9dc0"
+    },
+    {
+      "path": "doc/causal_fresh_v10_quality_audit/prepare-card.ps1",
+      "bytes": 12692,
+      "sha256": "f170c4942160f4fc9e7fe694aa9c2cd0e3c343986c75dd8e70e38727d5a7c155"
+    },
+    {
+      "path": "doc/causal_fresh_v10_quality_audit/provenance.json",
+      "bytes": 11160,
+      "sha256": "9fa423205cea6008db751e9a922dcad458866a7299d6bd74a4c77ef0bda94e6f"
+    }
+  ],
+  "blockers": [],
+  "findings": [
+    "Actual37495B card5b67816f, frozen card42b16, source manifest66b956/ZIPd664 and127-source main closure match held sources. All30 declared pin occurrences (including the four named auditor files) resolve exact by local files or canonical old/current Complete mappings.",
+    "All718 current Complete members independently hash exact on host; scope Complete, source127, attempt001 and card/manifest pins agree. Receipt declares621 ignoredPT; reviewer did not rerun Git ignore or parse tensors. Actual quality wrapper and receipt are exact Complete members.",
+    "All13 savedV9 pairing entries are literal identical to frozen main initial_pairing.references: eight DATA archives require whole0:40 feature tensors, masks/IDs/labels and five whole fresh-stat archives. All old reference files hash exact through V9 Complete host mappings; all13 current candidate archives are exact current Complete members. Numeric equality itself remains the later audit job.",
+    "The actual expected_main_paths are exact absolute training/quality/frozen-card paths. completed_quality_receipt retains an opaque durable host label matched to actual runtime by bytes/hash; completed_quality_stage is the required absolute attempt001 runtime path. Source normal_quality_execution uses those selectors correctly and does not resolve host labels as runtime files.",
+    "Current quality is normal and passed: outer stage kind/status/exit0/83.40623863400106s, pinned Python interpreter rather than a scientific binary, frozen run-quality driver argv and canonical input/output flags align. Exactly five scientific durations belong to the receipt; all seven local stages (five science, report, comparison) have actual exit0 records and canonical outputs. No recovery fields/CLI or prior-failure assumptions are admitted.",
+    "Report/comparison output files, table399754B9b27a3f0 and comparison446538B029cdc05 are exact Complete members. Their metadata preserves current model/source0/full coverage/runtime trust, original pending overall trust and all three postmeasurement pending fields. All22 criterion objects retain literal declared fields and221f goal binding, with no metric/pass-count reduction performed by this review.",
+    "Held9c17 auditor and9fa423 workflow provenance, actual four source pins, fresh-only absent gradient selector, joint objective/directroutes/false flags, shared clip,75tensorcapacity/gauge and temporal evidence are unchanged. No expected numeric outcome, old head/encoder execution or current reporting recovery is introduced."
+  ],
+  "counters": {
+    "declared_file_pin_occurrences_verified": 30,
+    "complete_mirror_file_hashes_verified": 718,
+    "paired_reference_archive_hashes_verified": 13,
+    "paired_candidate_members_mapped": 13,
+    "local_completed_quality_stage_records_inspected": 7,
+    "AST_calls": 0,
+    "helper_invocations": 0,
+    "Docker_calls": 0,
+    "project_numeric_reductions": 0,
+    "checkpoint_tensor_reads": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0
+  },
+  "disposition": "No actual-card source/path/Complete-binding blocker found. Root controls separate AST-only Stage and once-only independent numeric audit admission."
+}

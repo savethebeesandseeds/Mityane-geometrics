@@ -1,0 +1,59 @@
+{
+  "kind": "cpb_v11_v13_TRAIN_diagnosis_actual_audit_admitted_card_independent_review_v1",
+  "status": "passed",
+  "metadata_only": true,
+  "independent_of_card_author": true,
+  "scientific_execution_admitted": false,
+  "recorded_utc": "2026-10-17T23:21:07.5375865Z",
+  "actual_card": {
+    "path": "doc/causal_v11_v13_train_diagnosis/independent-audit-card.ADMITTED.json",
+    "bytes": 7139,
+    "sha256": "678e7c9a973e0a2bc41e2179a4bacf3e85c093aaefc7e428e0a32be3c10c41eb"
+  },
+  "preserved_false_proposal": {
+    "path": "doc/causal_v11_v13_train_diagnosis/independent-audit-card.PROPOSED.json",
+    "bytes": 6376,
+    "sha256": "7d7045f270fd45042a74c88705e94902b05b39d26e1587cc7186de61b11c213a"
+  },
+  "prior_independent_review": {
+    "path": "doc/causal_v11_v13_train_diagnosis/actual-audit-proposed-card-independent-review-001.json",
+    "bytes": 4496,
+    "sha256": "d1dd19d7f60336e8f7ea995f223c63a18b71022c99c405e67bce2b2692fad33d"
+  },
+  "root_admission": {
+    "path": "doc/causal_v11_v13_train_diagnosis/actual-audit-card-root-admission-001.json",
+    "bytes": 1258,
+    "sha256": "6aba5f97ff7504892737db67c4fb4a99656c1c38cca4f128d42af2cd55ca5481"
+  },
+  "semantic_delta": {
+    "changed_existing_fields": [
+      "execution_admitted:false->true"
+    ],
+    "added_fields": [
+      "separate_root_admission"
+    ],
+    "admission_fields": [
+      "prospective_card",
+      "independent_review",
+      "admitted_utc",
+      "separate_Stage_and_Run_admissions_required"
+    ],
+    "literal_Boolean_types_preserved": true,
+    "prospective_card_and_peer_pins_exact": true,
+    "whole_JsonNode_equality_after_reverting_Boolean_and_removing_admission": true,
+    "all_other_prior_fields_preserved": true
+  },
+  "scope": "Exact bounded metadata delta only. Earlier142-check false-card/main-chain review is reused opaquely; no source-math/fullbinding re-review. False original remains exact. This review does not admit AST Stage or numerical audit Run.",
+  "inspection_refusal": "An earlier read-only host pin inspection collided with PowerShell reserved Boolean variable false and stopped before JSON mutation or any file write. Corrected variable name; no helper/source/card/AST/container/numeric invocation occurred.",
+  "blockers": [],
+  "actions": {
+    "helpers": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "PT_CSV_reads_or_hashes": 0,
+    "scientific_arithmetic": 0,
+    "source_or_card_edits": 0,
+    "models_heads_updates": 0
+  }
+}

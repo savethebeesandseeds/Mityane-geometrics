@@ -1,0 +1,10 @@
+{
+  "kind": "cpb_v14_workflow_source_review_checker_refusal_v1",
+  "status": "reviewer_checker_corrected_no_source_finding",
+  "phase": "host_metadata_only_reserved_variable_scan",
+  "error": "Overbroad reviewer regex classified the legal PowerShell discard assignment $null=New-Item in stage-source.ps1 as forbidden",
+  "correction": "Exclude legal $null output-discard sink; continue rejecting read-only $Host/HOME/PID/PSHOME/ShellID/ExecutionContext/PSVersionTable/true/false assignments",
+  "before_passed_review_write": true,
+  "workflow_source_edits": 0,
+  "helper_AST_Docker_scientific_calls": 0
+}

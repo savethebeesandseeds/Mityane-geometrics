@@ -1,0 +1,516 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v12_family_and_training_auditor_independent_static_review_v1",
+  "status": "passed",
+  "recorded_utc": "2026-10-17 18:42:18 UTC",
+  "reviewer": "/root/v11_join_review",
+  "review_type": "Independent static source, complete physical-copy provenance and exact-file review; no execution",
+  "source_only": true,
+  "scientific_execution_admitted": false,
+  "actual_proof_or_quality_pass_claimed": false,
+  "scope": {
+    "independently_reviewed_family_assets": 55,
+    "family_asset_partition": "51 family closure files, one unmeasured descriptor DRAFT and three research fixtures",
+    "independently_reviewed_training_auditor_assets": 3,
+    "other_auditor_evaluation_assets_integrity_checked_only": 24,
+    "other_auditor_evaluation_algorithm_review_claimed": false,
+    "own_training_eight_independently_reviewed_by_this_reviewer": false,
+    "own_training_eight_scope": "Authored by this reviewer; interface inspected only. Independent training8 review belongs to /root/v11_preservation_readiness and is pinned separately.",
+    "workflow_and_actual_card_review_claimed": false
+  },
+  "authorities_and_closure_receipts": [
+    {
+      "path": "doc/causal_fresh_v12/design-source-plan.ADMITTED-001.json",
+      "bytes": 23839,
+      "sha256": "d5a6617010ca169c6392c7fac7fe97090185b02f126cf9e02323ff50ae3add23"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/family/source-ready.json",
+      "bytes": 40583,
+      "sha256": "94bd68deeaa2622fc591e6779a25117f1e1b138ad099d39278e58ebac1fdc13a"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/family/parent-copies/manifest.json",
+      "bytes": 44087,
+      "sha256": "0782efde6b85950482b30dc76f1c7e663429f51d4f9c16a9044fdea6bfd4c1ef"
+    },
+    {
+      "path": "doc/causal_fresh_v12/family-source-provenance.json",
+      "bytes": 98258,
+      "sha256": "f024d1b55be27e98df145b5a4aa1554d521eb1c843a168ee58afbb46264f740e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/provenance.json",
+      "bytes": 21281,
+      "sha256": "ea5373cd76f95f9cb2e3de069ce54f0bc61722d558ee9d27e80bf2808380535c"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/source-ready-001.json",
+      "bytes": 29771,
+      "sha256": "7a5e1dd5b53f146ed761d224684a8ab2d97993f79688b585ffdbb15d367388c4"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/parent-copies/manifest.json",
+      "bytes": 22298,
+      "sha256": "08279d13b404b835b7b0c36ff016af708a17c988c0bb6493194268d8e2f9dac3"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/training/source-ready-002.json",
+      "bytes": 9344,
+      "sha256": "9b299b92fa695d067a2a5accdcabb4bf32cddb200d16161cd2c0f3e86b940e78"
+    },
+    {
+      "path": "doc/causal_fresh_v12/independent-training-source-review-001.json",
+      "bytes": 11554,
+      "sha256": "965344f83a61af9eaf5ba5b9a6c4c10e3bd8cba8fb888e1806a4c548c6e80728"
+    }
+  ],
+  "file_inspection_result": {
+    "core_owned": 55,
+    "training_auditor_owned": 3,
+    "auditor_all_owned": 27,
+    "core_preserved": 55,
+    "core_retag_only": 45,
+    "core_parents": 55,
+    "auditor_all_preserved": 27,
+    "auditor_all_parents": 27,
+    "exact_pin_mismatches": 0,
+    "physical_parent_copy_mismatches": 0,
+    "family_retag_only_text_mismatches": 0,
+    "family_unchanged_implementation_text_check": "45 declared retag-only files compare exactly after replacing v11/V11 version identifiers with v12/V12",
+    "V11_frozen_family_source_manifest_bindings_checked": 55,
+    "family_source_capsule_reference": {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source-manifest.json",
+      "bytes": 30854,
+      "sha256": "b9a701bbfa3e98e4719853dfb1b2fad8d7610b3a86b475e43398ab43fea15778"
+    },
+    "old_project_implementation_imports_in_family_sources": 0,
+    "family_and_research_temporal_fixture_whole_bytes_identical": true,
+    "independent_training_auditor_imports": "Standard library only; own inert archive reader and scalar arithmetic; no Torch/NumPy/producer/old auditor/model/head import",
+    "bounded_changed_line_review": "All TRAIN-auditor non-retag diff hunks read, critical moment_learning_audit body read in full, policy/schema/import/source-admission/result-claim code read. Existing unchanged algorithms remain pinned to full physical V11 parents."
+  },
+  "core_findings": [
+    {
+      "id": "uniform-support-own-center",
+      "status": "passed",
+      "source": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/temporal_pooling.h",
+      "finding": "Dispersion uses mask/original-position membership only: half local-uniform and half global-uniform valid support, its own two-separate-sum center, then componentwise weighted squared residual. The attention mean still uses the original two separate attention sums. No score, attention mean, detach, sqrt, Bessel correction, extra epsilon or new scientific coefficient enters dispersion."
+    },
+    {
+      "id": "safety-and-empty-bins",
+      "status": "passed",
+      "finding": "Unsupported hidden entries are sanitized before subtraction and squaring; supported nonfinite values are rejected. Clamped counts and softmax fallback keep all-padding finite. A missing local bin zeros its complete eight-row export after bias and the stored per-bin moments/support, even when global support exists."
+    },
+    {
+      "id": "live-adjoints-and-f32-center",
+      "status": "passed",
+      "finding": "Hidden and own-center paths stay live. Dispersion has no direct pool-score/position path, while attention-mean score derivatives and Transformer/score-to-hidden paths stay live. The independent fixture retains the F32 weighted-center residual and distinguishes rounded captured mixture VALUES from the center's two-sum reciprocal Jacobian coefficients."
+    },
+    {
+      "id": "parameter-rng-and-objective-scope",
+      "status": "passed",
+      "finding": "New arrays are trace/support values only. Registration, constructor order and random draws remain unchanged in the source diff; no learned module or parameter is added. Intended native40, 76 learned tensors/294752 learned values, fixed3888, unit Huber1 plus detached-error variance, shared globalclip1 and single AdamW remain the plan. These are source conclusions, pending actual build/runtime parity."
+    },
+    {
+      "id": "both-existing-routes-and-interface",
+      "status": "passed",
+      "finding": "Both temporal routes assign the four new support/center members from the same existing kernel forward. Public CausalTrace inherits the implementation trace and is passed directly to encode; no redundant forwarding is required. The downstream witness interface has the four agreed new temporal arrays and geometry."
+    },
+    {
+      "id": "typed-policy-and-causality-source",
+      "status": "passed",
+      "finding": "New pooling/moment policy constants are strict at inference root/payload and TRAIN root/encoder/encoder.payload. Rejection fixtures include old V11 kinds/policies and malformed fields. Existing causal attention/cutoff/crop implementation is retag-only. Primary source tests retain the full cutoff and suffix-value/mask interventions; same_trace now compares all four new fields and projected exports. This is static fixture review, not an observed causal proof."
+    },
+    {
+      "id": "independent-primary-oracle",
+      "status": "passed",
+      "finding": "Both full primary fixture copies independently derive uniform support/counts and own center, verify new stored weights/center and variance around the actual captured own center. They no longer check the V11 attention-centered variance expression."
+    },
+    {
+      "id": "mechanism-fixture-contract",
+      "status": "passed",
+      "finding": "Independent manual F64 and captured-F32 full-expression references cover hidden/export/position adjoints, nonbinary reciprocals, nonzero captured F32 center residual, score-only perturbations, isolated live hidden and mean-score paths, empty/padded/nonfinite support and equal-mean differing-spread examples. Direct calls are 47 = 9 non-FD successes + 36 F32-FD evaluations + 2 supported-NaN refusals; 18 F64 and 18 F32 coordinates and two isolated autograd::grad calls. One backbone encode has two internal routes and is separate from direct-call accounting. No public encoder/head fit; one synthetic optimizer step is prospective."
+    }
+  ],
+  "training_auditor_findings": [
+    {
+      "id": "exact-witness-schema",
+      "status": "passed",
+      "finding": "Actual update1/2048 component archives require exact60 fields:23 base +12 parameter arrays +25 temporal fields. The four new arrays are uniform weights[R,4,T] and own centers[R,4,64] for both routes. Original positions, valid support, typed flags, zero unused-route fallback and PRECLIP post-empty-export upstream are checked."
+    },
+    {
+      "id": "independent-forward-moments",
+      "status": "passed",
+      "finding": "Scalar code independently derives attention means and uniform own-center population dispersion from saved original support; a second variance reconstruction uses actual captured F32 uniform weights/center. Empty-bin and unsupported storage zeros are explicit. Existing moment absolute/relative tolerance3e-5 is unchanged."
+    },
+    {
+      "id": "actual-local-parameter-adjoints",
+      "status": "passed",
+      "finding": "Export weight/bias use each actual branch feature; pool-position derivatives use only attention-mean q=a dot h. Both route PRECLIP adjoints sum before one recorded clip factor. Actual2048 uses captured before-step2047 coefficients. Three local parameter families retain abs1e-9 + rel3e-4 parity and expected postclip export weight-or-bias max>1e-6 at each witness. Gauge residual remains finite descriptive evidence without tight parity/nonzero gating."
+    },
+    {
+      "id": "descriptive-hidden-reference",
+      "status": "passed",
+      "finding": "Fixed-score hidden reference is attention-two-sum coefficient*a +2*b*(u_actual*(h-c)-center_coeff*sum(u_actual*(h-c))); center_coeff uses separate F32 local/global reciprocals rather than the rounded stored mixture. The reference is explicitly descriptive: no hidden-adjoint array, score-to-hidden reconstruction, observed full-hidden parity, full-encoder/global-norm reconstruction or unmatched final decoder replay is claimed."
+    },
+    {
+      "id": "learning-evidence-scope",
+      "status": "passed",
+      "finding": "Existing8192 whole-bin/2048 gauge/2048 contrast and16384 moment-subgroup row contracts remain. Whole8 squared norms equal two4 partitions with abs/rel2e-12 and additive integer events. Eight moment groups require real events/final changes; 75 identifiable tensors'294751 values remain capacity, not every-scalar learning proof. Other2046 raw gradients are neither invented nor replayed."
+    },
+    {
+      "id": "external-admission-and-proof-bindings",
+      "status": "passed",
+      "finding": "Main-card/Markdown/input/capsule/current auditor pins are external future bindings and checked before numeric access. New mechanism policies and six source-proof flags plus47/18/18 counts are required. Unchanged inert reading, fresh TRAIN statistics/objective/state arithmetic remain full-owned V11 copies. No anticipated audit check total, runtime success, quality result or oracle initialization is introduced."
+    }
+  ],
+  "exact_interface": {
+    "temporal_pooling_policy": "original-position-four-bin-attention-mean4-uniform-centered-variance4-v1",
+    "temporal_moment_policy": "componentwise-centered-variance-half-local-global-uniform-own-two-sum-mean-v1",
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+    "new_trace_fields": [
+      "temporal_pool_dispersion_weights",
+      "temporal_pool_dispersion_mean",
+      "temporal_contextual_pool_dispersion_weights",
+      "temporal_contextual_pool_dispersion_mean"
+    ],
+    "component_archive_fields": 60,
+    "base_fields": 23,
+    "parameter_array_fields": 12,
+    "temporal_trace_fields": 25,
+    "actual_step2048_coefficients": "before-step2047",
+    "upstream_and_clipping": "PRECLIP post-empty-export; sum routes then apply recorded clip factor once"
+  },
+  "resolved_before_freeze_findings": [
+    "Primary oracle initially retained V11 attention-centered variance and omitted four fields in same_trace; both complete fixture copies were corrected before exact family readiness94bd68de... and independently reread here.",
+    "Auditor fixed-score description initially risked identifying rounded uniform mixture with center Jacobian; final d4387a2f... source separates captured u_actual from F32 two-sum center_coeff and explicitly excludes total hidden parity.",
+    "Training driver reporting literals56/21 were repaired to60/25 separately and independently reviewed by core owner. This review binds source-ready002/interface only; it makes no independent authorship claim about that driver's source."
+  ],
+  "independence_and_limits": {
+    "baseline": "CPB-v3.market-01",
+    "baseline_or_DEV_change": false,
+    "source_parent": "V11 physical source only; no trained weight/statistic/optimizer ancestry",
+    "initial_reference": "Prospective saved V11 DATA20:40 only plus five whole fresh-statistic archives; no learned0:20 or whole40 equality claim",
+    "descriptor": "Unmeasured source-preparation DRAFT, card=null; not a runtime/quality result",
+    "source_review_does_not_prove": "Compilation, device execution, observed causality, actual initialization/RNG parity, CUDA learning, typed resume or fixed-head quality",
+    "own_training_independence": "Excluded; separate independent-training-source-review-001.json965344f8... is an external peer's receipt",
+    "next_stage": "Ready for root's separate prospective source/card freeze review after remaining peer scopes. This receipt does not admit Stage/build/test/training/quality.",
+    "no_new_experiment_selected_by_reviewer": true
+  },
+  "reviewer_actions": {
+    "host_file_text_hash_JSON_inspection": true,
+    "read_only_git_no_index_file_diff": true,
+    "project_algorithm_execution": 0,
+    "project_imports_or_AST": 0,
+    "compiler_build_or_test_calls": 0,
+    "helper_or_wrapper_calls": 0,
+    "Docker_or_container_calls": 0,
+    "PT_or_tensor_value_reads": 0,
+    "model_or_decoder_calls": 0,
+    "head_fits": 0,
+    "encoder_updates": 0,
+    "quality_calls": 0,
+    "DEV_writes": 0,
+    "source_edits": 0,
+    "Git_mutations": 0,
+    "actual_card_creation": 0,
+    "additive_review_file_only": true,
+    "inspection_output_note": "One large metadata JSON display exceeded the tool output budget; the same checks were repeated with bounded output and stored successfully. A guessed checkpoint.h inspection path was absent; the actual location_scale_decoder_checkpoint.h was then located and inspected. Neither attempt executed project code or changed files."
+  },
+  "exact_independently_reviewed_family_files": [
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/provenance.json",
+      "bytes": 21281,
+      "sha256": "ea5373cd76f95f9cb2e3de069ce54f0bc61722d558ee9d27e80bf2808380535c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/README.md",
+      "bytes": 8398,
+      "sha256": "51cc9598de24e2aec5c8588a46ceaf2a03bc268ce696c20932217602e16d7577"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/v12.mk",
+      "bytes": 2351,
+      "sha256": "3d42ddf258973e49faf5741de6cdf6e6eb8680dfd9d5d1987cab4c761e88d39c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/config/v12.conf",
+      "bytes": 687,
+      "sha256": "ef15c1599014180504b7b9b6f48ea11edf4717e59f9aea584067e5e6bccf5e24"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/conditioned_change_bank.h",
+      "bytes": 1655,
+      "sha256": "1dfbf7fb669e2fd41d90eef9f945a9c5ecdf4b5182f90b39463a6ca10996b920"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/conditioned_change_config.h",
+      "bytes": 1483,
+      "sha256": "3eb63f168ad47fded11c499c4cbddfefde342c23af5fa5c938836070a0ff2694"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/conditioned_change_normalizer.h",
+      "bytes": 11397,
+      "sha256": "5c6213b4f0939be830e860cd26e77199579e3f4cb3a9f0f750cb86d304c9fb55"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/config.h",
+      "bytes": 5962,
+      "sha256": "f16dcec651e330a2f804c1d72cfddc52e259fb132828fb672f6e3a2c1cfdf703"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/configurable_spectral_checkpoint_io.h",
+      "bytes": 3105,
+      "sha256": "b5baea9c63bfeca08679b5ef905fb195546e8f6c226534b565c566566ba72349"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/configurable_spectral_checkpoint.h",
+      "bytes": 7357,
+      "sha256": "f097df453678dacc8f9130967d855fcfafb6d4a3a0ca5fba3b7b226d57fae148"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/configurable_spectral_config.h",
+      "bytes": 4944,
+      "sha256": "0c4c3cb835f3a12022d055e0ebaba25e074dc3758d3cee726a3844ccb9d1afc7"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/configurable_spectral_model.h",
+      "bytes": 13757,
+      "sha256": "759ba187244ab0974301286d2a2de94feffc157a35f33aac390e9e76dc5785fc"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/configurable_spectral_relation.h",
+      "bytes": 8185,
+      "sha256": "46bdb1473a4ede796c65b3eb7b8cd5c776fb237c676e217c4cb541dd20e0d9a9"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/consecutive_change_bank.h",
+      "bytes": 3583,
+      "sha256": "bfd02c6d16e3e97702ca84a363e76cf78dbeb2e763fa59fa74744f34f6b34d82"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/consecutive_change_checkpoint.h",
+      "bytes": 5188,
+      "sha256": "acb86802fd0b84313930db551bd3f7151bcb9f61490e2457a42fcf260812b31f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/consecutive_change_config.h",
+      "bytes": 1707,
+      "sha256": "a2bbdc04cda2853d6d2a834ba363a901f1bbcf4adb4f25c2c22ad75a13972e82"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/consecutive_change_model.h",
+      "bytes": 4020,
+      "sha256": "6bc6e1c2fcfc968df56bc070a58c1540f55fc5c97b22a5a1bdd08dc68a56311e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/consecutive_change_training_state.h",
+      "bytes": 14191,
+      "sha256": "7fad6c1d2e5bcff9d961ef1143b1b67dccc621bf677eaf0090ffc02589c1bd69"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/content_ordered_relation_bank.h",
+      "bytes": 5887,
+      "sha256": "0f165053d063b36dc93fd0f87fb1db2b4d98ac6f9d37021ae825ecb39b2c260d"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/content_ordered_relation_checkpoint.h",
+      "bytes": 5525,
+      "sha256": "e1e5a488020121ae4775cc3d172e3c6c067d5e0cc9435f1ee8ffb681068f4e02"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/content_ordered_relation_config.h",
+      "bytes": 2709,
+      "sha256": "6905a63936f9e27a552cad1aaec63feda62c4ac763591901aba1d143124528fa"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/content_ordered_relation_model.h",
+      "bytes": 6473,
+      "sha256": "f16ea73f15d00eb949f7db3ca38b79f9c0b301e133a5c68c7509d76493ee7bdf"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/document.h",
+      "bytes": 8107,
+      "sha256": "b07e37f55ae9f7608b2a732e2ef3bb6f35014443e6fcde08f2e686a865dba56f"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/encoder.h",
+      "bytes": 3782,
+      "sha256": "41105a5679d57c4f91b1dcdbd5b6d3d55e82f57d4cf1387516d34594ff8192d8"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/location_scale_decoder_checkpoint.h",
+      "bytes": 12978,
+      "sha256": "f56f460680e68650f018236730d951da71f0a3ac765ad1f5517e41528b892472"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/location_scale_decoder_config.h",
+      "bytes": 3588,
+      "sha256": "821950313625de84715c2613c9141ad4a43fe9fc3ff5d0f72d7650d2943039dd"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/location_scale_decoder_model.h",
+      "bytes": 17650,
+      "sha256": "a400a30879d4034526055186aba6a1cca045072f494158f6996373c02ea89d12"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/location_scale_decoder_settings.h",
+      "bytes": 3235,
+      "sha256": "49b4f6b3459f18b79bf29254bd6bf8d36040dc15f6f17a6ecb5497d8ad10e813"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/location_scale_decoder_training_state.h",
+      "bytes": 342,
+      "sha256": "0067ec509d22f124dfa96661d7888c68594e96bd1d91de86d96e04342e037294"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/masking.h",
+      "bytes": 3881,
+      "sha256": "5f412b7c939e659a1ca2055294abe0341c53462f4843981630e521c654db95a7"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/model.h",
+      "bytes": 23287,
+      "sha256": "84ba9924d9d6e90a6d9df0d8863bd9fa42983220395a94adb3549d88dd621733"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/objectives.h",
+      "bytes": 3163,
+      "sha256": "3f5af0150200e5c02b60e8139b266ee8570c5c14af72ebdc18e8740a648a1558"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/preprocessing.h",
+      "bytes": 10350,
+      "sha256": "90c899f4279d4ead21756d43bd079b413aea1c1db89f84879bac0294f377f890"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/relative_change_bank.h",
+      "bytes": 4789,
+      "sha256": "925d6a00c2cd80efb5263e3762fd889369854c8c3fa8fcc1fa43e0bb255fc6ec"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/relative_change_config.h",
+      "bytes": 1930,
+      "sha256": "168521fb3f8436caab2fe956e0a17755f00e6303564a59a088e9d9066d0e74c8"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/relative_change_normalizer.h",
+      "bytes": 3051,
+      "sha256": "3c359420286e8816ad1376de589f55bb725c66373662fa3e030e349ee2879ac4"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/separated_change_checkpoint.h",
+      "bytes": 5383,
+      "sha256": "50d26d1e798a37f95086723d4ca3d300cc1f86143008628c866efdf44654940e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/separated_change_config.h",
+      "bytes": 1632,
+      "sha256": "6a75631d618bd9e9af4fa9f07a0de344164d4175401bc3c237f28869f950d0e8"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/separated_change_frozen_level.h",
+      "bytes": 4538,
+      "sha256": "c109c2f19f111392baefcd4da0a5e12bebe0ddba08ac23b3f9c8103c083dd08b"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/separated_change_model.h",
+      "bytes": 5728,
+      "sha256": "ad0f70c61b1519633dc33834da32b3eeb5ef697c30b05b7f45bbbb2e3959d783"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/separated_change_training_state.h",
+      "bytes": 7346,
+      "sha256": "77dadd9d58dfa953df46b6b9671f2bd3bf1fdcb6e1b477b5d7a67ba2d1ada069"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/simple_kv_block.h",
+      "bytes": 8409,
+      "sha256": "e4699fc6374f23053b4c21f589a6ce418efac00486affed8ab214b2c5428328e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/temporal_pooling.h",
+      "bytes": 8635,
+      "sha256": "ced54d732309e79608c31dbb2d1424af4cf0028d59c6e667e03f47761c851e1b"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/tokenization.h",
+      "bytes": 4505,
+      "sha256": "80ed536062f0e2ce1ea8843443909e72ac77a8961866880e02bd1a7cb1a08961"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/types.h",
+      "bytes": 5714,
+      "sha256": "a4e6fc479594a993708a04f3f2bb26f6c998261060d82cf233e25bb81ba0eda4"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v12/visible_difference.h",
+      "bytes": 4818,
+      "sha256": "c48ecd81d82c269deb7cdd6005613e232fc776294a5731ae37affe4964fd4c3e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v12.h",
+      "bytes": 35688,
+      "sha256": "e0700d38a76d59f9694e7687d7db84b1446e73888397c79cf7d92708e3cec938"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/tests/v12_temporal_pooling_test.cpp",
+      "bytes": 31931,
+      "sha256": "760b178726372b7fb91e0c38488c4cc00c6286ebb0d0d46b4831608f6ac4adf9"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/tests/v12_test.cpp",
+      "bytes": 65920,
+      "sha256": "217c7b2e820f65bf36cdb7646b563152f486bfd52fa4847c1fc4f97f609ae8bd"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12/tests/v12_variance_gradient_test.cpp",
+      "bytes": 16472,
+      "sha256": "ca0c3bbee38319d4d66094c1979f9a6a9e31f5098e384b20fa26345e4919c241"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v12.h",
+      "bytes": 35688,
+      "sha256": "e0700d38a76d59f9694e7687d7db84b1446e73888397c79cf7d92708e3cec938"
+    },
+    {
+      "path": "doc/causal_fresh_v12/CPB-v12.descriptor-draft.json",
+      "bytes": 4415,
+      "sha256": "e678578824563a739c8bb75d93017bcf5a1693fe6312757a93d7a5aaf6d15e36"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/tests/v12_test.cpp",
+      "bytes": 74226,
+      "sha256": "550f667fe39798868810af008a4f1ab6095920c2a461aaaf336b0bb84717500e"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/tests/v12_separation_test.cpp",
+      "bytes": 16472,
+      "sha256": "ca0c3bbee38319d4d66094c1979f9a6a9e31f5098e384b20fa26345e4919c241"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/tests/v12_temporal_pooling_test.cpp",
+      "bytes": 31931,
+      "sha256": "760b178726372b7fb91e0c38488c4cc00c6286ebb0d0d46b4831608f6ac4adf9"
+    }
+  ],
+  "exact_independently_reviewed_training_auditor_files": [
+    {
+      "path": "code/research/causal_fresh_v12_training_audit/audit_training.py",
+      "bytes": 146160,
+      "sha256": "d4387a2fb14247a39ad6f132c30e97459f57f0f82d29aa372ae28655e460f737"
+    },
+    {
+      "path": "code/research/causal_fresh_v12_training_audit/provenance.json",
+      "bytes": 10815,
+      "sha256": "a759161f5c6f021a612f1747c913c02dce23c3fd48c1db5c700385e974c554c7"
+    },
+    {
+      "path": "code/research/causal_fresh_v12_training_audit/README.md",
+      "bytes": 5333,
+      "sha256": "90a49c7d83dc331ba93b5e55482a47f36b4869738455dcc6422db551b4798502"
+    }
+  ],
+  "remaining_findings": [],
+  "readiness": "SOURCE_STATIC_PASS_ONLY"
+}

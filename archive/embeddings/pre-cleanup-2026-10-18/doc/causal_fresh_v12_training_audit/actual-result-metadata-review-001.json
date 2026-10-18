@@ -1,0 +1,107 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v12_training_audit_actual_result_metadata_review_v1",
+  "status": "passed",
+  "scope": "Actual saved audit result/execution/mirror JSON and file hash review only;no numerical audit replay",
+  "metadata_checks": 35,
+  "independent_result": {
+    "path": "doc/causal_fresh_v12/independent-training-audit.json",
+    "bytes": 104279,
+    "sha256": "353551ad710d5cfa512fd25efcd72f702cd0fe939ff9b3e9af0213a88e5883c4"
+  },
+  "execution": {
+    "path": "doc/causal_fresh_v12/training-audit-execution-attempt001.json",
+    "bytes": 5854,
+    "sha256": "5c1c191fd3f304d42fe0e733997b64596fa7af368f034c853befa96574022507"
+  },
+  "complete_audit_mirror": {
+    "path": "doc/causal_fresh_v12/training-audit-mirror-attempt001.json",
+    "bytes": 7904,
+    "sha256": "c3b1b63e7aa1d09636b766f2963d63898e1526095437fdf564f0590f590c4971"
+  },
+  "source_before_after_manifest_equal": true,
+  "transport_unchanged": true,
+  "core_checks": 25618,
+  "five_distinct_module_checks": {
+    "numeric_statistics": 61153,
+    "saved_tensor_state": 1216,
+    "manual_saved_Gaussian": 117864,
+    "actual_pre_step_composite_objective": 69301,
+    "temporal_pooling_saved_learning": 295496
+  },
+  "total_core_plus_five": 570648,
+  "nested_moment": {
+    "status": "passed",
+    "checks": 244077,
+    "included_inside_temporal_module": true,
+    "added_again_to_total": false,
+    "moment_subgroup_rows": 16384,
+    "whole_partition_rows": 8192,
+    "mismatches": [],
+    "actual_witness_updates": [
+      1,
+      2048
+    ],
+    "component_fields": 60,
+    "temporal_fields": 25,
+    "new_uniform_fields": 4,
+    "parameter_fields": 12,
+    "strict_local_parameters": [
+      "export_weight",
+      "export_bias",
+      "pool_positions"
+    ],
+    "direct_uniform_dispersion_score_adjoint": 0,
+    "fixed_score_hidden_reference": "descriptive only",
+    "full_hidden_encoder_or_globalnorm_reconstruction": false,
+    "unmatched_decoder_replay": false
+  },
+  "core_mismatches": [],
+  "all_five_module_mismatch_counts": 0,
+  "mirror_counts": {
+    "whole_container_files": 15,
+    "mapped_inventory_entries": 14,
+    "inventory_members": 1,
+    "source_files": 6,
+    "Python_AST_files": 2
+  },
+  "external_actual_inventory": {
+    "path": "output/engineering/causal-fresh-v12-training-audit/attempt-001/container-mirror/mirror-inventory.json",
+    "bytes": 3802,
+    "sha256": "48e1487ec5caa89c1eaab4c70dbc28e0bea773aa509a53de5c5a5104efd70da8"
+  },
+  "host_run_receipt": {
+    "path": "output/engineering/causal-fresh-v12-training-audit/attempt-001/run-receipt.json",
+    "bytes": 1207,
+    "sha256": "736560c9582283fedbd3bce3c67e32a116443608e7a36757a49df67dcc676077"
+  },
+  "card": {
+    "path": "doc/causal_fresh_v12_training_audit/audit-card.json",
+    "bytes": 15871,
+    "sha256": "94a7e3e7d20fd5ba62c533da89fb193a1e454d9f5d9d4004ac1a1e949d85a809"
+  },
+  "actual_card_metadata_review": {
+    "path": "doc/causal_fresh_v12_training_audit/actual-card-independent-review-001.json",
+    "bytes": 6356,
+    "sha256": "5ec6da86328d2d1cecd98004a364c41a30d6149b122431145c1ded3516711251"
+  },
+  "host_evidence_root": "output/engineering/causal-fresh-v12-training-mirror/attempt-001",
+  "actions": {
+    "numeric_audit_invocations": 1,
+    "completed_audit_byte_mirror_invocations": 1,
+    "numerical_audit_replays": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "source_edits": 0,
+    "DEV_changes": 0,
+    "Git_changes": 0,
+    "deletions": 0
+  },
+  "quality_outcome_claimed": false,
+  "winner_selection_made": false,
+  "limitations": [
+    "Actual numeric conclusions are those of the separately reviewed independent auditor;this receipt binds saved outputs and sums declared check counters",
+    "No quality score,advancement count or candidate promotion follows from TRAIN audit success"
+  ]
+}

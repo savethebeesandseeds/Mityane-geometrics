@@ -1,0 +1,197 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 28,
+  "design_slot": "RPB-v28",
+  "canonical_registered_tag": "RPB-v28",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Genuine raw-F64 symmetric-relative adjacent bank, new frozen TRAIN standardizer and waveform-only native36",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h",
+      "sha256": "43cfd8a989166fef28c6a65114e152f0055e87619d93ea73ae0ac79c09d8b83f",
+      "bytes": 5147,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "RelativeChangeModel",
+      "RelativeChangeModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/relative_changes.conf",
+      "sha256": "5944821ca28118e8c97f836a4381d8341b90e477d6c1d9768e0d188207466664",
+      "bytes": 618,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/relative_changes.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_relative_changes_v1/completion.json",
+        "sha256": "18b4b9cd8b9d4897b0b13cc92bd3a26098c5a7d3e0ae44b168f79c0db5202ffb",
+        "bytes": 40883
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h",
+        "sha256": "43cfd8a989166fef28c6a65114e152f0055e87619d93ea73ae0ac79c09d8b83f",
+        "bytes": 5147
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/raw_relative_change_embedding_versions.json",
+      "sha256": "873a4a01074d5f297a29368d7508da2129257f832f5cf15d26e28e4ff205290c",
+      "bytes": 46218,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/raw_relative_change_embedding_versions.json",
+        "sha256": "873a4a01074d5f297a29368d7508da2129257f832f5cf15d26e28e4ff205290c",
+        "bytes": 46218,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v28.market-01",
+        "status": "measured stopped mechanism; original7/9, strict4/8; both volatility heads fail",
+        "batch_size": 8,
+        "geometry": {
+          "C": 3,
+          "H": 128,
+          "F": 9,
+          "P": 8,
+          "W": 64,
+          "canonical_channel_ids": [
+            0,
+            1,
+            2
+          ],
+          "sampling_interval_ms": 60000,
+          "parent_width": 32,
+          "change_width": 4,
+          "native_width": 36
+        }
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v28.market-01",
+      "description": "Genuine raw-F64 symmetric-relative adjacent bank, new frozen TRAIN standardizer and waveform-only native36",
+      "status": "stopped exact declared mechanism; preserved task references",
+      "input_geometry": {
+        "C": 3,
+        "H": 128,
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "native_width": 36,
+        "output": "one native vector per window"
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_RELATIVE_CHANGE_CARD.md",
+        "sha256": "f4378d4a76185fc17b6c0adbadab5af27accd772ed66e5a8bc628ab7848f94a2",
+        "bytes": 12447
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_RELATIVE_CHANGE_RESULTS.md",
+        "sha256": "887073b75a3e8dffb170ffe39205db5c707f56882bf38669b5a4b035a2824b78",
+        "bytes": 24331
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_relative_changes_v1/completion.json",
+        "sha256": "18b4b9cd8b9d4897b0b13cc92bd3a26098c5a7d3e0ae44b168f79c0db5202ffb",
+        "bytes": 40883
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_relative_changes_v1/table_rows.json",
+        "sha256": "61c5de99f0527fce8252cf579fefba0e6a9de22add193eb068d3a93aefb77890",
+        "bytes": 256949
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/inference-0.pt",
+          "sha256": "d0807e8d10ca0d5cd7f340eaae27bc0bf3e2d3d716d458bba2b04df28f158c88",
+          "bytes": 1282373,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/inference-2048.pt",
+          "sha256": "739e4fa87e32dfdcb911c09220e9c09944eabf8e1f87f21dce86adeacc2abf18",
+          "bytes": 1283303,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-1024.pt",
+          "sha256": "5467b7bfa61e1d7c1f1257e4e02a2c65aeadb174c5eedc5defdfbd9071bfdee7",
+          "bytes": 1424666,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-2048.pt",
+          "sha256": "3d4045a1a289f5a22cb0fdfdc3a348dc7fb0fc84dd8e1ca0d19507525b87064d",
+          "bytes": 1424666,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/training-512.pt",
+          "sha256": "a2df5f478e372754d2a4fba77041b1a790234a4e9ecfb7b6cbc3130820486385",
+          "bytes": 1424325,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

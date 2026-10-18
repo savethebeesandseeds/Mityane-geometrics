@@ -1,0 +1,9 @@
+Session: rpb-v21-engineering
+Build: /opt/cuwacunu_embedding/build/rpb-v21-engineering
+Runs: /embedding/output/runs/rpb-v21-engineering
+mkdir -p "/opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation"
+g++ -Icode/encoders/raw_patch_bottleneck_mae/include -Icode/shared/include -Icode/shared/tests -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/encoders/raw_patch_bottleneck_mae/tests/learned_ordered_relation_test.cpp -o /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test.o
+g++ /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test
+/opt/cuwacunu_embedding/build/rpb-v21-engineering/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test code/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf
+Permutation F32 roundoff: historical base 2.98023e-08, candidate 2.38419e-07
+PASS RPB-v21 artificial CUDA engineering: independent scalar moments, odd/even reversal, original common masks, semantic order, zero-start v20 bytes/RNG, generic geometry, actual Huber gradients/updates, fixed-prior parity and separate immutable typed checkpoints

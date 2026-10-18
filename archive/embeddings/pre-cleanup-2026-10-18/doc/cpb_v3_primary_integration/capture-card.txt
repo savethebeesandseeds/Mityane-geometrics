@@ -1,0 +1,34 @@
+SYNTHETIC CACHE88 -> EXISTING CPB-v3 CAPTURE CORRECTNESS CARD v1
+This is a synthetic engineering witness, without market inputs or quality scores.
+The generator creates data and pins files only; it never executes or trains a model.
+The separate preparation CLI may make eval/NoGrad CUDA captures with zero updates,
+zero scaler/normalizer fits, no old measurement replay, no publication or promotion.
+Runtime selection: CPB-v3 / CPB-v3.market-01.
+Checkpoint: /cuwacunu/output/baselines/CPB-v3.market-01/inference.pt
+Checkpoint SHA256 independently verified against config/encoder_runtime.conf: 50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e
+Encoder settings: /cuwacunu/config/encoder.conf, SHA256 01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2.
+Historical Encoder fit cutoff declared as 1705881599999 (2024-01-21 23:59:59.999 UTC).
+That bound is inherited provenance asserted for this card, not a new fit or inferred
+from checkpoint bytes. Synthetic observations start in January 2027 after that bound.
+Geometry C3/H128/F9 from actual config; semantic channel IDs ordered [0, 1, 2].
+Three distinct raw CACHE88 files, 600 complete one-minute candles each; no CSV or
+normalized cache, all finite positive OHLC and activity, all rows observed.
+Packed little endian <q5dq4d: 88 bytes/record, close_time offset48, trade-count F64 offset64.
+Source ordering SOURCE_0/1/2 binds generated channels to semantic IDs in config order.
+Close endpoint of tick j is UTC2027-01-01T00:00:00 + (j+1)*60000ms - 1ms.
+Available/decision time endpoint+5ms is an explicit simulation assumption,
+not measured live receipt latency. No execution-price or portfolio assumption.
+TRAIN raw ticks0..299; VALIDATION raw ticks300..599; no TEST or confirmation role.
+K4 s1; latent horizons1,16,128; future-risk R128, complete-window eligibility.
+Valid TRAIN origin tick150 has raw envelope ticks20..278 wholly in TRAIN.
+Valid VALIDATION origin tick450 has raw envelope ticks320..578 wholly in VALIDATION.
+Invalid VALIDATION origin tick599 retains missing future associations and boundary
+exclusion (envelope469..727); no interpolation, row shifting or missing-target zero.
+Required native endpoints21, available native windows18, capture each once.
+Expected pair ledger3 origins x3 horizons:6 eligible,3 invalid. All source values/masks
+remain origin-side or target-side according to the exact timestamp association.
+Future-risk labels: adjacent close log returns j1..128, centered population deviation
+in one-minute log-return units, and max loss relative to origin close; no annualization.
+Acceptance is pipeline correctness, finite native arrays, unchanged Encoder/scaler,
+explicit invalid retention and immutable roundtrip. No latent quality, state-learning,
+investment, source-data selection or generalization claim follows from this fixture.

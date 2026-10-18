@@ -1,0 +1,45 @@
+{
+  "schema": "cuwacunu-forecast-issuance-policy-v1",
+  "id": "joint-frozen-stage-issuance-v1",
+  "registeredOn": "2026-10-18",
+  "scope": "Model-side causal issuance engineering for the existing frozen Encoder and jointly fitted state/target/Dynamics tuple. Source implementation and synthetic correctness only; no market fit, capture, risk-head fit or scientific decision.",
+  "existingProtocol": {
+    "card": "doc/latent_state_control_v1/numeric-card.json",
+    "cardSha256": "38a551055a0bc329dde059e403d7f791cc812c123e6f5837f7840fc273287325",
+    "amendment1Sha256": "741bd04669b89724d6eeb5dafe76917666cca16499c987896a2838b3f388f784",
+    "amendment2Sha256": "6068a97c65ba4c197be2ac3761de82f93f1bd5d7d0fa87f5d9b1540fe13ca97f",
+    "rule": "This adds a serving boundary and explicit compatible-stage policy; it changes no registered numerical model, optimizer, fitting budget, weights or quality threshold. Future market execution still requires its separately verified campaign closure."
+  },
+  "stage": {
+    "kind": "joint-frozen-single-stage",
+    "representationTargetDynamicsFit": "One shared declared fit cutoff for online state, target state and Dynamics Model. Encoder fit cutoff is separately declared and cannot be later than that shared fit cutoff.",
+    "fitBeforeOrigin": "Every Encoder, online state, target state and Dynamics Model fit cutoff must be strictly less than the forecast origin endpoint_ms. Equality is unavailable. A later decision_ms cannot legalize a model fitted at or after its origin.",
+    "decision": "decision_ms must be at least origin endpoint_ms. Required observations must have endpoint<=origin endpoint and available_ms<=decision_ms. This explicitly permits declared decision latency while all model fits remain strictly before the origin.",
+    "fitMaturity": "Representation/Dynamics fitting uses only complete admissible TRAIN histories and targets fully supported inside TRAIN and available by the shared fit cutoff. Target maturity is checked for fitting and scoring, never to decide whether an input-only forecast may issue.",
+    "marketChronology": "The existing development card's representation fit cutoff is January23 2024 end UTC; later risk-head TRAIN begins January24 and evaluation begins January26. These are future market-stage constraints, not synthetic timestamps or admission to execute that study."
+  },
+  "identity": {
+    "required": ["Exact captured timeline identity and geometry", "Encoder archive and independently pinned sidecar", "Predictive inference archive and independently pinned sidecar", "Encoder, online state, target state and Dynamics ModelRefs", "Role-correct exact parent relationships", "Complete four-component BundleRef", "Frozen transforms and target coordinate identity", "Every component fit cutoff", "Registered issuance policy hash"],
+    "targetCoordinates": "Use the exact existing target_state_coordinate_id(timeline_id,predictive_archive_sha256) token and bind the target ModelRef too. Native-e forecasts remain a separate coordinate space. Equal dimensions do not establish compatible coordinates.",
+    "consumption": "Use only the immutable CheckedInference handle whose checked components and verified raw archive/sidecar identities match the selected contract. Reject missing, changed, stale or substituted parents, coordinates, bundles and policies before publication or downstream use.",
+    "oneBank": "One issued forecast bank belongs to one exact compatible frozen tuple and target coordinate system. Never concatenate or pool predictions from independently refitted state/target coordinates under one downstream head."
+  },
+  "inputs": {
+    "allowed": "Origin endpoint/decision/role/ID, input-side ledger reasons, and exact K past embedding windows on the declared spacing grid, with original support, availability and validity.",
+    "forbidden": "Future target values, target masks/eligibility, target availability/maturity, target row identities or target-side invalid reasons cannot enter serving or determine issuance validity.",
+    "policy": "Independently validate actual input windows, grid, semantic identities, roles, support and availability. Preserve every requested origin and horizon, with finite zero storage and explicit reasons when unavailable or invalid. No neighbor substitution, compression of invalid rows, fit fallback or coordinate normalization refit."
+  },
+  "publication": {
+    "issued": "Publish complete original origin/horizon associations, issuance validity/reasons, exact target coordinate, component cutoffs, verified archive/sidecar/parent/BundleRef and policy identity beside the prediction archive; pin exact output bytes for checked consumption.",
+    "retrospective": "Existing fitting_forecasts are a separate retrospective diagnostic. They cannot be relabeled as out-of-sample issued forecasts or consumed as causal later-stage risk-TRAIN features. Existing historical synthetic utility receipts retain their original meaning.",
+    "downstream": "Observable Risk owns its later head fitting and must independently verify compatible issued features and staged cutoffs. This goal does not complete risk-head chronology, full selected-Encoder chain verification or a market study."
+  },
+  "crossFitting": {
+    "admittedHere": false,
+    "rule": "Reject cross-fit or fold-pooling requests under this policy. There is no implicit Dynamics Model-only cross-fit or representation refit.",
+    "futureCompatibleOption": "A separately registered Dynamics-only cross-fit must keep state/target maps, transforms and coordinate identities exactly frozen, fit each Dynamics Model only after representation fitting and issue only after its own fit cutoff. Latent State Learning owns and publishes each fit, exact parent, coordinates and cutoff.",
+    "futureRepresentationOption": "A new representation fold requires its own exact state/target coordinates and a compatible risk head within that fold; pool only common-observable losses, never independently refitted coordinate vectors under one head."
+  },
+  "witnesses": ["Each component fit cutoff equal to or later than origin is rejected even with a later decision", "Availability exactly at decision accepted and later inputs rejected", "Missing/invalid/support-incompatible input rows retained with reasons", "Future value/mask/availability changes leave issued forecasts identical", "Fitting target maturity remains independent from issuance", "Wrong archive, sidecar, parent, BundleRef, coordinate or mixed fold rejected", "Saved predictions and issuance metadata round-trip with exact checked output identity", "Existing synthetic study/resume/utility witness remains separately scoped and preserves exact resume"],
+  "outcome": "prospective-engineering-policy-only"
+}

@@ -1,0 +1,1826 @@
+{
+  "protocol": "partitioned-relation-screen-v1",
+  "dataset_id": "TEMPO-3",
+  "task": "lag_sign",
+  "recipe_id": "structured-hard-timing-v1",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "screen_masters": [
+    75272,
+    76373
+  ],
+  "inputs": [
+    {
+      "run": "/embedding/output/runs/rpb-partitioned-relation-screen/admission-K3FtYN/quality-v16",
+      "report_sha256": "ae2b6de67034dc0a7e9fbb37c31723d5b2d95d0347bb9eda52c1e914373d6e68",
+      "saved_check_sha256": "dc46852f75df5a13c4bae484df0015b12da8e23e2a827456f5c5cd2d632fcb98",
+      "source_fingerprint": "69e6d237145001b2808e58ab0206ab72c9d5229a008eb2447c5b9ea6a719f1a0",
+      "saved_check": {
+        "protocol": "partitioned-relation-screen-saved-check-v1",
+        "status": "passed",
+        "report_sha256": "ae2b6de67034dc0a7e9fbb37c31723d5b2d95d0347bb9eda52c1e914373d6e68",
+        "reader_sha256": "91f17f26a78fafc774c68162813d3810651f2c089567a5a6ae053782942711e8",
+        "modules_sha256": {
+          "archive_codec.py": "4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d",
+          "saved_cpu_math.py": "1993af23915ba8200389727e2810caad175613fae7ead00d5ea0cb5250e303b9",
+          "legacy_implementation.py": "f0c64b9fe67a90a9d95196433e05dec527515778d1635bdc909d1703fa278b68"
+        },
+        "checks": 2331315,
+        "CPU_archive_decodes": 72,
+        "cohorts": [
+          {
+            "master": 75272,
+            "status": "passed"
+          },
+          {
+            "master": 76373,
+            "status": "passed"
+          }
+        ],
+        "encoder_forwards": 0,
+        "encoder_updates": 0,
+        "head_fits": 0,
+        "PCA_fits": 0
+      }
+    }
+  ],
+  "promotion": false,
+  "old_instances_replaced": false,
+  "testing_accessed": false,
+  "stages": {
+    "screen": {
+      "masters": [
+        75272,
+        76373
+      ],
+      "quality": {
+        "validation_intact": [
+          {
+            "label": "Raw data \u2014 no encoder",
+            "size": 576,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.53125,
+                "tiny_secondary": 0.5338541666666666,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.5078125,
+                "tiny_secondary": 0.5182291666666666,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.51953125,
+            "tiny_secondary_mean": 0.5260416666666666,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.5078125,
+            "tiny_secondary_worst": 0.5182291666666666
+          },
+          {
+            "label": "PCA only \u2014 no encoder",
+            "size": 32,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.4765625,
+                "tiny_secondary": 0.4895833333333333,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.4765625,
+                "tiny_secondary": 0.5390625,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.4765625,
+            "tiny_secondary_mean": 0.5143229166666666,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.4765625,
+            "tiny_secondary_worst": 0.4895833333333333
+          },
+          {
+            "label": "RPB-v10.alt-05",
+            "size": 32,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.515625,
+                "tiny_secondary": 0.5208333333333334,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.484375,
+                "tiny_secondary": 0.5442708333333334,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.5,
+            "tiny_secondary_mean": 0.5325520833333334,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.484375,
+            "tiny_secondary_worst": 0.5208333333333334
+          },
+          {
+            "label": "RPB-v16",
+            "size": 32,
+            "evidence": "new",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 1,
+                "tiny_secondary": 1,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "10102666785209784058",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "1805288922429489026",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "571085857339730594",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "master": 76373,
+                "ridge": 1,
+                "tiny_secondary": 1,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "4594761023076579683",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "6368369119935502785",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "11417870537351077828",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ridge_mean": 1,
+            "tiny_secondary_mean": 1,
+            "coverage_mean": 1,
+            "ridge_worst": 1,
+            "tiny_secondary_worst": 1
+          }
+        ],
+        "validation_deleted": [
+          {
+            "label": "Raw data \u2014 no encoder",
+            "size": 576,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.5234375,
+                "tiny_secondary": 0.4869791666666667,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.4609375,
+                "tiny_secondary": 0.5416666666666666,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.4921875,
+            "tiny_secondary_mean": 0.5143229166666666,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.4609375,
+            "tiny_secondary_worst": 0.4869791666666667
+          },
+          {
+            "label": "PCA only \u2014 no encoder",
+            "size": 32,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.484375,
+                "tiny_secondary": 0.5026041666666666,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.4765625,
+                "tiny_secondary": 0.5234375,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.48046875,
+            "tiny_secondary_mean": 0.5130208333333333,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.4765625,
+            "tiny_secondary_worst": 0.5026041666666666
+          },
+          {
+            "label": "RPB-v10.alt-05",
+            "size": 32,
+            "evidence": "reused",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.5390625,
+                "tiny_secondary": 0.53125,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              },
+              {
+                "master": 76373,
+                "ridge": 0.546875,
+                "tiny_secondary": 0.5598958333333334,
+                "coverage": 1.0,
+                "valid_rows": 128,
+                "total_rows": 128,
+                "fit_status": "measured",
+                "reason": ""
+              }
+            ],
+            "ridge_mean": 0.54296875,
+            "tiny_secondary_mean": 0.5455729166666667,
+            "coverage_mean": 1.0,
+            "ridge_worst": 0.5390625,
+            "tiny_secondary_worst": 0.53125
+          },
+          {
+            "label": "RPB-v16",
+            "size": 32,
+            "evidence": "new",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.84375,
+                "tiny_secondary": 0.9114583333333334,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 108,
+                        "coverage": 1,
+                        "full_population_correctness": 0.84375,
+                        "accuracy": 0.84375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 116,
+                        "coverage": 1,
+                        "full_population_correctness": 0.90625,
+                        "accuracy": 0.90625
+                      },
+                      "bootstrap_seed_decimal": "2835037006390002108",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.84375,
+                        "lower": 0.75,
+                        "upper": 0.9296875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.90625,
+                        "lower": 0.8359375,
+                        "upper": 0.96875
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 108,
+                        "coverage": 1,
+                        "full_population_correctness": 0.84375,
+                        "accuracy": 0.84375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 122,
+                        "coverage": 1,
+                        "full_population_correctness": 0.953125,
+                        "accuracy": 0.953125
+                      },
+                      "bootstrap_seed_decimal": "13412790622559846436",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.84375,
+                        "lower": 0.75,
+                        "upper": 0.921875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.953125,
+                        "lower": 0.890625,
+                        "upper": 0.9921875
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 108,
+                        "coverage": 1,
+                        "full_population_correctness": 0.84375,
+                        "accuracy": 0.84375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 112,
+                        "coverage": 1,
+                        "full_population_correctness": 0.875,
+                        "accuracy": 0.875
+                      },
+                      "bootstrap_seed_decimal": "3438898316709451387",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.84375,
+                        "lower": 0.75,
+                        "upper": 0.9296875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.875,
+                        "lower": 0.7890625,
+                        "upper": 0.953125
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "master": 76373,
+                "ridge": 0.8203125,
+                "tiny_secondary": 0.6953125,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 105,
+                        "coverage": 1,
+                        "full_population_correctness": 0.8203125,
+                        "accuracy": 0.8203125
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 86,
+                        "coverage": 1,
+                        "full_population_correctness": 0.671875,
+                        "accuracy": 0.671875
+                      },
+                      "bootstrap_seed_decimal": "9000786858163959167",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.8203125,
+                        "lower": 0.7421875,
+                        "upper": 0.890625
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.671875,
+                        "lower": 0.5625,
+                        "upper": 0.7734375
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 105,
+                        "coverage": 1,
+                        "full_population_correctness": 0.8203125,
+                        "accuracy": 0.8203125
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 96,
+                        "coverage": 1,
+                        "full_population_correctness": 0.75,
+                        "accuracy": 0.75
+                      },
+                      "bootstrap_seed_decimal": "13051161837372568259",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.8203125,
+                        "lower": 0.734375,
+                        "upper": 0.890625
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.75,
+                        "lower": 0.640625,
+                        "upper": 0.84375
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 105,
+                        "coverage": 1,
+                        "full_population_correctness": 0.8203125,
+                        "accuracy": 0.8203125
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 85,
+                        "coverage": 1,
+                        "full_population_correctness": 0.6640625,
+                        "accuracy": 0.6640625
+                      },
+                      "bootstrap_seed_decimal": "12592777741272930892",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.8203125,
+                        "lower": 0.734375,
+                        "upper": 0.8984375
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.6640625,
+                        "lower": 0.5546875,
+                        "upper": 0.7734375
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ridge_mean": 0.83203125,
+            "tiny_secondary_mean": 0.8033854166666667,
+            "coverage_mean": 1,
+            "ridge_worst": 0.8203125,
+            "tiny_secondary_worst": 0.6953125
+          }
+        ]
+      },
+      "untrained": {
+        "validation_intact": [
+          {
+            "label": "RPB-v16",
+            "size": 32,
+            "evidence": "new",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 1,
+                "tiny_secondary": 1,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "10102666785209784058",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "1805288922429489026",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "571085857339730594",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "master": 76373,
+                "ridge": 1,
+                "tiny_secondary": 1,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "4594761023076579683",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "6368369119935502785",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_intact": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "11417870537351077828",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ridge_mean": 1,
+            "tiny_secondary_mean": 1,
+            "coverage_mean": 1,
+            "ridge_worst": 1,
+            "tiny_secondary_worst": 1
+          }
+        ],
+        "validation_deleted": [
+          {
+            "label": "RPB-v16",
+            "size": 32,
+            "evidence": "new",
+            "per_master": [
+              {
+                "master": 75272,
+                "ridge": 0.921875,
+                "tiny_secondary": 0.9973958333333334,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 118,
+                        "coverage": 1,
+                        "full_population_correctness": 0.921875,
+                        "accuracy": 0.921875
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "2835037006390002108",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.921875,
+                        "lower": 0.859375,
+                        "upper": 0.9765625
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 118,
+                        "coverage": 1,
+                        "full_population_correctness": 0.921875,
+                        "accuracy": 0.921875
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 127,
+                        "coverage": 1,
+                        "full_population_correctness": 0.9921875,
+                        "accuracy": 0.9921875
+                      },
+                      "bootstrap_seed_decimal": "13412790622559846436",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.921875,
+                        "lower": 0.8515625,
+                        "upper": 0.96875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.9921875,
+                        "lower": 0.9765625,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 118,
+                        "coverage": 1,
+                        "full_population_correctness": 0.921875,
+                        "accuracy": 0.921875
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "3438898316709451387",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.921875,
+                        "lower": 0.859375,
+                        "upper": 0.9765625
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "master": 76373,
+                "ridge": 0.859375,
+                "tiny_secondary": 0.9973958333333334,
+                "coverage": 1,
+                "fit_status": "measured",
+                "reason": "",
+                "repetitions": [
+                  {
+                    "id": "rep-2701",
+                    "actual_probe_seed_decimal": "15952039642448263928",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 110,
+                        "coverage": 1,
+                        "full_population_correctness": 0.859375,
+                        "accuracy": 0.859375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "9000786858163959167",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.859375,
+                        "lower": 0.78125,
+                        "upper": 0.9296875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2802",
+                    "actual_probe_seed_decimal": "10925781080001991545",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 110,
+                        "coverage": 1,
+                        "full_population_correctness": 0.859375,
+                        "accuracy": 0.859375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 128,
+                        "coverage": 1,
+                        "full_population_correctness": 1,
+                        "accuracy": 1
+                      },
+                      "bootstrap_seed_decimal": "13051161837372568259",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.859375,
+                        "lower": 0.78125,
+                        "upper": 0.9296875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 1,
+                        "lower": 1,
+                        "upper": 1
+                      }
+                    }
+                  },
+                  {
+                    "id": "rep-2903",
+                    "actual_probe_seed_decimal": "14020430036991234725",
+                    "validation_deleted": {
+                      "population": {
+                        "total_rows": 128,
+                        "valid_rows": 128,
+                        "class_valid_rows": [
+                          64,
+                          64
+                        ],
+                        "total_source_groups": 64,
+                        "valid_source_groups": 64,
+                        "coverage": 1
+                      },
+                      "ridge": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 110,
+                        "coverage": 1,
+                        "full_population_correctness": 0.859375,
+                        "accuracy": 0.859375
+                      },
+                      "tiny_secondary": {
+                        "total": 128,
+                        "valid": 128,
+                        "correct": 127,
+                        "coverage": 1,
+                        "full_population_correctness": 0.9921875,
+                        "accuracy": 0.9921875
+                      },
+                      "bootstrap_seed_decimal": "12592777741272930892",
+                      "ridge_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.859375,
+                        "lower": 0.78125,
+                        "upper": 0.9296875
+                      },
+                      "tiny_grouped_interval": {
+                        "method": "source-group percentile bootstrap; within-master conditional on fitted readout",
+                        "replicates": 1000,
+                        "confidence": 0.95,
+                        "source_groups": 64,
+                        "estimate": 0.9921875,
+                        "lower": 0.9765625,
+                        "upper": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ridge_mean": 0.890625,
+            "tiny_secondary_mean": 0.9973958333333334,
+            "coverage_mean": 1,
+            "ridge_worst": 0.859375,
+            "tiny_secondary_worst": 0.9973958333333334
+          }
+        ]
+      },
+      "training": [
+        {
+          "label": "RPB-v16",
+          "updates": 512,
+          "train_error": 0.6682283519633466,
+          "validation_error": 0.7072653134731646,
+          "GPU_training_seconds": 21.0810956565,
+          "per_master": [
+            {
+              "master": 75272,
+              "progress": {
+                "attempted": 512,
+                "completed": 512,
+                "sampled_rows": 4096,
+                "parameter_count": 226877,
+                "cuda_parameter_count": 226877,
+                "training_seconds": 21.398341783,
+                "training_device": "cuda:0",
+                "preprocessing_id": "rpb-scaler-v1-fnv1a64-64474044b7fa92d2",
+                "weights_changed": true,
+                "context_requested_deleted_coordinates": 108320,
+                "context_actual_deleted_coordinates": 108320,
+                "context_restored_coordinates": 0,
+                "trace_columns": [
+                  "attempted",
+                  "completed",
+                  "target_cells",
+                  "total_loss",
+                  "waveform_loss",
+                  "dynamics_loss",
+                  "gradient_norm",
+                  "dynamics_valid_dimensions",
+                  "requested",
+                  "actual",
+                  "restored"
+                ]
+              },
+              "training_reconstruction": {
+                "status": "measured",
+                "units": "frozen training-scaler standardized",
+                "total_examples": 256,
+                "valid_examples": 256,
+                "example_coverage": 1,
+                "valid_channels": 768,
+                "valid_target_cells": 60146,
+                "requested_observed_target_cells": 60146,
+                "target_coverage": 1,
+                "standardized_mae": 0.6615150874444559,
+                "standardized_huber": 0.30791636115813714,
+                "query_checksum_fnv1a64": "b2fceedf490d0929",
+                "artifact": "training-reconstruction.pt"
+              },
+              "validation_reconstruction": {
+                "status": "measured",
+                "units": "frozen training-scaler standardized",
+                "total_examples": 128,
+                "valid_examples": 128,
+                "example_coverage": 1,
+                "valid_channels": 384,
+                "valid_target_cells": 29934,
+                "requested_observed_target_cells": 29934,
+                "target_coverage": 1,
+                "standardized_mae": 0.6921101155631304,
+                "standardized_huber": 0.33234299869064987,
+                "query_checksum_fnv1a64": "536d802909327ef9",
+                "artifact": "validation-reconstruction.pt"
+              },
+              "costs": {
+                "input_load_seconds": 0.079119104,
+                "binding_checkpoint_snapshot_seconds": 0.491649707,
+                "CUDA_feature_transfer_seconds": 0.949417082,
+                "CPU_heads_and_intervals_IO_seconds": 1.6464578890000001,
+                "CUDA_query_transfer_IO_seconds": 1.263094358
+              },
+              "full_progress_artifact": "/embedding/output/runs/rpb-partitioned-relation-screen/admission-K3FtYN/quality-v16/seed-75272/progress.json",
+              "full_progress_sha256": "d8d99696674760654fa80b19f527bfd30803459eea0509fcbc202b31d78bf7e7"
+            },
+            {
+              "master": 76373,
+              "progress": {
+                "attempted": 512,
+                "completed": 512,
+                "sampled_rows": 4096,
+                "parameter_count": 226877,
+                "cuda_parameter_count": 226877,
+                "training_seconds": 20.76384953,
+                "training_device": "cuda:0",
+                "preprocessing_id": "rpb-scaler-v1-fnv1a64-86e3dac9f6efdc69",
+                "weights_changed": true,
+                "context_requested_deleted_coordinates": 108568,
+                "context_actual_deleted_coordinates": 108568,
+                "context_restored_coordinates": 0,
+                "trace_columns": [
+                  "attempted",
+                  "completed",
+                  "target_cells",
+                  "total_loss",
+                  "waveform_loss",
+                  "dynamics_loss",
+                  "gradient_norm",
+                  "dynamics_valid_dimensions",
+                  "requested",
+                  "actual",
+                  "restored"
+                ]
+              },
+              "training_reconstruction": {
+                "status": "measured",
+                "units": "frozen training-scaler standardized",
+                "total_examples": 256,
+                "valid_examples": 256,
+                "example_coverage": 1,
+                "valid_channels": 768,
+                "valid_target_cells": 60342,
+                "requested_observed_target_cells": 60342,
+                "target_coverage": 1,
+                "standardized_mae": 0.6749416164822374,
+                "standardized_huber": 0.3187287577488739,
+                "query_checksum_fnv1a64": "42f8520cd8afdf91",
+                "artifact": "training-reconstruction.pt"
+              },
+              "validation_reconstruction": {
+                "status": "measured",
+                "units": "frozen training-scaler standardized",
+                "total_examples": 128,
+                "valid_examples": 128,
+                "example_coverage": 1,
+                "valid_channels": 384,
+                "valid_target_cells": 30266,
+                "requested_observed_target_cells": 30266,
+                "target_coverage": 1,
+                "standardized_mae": 0.7224205113831987,
+                "standardized_huber": 0.35650766032403935,
+                "query_checksum_fnv1a64": "e6eb23faca3f3f31",
+                "artifact": "validation-reconstruction.pt"
+              },
+              "costs": {
+                "input_load_seconds": 0.071307531,
+                "binding_checkpoint_snapshot_seconds": 0.382531314,
+                "CUDA_feature_transfer_seconds": 0.685605309,
+                "CPU_heads_and_intervals_IO_seconds": 1.653966301,
+                "CUDA_query_transfer_IO_seconds": 1.139534464
+              },
+              "full_progress_artifact": "/embedding/output/runs/rpb-partitioned-relation-screen/admission-K3FtYN/quality-v16/seed-76373/progress.json",
+              "full_progress_sha256": "14d776dee1a23f823e851302723523fe1fdf161701390f9a39a72ff66e8c9044"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advancement": {
+    "RPB-v16": {
+      "passed": false,
+      "conditions": [
+        {
+          "master": 75272,
+          "view": "validation_intact",
+          "ridge": 1,
+          "tiny_secondary": 1,
+          "coverage": 1,
+          "passed": true
+        },
+        {
+          "master": 75272,
+          "view": "validation_deleted",
+          "ridge": 0.84375,
+          "tiny_secondary": 0.9114583333333334,
+          "coverage": 1,
+          "passed": true
+        },
+        {
+          "master": 76373,
+          "view": "validation_intact",
+          "ridge": 1,
+          "tiny_secondary": 1,
+          "coverage": 1,
+          "passed": true
+        },
+        {
+          "master": 76373,
+          "view": "validation_deleted",
+          "ridge": 0.8203125,
+          "tiny_secondary": 0.6953125,
+          "coverage": 1,
+          "passed": false
+        }
+      ]
+    }
+  }
+}

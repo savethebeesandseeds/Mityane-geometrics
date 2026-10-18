@@ -1,0 +1,70 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v3_v4_TRAIN_diagnosis_independent_audit_card_v1",
+  "stage": "declared_after_main_diagnosis_before_independent_execution",
+  "scope": "Independent implementation of the previously declared saved TRAIN arithmetic; no selection of metrics, candidate or objective from the diagnosis outcome.",
+  "main_card": {
+    "path": "doc/CAUSAL_V3_V4_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 41490,
+    "sha256": "39d08ea87e28a5f7242128acde8f78ad434a7b6a973ba8da8be8ed36b549fa86"
+  },
+  "main_diagnosis": {
+    "path": "doc/causal_v3_v4_train_diagnosis/diagnosis.json",
+    "bytes": 1257553,
+    "sha256": "01a6909b37776376f79e4c481703227a078e249eafb3d1453945dc0a4b42b644"
+  },
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 32071,
+      "sha256": "1ccab1aa0cc5c64176f4440fe363b0d9e6170a60ebcabdd1afa29970be5a40dd"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "source_ownership": "New independent auditor; complete byte-exact owned reader copy. No import of diagnose.py, historical model code or numerical frameworks.",
+  "allowed_inputs": "Only the same41 main-card bindings and their exact explicit tensor fields.37 TRAIN archives and4 summary JSON objects; summaries are parsed whole but only train key used.15 preservation-only files and broad before receipt are hashed only.",
+  "scope_checks": [
+    "Four model/stage full-context TRAIN112 coordinate moments, ranges, correlations and population covariance trace/Frobenius/participation ratio",
+    "All saved three-repetition TRAIN predictions, exact target/row/group/support and D36 seeds; scores and fixed early56/late56 halves",
+    "Saved feature/target normalization moments and ridge coefficient arithmetic; volatility/activity block components, covariance and residual alignment; no fitted predictor or neural forward",
+    "First8 detailed TRAIN query masks/timestamps/support and per-cell/per-channel hierarchical MAE/GaussianNLL;27 feature panels, fixed distributions and all112 TRAIN summary reductions",
+    "All local change4 mean-NLL/MAE/Huber1 and hypothetical variance adjoints, applied V3/V4 variance policy, live conditional variance-head adjoints; norm/dot/cosines",
+    "Prespecified scalar finite differences on first16 supported cells/stage in canonical b,c,f,h traversal; total64 cells and256 derivative checks",
+    "Cross-model/stage exact initial pairing, reported differences and producer allowed-field trace"
+  ],
+  "finite_difference_contract": {
+    "cells_per_stage": 16,
+    "stages": 4,
+    "derivatives_per_cell": 4,
+    "expected_checks": 256,
+    "mean_step": "h=min(1e-6*max(1,abs(error)),0.25*abs(error)) for nonzero error; h=1e-6 at zero",
+    "variance_step": "h=1e-5*variance; both perturbed variances stay positive",
+    "objectives": [
+      "0.5*(error^2/variance+log(variance)) mean derivative",
+      "abs(error), symmetric zero subgradient",
+      "Huber(delta1), derivative clip(error,-1,1)",
+      "Gaussian NLL variance derivative"
+    ],
+    "tolerance": "absolute1e-6+relative2e-4; fixed before execution",
+    "limits": "Scalar likelihood kernels plus independently reconstructed linear chain rules; no encoder or optimizer Jacobian replay."
+  },
+  "saved_arithmetic_tolerance": "absolute1e-10+relative1e-9 as main prospective card; exact masks/IDs/pairing/field selectors",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "exclusive_source_and_output_leaf": true,
+    "model_calls": 0,
+    "neural_forwards": 0,
+    "fits": 0,
+    "training_updates": 0,
+    "held_out_tensor_reads": 0,
+    "host_project_execution": false
+  },
+  "failure_policy": "Preserve failed source/card/stdout/output and use additive audit-only corrections if necessary. Never change main diagnosis or replay models/heads.",
+  "CLI": "--card FROZEN_MAIN_CARD --diagnosis SAVED_JSON --audit-card THIS_CARD --output EXCLUSIVE_JSON"
+}

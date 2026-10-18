@@ -1,0 +1,159 @@
+{
+  "kind": "cpb_v9_v11_diagnosis_completed_context_plan_v1",
+  "status": "root_reviewed_completed_inputs",
+  "authorized_execution": false,
+  "created_utc": "2026-10-17T17:55:38.8777152Z",
+  "context_inputs": [
+    {
+      "id": "old_card",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/CAUSAL_V8_V9_TRAIN_DIAGNOSIS_CARD.json",
+      "bytes": 90296,
+      "sha256": "ceb4c2648a2e4b3d594b2028ae91eab6a9a626f1846a1d11b2b9b0bd1f4cd950"
+    },
+    {
+      "id": "old_audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_v9_train_diagnosis/independent-audit.json",
+      "bytes": 89509,
+      "sha256": "c0c8d5c93e95d24c8a79f3e1d6a94b597a4ac853407c38aaeea27235715d8da9"
+    },
+    {
+      "id": "old_main_mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_v9_train_diagnosis/complete-mirror.json",
+      "bytes": 7199,
+      "sha256": "6e1f55f7b18dd311552d3cf341d6bbdf17a1d40f0c7c8be749c4a0443f00cc08"
+    },
+    {
+      "id": "old_audit_mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_v9_train_diagnosis/independent-audit-mirror.json",
+      "bytes": 9612,
+      "sha256": "a3c0efb1a66b94d92cfd80175457f0a6211e27e2e33248df0f856386da814977"
+    },
+    {
+      "id": "v11_training_audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v11/independent-training-audit.json",
+      "bytes": 79566,
+      "sha256": "96c11ddc1c9f5881319674c8262c8e81d780c0e2c0b96817b9ac9e9abc4687dd"
+    },
+    {
+      "id": "v11_final_establishment",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v11/final-establishment.json",
+      "bytes": 8729,
+      "sha256": "01f96fea179f6f7d8a7bb28befca9271cd048ac8d83f05f9e64418276c47dda2"
+    },
+    {
+      "id": "v11_final_preservation",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v11/final-preservation.json",
+      "bytes": 1066891,
+      "sha256": "805aa2183f14dbfd3a7bb521a67f5d01e33b22008b5244da45745baa8c51bab0"
+    },
+    {
+      "id": "current_goal_protocol",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_search_goal_v11_retention.json",
+      "bytes": 48667,
+      "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+    },
+    {
+      "id": "retention_independent_review",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v11_retention_review/independent-review.json",
+      "bytes": 3839,
+      "sha256": "9d15d8df155460787270df8fedc75f08ea31ad1381d6061a73e264343c5c78ee"
+    },
+    {
+      "id": "retention_application_admission",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v11_retention_review/applied-future-protocol.json",
+      "bytes": 3032,
+      "sha256": "e59f8eeaa4993ec116eca2751c2cbb9a957c6ae81b95047917b71e01485f3035"
+    },
+    {
+      "id": "current_ledger",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_research_ledger.json",
+      "bytes": 1237073,
+      "sha256": "7e4e792a845f9be8c2888107489b67e28cb0975b61799d24a28c70b70c1aa902"
+    },
+    {
+      "id": "current_catalog",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "bytes": 53294,
+      "sha256": "8ef750c9ebbc6279038d80f8e6d341b6b0ec656e68ce8f8f15e1d377df3c4269"
+    }
+  ],
+  "context_assertions": {
+    "v11_preservation_status": {
+      "input": "v11_final_preservation",
+      "path": [
+        "status"
+      ],
+      "equals": "passed"
+    },
+    "v11_preservation_checkpoint_count": {
+      "input": "v11_final_preservation",
+      "path": [
+        "critical_checkpoint_total"
+      ],
+      "equals": 109
+    },
+    "retention_review_status": {
+      "input": "retention_independent_review",
+      "path": [
+        "status"
+      ],
+      "equals": "passed"
+    },
+    "retention_applied": {
+      "input": "retention_application_admission",
+      "path": [
+        "applied"
+      ],
+      "equals": true
+    },
+    "ledger_baseline": {
+      "input": "current_ledger",
+      "path": [
+        "baseline"
+      ],
+      "equals": "CPB-v3.market-01"
+    },
+    "catalog_baseline": {
+      "input": "current_catalog",
+      "path": [
+        "active_application"
+      ],
+      "equals": "CPB-v3.market-01"
+    }
+  },
+  "preservation_pins": [],
+  "workflow_root_source_review": {
+    "path": "doc/causal_v9_v11_train_diagnosis/workflow-source-root-review-001.json",
+    "bytes": 4372,
+    "sha256": "c8a91cfb02f82bc0e8ca6b04242ab86b70b35dc04e69ddaa784d7dfd908e9918"
+  },
+  "workflow_peer_source_review": {
+    "path": "doc/causal_v9_v11_train_diagnosis/workflow-independent-source-review-001.json",
+    "bytes": 13585,
+    "sha256": "000878fc2af232718808792ffaf6265972cf50c52c02c7499979b0de8ffd977f"
+  },
+  "retention_application_peer": {
+    "path": "doc/causal_v11_retention_review/independent-application-review-001.json",
+    "bytes": 5859,
+    "sha256": "028a6681c88e2e22b336545ce5d3bf4469b4c1595fc024cd58d2b692cd21b057"
+  },
+  "scope": "Metadata declaration only. Exact 25 numeric roles and 34 hash guards come from unchanged design002. Twelve completed contexts and six typed selectors are reviewed here. Pre-execution preservation aliases the completed V11 context. No extra numeric role or candidate selected.",
+  "admitted_next": "Once-only owned Propose metadata helper; independent actual card/plan review before separate Admit and admitted-card/preflight/Stage reviews.",
+  "body_calls": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "held_out_tensor_reads": 0
+}

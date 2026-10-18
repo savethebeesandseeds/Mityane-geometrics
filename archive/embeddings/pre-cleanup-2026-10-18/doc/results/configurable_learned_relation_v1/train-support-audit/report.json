@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "study": "configurable-learned-relation-train-support-audit",
+  "completed_date": "2026-10-13",
+  "status": "exploratory_TRAIN_only_diagnosis_selected_after_known_quality_outcome",
+  "selection": {
+    "prospective": false,
+    "selected_after_known_quality_outcome": true,
+    "motivating_outcome": "The sealed RPB-v21.alt-01 two-cohort screen failed its joint gate, with learned timing gains and passing reconstruction guards but poor complete32 deletion robustness.",
+    "scientific_status": "Mechanism hypothesis; no causal attribution or new accuracy measurement."
+  },
+  "script_receipt": {
+    "path": "doc/results/configurable_learned_relation_v1/train-support-audit/analysis.py",
+    "sha256": "a5634ddaf4b13ebf91db78c6e3bca6778a23a9b88635fc4a500681187f6550b9",
+    "exact_script_preserved_from_initial_stdin_execution": true,
+    "saved_script_replay_exit_code": 0,
+    "execution_container_id": "1e8de9cfec33591fb06b2f182bff04f6e9fecf2ddeb0aa865f34eeac3639c2ca",
+    "execution_container_name": "cuwacunu_embedding",
+    "command": "source /etc/profile.d/embedding.sh && cd /embedding && python3 -B doc/results/configurable_learned_relation_v1/train-support-audit/analysis.py",
+    "saved_script_replay_wall_seconds": 5.4895042,
+    "initial_and_saved_script_results_identical": true,
+    "output_field": "scalar_analysis"
+  },
+  "scope": {
+    "cohorts": [
+      941101,
+      941102
+    ],
+    "checkpoint_point": 512,
+    "numerical_fields": [
+      "TRAIN.feature_mask",
+      "checkpoint.model.relation_projection.weight",
+      "features.training_values"
+    ],
+    "numeric_validation_tensor_reads": 0,
+    "validation_payload_selected_or_decoded": false,
+    "validation_or_deleted_view_simulated": false,
+    "encoder_calls": 0,
+    "decoder_calls": 0,
+    "classifier_calls": 0,
+    "classifier_fits": 0,
+    "optimizer_updates": 0,
+    "torch_imports": 0,
+    "frozen_capsule_or_source_mutations": 0,
+    "whole_file_hashes_include_unselected_archive_storage": true,
+    "full_historical_inventory_replayed_by_this_audit": false,
+    "selected_artifact_hashes_checked_against_sealed_manifests": true
+  },
+  "precision": {
+    "computation": "Python stdlib scalar arithmetic, exact integer common counts, saved float32 weights, Python float count fractions and math.fsum accumulation.",
+    "cuda_bank_or_float32_matmul_replay": false,
+    "bit_exact_CUDA_replay": false,
+    "numerical_results_are_scalar_estimates": true,
+    "support_rms_definition": "sqrt(mean over 512 TRAIN rows and20 learned coordinates of (W_support*q)^2)",
+    "centered_support_rms_definition": "sqrt(mean over rows/coordinates of (W_support*q - its TRAIN coordinate mean)^2)",
+    "learned20_centered_rms_definition": "sqrt(mean over rows/first20 saved native coordinates of their squared TRAIN-centered values)",
+    "ratios_or_weight_norms_used_for_causal_attribution": false
+  },
+  "historical_binding": {
+    "original_capsule": "/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD",
+    "original_source_fingerprint": "8033ad0e20c8aa31cdda6befe340aed6001758233295fdaf78f14e3db2225fd1",
+    "original_inputs_manifest_sha256": "6121773c0b97e5490f191a9f8ff013e90f27a9a557376ac8256bdbb2d6af6091",
+    "original_artifacts_manifest_sha256": "62f7e52a1d94815ec44ec90bae052c52ba2e89e9e809f851afdb11a15da0aa83",
+    "candidate_capsule": "/embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn",
+    "candidate_artifacts_manifest_sha256": "6b138475bbeac3bde35cc45f331f21f5e10cff64b5971fb883f60121c20562bf",
+    "candidate_disposition": "screen-fail-stop",
+    "selected_artifact_bindings": [
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v20-capacity/admission-0gN4uD",
+        "role": "quality-data/master-941101/training.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "d6ae4a383014b5c7ea0b800279406f152bc69d51e21757f8322c57d877887b4c"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v20-capacity/admission-0gN4uD",
+        "role": "quality-data/master-941102/training.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "9db9ebac5e2d4fae5915fc72b104d7b38cdef528ab84e11aab9bbe7c17760c6c"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v20-capacity/admission-0gN4uD",
+        "role": "freeze/source/code/evaluation/benchmarks/configurable_capacity/configurable_capacity.cpp",
+        "matches_sealed_manifest": true,
+        "sha256": "82e5f8695744aeaa4bc97eb475b1695a983783247b5a2da6e70f7983dde71e34"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v20-capacity/admission-0gN4uD",
+        "role": "freeze/source/code/evaluation/benchmarks/configurable_capacity/main.cpp",
+        "matches_sealed_manifest": true,
+        "sha256": "7ca147a5045f3fe757702bc8fce8dff8f969f1f22968fb236d4ef99870f0a609"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn",
+        "role": "candidates/master-941101/point-512/checkpoint.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "5c3cd76bb6ce3559d569ba176d39c7d40806da7b20a835b3df993e63f7b4b6a6"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn",
+        "role": "candidates/master-941101/point-512/features.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "391bff5ad60d3da3a77f5e70545561ab4f461c89af9cf4840ae9b4fcd4f0e1f6"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn",
+        "role": "candidates/master-941102/point-512/checkpoint.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "67f6053bc27575379054c024e18e3fd0dda0317d88dfb05a68725c999e923914"
+      },
+      {
+        "capsule": "C:/Work/cuwacunu/cuwacunu_embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn",
+        "role": "candidates/master-941102/point-512/features.pt",
+        "matches_sealed_manifest": true,
+        "sha256": "6168a7f87bb51d693bd0ad120cadf39e79964a4db543e6de309774047d3f7406"
+      }
+    ]
+  },
+  "frozen_generator_source_binding": {
+    "source": "original freeze/source/code/evaluation/benchmarks/configurable_capacity/configurable_capacity.cpp",
+    "sha256": "82e5f8695744aeaa4bc97eb475b1695a983783247b5a2da6e70f7983dde71e34",
+    "generator_entry": "original freeze/source/code/evaluation/benchmarks/configurable_capacity/main.cpp",
+    "generator_entry_sha256": "7ca147a5045f3fe757702bc8fce8dff8f969f1f22968fb236d4ef99870f0a609",
+    "main_call_line": 57,
+    "deletion_function_lines": [
+      147,
+      166
+    ],
+    "uniform53_lines": [
+      20,
+      22
+    ],
+    "additional_deletion_probability": 0.3,
+    "erasure_rule": "uniform53(mt19937_64) < probability for each original time/channel/feature coordinate",
+    "fixed_size_without_replacement": false,
+    "paired_source_uses_same_erasure_mask": true,
+    "expectation": "Under the ideal independent-Bernoulli interpretation, four distinct endpoints survive with probability(1-0.30)^4=0.2401, up to negligible53-bit threshold discretization. This is not the realized saved deletion factor.",
+    "expectation_used_for_observed_validation_effect": false
+  },
+  "interpretation": [
+    "Support contributes identically to the two variants of every TRAIN source because their masks are identical; it contributes zero to within-source timing separation.",
+    "The trained support block is active and its full-context TRAIN contribution is chiefly an offset.",
+    "The architecture admits a density-dependent shift under additional coordinate deletion. This is a plausible explanation to test, not evidence that it caused the published accuracy decline.",
+    "The analytic expected-support-change RMS is derived from TRAIN support only, not observed deleted features.",
+    "The proposed next content-only ordered-relation architecture is prospective and unimplemented by this audit; stopped RPB-v21 is preserved."
+  ],
+  "scalar_analysis": {
+    "scope": "TRAIN-only read-only structural support component diagnostic; not observed deletion or causal attribution",
+    "extra_deletion_expectation_factor": 0.24009999999999995,
+    "encoder_calls": 0,
+    "head_calls": 0,
+    "updates": 0,
+    "decoded": {
+      "output/runs/rpb-v20-capacity/admission-0gN4uD/quality-data/master-941101/training.pt": [
+        "feature_mask"
+      ],
+      "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-512/checkpoint.pt": [
+        "model.relation_projection.weight"
+      ],
+      "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-512/features.pt": [
+        "training_values"
+      ],
+      "output/runs/rpb-v20-capacity/admission-0gN4uD/quality-data/master-941102/training.pt": [
+        "feature_mask"
+      ],
+      "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-512/checkpoint.pt": [
+        "model.relation_projection.weight"
+      ],
+      "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-512/features.pt": [
+        "training_values"
+      ]
+    },
+    "source_and_input_hashes": {
+      "/embedding/code/evaluation/protocols/learned_train_v1/analysis.py": "b28c2fa3afcd6c15a852c26f672eb957e62060b28ca26356733da77c4c0ae3b7",
+      "/embedding/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py": "4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d",
+      "/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD/quality-data/master-941101/training.pt": "d6ae4a383014b5c7ea0b800279406f152bc69d51e21757f8322c57d877887b4c",
+      "/embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-512/checkpoint.pt": "5c3cd76bb6ce3559d569ba176d39c7d40806da7b20a835b3df993e63f7b4b6a6",
+      "/embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-512/features.pt": "391bff5ad60d3da3a77f5e70545561ab4f461c89af9cf4840ae9b4fcd4f0e1f6",
+      "/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD/quality-data/master-941102/training.pt": "9db9ebac5e2d4fae5915fc72b104d7b38cdef528ab84e11aab9bbe7c17760c6c",
+      "/embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-512/checkpoint.pt": "67f6053bc27575379054c024e18e3fd0dda0317d88dfb05a68725c999e923914",
+      "/embedding/output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-512/features.pt": "6168a7f87bb51d693bd0ad120cadf39e79964a4db543e6de309774047d3f7406"
+    },
+    "cohorts": [
+      {
+        "master": 941101,
+        "support_weights_nonzero": 19440,
+        "support_weight_count": 19440,
+        "mean_support_fraction": 0.5771951900308192,
+        "support_fraction_min": 0.30952380952380953,
+        "support_fraction_max": 0.8188976377952756,
+        "support_component_uncentered_rms": 1.7840505218279588,
+        "support_component_centered_rms": 0.07366186384758973,
+        "support_component_mean_l2": 7.9717127322164725,
+        "learned20_centered_rms": 1.9345582416842322,
+        "TRAIN_pair_masks_exact": true,
+        "TRAIN_pair_support_component_exact": true,
+        "expected_support_component_change_rms_if_independent_30pct_deletion": 1.355699991537066
+      },
+      {
+        "master": 941102,
+        "support_weights_nonzero": 19440,
+        "support_weight_count": 19440,
+        "mean_support_fraction": 0.5762998905210125,
+        "support_fraction_min": 0.28225806451612906,
+        "support_fraction_max": 0.8267716535433071,
+        "support_component_uncentered_rms": 2.771782705226269,
+        "support_component_centered_rms": 0.08537575407470256,
+        "support_component_mean_l2": 12.389907461807478,
+        "learned20_centered_rms": 1.9967656160660405,
+        "TRAIN_pair_masks_exact": true,
+        "TRAIN_pair_support_component_exact": true,
+        "expected_support_component_change_rms_if_independent_30pct_deletion": 2.1062776777014416
+      }
+    ]
+  }
+}

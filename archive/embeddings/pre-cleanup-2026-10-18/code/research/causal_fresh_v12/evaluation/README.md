@@ -1,0 +1,19 @@
+# CPB-v12 fixed saved-feature evaluation: source preparation
+
+Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.
+
+Twenty full owned files derive from the completed normal V11 evaluation pipeline; exact parents were physically preserved before edits. All12 generic fixed-head/CACHE88 dependencies remain byte-identical. Exporter, build, saved-head mains, reporter and comparator paths belong to V12; no old model implementation or forwarding shim is referenced.
+
+V12 retains the V11 SOURCE shape with all learned tensors, optimizer and TRAIN-only statistics fresh. Four original-position bins each keep4 attention-mean rows and project4 population-dispersion rows using fixed .5local/.5global uniform ORIGINAL support and an OWN live two-sum center. The intermediate32 summary still feeds global32-to-content20. Native40 remains content20+spectral12+mean4+uncertainty4. Dispersion is distinct from decoder conditional variance and appends no coordinate. Empty local bins zero whole8 exports after bias; both suffix values and masks must leave each earlier cutoff unchanged.
+
+The V11 Huber1 plus detached-error Gaussian variance objective, clip1, singleAdamW,2048 successful B8 updates and declared constructor registration/draw sequence remain fixed. Actual constructor parity and learning need later saved evidence. Routing, scale, FLOPs and shared clipping trajectories can change; equal capacity does not establish equal compute or improved retention. Dispersion has zero direct score/position derivative while attention mean and Transformer hidden attention remain live.
+
+Thirteen saved V11 DATA/statistic pairings compare eight feature archives at20:40 plus whole support/IDs/labels and five whole freshly fitted statistics. Content0:20 can differ; whole40 equality is not claimed. All current initial/final heads are new, with no historical encoder/head replay or old statistics reused.
+
+D40 heads remain ridge1 and tanh16/Adam.01/100steps; repetitions2701/2802/2903 retain seeds6049515622977958931/8262941649267994858/2095371932330426401. Market heads have164/724 parameters, TEMPO82/690. Market112TRAIN/32knownVALIDATION and three TEMPO512/256 cohorts retain targets, TRAIN scalers, groups and intact/deleted views. All12 fixed numerical dependencies remain exact V11 copies. No PCA/tuning/rescue or new labels.
+
+Exact establishment metadata is validated before extraction/fits. The separate temporal fixture must prove own-center uniform dispersion, score-only invariance, live hidden/mean score derivatives, full F32-center residual adjoints and fixed F64/F32 finite differences. Main learning evidence retains75 mandatory tensors/294751 capacity, scalar gauge, four bin/local-position groups, three Hadamard directions and eight mean/dispersion subgroups. Four CSVs retain8192/2048/2048/16384 rows; actual1/2048 witnesses retain60 fields from existing forwards. The independent training auditor owns saved trace/adjoint arithmetic.
+
+Nine saved V3–V11 controls and six V6–V11 trust joins stay opaque. V6/V7/V10 whole40, V8/V9/V11 partial20:40 and V9 report recovery preserve historical meanings. V11 is the latest measured scoped control and SOURCE-only parent; V3 remains sole baseline. Eleven methods yield44 market comparison rows and four TEMPO panels. All physical errors,3 repetitions, reconstruction/query NLL, costs, provenance and adjacent ordinal4/5 or5/5 legends are retained.
+
+The immutable applied V11 strongest22-condition protocol48667B/866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b, independent723-check review and actual true application bind future quality.19 floors/3 positivity, chronological ties,1e-12 operators and no TRAIN-NLL gate remain fixed. Historical counts are not rescored; measured trust, advancement and selection are separate. Source preparation admits no AST/import/build/test/CUDA/model/train/head/fit/quality body or DEV/live metadata change.

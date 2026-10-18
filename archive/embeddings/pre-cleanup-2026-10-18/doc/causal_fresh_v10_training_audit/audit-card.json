@@ -1,0 +1,254 @@
+{
+  "kind": "cpb_v10_saved_training_independent_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "stage": "declared_before_independent_saved_data_execution",
+  "declared_utc": "2026-10-16T13:20:39.0637178Z",
+  "frozen_utc": "2026-10-16T13:20:39.0884405Z",
+  "execution_pending": true,
+  "model": "CPB-v10.market-01",
+  "baseline": "CPB-v3.market-01",
+  "outside_frozen_main_source": true,
+  "objective_policy": "huber1-mean-plus-joint-gaussian-nll-v1",
+  "gradient_policy": "huber1-mean-live;joint-gaussian-mean-live-and-uncertainty4-live;shared-global-clip1-v1",
+  "direct_gradient_routes": "Huber->parent32+mean4;Gaussian-mean->parent32+mean4;Gaussian-variance->uncertainty4;mean-reads0:36;variance-reads36:40;shared-global-clip1",
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": false,
+  "reporting_nll_backpropagated": false,
+  "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "frozen_training_card_sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865",
+  "frozen_training_markdown_sha256": "9e41840e0ee1bd17c74fef747a3c6840431280edae9b47cdf2613762b6e61ec3",
+  "frozen_input_manifest_sha256": "c79f92f11342b57a99e6f97ff7ef371b57f700c2765126d6138ce658cf856cc4",
+  "main_source_manifest_sha256": "66b9563b987011833678a231409574ecff46e4e22c71764bef07e5782ca5dc98",
+  "main_source_zip_sha256": "d66418fca82f81abe60c35f8184ef0d0bb8a51d94f66ce9e4d67df5e56c3b30f",
+  "main_source_files": 127,
+  "main_protocol_preflight": {
+    "path": "doc/causal_fresh_v10/protocol-preflight.json",
+    "bytes": 29110,
+    "sha256": "25e9eee0b601fa0b3061dcf511d88d4cbd05a122f8879faf1d0898d129db9fb1"
+  },
+  "main_input_bindings": [
+    {
+      "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+      "bytes": 119685,
+      "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V10_CARD.md",
+      "bytes": 6605,
+      "sha256": "9e41840e0ee1bd17c74fef747a3c6840431280edae9b47cdf2613762b6e61ec3"
+    },
+    {
+      "path": "doc/causal_fresh_v10/input-manifest.json",
+      "bytes": 5465,
+      "sha256": "c79f92f11342b57a99e6f97ff7ef371b57f700c2765126d6138ce658cf856cc4"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v10/attempt-001/source-manifest.json",
+      "bytes": 29659,
+      "sha256": "66b9563b987011833678a231409574ecff46e4e22c71764bef07e5782ca5dc98"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v10/attempt-001/source.zip",
+      "bytes": 2267100,
+      "sha256": "d66418fca82f81abe60c35f8184ef0d0bb8a51d94f66ce9e4d67df5e56c3b30f"
+    }
+  ],
+  "auditor_source": {
+    "path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+    "bytes": 116406,
+    "sha256": "b44a62524a177b67ba2a12d98841ba851ef6a3d3138a82405a81cb7fb6ce2e7d"
+  },
+  "auditor_support": [
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/README.md",
+      "bytes": 6815,
+      "sha256": "834d613ce9193ce781a2f755afe2b9239f1ccdd5debf6cba398f2e850e75d4ef"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+      "bytes": 6999,
+      "sha256": "61dc066f7e34bd4c9bacdfb4860a2cbe63a95d11506a8f7324002bf5fe0bc342"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v9_training_audit/audit_training.py",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v9-training-audit/attempt-001/source/audit_training.py",
+      "bytes": 115104,
+      "sha256": "753804faf3752c63fc93bf79c5dc7d46f123ae6cb874f0a8b04ffee9868fdbb7"
+    },
+    {
+      "path": "code/research/causal_fresh_v9_training_audit/README.md",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v9-training-audit/attempt-001/source/README.md",
+      "bytes": 7968,
+      "sha256": "3a17238f96759993e7f45fe8c4cc16062ca914170962fbcbfc23e7d1580b8d98"
+    },
+    {
+      "path": "code/research/causal_fresh_v9_training_audit/provenance.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v9-training-audit/attempt-001/source/provenance.json",
+      "bytes": 7921,
+      "sha256": "d2c9f735e9e9845370efadb216d9e3f141214c125d6fdff08485f72b6da07f5d"
+    }
+  ],
+  "independent_source_review": {
+    "path": "doc/causal_fresh_v10/family-and-training-auditor-independent-static-review.json",
+    "bytes": 7729,
+    "sha256": "124ffe4801072e1877f58c40608cbb2f865f9044ec7683bccc8d3b4d7d1c4eee"
+  },
+  "completed_training_mirror": {
+    "path": "doc/causal_fresh_v10/training-mirror-attempt-001.json",
+    "bytes": 145496,
+    "sha256": "e39dc69341f28006578ab9e6725d971aca4c0d6b4a538112a50ad41ff9dcac2b"
+  },
+  "completed_training_stage": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/training-stage.json",
+    "bytes": 1258,
+    "sha256": "cc7664fa7daa516c4f21383341ae27edc74d9ad669445bf4c79fb29051289b47"
+  },
+  "completed_training_summary": {
+    "path": "output/runs/causal-fresh-v10/run-001/training-summary.json",
+    "bytes": 37812,
+    "sha256": "f5174d33023ad83edd9dadcf4f74331678021a295eb15d9ed9e9ee1935a72ba3"
+  },
+  "expected_main_paths": {
+    "attempt": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001",
+    "run": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/run-001",
+    "source": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/source",
+    "build": "/opt/cuwacunu/build/causal-fresh-v10-attempt001"
+  },
+  "expected_audit_root": "/opt/cuwacunu/research/causal-fresh-v10-training-audit/attempt-001",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "image": "sha256:ed0d8a5141f073d5c961b95e65e9b3528a66e122bda4971ec8f47d925d717de7",
+    "pure_stdlib_saved_data_only": true,
+    "host_numeric_execution": false,
+    "new_containers": 0,
+    "stage_and_run_separately_admitted": true
+  },
+  "scope": [
+    "Exactly2048 successful B8 updates with2048..4096 attempted batches; every CSV attempt/skip row, actual seed streams, typed512/1024/2048 progress and actual1/2048 witness associations;raw loader calls512+actual attempts+36",
+    "FreshTRAIN4096 scaler/bank arithmetic; all77 parameter tensors,76 registered learned294752 capacity,3888 literal prior; actual512 exact-state continuation without training replay",
+    "Unit F64 Huber1 plus ONE joint Gaussian live mean/variance,coefficients[1,1],and a separate detached reportingNLL copy; observed shared clip1 factor; known112/32 query arithmetic,no held-out mechanism selection. Scalar equality cannot prove autograd routing",
+    "All8192 row-group/2048 gauge/2048 between-bin CSV observations; same12 arrays only actual1/2048; F64 operands BEFORE movement subtraction",
+    "Unit fullR16 Hadamard signs++--/+-+-/+--+ repeatedfour anddiv4; Parseval/event counts, descriptive signed final coefficients and positive OVERALL final projection only",
+    "75 mandatory identifiable tensors with294751 numel capacity, not every-scalar proof; one retained scalar pool-score bias gauge; decay not data learning",
+    "Actual main manifest source count and admitted seven binaries/eleven TUs;new joint-objective proof and unchanged temporal fixture,no fixture/model/head replay"
+  ],
+  "expected": {
+    "updates": 2048,
+    "attempted_batch_range": [
+      2048,
+      4096
+    ],
+    "batch_size": 8,
+    "native_width": 40,
+    "parameter_tensors": 77,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "mandatory_nonzero_data_learning_tensors": 75,
+    "mandatory_identifiable_tensor_value_capacity": 294751,
+    "fixed_values": 3888,
+    "global_clip_max_norm": 1,
+    "binary_count": 7,
+    "translation_units": 11,
+    "temporal_group_rows": 8192,
+    "gauge_rows": 2048,
+    "between_bin_rows": 2048,
+    "actual_temporal_raw_array_witness_updates": [
+      1,
+      2048
+    ],
+    "arrays_per_witness": 12
+  },
+  "temporal_numeric_contract": {
+    "movement": "Promote EACH F32 operand to F64 BEFORE subtraction/centering/contraction",
+    "between_basis": "hadamard-full16-signs-div4-v1",
+    "between_signs": [
+      [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        -1,
+        1
+      ]
+    ],
+    "full_position_divisor": 4,
+    "norm_absolute_tolerance": 2E-12,
+    "norm_relative_tolerance": 2E-12,
+    "Parseval_squared_absolute": 1E-12,
+    "Parseval_squared_relative": 1E-10,
+    "final_gate": "Per-direction data-gradient/movement EVENTS and positive OVERALL final projection; no individual final-nonzero gate",
+    "unsaved2046_raw_gradients_reconstructed": false
+  },
+  "fresh_schema_contract": "Only fresh constructor JSON lacks gradient_policy; require absence there and strict typed/other selectors.",
+  "module_counting": "CORE plus five distinct modules: numeric_statistics,saved_tensor_state,manual_saved_Gaussian,actual_pre_step_composite_objective,temporal_pooling_saved_learning; any total is explicitly their sum.",
+  "stage_helper": {
+    "path": "doc/causal_fresh_v10_training_audit/stage.ps1",
+    "bytes": 8724,
+    "sha256": "ed2d24bfe89f03f10dc81a0cf22f101a1229b9c12742401e0832cab966d7ba39"
+  },
+  "run_helper": {
+    "path": "doc/causal_fresh_v10_training_audit/run.ps1",
+    "bytes": 5436,
+    "sha256": "d3252f72842a8f451c15a573cebd9cfe31be23649b68743b62affae4ddbbe788"
+  },
+  "execution_wrapper": {
+    "path": "doc/causal_fresh_v10_training_audit/execute.py",
+    "bytes": 9901,
+    "sha256": "5f28636a057fd6a0df3a612f71364521f10c3cb0f9db522937a5da042d79db0c"
+  },
+  "mirror_helper": {
+    "path": "doc/causal_fresh_v10_training_audit/mirror.ps1",
+    "bytes": 9020,
+    "sha256": "547a11d210c5b3282fc64b7740d749449c0cdf8d20ad836c44affc4f8faf3c9c"
+  },
+  "card_generator": {
+    "path": "doc/causal_fresh_v10_training_audit/prepare-card.ps1",
+    "bytes": 14316,
+    "sha256": "07029b477bed8f6e29664ca32b470ee1fdb1e1c6e858bd9efe6d0797a0913692"
+  },
+  "workflow_provenance": {
+    "path": "doc/causal_fresh_v10_training_audit/provenance.json",
+    "bytes": 9136,
+    "sha256": "6f4652dbfc58fa3343407002ff98ec6c43166b2c49fc750278d60efa44d7dd58"
+  },
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "AST_calls": 0,
+  "forbidden": [
+    "Torch/NumPy/producer imports or executable tensor module deserialization",
+    "Encoder/decoder/head/optimizer replay or refits",
+    "Old model/statistic numeric reads",
+    "Claiming every scalar data-learns or reconstructing unsaved2046 gradients",
+    "Quality scores/heads/selection or mutation of frozen main/old evidence/dev"
+  ]
+}

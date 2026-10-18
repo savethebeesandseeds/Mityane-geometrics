@@ -1,0 +1,45 @@
+{
+  "protocol": "variable-delay-timing-v1",
+  "date": "2026-10-09",
+  "status": "passed-data-only-fixtures",
+  "evidence_stage": "artificial correctness fixtures; no quality result",
+  "encoder_quality_measured": false,
+  "encoder_training_or_inference_runs": 0,
+  "classifier_or_pca_fits": 0,
+  "test_split_generated": false,
+  "recipe": {
+    "shape_C_H_F": [3, 32, 3],
+    "period_uniform_half_open": [12.0, 20.0],
+    "absolute_delay_uniform_half_open": [0.5, 1.5],
+    "noise_standard_deviation": 0.005,
+    "natural_coordinate_missingness": 0.1,
+    "paired_variants_share_masks_and_nuisance": true,
+    "hidden_storage": "zero",
+    "true_period_delay_and_hidden_signals_exported": false
+  },
+  "analytic_check": {
+    "fitted": false,
+    "inputs": "legal observed values and bool masks only",
+    "minimum_distinct_supported_adjacent_times": 4,
+    "zero_margin_abstains": true,
+    "accuracy_and_coverage_measured": false,
+    "noiseless_artificial_sign_cases_passed": 54
+  },
+  "execution": {
+    "container": "cuwacunu_embedding",
+    "named_build_session": "variable-delay-timing",
+    "target": "test-variable-delay-timing",
+    "nested_makefile": "code/evaluation/benchmarks/variable_delay_timing/Makefile",
+    "exit_code": 0,
+    "log": "output/runs/variable-delay-timing/data-fixtures-F3PUUS/build-and-tests.log",
+    "log_sha256": "c24b963ae531da2cea3b416daa17836cbbe23d0ad7a2cff1247fbd59adcb76a8",
+    "pass_marker": "Variable-delay timing data-only fixtures passed; no encoder/head fitting or quality evaluation"
+  },
+  "source_sha256": {
+    "code/evaluation/benchmarks/variable_delay_timing/variable_delay_timing.h": "bcb1df8692d4d9de43e5408da24ea11442994621c4f6f46781ac41c00d5abdc2",
+    "code/evaluation/benchmarks/variable_delay_timing/variable_delay_timing.cpp": "faf6a7f3934b7ecd985f898954624767860f7c8216bb8b41c4871e065a4d019c",
+    "code/evaluation/benchmarks/variable_delay_timing/generator_test.cpp": "37e4a83cacef91dcacdfd6893bc7eae09cc8b3b14f8fbc83d4781c52d713e777",
+    "code/evaluation/benchmarks/variable_delay_timing/Makefile": "d526c995ad8b55ed495f97684435c80a0b5d3d5defd28acb5f9c141aa3ed61fe"
+  },
+  "next_measurement": "freeze a separate prospective harder-data encoder comparison, cohort seeds, source closure, reader and actual CUDA admission"
+}

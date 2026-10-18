@@ -1,0 +1,286 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v13_owned_independent_training_audit_source_v1",
+  "status": "SOURCE_ONLY_READY_PENDING_INDEPENDENT_STATIC_REVIEW_NO_EXECUTION",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v13/design-source-plan.ADMITTED-002.json",
+    "bytes": 27667,
+    "sha256": "4d1648ed842a13bae850b47567a67cb8939f55b192e54f0c2f67afbaf6ef4a59"
+  },
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 69004,
+    "sha256": "0a0a345a141898db81900cb903151bc1c42785e3b7bf9fbb5b27d9e21153ea07"
+  },
+  "initial_exact_owned_copy_receipt": {
+    "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/initial-owned-copy-receipt.json",
+    "bytes": 24411,
+    "sha256": "e5fe8fc3c9c32fd8b7c917125bca178341062321eafbd8796392e40178ae890a"
+  },
+  "complete_physical_parent_copies": 3,
+  "parent_files": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/audit_training.py",
+        "bytes": 141694,
+        "sha256": "12faca04f410c7d78e73b8348143a346b1a809e9ddff31921af8996f0a621b52"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v11_training_audit/audit_training.py",
+      "owned_path": "code/research/causal_fresh_v13_training_audit/audit_training.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/provenance.json",
+        "bytes": 6419,
+        "sha256": "098e0521f15e99c84e51027b519aa4be89ac5bdcb141491a395fe140b6fe5ee8"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v11_training_audit/provenance.json",
+      "owned_path": "code/research/causal_fresh_v13_training_audit/provenance.json"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/README.md",
+        "bytes": 6401,
+        "sha256": "cc2cf8ca02e3b1dcf1ef9849105fff35db7dce29c990d0afae6102cef07ef5ce"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v11_training_audit/README.md",
+      "owned_path": "code/research/causal_fresh_v13_training_audit/README.md"
+    }
+  ],
+  "owned_nonself_sources": [
+    {
+      "path": "code/research/causal_fresh_v13_training_audit/audit_training.py",
+      "bytes": 146302,
+      "sha256": "0f0074f0da463368ae200dd09dbee0e28c3189628dadeaca05d343ab0c3539f0"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_training_audit/README.md",
+      "bytes": 4069,
+      "sha256": "78888bf368ddc63a6dceb8e17cda96201993be10bd5cb6538b021550f341154e"
+    }
+  ],
+  "self_omitted_to_avoid_cycle": true,
+  "source_parent": "V11 final independent saved-TRAIN auditor3;no V12 uniform adjoint source",
+  "mechanism": {
+    "scientific_source_parent": "CPB-v11 SOURCE only",
+    "initialization": "all294752 learned values,optimizer and TRAIN statistics fresh;source_updates0",
+    "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-regularized-stddev4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ],
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+    "temporal_dispersion_regularizer": 0.0009765625,
+    "temporal_dispersion_root_offset": 0.03125,
+    "actual_graph": "F32 add tau,then sqrt,then subtract exact1/32",
+    "typed_tau": "strict Double vector[1],reject0-D/F32/otherlength/value",
+    "typed_nodes": [
+      "inference.root",
+      "inference.payload",
+      "TRAIN.root",
+      "TRAIN.encoder",
+      "TRAIN.encoder.payload"
+    ],
+    "support": "mask BOTH hidden and center before absent-local subtract/square;present arithmetic unchanged;zero whole8 after bias",
+    "raw_root_absence_exception": "raw unmasked actual root1/32 at raw variance0 including absent/allpadding;dispersion0",
+    "derivative": "beta=c/(2*actual_saved_F32_root);a-2*beta*sum(p*(safe_h-actual_saved_two_sum_mean));full local/global attention score and position routes live",
+    "forward_and_gradient_limit": "tiny positive raw variance can round served dispersion to0 while analytic/autograd remains live",
+    "native_width": 40,
+    "new_parameters": 0,
+    "new_random_draws": 0,
+    "head_tuning": false,
+    "objective": "unit Huber1 mean plus detached-error Gaussian variance calibration;reporting NLL detached",
+    "training": "one2048 successful/B8 trajectory;max4096 attempts;oneAdamW lr0.001 wd0.0001;globalclip1;seeds943001/2/3/4"
+  },
+  "same_forward_witness_schema": {
+    "total_fields": 60,
+    "base_fields": [
+      "update",
+      "attempt",
+      "row_ids",
+      "timestamps",
+      "observed",
+      "hidden",
+      "context_deleted",
+      "visible",
+      "target_mask",
+      "eligible_channels",
+      "targets",
+      "mean",
+      "variance",
+      "native",
+      "row_mean_huber",
+      "row_variance_nll",
+      "row_total_objective",
+      "mean_Huber_F64",
+      "variance_NLL_F64",
+      "total_objective_F64",
+      "Gaussian_NLL_F64",
+      "pre_clip_global_norm",
+      "clip_factor"
+    ],
+    "parameter_array_fields": [
+      "temporal_export_weight_before",
+      "temporal_export_weight_after",
+      "temporal_export_weight_clipped_gradient",
+      "temporal_export_bias_before",
+      "temporal_export_bias_after",
+      "temporal_export_bias_clipped_gradient",
+      "temporal_pool_positions_before",
+      "temporal_pool_positions_after",
+      "temporal_pool_positions_clipped_gradient",
+      "temporal_pool_score_bias_before",
+      "temporal_pool_score_bias_after",
+      "temporal_pool_score_bias_clipped_gradient"
+    ],
+    "same_forward_temporal_trace_fields": [
+      "temporal_patch_positions",
+      "temporal_patch_valid",
+      "temporal_patch_rows",
+      "temporal_hidden",
+      "temporal_pool_local_weights",
+      "temporal_pool_global_weights",
+      "temporal_pool_mixture_weights",
+      "temporal_pool_bin_valid",
+      "temporal_pool_bin_mean",
+      "temporal_pool_bin_variance",
+      "temporal_pool_bin_regularized_root",
+      "temporal_pool_bin_dispersion",
+      "temporal_pool_projected_upstream_defined",
+      "temporal_pool_projected_upstream_pre_clip",
+      "temporal_contextual_hidden",
+      "temporal_contextual_pool_local_weights",
+      "temporal_contextual_pool_global_weights",
+      "temporal_contextual_pool_mixture_weights",
+      "temporal_contextual_pool_bin_valid",
+      "temporal_contextual_pool_bin_mean",
+      "temporal_contextual_pool_bin_variance",
+      "temporal_contextual_pool_bin_regularized_root",
+      "temporal_contextual_pool_bin_dispersion",
+      "temporal_contextual_pool_projected_upstream_defined",
+      "temporal_contextual_pool_projected_upstream_pre_clip"
+    ],
+    "new_regularized_dispersion_fields": [
+      "temporal_pool_bin_regularized_root",
+      "temporal_pool_bin_dispersion",
+      "temporal_contextual_pool_bin_regularized_root",
+      "temporal_contextual_pool_bin_dispersion"
+    ],
+    "root_dispersion_shape": "actual CUDA F32[R,4,64]",
+    "raw_variance_fields_remain_raw": true,
+    "updates": [
+      1,
+      2048
+    ],
+    "pre_step_updates": [
+      0,
+      2047
+    ],
+    "extra_encoder_forward_calls": 0,
+    "projected_upstream": "PRECLIP retained nonleaf;explicit defined flag and zero fallback;apply recorded clipfactor once after two-route sum",
+    "CSV_moment_labels": [
+      "mean",
+      "regularized_stddev"
+    ],
+    "moment_rows": 16384,
+    "successful_training_scalar_rows": 2048,
+    "attempted_row_cap": 4096,
+    "successful_rows_distinct_from_attempted_rows": true
+  },
+  "prospective_temporal_fixture_contract": {
+    "fixture_authority_path": "code/research/causal_fresh_v13/tests/v13_temporal_pooling_test.cpp",
+    "required_true_fields": [
+      "mean4_regularized_stddev4_export_layout",
+      "full_attention_dependent_regularized_moment_adjoints",
+      "live_dispersion_score_gradient",
+      "raw_variance_root_dispersion_trace",
+      "zero_tiny_large_analytic_dispersion_adjoints",
+      "supported_nonfinite_and_variance_overflow_refused",
+      "absent_local_huge_singleton_sanitized",
+      "captured_F32_residual_correction",
+      "raw_root_absent_offset_exception"
+    ],
+    "direct_pool_kernel_calls": 51,
+    "direct_call_derivation": "44 inherited +3 zero/tiny/large +1 huge singleton +3 NaN/Inf/raw-variance overflow refusals",
+    "F64_finite_difference_coordinates": 18,
+    "F32_finite_difference_coordinates": 18,
+    "isolated_autograd_grad_calls": 4,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "synthetic_optimizer_steps": 1,
+    "head_fits": 0,
+    "manual_F32_absolute_tolerance": 3E-05,
+    "manual_F32_relative_tolerance": 3E-05,
+    "F64_finite_difference_step": 1E-05,
+    "F64_finite_difference_absolute_tolerance": 2E-08,
+    "F64_finite_difference_relative_tolerance": 2E-08,
+    "F32_finite_difference_step": 0.002,
+    "F32_finite_difference_absolute_tolerance": 0.002,
+    "F32_finite_difference_relative_tolerance": 0.002,
+    "softmax_gauge_tolerance": 2E-06,
+    "bin_mass_tolerance": 2E-06,
+    "flat_trace_tolerance": 8E-06,
+    "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+    "transform_derivative_upper_bound": 16,
+    "execution_status": "PLANNED_NOT_INVOKED"
+  },
+  "source_changes": [
+    "V13 paths/kinds/policies and strict typed transform/tau at five nodes",
+    "Actual60-field keyset;rawvariance/root/dispersion independently distinct",
+    "F32 add/sqrt/subtract checks using saved raw variance and actual saved root",
+    "Full V11 attention derivative with beta=c/(2actualroot),finite-F32 residual/live score/position",
+    "Export last4 W derivative uses dispersion,not rawvariance;sum routes then clip once",
+    "Absent root1/32 exception;no imaginary local-bin gradients",
+    "Retain CORE+five modules;moment audit nested,not separate doublecounted module"
+  ],
+  "limits": [
+    "Independent arithmetic without importing producer or any model/head module",
+    "No saved full local-hidden adjoint array;hidden derivative reference is not observed gradient parity",
+    "No score-to-hidden route,full encoder gradient,globalnorm reconstruction or remaining2046 raw step gradient claim",
+    "75 identifiable tensors are tensor event proof;capacity numel is not every-scalar learning"
+  ],
+  "execution_counters": {
+    "project_helpers": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "builds": 0,
+    "tests": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "quality_runs": 0,
+    "old_sources_modified": 0,
+    "DEV_changes": 0,
+    "Git_mutations": 0
+  },
+  "documentary_binding_repair_001": {
+    "whole_before_preservation": {
+      "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/training-recipe-label-repair-001/before-manifest.json",
+      "bytes": 1957,
+      "sha256": "28235e23f17c01d460c73a3eb8da20d833c29ca418bd10b65c0d586ddf7eb7fb"
+    },
+    "source_only": true,
+    "requested_by": "root pre-freeze static review",
+    "driver_exact_text_replacements": 3,
+    "auditor_exact_message_replacements": 2,
+    "TrainingIdentity_recipe": "per-bin-mean4-regularized-stddev4;F32-add-sqrt-subtract;tau2^-10;root-offset1/32",
+    "raw_variance_trace_wording_preserved": true,
+    "arithmetic_hyperparameters_streams_unchanged": true,
+    "project_invocations": 0
+  }
+}

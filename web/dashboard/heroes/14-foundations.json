@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 2,
+  "id": "foundations",
+  "number": 14,
+  "title": "Shared contracts, data and evidence",
+  "summary": "Own cross-component records, data and evaluation controls, composition semantics and reproducibility; operation and encoder Heroes own their specific behavior.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "foundations-records",
+      "title": "Establish shared research contracts",
+      "description": "Keep the common record vocabulary and evidence standards usable across components.",
+      "milestones": [
+        {
+          "id": "foundations-charter",
+          "title": "Adopt the operation charter and stable capability IDs",
+          "status": "done",
+          "description": "The project scope and repository guidance use ORR-DESIGN-001 v0.1.0 and its OR-01 through OR-13 families.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "README and project instructions identify the charter, stable capability families and required contract/evidence records."
+          ],
+          "evidence": [
+            {
+              "label": "Project charter",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Project scope",
+              "path": "README.md"
+            },
+            {
+              "label": "Repository instructions",
+              "path": "AGENTS.md"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        },
+        {
+          "id": "foundations-record-validation",
+          "title": "Implement common record and compatibility validation",
+          "status": "proposed",
+          "description": "Define reusable ObservationRef, SpaceRef, EmbeddingRecord, OperationRun and EvidenceRecord validation from the charter. Distinguish record identity, space/configuration identity, fitted-artifact identity and runtime response identity; validate operation-specific input roles rather than comparing dimensions or requiring universal space equality.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Logical records and compatibility rules",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The shared contract preserves observed embeddings, task-specific latent states, predicted states, transformed candidates and generated content as distinguishable kinds with source/parent lineage; derived records cannot manufacture observation provenance.",
+            "A SpaceRef resolves the selected instance/revision policy, checkpoint or provider identity, preprocessing and fitted transforms, native output selector/layout, dimensions and normalization. Per-request IDs and response hashes belong to execution/record provenance, not a new coordinate space per sample.",
+            "A compatibility check declares its operation and operand roles and returns an explicit supported relationship or a typed rejection. Equal dimensions or a shared family/model alias do not suffice; distinct query/document roles or an admitted directional OR-10 mapping can be valid relationships.",
+            "Unknown/incompatible relationships, malformed or non-finite records, stale fitted artifacts and temporal violations do not produce ordinary successful outputs. Define success, abstention and failure separately, with reason codes; fallback or partial-output policies must be explicit and preserve denominator/coverage accounting.",
+            "Conformance fixtures include same-shape/different-instance vectors, changed preprocessing, stale indexes, allowed query/document roles, an admitted mapping with retained provenance, and rejected role/kind conversions. This is engineering evidence only."
+          ]
+        },
+        {
+          "id": "foundations-lifecycle-admission",
+          "title": "Separate work readiness, run admission and claim support",
+          "status": "proposed",
+          "description": "Define a lightweight staged workflow without changing the current dashboard status enum. Preserve Contract → Implementation → Evaluation ownership while allowing reusable interface authoring and bounded development before confirmatory admission.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "Keep existing Hero IDs, schemaVersion and status values until the repository consumer schema is inspected and any schema migration is explicitly adopted. Express current prerequisites and blockers in descriptions/acceptance; do not label unbound work contract-ready or mark new work complete from this review.",
+            "Separate reusable-interface authoring, binding an experimental instance, admitting an execution, and accepting a scientific claim. The Operation Contract and linked Requirements-and-Evidence Record are required for each experimental run, but compact records may reuse shared rules rather than copy the whole charter.",
+            "Every experimental execution identifies its purpose (diagnostic/development, confirmatory operation, or pipeline evaluation), permitted claim, exact inputs/artifacts/configuration, resources and permissions, and evidence destination. Unresolved bindings block only the dependent execution, not drafting or unrelated engineering work.",
+            "Readiness blockers identify the missing dependency and the condition that clears it; authorization pauses cannot be cleared by scheduling, diagnostic labels or another Hero. A future dependency/readiness field requires validated consumer-schema support rather than ad hoc new status values.",
+            "Track execution disposition separately from claim verdict. Completed valid negative or inconclusive evaluations can finish their scoped work; failed, aborted or invalid attempts stay visible without being treated as supporting operation evidence."
+          ],
+          "evidence": [
+            {
+              "label": "Proposed corrections and acceptance rationale; not execution evidence",
+              "path": "doc/reviews/ORR_HERO_CORRECTIONS_2026-10-18.md"
+            },
+            {
+              "label": "Existing capability charter; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "foundations-data",
+      "title": "Establish shared data and comparison controls",
+      "description": "Register source identities and keep fitted preprocessing, splits and comparisons reproducible.",
+      "milestones": [
+        {
+          "id": "foundations-data-protocol",
+          "title": "Select a dataset manifest and comparison protocol",
+          "status": "proposed",
+          "description": "Choose an explicitly admitted initial dataset and population; record access/license, source versions/hashes, splits, dependency intervals, fitted preprocessing and matched-input/capacity controls. The dashboard itself selects no dataset, checkpoint or experiment; authoring the reusable data contract does not require these choices to be invented.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Data component scope",
+              "path": "code/data/README.md"
+            },
+            {
+              "label": "Charter evaluation rules",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The bound dataset manifest identifies actual permitted source snapshots or synthetic generator/configuration, units/entities, time semantics, labels and their availability, source hashes, split membership and known overlap or duplicate relations.",
+            "Fit every learned artifact only on its permitted fit population, including encoder adaptation, scaling/imputation, learned pooling or dimensionality reduction, mapping anchors, indexes/reference models, thresholds, readouts and model-selection decisions. Record pretrained exposure as known, unknown or excluded by design rather than assuming a frozen encoder has no assessment exposure.",
+            "Time-series splits and exclusions derive from actual feature/target dependency intervals and shared sources, not timestamps alone or an unexplained fixed gap. Distinguish development, calibration and protected assessment; declared online reference updates are part of the evaluated policy.",
+            "Baselines specify matched accessible information and an explicit capacity/compute/cost budget or explain unavoidable differences. Entity/trajectory dependence determines the sampling and uncertainty unit; dense overlapping windows are not silently treated as independent replicates.",
+            "Maintain a selection/exposure history for diagnostics, parameter search and repeated assessments. Revised protocols use fresh confirmation data or explicitly report exploratory scope; historical evidence is not overwritten or rescored by a new dashboard."
+          ]
+        },
+        {
+          "id": "foundations-temporal-integrity",
+          "title": "Enforce temporal integrity across every derived path",
+          "status": "proposed",
+          "description": "Define shared information-availability semantics for all temporally indexed inputs and descendants, including RPB, MTF and CPB outputs. Distinguish an observation’s event time, source/dependency support and availability from a run’s declared as-of boundary and the availability/exposure of fitted artifacts.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "Each applicable record resolves an event/support interval, a dependency/availability bound, source revision or vintage, and any per-position validity mask with explicit time meaning. A mask alone or a window-end label is not a substitute for knowing which inputs influenced an output. Non-temporal uses declare and justify non-applicability.",
+            "Each run declares retrospective, point-in-time/as-of, or another explicit temporal claim. For an as-of claim, all observed/feature dependencies and permitted fit/model-selection information must satisfy its cutoff; future target values may enter scoring only through the evaluator after predictions are fixed. Unknown training/provider exposure narrows the claim and does not become a fabricated timestamp.",
+            "Derived records carry the maximum required input-availability boundary and full lineage, or a documented tighter per-output dependency proof. Aggregation, alignment, retrieval and rollout cannot erase unavailable dependencies; predicted-state target time remains distinct from its information origin.",
+            "Test suffix perturbations at the boundary claimed by the output: an end-of-window representation may use its complete available window, whereas prefix outputs need prefix-valid dependence. CPB naming or a padded-input mask is not, by itself, an empirical temporal-integrity receipt.",
+            "Negative fixtures cover future-window contamination, fitted-preprocessing leakage, delayed/revised labels, future reference/index entries, and an unavailable input carried through a transform/composition. Test point-in-time model availability separately from retrospective frozen-encoder recoverability; report the evidence scope.",
+            "A reconstructed walk-forward simulation may compute artifacts today from permitted earlier inputs; distinguish it from actual historical deployment and record its allowed fit/selection information. File creation time alone neither proves nor disproves point-in-time eligibility.",
+            "The contract specifies typed rejection or explicit downgrade to a different admitted retrospective mode when cutoff evidence is missing. A downstream consumer may not silently weaken the temporal claim."
+          ],
+          "evidence": [
+            {
+              "label": "Proposed corrections and acceptance rationale; not execution evidence",
+              "path": "doc/reviews/ORR_HERO_CORRECTIONS_2026-10-18.md"
+            },
+            {
+              "label": "Existing capability charter; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "foundations-evidence-ledger",
+          "title": "Retain and index every run disposition and claim verdict",
+          "status": "proposed",
+          "description": "Define one discoverable, versioned evidence namespace covering positive, negative, inconclusive, invalid, failed, aborted and admission-rejected work. Keep historical model-owned records in place and link them rather than rewriting their protocols.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "Adopt or explicitly replace the proposed namespace research/orr/: contracts/, requirements/, runs/<run-id>/, evidence/ and index.jsonl. These are proposed repository locations, not claims that a registry exists. The index identifies owner Hero, purpose, contract/RER revisions, dataset/SpaceRefs, protocol, disposition, claim verdict and artifact locations.",
+            "Register an attempt before experimental execution and finalize it even on error or interruption; record rejected admissions as such without inventing an executed run. Distinguish completed/non-supporting evidence from invalid methodology and execution failure.",
+            "Retain manifests, relevant permitted artifacts or immutable artifact references/digests, logs, exclusions, seeds/configuration, environment/code identity, metrics and uncertainty. Explicitly record unavailable or policy-restricted artifacts and the resulting replay limitation; never store credentials or unauthorized raw content.",
+            "Finalized evidence records are append-only or versioned with explicit supersession/correction links. Index checks detect dangling references, digest mismatches, stale status, and lost failed/inconclusive records; restricted-content deletion leaves an auditable permitted tombstone.",
+            "A charter link is a normative/design reference, not a test receipt. Completing new milestones requires their actual accepted artifacts and checks; preserved historical done milestones remain scoped assertions until their referenced receipts are independently inspected."
+          ],
+          "evidence": [
+            {
+              "label": "Proposed corrections and acceptance rationale; not execution evidence",
+              "path": "doc/reviews/ORR_HERO_CORRECTIONS_2026-10-18.md"
+            },
+            {
+              "label": "Existing capability charter; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "foundations-reproducibility",
+      "title": "Preserve reproducibility and pipeline meaning",
+      "description": "Maintain the verified environment and require end-to-end evidence for composed claims.",
+      "milestones": [
+        {
+          "id": "foundations-environment",
+          "title": "Verify the managed environment and preserved import",
+          "status": "done",
+          "description": "The migration retained the original files and research records, reused the managed Linux environment and passed the scoped engineering verification.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "Migration verification records zero file mismatches, unchanged model C++/headers and no SDK mutations.",
+            "The environment receipt records the pinned managed container and offline dependency verification."
+          ],
+          "evidence": [
+            {
+              "label": "Migration verification",
+              "path": "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json"
+            },
+            {
+              "label": "Environment verification",
+              "path": "doc/ENVIRONMENT_VERIFICATION_2026-10-18.json"
+            },
+            {
+              "label": "Migration scope and limitations",
+              "path": "doc/EMBEDDINGS_MIGRATION_2026-10-18.md"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        },
+        {
+          "id": "foundations-pipeline-protocol",
+          "title": "Define pipeline edge semantics and end-to-end evaluation",
+          "status": "proposed",
+          "description": "For every admitted composition, declare each edge’s record kind, role/SpaceRef relationship, availability propagation, fitted-artifact dependencies and failure policy. Component conformance, component utility and end-to-end utility remain separate evidence claims.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Composition and interoperability requirements",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Each edge identifies producer/consumer contract versions, payload schema/kind, source and derived SpaceRefs, operation-specific compatibility check or mapping, dependency/availability propagation, and failure/abstention/partial-output behavior.",
+            "Each fitted component and index/reference artifact is bound to its fit data, configuration and validity scope. Altering a provider, preprocessing, mapping, fit population or schema triggers an explicit affected-artifact review/rebuild; old evidence and artifacts remain identifiable rather than silently blessed for the new path.",
+            "No predicted or generated record becomes an observation by crossing an edge; no unavailable input loses its temporal restriction; and no failed record becomes an ordinary zero vector, success, missing row or action. Any predeclared fallback has its own path identity and evaluation coverage.",
+            "The end-to-end protocol records the full admitted population and denominator, baselines, costs, exclusions and failure/abstention rates. Component evidence is linked but cannot stand in for an executed pipeline evaluation.",
+            "Exercise at least one deliberate mismatch, temporal violation and upstream failure through a complete small path; assert propagated result states and evidence indexing before making any composed quality claim."
+          ]
+        },
+        {
+          "id": "foundations-starter-composition",
+          "title": "Close one bounded provider-to-operation evidence loop",
+          "status": "proposed",
+          "description": "Use a proposed selected-RPB-instance → OR-01 exact-retrieval path as the first bounded integration candidate. This priority is not selection of a checkpoint, dataset or experimental admission; other families remain independent proposed work and CPB stays paused.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "Bind an available RPB version, trained checkpoint, preprocessing/output contract, permitted fixed synthetic or public dataset, corpus/query split, independent relevance rule, metric, k, tie handling, baselines, uncertainty unit and budget. Missing instance/data evidence is a named blocker, not a guessed default.",
+            "Freeze the Operation Contract and linked Requirements-and-Evidence Record with the two-stage scope: engineering conformance first, then only the declared bounded retrieval question. No future-risk, latent-dynamics, causal, cross-modal or real-world generalization claim is implied.",
+            "Exercise one temporal-compatible end-of-window provider path and exact retrieval with a frozen eligible corpus; define source-overlap/self/duplicate exclusions. Use a simple matched-input raw-descriptor baseline and a declared chance/random-ranking reference where appropriate.",
+            "Run deliberate incompatible-space, unavailable/future candidate, non-finite-input and propagated-failure fixtures. Index engineering outcomes separately from any held-out relevance result and replay the pipeline from its retained permitted artifacts.",
+            "Close the loop with a valid scoped conclusion, including a negative or inconclusive result. Synthetic fixture success alone establishes only the specified synthetic/engineering scope; no model is declared a winner or universally adopted by this milestone."
+          ],
+          "evidence": [
+            {
+              "label": "Proposed corrections and acceptance rationale; not execution evidence",
+              "path": "doc/reviews/ORR_HERO_CORRECTIONS_2026-10-18.md"
+            },
+            {
+              "label": "Existing capability charter; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

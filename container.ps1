@@ -1,7 +1,9 @@
+[CmdletBinding(PositionalBinding = $false)]
 param(
+    [Parameter(Position = 0)]
     [ValidateSet('up', 'status', 'stop', 'shell', 'exec')]
     [string]$Action = 'status',
-    [Parameter(ValueFromRemainingArguments = $true)]
+    [Parameter(Position = 1, ValueFromRemainingArguments = $true)]
     [string[]]$Command
 )
 $ErrorActionPreference = 'Stop'
@@ -10,6 +12,7 @@ $containerName = 'mityane-geometrics'
 $manager = 'mityane-geometrics'
 $imageRecordPath = Join-Path $projectRoot 'environment-image.json'
 $hostPort = 4874
+$workingDirectory = '/mityane'
 
 function Invoke-Docker {
     & docker @args
@@ -129,11 +132,11 @@ switch ($Action) {
     'stop' { if ($container.State.Running) { Invoke-Docker stop $container.Id } }
     'shell' {
         if (-not $container.State.Running) { throw 'Container is stopped. Run .\container.ps1 up first.' }
-        Invoke-Docker exec -it --workdir /mityane $container.Id /bin/bash
+        Invoke-Docker exec -it --workdir $workingDirectory $container.Id /bin/bash
     }
     'exec' {
         if (-not $container.State.Running) { throw 'Container is stopped. Run .\container.ps1 up first.' }
         if (-not $Command) { throw 'Supply a command after exec.' }
-        Invoke-Docker exec --workdir /mityane $container.Id @Command
+        Invoke-Docker exec --workdir $workingDirectory $container.Id @Command
     }
 }

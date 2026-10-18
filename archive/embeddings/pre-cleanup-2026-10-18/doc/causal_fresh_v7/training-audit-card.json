@@ -1,0 +1,110 @@
+{
+  "kind": "cpb_v7_saved_training_independent_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-16T00:02:33.8381628Z",
+  "stage": "declared_after_static_review_before_any_saved_numeric_audit",
+  "execution_pending": true,
+  "model": "CPB-v7.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "baseline_unchanged": true,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;disjoint-mean-uncertainty-clip1-v1",
+  "gradient_clip_policy": "disjoint-mean-uncertainty-norm2-clip1-v1",
+  "frozen_training_card_sha256": "f913044fd4bdbeff637991087f91d0b47bca451b31dfe664fb70b9555bbae593",
+  "frozen_training_markdown_sha256": "f16442c6a291e4b06ba3e8ec3a60e26cab6b5e0c187f3224b980bca408e651f1",
+  "frozen_input_manifest_sha256": "af4e8d1ac89f12d45e5cbf524c80d1e7306acb799813968bd209c67811c2c7bf",
+  "main_source_manifest_sha256": "09c151d24eb91ea4ce8e653601aeee9d5e42d098df2ecd7204af92e528d67f80",
+  "main_source_zip_sha256": "ac43ef587383cbe3d610a5f73736a4d10cc852a64ebca249602f37db4b716999",
+  "main_source_files": 106,
+  "outside_frozen_main_source": true,
+  "auditor_source": {
+    "path": "code/research/causal_fresh_v7_training_audit/audit_training.py",
+    "bytes": 84700,
+    "sha256": "745878a93d7f6c76ab2bc733ad425eb58ef141056ba5ec2cb91fda274b228a86"
+  },
+  "auditor_support": [
+    {
+      "path": "code/research/causal_fresh_v7_training_audit/README.md",
+      "bytes": 2192,
+      "sha256": "7b54e039c0442083c0a5d4dd63bc45de41daee5b4ab9f4413a4409f60eaedc80"
+    },
+    {
+      "path": "code/research/causal_fresh_v7_training_audit/provenance.json",
+      "bytes": 1032,
+      "sha256": "a30f14d582fe8e58fa53cf8dd066e37077f75b588d6f236b466ae33ce1bf0548"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/audit_training.py",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6-training-audit/attempt-001/source/audit_training.py",
+      "bytes": 78757,
+      "sha256": "e7350c1b75d5101735de7a9948077a201257c4974d2e41d7699609c227f68b82"
+    }
+  ],
+  "expected_main_paths": {
+    "attempt": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001",
+    "run": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/run-001",
+    "source": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/source"
+  },
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "host_project_execution": false
+  },
+  "scope": [
+    "All2048 successful B8 CSV steps: independent counter/MT19937_64 anchors and TRAIN legality, F64 components, both observed preclip norms/factors and defined/nonzero73/3 branch coverage; separate cap1 per branch/combinedsqrt2",
+    "All five saved checkpoints via inert restricted reader; exact five clipping fields at outer/payload/TRAIN levels, canonical names derived from saved registration order/parameter records, fixed prior excluded and same one-group AdamW moments/order/counters",
+    "Fresh4096 TRAIN calibration statistics and metadata-sensitive normalizer identity independently recomputed; no old model/state imports",
+    "Full112/32 fixed-query scalar rows and first8 stored cells per initial/final/split; independent F64 Huber/Gaussian/MAE support arithmetic",
+    "Actual pre-step update1/2048 B8 witnesses: source/CSV/time/row/context/mask eligibility/support/component/clip/partition association, no final-decoder application to pre-step state",
+    "Runtime gradient routing and clip isolation remain source-bound CUDA fixture evidence; no unsaved full-gradient norm reconstruction or optimizer replay"
+  ],
+  "expected": {
+    "updates": 2048,
+    "batch_size": 8,
+    "native_width": 40,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "fixed_values": 3888,
+    "parameter_tensors": 77,
+    "clip_partition": [
+      73,
+      293537,
+      3,
+      1215,
+      1,
+      3888
+    ],
+    "clip_max_norms": [
+      1,
+      1
+    ],
+    "clip_norm_type": 2,
+    "combined_cap": "sqrt2"
+  },
+  "fresh_schema_contract": "Only fresh-initialization JSON lacks gradient_policy; require absence there. All other JSON objective/clip fields and every typed policy remain mandatory.",
+  "model_calls": 0,
+  "decoder_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "forbidden": [
+    "Torch/NumPy or producer imports",
+    "Executable model deserialization",
+    "Encoder/decoder/head forwards or optimizer steps",
+    "Old checkpoint numeric reads",
+    "Post-encoder PCA or fixed-head tuning",
+    "Mutation of main106/card/source/results or old artifacts"
+  ],
+  "execution_wrapper": {
+    "path": "doc/causal_fresh_v7/training-audit-execute.py",
+    "bytes": 6263,
+    "sha256": "376954b9402a7928bbe752534b8c0a2cfeb7c8d9b85c662a3b545ecf223f6485"
+  },
+  "stage_helper": {
+    "path": "doc/causal_fresh_v7/training-audit-stage.ps1",
+    "bytes": 7306,
+    "sha256": "54dd9a6c1b52c21c7a822fb4a2ac93a16f9a9929885e70fdbc1168429fa80e37"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "cpb_v9_v11_saved_TRAIN_source_root_review_v1",
+  "status": "passed_static_source_review_pending_independent_peer",
+  "reviewed_utc": "2026-10-17T17:37:32.8886806Z",
+  "source_readiness": {
+    "path": "output/engineering/causal-v9-v11-train-diagnosis-source-preparation/attempt-001/source-ready.json",
+    "bytes": 21895,
+    "sha256": "06b36cdfe0a3e9f292824416ca6c4d04f27d2590bad69c4bcc544becb99db976"
+  },
+  "owned_sources": [
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis/diagnose.py",
+      "bytes": 64052,
+      "sha256": "fbf487e40f701411693e62c3a8d72f09957d2b5a332efceffef3dabd2a5c19bb"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis/schema.py",
+      "bytes": 8595,
+      "sha256": "8cdcda73ecb879769c2be361d6e07e8065e6308f59f17a42c7141eb22c44f5fc"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis/README.md",
+      "bytes": 10673,
+      "sha256": "bede8370b99a4e6e71c111f78cb7db37258bf8c3167023517179ca68cfdda715"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis/provenance.json",
+      "bytes": 6479,
+      "sha256": "a9ae908e3c2d3dd78a0af08f9684e091a58f150383667f4210af3dc076a7ca12"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis_audit/audit.py",
+      "bytes": 59141,
+      "sha256": "7033e3b2b64af83c1715dd04f4af1c8845be799aad6a5f28697c0c33e79cd5c9"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis_audit/component_math.py",
+      "bytes": 9882,
+      "sha256": "18b4cab0168b0673b52908204a4013225c3e51d1ff1369b33cbc9c0f0f63a584"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis_audit/README.md",
+      "bytes": 7107,
+      "sha256": "af5df32bf278aed0d2a85f3b956ecd74ef54478ea8b29228e54eba0b8e09a6c1"
+    },
+    {
+      "path": "code/research/causal_v9_v11_train_diagnosis_audit/provenance.json",
+      "bytes": 11607,
+      "sha256": "4dc72065c12e22be06cdbbe52cfff317539497e54bba0a1275d320eda0be976b"
+    }
+  ],
+  "review_scope": "Read all10 sources in full; compare design and inventory002, original parent preservation and same-stage interfaces. Static review only.",
+  "findings": [
+    "25closednumeric inputs;34hash-only rawguards;12context inputs+6typedassertions beforetensor values. NoV9rawnumeric/heldoutinput or neuralweights selected.",
+    "Own independent V11 scalar kernels; exact4cachedV9wholeobjects relying on existing687825audit and fullsource/mirror/provenance pins.",
+    "All4tasks/3savedreadouts/stages/112rows/halves and supported physical errors retained. Five savedaffinefamilies/counters disclosed; no refit or alternatepredictor.",
+    "16384momentrows/8groups/fixed512blocks and twoactualroutes at1/2048 described; existing localadjoint/learning proofs reused unchanged.",
+    "Postbiasemptybins zero; concentration spansvalidmixture; absentpresentrowsnull; pre-step2047 neverpairedtofinal2048decoder.",
+    "Independent schema matches45checkpoint/20actual/11query fields; inertreaders byteidentical. Actualcard must provide both path and container_path for pinobjects consumed by auditor default expressions."
+  ],
+  "blockers": [],
+  "source_changes_required": [],
+  "required_next": "Independent full10source peer review, then own physically copied orchestration source preparation; actual109/futurefloor prerequisites beforecard. No runtime admission by this review.",
+  "AST_calls": 0,
+  "imports": 0,
+  "Docker_calls": 0,
+  "saved_tensor_numeric_reads": 0,
+  "body_calls": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "live_metadata_writes": 0
+}

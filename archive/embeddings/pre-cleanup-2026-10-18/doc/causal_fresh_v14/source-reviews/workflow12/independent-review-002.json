@@ -1,0 +1,117 @@
+{
+  "kind": "cpb_v14_primary_workflow_independent_static_review_v1",
+  "status": "passed",
+  "source_only": true,
+  "metadata_only": true,
+  "independent_of_author": true,
+  "scientific_execution_admitted": false,
+  "checks": 92,
+  "scope": "Bounded nonself SOURCE delta review of integer-guard repair4; prior complete12/science reviews reused unchanged.",
+  "source_readiness": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/orchestration/source-ready-002.json",
+    "bytes": 15998,
+    "sha256": "1eb71b75af2cd24a278428f6b5d12ff63207962f5f5bca77e4c605b3f1b2d557"
+  },
+  "before_manifest": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/orchestration/source-revision-001/before-manifest.json",
+    "bytes": 3141,
+    "sha256": "ff8388c20bef8b4a08aa0c6ef8ec167fabf8c0b288410372eb8e844f4165a272"
+  },
+  "source_delta": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/orchestration/source-revision-001/source-delta-receipt.json",
+    "bytes": 5771,
+    "sha256": "0acb3ec25a34139fcb0237613f8706bc4cac3e8ba5357898940b9d1fe1c85d3e"
+  },
+  "prior_complete_review": {
+    "path": "doc/causal_fresh_v14/source-reviews/workflow12/independent-review-001.json",
+    "bytes": 6669,
+    "sha256": "00957e7b6e5acdfd715688f81e0b18018fb6f9c20e6aea6c69e583d1e7a3f3e3"
+  },
+  "reviewed_sources": [
+    {
+      "path": "doc/causal_fresh_v14/prepare-draft-card.ps1",
+      "bytes": 51110,
+      "sha256": "555763b639e163b461a4a5b4d6c0ae972343a23e60d682ad87fd24812f7a5823"
+    },
+    {
+      "path": "doc/causal_fresh_v14/freeze-card.ps1",
+      "bytes": 36910,
+      "sha256": "ddb233e73bdfb9911928db3c52544b79397d893d026b260935c144356246938b"
+    },
+    {
+      "path": "doc/causal_fresh_v14/preflight.ps1",
+      "bytes": 35029,
+      "sha256": "43cab85a4d4455302b4c0b25127829c7f3a0390234c9dd1de1e95aca5e6d0ae1"
+    },
+    {
+      "path": "doc/causal_fresh_v14/stage-source.ps1",
+      "bytes": 4663,
+      "sha256": "4a7bbaf830714863c95803177e4bd88d06a5afe8278831db4d9f55173997087f"
+    },
+    {
+      "path": "doc/causal_fresh_v14/unpack-source.py",
+      "bytes": 2393,
+      "sha256": "04e09759d6b8066aa4d1a3a8f70809619b9b641f46a02714987984a536b77629"
+    },
+    {
+      "path": "doc/causal_fresh_v14/audit-build.py",
+      "bytes": 5044,
+      "sha256": "96d48b1ed977ce0b463897f7f6d43ef3d2977fa000c163baa6c8d10b0de0484b"
+    },
+    {
+      "path": "doc/causal_fresh_v14/execute-stage.py",
+      "bytes": 9315,
+      "sha256": "3c5d580fe77ee152e8fb67e35489c708db5b9bd46cba5b4f94dba5e62609dedc"
+    },
+    {
+      "path": "doc/causal_fresh_v14/run-quality.py",
+      "bytes": 24631,
+      "sha256": "6399e7072bb8b63fd3b50d216cb40102f0184789f347b2855a0b66fbabc7fc95"
+    },
+    {
+      "path": "doc/causal_fresh_v14/verify-mirror.ps1",
+      "bytes": 10062,
+      "sha256": "aa6fd86490488ad93ef0094e1b8317e71b73d4ad84c7f6e58d11be8cd5b5fd73"
+    },
+    {
+      "path": "doc/causal_fresh_v14/run-container.ps1",
+      "bytes": 9099,
+      "sha256": "8dddc8a7ae608caf6ea74610a14d35068cd75005dd442ca6b626caadd0f97118"
+    },
+    {
+      "path": "doc/causal_fresh_v14/card-markdown-template.md",
+      "bytes": 8177,
+      "sha256": "8e51a788b530ca23c9f75599f7555599e61f745cfb7b5dbad65219e2305d8917"
+    },
+    {
+      "path": "doc/causal_fresh_v14/orchestration-provenance.json",
+      "bytes": 41161,
+      "sha256": "8918e2d62ef6fb11e6ce518e4d3631b7e6abf520f17ec826757dcd3cff090b47"
+    }
+  ],
+  "reviewed_source_count": 12,
+  "changed_sources": [
+    "doc/causal_fresh_v14/prepare-draft-card.ps1",
+    "doc/causal_fresh_v14/freeze-card.ps1",
+    "doc/causal_fresh_v14/preflight.ps1",
+    "doc/causal_fresh_v14/orchestration-provenance.json"
+  ],
+  "unchanged_source_count": 8,
+  "whole_before_files": 4,
+  "predicate_substitutions": 8,
+  "exact_forward_and_reverse_byte_reconstruction": [
+    "doc/causal_fresh_v14/prepare-draft-card.ps1",
+    "doc/causal_fresh_v14/freeze-card.ps1",
+    "doc/causal_fresh_v14/preflight.ps1"
+  ],
+  "accepted_type_semantics": "Only System.Int32 or System.Int64, using -is tests without coercion; Boolean/String/Double/other types fail the type predicate. Existing positive/equality numeric gates are byte-identical.",
+  "unchanged_scientific_values_tolerances_flags_counts": true,
+  "existing_latestCount_int_or_long_guards_unchanged": true,
+  "provenance_changes": "Three actual owned helper pins refreshed; status/prepared time updated; previous observations preserved with one appended repair note; new explicit revision/whole-before aliases. Other provenance fields exact.",
+  "failure_classification": "One root metadata adapter refusal on valid Int64 JSON before card/preservation/parentcopy/container/science; not a scientific experiment failure.",
+  "original_ready001_and_false_and_admitted_plan001_preserved": true,
+  "helper_AST_import_Docker_build_test_model_head_training_calls": 0,
+  "tensor_CSV_checkpoint_archive_binary_reads_or_hashes": 0,
+  "source_or_live_DEV_Git_edits_by_reviewer": 0,
+  "blockers": []
+}

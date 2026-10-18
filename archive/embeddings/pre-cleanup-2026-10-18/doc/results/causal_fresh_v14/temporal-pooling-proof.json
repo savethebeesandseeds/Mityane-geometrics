@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "model": "CPB-v14",
+  "actual_CUDA": true,
+  "temporal_pooling_policy": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1",
+  "original_position_membership": true,
+  "both_temporal_paths": true,
+  "empty_bins_finite_zero": true,
+  "true_per_bin_trace_weights": true,
+  "manual_pooling_and_adjoint_parity": true,
+  "four_export_slices_gradient_and_movement": true,
+  "centered_position_contrasts_gradient_and_movement": true,
+  "head_fits": 0,
+  "synthetic_optimizer_steps": 1,
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "common_softmax_gauge_invariance": true,
+  "shared_global_half_mixture": true,
+  "relative_bin_global_sensitivity": true,
+  "three_between_bin_contrasts_gradient_and_movement": true,
+  "backbone_encode_calls": 1,
+  "public_encoder_calls": 0,
+  "direct_pool_kernel_calls": 53,
+  "independent_full_expression_F64_finite_differences": true,
+  "actual_F32_kernel_finite_differences": true,
+  "equal_mean_different_variance": true,
+  "present_constant_variance_dtype_tolerance": true,
+  "eight_moment_subgroups_gradient_and_movement": true,
+  "manual_F32_absolute_tolerance": 3e-05,
+  "manual_F32_relative_tolerance": 3e-05,
+  "F64_finite_difference_coordinates": 18,
+  "F64_finite_difference_step": 1e-05,
+  "F64_finite_difference_absolute_tolerance": 2e-08,
+  "F64_finite_difference_relative_tolerance": 2e-08,
+  "F32_finite_difference_coordinates": 18,
+  "F32_finite_difference_step": 0.002,
+  "F32_finite_difference_absolute_tolerance": 0.002,
+  "F32_finite_difference_relative_tolerance": 0.002,
+  "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+  "temporal_export_layout": "per-trailing-window-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+  "temporal_dispersion_regularizer": 0.0009765625,
+  "isolated_autograd_grad_calls": 4,
+  "transform_derivative_upper_bound": 16,
+  "softmax_gauge_tolerance": 2e-06,
+  "bin_mass_tolerance": 2e-06,
+  "flat_trace_tolerance": 8e-06,
+  "empty_and_membership_zero": "exact",
+  "mean4_regularized_stddev4_export_layout": true,
+  "full_attention_dependent_regularized_moment_adjoints": true,
+  "live_dispersion_score_gradient": true,
+  "raw_variance_root_dispersion_trace": true,
+  "zero_tiny_large_analytic_dispersion_adjoints": true,
+  "supported_nonfinite_and_variance_overflow_refused": true,
+  "absent_local_huge_singleton_sanitized": true,
+  "captured_F32_residual_correction": true,
+  "raw_root_absent_offset_exception": true,
+  "temporal_pooling_geometry": [
+    4,
+    16,
+    32,
+    8
+  ],
+  "temporal_pooling_trailing_lengths": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "nested_trailing_supports_fixed_edge16": true,
+  "per_window_local_weights_captured": true,
+  "longest_local_equals_global_two_sum": true,
+  "packed_padding_membership_invariance": true,
+  "kind": "cpb_v14_temporal_pooling_mechanism_proof_v1",
+  "binary": {
+    "path": "/opt/cuwacunu/build/causal-fresh-v14-attempt001/test_cpb_v14_temporal_pooling",
+    "bytes": 507344,
+    "sha256": "3a2eb74388484ffb3217c80a53bb6ae52a91eaac83b96718054de25642f90f4e"
+  },
+  "log": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/temporal-pooling.log",
+    "bytes": 1978,
+    "sha256": "ac494994e9aa9bc49f6cb51c3455c0382a402a0b599a13bb7db049688575d4a4"
+  },
+  "execution": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/temporal-pooling-stage.json",
+    "bytes": 872,
+    "sha256": "1abeb1aea2773fef5e8db9782fd70742df3c26e4d87e39d3a79a3331a716689e"
+  },
+  "frozen_card": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/source/doc/CAUSAL_FRESH_V14_CARD.json",
+    "bytes": 140239,
+    "sha256": "546e3c15488169b0d416c6264159234c5840fdb71a9e0739599c922de57ca4e1"
+  },
+  "fixture_source": {
+    "path": "code/research/causal_fresh_v14/tests/v14_temporal_pooling_test.cpp",
+    "bytes": 36611,
+    "sha256": "94a46f417465e691a47b303609777ae41a1348957fcd98cbf9eb0c5be2a025b1"
+  },
+  "independent_scientific_source_review": {
+    "path": "doc/causal_fresh_v14/source-reviews/root-family-and-training-auditor-source-review-001.json",
+    "bytes": 29160,
+    "sha256": "3d6ef60318123daa57a14046a082213470feffd2f044a230d729efe8f4188dd8"
+  }
+}

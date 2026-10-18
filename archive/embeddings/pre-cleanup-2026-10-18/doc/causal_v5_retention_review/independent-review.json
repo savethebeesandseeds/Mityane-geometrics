@@ -1,0 +1,432 @@
+{
+  "kind": "clean_causal_v5_retention_independent_review_v1",
+  "status": "passed",
+  "original_goal": {
+    "path": "original-goal.json",
+    "bytes": 8692,
+    "sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25"
+  },
+  "reviewed_protocol": {
+    "path": "retention-goal.json",
+    "bytes": 12897,
+    "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+  },
+  "source": {
+    "path": "review.py",
+    "bytes": 7500,
+    "sha256": "405894f9157da8d35ccbf9b44f897671991129615c1e181e7ea9348809f11e40"
+  },
+  "manifest": {
+    "path": "manifest.json",
+    "bytes": 2354,
+    "sha256": "25a6450009d4adb048006bf5ff80fa42b588d36302e4f40a1a4c6f57e570fe5e"
+  },
+  "criteria_checked": 22,
+  "retained_best_aggregate_scopes_checked": 19,
+  "positivity_rules_unchanged": 3,
+  "changed_floor_ids": [
+    "market_scaler:validation_intact:neural_head_accuracy",
+    "past_relation:neural_mean_r2",
+    "past_volatility:neural_mean_r2",
+    "train:standardized_MAE"
+  ],
+  "strict_validation_NLL_rule_unchanged": true,
+  "unchanged_contract_fields": [
+    "establishment",
+    "scope",
+    "defaults",
+    "version_policy",
+    "preservation",
+    "search_policy",
+    "future_dimensions",
+    "application_promotion",
+    "publication",
+    "container",
+    "independent_confirmation"
+  ],
+  "authorized_diagnosis_metadata_update": {
+    "original": "Saved TRAIN-only v3/v4 features/fitted coefficients/predictions and bounded original masked-query witnesses; no encoder/decoder/neural forwards, head/statistics fits, held-out tensor analysis or old encoder replays",
+    "proposed": "Saved TRAIN-only V4/V5 features,fitted ridge coefficients,saved predictions and bounded original masked-query witnesses under their separately frozen diagnosis card; no encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays",
+    "review": "Reference stage advances from saved V3/V4 to separately frozen saved V4/V5; prohibitions remain explicit; no numeric criterion change"
+  },
+  "prior_review_failure": {
+    "attempt": 1,
+    "reason": "Reviewer incorrectly required the current diagnosis stage description to remain an identical historical V3/V4 string; all original/proposed bytes and failure evidence preserved"
+  },
+  "all_other_18_criteria_exact": true,
+  "ties_keep_earlier_source": true,
+  "comparisons": [
+    {
+      "id": "past_volatility:linear_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.964673433811061
+        ],
+        [
+          "CPB-v4.market-01",
+          0.849562210315651
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9522110896824942
+        ]
+      ]
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.4630519227215611
+        ],
+        [
+          "CPB-v4.market-01",
+          0.5551762291104203
+        ],
+        [
+          "CPB-v5.market-01",
+          0.6481906853790493
+        ]
+      ]
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.2631329634696965
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9072134297036245
+        ],
+        [
+          "CPB-v5.market-01",
+          0.8686454446647044
+        ]
+      ]
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          -0.2539790011410479
+        ],
+        [
+          "CPB-v4.market-01",
+          0.5698752307038314
+        ],
+        [
+          "CPB-v5.market-01",
+          0.5239287837355375
+        ]
+      ]
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.8628403110608782
+        ],
+        [
+          "CPB-v4.market-01",
+          0.8351430745456463
+        ],
+        [
+          "CPB-v5.market-01",
+          0.8442568194013671
+        ]
+      ]
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.541426055582653
+        ],
+        [
+          "CPB-v4.market-01",
+          0.6873705450109496
+        ],
+        [
+          "CPB-v5.market-01",
+          0.6179837760969433
+        ]
+      ]
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          -0.00700444683432222
+        ],
+        [
+          "CPB-v4.market-01",
+          0.3264050670418407
+        ],
+        [
+          "CPB-v5.market-01",
+          0.25232855646478336
+        ]
+      ]
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          -0.08556567147059875
+        ],
+        [
+          "CPB-v4.market-01",
+          0.20951046448819055
+        ],
+        [
+          "CPB-v5.market-01",
+          0.3705053482630968
+        ]
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.96484375
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9830729166666666
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9713541666666666
+        ]
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.95703125
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9696180555555556
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9657118055555556
+        ]
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.9114583333333334
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9466145833333334
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9296875
+        ]
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.9175347222222222
+        ],
+        [
+          "CPB-v4.market-01",
+          0.93359375
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9279513888888888
+        ]
+      ]
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.9934895833333334
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9934895833333334
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9921875
+        ]
+      ]
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.9817708333333334
+        ],
+        [
+          "CPB-v4.market-01",
+          0.98828125
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9887152777777778
+        ]
+      ]
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.94921875
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9583333333333334
+        ],
+        [
+          "CPB-v5.market-01",
+          0.94140625
+        ]
+      ]
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.9427083333333334
+        ],
+        [
+          "CPB-v4.market-01",
+          0.9561631944444444
+        ],
+        [
+          "CPB-v5.market-01",
+          0.9409722222222222
+        ]
+      ]
+    },
+    {
+      "id": "train:standardized_MAE",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.25904599043427573
+        ],
+        [
+          "CPB-v4.market-01",
+          0.27250803234958165
+        ],
+        [
+          "CPB-v5.market-01",
+          0.25446393568049436
+        ]
+      ]
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          0.376414230576159
+        ],
+        [
+          "CPB-v4.market-01",
+          0.30831692401624544
+        ],
+        [
+          "CPB-v5.market-01",
+          0.37519629363955453
+        ]
+      ]
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "saved_final_values": [
+        [
+          "CPB-v3.market-01",
+          1.521796577918092
+        ],
+        [
+          "CPB-v4.market-01",
+          -0.04538148809081624
+        ],
+        [
+          "CPB-v5.market-01",
+          2.6874502201003447
+        ]
+      ]
+    }
+  ],
+  "verified_files": [
+    {
+      "path": "review.py",
+      "bytes": 7500,
+      "sha256": "405894f9157da8d35ccbf9b44f897671991129615c1e181e7ea9348809f11e40"
+    },
+    {
+      "path": "original-goal.json",
+      "bytes": 8692,
+      "sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25"
+    },
+    {
+      "path": "retention-goal.json",
+      "bytes": 12897,
+      "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+    },
+    {
+      "path": "v3-table.json",
+      "bytes": 336076,
+      "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+    },
+    {
+      "path": "v4-table.json",
+      "bytes": 336377,
+      "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+    },
+    {
+      "path": "v5-table.json",
+      "bytes": 336740,
+      "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+    },
+    {
+      "path": "ledger.json",
+      "bytes": 185057,
+      "sha256": "5fe92e5545764e68aa694992ba43353b17e0df3e8d6a854c2013d4b960d73245"
+    },
+    {
+      "path": "final-preservation.json",
+      "bytes": 46031,
+      "sha256": "0cb3ec54789c580df741d68b5923459040948a38284584eca9691540c597873a"
+    }
+  ],
+  "aggregate_field_scope": "Saved final task/head scores, timing means/coverage, TRAIN/VAL MAE and VAL NLL only; no rowwise held-out diagnosis",
+  "geometry_note": "The inherited default36 is not a candidate declaration; any native40 candidate needs an explicit prospective geometry/head override under unchanged future_dimensions policy",
+  "original_criteria_or_historical_counts_rewritten": false,
+  "training_updates": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "new_quality_scores": 0
+}

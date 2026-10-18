@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-06-comparisons",
+  "number": 6,
+  "title": "OR-06 · Matched comparisons, sensitivity, and counterfactual analysis",
+  "summary": "Compare cases or specified alternatives with an explicit distinction between observation, controlled model response and identified intervention effects.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-06-comparisons-contract",
+      "title": "Define the operation contract",
+      "description": "Declare the claim level, comparison population, matching assumptions, alternatives, outputs and identification limits.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Declare the claim level, comparison population, matching assumptions, alternatives, outputs and identification limits. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Choose an explicit claim level: observational contrast, controlled model response, or identified intervention effect. For intervention claims, state the identification argument and untestable assumptions, treatment/outcome timing, support requirements and prohibited matching variables; proximity is not the argument."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-06-comparisons-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide the declared comparison or sensitivity procedure with overlap diagnostics, uncertainty and explicit refusal conditions.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide the declared comparison or sensitivity procedure with overlap diagnostics, uncertainty and explicit refusal conditions. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Preserve which attributes were observed, changed in a model input, simulated, or intervened upon. Diagnostics of balance, overlap and sensitivity remain diagnostics rather than automatic certification of causal identification."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-06-comparisons-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Use controlled or paired evidence where available; check confounding, overlap and validity before making intervention claims.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Use controlled or paired evidence where available; check confounding, overlap and validity before making intervention claims. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Match validators and uncertainty estimates to the declared claim level; unsupported identification or overlap triggers refusal of the intervention claim, not relabeling an observational comparison as causal."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1079 @@
+ M Makefile
+ M code/encoders/raw_patch_bottleneck_mae/README.md
+ D code/encoders/raw_patch_bottleneck_mae/conditioned_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/configurable_spectral.mk
+ D code/encoders/raw_patch_bottleneck_mae/consecutive_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/content_ordered_relation.mk
+ D code/encoders/raw_patch_bottleneck_mae/energy_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/frozen_level.mk
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/conditioned_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/energy_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/location_scale_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_conditional_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_modulated_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/relative_encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_replay_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_replication_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/decoder_calibration.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/early_mixer_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/early_mixer_confirmation_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/evaluation_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/frozen_decoder_calibration.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/frozen_native_feature_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learning_curve_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/matched_target_gain_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/native_curve_gate.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/native_view_agreement.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/optimization_diagnostic_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/paired_pooling_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/pooled_context_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/reconstruction_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_dynamics_objective.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_objective_diagnostic.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_source_gain.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference_adapter.h
+ M code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/workflow.h
+ D code/encoders/raw_patch_bottleneck_mae/learned_ordered_relation.mk
+ D code/encoders/raw_patch_bottleneck_mae/location_scale_decoder.mk
+ D code/encoders/raw_patch_bottleneck_mae/parent_conditional_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder.mk
+ D code/encoders/raw_patch_bottleneck_mae/relative_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/separated_change.mk
+ D code/encoders/raw_patch_bottleneck_mae/separated_change_native36.mk
+ D code/encoders/raw_patch_bottleneck_mae/src/context_deletion_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/context_replay_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/context_replication_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/decoder_calibration.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/early_mixer_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/early_mixer_confirmation_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/evaluation_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/frozen_decoder_calibration.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/learning_curve_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/main.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/matched_target_gain_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/native_curve_gate.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/native_view_agreement.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/optimization_diagnostic_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/paired_pooling_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/pooled_context_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/reconstruction_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/training_objective_diagnostic.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/training_source_gain.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/visible_difference_adapter.cpp
+ D code/encoders/raw_patch_bottleneck_mae/src/workflow.cpp
+ D code/encoders/raw_patch_bottleneck_mae/streaming_scaler.mk
+ D code/encoders/raw_patch_bottleneck_mae/tests/checkpoint_integrity_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/cli_smoke.sh
+ D code/encoders/raw_patch_bottleneck_mae/tests/conditioned_change_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/configurable_checkpoint_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/configurable_spectral_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/consecutive_change_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/content_ordered_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_balanced_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_deletion_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_deletion_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_lighter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_replay_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/context_replication_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/decoder_calibration_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/early_mixer_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/early_mixer_confirmation_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/early_mixer_curve_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/early_mixer_model_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/energy_change_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/evaluation_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/fixed_prior_temporal_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/frozen_decoder_calibration_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/frozen_level_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/frozen_native_feature_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/learned_ordered_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/learning_curve_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/legacy_checkpoint_parity_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/location_scale_decoder_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/masking_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/matched_target_gain_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/model_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/native_curve_gate_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/native_view_agreement_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/numerics_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/optimization_diagnostic_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/parent_conditional_change_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/parent_modulated_decoder_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/partitioned_temporal_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/periodic_checkpoint.sh
+ D code/encoders/raw_patch_bottleneck_mae/tests/pooled_context_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/pooled_context_model_test.cpp
+ M code/encoders/raw_patch_bottleneck_mae/tests/pooled_context_old_model_reference.h
+ D code/encoders/raw_patch_bottleneck_mae/tests/preprocessing_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/reconstruction_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/relative_change_test.cpp
+ M code/encoders/raw_patch_bottleneck_mae/tests/rpb_test_support.h
+ D code/encoders/raw_patch_bottleneck_mae/tests/separated_change_native36_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/separated_change_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/spectral_temporal_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/streaming_scaler_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/temporal_dynamics_objective_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/temporal_relation_bank_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/training_objective_diagnostic_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/training_policy_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/training_state_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/unit_temporal_relation_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/visible_difference_adapter_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/visible_difference_model_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/tests/workflow_test.cpp
+ D code/encoders/raw_patch_bottleneck_mae/training_state.mk
+ M code/encoders/raw_patch_bottleneck_mae/versions/README.md
+ M code/encoders/raw_patch_bottleneck_mae/versions/index.json
+ M code/evaluation/protocols/configurable_capacity_v1/configurable_capacity.mk
+ M code/evaluation/protocols/configurable_content_relation_v1/configurable_content_relation.mk
+ M code/evaluation/protocols/configurable_learned_relation_v1/configurable_learned_relation.mk
+ M code/evaluation/protocols/structured_hard_timing_v1/check-structured-hard-timing.sh
+ M code/evaluation/protocols/structured_hard_timing_v1/prepare_saved_run.py
+ M code/evaluation/protocols/visible_difference_v1/check-visible-difference.sh
+ M code/evaluation/protocols/visible_difference_v1/prepare_saved_run.py
+ M code/scripts/check-context-balanced-validation.sh
+ M code/scripts/check-context-deletion.sh
+ M code/scripts/check-context-lighter-validation.sh
+ M code/scripts/check-context-optimization-validation.sh
+ M code/scripts/check-context-replication.sh
+ M code/scripts/check-native-view-agreement-validation.sh
+ M code/scripts/prepare-early-mixer-confirmation.py
+ M code/scripts/prepare-early-mixer-learning-curve.py
+ M code/scripts/prepare-early-mixer-reliability.py
+ M code/scripts/prepare-fresh-decoder-replication.py
+ M code/scripts/prepare-frozen-amplitude-transfer.py
+ M code/scripts/prepare-matched-target-gain.py
+ M code/scripts/prepare-pooled-context.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/AGENTS.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/Makefile
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/change_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/conditioned_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/configurable_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/configurable_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/content_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/energy_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/location_scale_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/primary_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/relative_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/separate_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/streaming_scaler.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v1.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v10.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v11.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v12.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v13.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v14.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v15.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v16.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v17.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v18.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v19.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v2.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v20.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v21.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v22.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v23.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v24.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v25.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v26.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v27.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v28.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v29.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v3.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v30.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v4.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v5.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v6.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v7.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v8.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/RPB-v9.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/index.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v1/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v10/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v12/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v13/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v14/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v16/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v17/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v18/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v19/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v19/include/cuwacunu/encoder/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v19/tests/import_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v2/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/cuwacunu/encoder/configurable_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/cuwacunu/encoder/configurable_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/config/content_ordered_relation.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/content_ordered_relation.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/cuwacunu/encoder/content_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/cuwacunu/encoder/primary_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_encoder_input_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/primary_encoder_input_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v22/training_state.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/config/consecutive_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/consecutive_change.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/cuwacunu/encoder/change_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/consecutive_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/frozen_level_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes_native36.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/cuwacunu/encoder/separate_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_native36_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/config/energy_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/energy_change_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/cuwacunu/encoder/energy_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v25/tests/energy_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/conditioned_change_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/config/conditioned_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/cuwacunu/encoder/conditioned_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v26/tests/conditioned_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/config/parent_conditional_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/parent_conditional_change_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v27/tests/parent_conditional_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/config/relative_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/cuwacunu/encoder/relative_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/relative_change_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v28/tests/relative_change_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/config/parent_modulated_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/parent_modulated_decoder_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v29/tests/parent_modulated_decoder_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v3/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/config/location_scale_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/cuwacunu/encoder/location_scale_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/location_scale_decoder_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v30/tests/location_scale_decoder_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v4/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v5/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v6/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v7/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/raw_patch_bottleneck_mae/versions/v8/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/FROZEN_LEVEL_TRAINING.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/cuwacunu/encoder/change_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/cuwacunu/encoder/conditioned_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/cuwacunu/encoder/content_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/cuwacunu/encoder/primary_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_content/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/cuwacunu/encoder/energy_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/cuwacunu/encoder/location_scale_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_modulated/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/cuwacunu/encoder/relative_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_relative/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/cuwacunu/encoder/separate_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_separate/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_artifact.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/cuwacunu/encoder/configurable_encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_spectral/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/IMPORT_MANIFEST.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/cuwacunu/encoder/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/encoders/rpb_v19/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/causal_patch_bottleneck_mae_v1/evaluation.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/causal_patch_bottleneck_mae_v1/extract_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/causal_patch_bottleneck_mae_v1/read_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/include/cuwacunu/evaluation/fixed_regression.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_change_energy_train_context_v1/context.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_change_energy_train_context_v1/main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_change_scale_diagnosis_v1/diagnosis.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_change_scale_diagnosis_v1/main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_location_scale_synthetic_transfer_v1/extract_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_location_scale_synthetic_transfer_v1/read_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_location_scale_synthetic_transfer_v1/reader.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_location_scale_synthetic_transfer_v1/transfer.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_readouts.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/include/embedding/shared/data.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/include/embedding/shared/evaluation.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/include/embedding/shared/feature_harness.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/include/embedding/shared/fixed_feature_readouts.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/include/embedding/shared/types.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/src/data.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/src/feature_harness.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/deps/src/fixed_feature_readouts.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/extract_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/read_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/reader.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_synthetic_transfer_v1/transfer.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_train_volatility_diagnosis_v1/diagnosis.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/market_train_volatility_diagnosis_v1/main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/src/fixed_regression.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/src/market_readouts_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/evaluation/tests/fixed_regression_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/integration/include/cuwacunu/integration/configurable_encoder_input.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/integration/include/cuwacunu/integration/encoder_input.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/integration/tests/configurable_encoder_input_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/integration/tests/encoder_input_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/append-encoder-search-ledger-v2.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/append-encoder-search-ledger-v3.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/append-encoder-search-ledger.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/apply-rpb-layout.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-causal-patch-bottleneck-mae-v1.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-change-energy.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-change-scale.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-conditioned-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-location-scale-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-location-scale-synthetic-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-parent-conditional-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-parent-modulated-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-relative-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/audit-market-train-volatility.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/declare-market-location-scale-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/execute-market-conditioned-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/execute-market-location-scale-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/execute-market-parent-conditional-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/execute-market-parent-modulated-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/execute-market-relative-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/fetch-market-pilot.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/finalize-market-energy.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/install-libtorch.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-causal-patch-bottleneck-mae.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-conditioned-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-location-scale-decoder.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-location-scale-synthetic-transfer.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-parent-conditional-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-parent-modulated-decoder.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preflight-market-relative-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/preserve-market-energy.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/quality-causal-patch-bottleneck-mae-v1.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-causal-patch-bottleneck-mae-v1.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-change-energy.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-change-scale.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-conditioned-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-location-scale-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-location-scale-synthetic-transfer-v2.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-location-scale-synthetic-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-native36.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-parent-conditional-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-parent-modulated-decoder-v2.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-parent-modulated-decoder.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-relative-changes.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-synthetic-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/report-market-train-volatility.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/rpb-layout-plan.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-causal-patch-bottleneck-mae-v1.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-change-energy.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-change-scale-diagnosis.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-conditioned-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-frozen-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-location-scale-decoder.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-location-scale-synthetic-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-parent-conditional-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-parent-modulated-decoder.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-pilot.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-relative-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-separate-changes-native36.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-separate-changes.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-studies.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-synthetic-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/run-market-train-volatility-diagnosis.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-causal-quality-tools-v1.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-market-conditioned-admission.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-market-location-scale-admission.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-market-parent-conditional-admission.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-market-parent-modulated-admission.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/seal-market-relative-admission.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/select-encoder-search-frozen-transfer.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/sync-receipt-market-conditioned-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/sync-receipt-market-location-scale-decoder.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/sync-receipt-market-parent-conditional-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/sync-receipt-market-parent-modulated-decoder.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/sync-receipt-market-relative-changes.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/task.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/test-reference.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/test-setup.sh
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/update-encoder-search-ledger.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/verify-causal-encoder-portable-sync.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/verify-encoder-search-closure-preservation.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/verify-market-energy-preservation.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/verify-market-native36-preservation.py
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/scripts/verify-rpb-layout.ps1
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/include/cuwacunu/training/market_data.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/include/cuwacunu/training/market_raw_f64_data.h
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_change_energy.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_conditioned_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_data_contract.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_frozen_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_location_scale_decoder.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_parent_conditional_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_parent_modulated_decoder.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_pilot.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_relative_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_separate_changes.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_separate_changes_native36.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_separate_native36_test.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/market_study.mk
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_change_energy_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_conditioned_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_frozen_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_location_scale_decoder_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_parent_conditional_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_parent_modulated_decoder_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_pilot_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_relative_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_separate_changes_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_separate_changes_native36_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/src/market_study_main.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/code/training/tests/market_data_contract_test.cpp
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/encoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/encoder_market_pilot.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/encoder_v20.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/encoder_v22.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_history_pilot.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/capacity_base.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/capacity_large.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/capacity_long.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/capacity_wide.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/change_energy.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/conditioned_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/consecutive_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/continuation.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_base.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_change_energy.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_conditioned_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_large.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_location_scale_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_long.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_parent_conditional_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_parent_modulated_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_relative_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_separate.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_separate_native36.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/encoder_wide.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/frozen_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/location_scale_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/parent_conditional_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/parent_modulated_decoder.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/relative_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/separate_changes.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/config/market_studies/separate_changes_native36.conf
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/CONTINUATION.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/ENCODER_BACKPORT.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/ENCODER_SEARCH_LEDGER.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/HANDOFF_2026-10-14.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/PRIMARY_ENCODER_SELECTION.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/PRIMARY_ENCODER_SELECTION.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/encoder_search_ledger.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/rpb_layout_cleanup/README.md
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/rpb_layout_cleanup/preservation-after.json
+?? archive/cuwacunu_dev/2026-10-15-before-causal-primary/source/doc/rpb_layout_cleanup/verification.json
+?? code/encoders/raw_patch_bottleneck_mae/shared/README.md
+?? code/encoders/raw_patch_bottleneck_mae/shared/config/evaluation.conf
+?? code/encoders/raw_patch_bottleneck_mae/shared/config/smoke.conf
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_replay_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/context_replication_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/early_mixer_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/early_mixer_confirmation_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/evaluation_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/learning_curve_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/matched_target_gain_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/native_curve_gate.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/optimization_diagnostic_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/paired_pooling_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/pooled_context_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/reconstruction_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/training_objective_diagnostic.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/workflow.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/context_deletion_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/context_replay_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/context_replication_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/early_mixer_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/early_mixer_confirmation_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/evaluation_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/learning_curve_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/main.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/matched_target_gain_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/native_curve_gate.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/optimization_diagnostic_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/paired_pooling_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/pooled_context_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/reconstruction_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/training_objective_diagnostic.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/src/workflow.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/streaming_scaler.mk
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/cli_smoke.sh
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/context_deletion_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/context_replay_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/context_replication_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/early_mixer_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/early_mixer_confirmation_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/early_mixer_curve_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/evaluation_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/learning_curve_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/legacy_checkpoint_parity_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/masking_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/matched_target_gain_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/model_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/native_curve_gate_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/numerics_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/optimization_diagnostic_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/periodic_checkpoint.sh
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/pooled_context_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/preprocessing_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/reconstruction_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/rpb_test_support.h
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/training_objective_diagnostic_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/training_policy_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/shared/tests/workflow_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v1/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v10/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v10/tests/early_mixer_model_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v11/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v11/include/embedding/encoders/raw_patch_bottleneck_mae/training_source_gain.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v11/src/training_source_gain.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v12/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v12/tests/pooled_context_model_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v12/tests/pooled_context_old_model_reference.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/src/visible_difference_adapter.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/tests/visible_difference_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v13/tests/visible_difference_model_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v14/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v14/tests/temporal_relation_bank_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v15/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v15/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_dynamics_objective.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v15/tests/temporal_dynamics_objective_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v16/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v16/tests/partitioned_temporal_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v17/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v17/tests/fixed_prior_temporal_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v18/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v18/tests/unit_temporal_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v19/tests/spectral_temporal_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v2/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v2/config/channel_mixer.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/configurable_spectral.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/config/learned_ordered_relation.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/learned_ordered_relation.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v21/tests/learned_ordered_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/config/content_ordered_relation.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/content_ordered_relation.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v22/training_state.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/config/consecutive_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/consecutive_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/frozen_level.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/consecutive_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v23/tests/frozen_level_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes_native36.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/separated_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/separated_change_native36.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_native36_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/config/energy_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/energy_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/cuwacunu/encoder/energy_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v25/tests/energy_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/conditioned_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/config/conditioned_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/cuwacunu/encoder/conditioned_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v26/tests/conditioned_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/config/parent_conditional_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/cuwacunu/encoder/parent_conditional_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/parent_conditional_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v27/tests/parent_conditional_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/config/relative_changes.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/cuwacunu/encoder/relative_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/relative_change.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v28/tests/relative_change_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/config/parent_modulated_decoder.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/cuwacunu/encoder/parent_modulated_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/parent_modulated_decoder.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v29/tests/parent_modulated_decoder_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v3/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v3/config/mean_global.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/config/location_scale_decoder.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/cuwacunu/encoder/location_scale_encoder.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/location_scale_decoder.mk
+?? code/encoders/raw_patch_bottleneck_mae/versions/v30/tests/location_scale_decoder_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v4/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v4/config/learned_global.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v5/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v5/config/learned_patch_global.conf
+?? code/encoders/raw_patch_bottleneck_mae/versions/v6/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v6/tests/context_deletion_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/include/embedding/encoders/raw_patch_bottleneck_mae/decoder_calibration.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/include/embedding/encoders/raw_patch_bottleneck_mae/frozen_decoder_calibration.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/include/embedding/encoders/raw_patch_bottleneck_mae/frozen_native_feature_adapter.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/src/decoder_calibration.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/src/frozen_decoder_calibration.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/tests/context_lighter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/tests/decoder_calibration_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/tests/frozen_decoder_calibration_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v7/tests/frozen_native_feature_adapter_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v8/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v8/tests/context_balanced_test.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v9/README.md
+?? code/encoders/raw_patch_bottleneck_mae/versions/v9/include/embedding/encoders/raw_patch_bottleneck_mae/native_view_agreement.h
+?? code/encoders/raw_patch_bottleneck_mae/versions/v9/src/native_view_agreement.cpp
+?? code/encoders/raw_patch_bottleneck_mae/versions/v9/tests/native_view_agreement_test.cpp
+?? code/scripts/rpb-layout-plan.json
+?? doc/rpb_layout_cleanup/README.md
+?? doc/rpb_layout_cleanup/additional-build-path-edits.json
+?? doc/rpb_layout_cleanup/configuration-aliases.json
+?? doc/rpb_layout_cleanup/consumer-path-edits.json
+?? doc/rpb_layout_cleanup/consumer-syntax.json
+?? doc/rpb_layout_cleanup/preservation-after.json
+?? doc/rpb_layout_cleanup/preservation-before.json
+?? doc/rpb_layout_cleanup/relocation.json
+?? doc/rpb_layout_cleanup/synchronization.json
+?? doc/rpb_layout_cleanup/verification.json

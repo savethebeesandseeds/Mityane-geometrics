@@ -1,0 +1,129 @@
+{
+  "kind": "clean_causal_v11_retention_independent_review_v1",
+  "status": "passed",
+  "checks": 723,
+  "protocol": {
+    "path": "/opt/cuwacunu/research/causal-v11-retention-review/attempt-001/output-001/clean_causal_encoder_search_goal_v11_retention.json",
+    "bytes": 48667,
+    "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+  },
+  "manifest": {
+    "path": "/opt/cuwacunu/research/causal-v11-retention-review/attempt-001/source/admitted-manifest.json",
+    "bytes": 9381,
+    "sha256": "abd6b6fb0979480b22c5dd9194a4e6cc560a30a4684d5c7aa40c2630fa793eae"
+  },
+  "source": {
+    "path": "/opt/cuwacunu/research/causal-v11-retention-review/attempt-001/source/independent_review.py",
+    "bytes": 15948,
+    "sha256": "82836be7c2b00ea3bc4f4ef9640c1208acd6073c317a245214031aba115b297f"
+  },
+  "reviewed_reference_floors": [
+    {
+      "id": "past_volatility:linear_r2",
+      "floor": 0.964673433811061,
+      "source": "CPB-v3.market-01"
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "floor": 0.7359692462937604,
+      "source": "CPB-v8.market-01"
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "floor": 0.9072134297036245,
+      "source": "CPB-v4.market-01"
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "floor": 0.5698752307038314,
+      "source": "CPB-v4.market-01"
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "floor": 0.9094387755129657,
+      "source": "CPB-v11.market-01"
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "floor": 0.7324899092829259,
+      "source": "CPB-v11.market-01"
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "floor": 0.6221006868548108,
+      "source": "CPB-v6.market-01"
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "floor": 0.4487745118258597,
+      "source": "CPB-v11.market-01"
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "floor": 0.98828125,
+      "source": "CPB-v11.market-01"
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "floor": 0.9848090277777778,
+      "source": "CPB-v6.market-01"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "floor": 0.9557291666666666,
+      "source": "CPB-v9.market-01"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "floor": 0.9427083333333334,
+      "source": "CPB-v11.market-01"
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "floor": 0.9986979166666666,
+      "source": "CPB-v9.market-01"
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "floor": 0.9926215277777778,
+      "source": "CPB-v8.market-01"
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "floor": 0.97265625,
+      "source": "CPB-v6.market-01"
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "floor": 0.9561631944444444,
+      "source": "CPB-v4.market-01"
+    },
+    {
+      "id": "train:standardized_MAE",
+      "floor": 0.24180533789857825,
+      "source": "CPB-v7.market-01"
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "floor": 0.30831692401624544,
+      "source": "CPB-v4.market-01"
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "floor": -0.04538148809081624,
+      "source": "CPB-v4.market-01"
+    }
+  ],
+  "strengthened_conditions": [
+    "past_activity:linear_r2",
+    "past_activity:neural_mean_r2",
+    "past_relation:neural_mean_r2",
+    "synthetic_train:validation_intact:linear_head_accuracy",
+    "synthetic_train:validation_deleted:neural_head_accuracy"
+  ],
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "new_quality_scores": 0,
+  "historical_counts_recomputed": false
+}

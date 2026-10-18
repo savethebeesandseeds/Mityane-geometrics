@@ -1,0 +1,278 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 23,
+  "design_slot": "RPB-v23",
+  "canonical_registered_tag": "RPB-v23",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Consecutive-change additive projection, freshly trained2048; own original eight-condition card",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h",
+      "sha256": "80981b135155cea8be2a1ddd88d05c981c403d463b5ab83332127fdee71e2d12",
+      "bytes": 3960,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "ConsecutiveChangeModel",
+      "ConsecutiveChangeModelImpl",
+      "Contract"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/consecutive_changes.conf",
+      "sha256": "814b3062d63dbc234fd2efb9dd25d9b6959c23129f7d4c1948a4fd8f685a6f2c",
+      "bytes": 564,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/consecutive_changes.conf"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/consecutive_change_embedding_versions.json",
+      "sha256": "2168fd405ecaddccb757cbb01d47c3bb293ac69e15d810d01997388929cdf519",
+      "bytes": 4366,
+      "verified_available_at_indexing": true
+    },
+    {
+      "repository": "embedding",
+      "path": "doc/frozen_change_embedding_versions.json",
+      "sha256": "55cb6ee40e6ad65c16ef27fb9e4d69be1fe155d1d7ca4439dc7a7a6d8a70950d",
+      "bytes": 2076,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/consecutive_change_embedding_versions.json",
+        "sha256": "2168fd405ecaddccb757cbb01d47c3bb293ac69e15d810d01997388929cdf519",
+        "bytes": 4366,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v23.market-01",
+        "model_tag": "RPB-v23",
+        "status": "implemented_development_goal_not_met_primary_unchanged",
+        "batch_size": 8
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/frozen_change_embedding_versions.json",
+        "sha256": "55cb6ee40e6ad65c16ef27fb9e4d69be1fe155d1d7ca4439dc7a7a6d8a70950d",
+        "bytes": 2076,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v23.market-01.alt-01",
+        "model_tag": "RPB-v23",
+        "status": "development_goal_not_met_primary_unchanged",
+        "description": "Trained v22 level/decoder held fixed; only zero-start change projection learns."
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v23.market-01",
+      "description": "Consecutive-change additive projection, freshly trained2048; own original eight-condition card",
+      "status": "stopped measured recipe; useful native32 trend/relation reference",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 32,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_CONSECUTIVE_CHANGE_CARD.md",
+        "sha256": "58a92b5bef82c6f9dbc5aed7faabcac043a7cec34ae0d38aea2b9508d75e1335",
+        "bytes": 6229
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_CONSECUTIVE_CHANGE_RESULTS.md",
+        "sha256": "32fade1d8bb7bf03b2d41f853163a2f2752194bd844041f7fe957596347f79ff",
+        "bytes": 9861
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/consecutive_change_v1/completion.json",
+        "sha256": "8e93784702bdb0099d4bdfb8ecf9b210abdee55aa3d83e2faa31b9defee7546d",
+        "bytes": 12290
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/consecutive_change_v1/table_rows.json",
+        "sha256": "1194307f3882d84d5d05066db86478d5b6017ef4a6913d43d6eb21a0aa288129",
+        "bytes": 29336
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/inference-0.pt",
+          "sha256": "d1c6d07da87dc7d3ddd04f3ab04d78903f77b4c84c27413019fccabc61d7e5d0",
+          "bytes": 1219198,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/inference-2048.pt",
+          "sha256": "50ade502e1da9b11b71fad60afbf7daee7ecd714a4e719cc5b397191207ba004",
+          "bytes": 1219944,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-1024.pt",
+          "sha256": "70693326e09d6f2fe4a80a9f23530c93230d6b3127a52f89ba4e34e21e96005e",
+          "bytes": 3603950,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-2048.pt",
+          "sha256": "3299cf1f18359ac4f9fb58cd322586b1b218dbf043c7107deef233f47ccc5b19",
+          "bytes": 3603950,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/training-512.pt",
+          "sha256": "514418eb0c54ac1eac999032b3e7e461298a8be2eb59c002d49f026bf9ec15e9",
+          "bytes": 3603433,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    },
+    {
+      "instance": "RPB-v23.market-01.alt-01",
+      "description": "Frozen trained v22 with additive native32 change projection; own original eight-condition card",
+      "status": "stopped measured frozen-parent recipe; separate preserved reference",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 32,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_FROZEN_CHANGE_CARD.md",
+        "sha256": "0d487de98ee45f99d53788a1d2551e016fdeae3b217cc1426205b932813afdd9",
+        "bytes": 3838
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_FROZEN_CHANGE_RESULTS.md",
+        "sha256": "5e9041f5ee35a44fec8ba50ef4369d51953bbc631de0e91d10adfd837ab6513f",
+        "bytes": 8711
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/frozen_change_v1/completion.json",
+        "sha256": "d1bd3ed49f1e3cb51e1b08cfeb7be16430968ac3c62ab7d7a39fc64fdda26ef8",
+        "bytes": 8328
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/frozen_change_v1/table_rows.json",
+        "sha256": "68cef445cbbff4dc4d0aec0b23e3204543f4acc5c79799c38eac2ad7eb2674f6",
+        "bytes": 36456
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/inference-0.pt",
+          "sha256": "e917278269a514f1e454919941f42614bc25db35d725acfad572400b78c304f5",
+          "bytes": 1219198,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/inference-2048.pt",
+          "sha256": "9f4a207b8eb22a6aad2d4ed0ebc36f8df6975e414e5961a3c22945b064f81649",
+          "bytes": 1219944,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-1024.pt",
+          "sha256": "583668af65dbe3d94d85df5b1f5d986f0a80654d517838a37fab09f5882422e6",
+          "bytes": 1282014,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-2048.pt",
+          "sha256": "f68731295e46e0cdeba7d084f31965a1854ed71744369339024021e1e9a8b7ec",
+          "bytes": 1282014,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-frozen-changes/run-tVEpLV/checkpoints/training-512.pt",
+          "sha256": "6905807c1afce6be37580696f549adf8df1ab8ab316d1463af168ee961ebf16a",
+          "bytes": 1281781,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

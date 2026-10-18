@@ -1,0 +1,372 @@
+{
+  "kind": "rpb_source_layout_verification_v1",
+  "date": "2026-10-15",
+  "status": "passed",
+  "container": "cuwacunu",
+  "container_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+  "host_toolchains_used": false,
+  "training_updates": 0,
+  "scaler_or_head_fits": 0,
+  "quality_reruns": 0,
+  "benchmarks": 0,
+  "checks": {
+    "baseline": {
+      "kind": "rpb_layout_compatibility_baseline_v1",
+      "status": "passed",
+      "fixture": "code/encoders/raw_patch_bottleneck_mae/tests/layout_compatibility.cpp",
+      "fixture_sha256": "0f3846b3463ea506a55cf8bf92768002c92021f5d67b74183e2434e2b93bb559",
+      "binary": "/opt/cuwacunu/build/rpb-layout-before/layout_compatibility",
+      "witness": "output/engineering/rpb-layout/baseline.bin",
+      "witness_bytes": 26433986,
+      "witness_sha256": "5d217382c4bae71862bf70f4f4b0b27c4a72121dbc83f4d32d3c891ed577b268",
+      "saved_checkpoints": 10,
+      "constructors": 11,
+      "bounded_inference_views": 40,
+      "batch_size": 2,
+      "optimizer_updates": 0,
+      "new_fits": 0,
+      "head_calls": 0,
+      "actual_cuda": true,
+      "primary_changed": false,
+      "scope": "RPB-v20 construction; v22-v30 saved typed inference, two v24 widths; native/decoder/validity/masks/registered state/CPU+CUDA RNG; V30 variance"
+    },
+    "after-parity": {
+      "kind": "rpb_layout_after_parity_v1",
+      "status": "passed",
+      "container": "cuwacunu",
+      "binary": "/opt/cuwacunu/build/rpb-layout-after/layout_compatibility",
+      "witness": "output/engineering/rpb-layout/after.bin",
+      "witness_bytes": 26433986,
+      "witness_sha256": "5d217382c4bae71862bf70f4f4b0b27c4a72121dbc83f4d32d3c891ed577b268",
+      "byte_identical_to_baseline": true,
+      "saved_checkpoints": 10,
+      "constructors": 11,
+      "bounded_inference_views": 40,
+      "batch_size": 2,
+      "optimizer_updates": 0,
+      "new_fits": 0,
+      "head_calls": 0,
+      "actual_cuda": true
+    },
+    "embedding-parity": {
+      "kind": "rpb_layout_embedding_parity_v1",
+      "status": "passed",
+      "container": "cuwacunu",
+      "source_snapshot": "/opt/cuwacunu/build/rpb-layout-embedding-source",
+      "binary": "/opt/cuwacunu/build/rpb-layout-embedding-compat/layout_compatibility",
+      "witness": "output/engineering/rpb-layout/embedding.bin",
+      "witness_bytes": 26433986,
+      "witness_sha256": "5d217382c4bae71862bf70f4f4b0b27c4a72121dbc83f4d32d3c891ed577b268",
+      "byte_identical_to_baseline": true,
+      "saved_checkpoints": 10,
+      "constructors": 11,
+      "bounded_inference_views": 40,
+      "batch_size": 2,
+      "optimizer_updates": 0,
+      "new_fits": 0,
+      "head_calls": 0,
+      "actual_cuda": true
+    },
+    "embedding-build-only": {
+      "kind": "rpb_layout_embedding_build_only_v1",
+      "status": "passed",
+      "container": "cuwacunu",
+      "source_snapshot": "/opt/cuwacunu/build/rpb-layout-embedding-source",
+      "source_tar": "output/engineering/rpb-layout/embedding-source.tar",
+      "source_tar_sha256": "2c117ee36b1da303e473206796d0994cd0dcd532e963ffdcd73894172fbaddb2",
+      "session": "rpb-layout-embedding-legacy",
+      "targets": [
+        "rpb-v21",
+        "rpb-mae"
+      ],
+      "executables": [
+        "/opt/cuwacunu_embedding/build/rpb-layout-embedding-legacy/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test",
+        "/opt/cuwacunu_embedding/build/rpb-layout-embedding-legacy/embedding_raw_patch_bottleneck_mae"
+      ],
+      "binaries_executed": false,
+      "compiler": "g++ C++20",
+      "host_toolchain_used": false,
+      "training_updates": 0,
+      "head_calls": 0,
+      "new_fits": 0
+    },
+    "v19-baseline": {
+      "kind": "rpb_layout_v19_saved_reference_v1",
+      "stage": "before_relocation_existing_binary",
+      "binary": "/opt/cuwacunu/build/import/test_rpb_v19_import",
+      "cohort": "output/reference/rpb-v19.alt-01/seed-930905-slow_lag_sign",
+      "windows": 128,
+      "actual_cuda": true,
+      "exact_saved_native_and_validity": true,
+      "optimizer_updates": 0,
+      "new_fits": 0,
+      "status": "passed"
+    },
+    "v19-after": {
+      "kind": "rpb_layout_v19_saved_reference_v1",
+      "stage": "after_relocation_fresh_rebuild",
+      "binary": "/opt/cuwacunu/build/rpb-layout-v19-after/test_rpb_v19_import",
+      "cohort": "output/reference/rpb-v19.alt-01/seed-930905-slow_lag_sign",
+      "windows": 128,
+      "actual_cuda": true,
+      "exact_saved_native_and_validity": true,
+      "optimizer_updates": 0,
+      "new_fits": 0,
+      "status": "passed"
+    },
+    "checkpoint-pins": {
+      "kind": "rpb_layout_checkpoint_pins_v1",
+      "source": "saved final typed inference archives; no fits or updates",
+      "files": [
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-2048.pt",
+          "bytes": 1197263,
+          "sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c"
+        },
+        {
+          "path": "output/runs/market-consecutive-changes/run-hAxXvh/checkpoints/inference-2048.pt",
+          "bytes": 1219944,
+          "sha256": "50ade502e1da9b11b71fad60afbf7daee7ecd714a4e719cc5b397191207ba004"
+        },
+        {
+          "path": "output/runs/market-separate-changes/run-Lr58TR/checkpoints/inference-2048.pt",
+          "bytes": 1318333,
+          "sha256": "f2e0cb87de670b36fcabc5add7595ca1e4cfb79f9dafbdc5c9193622ba8263c6"
+        },
+        {
+          "path": "output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-2048.pt",
+          "bytes": 1258685,
+          "sha256": "a3939b13df8b1704fc3621876cf3adc6efaddd98951147ff43ec6408978fa98c"
+        },
+        {
+          "path": "output/runs/market-change-energy/run-r297GQ/checkpoints/inference-2048.pt",
+          "bytes": 1276877,
+          "sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa"
+        },
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/inference-2048.pt",
+          "bytes": 1279445,
+          "sha256": "d34a56a6f4ccf8057c17f80b709f570359834173f1ec784dc48cbbc034d5013b"
+        },
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-2048.pt",
+          "bytes": 3861383,
+          "sha256": "192cc9c7bf5e511aad6fcbf3745b127d16f500563b7942b885567e94dd996956"
+        },
+        {
+          "path": "output/runs/market-relative-changes/run-vaPC4X/checkpoints/inference-2048.pt",
+          "bytes": 1283303,
+          "sha256": "739e4fa87e32dfdcb911c09220e9c09944eabf8e1f87f21dce86adeacc2abf18"
+        },
+        {
+          "path": "output/runs/market-parent-modulated-decoder/run-p4XMUY/checkpoints/inference-2048.pt",
+          "bytes": 1287607,
+          "sha256": "100a8bef1cf3ef57eafd9e2e58fe5fb2d3f8e7b62449250d9ee0ad10175a6975"
+        },
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+          "bytes": 1285583,
+          "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb"
+        }
+      ]
+    }
+  },
+  "consumer_syntax": {
+    "kind": "rpb_source_layout_consumer_syntax_v1",
+    "date": "2026-10-15",
+    "status": "passed",
+    "existing_container": "cuwacunu",
+    "python_interpreter": "3.11.2 (main, May 12 2026, 05:17:27) [GCC 12.2.0]",
+    "python_ast_parse_count": 15,
+    "bash_n_count": 8,
+    "consumer_edit_receipt": "doc/rpb_layout_cleanup/consumer-path-edits.json",
+    "consumer_edit_receipt_before_sha256": "b767269b3a2bbb1a2b5a3578325cad5453c52565638df51ca1a04f943a650b81",
+    "consumer_edit_receipt_after_sha256": "b767269b3a2bbb1a2b5a3578325cad5453c52565638df51ca1a04f943a650b81",
+    "receipt_unchanged": true,
+    "embedding_archive": "output/engineering/rpb-layout/consumer-scripts-embedding.tar",
+    "embedding_archive_sha256": "ff122f4719ea68dec35cacd48cab733c7677df2c4aff26b096bb808dc609834a",
+    "embedding_archive_bytes": 239104,
+    "embedding_extraction_directory": "/opt/cuwacunu/build/rpb-layout-consumer-syntax",
+    "execution_scope": "Python ast.parse and bash -n only. No consumer, research, model, training, fitting, quality, benchmark or sealing entrypoint executed.",
+    "scripts": [
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-context-balanced-validation.sh",
+        "sha256": "fa042d46190396ae0c0308ffdec8d4d2e0d3c469809630d6814b53ea1ea7c218",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-context-deletion.sh",
+        "sha256": "50647067ab92a60f94ef9cd9274a5bb34d70e7afc2c2154a93dc9f37105ab01a",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-context-optimization-validation.sh",
+        "sha256": "e33a3c04e5e5fe3ed5cd8670902d6c5092191b4fd0067f5d6b60a850dde65924",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-context-lighter-validation.sh",
+        "sha256": "e54f324838687bcb976b8101b168602f4c6820812a02b647e53df1ffb67bd337",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-context-replication.sh",
+        "sha256": "cd284df1975536bd2c786abb980f56bcba3159b2f70f198abac5e78cfb3f3e9f",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/check-native-view-agreement-validation.sh",
+        "sha256": "a39513c05b583d15535305b7c7cda4dd7bb5acf8f0d11bac8fc1fefe05ead503",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-early-mixer-confirmation.py",
+        "sha256": "e8b15171fb36ad0b4340a81dcc39c70001158e75c4fd1def1c00bdc19d9f79d4",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-early-mixer-learning-curve.py",
+        "sha256": "52292ade79e171b631368900a80e8431307e2ac7662195326b7399cac663485d",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-early-mixer-reliability.py",
+        "sha256": "8d123b805dc6ad9d4083cc48e8020b175a52b6c9b053d244c950273b15c23967",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-fresh-decoder-replication.py",
+        "sha256": "bd11f8d4573c5cc1eb143425dab0d896d691d6dfc8e472a1fee3c916ed241f96",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-frozen-amplitude-transfer.py",
+        "sha256": "be239a708c2e2fb6c9f27bd5afbc7217f42e646275e11e47076d3d3271f947d3",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-matched-target-gain.py",
+        "sha256": "93a578d6b2821b260c40fa8e53ae3ec2678d219a4f978831ec951149a41ecd55",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/scripts/prepare-pooled-context.py",
+        "sha256": "61cc33e83fc4122c4eddf73dddf9948291f3d2a17881bffdc0af4b8c5c765a78",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/evaluation/protocols/visible_difference_v1/prepare_saved_run.py",
+        "sha256": "34ad30a430ec4967cc587216245c3d60e68da9c679afb9aaa18238ab50f60980",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/evaluation/protocols/visible_difference_v1/check-visible-difference.sh",
+        "sha256": "7fb492f45eb9ae0de5846af30e5abe74c432f42f80d3e229f9e0ab82b3f834f8",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/evaluation/protocols/structured_hard_timing_v1/prepare_saved_run.py",
+        "sha256": "fa6cc8c7e921ba19555032e219ac80bb935f6bd9386aa207e58d8b0fd81ae7d8",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "embedding",
+        "path": "code/evaluation/protocols/structured_hard_timing_v1/check-structured-hard-timing.sh",
+        "sha256": "a90934f155a9ff255828c7944ce5c5f346cdda435ff4e21e751f80cc8e154253",
+        "check": "bash_n_syntax_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/seal-market-parent-conditional-admission.py",
+        "sha256": "a34e903d2231ddcab107821ce1190946510ea2def72faa799e4ade074820d8eb",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/seal-market-location-scale-admission.py",
+        "sha256": "484a071e45b51ceefa41d550511101ecf72d779cb73f48e2ccdc02adeb2cd157",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/seal-market-parent-modulated-admission.py",
+        "sha256": "8ff57da0b77bc499f3718264b1dd7e4debc2dc03fdde46e677189a7b596a9f5d",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/seal-market-relative-admission.py",
+        "sha256": "9442c0fa7f7fd64e7f870f64f4dd3290153c6f6e0704d41430a58ea783fe19ce",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/seal-market-conditioned-admission.py",
+        "sha256": "c9969eeaed51c19eb69e1653eb458f86ef6571a9d9fd21499f4c502e8b531bfe",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      },
+      {
+        "repository": "integration",
+        "path": "code/scripts/run-market-synthetic-transfer.py",
+        "sha256": "0d4b0ea53163164545da95f7bac3c00c8bd5b7baab2e3a85bbbfb13aa6150ce4",
+        "check": "python_ast_parse_without_execution",
+        "status": "passed"
+      }
+    ]
+  },
+  "preservation_summary": {
+    "entries": 80105,
+    "regular_file_hashes": 80104,
+    "bytes": 20955220255,
+    "all_regular_hashes_unchanged": true,
+    "all_pinned_hashes_unchanged": true,
+    "no_unexpected_new_files": true,
+    "preexisting_dangling_symlink_preserved": true
+  },
+  "integration_build_graph": "make -n: primary,v20,v23,v24,v25-v30,training-state paths resolve",
+  "baseline_commits": {
+    "integration": "c5d1c7f3a203180c89e1255ece676a1c20fe0852",
+    "embedding": "0ab44b7628344815a85959310441269a9b857230",
+    "pushed": true
+  },
+  "cleanup_committed": false,
+  "cleanup_pushed": false
+}

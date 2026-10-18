@@ -1,0 +1,61 @@
+{
+  "kind": "causal_fresh_v8_host_orchestration_recovery_v1",
+  "status": "prospectively_reviewed_host_only_repair",
+  "declared_utc": "2026-10-16T01:16:30.8023109Z",
+  "independent_review_required_before_execution": true,
+  "encoder_card": {
+    "path": "doc/CAUSAL_FRESH_V8_CARD.json",
+    "bytes": 109378,
+    "sha256": "6acfaadfe758c0d252c8138fc2830807d40444f9a9adfa61f85ec13dde7c63a6"
+  },
+  "descriptor": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v8.json",
+    "bytes": 2881,
+    "sha256": "df3d0d61e912d0e5665500f5b2255f3300252f769ba359fb570660e1a992c5c4"
+  },
+  "frozen_original_helper": {
+    "path": "doc/causal_fresh_v8/run-container.ps1",
+    "bytes": 7544,
+    "sha256": "4baf983adb7296717e02f32d0bb854d8f717ebaaede3266a0f3e5dc822a6629e"
+  },
+  "new_helper": {
+    "path": "doc/causal_fresh_v8/run-container-recovery-001.ps1",
+    "bytes": 8402,
+    "sha256": "0e9b471cb89bc7cecd363551a684c61f4f894409bd0c774cf4b4a5b37920366d"
+  },
+  "original_package": {
+    "path": "output/engineering/causal-fresh-v8/attempt-001/package.json",
+    "bytes": 560,
+    "sha256": "c025899aa343d6318b953247307015f368cc636c2cf53459cc15050b7ad6e18f"
+  },
+  "original_manifest": {
+    "path": "output/engineering/causal-fresh-v8/attempt-001/source-manifest.json",
+    "bytes": 26693,
+    "sha256": "8daba935ee45332b892225c6994a00b59ad95b2e4da4fe7348f6c6518266cf2e"
+  },
+  "original_archive": {
+    "path": "output/engineering/causal-fresh-v8/attempt-001/source.zip",
+    "bytes": 1818112,
+    "sha256": "bc883e6e14365f68e02e7f5b0e5c3df9eeca204cbdb7140d34de775768d14591"
+  },
+  "original_source_and_scientific_semantics_unchanged": true,
+  "failure": {
+    "session": 26696,
+    "phase": "Stage",
+    "terminated_with_interrupt": true,
+    "reason": "Function Docker shadowed native docker case-insensitively; it recursively called itself before the initial inspect. Host helper interrupted. Read-only native Docker verification confirmed both candidate container/build leaves absent.",
+    "before_project_build_or_test": true,
+    "builds": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "container_candidate_path_exists": false,
+    "container_build_path_exists": false
+  },
+  "repair": "Full physical host helper copy; rename orchestration function Invoke-ContainerDocker and explicitly invoke docker.exe. Add mandatory external recovery-card hash and self-hash guards. It verifies unchanged original manifest/self/unpack pins; all recorded project executables remain from the original frozen113-file capsule.",
+  "preparation_shell_failure": "One host here-string preparation command failed to parse before creating the additive helper. A separate clean copy/edit then succeeded; no project operation.",
+  "baseline": "CPB-v3.market-01",
+  "application_changed": false,
+  "goal_active": true,
+  "old_files_modified": false
+}

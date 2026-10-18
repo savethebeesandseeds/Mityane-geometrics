@@ -1,0 +1,215 @@
+{
+  "kind": "clean_causal_encoder_search_goal_protocol_v1",
+  "declared_client_date": "2026-10-16",
+  "state": "active_saved_TRAIN_diagnosis_before_next_encoder_declaration",
+  "user_authorization": "go for it, pursuit the finding of a good encoder as a goal",
+  "baseline": "CPB-v3.market-01",
+  "scoped_reference": "CPB-v4.market-01",
+  "application": "CPB-v3.market-01",
+  "overall_winner": false,
+  "reference_comparison": {
+    "path": "doc/results/causal_fresh_v4/comparison.json",
+    "bytes": 114876,
+    "sha256": "305d34b525be81c33fb7f2ade2173e71162d7fce56d8fefc82783925607add13"
+  },
+  "criterion_count": 22,
+  "criteria": [
+    {
+      "id": "past_volatility:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.964673433811061,
+      "floor_source": "CPB-v3.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.5551762291104203,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.9072134297036245,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.5698752307038314,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.8628403110608782,
+      "floor_source": "CPB-v3.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.6873705450109496,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.3264050670418407,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.20951046448819055,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9830729166666666,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9696180555555556,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9466145833333334,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.93359375,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9934895833333334,
+      "floor_source": "CPB-v3.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.98828125,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9583333333333334,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9561631944444444,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "train:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.25904599043427573,
+      "floor_source": "CPB-v3.market-01",
+      "rule": "candidate <= floor + 1e-12"
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.30831692401624544,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate <= floor + 1e-12"
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "category": "variance_quality",
+      "dataset_id": "MKT-HIST-2",
+      "floor": -0.04538148809081624,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate < floor - 1e-12"
+    },
+    {
+      "id": "past_trend:all3_neural_R2_positive",
+      "category": "neural_trend_robustness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "all three final neural trend R2 values > 0"
+    },
+    {
+      "id": "past_relation:linear_r2:positive",
+      "category": "relation_usefulness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "candidate > 0"
+    },
+    {
+      "id": "past_relation:neural_mean_r2:positive",
+      "category": "relation_usefulness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "candidate > 0"
+    }
+  ],
+  "establishment": "All22 prospective numeric conditions, complete causal/fresh/GPU/typed-resume trust admission and100% declared scoring coverage",
+  "scope": "Known chronological market development and saved complexity5/5 timing; no forecasting or new-period confirmation claim",
+  "defaults": {
+    "updates": 2048,
+    "batch_size": 8,
+    "device": "CUDA:0",
+    "native_width": 36,
+    "data": "Existing frozen MKT-HIST-2 TRAIN anchors and saved probe/target/scaler recipes; TEMPO-5 saved cohorts",
+    "initialization": "Fresh learned weights, fresh permitted TRAIN-only calibration, fresh optimizer; no historical checkpoint/teacher initialization",
+    "heads": "Unchanged ridge1 and16-tanh Adam0.01/100-step recipes, three fixed repetitions; candidate dimensions/parameter counts/seeds declared before quality",
+    "checkpoint_policy": "New initial0 and final2048 embeddings and fixed heads; no intermediate selection"
+  },
+  "version_policy": "Every new numerical mechanism owns a complete separately named source copy and prospective card; no edits to evaluated versions",
+  "diagnosis": "Saved TRAIN-only v3/v4 features/fitted coefficients/predictions and bounded original masked-query witnesses; no encoder/decoder/neural forwards, head/statistics fits, held-out tensor analysis or old encoder replays",
+  "preservation": "Retain every checkpoint/result/card/source and displaced scoped leader; never delete data or overwrite failed attempts",
+  "search_policy": "No coefficient, seed, rate, budget or head rescue of a stopped recipe; distinct mechanisms require separate declarations",
+  "future_dimensions": "Geometry or native-width changes must be explicitly declared with dimension-dependent fixed-head settings and cost/capacity disclosure before testing",
+  "application_promotion": "Requires a separate user selection; dev staysv3 during research",
+  "publication": "No commit/push requested for this continuation",
+  "container": "Reuse verified existing cuwacunu82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e only",
+  "independent_confirmation": "Separate prospectively frozen confirmation is needed before a generalization claim; do not inspect reserved/new-period data during mechanism selection"
+}

@@ -1,0 +1,141 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 20,
+  "design_slot": "RPB-v20",
+  "canonical_registered_tag": "RPB-v20",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Configurable learned shape with fixed low/high complex spectral relations",
+  "registered_design_parameters": {
+    "architecture_id": "early-configurable-shape-plus-fixed-two-band-complex-relations-v1",
+    "default_geometry": {
+      "C": 3,
+      "H": 128,
+      "F": 9,
+      "P": 8,
+      "D": 32
+    }
+  },
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "sha256": "957c72d1fa2eaa3880446575da078488b26292fea9f48b62c9dff67e79b67e3f",
+      "bytes": 13390,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "ConfigurableGroupedSpectralProjection",
+      "ConfigurableGroupedSpectralProjectionImpl",
+      "ConfigurableNativeShapeProjection",
+      "ConfigurableNativeShapeProjectionImpl",
+      "ConfigurableSpectralModel",
+      "ConfigurableSpectralModelImpl",
+      "TensorContract"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/configurable_spectral.conf",
+      "sha256": "c136f42f4cf89e50d00b17f6d9ad13bbbe39c2f59ba71dc180eb1c63ef077c8b",
+      "bytes": 577,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/configurable_spectral.conf"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/0"
+    },
+    {
+      "repository": "embedding",
+      "path": "doc/configurable_capacity_embedding_versions.json",
+      "sha256": "b8a5439dfb87093dcfd1ecdd7b8285316e30c0b8c5d981446e90fd6841c1ef23",
+      "bytes": 2265,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_capacity_embedding_versions.json",
+        "sha256": "b8a5439dfb87093dcfd1ecdd7b8285316e30c0b8c5d981446e90fd6841c1ef23",
+        "bytes": 2265,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/0"
+      },
+      "declaration": {
+        "id": "RPB-v20.alt-01",
+        "status": "measured_compact_continuation_configuration",
+        "description": "Compact spectral encoder, 20 learned plus 12 fixed coordinates",
+        "profile": "A",
+        "encoder_width": 64,
+        "native_size": 32,
+        "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/A/master-{master}/point-512/checkpoint.pt"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_capacity_embedding_versions.json",
+        "sha256": "b8a5439dfb87093dcfd1ecdd7b8285316e30c0b8c5d981446e90fd6841c1ef23",
+        "bytes": 2265,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/1"
+      },
+      "declaration": {
+        "id": "RPB-v20.alt-02",
+        "status": "measured_no_consistent_final_classification_gain_at512",
+        "description": "Wider backbone, unchanged 32-number embedding",
+        "profile": "B",
+        "encoder_width": 128,
+        "native_size": 32,
+        "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/B/master-{master}/point-512/checkpoint.pt"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_capacity_embedding_versions.json",
+        "sha256": "b8a5439dfb87093dcfd1ecdd7b8285316e30c0b8c5d981446e90fd6841c1ef23",
+        "bytes": 2265,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/2"
+      },
+      "declaration": {
+        "id": "RPB-v20.alt-03",
+        "status": "measured_modest_reconstruction_gain_mixed_classification_at512",
+        "description": "Larger embedding, 52 learned plus 12 fixed coordinates",
+        "profile": "C",
+        "encoder_width": 64,
+        "native_size": 64,
+        "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/C/master-{master}/point-512/checkpoint.pt"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

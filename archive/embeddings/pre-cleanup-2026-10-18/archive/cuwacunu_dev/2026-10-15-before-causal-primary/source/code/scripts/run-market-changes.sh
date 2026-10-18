@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.
+set -euo pipefail
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.."
+[[ -f /.dockerenv ]] || { echo 'Use the managed cuwacunu container.' >&2; exit 1; }
+source /etc/profile.d/embedding.sh
+# Reuse only unchanged loader/evaluator objects; the candidate has its own binary.
+build_dir=/opt/cuwacunu/build/market-study
+mkdir -p "$build_dir/tmp"
+export TMPDIR="$build_dir/tmp"
+exec 9>"$build_dir/.changes.lock"
+flock -n 9 || { echo 'A consecutive-change study is already running.' >&2; exit 1; }
+fingerprint() {
+  find code -type f \( -name '*.h' -o -name '*.cpp' -o -name '*.mk' \) -print0 |
+    sort -z | xargs -0 sha256sum | sha256sum
+}
+before=$(fingerprint)
+build_log=$(mktemp "$build_dir/change-build-XXXXXX.log")
+bash code/scripts/task.sh market-study -j2 build-market-changes | tee "$build_log"
+[[ "$before" == "$(fingerprint)" ]] || { echo 'Source changed during compilation; preserve logs and rebuild.' >&2; exit 1; }
+[[ -x "$build_dir/market_fixed_regression" ]] || { echo 'Missing existing fixed readout executable.' >&2; exit 1; }
+log=$(mktemp "$build_dir/change-run-XXXXXX.log")
+"$build_dir/market_changes" config/market_studies/consecutive_changes.conf | tee "$log"
+run=$(sed -n 's/^RUN_DIRECTORY=//p' "$log")
+[[ -d "$run" && -f "$run/summary.json" ]] || { echo "Incomplete run preserved: $log" >&2; exit 1; }
+cp --no-clobber -- "$log" "$run/runner.log"
+cp --no-clobber -- "$build_log" "$run/build.log"
+shared=/cuwacunu/output/runs/market-capacity-study/shared-MKT-HIST-2-v1
+card=$(sha256sum -- doc/MARKET_CONSECUTIVE_CHANGE_CARD.md); card=${card:0:64}
+manifest=$(sha256sum -- data/mkt-hist-1/manifest.json); manifest=${manifest:0:64}
+printf 'Fixed CPU readouts: new trained native32 only; all saved controls reused.\n'
+"$build_dir/market_fixed_regression" \
+  --train-targets "$shared/features/train-targets.pt" --validation-targets "$shared/features/validation-targets.pt" \
+  --method trained_v23 "$run/features/trained_v23-train.pt" "$run/features/trained_v23-validation.pt" \
+  --output-directory "$run/readouts" --card-sha256 "$card" --input-manifest-sha256 "$manifest" --dataset-id MKT-HIST-2 > "$run/readout.log"
+printf 'Completed RPB-v23 study: %s\n' "$run"

@@ -1,0 +1,89 @@
+{
+  "kind": "cpb_v12_independent_orchestration_source_review_amendment_v1",
+  "status": "passed_narrow_static_markdown_heading_repair",
+  "created_utc": "2026-10-17T18:53:34.0973441Z",
+  "reviewer": "v11_preservation_readiness",
+  "source_only": true,
+  "execution_admitted": false,
+  "reviewer_authored_repaired_helper": false,
+  "prior_complete_review": {
+    "path": "doc/causal_fresh_v12/independent-orchestration-source-review-002.json",
+    "bytes": 16893,
+    "sha256": "133757ed0ac3f8bbbd6788026d16b919b1d68ebadbea0d8e41029f426982f19c"
+  },
+  "current_readiness": {
+    "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/orchestration/source-ready-004.json",
+    "bytes": 5302,
+    "sha256": "03d6799907872aad9f96b897b4c6c1e42f42dee23256d2d7b3a314f53b74745b"
+  },
+  "current_provenance": {
+    "path": "doc/causal_fresh_v12/orchestration-provenance.json",
+    "bytes": 12314,
+    "sha256": "e74f632c2a0daa8c5155181977ce6a8f927dc14a17191e49d4b0601aaafac75b"
+  },
+  "reviewed_freeze_source": {
+    "path": "doc/causal_fresh_v12/freeze-card.ps1",
+    "bytes": 28215,
+    "sha256": "67efab9bac26b9a831e28a0dd213465fdece26844d716e91add966762ae684e6"
+  },
+  "whole_before_manifest": {
+    "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/orchestration/repair-003/before-manifest.json",
+    "bytes": 1895,
+    "sha256": "1b2e995c902b11e6b4af5b3d8c2a223a436a4d68cd1a06cadb11acae241ede2e"
+  },
+  "template": {
+    "path": "doc/causal_fresh_v12/card-markdown-template.md",
+    "bytes": 9534,
+    "sha256": "0e50ed272639c7c57cec8af13e40e5af5a4f689813874eb7596c6b88a60cc0c6"
+  },
+  "confirmed_diagnosis": "The exact current template begins with its copyright comment,then the V12 heading. The old absolute-start heading regex has zero matches and would leave draft introduction text unchanged at freeze.",
+  "exact_delta": {
+    "old_regex": "\\A# CPB-v12.*?(?=CPB-v3\\.market-01 remains)",
+    "new_regex": "(?m)^# CPB-v12.*?(?=CPB-v3\\.market-01 remains)",
+    "added_lines": 2,
+    "added_guard": "Read actual prospective Markdown and require exactly one same-pattern introduction match before timestamp/snapshot/file writes",
+    "complete_expected_text_equals_current": true,
+    "other_nine_helpers_unchanged": true,
+    "template_unchanged": true,
+    "scientific_code_changed": false
+  },
+  "metadata_text_inspection": {
+    "method": "Host read-only .NET regular-expression inspection of exact template text;no project/helper/AST invocation",
+    "old_matches": 0,
+    "new_matches": 1,
+    "leading_copyright_prefix_characters": 94,
+    "in_memory_replacement_preserves_prefix_exact": true,
+    "in_memory_replacement_preserves_complete_old_tail_exact": true,
+    "no_replacement_output_saved": true,
+    "guard_before_snapshot_directory_creation": true,
+    "guard_before_first_card_write": true
+  },
+  "checks": {
+    "current_twelve_assets_exact_to_readiness004": true,
+    "three_whole_before_files_exact": true,
+    "fresh_pin_checks": 15,
+    "other_nine_helpers_exact_to_readiness003": true,
+    "repair_limited_to_declared_text": true,
+    "current_provenance_binds_current_freeze": true,
+    "prior_complete_review_preserved": true,
+    "draft_card_absent_at_review": true,
+    "protocol_preflight_absent_at_review": true
+  },
+  "blocking_findings": [],
+  "scope": "This additive review closes the root-discovered Markdown-anchor defect. Previous full workflow/card-template review002 remains applicable to unchanged text;ready004/current provenance replace their older source pins. No actual DRAFT,freeze,preflight,build/proof or scientific result is approved or claimed here.",
+  "actions": {
+    "helper_invocations": 0,
+    "project_AST": 0,
+    "project_imports": 0,
+    "Docker": 0,
+    "compiler_build": 0,
+    "project_tests": 0,
+    "model_or_head_calls": 0,
+    "training_updates": 0,
+    "PT_numeric_reads": 0,
+    "scientific_execution": 0,
+    "workflow_source_edits_by_reviewer": 0,
+    "DEV_changes": 0,
+    "Git_operations": 0
+  }
+}

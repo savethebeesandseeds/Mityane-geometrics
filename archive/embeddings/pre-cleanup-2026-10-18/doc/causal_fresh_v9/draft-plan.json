@@ -1,0 +1,483 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_fresh_v9_prospective_source_preparation_plan_v1",
+  "stage": "DRAFT_not_frozen_not_execution_admitted",
+  "declared_utc": null,
+  "candidate": "CPB-v9.market-01",
+  "source_parent": "Complete owned physical V8 source copies only",
+  "selection": "Separate root-selected hypothesis after completed V6/V8 TRAIN diagnosis. The diagnosis itself selects no next model.",
+  "mechanism": {
+    "policy": "original-position-four-bin-shared-global-half-mixture-v1",
+    "forward": "For each nonempty anchored original-position bin, mix fixed .5 local hidden plus .5 shared whole-history hidden BEFORE its unchanged eight export rows and one bias. Empty local bins zero their whole eight-coordinate export slice after bias. Existing downstream global mixing remains unchanged.",
+    "export_weights": "ONE SINGLE freshly initialized export weight/bias tensor is shared by the local/global pooling routes. Shape, registration and RNG draw order remain V8-identical; never load V8/V6 trained parameter values.",
+    "new_parameters": 0,
+    "mix_order": [
+      "anchored_local",
+      "whole_history"
+    ],
+    "mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1"
+  },
+  "causal_semantics": {
+    "timestamp": "All four export slices are coordinates of the embedding at the CURRENT requested cutoff t, not separate embeddings stamped at bin endpoints",
+    "whole_history": "Only valid states at or before current cutoff t may enter the shared whole-history vector. Later-in-window PAST context may enter an older anchored slice only as part of this endpoint embedding.",
+    "unchanged": "Strict causal Transformer mask and backward-only temporal relation bank remain unchanged; pooling must never bypass the cutoff or validity mask",
+    "mandatory_proof": "Exact future-value AND future-mask invariance at every cutoff on initialized and final states, including actual saved initial0/final2048 checkpoints"
+  },
+  "typed_contract": {
+    "temporal_pooling_policy": "UTF8 original-position-four-bin-shared-global-half-mixture-v1",
+    "temporal_pooling_partition_v1": {
+      "dtype": "Long",
+      "shape": [
+        5
+      ],
+      "value": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ]
+    },
+    "temporal_pooling_mix_f64": {
+      "dtype": "Double",
+      "shape": [
+        2
+      ],
+      "order": [
+        "anchored_local",
+        "whole_history"
+      ],
+      "value": [
+        0.5,
+        0.5
+      ]
+    },
+    "empty_local_bin_policy": "UTF8 zero-whole-export-slice-after-bias-v1",
+    "nodes": [
+      "inference root",
+      "inference payload",
+      "TRAIN root",
+      "TRAIN encoder",
+      "TRAIN encoder.payload"
+    ],
+    "negative_cases": "Missing/wrong policy,mix value/order/dtype/shape,empty policy and partition at every typed node; old V8/V6 lineage refusal; actual typed resume512 exact"
+  },
+  "trace_contract": {
+    "local": "[R,T]",
+    "global": "[R,T]",
+    "mixture": "[R,4,T]",
+    "bin_valid": "[R,4]",
+    "aggregate": "sum of mixtures across bins; total mass=#nonempty bins, never described as a probability vector",
+    "routes": "ordinary and early-contextual routes use the same declared kernel; truthful both-route traces"
+  },
+  "training": {
+    "updates": 2048,
+    "batch_size": 8,
+    "source_updates": 0,
+    "all_weights": "All294752 learned values/76 registered tensors freshly constructed under same943001 initialization stream; fixed3888 analytic prior",
+    "optimizer": "Fresh singleAdamW,lr0.001,weightdecay0.0001,one globalnorm2clip1",
+    "normalizers": "Fresh TRAIN-only input scaler and bank statistics; no historical normalization/model/optimizer artifact import",
+    "stream_seeds": [
+      943001,
+      943002,
+      943003,
+      943004
+    ],
+    "objective": "Unchanged unitHuber1 mean plus detached-error Gaussian variance; separately promote F32 operands to F64 before subtraction; same hierarchical support reduction",
+    "data_masks_targets": "Identical pinned dataset, target/scaler recipe,mask/contextdeletion streams and immutable fixedquery plans",
+    "checkpoints": "Saved inference initial0/final2048 only for quality; typed TRAIN512/1024/2048 and actual exact resume512",
+    "extra_training_runs": 0,
+    "extra_encoder_forwards_for_learning_evidence": 0
+  },
+  "learning_evidence": {
+    "mandatory_identifiable_tensors": 75,
+    "registered_learned_tensors": 76,
+    "gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+    "weight_decay_is_data_learning": false,
+    "local_and_export": "Four8-row export groups and fourwithin-bin centered position groups retain nonzero data-gradient+movement events and finalchanges; not everyupdate or everyscalar",
+    "between_bin_basis": {
+      "name": "hadamard-full16-signs-div4-v1",
+      "basis_signs": [
+        [
+          1,
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "position_bin_width": 4,
+      "full_position_divisor": 4,
+      "directions": 3,
+      "Parseval": "sum of squared signed coefficients equals squared norm of between-bin projection"
+    },
+    "between_bin_CSV": {
+      "file": "temporal-between-bin-position-learning.csv",
+      "rows": 2048,
+      "columns": [
+        "update",
+        "between_bin_gradient_l2",
+        "between_bin_movement_l2",
+        "contrast_0_gradient",
+        "contrast_1_gradient",
+        "contrast_2_gradient",
+        "contrast_0_movement",
+        "contrast_1_movement",
+        "contrast_2_movement"
+      ]
+    },
+    "between_bin_requirements": "Each of three directions has >=1 nonzero observed data-gradient event and >=1 movement event; overall final projection changeL2>0. Report all signed final changes, but no per-final-coefficient or per-scalar threshold is imposed.",
+    "receipt": "temporal-projection-learning.json between_bin_positions plus three exact CSV artifact pins; observed post-globalclip data gradients and movement, with weightdecay caveat",
+    "actual_arrays": "Same12 originalF32 arrays at actualupdates1/2048; promoteeachoperandtoF64 before subtraction/projection; no new array fields or forwards"
+  },
+  "initial_pairing": {
+    "reference": "CPB-v8.market-01 initial DATA/fresh-statistic artifacts only",
+    "feature_archives": 8,
+    "coordinate_slice": [
+      20,
+      40
+    ],
+    "whole_native40_required": false,
+    "content20_required": false,
+    "statistic_archives": 5,
+    "statistic_numeric_tensors_whole": true,
+    "old_model_numeric_reads": 0,
+    "initial_scores_reused": false,
+    "new_initial_and_final_fixed_heads": true
+  },
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "linear_parameters": 164,
+      "neural_parameters": 724,
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "Unchanged dimension/repetition stream function copied as owned code; no historical encoder execution",
+      "linear_parameters": 82,
+      "neural_parameters": 690,
+      "input_scaler_policy": "Fresh cohortTRAIN fit once/cohort shared across initial/final, or freshly refitted marketTRAIN scaler; same numerical recipe as v3",
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "dimension_policy": "Same unchanged stream_seed(repetition,native_width) implementation for D40; widths/parameter counts differ from native36 references; no tuning"
+  },
+  "quality": {
+    "checkpoints": [
+      0,
+      2048
+    ],
+    "encoder_exports_each": 786,
+    "encoder_exports_total": 1572,
+    "six_saved_final_controls": [
+      "CPB-v3.market-01",
+      "CPB-v4.market-01",
+      "CPB-v5.market-01",
+      "CPB-v6.market-01",
+      "CPB-v7.market-01",
+      "CPB-v8.market-01"
+    ],
+    "retention_protocol": {
+      "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+      "bytes": 24084,
+      "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699"
+    },
+    "criterion_count": 22,
+    "criteria": [
+      {
+        "id": "past_volatility:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.964673433811061,
+        "floor_source": "CPB-v3.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_volatility:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.7359692462937604,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_trend:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.9072134297036245,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_trend:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.5698752307038314,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_activity:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.8628403110608782,
+        "floor_source": "CPB-v3.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_activity:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.6873705450109496,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_relation:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.6221006868548108,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_relation:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.3705053482630968,
+        "floor_source": "CPB-v5.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9869791666666666,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9848090277777778,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.953125,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9340277777777778,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9973958333333334,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9926215277777778,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.97265625,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9561631944444444,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "train:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.24180533789857825,
+        "floor_source": "CPB-v7.market-01",
+        "rule": "candidate <= floor + 1e-12"
+      },
+      {
+        "id": "validation:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.30831692401624544,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate <= floor + 1e-12"
+      },
+      {
+        "id": "known_validation:Gaussian_NLL_F64",
+        "category": "variance_quality",
+        "dataset_id": "MKT-HIST-2",
+        "floor": -0.04538148809081624,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate < floor - 1e-12"
+      },
+      {
+        "id": "past_trend:all3_neural_R2_positive",
+        "category": "neural_trend_robustness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "all three final neural trend R2 values > 0"
+      },
+      {
+        "id": "past_relation:linear_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate > 0"
+      },
+      {
+        "id": "past_relation:neural_mean_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate > 0"
+      }
+    ],
+    "additional_TRAIN_NLL_gate": false,
+    "head_tuning": false,
+    "post_PCA": false,
+    "old_encoder_or_head_replay": false,
+    "checkpoint_selection": false
+  },
+  "preservation_inventory": {
+    "path": "doc/causal_fresh_v9/preservation-before.json",
+    "bytes": 408651,
+    "sha256": "4264da8014eb8c8bc0b5e3869ee74e0c5d7b072b24283dc8c744701f4a7b6390"
+  },
+  "completed_diagnosis": {
+    "path": "doc/causal_v6_v8_train_diagnosis/completion.json",
+    "bytes": 99549,
+    "sha256": "0876a859e243bfe3a660ca9bf1156f3252e89d011200c6ea8a9ef576270ad5f3"
+  },
+  "orchestration_parent": {
+    "path": "doc/causal_fresh_v8/run-container-recovery-001.ps1",
+    "bytes": 8402,
+    "sha256": "0e9b471cb89bc7cecd363551a684c61f4f894409bd0c774cf4b4a5b37920366d"
+  },
+  "orchestration_policy": "Complete owned copy of repaired nativeDocker workflow; original shadowed Docker helper is historical evidence only. NewV9 uses normal source admission, no fictitious new recovery event or global Docker function.",
+  "source_counts": {
+    "family_files": null,
+    "research_files": null,
+    "binaries": null,
+    "translation_units": null,
+    "capsule_files": null,
+    "status": "Pending final source owners; derive and bind actual counts, never prefill stale values"
+  },
+  "fixture_counts": {
+    "status": "Proposed only until owner freezes actual source contract",
+    "backbone_encodes": 1,
+    "direct_kernel_calls": 5,
+    "synthetic_AdamW_steps": 1,
+    "public_Encoder_calls": 0,
+    "head_fits": 0
+  },
+  "risks": [
+    "Existing downstream global mixing retained; the experiment is not complete temporal locality",
+    "Blend changes routing,scales and FLOPs even with identical fresh parametercapacity and draworder",
+    "A later-past state may influence an older anchored slice only at the current endpoint cutoff; slices are not per-bin endpoint embeddings",
+    "Known development populations and one trajectory cannot prove pooling causation or generalization",
+    "Empty and singlevalid bins are legitimate; all mandatory learning claims need nonvacuous fixtures plus actual CUDA trajectory evidence"
+  ],
+  "pending_before_freeze": [
+    "Full prospective machinecard/MD and descriptor hashbinding",
+    "Final model/research/source/build/fixture counters and receipts from owners",
+    "Independent source/card/orchestration admission before any AST/build/body/model/head/quality execution",
+    "Exact initial/final futurevalue+mask causality, typedresume512, freshcalibration and75/4localgroups/3betweenbin CUDAlearning beforequality",
+    "Preserve94existing checkpoints; only after five actualnewcanonical files can finalinventory rise to99"
+  ],
+  "actions": {
+    "AST": 0,
+    "builds": 0,
+    "models": 0,
+    "heads": 0,
+    "fits": 0,
+    "quality_runs": 0,
+    "Git_mutations": 0,
+    "dev_changes": 0,
+    "publication": 0,
+    "card_freeze": 0
+  }
+}

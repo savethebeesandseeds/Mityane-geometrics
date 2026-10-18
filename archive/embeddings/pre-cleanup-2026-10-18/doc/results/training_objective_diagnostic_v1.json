@@ -1,0 +1,3431 @@
+{
+  "schema_version": 1,
+  "protocol": "training-objective-diagnostic-v1",
+  "policy_version": "1.2",
+  "task": "lag_sign",
+  "status": "measured_and_independently_audited_TRAIN_only",
+  "identities": {
+    "capsule": "output/runs/rpb-training-objective-diagnostic/training-objective-0vc70T",
+    "compiled_source_fingerprint": "c9dbd427d998dd35c98522554000832e9ee1d30ba8ff1014ef46a089487c8412",
+    "human_card": {
+      "path": "code/evaluation/cards/training_objective_diagnostic_v1.md",
+      "sha256": "37212638b08afc54ce4a0daf803cf3c512c697e21c1631f4a5a49acf7505cf18"
+    },
+    "admission": {
+      "path": "output/runs/rpb-training-objective-diagnostic/training-objective-0vc70T/admission/passed.json",
+      "sha256": "d7df02c49f2ac41a3d74d910d83b6a87c9468ea0510aa05f2e865ff619b58968"
+    },
+    "inventory": {
+      "path": "output/runs/rpb-training-objective-diagnostic/training-objective-0vc70T/artifact-integrity.json",
+      "sha256": "e51a6ce1f2056f9f8742dc583e3440e122e53f3c94687976e8444f3b20e12947",
+      "files": 367
+    },
+    "report": {
+      "path": "output/runs/rpb-training-objective-diagnostic/training-objective-0vc70T/results/report.json",
+      "sha256": "54537dacc364d3d7a172ec0c807ab28f3dbfde591e8d23bb8e66ad0876af3b8b"
+    },
+    "input_manifest": {
+      "path": "output/runs/rpb-training-objective-diagnostic/training-objective-0vc70T/inputs/inputs.sha256",
+      "sha256": "3ca236e951026abdb5e9af29c2c49be513337b73eb8761a1259c4411ac81aa3f"
+    },
+    "independent_validation": {
+      "path": "output/runs/rpb-training-objective-diagnostic/audit-tools/run-0vc70T-v3/validation.json",
+      "sha256": "29325651ed56630cd984b2853ad9355178bc5378cfd4c94cb5554816c1e2cd07",
+      "auditor_sha256": "ab5433bb97ec9ee80150d4518fecdd6807b3024d68c4932c61af3906728901c0"
+    },
+    "replay_bundle": {
+      "path": "output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6",
+      "bindings": {
+        "bundle-integrity.json": {
+          "path": "output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6/bundle-integrity.json",
+          "sha256": "7abd7a3ab64e927a417cbbe2911820a83acc4020497eab51017bbdbb6a72d81e"
+        },
+        "source-manifest.json": {
+          "path": "output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6/source-manifest.json",
+          "sha256": "ea377ca853e5cb732e6dedbacc72d080b7a9e3ef8a801362a5cd6cc5b9ceb06b"
+        },
+        "audit-binding.json": {
+          "path": "output/runs/rpb-training-objective-diagnostic/audit-tools/replay-bundle-0vc70T-20261007T062810Z-487b37d6/audit-binding.json",
+          "sha256": "cae57646917d1bf329dc57678d33ce7a14b70c2ff29e0f4e21dcef0bec9b1346"
+        }
+      }
+    }
+  },
+  "conditions": {
+    "masters": [
+      4404,
+      5505,
+      6606,
+      7707,
+      8808
+    ],
+    "model_tags": [
+      "RPB-v4",
+      "RPB-v7",
+      "RPB-v8"
+    ],
+    "retained_trained_instances": 15,
+    "new_encoder_runs": 0,
+    "original_checkpoint_updates": 512,
+    "diagnostic_encoder_updates": 0,
+    "head_refits": 0,
+    "optimizer_created": false,
+    "training_examples_per_master": 256,
+    "training_source_pairs_per_master": 128,
+    "batch_size": 8,
+    "device": "cuda",
+    "threads": 1,
+    "parameters_each": 225805,
+    "geometry": {
+      "channels": 3,
+      "history": 32,
+      "features": 3,
+      "patch": 8,
+      "contextual_width": 96,
+      "served_width": 32,
+      "post_encoder_pca": false
+    },
+    "common_query_banks": 4,
+    "actual_absolute_attempts": [
+      512,
+      513,
+      514,
+      515
+    ],
+    "actual_exposures_per_instance": 32,
+    "actual_support_is_exposure_count_not_independent_sources": true,
+    "gradient_head": "first identical saved Ridge fit",
+    "head_base_seeds": [
+      2701,
+      2802,
+      2903
+    ],
+    "head_actual_seed_policy": "stream_seed(base_seed,32)",
+    "linear_head": {
+      "recipe": "ridge",
+      "penalty": 1,
+      "parameters_at32": 66,
+      "parameters_at576": 1154
+    },
+    "neural_head": {
+      "hidden": 16,
+      "activation": "tanh",
+      "optimizer": "Adam",
+      "learning_rate": 0.01,
+      "updates": 100,
+      "parameters_at32": 562,
+      "parameters_at576": 9266
+    },
+    "hypothetical_auxiliary": "original hierarchical Huber + weight1 pair-difference Huber on common Q;delta1;differences divided by sqrt(2)",
+    "labels_used_for": "TRAIN source-pair geometry and saved correct-margin diagnosis only; no encoder update",
+    "zero_norm_cutoff": 1e-20,
+    "gradient_coordinates": "zero float64 leaf scaled by outer_scale*ridge_scale into native float32 z;separate real encoder graph",
+    "VAL_TEST_stress_payload_access": false,
+    "selection": false,
+    "promoted": false,
+    "active_encoder": "RPB-v4"
+  },
+  "counts": {
+    "input_roles": 195,
+    "instances": 15,
+    "frozen_native_fit_archives": 45,
+    "frozen_TRAIN_prediction_archives": 45,
+    "geometry_surfaces": 30,
+    "banks": 120,
+    "common_intervention_banks": 60,
+    "decoder_intervention_predictions": 240,
+    "actual_row_exposures": 480,
+    "trigger_v7_actual_exposures": 160,
+    "encoder_updates": 0,
+    "head_refits": 0,
+    "VAL_TEST_stress_payload_reads": 0,
+    "captured_source_files": 39
+  },
+  "mean_diagnostics": [
+    {
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.267344918462908,
+          "midpoint_fraction": 0.732655081537092,
+          "coherence": 0.012476427132658589,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.2712327352937575,
+          "midpoint_fraction": 0.7287672647062424,
+          "coherence": 0.012922947118932559,
+          "ridge_pair_margin": 0.6709685470888148
+        }
+      },
+      "interventions": {
+        "factual": 0.0036755416193045677,
+        "mean": 0.4737130254507065,
+        "sibling_swap": 0.2759262606501579,
+        "cross_source_preserve_label": 0.7349749147891999
+      },
+      "channel_fraction_mean": [
+        0.33943160835906533,
+        0.3281512033368705,
+        0.3324171883040642
+      ],
+      "channel_loss_mean": [
+        0.0012415623138963383,
+        0.0012226588693188488,
+        0.001211320454140008
+      ]
+    },
+    {
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.27846921049497875,
+          "midpoint_fraction": 0.7215307895050211,
+          "coherence": 0.01468091433141836,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.28443614691521535,
+          "midpoint_fraction": 0.7155638530847847,
+          "coherence": 0.01715035670035509,
+          "ridge_pair_margin": 0.729945370630495
+        }
+      },
+      "interventions": {
+        "factual": 0.00529646968934685,
+        "mean": 0.4742660358548164,
+        "sibling_swap": 0.27888075411319735,
+        "cross_source_preserve_label": 0.7383066475391388
+      },
+      "channel_fraction_mean": [
+        0.3092726171206822,
+        0.3169289588497995,
+        0.37379842402951824
+      ],
+      "channel_loss_mean": [
+        0.001658317567897427,
+        0.0016770710994222782,
+        0.001961081073804394
+      ]
+    },
+    {
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.23996658598858306,
+          "midpoint_fraction": 0.7600334140114169,
+          "coherence": 0.017916656445362247,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.24905172850275492,
+          "midpoint_fraction": 0.7509482714972451,
+          "coherence": 0.01779649127395991,
+          "ridge_pair_margin": 0.7008384507162527
+        }
+      },
+      "interventions": {
+        "factual": 0.0057850969722494485,
+        "mean": 0.47428264319896696,
+        "sibling_swap": 0.27850621193647385,
+        "cross_source_preserve_label": 0.7379423528909683
+      },
+      "channel_fraction_mean": [
+        0.3012952820358802,
+        0.34678472048506215,
+        0.35191999747905767
+      ],
+      "channel_loss_mean": [
+        0.001730335405286354,
+        0.0020425219686217135,
+        0.002012239454796827
+      ]
+    }
+  ],
+  "per_instance": [
+    {
+      "master": 4404,
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.32412726997058705,
+          "midpoint_fraction": 0.675872730029413,
+          "coherence": 0.015397319227304626,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.30392818706720964,
+          "midpoint_fraction": 0.6960718129327904,
+          "coherence": 0.009759421825648871,
+          "ridge_pair_margin": 0.7665866600982129
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0018228025843001205,
+          0.001130104873446669,
+          0.0013002871189726761
+        ],
+        "fraction_of_loss": [
+          0.4285725826599891,
+          0.26570730613465865,
+          0.30572011120535225
+        ]
+      },
+      "common_original_huber": 0.004253194550983608,
+      "interventions": {
+        "factual": 0.004253194434568286,
+        "mean": 0.4752434492111206,
+        "sibling_swap": 0.27724072337150574,
+        "cross_source_preserve_label": 0.7886939942836761
+      },
+      "actual": {
+        "support": 22,
+        "base_cos": -0.005006312479834769,
+        "combined_cos": -0.004296318681870592,
+        "loss_direction": -0.09831920021800941
+      },
+      "input_id": "seed-4404-RPB-v4-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "9cab6262d79ddb29bbd8d4d380a7153d11048720fe031fab7e1d4e9d05c0d828",
+        "training_producer_source_id": "2fff50c48605ee21dbbfd28d6989bdcf6b5cd057785c2acb19419571af48b895",
+        "core_writer_source_id": "587f2423758c3e70c2c7665d9e7b59bfe10af4c7f9aaba23f5318b3c55b13bca"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 64.88378208282364,
+          "contrast_energy": 31.116217917176357,
+          "coherent_contrast_energy": 0.47910634041714023,
+          "incoherent_difference_variance": 30.637111576759217,
+          "coherence": 0.015397319227304626,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 22.274298013849293,
+          "contrast_energy": 9.725701986150709,
+          "coherent_contrast_energy": 0.0949172282333958,
+          "incoherent_difference_variance": 9.630784757917313,
+          "coherence": 0.009759421825648871,
+          "saved_ridge_pair_contrast_margin_mean": 0.7665866600982129,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 1.1920928955078125e-06,
+            "unequal_elements": 7280,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 4404,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.14549511168470436,
+              "auxiliary": 0.1796545891884376,
+              "margin": 59.28523166663373,
+              "combined": 0.2818394061089053
+            },
+            "base_margin_dot": -0.27172205039275404,
+            "auxiliary_margin_dot": -0.14667621211808826,
+            "base_combined_dot": 0.03416325347174938,
+            "base_descent_margin_cosine": 0.031501407560558005,
+            "combined_descent_margin_cosine": 0.025040421561356854,
+            "combined_descent_base_directional_derivative": -0.12121531883496942,
+            "combined_margin_dot": -0.41839826251084233
+          },
+          "base_huber": 0.005610245333544739,
+          "auxiliary_huber": 0.005424381953202062,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 4404,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10840178286226795,
+              "auxiliary": 0.18348178354266462,
+              "margin": 41.37368115550992,
+              "combined": 0.25324512017398443
+            },
+            "base_margin_dot": -0.17612795412505372,
+            "auxiliary_margin_dot": -0.22134479768941567,
+            "base_combined_dot": 0.02110923626382843,
+            "base_descent_margin_cosine": 0.03927061495834475,
+            "combined_descent_margin_cosine": 0.03793517681981767,
+            "combined_descent_base_directional_derivative": -0.08335495763679855,
+            "combined_margin_dot": -0.3974727518144694
+          },
+          "base_huber": 0.0038315543669396592,
+          "auxiliary_huber": 0.004452083756215381,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 4404,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.13838314423883757,
+              "auxiliary": 0.15967195415907912,
+              "margin": 36.70063524769689,
+              "combined": 0.2628704749940573
+            },
+            "base_margin_dot": 0.013010807586077738,
+            "auxiliary_margin_dot": 0.07366882580457355,
+            "base_combined_dot": 0.03137782414402459,
+            "base_descent_margin_cosine": -0.002561813315565669,
+            "combined_descent_margin_cosine": -0.00898466056648844,
+            "combined_descent_base_directional_derivative": -0.11936610281064827,
+            "combined_margin_dot": 0.0866796333906513
+          },
+          "base_huber": 0.004479107416500713,
+          "auxiliary_huber": 0.0029415659054749994,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 4404,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10299022541696515,
+              "auxiliary": 0.1326216677066392,
+              "margin": 52.93327667955164,
+              "combined": 0.17792041182759927
+            },
+            "base_margin_dot": 0.48102531989181285,
+            "auxiliary_margin_dot": 0.18930587146017186,
+            "base_combined_dot": 0.012337076365524799,
+            "base_descent_margin_cosine": -0.08823545912267616,
+            "combined_descent_margin_cosine": -0.07117621254216845,
+            "combined_descent_base_directional_derivative": -0.06934042158962142,
+            "combined_margin_dot": 0.6703311913519847
+          },
+          "base_huber": 0.0039706946612382684,
+          "auxiliary_huber": 0.0027493496203698908,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 4404,
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.31665694252841836,
+          "midpoint_fraction": 0.6833430574715816,
+          "coherence": 0.01107725390511319,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.3022206211224791,
+          "midpoint_fraction": 0.6977793788775208,
+          "coherence": 0.015899863570205574,
+          "ridge_pair_margin": 0.8067095297751684
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0012135027702768753,
+          0.0015435461714190524,
+          0.001961863459122526
+        ],
+        "fraction_of_loss": [
+          0.2571572996494709,
+          0.3270978649977351,
+          0.415744835352794
+        ]
+      },
+      "common_original_huber": 0.004718912416137755,
+      "interventions": {
+        "factual": 0.004718912416137755,
+        "mean": 0.47531241178512573,
+        "sibling_swap": 0.2770996689796448,
+        "cross_source_preserve_label": 0.7891537547111511
+      },
+      "actual": {
+        "support": 22,
+        "base_cos": -0.020840513500767228,
+        "combined_cos": -0.008866868000582902,
+        "loss_direction": -0.0888183842800048
+      },
+      "input_id": "seed-4404-RPB-v7-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "f22cc8d5f2ac8af3e6a6056c6ad2693ffcc82cf39e8744c32fb13038710c5311",
+        "training_producer_source_id": "d8ed2771d1615beabccbead081847813b2562b7b1f9b5347d4825c075ccc27a7",
+        "core_writer_source_id": "e379b8f8abb102c256fb843466b4fbfbecb6fdc21298b862fd0b6dfeb47b853e"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 65.60093351727184,
+          "contrast_energy": 30.399066482728163,
+          "coherent_contrast_energy": 0.336738177907596,
+          "incoherent_difference_variance": 30.062328304820568,
+          "coherence": 0.01107725390511319,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 22.328940124080667,
+          "contrast_energy": 9.671059875919331,
+          "coherent_contrast_energy": 0.1537685326064066,
+          "incoherent_difference_variance": 9.517291343312925,
+          "coherence": 0.015899863570205574,
+          "saved_ridge_pair_contrast_margin_mean": 0.8067095297751684,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 1.1920928955078125e-06,
+            "unequal_elements": 7124,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 4404,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10638216954153885,
+              "auxiliary": 0.12020397437356588,
+              "margin": 39.21101216570952,
+              "combined": 0.182170304254785
+            },
+            "base_margin_dot": 0.28912569504159924,
+            "auxiliary_margin_dot": 0.04266562260212829,
+            "base_combined_dot": 0.015027095146722388,
+            "base_descent_margin_cosine": -0.06931221755638876,
+            "combined_descent_margin_cosine": -0.04644932213903841,
+            "combined_descent_base_directional_derivative": -0.08248926853470782,
+            "combined_margin_dot": 0.3317913176437275
+          },
+          "base_huber": 0.005383947290858883,
+          "auxiliary_huber": 0.002943946267005514,
+          "context_requested": 204,
+          "context_actual": 204,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 4404,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.0940568462124864,
+              "auxiliary": 0.09766995561910859,
+              "margin": 31.801644583462807,
+              "combined": 0.1445301283714103
+            },
+            "base_margin_dot": -0.007851645394619524,
+            "auxiliary_margin_dot": 0.002940338987978238,
+            "base_combined_dot": 0.010098114047928508,
+            "base_descent_margin_cosine": 0.0026249478833565037,
+            "combined_descent_margin_cosine": 0.0010685357618516597,
+            "combined_descent_base_directional_derivative": -0.06986857454370067,
+            "combined_margin_dot": -0.004911306406641285
+          },
+          "base_huber": 0.004622139229029802,
+          "auxiliary_huber": 0.0021348577794235634,
+          "context_requested": 227,
+          "context_actual": 227,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 4404,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12306276252371738,
+              "auxiliary": 0.18577442676920025,
+              "margin": 29.029690845434864,
+              "combined": 0.27120070263246304
+            },
+            "base_margin_dot": 0.0867094392857511,
+            "auxiliary_margin_dot": -0.008929666589150323,
+            "base_combined_dot": 0.027091063493442785,
+            "base_descent_margin_cosine": -0.024271538570632984,
+            "combined_descent_margin_cosine": -0.00987946548839918,
+            "combined_descent_base_directional_derivative": -0.09989304316131205,
+            "combined_margin_dot": 0.07777977269660077
+          },
+          "base_huber": 0.005875907611059658,
+          "auxiliary_huber": 0.005621741197567427,
+          "context_requested": 201,
+          "context_actual": 201,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 4404,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12926761296042333,
+              "auxiliary": 0.2473181712514714,
+              "margin": 34.89639718331262,
+              "combined": 0.33769226686219395
+            },
+            "base_margin_dot": -0.034268760596357056,
+            "auxiliary_margin_dot": -0.1989741762634392,
+            "base_combined_dot": 0.03478995251392044,
+            "base_descent_margin_cosine": 0.007596754240596329,
+            "combined_descent_margin_cosine": 0.019792779863254322,
+            "combined_descent_base_directional_derivative": -0.10302265088029862,
+            "combined_margin_dot": -0.23324293685979625
+          },
+          "base_huber": 0.00791693009946396,
+          "auxiliary_huber": 0.009588785699610245,
+          "context_requested": 227,
+          "context_actual": 227,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 4404,
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.2754503375450283,
+          "midpoint_fraction": 0.7245496624549718,
+          "coherence": 0.01889281471654786,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.27378796294183244,
+          "midpoint_fraction": 0.7262120370581675,
+          "coherence": 0.011276229350688002,
+          "ridge_pair_margin": 0.6512301993211834
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.001602358838532325,
+          0.00270456841847988,
+          0.0019197707273193032
+        ],
+        "fraction_of_loss": [
+          0.25733684893091097,
+          0.43435034512441345,
+          0.30831280594467564
+        ]
+      },
+      "common_original_huber": 0.006226698053069413,
+      "interventions": {
+        "factual": 0.006226697936654091,
+        "mean": 0.4757576659321785,
+        "sibling_swap": 0.2813710570335388,
+        "cross_source_preserve_label": 0.7907520979642868
+      },
+      "actual": {
+        "support": 22,
+        "base_cos": -0.009941703272915567,
+        "combined_cos": -0.019106754287852863,
+        "loss_direction": -0.10865682804590827
+      },
+      "input_id": "seed-4404-RPB-v8-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "78ab6ffdb0a3edf141e0ad81e58fe10f36e276d4b7d8af1288859004b5f0f38c",
+        "training_producer_source_id": "3532deae194828f2640ff4fadacbcd94bbccfb8af6eaf37182cb8137ae84cf41",
+        "core_writer_source_id": "073ec84b7c781cf48a578e58a4c9602c6b765c9c23f6065f27338780be8a1835"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 69.55676759567729,
+          "contrast_energy": 26.443232404322718,
+          "coherent_contrast_energy": 0.49958709032148346,
+          "incoherent_difference_variance": 25.943645314001234,
+          "coherence": 0.01889281471654786,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 23.23878518586136,
+          "contrast_energy": 8.761214814138638,
+          "coherent_contrast_energy": 0.09879346763487264,
+          "incoherent_difference_variance": 8.662421346503766,
+          "coherence": 0.011276229350688002,
+          "saved_ridge_pair_contrast_margin_mean": 0.6512301993211834,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 8.344650268554688e-07,
+            "unequal_elements": 7304,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 4404,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.152381290077081,
+              "auxiliary": 0.17251351986026353,
+              "margin": 77.68462741854896,
+              "combined": 0.27362194957835084
+            },
+            "base_margin_dot": 0.31685064111062305,
+            "auxiliary_margin_dot": -0.48481472789865465,
+            "base_combined_dot": 0.03416405716101776,
+            "base_descent_margin_cosine": -0.026766270153078867,
+            "combined_descent_margin_cosine": 0.007901879687824402,
+            "combined_descent_base_directional_derivative": -0.12485861318386295,
+            "combined_margin_dot": -0.16796408678803162
+          },
+          "base_huber": 0.007477482685683348,
+          "auxiliary_huber": 0.004661314665058334,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 4404,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11337637343760273,
+              "auxiliary": 0.21017283268168246,
+              "margin": 62.66481696448431,
+              "combined": 0.2807773263340169
+            },
+            "base_margin_dot": -0.04873981314205498,
+            "auxiliary_margin_dot": 0.6528615302705842,
+            "base_combined_dot": 0.02375874471984965,
+            "base_descent_margin_cosine": 0.006860211785098753,
+            "combined_descent_margin_cosine": -0.0343351254447705,
+            "combined_descent_base_directional_derivative": -0.08461774684607506,
+            "combined_margin_dot": 0.6041217171285292
+          },
+          "base_huber": 0.007323985262131987,
+          "auxiliary_huber": 0.005961997468683401,
+          "context_requested": 473,
+          "context_actual": 473,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 4404,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11441899313455978,
+              "auxiliary": 0.1079723447738298,
+              "margin": 53.649583971140984,
+              "combined": 0.1809294182998982
+            },
+            "base_margin_dot": 0.3115065383544083,
+            "auxiliary_margin_dot": 0.0953520703558713,
+            "base_combined_dot": 0.0170845665801536,
+            "base_descent_margin_cosine": -0.05074610180636735,
+            "combined_descent_margin_cosine": -0.04191485462285909,
+            "combined_descent_base_directional_derivative": -0.09442669268872134,
+            "combined_margin_dot": 0.40685860871027957
+          },
+          "base_huber": 0.00545138241706502,
+          "auxiliary_huber": 0.0031143519647135426,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 4404,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1607514749120783,
+              "auxiliary": 0.308186370726712,
+              "margin": 66.68953423591947,
+              "combined": 0.4243679796906234
+            },
+            "base_margin_dot": -0.3311045408439699,
+            "auxiliary_margin_dot": 0.5597451800168323,
+            "base_combined_dot": 0.05547518988570376,
+            "base_descent_margin_cosine": 0.030885347082685196,
+            "combined_descent_margin_cosine": -0.008078916771606269,
+            "combined_descent_base_directional_derivative": -0.13072425946497374,
+            "combined_margin_dot": 0.22864063917286237
+          },
+          "base_huber": 0.01114682913536077,
+          "auxiliary_huber": 0.01262694324293161,
+          "context_requested": 516,
+          "context_actual": 516,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 5505,
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.23339713545519045,
+          "midpoint_fraction": 0.7666028645448096,
+          "coherence": 0.013010792033790526,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.22149367485524205,
+          "midpoint_fraction": 0.778506325144758,
+          "coherence": 0.015015128305051854,
+          "ridge_pair_margin": 0.5957041095587532
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0009741984752764665,
+          0.0009030935573512977,
+          0.0009154018213592963
+        ],
+        "fraction_of_loss": [
+          0.3488382637737492,
+          0.32337721374721157,
+          0.3277845224790392
+        ]
+      },
+      "common_original_huber": 0.0027926937909796834,
+      "interventions": {
+        "factual": 0.0027926939073950052,
+        "mean": 0.476410947740078,
+        "sibling_swap": 0.27645066380500793,
+        "cross_source_preserve_label": 0.7074153870344162
+      },
+      "actual": {
+        "support": 20,
+        "base_cos": -0.00235389209077767,
+        "combined_cos": 0.016754027376873593,
+        "loss_direction": -0.05557334293642275
+      },
+      "input_id": "seed-5505-RPB-v4-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "9cab6262d79ddb29bbd8d4d380a7153d11048720fe031fab7e1d4e9d05c0d828",
+        "training_producer_source_id": "2fff50c48605ee21dbbfd28d6989bdcf6b5cd057785c2acb19419571af48b895",
+        "core_writer_source_id": "587f2423758c3e70c2c7665d9e7b59bfe10af4c7f9aaba23f5318b3c55b13bca"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 73.59387499630172,
+          "contrast_energy": 22.406125003698282,
+          "coherent_contrast_energy": 0.2915214327062323,
+          "incoherent_difference_variance": 22.11460357099205,
+          "coherence": 0.013010792033790526,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 31.999999999999996,
+          "midpoint_trace_variance": 24.912202404632254,
+          "contrast_energy": 7.087797595367745,
+          "coherent_contrast_energy": 0.1064241902946847,
+          "incoherent_difference_variance": 6.98137340507306,
+          "coherence": 0.015015128305051854,
+          "saved_ridge_pair_contrast_margin_mean": 0.5957041095587532,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7187,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 5505,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.07973066831294412,
+              "auxiliary": 0.11735049551935106,
+              "margin": 44.83897312225519,
+              "combined": 0.14829549662336444
+            },
+            "base_margin_dot": 0.08224994944865904,
+            "auxiliary_margin_dot": -0.3135546527278313,
+            "base_combined_dot": 0.007288697494880887,
+            "base_descent_margin_cosine": -0.02300671312471862,
+            "combined_descent_margin_cosine": 0.03478570766343047,
+            "combined_descent_base_directional_derivative": -0.04914982356741728,
+            "combined_margin_dot": -0.23130470327917227
+          },
+          "base_huber": 0.0037186895581680724,
+          "auxiliary_huber": 0.0022651739376954006,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 5505,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.07975083142011762,
+              "auxiliary": 0.1181770474425059,
+              "margin": 34.630246685238944,
+              "combined": 0.17199403760878523
+            },
+            "base_margin_dot": 0.013084755879565695,
+            "auxiliary_margin_dot": 0.07047894107861438,
+            "base_combined_dot": 0.010988164771471978,
+            "base_descent_margin_cosine": -0.0047377792321516175,
+            "combined_descent_margin_cosine": -0.014029709171539574,
+            "combined_descent_base_directional_derivative": -0.06388689354723723,
+            "combined_margin_dot": 0.08356369695818007
+          },
+          "base_huber": 0.0025748146483862296,
+          "auxiliary_huber": 0.0024501338235104163,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 5505,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.09714883894937135,
+              "auxiliary": 0.3035375736608234,
+              "margin": 46.12213509399897,
+              "combined": 0.3626212644884909
+            },
+            "base_margin_dot": 0.044069962592073596,
+            "auxiliary_margin_dot": 0.052577221721913425,
+            "base_combined_dot": 0.024398509872271594,
+            "base_descent_margin_cosine": -0.009835482358362832,
+            "combined_descent_margin_cosine": -0.005778651908589842,
+            "combined_descent_base_directional_derivative": -0.06728372619484363,
+            "combined_margin_dot": 0.09664718431398701
+          },
+          "base_huber": 0.0038461428593528977,
+          "auxiliary_huber": 0.005630133831033865,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 5505,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.06039536955742849,
+              "auxiliary": 0.09970713630864646,
+              "margin": 27.02264283702564,
+              "combined": 0.13172614057036897
+            },
+            "base_margin_dot": -0.045965508169721586,
+            "auxiliary_margin_dot": -0.1392710712319953,
+            "base_combined_dot": 0.005528931871335978,
+            "base_descent_margin_cosine": 0.02816440635212239,
+            "combined_descent_margin_cosine": 0.05203876292419332,
+            "combined_descent_base_directional_derivative": -0.041972928436192866,
+            "combined_margin_dot": -0.1852365794017169
+          },
+          "base_huber": 0.00247056209013006,
+          "auxiliary_huber": 0.00211909490807914,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 5505,
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.24809622948047327,
+          "midpoint_fraction": 0.7519037705195268,
+          "coherence": 0.019514717258277057,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.23988603154890184,
+          "midpoint_fraction": 0.760113968451098,
+          "coherence": 0.016819614293398642,
+          "ridge_pair_margin": 0.6128433970068425
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0016723328835013263,
+          0.0013575322099725895,
+          0.0020014088269846297
+        ],
+        "fraction_of_loss": [
+          0.3323875642511055,
+          0.26981878375822266,
+          0.39779365199067185
+        ]
+      },
+      "common_original_huber": 0.005031273816712201,
+      "interventions": {
+        "factual": 0.005031273816712201,
+        "mean": 0.47709010541439056,
+        "sibling_swap": 0.2825109660625458,
+        "cross_source_preserve_label": 0.7119656056165695
+      },
+      "actual": {
+        "support": 20,
+        "base_cos": -0.003636640647852748,
+        "combined_cos": 0.0011156784885643454,
+        "loss_direction": -0.11170738010382061
+      },
+      "input_id": "seed-5505-RPB-v7-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "f22cc8d5f2ac8af3e6a6056c6ad2693ffcc82cf39e8744c32fb13038710c5311",
+        "training_producer_source_id": "d8ed2771d1615beabccbead081847813b2562b7b1f9b5347d4825c075ccc27a7",
+        "core_writer_source_id": "e379b8f8abb102c256fb843466b4fbfbecb6fdc21298b862fd0b6dfeb47b853e"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 72.18276196987458,
+          "contrast_energy": 23.817238030125434,
+          "coherent_contrast_energy": 0.46478666603098145,
+          "incoherent_difference_variance": 23.352451364094453,
+          "coherence": 0.019514717258277057,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 24.323646990435137,
+          "contrast_energy": 7.676353009564859,
+          "coherent_contrast_energy": 0.1291132968008508,
+          "incoherent_difference_variance": 7.547239712764008,
+          "coherence": 0.016819614293398642,
+          "saved_ridge_pair_contrast_margin_mean": 0.6128433970068425,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7165,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 5505,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.15278893660494336,
+              "auxiliary": 0.25229852905252487,
+              "margin": 42.2970423610349,
+              "combined": 0.3556400788163872
+            },
+            "base_margin_dot": 0.5084346854008656,
+            "auxiliary_margin_dot": 0.7239481122448828,
+            "base_combined_dot": 0.043084888523663885,
+            "base_descent_margin_cosine": -0.0786743678402449,
+            "combined_descent_margin_cosine": -0.08192659957406526,
+            "combined_descent_base_directional_derivative": -0.12114744959863792,
+            "combined_margin_dot": 1.2323827976457482
+          },
+          "base_huber": 0.008209678730450715,
+          "auxiliary_huber": 0.007053482287598879,
+          "context_requested": 231,
+          "context_actual": 231,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 5505,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.17278186029040535,
+              "auxiliary": 0.1678263280361066,
+              "margin": 32.122941753672826,
+              "combined": 0.2910208524508032
+            },
+            "base_margin_dot": -0.1189342978284539,
+            "auxiliary_margin_dot": -0.028722178229180457,
+            "base_combined_dot": 0.04319051571226124,
+            "base_descent_margin_cosine": 0.021428593040659125,
+            "combined_descent_margin_cosine": 0.015794761798639586,
+            "combined_descent_base_directional_derivative": -0.14841038141609647,
+            "combined_margin_dot": -0.14765647605763435
+          },
+          "base_huber": 0.009976728726897595,
+          "auxiliary_huber": 0.005508050928812957,
+          "context_requested": 255,
+          "context_actual": 255,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 5505,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1677323058339757,
+              "auxiliary": 0.29873919405701127,
+              "margin": 43.01120666133642,
+              "combined": 0.3789168066873846
+            },
+            "base_margin_dot": -0.11898284558368706,
+            "auxiliary_margin_dot": -0.6430594671799681,
+            "base_combined_dot": 0.04123348337235727,
+            "base_descent_margin_cosine": 0.01649248156388786,
+            "combined_descent_margin_cosine": 0.046757748548484045,
+            "combined_descent_base_directional_derivative": -0.10881935729595621,
+            "combined_margin_dot": -0.7620423127636551
+          },
+          "base_huber": 0.008334165506469355,
+          "auxiliary_huber": 0.004849817644548823,
+          "context_requested": 242,
+          "context_actual": 242,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 5505,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.0914737647253509,
+              "auxiliary": 0.11877541390289914,
+              "margin": 26.46583574579061,
+              "combined": 0.17055948702202886
+            },
+            "base_margin_dot": -0.06344465078167856,
+            "auxiliary_margin_dot": -0.04415466372319874,
+            "base_combined_dot": 0.01167519464922074,
+            "base_descent_margin_cosine": 0.02620673064428692,
+            "combined_descent_margin_cosine": 0.023836803181199007,
+            "combined_descent_base_directional_derivative": -0.06845233210459183,
+            "combined_margin_dot": -0.1075993145048773
+          },
+          "base_huber": 0.003453587800525169,
+          "auxiliary_huber": 0.002543409877149123,
+          "context_requested": 253,
+          "context_actual": 253,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 5505,
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.21306606180334767,
+          "midpoint_fraction": 0.7869339381966524,
+          "coherence": 0.018313892301946518,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.2207855134315743,
+          "midpoint_fraction": 0.7792144865684257,
+          "coherence": 0.024539111920161085,
+          "ridge_pair_margin": 0.667716100278723
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0014312726420691035,
+          0.001414223909641521,
+          0.0021746808108815685
+        ],
+        "fraction_of_loss": [
+          0.28510399906071426,
+          0.28170795720876274,
+          0.433188043730523
+        ]
+      },
+      "common_original_huber": 0.005020177341066301,
+      "interventions": {
+        "factual": 0.005020177457481623,
+        "mean": 0.47684545814991,
+        "sibling_swap": 0.27985216677188873,
+        "cross_source_preserve_label": 0.7106374800205231
+      },
+      "actual": {
+        "support": 20,
+        "base_cos": 0.00047443908222960106,
+        "combined_cos": -0.00929807645077,
+        "loss_direction": -0.1162698378168891
+      },
+      "input_id": "seed-5505-RPB-v8-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "78ab6ffdb0a3edf141e0ad81e58fe10f36e276d4b7d8af1288859004b5f0f38c",
+        "training_producer_source_id": "3532deae194828f2640ff4fadacbcd94bbccfb8af6eaf37182cb8137ae84cf41",
+        "core_writer_source_id": "073ec84b7c781cf48a578e58a4c9602c6b765c9c23f6065f27338780be8a1835"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 75.54565806687863,
+          "contrast_energy": 20.454341933121377,
+          "coherent_contrast_energy": 0.3745986152703734,
+          "incoherent_difference_variance": 20.079743317851005,
+          "coherence": 0.018313892301946518,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 24.934863570189624,
+          "contrast_energy": 7.065136429810377,
+          "coherent_contrast_energy": 0.17337217358232415,
+          "incoherent_difference_variance": 6.891764256228053,
+          "coherence": 0.024539111920161085,
+          "saved_ridge_pair_contrast_margin_mean": 0.667716100278723,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7149,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 5505,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12377742412362697,
+              "auxiliary": 0.13623787793007452,
+              "margin": 39.39571300994043,
+              "combined": 0.21126821488952058
+            },
+            "base_margin_dot": 0.13618742452707994,
+            "auxiliary_margin_dot": 0.33254665970678754,
+            "base_combined_dot": 0.020697174981197494,
+            "base_descent_margin_cosine": -0.027928435071178218,
+            "combined_descent_margin_cosine": -0.0563175050695288,
+            "combined_descent_base_directional_derivative": -0.09796634572796839,
+            "combined_margin_dot": 0.4687340842338675
+          },
+          "base_huber": 0.006038799015657964,
+          "auxiliary_huber": 0.0038720336306167407,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 5505,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.15686778675227392,
+              "auxiliary": 0.1507151635096662,
+              "margin": 31.13457935739095,
+              "combined": 0.2520296227713105
+            },
+            "base_margin_dot": -0.033711832707575044,
+            "auxiliary_margin_dot": -0.038476889055254676,
+            "base_combined_dot": 0.03270568638153027,
+            "base_descent_margin_cosine": 0.0069024869052166935,
+            "combined_descent_margin_cosine": 0.009199723186455379,
+            "combined_descent_base_directional_derivative": -0.12976921530850016,
+            "combined_margin_dot": -0.07218872176282973
+          },
+          "base_huber": 0.01033732585054552,
+          "auxiliary_huber": 0.0041212754366313975,
+          "context_requested": 481,
+          "context_actual": 481,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 5505,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.17734155367061127,
+              "auxiliary": 0.13897420507254019,
+              "margin": 41.46643168283841,
+              "combined": 0.245347791224843
+            },
+            "base_margin_dot": -0.0913352238761019,
+            "auxiliary_margin_dot": 0.13864274123790757,
+            "base_combined_dot": 0.036165867820835494,
+            "base_descent_margin_cosine": 0.012420272493603862,
+            "combined_descent_margin_cosine": -0.004649982734220196,
+            "combined_descent_base_directional_derivative": -0.14740653518943714,
+            "combined_margin_dot": 0.047307517361805676
+          },
+          "base_huber": 0.007701641431653718,
+          "auxiliary_huber": 0.0017033220013456323,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 5505,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10982648014465832,
+              "auxiliary": 0.17266284969924212,
+              "margin": 24.305856887365913,
+              "combined": 0.2506833709192201
+            },
+            "base_margin_dot": -0.028038141918682688,
+            "auxiliary_margin_dot": -0.060771209225929594,
+            "base_combined_dot": 0.022545774265062622,
+            "base_descent_margin_cosine": 0.010503432001276066,
+            "combined_descent_margin_cosine": 0.014575458814213618,
+            "combined_descent_base_directional_derivative": -0.0899372550416507,
+            "combined_margin_dot": -0.08880935114461228
+          },
+          "base_huber": 0.005472999857561375,
+          "auxiliary_huber": 0.005263249168876185,
+          "context_requested": 467,
+          "context_actual": 467,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 6606,
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.3230511164235311,
+          "midpoint_fraction": 0.6769488835764688,
+          "coherence": 0.016441456256495766,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.32944803712194404,
+          "midpoint_fraction": 0.6705519628780559,
+          "coherence": 0.00861866910211053,
+          "ridge_pair_margin": 0.7630724139258289
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0009712706913234115,
+          0.0008960237741177934,
+          0.0012607679724965237
+        ],
+        "fraction_of_loss": [
+          0.3105023351016457,
+          0.2864468954489683,
+          0.403050769449386
+        ]
+      },
+      "common_original_huber": 0.003128062409814447,
+      "interventions": {
+        "factual": 0.0031280623516067863,
+        "mean": 0.47086291015148163,
+        "sibling_swap": 0.2768792137503624,
+        "cross_source_preserve_label": 0.7197341322898865
+      },
+      "actual": {
+        "support": 19,
+        "base_cos": 0.000903748429460673,
+        "combined_cos": -0.005632859456683351,
+        "loss_direction": -0.056654122039975004
+      },
+      "input_id": "seed-6606-RPB-v4-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "9cab6262d79ddb29bbd8d4d380a7153d11048720fe031fab7e1d4e9d05c0d828",
+        "training_producer_source_id": "2fff50c48605ee21dbbfd28d6989bdcf6b5cd057785c2acb19419571af48b895",
+        "core_writer_source_id": "587f2423758c3e70c2c7665d9e7b59bfe10af4c7f9aaba23f5318b3c55b13bca"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96.00000000000001,
+          "midpoint_trace_variance": 64.98709282334102,
+          "contrast_energy": 31.01290717665899,
+          "coherent_contrast_energy": 0.5098973567318024,
+          "incoherent_difference_variance": 30.50300981992719,
+          "coherence": 0.016441456256495766,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 21.457662812097787,
+          "contrast_energy": 10.54233718790221,
+          "coherent_contrast_energy": 0.09086091578540359,
+          "incoherent_difference_variance": 10.451476272116805,
+          "coherence": 0.00861866910211053,
+          "saved_ridge_pair_contrast_margin_mean": 0.7630724139258289,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7179,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 6606,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.09125502136056997,
+              "auxiliary": 0.1791343387048208,
+              "margin": 41.16626839358709,
+              "combined": 0.24655825526553835
+            },
+            "base_margin_dot": -0.027040324333630298,
+            "auxiliary_margin_dot": 0.1524724865144691,
+            "base_combined_dot": 0.018514670429945496,
+            "base_descent_margin_cosine": 0.007198029531684316,
+            "combined_descent_margin_cosine": -0.01235799056388585,
+            "combined_descent_base_directional_derivative": -0.07509247828674633,
+            "combined_margin_dot": 0.1254321621808388
+          },
+          "base_huber": 0.003487767775081312,
+          "auxiliary_huber": 0.0037018099074940226,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 6606,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.06214016830995348,
+              "auxiliary": 0.12692583280477424,
+              "margin": 28.679110624216474,
+              "combined": 0.16629447634883895
+            },
+            "base_margin_dot": -0.08622137797663927,
+            "auxiliary_margin_dot": -0.04386170046765559,
+            "base_combined_dot": 0.007702543174269204,
+            "base_descent_margin_cosine": 0.04838122439873492,
+            "combined_descent_margin_cosine": 0.0272757877939734,
+            "combined_descent_base_directional_derivative": -0.046318695265087695,
+            "combined_margin_dot": -0.13008307844429487
+          },
+          "base_huber": 0.0026135326154538346,
+          "auxiliary_huber": 0.0028194218980402068,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 6606,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.05630474815498992,
+              "auxiliary": 0.13842160715181043,
+              "margin": 34.847882166926425,
+              "combined": 0.16682665103819216
+            },
+            "base_margin_dot": 0.0692566965586443,
+            "auxiliary_margin_dot": 0.11418627792358638,
+            "base_combined_dot": 0.005920407417462722,
+            "base_descent_margin_cosine": -0.03529720869135501,
+            "combined_descent_margin_cosine": -0.031554351753666866,
+            "combined_descent_base_directional_derivative": -0.035488378988722515,
+            "combined_margin_dot": 0.18344297448223068
+          },
+          "base_huber": 0.0029907848605800957,
+          "auxiliary_huber": 0.0020214302997733605,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 6606,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.08272137916980422,
+              "auxiliary": 0.09114636022507969,
+              "margin": 32.09395580779081,
+              "combined": 0.14924858669410207
+            },
+            "base_margin_dot": 0.044248626524121475,
+            "auxiliary_margin_dot": -0.016012267867280806,
+            "base_combined_dot": 0.010405154109830717,
+            "base_descent_margin_cosine": -0.016667051521221533,
+            "combined_descent_margin_cosine": -0.0058948833031540904,
+            "combined_descent_base_directional_derivative": -0.06971693561934347,
+            "combined_margin_dot": 0.028236358656840668
+          },
+          "base_huber": 0.0031405268016588264,
+          "auxiliary_huber": 0.002016360628057644,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 6606,
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.32259570998112075,
+          "midpoint_fraction": 0.6774042900188791,
+          "coherence": 0.015411287677754328,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.31059203576368993,
+          "midpoint_fraction": 0.68940796423631,
+          "coherence": 0.017017666938128034,
+          "ridge_pair_margin": 0.8457157899343821
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0024989121681784354,
+          0.002301869397612677,
+          0.0012611588219044734
+        ],
+        "fraction_of_loss": [
+          0.4122297496113094,
+          0.3797248488759422,
+          0.20804540151274833
+        ]
+      },
+      "common_original_huber": 0.006061940337531269,
+      "interventions": {
+        "factual": 0.006061940337531269,
+        "mean": 0.47199657559394836,
+        "sibling_swap": 0.2776557356119156,
+        "cross_source_preserve_label": 0.7144698649644852
+      },
+      "actual": {
+        "support": 19,
+        "base_cos": -0.004243265457432768,
+        "combined_cos": -0.028553144523811972,
+        "loss_direction": -0.11905048807364409
+      },
+      "input_id": "seed-6606-RPB-v7-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "f22cc8d5f2ac8af3e6a6056c6ad2693ffcc82cf39e8744c32fb13038710c5311",
+        "training_producer_source_id": "d8ed2771d1615beabccbead081847813b2562b7b1f9b5347d4825c075ccc27a7",
+        "core_writer_source_id": "e379b8f8abb102c256fb843466b4fbfbecb6fdc21298b862fd0b6dfeb47b853e"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96.00000000000001,
+          "midpoint_trace_variance": 65.03081184181241,
+          "contrast_energy": 30.9691881581876,
+          "coherent_contrast_energy": 0.47727506785233176,
+          "incoherent_difference_variance": 30.491913090335267,
+          "coherence": 0.015411287677754328,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 22.06105485556192,
+          "contrast_energy": 9.938945144438078,
+          "coherent_contrast_energy": 0.16913765818437204,
+          "incoherent_difference_variance": 9.769807486253706,
+          "coherence": 0.017017666938128034,
+          "saved_ridge_pair_contrast_margin_mean": 0.8457157899343821,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7150,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 6606,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.17981207495386883,
+              "auxiliary": 0.21576680457187394,
+              "margin": 34.38751126978102,
+              "combined": 0.3471205324676112
+            },
+            "base_margin_dot": 0.24463462173944533,
+            "auxiliary_margin_dot": 0.5469800325392196,
+            "base_combined_dot": 0.05313486620232821,
+            "base_descent_margin_cosine": -0.0395638295268954,
+            "combined_descent_margin_cosine": -0.06631820703067245,
+            "combined_descent_base_directional_derivative": -0.15307324468709171,
+            "combined_margin_dot": 0.7916146542786648
+          },
+          "base_huber": 0.008774153808674915,
+          "auxiliary_huber": 0.00608316089411807,
+          "context_requested": 235,
+          "context_actual": 235,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 6606,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1552945689592416,
+              "auxiliary": 0.1629204026187907,
+              "margin": 24.699594564194587,
+              "combined": 0.2736750320919092
+            },
+            "base_margin_dot": -0.14176251276415558,
+            "auxiliary_margin_dot": -0.0545382025356206,
+            "base_combined_dot": 0.03623568437463766,
+            "base_descent_margin_cosine": 0.03695858287129746,
+            "combined_descent_margin_cosine": 0.029040017913764,
+            "combined_descent_base_directional_derivative": -0.13240405636444216,
+            "combined_margin_dot": -0.1963007152997762
+          },
+          "base_huber": 0.008879611818020256,
+          "auxiliary_huber": 0.005486441694124546,
+          "context_requested": 231,
+          "context_actual": 231,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 6606,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10453496262093227,
+              "auxiliary": 0.1471995423686494,
+              "margin": 30.875926326985475,
+              "combined": 0.20208923142715868
+            },
+            "base_margin_dot": 0.05866651756613602,
+            "auxiliary_margin_dot": 0.5828428364684313,
+            "base_combined_dot": 0.0150499552977198,
+            "base_descent_margin_cosine": -0.018176436562745018,
+            "combined_descent_margin_cosine": -0.10281105723023745,
+            "combined_descent_base_directional_derivative": -0.0744718320290333,
+            "combined_margin_dot": 0.6415093540345673
+          },
+          "base_huber": 0.0054427777871922005,
+          "auxiliary_huber": 0.001847193128225505,
+          "context_requested": 205,
+          "context_actual": 205,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 6606,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.14126544897729412,
+              "auxiliary": 0.15511448023354135,
+              "margin": 28.27773116860042,
+              "combined": 0.24899050368443493
+            },
+            "base_margin_dot": -0.015214171851767426,
+            "auxiliary_margin_dot": -0.1669805129994986,
+            "base_combined_dot": 0.0289458480108317,
+            "base_descent_margin_cosine": 0.0038086213886118813,
+            "combined_descent_margin_cosine": 0.02587666825189802,
+            "combined_descent_base_directional_derivative": -0.11625281921400918,
+            "combined_margin_dot": -0.18219468485126603
+          },
+          "base_huber": 0.005736442485211729,
+          "auxiliary_huber": 0.0037851559133867314,
+          "context_requested": 195,
+          "context_actual": 195,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 6606,
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.32976170594927484,
+          "midpoint_fraction": 0.6702382940507251,
+          "coherence": 0.026549049403918973,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.31620339882916065,
+          "midpoint_fraction": 0.6837966011708394,
+          "coherence": 0.015989696589672524,
+          "ridge_pair_margin": 0.8510575488601719
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0020922969471186548,
+          0.002649435513930598,
+          0.0016090998019251401
+        ],
+        "fraction_of_loss": [
+          0.32945240253263025,
+          0.417179261587007,
+          0.2533683358803627
+        ]
+      },
+      "common_original_huber": 0.006350832176394761,
+      "interventions": {
+        "factual": 0.006350832409225404,
+        "mean": 0.47209930419921875,
+        "sibling_swap": 0.27995144575834274,
+        "cross_source_preserve_label": 0.7199877053499222
+      },
+      "actual": {
+        "support": 19,
+        "base_cos": -0.005950918092218217,
+        "combined_cos": -0.004008676534873978,
+        "loss_direction": -0.11625488944704454
+      },
+      "input_id": "seed-6606-RPB-v8-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "78ab6ffdb0a3edf141e0ad81e58fe10f36e276d4b7d8af1288859004b5f0f38c",
+        "training_producer_source_id": "3532deae194828f2640ff4fadacbcd94bbccfb8af6eaf37182cb8137ae84cf41",
+        "core_writer_source_id": "073ec84b7c781cf48a578e58a4c9602c6b765c9c23f6065f27338780be8a1835"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 64.34287622886961,
+          "contrast_energy": 31.657123771130383,
+          "coherent_contrast_energy": 0.8404665429857182,
+          "incoherent_difference_variance": 30.816657228144663,
+          "coherence": 0.026549049403918973,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 21.88149123746686,
+          "contrast_energy": 10.118508762533141,
+          "coherent_contrast_energy": 0.1617918850528477,
+          "incoherent_difference_variance": 9.956716877480293,
+          "coherence": 0.015989696589672524,
+          "saved_ridge_pair_contrast_margin_mean": 0.8510575488601719,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7257,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 6606,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1967794547992453,
+              "auxiliary": 0.28462736686104834,
+              "margin": 34.58634395666535,
+              "combined": 0.43717065672609257
+            },
+            "base_margin_dot": 0.17334581927158693,
+            "auxiliary_margin_dot": 0.534349356385855,
+            "base_combined_dot": 0.07441379948357874,
+            "base_descent_margin_cosine": -0.025470001042166963,
+            "combined_descent_margin_cosine": -0.04680481950978041,
+            "combined_descent_base_directional_derivative": -0.17021682113994763,
+            "combined_margin_dot": 0.707695175657442
+          },
+          "base_huber": 0.009102586013463042,
+          "auxiliary_huber": 0.008203639300822133,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 6606,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.15423660978706885,
+              "auxiliary": 0.22543238272073496,
+              "margin": 26.25127007998266,
+              "combined": 0.3257490619459419
+            },
+            "base_margin_dot": -0.1170079450298347,
+            "auxiliary_margin_dot": -0.07901793976525849,
+            "base_combined_dot": 0.039540811989060856,
+            "base_descent_margin_cosine": 0.028898650407919352,
+            "combined_descent_margin_cosine": 0.02292344730654383,
+            "combined_descent_base_directional_derivative": -0.1213842696978285,
+            "combined_margin_dot": -0.1960258847950932
+          },
+          "base_huber": 0.009864752859421268,
+          "auxiliary_huber": 0.007595339448203847,
+          "context_requested": 467,
+          "context_actual": 467,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 6606,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 3,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11113902256722491,
+              "auxiliary": 0.10758866021429857,
+              "margin": 31.83813036843361,
+              "combined": 0.18049207186455646
+            },
+            "base_margin_dot": 0.015127527460786987,
+            "auxiliary_margin_dot": -0.10319441683371329,
+            "base_combined_dot": 0.01667697526822528,
+            "base_descent_margin_cosine": -0.0042751742462359835,
+            "combined_descent_margin_cosine": 0.015325228897839828,
+            "combined_descent_base_directional_derivative": -0.09239727316521633,
+            "combined_margin_dot": -0.08806688937292631
+          },
+          "base_huber": 0.00556660458411827,
+          "auxiliary_huber": 0.001338979282127308,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 6606,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10680627672645904,
+              "auxiliary": 0.1603924989081393,
+              "margin": 31.47219784962095,
+              "combined": 0.22552934857309073
+            },
+            "base_margin_dot": 0.07716880462839393,
+            "auxiliary_margin_dot": -0.02408668148606186,
+            "base_combined_dot": 0.01827265705498707,
+            "base_descent_margin_cosine": -0.022957147488389274,
+            "combined_descent_margin_cosine": -0.007478562834099162,
+            "combined_descent_base_directional_derivative": -0.08102119378518567,
+            "combined_margin_dot": 0.05308212314233207
+          },
+          "base_huber": 0.006008930284734714,
+          "auxiliary_huber": 0.004535052066513217,
+          "context_requested": 456,
+          "context_actual": 456,
+          "unique_sources": 8
+        }
+      ]
+    },
+    {
+      "master": 7707,
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.216609761624352,
+          "midpoint_fraction": 0.7833902383756479,
+          "coherence": 0.013291459671391927,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.24364305847587678,
+          "midpoint_fraction": 0.7563569415241234,
+          "coherence": 0.02410978114967667,
+          "ridge_pair_margin": 0.6637751147157116
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0013763914760431817,
+          0.0020504135650369903,
+          0.0016153345084362059
+        ],
+        "fraction_of_loss": [
+          0.27297766405041285,
+          0.4066554574503314,
+          0.3203668784992558
+        ]
+      },
+      "common_original_huber": 0.005042139557190239,
+      "interventions": {
+        "factual": 0.005042139557190239,
+        "mean": 0.4724917858839035,
+        "sibling_swap": 0.27304985374212265,
+        "cross_source_preserve_label": 0.7220744043588638
+      },
+      "actual": {
+        "support": 21,
+        "base_cos": -0.0028221284753392785,
+        "combined_cos": -0.005609928763828378,
+        "loss_direction": -0.10261989972478433
+      },
+      "input_id": "seed-7707-RPB-v4-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "9cab6262d79ddb29bbd8d4d380a7153d11048720fe031fab7e1d4e9d05c0d828",
+        "training_producer_source_id": "2fff50c48605ee21dbbfd28d6989bdcf6b5cd057785c2acb19419571af48b895",
+        "core_writer_source_id": "587f2423758c3e70c2c7665d9e7b59bfe10af4c7f9aaba23f5318b3c55b13bca"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 75.2054628840622,
+          "contrast_energy": 20.794537115937793,
+          "coherent_contrast_energy": 0.27638975146174977,
+          "incoherent_difference_variance": 20.518147364476043,
+          "coherence": 0.013291459671391927,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 24.203422128771948,
+          "contrast_energy": 7.796577871228057,
+          "coherent_contrast_energy": 0.18797378619172048,
+          "incoherent_difference_variance": 7.608604085036337,
+          "coherence": 0.02410978114967667,
+          "saved_ridge_pair_contrast_margin_mean": 0.6637751147157116,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7318,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 7707,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.0950813825017446,
+              "auxiliary": 0.1577106627179986,
+              "margin": 46.19991557609332,
+              "combined": 0.21905675290042936
+            },
+            "base_margin_dot": -0.028935618980287087,
+            "auxiliary_margin_dot": 0.521008924456375,
+            "base_combined_dot": 0.01607683857738626,
+            "base_descent_margin_cosine": 0.0065871280702822265,
+            "combined_descent_margin_cosine": -0.04862190583055037,
+            "combined_descent_base_directional_derivative": -0.07339120280256263,
+            "combined_margin_dot": 0.4920733054760879
+          },
+          "base_huber": 0.0037198079064529577,
+          "auxiliary_huber": 0.003172910639672605,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 7707,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1550754290584259,
+              "auxiliary": 0.18409229926973608,
+              "margin": 43.64750305032702,
+              "combined": 0.27971325306142075
+            },
+            "base_margin_dot": 0.2501219368370438,
+            "auxiliary_margin_dot": 0.23689839130615206,
+            "base_combined_dot": 0.034198958992719616,
+            "base_descent_margin_cosine": -0.03695297324559219,
+            "combined_descent_margin_cosine": -0.039890974040562174,
+            "combined_descent_base_directional_derivative": -0.12226434971677959,
+            "combined_margin_dot": 0.4870203281431959
+          },
+          "base_huber": 0.006995800016151939,
+          "auxiliary_huber": 0.004834846228264492,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 7707,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10463804364811352,
+              "auxiliary": 0.11714181228894617,
+              "margin": 35.10065336600094,
+              "combined": 0.1863576209746113
+            },
+            "base_margin_dot": 0.0016634190164543292,
+            "auxiliary_margin_dot": -0.15768646363565303,
+            "base_combined_dot": 0.01597803944374135,
+            "base_descent_margin_cosine": -0.0004528942952367784,
+            "combined_descent_margin_cosine": 0.02385208730202065,
+            "combined_descent_base_directional_derivative": -0.08573858884965128,
+            "combined_margin_dot": -0.15602304461919872
+          },
+          "base_huber": 0.004172850926813487,
+          "auxiliary_huber": 0.0035994047743934817,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 7707,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1503199082261567,
+              "auxiliary": 0.15669462395165654,
+              "margin": 39.17158681394092,
+              "combined": 0.26554125884323365
+            },
+            "base_margin_dot": -0.11499922832360887,
+            "auxiliary_margin_dot": -0.32417059145131805,
+            "base_combined_dot": 0.03427751489090917,
+            "base_descent_margin_cosine": 0.01953022556918963,
+            "combined_descent_margin_cosine": 0.042221077513778384,
+            "combined_descent_base_directional_derivative": -0.12908545753014383,
+            "combined_margin_dot": -0.4391698197749269
+          },
+          "base_huber": 0.0072351669867662905,
+          "auxiliary_huber": 0.005277269003961364,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        }
+      ]
+    },
+    {
+      "master": 7707,
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.29504141577630866,
+          "midpoint_fraction": 0.7049585842236913,
+          "coherence": 0.009111627918245132,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.32268231982661927,
+          "midpoint_fraction": 0.6773176801733807,
+          "coherence": 0.006463701335017944,
+          "ridge_pair_margin": 0.7003898046527188
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0015645986343102436,
+          0.0012633702093154398,
+          0.002878512116133436
+        ],
+        "fraction_of_loss": [
+          0.2741792438007693,
+          0.22139217115144266,
+          0.504428585047788
+        ]
+      },
+      "common_original_huber": 0.005706480820663273,
+      "interventions": {
+        "factual": 0.005706480937078595,
+        "mean": 0.47334156930446625,
+        "sibling_swap": 0.27877376973629,
+        "cross_source_preserve_label": 0.7300775349140167
+      },
+      "actual": {
+        "support": 21,
+        "base_cos": -0.036588123460242934,
+        "combined_cos": -0.05652826570184708,
+        "loss_direction": -0.09858597226045442
+      },
+      "input_id": "seed-7707-RPB-v7-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "f22cc8d5f2ac8af3e6a6056c6ad2693ffcc82cf39e8744c32fb13038710c5311",
+        "training_producer_source_id": "d8ed2771d1615beabccbead081847813b2562b7b1f9b5347d4825c075ccc27a7",
+        "core_writer_source_id": "e379b8f8abb102c256fb843466b4fbfbecb6fdc21298b862fd0b6dfeb47b853e"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 67.67602408547437,
+          "contrast_energy": 28.32397591452563,
+          "coherent_contrast_energy": 0.2580775296984944,
+          "incoherent_difference_variance": 28.065898384827136,
+          "coherence": 0.009111627918245132,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 21.67416576554818,
+          "contrast_energy": 10.325834234451817,
+          "coherent_contrast_energy": 0.0667431085264002,
+          "incoherent_difference_variance": 10.259091125925416,
+          "coherence": 0.006463701335017944,
+          "saved_ridge_pair_contrast_margin_mean": 0.7003898046527188,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 1.1920928955078125e-06,
+            "unequal_elements": 7224,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 7707,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.09794492863222275,
+              "auxiliary": 0.19821031631245598,
+              "margin": 39.158435566120346,
+              "combined": 0.2691692900359089
+            },
+            "base_margin_dot": 0.09210502406054738,
+            "auxiliary_margin_dot": 0.5347290963652934,
+            "base_combined_dot": 0.021378993125261307,
+            "base_descent_margin_cosine": -0.02401463739169958,
+            "combined_descent_margin_cosine": -0.05947052693350716,
+            "combined_descent_base_directional_derivative": -0.07942582574115054,
+            "combined_margin_dot": 0.6268341204258409
+          },
+          "base_huber": 0.005561385326067168,
+          "auxiliary_huber": 0.005476613464530832,
+          "context_requested": 231,
+          "context_actual": 231,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 7707,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1530928413565274,
+              "auxiliary": 0.3448974205883233,
+              "margin": 36.17888721005027,
+              "combined": 0.4695875730332375
+            },
+            "base_margin_dot": 0.2565762377065408,
+            "auxiliary_margin_dot": 0.18429069048399757,
+            "base_combined_dot": 0.06249783804669113,
+            "base_descent_margin_cosine": -0.04632403108698364,
+            "combined_descent_margin_cosine": -0.025949901945820256,
+            "combined_descent_base_directional_derivative": -0.13309091133522719,
+            "combined_margin_dot": 0.44086692819053835
+          },
+          "base_huber": 0.008254056378419715,
+          "auxiliary_huber": 0.01227065718788157,
+          "context_requested": 250,
+          "context_actual": 250,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 7707,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12322320090413233,
+              "auxiliary": 0.16515186197155224,
+              "margin": 30.975967210985615,
+              "combined": 0.23688348469512666
+            },
+            "base_margin_dot": 0.11661023671996794,
+            "auxiliary_margin_dot": 0.3364650039214375,
+            "base_combined_dot": 0.022011302524847908,
+            "base_descent_margin_cosine": -0.030550569822337562,
+            "combined_descent_margin_cosine": -0.06174626190668858,
+            "combined_descent_base_directional_derivative": -0.09292037624816628,
+            "combined_margin_dot": 0.4530752406414055
+          },
+          "base_huber": 0.00760827616172457,
+          "auxiliary_huber": 0.004523934482176416,
+          "context_requested": 224,
+          "context_actual": 224,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 7707,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11185641397333192,
+              "auxiliary": 0.14383317092235337,
+              "margin": 34.62634180498769,
+              "combined": 0.21571583879656275
+            },
+            "base_margin_dot": 0.17608730041125753,
+            "auxiliary_margin_dot": 0.41359870705073803,
+            "base_combined_dot": 0.019178599698549566,
+            "base_descent_margin_cosine": -0.04546325553995096,
+            "combined_descent_margin_cosine": -0.07894637202137234,
+            "combined_descent_base_directional_derivative": -0.08890677571727366,
+            "combined_margin_dot": 0.5896860074619955
+          },
+          "base_huber": 0.006402157249524364,
+          "auxiliary_huber": 0.004535031555423661,
+          "context_requested": 229,
+          "context_actual": 229,
+          "unique_sources": 7
+        }
+      ]
+    },
+    {
+      "master": 7707,
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.19283704404603955,
+          "midpoint_fraction": 0.8071629559539605,
+          "coherence": 0.01283585219709021,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.2242449193745607,
+          "midpoint_fraction": 0.7757550806254393,
+          "coherence": 0.017241306516496552,
+          "ridge_pair_margin": 0.6387737627694066
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.001881079305697142,
+          0.002140112723751031,
+          0.0026325374018085768
+        ],
+        "fraction_of_loss": [
+          0.2827105197365751,
+          0.32164108051908097,
+          0.39564839974434396
+        ]
+      },
+      "common_original_huber": 0.00665372924413532,
+      "interventions": {
+        "factual": 0.006653729826211929,
+        "mean": 0.472990944981575,
+        "sibling_swap": 0.2765790671110153,
+        "cross_source_preserve_label": 0.7297609597444534
+      },
+      "actual": {
+        "support": 21,
+        "base_cos": -0.005361095701780309,
+        "combined_cos": -0.013868822434959004,
+        "loss_direction": -0.1050346488846057
+      },
+      "input_id": "seed-7707-RPB-v8-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "78ab6ffdb0a3edf141e0ad81e58fe10f36e276d4b7d8af1288859004b5f0f38c",
+        "training_producer_source_id": "3532deae194828f2640ff4fadacbcd94bbccfb8af6eaf37182cb8137ae84cf41",
+        "core_writer_source_id": "073ec84b7c781cf48a578e58a4c9602c6b765c9c23f6065f27338780be8a1835"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 77.48764377158021,
+          "contrast_energy": 18.512356228419797,
+          "coherent_contrast_energy": 0.2376218683678789,
+          "incoherent_difference_variance": 18.27473436005192,
+          "coherence": 0.01283585219709021,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 24.824162580014058,
+          "contrast_energy": 7.1758374199859425,
+          "coherent_contrast_energy": 0.12372081247052344,
+          "incoherent_difference_variance": 7.052116607515419,
+          "coherence": 0.017241306516496552,
+          "saved_ridge_pair_contrast_margin_mean": 0.6387737627694066,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 9.5367431640625e-07,
+            "unequal_elements": 7349,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 7707,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.10400942871206642,
+              "auxiliary": 0.18708257675504072,
+              "margin": 59.85207732458829,
+              "combined": 0.260789442016255
+            },
+            "base_margin_dot": 0.09764959835547997,
+            "auxiliary_margin_dot": 0.9257398256536165,
+            "base_combined_dot": 0.02191460190142717,
+            "base_descent_margin_cosine": -0.015686227957316404,
+            "combined_descent_margin_cosine": -0.06556494346517913,
+            "combined_descent_base_directional_derivative": -0.08403178338815279,
+            "combined_margin_dot": 1.0233894240090964
+          },
+          "base_huber": 0.005205943649175051,
+          "auxiliary_huber": 0.005292597880311455,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 7707,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.16458736765910403,
+              "auxiliary": 0.19987597808765484,
+              "margin": 57.18165231172936,
+              "combined": 0.3090419235738032
+            },
+            "base_margin_dot": 0.22571032268779018,
+            "auxiliary_margin_dot": -0.1468921792570577,
+            "base_combined_dot": 0.041322752751326415,
+            "base_descent_margin_cosine": -0.023982708111838422,
+            "combined_descent_margin_cosine": -0.004460177083597519,
+            "combined_descent_base_directional_derivative": -0.13371244999210602,
+            "combined_margin_dot": 0.07881814343073248
+          },
+          "base_huber": 0.008404779654544132,
+          "auxiliary_huber": 0.0061126425661534685,
+          "context_requested": 451,
+          "context_actual": 451,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 7707,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12803740330115468,
+              "auxiliary": 0.11697378742483745,
+              "margin": 45.31841383441572,
+              "combined": 0.19789215198866822
+            },
+            "base_margin_dot": 0.06812585299394945,
+            "auxiliary_margin_dot": 0.32816981381604643,
+            "base_combined_dot": 0.020936006759148817,
+            "base_descent_margin_cosine": -0.01174087310889565,
+            "combined_descent_margin_cosine": -0.04418919107326263,
+            "combined_descent_base_directional_derivative": -0.1057950330458161,
+            "combined_margin_dot": 0.3962956668099959
+          },
+          "base_huber": 0.005896499084431581,
+          "auxiliary_huber": 0.0026315118050158574,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 7707,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11713811863794554,
+              "auxiliary": 0.1269675736318916,
+              "margin": 51.40553591358414,
+              "combined": 0.20490840676001376
+            },
+            "base_margin_dot": -0.18043824617593623,
+            "auxiliary_margin_dot": -0.4382849213110132,
+            "base_combined_dot": 0.019794014622497427,
+            "base_descent_margin_cosine": 0.02996542637092924,
+            "combined_descent_margin_cosine": 0.058739021882203264,
+            "combined_descent_base_directional_derivative": -0.09659932911234792,
+            "combined_margin_dot": -0.6187231674869494
+          },
+          "base_huber": 0.0058650979558017916,
+          "auxiliary_huber": 0.0033675187484170847,
+          "context_requested": 438,
+          "context_actual": 438,
+          "unique_sources": 7
+        }
+      ]
+    },
+    {
+      "master": 8808,
+      "tag": "RPB-v4",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.23953930884087923,
+          "midpoint_fraction": 0.7604606911591207,
+          "coherence": 0.004241108474310099,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.2576507189485152,
+          "midpoint_fraction": 0.7423492810514847,
+          "coherence": 0.007111735212174864,
+          "ridge_pair_margin": 0.5657044371455678
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0010631483425385113,
+          0.0011336585766414942,
+          0.000964810849435338
+        ],
+        "fraction_of_loss": [
+          0.3362671962095297,
+          0.3585691439031826,
+          0.30516365988728766
+        ]
+      },
+      "common_original_huber": 0.00316161778755486,
+      "interventions": {
+        "factual": 0.003161617845762521,
+        "mean": 0.4735560342669487,
+        "sibling_swap": 0.2760108485817909,
+        "cross_source_preserve_label": 0.7369566559791565
+      },
+      "actual": {
+        "support": 17,
+        "base_cos": 0.012832813823300477,
+        "combined_cos": 0.01436377729073757,
+        "loss_direction": -0.05437478322847175
+      },
+      "input_id": "seed-8808-RPB-v4-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "9cab6262d79ddb29bbd8d4d380a7153d11048720fe031fab7e1d4e9d05c0d828",
+        "training_producer_source_id": "2fff50c48605ee21dbbfd28d6989bdcf6b5cd057785c2acb19419571af48b895",
+        "core_writer_source_id": "587f2423758c3e70c2c7665d9e7b59bfe10af4c7f9aaba23f5318b3c55b13bca"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 73.00422635127559,
+          "contrast_energy": 22.995773648724406,
+          "coherent_contrast_energy": 0.09752757049492196,
+          "incoherent_difference_variance": 22.898246078229484,
+          "coherence": 0.004241108474310099,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 23.75517699364751,
+          "contrast_energy": 8.244823006352487,
+          "coherent_contrast_energy": 0.0586349980924264,
+          "incoherent_difference_variance": 8.18618800826006,
+          "coherence": 0.007111735212174864,
+          "saved_ridge_pair_contrast_margin_mean": 0.5657044371455678,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 8.940696716308594e-07,
+            "unequal_elements": 7340,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 8808,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.06329492418546893,
+              "auxiliary": 0.102282193121604,
+              "margin": 42.63642289101805,
+              "combined": 0.13960543447569704
+            },
+            "base_margin_dot": -0.051823664588317275,
+            "auxiliary_margin_dot": -0.25899122725099955,
+            "base_combined_dot": 0.006517138866513652,
+            "base_descent_margin_cosine": 0.019203415321701004,
+            "combined_descent_margin_cosine": 0.052217819531704235,
+            "combined_descent_base_directional_derivative": -0.046682558533551764,
+            "combined_margin_dot": -0.3108148918393168
+          },
+          "base_huber": 0.0029038438270556715,
+          "auxiliary_huber": 0.002057550538504653,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 8808,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.06449593794373941,
+              "auxiliary": 0.10490951299725745,
+              "margin": 48.0195367180418,
+              "combined": 0.13991800047100422
+            },
+            "base_margin_dot": -0.0828226675159711,
+            "auxiliary_margin_dot": -0.07718279938293032,
+            "base_combined_dot": 0.006365383474862446,
+            "base_descent_margin_cosine": 0.026742307928519966,
+            "combined_descent_margin_cosine": 0.023814598585990783,
+            "combined_descent_base_directional_derivative": -0.045493670960382045,
+            "combined_margin_dot": -0.16000546689890144
+          },
+          "base_huber": 0.0026251572135138064,
+          "auxiliary_huber": 0.0017785151960460197,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 8808,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 2,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.08066229023803576,
+              "auxiliary": 0.11364300632215521,
+              "margin": 45.13258294132886,
+              "combined": 0.15104137594709352
+            },
+            "base_margin_dot": 0.1789850539223796,
+            "auxiliary_margin_dot": 0.09807755651490756,
+            "base_combined_dot": 0.008202584714249474,
+            "base_descent_margin_cosine": -0.04916499838436198,
+            "combined_descent_margin_cosine": -0.040643565466462125,
+            "combined_descent_base_directional_derivative": -0.05430687229122343,
+            "combined_margin_dot": 0.27706261043728714
+          },
+          "base_huber": 0.002907806629831257,
+          "auxiliary_huber": 0.001275085143370032,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 6
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 8808,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.08987663667645937,
+              "auxiliary": 0.17336109009153183,
+              "margin": 36.27052238517915,
+              "combined": 0.23539222896384412
+            },
+            "base_margin_dot": -0.17782777740872371,
+            "auxiliary_margin_dot": -0.010569487796511247,
+            "base_combined_dot": 0.016716621859557437,
+            "base_descent_margin_cosine": 0.05455053042734292,
+            "combined_descent_margin_cosine": 0.02206625651171739,
+            "combined_descent_base_directional_derivative": -0.07101603112872976,
+            "combined_margin_dot": -0.18839726520523495
+          },
+          "base_huber": 0.003335532915276494,
+          "auxiliary_huber": 0.003417330742023624,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 7
+        }
+      ]
+    },
+    {
+      "master": 8808,
+      "tag": "RPB-v7",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.20995575470857275,
+          "midpoint_fraction": 0.7900442452914271,
+          "coherence": 0.018289684897702097,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.24679972631438654,
+          "midpoint_fraction": 0.7532002736856135,
+          "coherence": 0.029550937365025242,
+          "ridge_pair_margin": 0.6840683317833633
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.001342241383220255,
+          0.0019190375087916323,
+          0.001702462144876904
+        ],
+        "fraction_of_loss": [
+          0.27040922829075603,
+          0.38661112546565485,
+          0.3429796462435891
+        ]
+      },
+      "common_original_huber": 0.004963741288520396,
+      "interventions": {
+        "factual": 0.00496374093927443,
+        "mean": 0.4735895171761513,
+        "sibling_swap": 0.2783636301755905,
+        "cross_source_preserve_label": 0.7458664774894714
+      },
+      "actual": {
+        "support": 17,
+        "base_cos": 0.03155624610410064,
+        "combined_cos": 0.020611025783543867,
+        "loss_direction": -0.09812166634594584
+      },
+      "input_id": "seed-8808-RPB-v7-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "f22cc8d5f2ac8af3e6a6056c6ad2693ffcc82cf39e8744c32fb13038710c5311",
+        "training_producer_source_id": "d8ed2771d1615beabccbead081847813b2562b7b1f9b5347d4825c075ccc27a7",
+        "core_writer_source_id": "e379b8f8abb102c256fb843466b4fbfbecb6fdc21298b862fd0b6dfeb47b853e"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 75.844247547977,
+          "contrast_energy": 20.155752452022984,
+          "coherent_contrast_energy": 0.3686423612235868,
+          "incoherent_difference_variance": 19.7871100907994,
+          "coherence": 0.018289684897702097,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 31.999999999999996,
+          "midpoint_trace_variance": 24.102408757939628,
+          "contrast_energy": 7.897591242060368,
+          "coherent_contrast_energy": 0.23338122412869786,
+          "incoherent_difference_variance": 7.664210017931671,
+          "coherence": 0.029550937365025242,
+          "saved_ridge_pair_contrast_margin_mean": 0.6840683317833633,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 1.0728836059570312e-06,
+            "unequal_elements": 7304,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 8808,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.13524770747609766,
+              "auxiliary": 0.18817127247253634,
+              "margin": 38.93492259379153,
+              "combined": 0.2808489030765665
+            },
+            "base_margin_dot": 0.03002227118773756,
+            "auxiliary_margin_dot": 0.03519114889589657,
+            "base_combined_dot": 0.030879810476458602,
+            "base_descent_margin_cosine": -0.005701305535291118,
+            "combined_descent_margin_cosine": -0.005963825526645469,
+            "combined_descent_base_directional_derivative": -0.10995168625615029,
+            "combined_margin_dot": 0.06521342008363414
+          },
+          "base_huber": 0.009008191730910945,
+          "auxiliary_huber": 0.005075814288693949,
+          "context_requested": 250,
+          "context_actual": 250,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 8808,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.08569663339711384,
+              "auxiliary": 0.2887808542771817,
+              "margin": 43.52415135246199,
+              "combined": 0.3482471301402588
+            },
+            "base_margin_dot": -0.22564937904742752,
+            "auxiliary_margin_dot": -0.31352902306605374,
+            "base_combined_dot": 0.022612797414733432,
+            "base_descent_margin_cosine": 0.06049786799293492,
+            "combined_descent_margin_cosine": 0.03557251976262847,
+            "combined_descent_base_directional_derivative": -0.06493319099464216,
+            "combined_margin_dot": -0.5391784021134812
+          },
+          "base_huber": 0.004513256332274358,
+          "auxiliary_huber": 0.00855757379235034,
+          "context_requested": 239,
+          "context_actual": 239,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 8808,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 2,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1299190277586518,
+              "auxiliary": 0.49288192345898124,
+              "margin": 41.88019932350824,
+              "combined": 0.5835816405260754
+            },
+            "base_margin_dot": -0.35583713217882884,
+            "auxiliary_margin_dot": -0.97226631002523,
+            "base_combined_dot": 0.05725694723011692,
+            "base_descent_margin_cosine": 0.06539879759421048,
+            "combined_descent_margin_cosine": 0.05434023869845491,
+            "combined_descent_base_directional_derivative": -0.09811300296990509,
+            "combined_margin_dot": -1.3281034422040587
+          },
+          "base_huber": 0.005203482829782974,
+          "auxiliary_huber": 0.011898590356147085,
+          "context_requested": 240,
+          "context_actual": 240,
+          "unique_sources": 6
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 8808,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.14145025430536526,
+              "auxiliary": 0.20282200421234894,
+              "margin": 33.22078269481445,
+              "combined": 0.307654033626801
+            },
+            "base_margin_dot": -0.02833373646313706,
+            "auxiliary_margin_dot": 0.043713861168822615,
+            "base_combined_dot": 0.036761206728589596,
+            "base_descent_margin_cosine": 0.006029624364548287,
+            "combined_descent_margin_cosine": -0.0015048298002624475,
+            "combined_descent_base_directional_derivative": -0.1194887851630858,
+            "combined_margin_dot": 0.015380124705685552
+          },
+          "base_huber": 0.006539802179737636,
+          "auxiliary_huber": 0.0050811238316088424,
+          "context_requested": 230,
+          "context_actual": 230,
+          "unique_sources": 7
+        }
+      ]
+    },
+    {
+      "master": 8808,
+      "tag": "RPB-v8",
+      "geometry": {
+        "contextual": {
+          "contrast_fraction": 0.18871778059922498,
+          "midpoint_fraction": 0.8112822194007748,
+          "coherence": 0.012991673607307672,
+          "ridge_pair_margin": null
+        },
+        "global": {
+          "contrast_fraction": 0.21023684793664654,
+          "midpoint_fraction": 0.7897631520633535,
+          "coherence": 0.019936111992781388,
+          "ridge_pair_margin": 0.6954146423517789
+        }
+      },
+      "channels": {
+        "loss_contributions": [
+          0.0016446692930145446,
+          0.0013042692773055364,
+          0.0017251085320495463
+        ],
+        "fraction_of_loss": [
+          0.35187263991857026,
+          0.2790449579860468,
+          0.36908240209538296
+        ]
+      },
+      "common_original_huber": 0.0046740471152588725,
+      "interventions": {
+        "factual": 0.004674047231674194,
+        "mean": 0.47371984273195267,
+        "sibling_swap": 0.2747773230075836,
+        "cross_source_preserve_label": 0.7385735213756561
+      },
+      "actual": {
+        "support": 17,
+        "base_cos": -0.045395832608307575,
+        "combined_cos": -0.03995448145447718,
+        "loss_direction": -0.09484193908610768
+      },
+      "input_id": "seed-8808-RPB-v8-updates-512",
+      "original_sources": {
+        "orchestration_source_id": "78ab6ffdb0a3edf141e0ad81e58fe10f36e276d4b7d8af1288859004b5f0f38c",
+        "training_producer_source_id": "3532deae194828f2640ff4fadacbcd94bbccfb8af6eaf37182cb8137ae84cf41",
+        "core_writer_source_id": "073ec84b7c781cf48a578e58a4c9602c6b765c9c23f6065f27338780be8a1835"
+      },
+      "geometry_evidence": {
+        "contextual": {
+          "paired_sources": 128,
+          "dimensions": 96,
+          "total_trace_variance": 96,
+          "midpoint_trace_variance": 77.88309306247439,
+          "contrast_energy": 18.1169069375256,
+          "coherent_contrast_energy": 0.23536894170630057,
+          "incoherent_difference_variance": 17.881537995819297,
+          "coherence": 0.012991673607307672,
+          "saved_ridge_pair_contrast_margin_mean": null
+        },
+        "global": {
+          "paired_sources": 128,
+          "dimensions": 32,
+          "total_trace_variance": 32,
+          "midpoint_trace_variance": 25.27242086602731,
+          "contrast_energy": 6.727579133972689,
+          "coherent_contrast_energy": 0.13412177105517875,
+          "incoherent_difference_variance": 6.59345736291751,
+          "coherence": 0.019936111992781388,
+          "saved_ridge_pair_contrast_margin_mean": 0.6954146423517789,
+          "backend_export_comparison": {
+            "producer_geometry_backend": "CUDA",
+            "cached_native_backend": "CPU",
+            "cross_backend_acceptance_threshold": null,
+            "max_absolute_difference": 1.1920928955078125e-06,
+            "unequal_elements": 7389,
+            "exact_value_match": false,
+            "scope": "descriptive cross-backend discrepancy only; no cross-device card gate or model/head/trigger change"
+          }
+        }
+      },
+      "actual_banks": [
+        {
+          "id": "actual_attempt_512",
+          "master": 8808,
+          "attempt": 512,
+          "exposures": 8,
+          "supported_auxiliary_examples": 6,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.1019033995970818,
+              "auxiliary": 0.21710313047549487,
+              "margin": 39.10262203911366,
+              "combined": 0.2971275856649465
+            },
+            "base_margin_dot": 0.19381752272410904,
+            "auxiliary_margin_dot": 0.5379411236264608,
+            "base_combined_dot": 0.025767667875131458,
+            "base_descent_margin_cosine": -0.048640550943369866,
+            "combined_descent_margin_cosine": -0.06298237138725381,
+            "combined_descent_base_directional_derivative": -0.08672257009548806,
+            "combined_margin_dot": 0.7317586463505699
+          },
+          "base_huber": 0.005049997925937724,
+          "auxiliary_huber": 0.006611487710810761,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 8
+        },
+        {
+          "id": "actual_attempt_513",
+          "master": 8808,
+          "attempt": 513,
+          "exposures": 8,
+          "supported_auxiliary_examples": 4,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.11337011706486752,
+              "auxiliary": 0.2573771513899888,
+              "margin": 46.08108869149409,
+              "combined": 0.3445566482136485
+            },
+            "base_margin_dot": 0.23954928332809672,
+            "auxiliary_margin_dot": 0.3526919951444674,
+            "base_combined_dot": 0.032664534606950235,
+            "base_descent_margin_cosine": -0.045853611793317206,
+            "combined_descent_margin_cosine": -0.037300556295465116,
+            "combined_descent_base_directional_derivative": -0.09480163792020639,
+            "combined_margin_dot": 0.5922412784725641
+          },
+          "base_huber": 0.006261632959548228,
+          "auxiliary_huber": 0.008701721738825323,
+          "context_requested": 458,
+          "context_actual": 458,
+          "unique_sources": 7
+        },
+        {
+          "id": "actual_attempt_514",
+          "master": 8808,
+          "attempt": 514,
+          "exposures": 8,
+          "supported_auxiliary_examples": 2,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.12352412522226755,
+              "auxiliary": 0.31430875308144457,
+              "margin": 40.45930112641648,
+              "combined": 0.381863146778489
+            },
+            "base_margin_dot": 0.15284456259921364,
+            "auxiliary_margin_dot": 0.21098825944459,
+            "base_combined_dot": 0.03114384005794189,
+            "base_descent_margin_cosine": -0.03058298204491154,
+            "combined_descent_margin_cosine": -0.023549177936870468,
+            "combined_descent_base_directional_derivative": -0.08155759549116112,
+            "combined_margin_dot": 0.3638328220438036
+          },
+          "base_huber": 0.006204002522785408,
+          "auxiliary_huber": 0.005437958766502162,
+          "context_requested": 0,
+          "context_actual": 0,
+          "unique_sources": 6
+        },
+        {
+          "id": "actual_attempt_515",
+          "master": 8808,
+          "attempt": 515,
+          "exposures": 8,
+          "supported_auxiliary_examples": 5,
+          "comparison": {
+            "supported": true,
+            "norms": {
+              "base": 0.14755084099867638,
+              "auxiliary": 0.15589058454731383,
+              "margin": 35.34309977017951,
+              "combined": 0.24298657043050273
+            },
+            "base_margin_dot": 0.29467433892436323,
+            "auxiliary_margin_dot": 0.014368236032017426,
+            "base_combined_dot": 0.028255924869245573,
+            "base_descent_margin_cosine": -0.056506185651631693,
+            "combined_descent_margin_cosine": -0.03598582019831931,
+            "combined_descent_base_directional_derivative": -0.11628595283757515,
+            "combined_margin_dot": 0.30904257495638066
+          },
+          "base_huber": 0.008115400465355568,
+          "auxiliary_huber": 0.0034937083990458024,
+          "context_requested": 471,
+          "context_actual": 471,
+          "unique_sources": 7
+        }
+      ]
+    }
+  ],
+  "decision": {
+    "status": "null_stop_loss_hypothesis",
+    "future_auxiliary_experiment_admitted": false,
+    "guards": {
+      "support_each_master": true,
+      "all_required_directions_defined": true,
+      "gain_every_master": false,
+      "base_conflict_at_least_three_masters": true,
+      "base_loss_decreases_every_master": true
+    },
+    "per_master": [
+      {
+        "master": 4404,
+        "auxiliary_supported_exposures": 22,
+        "all_required_directions_defined": true,
+        "base_mean_cosine": -0.020840513500767228,
+        "combined_mean_cosine": -0.008866868000582902,
+        "cosine_gain": 0.011973645500184326,
+        "mean_base_directional_derivative": -0.0888183842800048
+      },
+      {
+        "master": 5505,
+        "auxiliary_supported_exposures": 20,
+        "all_required_directions_defined": true,
+        "base_mean_cosine": -0.003636640647852748,
+        "combined_mean_cosine": 0.0011156784885643454,
+        "cosine_gain": 0.004752319136417093,
+        "mean_base_directional_derivative": -0.11170738010382061
+      },
+      {
+        "master": 6606,
+        "auxiliary_supported_exposures": 19,
+        "all_required_directions_defined": true,
+        "base_mean_cosine": -0.004243265457432768,
+        "combined_mean_cosine": -0.028553144523811972,
+        "cosine_gain": -0.024309879066379204,
+        "mean_base_directional_derivative": -0.11905048807364409
+      },
+      {
+        "master": 7707,
+        "auxiliary_supported_exposures": 21,
+        "all_required_directions_defined": true,
+        "base_mean_cosine": -0.036588123460242934,
+        "combined_mean_cosine": -0.05652826570184708,
+        "cosine_gain": -0.019940142241604147,
+        "mean_base_directional_derivative": -0.09858597226045442
+      },
+      {
+        "master": 8808,
+        "auxiliary_supported_exposures": 17,
+        "all_required_directions_defined": true,
+        "base_mean_cosine": 0.03155624610410064,
+        "combined_mean_cosine": 0.020611025783543867,
+        "cosine_gain": -0.010945220320556774,
+        "mean_base_directional_derivative": -0.09812166634594584
+      }
+    ],
+    "improved_masters": [
+      4404,
+      5505
+    ],
+    "worsened_masters": [
+      6606,
+      7707,
+      8808
+    ],
+    "base_conflicting_masters": 4,
+    "original_huber_descent_negative_masters": 5,
+    "minimum_auxiliary_exposures": 17,
+    "maximum_auxiliary_exposures": 22,
+    "meaning": "Stop this fixed all-pair weight1 auxiliary hypothesis. Local saved-margin tension is not proof of causal objective conflict or an AdamW trajectory. A different mechanism requires its own prospective plan."
+  },
+  "retained_measurements": {
+    "new_scoring": false,
+    "source_summary": {
+      "path": "doc/results/context_balanced_validation_v1.json",
+      "sha256": "54a64be6b6af1ab20bc8db616bff49863b1917829e1da9015404a66a104775a3"
+    },
+    "original_protocol": "context-balanced-validation-v1",
+    "known_validation_examples_per_master": 128,
+    "known_validation_source_pairs_per_master": 64,
+    "head_repetitions": 3,
+    "encoder_budget": 512,
+    "all_training_seconds_are_retained": true
+  },
+  "mean_quality": {
+    "intact": [
+      {
+        "method": "Raw data \u2014 no encoder",
+        "size": 576,
+        "linear_head_percent": 49.6875,
+        "neural_head_percent": 50.833333333333336,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 42.96875,
+        "worst_master_neural_head_percent": 45.833333333333336
+      },
+      {
+        "method": "PCA only \u2014 no encoder",
+        "size": 32,
+        "linear_head_percent": 49.0625,
+        "neural_head_percent": 70.98958333333334,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 46.09375,
+        "worst_master_neural_head_percent": 64.32291666666667
+      },
+      {
+        "method": "RPB-v4",
+        "size": 32,
+        "linear_head_percent": 93.59375,
+        "neural_head_percent": 95.98958333333333,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 89.0625,
+        "worst_master_neural_head_percent": 92.44791666666667
+      },
+      {
+        "method": "RPB-v7",
+        "size": 32,
+        "linear_head_percent": 97.96875,
+        "neural_head_percent": 98.95833333333333,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 93.75,
+        "worst_master_neural_head_percent": 96.09375
+      },
+      {
+        "method": "RPB-v8",
+        "size": 32,
+        "linear_head_percent": 95.9375,
+        "neural_head_percent": 97.76041666666667,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 93.75,
+        "worst_master_neural_head_percent": 95.05208333333333
+      }
+    ],
+    "validation-dropout-030": [
+      {
+        "method": "Raw data \u2014 no encoder",
+        "size": 576,
+        "linear_head_percent": 52.03125,
+        "neural_head_percent": 48.645833333333336,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 47.65625,
+        "worst_master_neural_head_percent": 45.3125
+      },
+      {
+        "method": "PCA only \u2014 no encoder",
+        "size": 32,
+        "linear_head_percent": 49.84375,
+        "neural_head_percent": 54.791666666666664,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 47.65625,
+        "worst_master_neural_head_percent": 51.041666666666664
+      },
+      {
+        "method": "RPB-v4",
+        "size": 32,
+        "linear_head_percent": 84.375,
+        "neural_head_percent": 91.45833333333333,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 68.75,
+        "worst_master_neural_head_percent": 84.63541666666667
+      },
+      {
+        "method": "RPB-v7",
+        "size": 32,
+        "linear_head_percent": 95.15625,
+        "neural_head_percent": 96.25,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 91.40625,
+        "worst_master_neural_head_percent": 89.58333333333333
+      },
+      {
+        "method": "RPB-v8",
+        "size": 32,
+        "linear_head_percent": 91.71875,
+        "neural_head_percent": 94.21875,
+        "coverage_percent": 100,
+        "worst_master_linear_head_percent": 87.5,
+        "worst_master_neural_head_percent": 91.66666666666667
+      }
+    ]
+  },
+  "mean_reconstruction_and_training": [
+    {
+      "tag": "RPB-v4",
+      "updates": 512,
+      "train_standardized_mae": 0.0675931436195981,
+      "validation_standardized_mae": 0.07130906590008225,
+      "gpu_training_loop_seconds": 13.847804411,
+      "timing_origin": "retained_documented_measurement",
+      "original_timing_origin": "retained_parent"
+    },
+    {
+      "tag": "RPB-v7",
+      "updates": 512,
+      "train_standardized_mae": 0.08117869543536711,
+      "validation_standardized_mae": 0.08362986890671145,
+      "gpu_training_loop_seconds": 15.6919237332,
+      "timing_origin": "retained_documented_measurement",
+      "original_timing_origin": "retained_parent"
+    },
+    {
+      "tag": "RPB-v8",
+      "updates": 512,
+      "train_standardized_mae": 0.08502151361009198,
+      "validation_standardized_mae": 0.08761960706779819,
+      "gpu_training_loop_seconds": 14.7949001324,
+      "timing_origin": "retained_documented_measurement",
+      "original_timing_origin": "new"
+    }
+  ],
+  "verification": {
+    "independent_audit_checks": 16119003,
+    "cpu_archives_decoded": 315,
+    "all_195_inputs_preserved": true,
+    "source_snapshots_preserved": true,
+    "independent_audit_limits": [
+      "Only explicit TRAIN roles are read; no validation, TEST, stress or point0 payload access.",
+      "Known TRAIN in-sample geometry, decoder interventions and local unit plain-gradient directions are diagnostic; no generalization or observed optimizer update.",
+      "Saved CPU loss/support/geometry/maps/logits/predictions and gradient-vector arithmetic are independently replayed; CUDA encoder/decoder and autodiff are not rerun.",
+      "CUDA gradient and exact model-state preservation rely on hash-bound producer/admission source and its real CUDA tests; standard-library inspection does not independently decode ordinary CUDA checkpoint model/optimizer storage.",
+      "Actual row sampler and context erasure/repair streams are independently replayed. Original std::shuffle query draws are checked structurally and paired across versions, with exact generation tied to source/admission rather than a second libstdc++ implementation.",
+      "The auxiliary is normalized residual-difference reweighting, not new labels, a phase-invariant lag objective or proof of information loss.",
+      "Full-observation geometry was generated by CUDA, while cached native TRAIN exports and cached-head predictions were generated by CPU. Their discrepancy is descriptive only: the card declared no cross-device equality or bound. Exact CPU encoder-export parity remains producer/admission-source-bound; archived CPU head equations and original same-CUDA query arrays retain their checks. Geometry arithmetic and margins are independently replayed from saved CUDA geometry values, never substituted CPU values. The frozen same-CUDA graph-vs-frozen absolute1e-6 gate is unchanged."
+    ],
+    "reader_correction": {
+      "superseded_reader_sha256": "12f14e0ab726dfa3c2cab35f05e23426e5d5b7b3d05b92a41d19b5aa22151a78",
+      "preserved_failed_record_sha256": "cba0d2b71b1fd77fcdcf765b4822f9f49ca3bf7bc99abdfd301f3e2c66a4b255",
+      "cause": "CUDA full-O geometry was incorrectly required equal to cached CPU native TRAIN export; geometry margins also used CPU features",
+      "cross_backend_acceptance_threshold": null,
+      "comparison_scope": "descriptive only; no cross-device equality/bound was carded; original same-CUDA graph limit unchanged",
+      "preserved_backend_diagnosis_sha256": "8bb468dc07b1f2481f5a8e96733c27c21002ba1d909029ef681207855457b629",
+      "mechanism_card_trigger_and_producer_unchanged": true,
+      "same_backend_checks_unchanged": true
+    },
+    "cpu_cuda_max_absolute_difference": 1.1920928955078125e-06,
+    "summary_extraction": {
+      "new_common_query_CPU_archives_read": 60,
+      "channel_contribution_sum_matches_factual_Huber_tolerance": 2e-06,
+      "gate_recomputed_from_actual_banks": true,
+      "only_checked_in_retained_quality_summary_read": true,
+      "historical_heldout_or_mixed_payload_reads": 0
+    },
+    "no_across_master_or_averaged_CI": true
+  }
+}

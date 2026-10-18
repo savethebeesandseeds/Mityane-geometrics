@@ -1,0 +1,1907 @@
+{
+  "kind": "causal_finetune_v2_quality_independent_audit_v1",
+  "status": "passed",
+  "verified_utc": "2026-10-15T10:27:36.9997700Z",
+  "checks": 2266,
+  "scope": "Independent host artifact/JSON inspection and scalar arithmetic only; no model load, tensor computation, encoder call, head fit, bootstrap rerun, training, quality rerun or artifact modification",
+  "baseline": "CPB-v1.market-01",
+  "candidate": "CPB-v2.market-01",
+  "baseline_table_sha256": "905c2fcd69e8c0d513db589213a5c1e4da67b51407d2fcea0bcfcf389f61c6f6",
+  "baseline_preserved": true,
+  "candidate_promoted": false,
+  "final_checkpoint_sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252",
+  "final_proof_sha256": "7d528b22ff49e28ffe1be5d46f7e9f573c01821467dde5fd992f51f0738362f8",
+  "build_admission_sha256": "5f89e08fd473383ae858bf2832d0d6694ecb7ffba11d44b09cfeaf0d7ea46744",
+  "path_mapping": {
+    "container_quality": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001",
+    "local_quality": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality",
+    "container_training": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001",
+    "local_training": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001",
+    "container_engineering": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003",
+    "local_engineering": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003",
+    "container_binaries": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003",
+    "local_binaries": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries",
+    "container_dev": "/cuwacunu",
+    "local_dev": "C:\\Work\\cuwacunu\\cuwacunu_dev",
+    "capsule_source": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source",
+    "local_source": "Current immutable admitted files in research checkout; CAPSULE_MANIFEST.json maps to source-manifest.json"
+  },
+  "counts": {
+    "final_quality_encoder_calls": 786,
+    "market_train_calls": 14,
+    "market_validation_calls": 4,
+    "synthetic_calls": 768,
+    "synthetic_rows": 6144,
+    "admitted_binaries": 5,
+    "admitted_source_files": 79,
+    "report_asset_pins": 132,
+    "market_neural_fits": 3,
+    "market_ridge_pipelines": 1,
+    "market_ridge_target_fits": 4,
+    "synthetic_neural_fits": 18,
+    "synthetic_ridge_fits": 18,
+    "initial_head_refits": 0,
+    "baseline_encoder_calls": 0
+  },
+  "gates": {
+    "original_market": {
+      "passed": 8,
+      "total": 9
+    },
+    "strict_native36_market": {
+      "passed": 7,
+      "total": 8
+    },
+    "causal_baseline_market": {
+      "passed": 2,
+      "total": 8
+    },
+    "individual_neural_trend": {
+      "passed": 2,
+      "total": 3
+    },
+    "synthetic_retention": {
+      "passed": 3,
+      "total": 8
+    }
+  },
+  "full_market_coverage": true,
+  "full_synthetic_train_and_both_validation_views_coverage": true,
+  "neural_trend_mean_strict_improvement": false,
+  "overall_gate_passed": false,
+  "independently_recomputed_conditions": {
+    "causal_baseline_market": [
+      {
+        "criterion": "past_volatility_linear_r2",
+        "candidate": 0.9292476143211095,
+        "floor": 0.954421680571244,
+        "passed": false
+      },
+      {
+        "criterion": "past_volatility_neural_mean_r2",
+        "candidate": 0.4622955116478094,
+        "floor": 0.6059305827863365,
+        "passed": false
+      },
+      {
+        "criterion": "past_trend_linear_r2",
+        "candidate": 0.7970341369141087,
+        "floor": 0.7968036456603806,
+        "passed": true
+      },
+      {
+        "criterion": "past_trend_neural_mean_r2",
+        "candidate": 0.23900308395985534,
+        "floor": 0.24368774940638713,
+        "passed": false
+      },
+      {
+        "criterion": "past_activity_linear_r2",
+        "candidate": 0.8699943031113067,
+        "floor": 0.8751252139115532,
+        "passed": false
+      },
+      {
+        "criterion": "past_activity_neural_mean_r2",
+        "candidate": 0.6944814572937575,
+        "floor": 0.6866466216076083,
+        "passed": true
+      },
+      {
+        "criterion": "past_relation_linear_r2",
+        "candidate": 0.3989981375336701,
+        "floor": 0.49370525358462336,
+        "passed": false
+      },
+      {
+        "criterion": "past_relation_neural_mean_r2",
+        "candidate": 0.16496864654832957,
+        "floor": 0.38971630978947336,
+        "passed": false
+      }
+    ],
+    "original_market": [
+      {
+        "criterion": "positive_linear_r2_trend",
+        "candidate": 0.7970341369141087,
+        "floor": 0.0,
+        "passed": true
+      },
+      {
+        "criterion": "positive_neural_mean_r2_trend",
+        "candidate": 0.23900308395985534,
+        "floor": 0.0,
+        "passed": true
+      },
+      {
+        "criterion": "past_volatility_linear_r2_v22_retention",
+        "candidate": 0.9292476143211095,
+        "floor": 0.6781069298378846,
+        "passed": true
+      },
+      {
+        "criterion": "past_volatility_neural_mean_r2_v22_retention",
+        "candidate": 0.4622955116478094,
+        "floor": 0.3303364424760756,
+        "passed": true
+      },
+      {
+        "criterion": "past_activity_linear_r2_v22_retention",
+        "candidate": 0.8699943031113067,
+        "floor": 0.6784311857420708,
+        "passed": true
+      },
+      {
+        "criterion": "past_activity_neural_mean_r2_v22_retention",
+        "candidate": 0.6944814572937575,
+        "floor": 0.46216745965172695,
+        "passed": true
+      },
+      {
+        "criterion": "past_relation_linear_r2_v22_retention",
+        "candidate": 0.3989981375336701,
+        "floor": 0.3385830932968374,
+        "passed": true
+      },
+      {
+        "criterion": "past_relation_neural_mean_r2_v22_retention",
+        "candidate": 0.16496864654832957,
+        "floor": 0.20799583291493073,
+        "passed": false
+      },
+      {
+        "criterion": "linear_trend_exceeds_saved_v23",
+        "candidate": 0.7970341369141087,
+        "floor": 0.3871309972495327,
+        "passed": true
+      }
+    ],
+    "synthetic_retention": [
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "ridge",
+        "mean": 0.9830729166666666,
+        "floor": 0.9895833333333334,
+        "passed": false
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "mean": 0.9743923611111112,
+        "floor": 0.978732638888889,
+        "passed": false
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "mean": 0.93359375,
+        "floor": 0.93359375,
+        "passed": true
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "mean": 0.9288194444444444,
+        "floor": 0.9253472222222222,
+        "passed": true
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "ridge",
+        "mean": 0.9934895833333334,
+        "floor": 1.0,
+        "passed": false
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "mean": 0.9904513888888888,
+        "floor": 0.9952256944444444,
+        "passed": false
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "mean": 0.9622395833333334,
+        "floor": 0.9609375,
+        "passed": true
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "mean": 0.9353298611111112,
+        "floor": 0.9505208333333334,
+        "passed": false
+      }
+    ],
+    "individual_neural_trend": [
+      {
+        "candidate": -0.30107408705294536,
+        "passed": false
+      },
+      {
+        "candidate": 0.6847950433030044,
+        "passed": true
+      },
+      {
+        "candidate": 0.3332882956295069,
+        "passed": true
+      }
+    ],
+    "strict_native36_market": [
+      {
+        "criterion": "past_volatility_linear_r2_native36_guard",
+        "candidate": 0.9292476143211095,
+        "floor": 0.6781069298378846,
+        "passed": true
+      },
+      {
+        "criterion": "past_volatility_neural_mean_r2_native36_guard",
+        "candidate": 0.4622955116478094,
+        "floor": 0.3926141918082198,
+        "passed": true
+      },
+      {
+        "criterion": "past_trend_linear_r2_native36_guard",
+        "candidate": 0.7970341369141087,
+        "floor": 0.6549112553681312,
+        "passed": true
+      },
+      {
+        "criterion": "past_trend_neural_mean_r2_native36_guard",
+        "candidate": 0.23900308395985534,
+        "floor": 0.1342955201053261,
+        "passed": true
+      },
+      {
+        "criterion": "past_activity_linear_r2_native36_guard",
+        "candidate": 0.8699943031113067,
+        "floor": 0.7514296819362523,
+        "passed": true
+      },
+      {
+        "criterion": "past_activity_neural_mean_r2_native36_guard",
+        "candidate": 0.6944814572937575,
+        "floor": 0.5631529010630465,
+        "passed": true
+      },
+      {
+        "criterion": "past_relation_linear_r2_native36_guard",
+        "candidate": 0.3989981375336701,
+        "floor": 0.3406853885730756,
+        "passed": true
+      },
+      {
+        "criterion": "past_relation_neural_mean_r2_native36_guard",
+        "candidate": 0.16496864654832957,
+        "floor": 0.3495834881128966,
+        "passed": false
+      }
+    ]
+  },
+  "causal_v1_v2_scoped_leaders": {
+    "market": [
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_volatility",
+        "head_metric": "linear_r2",
+        "causal_v1": 0.954421680571244,
+        "causal_v2": 0.9292476143211095,
+        "difference": -0.02517406625013452,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_volatility",
+        "head_metric": "neural_mean_r2",
+        "causal_v1": 0.6059305827863365,
+        "causal_v2": 0.4622955116478094,
+        "difference": -0.14363507113852708,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_trend",
+        "head_metric": "linear_r2",
+        "causal_v1": 0.7968036456603806,
+        "causal_v2": 0.7970341369141087,
+        "difference": 0.00023049125372809343,
+        "leaders": "CPB-v2.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_trend",
+        "head_metric": "neural_mean_r2",
+        "causal_v1": 0.24368774940638713,
+        "causal_v2": 0.23900308395985534,
+        "difference": -0.004684665446531788,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_activity",
+        "head_metric": "linear_r2",
+        "causal_v1": 0.8751252139115532,
+        "causal_v2": 0.8699943031113067,
+        "difference": -0.005130910800246524,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_activity",
+        "head_metric": "neural_mean_r2",
+        "causal_v1": 0.6866466216076083,
+        "causal_v2": 0.6944814572937575,
+        "difference": 0.007834835686149288,
+        "leaders": "CPB-v2.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_relation",
+        "head_metric": "linear_r2",
+        "causal_v1": 0.49370525358462336,
+        "causal_v2": 0.3989981375336701,
+        "difference": -0.09470711605095328,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_relation",
+        "head_metric": "neural_mean_r2",
+        "causal_v1": 0.38971630978947336,
+        "causal_v2": 0.16496864654832957,
+        "difference": -0.22474766324114379,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, fixed saved D36 heads, known chronological VALIDATION"
+      }
+    ],
+    "synthetic": [
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "synthetic_train",
+        "view": "validation_intact",
+        "head": "ridge",
+        "causal_v1": 0.98828125,
+        "causal_v2": 0.9830729166666666,
+        "difference": -0.00520833333333337,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "synthetic_train",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "causal_v1": 0.978732638888889,
+        "causal_v2": 0.9743923611111112,
+        "difference": -0.00434027777777779,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "causal_v1": 0.9270833333333334,
+        "causal_v2": 0.93359375,
+        "difference": 0.00651041666666663,
+        "leaders": "CPB-v2.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "causal_v1": 0.9214409722222222,
+        "causal_v2": 0.9288194444444444,
+        "difference": 0.00737847222222221,
+        "leaders": "CPB-v2.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "market_scaler",
+        "view": "validation_intact",
+        "head": "ridge",
+        "causal_v1": 1,
+        "causal_v2": 0.9934895833333334,
+        "difference": -0.00651041666666663,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "market_scaler",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "causal_v1": 0.9934895833333334,
+        "causal_v2": 0.9904513888888888,
+        "difference": -0.003038194444444531,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "market_scaler",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "causal_v1": 0.9609375,
+        "causal_v2": 0.9622395833333334,
+        "difference": 0.0013020833333333703,
+        "leaders": "CPB-v2.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "input_policy": "market_scaler",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "causal_v1": 0.9487847222222222,
+        "causal_v2": 0.9353298611111112,
+        "difference": -0.01345486111111105,
+        "leaders": "CPB-v1.market-01",
+        "scope": "only causal v1/v2, mean over three cohorts and three fixed D36 fits"
+      }
+    ]
+  },
+  "limitations": [
+    "Saved JSON arithmetic and SHA-bound source/binary/output provenance checked; this audit does not rerun encoders or fitted heads or independently recompute predictions from tensor archives",
+    "Conditional source-group interval values/bounds/recipes checked; bootstrap was not repeated",
+    "One declared final quality leaf/stage set and fixed recorded fit budgets verified; no claim about undisclosed execution history outside captured scope"
+  ],
+  "verified_pins": [
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-2048.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-2048.pt",
+      "bytes": 1292585,
+      "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/final-proof/proof.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\final-proof\\proof.json",
+      "bytes": 659,
+      "sha256": "7d528b22ff49e28ffe1be5d46f7e9f573c01821467dde5fd992f51f0738362f8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/initial-parity.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\initial-parity.json",
+      "bytes": 1270,
+      "sha256": "9afc10bedd07b09af8c0839aef500dee353623abcfd4f09b5829686ff02c7339"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/build-evidence.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\build-evidence.json",
+      "bytes": 27108,
+      "sha256": "5f89e08fd473383ae858bf2832d0d6694ecb7ffba11d44b09cfeaf0d7ea46744"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report/RESULTS.md",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report\\RESULTS.md",
+      "bytes": 23427,
+      "sha256": "313bcb3c888aa741307ad5fca2aaeca271fa0aeae62cd877955946efe6ab9efd"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report/table_rows.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report\\table_rows.json",
+      "bytes": 882433,
+      "sha256": "f9e7cea1529511bf00e68d15e3e29ea191c4537879b7e05189af403f578d991e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report/asset_hashes.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report\\asset_hashes.json",
+      "bytes": 37295,
+      "sha256": "df5bdb2a1214a1c669c7e6702e3c4d92acf93d29f5723ce7cf6ec3cd3f268ec2"
+    },
+    {
+      "container_path": "/cuwacunu/doc/results/causal_patch_bottleneck_mae_v1/table_rows.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_dev\\doc\\results\\causal_patch_bottleneck_mae_v1\\table_rows.json",
+      "bytes": 693935,
+      "sha256": "905c2fcd69e8c0d513db589213a5c1e4da67b51407d2fcea0bcfcf389f61c6f6"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/training-summary.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\training-summary.json",
+      "bytes": 16297,
+      "sha256": "e4d9ffc45c21779ae3c77554528ada65d381935fff3d00c8b498e4e4f9f4b8a2"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-initial.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\query-initial.json",
+      "bytes": 6915,
+      "sha256": "f27bcffd57488c7b133ac0bb71a30f88aea5507d54e3be19ca92df6066f6413e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/query-final.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\query-final.json",
+      "bytes": 6911,
+      "sha256": "f8a7fe63e6e9fdbfff061061b7e227a04065da8567c6468a12246d0b75724935"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source/code/research/causal_finetune_v2/evaluation/report.py",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\report.py",
+      "bytes": 34916,
+      "sha256": "96c7c4c1a9d3ba1aadbe96aefbdfb2166256298ccb8297fe4d7d27ddb4359c2a"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/final-proof/proof.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\final-proof\\proof.json",
+      "bytes": 659,
+      "sha256": "7d528b22ff49e28ffe1be5d46f7e9f573c01821467dde5fd992f51f0738362f8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/final-proof/final2048-causality.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\final-proof\\final2048-causality.json",
+      "bytes": 146727,
+      "sha256": "b307b167b308b9786e7c77d11d852bb79481fe831e43514ea1dc69c36a8e8b2a"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/extraction-stage.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\extraction-stage.json",
+      "bytes": 596,
+      "sha256": "975cd9d17351d3ea28b5fa0c9b09b3e557e45ef5a54230cd26ae0c26a026d577"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/extraction.stderr",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\extraction.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/extraction.stdout",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\extraction.stdout",
+      "bytes": 91,
+      "sha256": "63de407a29f71653b5de4ebfd99109ea8d9501040bba1131db838ab249aaf269"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/market/cpb_v2-train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\market\\cpb_v2-train.pt",
+      "bytes": 35809,
+      "sha256": "c2b9646250c3e250135585172ed2eb8f4f570c5b93e2abee8b8f02da6526399e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/market/cpb_v2-validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\market\\cpb_v2-validation.pt",
+      "bytes": 12115,
+      "sha256": "ab378e0772c764257d4b27c254593b0246bfcc74bf663b38af1ce7aff6abe8b8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/summary.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\summary.json",
+      "bytes": 3614,
+      "sha256": "cc5b315bc0d512884a4a1d9c4b9b7ce9dcc2c21ecb713cec61ef7833adb2a2c1"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/market_scaler/master-941101/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\market_scaler\\master-941101\\features.pt",
+      "bytes": 345754,
+      "sha256": "a79547a8ce6d032cdb4205d18c746ef6e8f779b2be66cccb24bfb616180a65b0"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/market_scaler/master-941102/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\market_scaler\\master-941102\\features.pt",
+      "bytes": 345754,
+      "sha256": "cbb473c1a0f647c9e53f3584c2c7f690ec3d9a76c01ee80513d76b697d36dcbc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/market_scaler/master-941103/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\market_scaler\\master-941103\\features.pt",
+      "bytes": 345754,
+      "sha256": "f1ac6b659f8ccc99345f99263be38f21a192490a88dace0e7576542f77d532bc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/synthetic_train/master-941101/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\synthetic_train\\master-941101\\features.pt",
+      "bytes": 345754,
+      "sha256": "311bdb1f9d93094884e83f8383151907165e7947664de83a07ceee720a16835e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/synthetic_train/master-941102/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\synthetic_train\\master-941102\\features.pt",
+      "bytes": 345754,
+      "sha256": "573fe2c8551b97b3bcd63cf4d8ceffb438d449f6f9b6bd8268ba1a5703c50cb0"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/features/synthetic/synthetic_train/master-941103/features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\features\\synthetic\\synthetic_train\\master-941103\\features.pt",
+      "bytes": 345754,
+      "sha256": "65820bc0a1b6fccd6649b8f8442dc19076131e4d71c6ded9a1ef2150ab9a8773"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2701\\fit.pt",
+      "bytes": 12458,
+      "sha256": "4f660efa92fa4f211886b2facfdf96b476d266c1739da41d5893be616d2f280c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2701/predictions_train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2701\\predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7f22db0c81af52bc8d020184544884701e57b12ce21fbee064bc28f637c40d73"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2701/predictions_validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2701\\predictions_validation.pt",
+      "bytes": 7771,
+      "sha256": "fc2b71202d3765429b52bc50bb43e1999493cfe950f393cd71a14cdb65753c31"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2802\\fit.pt",
+      "bytes": 12458,
+      "sha256": "187541a74ce7b2350621c9156b7501d2e183ff9c44b8b932a867215115f53409"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2802/predictions_train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2802\\predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "3041ec79ab0c988be9ce48959e899501fa9f80b3f9cce907082d07ecdd1781e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2802/predictions_validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2802\\predictions_validation.pt",
+      "bytes": 7771,
+      "sha256": "0f9eaa035b3e3af71d2550bcaeab9be3fd1beed7743f2656489ac9bb9b31b8a8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2903\\fit.pt",
+      "bytes": 12458,
+      "sha256": "8f1e8575d815425041288cf751d2b8636f9d77c2de5a10872ab99ce511e2a0e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2903/predictions_train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2903\\predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "d6baca960d59d3dd23d39efe8b8da1d0620290bc29c9c88ac234396908548763"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/models/cpb_v2/rep-2903/predictions_validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\models\\cpb_v2\\rep-2903\\predictions_validation.pt",
+      "bytes": 7771,
+      "sha256": "0d468b6534a5c7daf64d96ad06ba1c46bd9c5116292aa57b1251e837c3b03e6b"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market-readouts/report.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market-readouts\\report.json",
+      "bytes": 7705,
+      "sha256": "e9a27875d841637b9b8215e816cd3b66329b761d7d8e2943f7cf993d8c7f0869"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market_heads-stage.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market_heads-stage.json",
+      "bytes": 1039,
+      "sha256": "e5304307889f8fee6f17c46df208bcdd3158120d3c6b1ffbbfddb906d63bcbfd"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market_heads.stderr",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market_heads.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/market_heads.stdout",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\market_heads.stdout",
+      "bytes": 7705,
+      "sha256": "e9a27875d841637b9b8215e816cd3b66329b761d7d8e2943f7cf993d8c7f0869"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/quality-receipt.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\quality-receipt.json",
+      "bytes": 1346,
+      "sha256": "37d74266be736ef074f4e6654381658a09d6e911ef071435dc50d107a544d908"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report/table_rows.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report\\table_rows.json",
+      "bytes": 882433,
+      "sha256": "f9e7cea1529511bf00e68d15e3e29ea191c4537879b7e05189af403f578d991e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report.stderr",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/report.stdout",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\report.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "7396d44522c79de96cfe716856f599c9e71c5d48c71be89d701a288978b72dfe"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "d66ad71fcb9577c34d5bacc6807ba6cbda60901fd7ee218a20bcb804c25a9178"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "2935cb8062b300b93d1d31ee0ef6ab99cebc025a8c644798cfc30609f1e66cff"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "546f000e75ccf43be278319fe7aa714231cc023ac88f1a85ade9f13a7857fd15"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "87d14b01b6c489de7f8ac1f66d9f8e16d6c0b6568c5871aa11d8f786c215083c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "d1ac59e12cbaa1f0708cef199a2e6c0eb21799644aba8f4efe37a472960d8dc8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "81973a32ec392f90d1a3f6561b1f01832019eb879ff00ee19871748e19b25738"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "ee49fbb89ef285424c4d60cb81a92af0aa5d7799384b1aa8d4c1d4d8d64f4942"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "20d32c154d306ba3cdae90a648928069c3136dfc4259776cd661d2040a2a5ac0"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "900da448d6becb38fc2b4227da476608922904a1e17d0c1e2b005c4eda46c897"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "3aec5efed11df052d5ba69cf9944ec664b6465a73654755c3cb18f6dd03f6e99"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "8b9933b906c01ad9517f6a12127b361d91a2af793cb3975f1aff77af0a40107f"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "8e9cb22499bf0e1b60e254feb69a6b406fbf8b162a5e6b22f1cf25c4b0d34a4c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "b04a5cb57b8203f6828036a3045040b495c750692e51f25a840d2794f5f07b47"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/market_scaler/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\market_scaler\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "8cf08e1cf088e04b78828773c7bcb2f6dbc26f5e877fbcdf8676e42f08176f20"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/report.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\report.json",
+      "bytes": 16214,
+      "sha256": "882801481d6fa429951654d2804e1c30668ff3f1fa7248312ee98badf1b076dc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "38db94ddacf0c4bf7ecbaf175097b2da236207d0f606c631998489971598228f"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "e39a21c9947b3757bc493841a1b330036ba98468c82f7b56708425bd25cffb11"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "2b88c86a2f29d6ddfa91cf17aef0a3bdf187a01367184a8d49ab6737fc2ee070"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "a554255fdec9dba8a9cbb71e3bedd3e71d561a6e9115001e65a2de7bd4d5efcf"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "44dc9f0f2107652f9a0ead3c454eef91a029b0bdf2ebdc950b3e2ba6145c7f64"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "d290eb56f6572a3352c8d735073af1c95d6e427751eef487fe29ad58fb315ee8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "3f936fdc530efc4d4609567f748d41e3a79fbde9b4053f841a0ccb1664f3c60e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "1eb4e4fa88f0a953f7c0f6a212708fde0e1f899ee7dab22a07490631116afdab"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "54d43549398c47f8df735d33da7d4124026e3935fd6c26451ee612f186c37795"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "fc68f1c480b76fcec7ccd9c0311d3b10babcb3a5f603be0c3c5a351a282b0212"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "70ed0a7aa94ac86f81d502793f355ffa49ec25f42341c28ce251743111d5234c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "e53a5fbe53a3f2f319516309dba3b144df0ffe117fde153516b9635478b13d64"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "6157e83e8b3feecb78468cdfcac8a249d210303ca837d53a02c3ed8c0924e318"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "1871fcb84941c7eeb6cdf87827ca74d9348aac17646e3d3b441e50a3e7aa9151"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941101/synthetic_train/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941101\\synthetic_train\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "1338ce7a61f5baca9974105beb631a7693f5cd51059e690c0c53b90aac7412a9"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "19c9176d3eddb9fe6c3a6fa34d440cce672119f2b86a7efd7d0ab57d1a701998"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "6dc0f70bdfd81acdf1145ddcf5c3d0e16a463f09bd01d5619a916c489919c9b5"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "84e054686a08016f5f27a07909c04497619d9fb8d897d2a7e30fb47ca3d706bb"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "2e53687b87d8eb88abeab02a886737a2c613398d9826dd9ceb52267d3b28261a"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "ffbac96f048fcdfe10e4ae3676fb143ebc4fe1f6d94c11b61eb0142da5b42b66"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "092855e58466357c365bcb838aeeccce2107cd829c4f133e136430da292bf4dc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "b02d60c2c468a74ebfb9f00f334f2a4678067a22aaa07a739249dc96b5932a29"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "08768bf0826dabf8383dda0d861ea52a0fadff0d35de9da9e361a8f335eaec5d"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "c9e5cfc3ac0d69b550eea90a6e673660193da0d912d566ed8ca718cf6b728ce1"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "0971b4859d5c4fb38b9252eef84f8d18f04fd306d308b69c0a7808280cbad3eb"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "907a28181cdbe1f26d86d9fedcce8abfcc764b72677639d2282e326e9999f0ce"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "583cee1d086d01047cc0f29f0599eaa9aec2ee8c0371b94546c4e19600c01d6b"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "44d7b79c449e718eca3a1349b611cb8fa7c4c7e999d532bcfdab1fbffbf67277"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "1ebaaa9b6e4ecced64526d172bb1f41e7852b6a12f49e558bbc2172f87ab2639"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/market_scaler/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\market_scaler\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "119fe23f706d55ba3c6f21b88fcf66e034a3cfab8b072af62a8f8ee181e50995"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/report.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\report.json",
+      "bytes": 16188,
+      "sha256": "2d0df9300d7020d4626fd180722e596f74910ec1824ba724e9f47389f9ddaecc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "8db0c36f13ae7f81ee72b5c84c50c2904a2af500615070d5de94d5e7701d989e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "387685dec077e2936a611cac017583592500713395c3183124d5f5a998c291a5"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "cb494723b9ddb1a433df7f0aade89b6db6a1ce1168b8b72a9b55db2b740f1657"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "2962196a0ba0c8bc5147c73727a0ae20686be188f6f7d8112870da9d4df6ee13"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "cefcb81289eb30ded78b1e8431dee30ff90a125e4a0ad00cb9fcfda732b97d01"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "93c909f0cd867b6e8c39b02ce3771ae07968bc1b4655738b29afc3af2ca2697e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "390378ace730bd91866456acecd646c3a3bc10c580dfe4f3c18225a2d0e1d42e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "31ef5ce8f4627e5e44839b86e2c4815befd9d66dd628b613053b80f9dd79fa76"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "7a73cd994df360f2a3d1b2bc51f5df99500cf98465f154d36b7c433432dbbda5"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "2513c81fbbc9af3fc290f6d2447c44d38df342ddf0badcbb1b7349de5bbc77b7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "a83f08a91aee2ff6db37a64df3b8fd1fe93686b5e0fd4d3bc68aa607f4b0c0d8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "3b203ce52a060099387767676425c1bd5feda814fa3aae58ca43f97c6bf573ea"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "98fcbf6d40da32fd7f18014a8384f72a8c3582fa588aac8a3d3b2eca85e963fc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "c90a96a714f717d5da1835aec1a4cd00fa344d5fed3ae9b082155a9cfd32c0a6"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941102/synthetic_train/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941102\\synthetic_train\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "0e06854e6876345382049ff3c95bb34ba1bb6d91973ce23723d62554cd638173"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "b2ed6a09a0ab1c75bd32e188b59276f7fdd1be04529b36c2cd8d2fde9bdc0fcc"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "b04d001cbcfce710bf7332ddfe9d487bb9e8233aca8ebcffc367d7db3e07b5a7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "45bc1e0e1bbfa882556e293879a6a726a806cf85298efdf42d7417a8ef4758f9"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "7cb6f6ad3c4fa806d7d9eef10e72e1f60595d74798e13432235ceedf02718ea0"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "72081473ed58115ddfff298046e0328a48fe71ec4d247184b3cadf440583ffa9"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "64f4bb887ea9047d25bd523d24139d709f2c39fffbf9dec541de0f65faf60686"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "6263303a31fadf9540950c63051b7deb3a722d10efee1d29fe9d956d0a31be09"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "131a81fe65488ac3ee518426d7063c252f8d5638ee30cf659f09b9922f995011"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "c7375dc03a37c6a4a77a8b7953a6f3d9e8ae4cbc45aab24eb73e3faa7b9fde50"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "b35fdbc00deb14c5e870c226d52a87cd0bb546682839509bcb6328fb51a9b177"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "87e7b0f12dcafddd1d2b4c19c6341ecd7b5816480da9ff5ecbac986a96afaff0"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "284e761d49ec5a988f463510d73b5f12565df131f3691793867313571b49edee"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "7669af32d0a8135b160abf62835c2fa8cf60ed569b59e99151efc96606d85985"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "86fb554709362b3e003cdf8095ba2dc39bd091729f3527ef732f5abcea243e3d"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/market_scaler/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\market_scaler\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "87bd683d72461a821733aa25415d0f7ea5a94827133238c474d58528c8e308e2"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/report.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\report.json",
+      "bytes": 16180,
+      "sha256": "1c6816d6457f2bf994d2c3d8dfb1906d9003bd07d49663872b6e7b393267f59d"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/fit-counts.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\fit-counts.json",
+      "bytes": 83,
+      "sha256": "1ef07d4a858e52b02cecd15f1ec09c6e4c71c38c72c0868eb41c4ecffc1205e7"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2701/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2701\\fit.pt",
+      "bytes": 27798,
+      "sha256": "f5773ee7991f0b8ebcfdee032c431885f531d00ffa73a6e5facbe6da61c8f70e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2701/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2701\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "aca03482a93979ba8299911a07f4777e69ce2e587f081cdabab0495ccbf4a13b"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2701/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2701\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "46a601625b42c7dcedccc4b3fc1781ba9d4358cab8698c89c6b9f96f4a68a7cb"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2701/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2701\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "7bf3b2c84cd6c162aab6d8af2f0e0f272febb3f4dbad7910e06dc6d59b8e55e4"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2802/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2802\\fit.pt",
+      "bytes": 27798,
+      "sha256": "a8b16e5bdb3094cc81d6d5c1e3074d5a96276dd8acb225135cd66525042d189c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2802/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2802\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "b4902500249686aba9f5a1d425818b01395df5d018c31a4c5f70d82d32389cc9"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2802/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2802\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "0da405f46cb5171c620df9355f0be45c37fd56f3aaae229ddc224315e79e7b7c"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2802/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2802\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "78ecf4840c64c0683620c4db4b073d0efbc42599f14936d1e058f787042e8435"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2903/fit.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2903\\fit.pt",
+      "bytes": 27798,
+      "sha256": "eb0899c531a41413ce110b4762d9ce60340adf9803339807dec3cf44fb4bce9f"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2903/training-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2903\\training-predictions.pt",
+      "bytes": 260503,
+      "sha256": "ee0a2497cb27ea7d3d80ebb9e47e0ae4fbd46032c6d945f2fc9566bd6c170c27"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2903/validation-deleted-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2903\\validation-deleted-predictions.pt",
+      "bytes": 132727,
+      "sha256": "7d24770a737ef33088a84d3393806b9b8f350a7ee71a46e3349d80de1af23c40"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/rep-2903/validation-intact-predictions.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\rep-2903\\validation-intact-predictions.pt",
+      "bytes": 132711,
+      "sha256": "a786e59d5f8ec851a6eda483b3bd532fd3bede89c06bc4dd76756763175d6f84"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/training-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\training-features.pt",
+      "bytes": 169411,
+      "sha256": "6e69ab348b94de523232c86a8f9f69fb49b41028517bb5668dfb2adf46d43929"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/validation-deleted-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\validation-deleted-features.pt",
+      "bytes": 86715,
+      "sha256": "a5ea678d9335d63ababade7f4770fed199fa339a36d9660990e3363ed2c37e66"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/master-941103/synthetic_train/validation-intact-features.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\master-941103\\synthetic_train\\validation-intact-features.pt",
+      "bytes": 86703,
+      "sha256": "fa6b900bd10cf181d76148a2b1e7c20e11b0cba687ce2e8257559d1919864830"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic-readouts/reader-summary.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic-readouts\\reader-summary.json",
+      "bytes": 1130,
+      "sha256": "f9b096f4695809087f6c15ceaa0fb88695d00cafa3f5d658b4ae00e48e28b9c8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic_heads-stage.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic_heads-stage.json",
+      "bytes": 417,
+      "sha256": "37963d4ace92c36dff03fc145decf4ce98bf4ca5e96e2262a0901584485eaa9d"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic_heads.stderr",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic_heads.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/quality-001/synthetic_heads.stdout",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\quality\\synthetic_heads.stdout",
+      "bytes": 150,
+      "sha256": "a7afcd218c414241f6f8f07bf107eadcad118f49790e396be8fee2a9fd62bec5"
+    },
+    {
+      "container_path": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003/test_causal_patch_bottleneck_mae_v2",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries\\test_causal_patch_bottleneck_mae_v2",
+      "bytes": 898424,
+      "sha256": "1b49a6959fa5b5f005d45892b93a78c280102f164f9ef82dc82f58359eaa8955"
+    },
+    {
+      "container_path": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003/causal_finetune_v2_train",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries\\causal_finetune_v2_train",
+      "bytes": 879088,
+      "sha256": "9b3d62da5974846db6c0d1b7db4aa04ef28fc0c7547efa224c76e0241b73e74e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003/causal_finetune_v2_extract",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries\\causal_finetune_v2_extract",
+      "bytes": 663048,
+      "sha256": "d326f621748a995202d64b64310c6d2a2e0efc10dcc84d74c913ec23c6e1211d"
+    },
+    {
+      "container_path": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003/causal_finetune_v2_market_read",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries\\causal_finetune_v2_market_read",
+      "bytes": 205560,
+      "sha256": "b7b70ac4d71565e93a55ae645289e792c3bdfea1ee782a509a1ed5820e4e2b78"
+    },
+    {
+      "container_path": "/opt/cuwacunu/build/causal-finetune-v2-attempt-003/causal_finetune_v2_synthetic_read",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\binaries\\causal_finetune_v2_synthetic_read",
+      "bytes": 380328,
+      "sha256": "25c4a53c1e9a80da6c7f47b5067a4685309f8081d986fcb8e3004b281055f70b"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source/CAPSULE_MANIFEST.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\source-manifest.json",
+      "bytes": 19870,
+      "sha256": "6a64e9609eeca4747e266dc08709006cc9c739b5e72ffca2e3817b4a708c6945"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/source-stage.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\engineering\\causal-finetune-v2\\attempt-003\\source-stage.json",
+      "bytes": 502,
+      "sha256": "fc89785d2c86176412a4988c3f918f21ff6dffa263299b4d417ed5144cc69f02"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/config/v2.conf",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\config\\v2.conf",
+      "bytes": 621,
+      "sha256": "e11486cc5e8537ceece386370723def4ecb0a6f649f867213fb0bbff89900faf"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/conditioned_change_bank.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\conditioned_change_bank.h",
+      "bytes": 1651,
+      "sha256": "707be2fb8a36505fa3221a2879258c54d673d24d74a5b1ae7a979c1f978db1e4"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/conditioned_change_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\conditioned_change_config.h",
+      "bytes": 1480,
+      "sha256": "75e287199f5b5a7b8238e2519021854ae4f53d6d70adc926071bb58b080953bb"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/conditioned_change_normalizer.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\conditioned_change_normalizer.h",
+      "bytes": 11393,
+      "sha256": "8bfa4adcc061e33afc2f2273465d2bc98b41422eddf50db1b5d9b452addba11d"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\config.h",
+      "bytes": 5959,
+      "sha256": "c74a63134f0dc215162fc2140098b3d15c792bac2afe1ba902eb0ed63a3ed323"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/configurable_spectral_checkpoint_io.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\configurable_spectral_checkpoint_io.h",
+      "bytes": 3102,
+      "sha256": "2a4d73d7d56330a81c54edc1977f8514427b5c8ff509b1a642400806c8e30110"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/configurable_spectral_checkpoint.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\configurable_spectral_checkpoint.h",
+      "bytes": 7352,
+      "sha256": "2d9211f12d3994c6826fc8a714bf49c10b26480938792c8609ac85d3dc42839f"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/configurable_spectral_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\configurable_spectral_config.h",
+      "bytes": 4835,
+      "sha256": "25f26b122b25599fa018fca1c458fe93399c3240fdad709febbdb8eb064fa8c8"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/configurable_spectral_model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\configurable_spectral_model.h",
+      "bytes": 13751,
+      "sha256": "129b3fabd7941b372e7a0b469c636b26f67d0fc2e451958fe440c738e38df07b"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/configurable_spectral_relation.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\configurable_spectral_relation.h",
+      "bytes": 8180,
+      "sha256": "5e9cad564b7f6d04b4f46c9311fc7eeba604dd370e255ac48bad42fbbef5f0b4"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/consecutive_change_bank.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\consecutive_change_bank.h",
+      "bytes": 3579,
+      "sha256": "3b818e3b8a86adb88f4a248f8496573378cb1fac4efade7c5d2f4325bff8618d"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/consecutive_change_checkpoint.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\consecutive_change_checkpoint.h",
+      "bytes": 5184,
+      "sha256": "b4bdeea040c571d7f1a52f9131c477c7fde8787c3fbb253466cfd4841300f294"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/consecutive_change_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\consecutive_change_config.h",
+      "bytes": 1704,
+      "sha256": "d9f72aea6527d6b7e6e5b079ed1470e993268e257944ba64e4a70e90f9b89ec2"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/consecutive_change_model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\consecutive_change_model.h",
+      "bytes": 4016,
+      "sha256": "be3b2ea443324503cdd1c565879461ffeb0e355ed9389410aac98e4dd36ffa99"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/consecutive_change_training_state.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\consecutive_change_training_state.h",
+      "bytes": 14188,
+      "sha256": "acc5f156990d0172073f748dbd08ef0cf8c0bec15c2745d6e521932296c54ed0"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/content_ordered_relation_bank.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\content_ordered_relation_bank.h",
+      "bytes": 5882,
+      "sha256": "44f2a82395413eb7bb1e073a0164f71bdb9bb9e8920c5dc306c4cd41e6f37474"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/content_ordered_relation_checkpoint.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\content_ordered_relation_checkpoint.h",
+      "bytes": 5520,
+      "sha256": "eac06d45908f42d0553e2df8bc638bb43bf5d863e047b817d31a428c2288c38c"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/content_ordered_relation_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\content_ordered_relation_config.h",
+      "bytes": 2705,
+      "sha256": "98b7521e0d926f97939c044eccbaa0516911ace128fdf9aeb4e949a64d5d3b36"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/content_ordered_relation_model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\content_ordered_relation_model.h",
+      "bytes": 6468,
+      "sha256": "404fd75130088a23dffb6aca37fa8c7c437f62103e7af244d87b416c21c261e2"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/document.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\document.h",
+      "bytes": 8087,
+      "sha256": "ba81af1044e072578a8019cbacc52dca10097ae166878d273582d79a7870ebce"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/encoder.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\encoder.h",
+      "bytes": 3775,
+      "sha256": "260b4da116319195ad9c5c70a82b68b5ed5e9e08526b4231631b40512b93b229"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/location_scale_decoder_checkpoint.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\location_scale_decoder_checkpoint.h",
+      "bytes": 9013,
+      "sha256": "3fce144282fcb5f7275843b2809331a65f4970dbe9dab401b2b6f9784bd89591"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/location_scale_decoder_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\location_scale_decoder_config.h",
+      "bytes": 1982,
+      "sha256": "66c0a0bc8693a455fb814253ef3f093ddcc26b0bd0139b1e3fe31955f162fb5d"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/location_scale_decoder_model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\location_scale_decoder_model.h",
+      "bytes": 13052,
+      "sha256": "4d4453e994e85cccdc9d6e6a44836f6d32fb74d4ab8e9e943102e962a4b01353"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/location_scale_decoder_settings.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\location_scale_decoder_settings.h",
+      "bytes": 3165,
+      "sha256": "5e8460e9c23b00d8ee84d63ac188cdae6442e29b24d3d0062c0ddf9107424054"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/location_scale_decoder_training_state.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\location_scale_decoder_training_state.h",
+      "bytes": 10127,
+      "sha256": "a8d7ef6c83b28f59a1d3f8cffa302c45abda0708d66fbd2658f4c3f3265fb149"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/masking.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\masking.h",
+      "bytes": 3877,
+      "sha256": "bf0e2bb7a5923ee432026dcf82b2cd85fd70220d283234e0653315a86e667e1a"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\model.h",
+      "bytes": 20895,
+      "sha256": "b9faada0ba184570485b7f1ff831f3fb9e29e0b16cbdf7fe03dc17c61ecebd9a"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/objectives.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\objectives.h",
+      "bytes": 3159,
+      "sha256": "a225c4d22e6436d4a67eedcdf2ffd3f357fdc46e71cc862b4eff90c0651058f4"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/preprocessing.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\preprocessing.h",
+      "bytes": 10346,
+      "sha256": "f038c764c7b001c11521de5d734b19695d5b13f9e13acefd1253cad1daf4611d"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/relative_change_bank.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\relative_change_bank.h",
+      "bytes": 4784,
+      "sha256": "de8a49e1d1a3572c546aad08b517f848c3e3d48c4ae553a0f932fc23bf6f0357"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/relative_change_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\relative_change_config.h",
+      "bytes": 1927,
+      "sha256": "7ff3c77dc03ef82add2bf97b16502e4e577360b197875e7b406c0e801642e522"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/relative_change_normalizer.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\relative_change_normalizer.h",
+      "bytes": 3047,
+      "sha256": "2b069fb96f555aa950900e0b1546659188fc12bdf9cc2f66cd9bb9fc93b18e97"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/separated_change_checkpoint.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\separated_change_checkpoint.h",
+      "bytes": 5379,
+      "sha256": "f3a04370a97862075acb22105f1242e3357ee89a9d3e21451f9837a8718e7fd6"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/separated_change_config.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\separated_change_config.h",
+      "bytes": 1629,
+      "sha256": "b6b7c369107f07355117fc9f11464824a0abfedf8b5e6eb00ca055ed78071fc6"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/separated_change_frozen_level.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\separated_change_frozen_level.h",
+      "bytes": 4534,
+      "sha256": "f434ad07ddd000b05bb7b1eb1aacdb121a6b40d2b1e8cf16db6d37c14e64758b"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/separated_change_model.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\separated_change_model.h",
+      "bytes": 5806,
+      "sha256": "6159f11ea256601dac720a692aa553bb2d06099056cc6849a41a46fa3a3c90b8"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/separated_change_training_state.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\separated_change_training_state.h",
+      "bytes": 7342,
+      "sha256": "acc943276dc5bbc5c84db015b4b909ba048020601809be8b02a1822917e184c9"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/simple_kv_block.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\simple_kv_block.h",
+      "bytes": 8406,
+      "sha256": "7d0577438fa672e944272a6e0d2d066a1d8912fbc45c79347715505ba205d76e"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/tokenization.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\tokenization.h",
+      "bytes": 3455,
+      "sha256": "c3240d31431b23a83ddd4d0274a7e5bb8525500ce2e8601c427ad311062b5b09"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/types.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\types.h",
+      "bytes": 5710,
+      "sha256": "1f38da85baf4a34e2e67b368aaa5f18f59a91ceef6c07a963dbbfd359abb7b47"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v2/visible_difference.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\detail\\v2\\visible_difference.h",
+      "bytes": 4814,
+      "sha256": "b9783d4400b2a6fe015c9e389c3da8a0edf1797db39816c5c573f29d92bd9e47"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v2.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\include\\embedding\\encoders\\causal_patch_bottleneck_mae\\versions\\v2.h",
+      "bytes": 32513,
+      "sha256": "c4714f91dceccc650da9dccf152d08eb31bbe536068d0b93a37b5383c87ba6dd"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/provenance.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\provenance.json",
+      "bytes": 11432,
+      "sha256": "8985c1833a78d7e2a769d5144fc732f0597ea65e402314ec877fc740883a23fb"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/README.md",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\README.md",
+      "bytes": 4130,
+      "sha256": "31d53050dfdd91a36b94a02f7c8a6a03e122e18fac628f789452c5a3bb92e934"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/tests/v2_test.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\tests\\v2_test.cpp",
+      "bytes": 51915,
+      "sha256": "af6db5b2f1b08cbdeef2c042ec72569568a0bfdfc293b025f54b052e25e80ec9"
+    },
+    {
+      "container_path": "code/encoders/causal_patch_bottleneck_mae/versions/v2/v2.mk",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\encoders\\causal_patch_bottleneck_mae\\versions\\v2\\v2.mk",
+      "bytes": 880,
+      "sha256": "b26b33d4582f35ff7a91bda09c3e7f3267d18608fbca4f5725e895c4c867dd12"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/dependency-provenance.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\dependency-provenance.json",
+      "bytes": 5750,
+      "sha256": "2acb17af2e83a8b9f74967ecd333aeeefe81df1c194956bc07bb35faca26334f"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/cuwacunu/data/record_types.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\cuwacunu\\data\\record_types.h",
+      "bytes": 6598,
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/cuwacunu/data/support.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\cuwacunu\\data\\support.h",
+      "bytes": 329,
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\cuwacunu\\evaluation\\fixed_regression.h",
+      "bytes": 2922,
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/embedding/shared/data.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\embedding\\shared\\data.h",
+      "bytes": 1292,
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/embedding/shared/evaluation.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\embedding\\shared\\evaluation.h",
+      "bytes": 1311,
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/embedding/shared/feature_harness.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\embedding\\shared\\feature_harness.h",
+      "bytes": 5770,
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\embedding\\shared\\fixed_feature_readouts.h",
+      "bytes": 2428,
+      "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/include/embedding/shared/types.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\include\\embedding\\shared\\types.h",
+      "bytes": 1083,
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/src/data.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\src\\data.cpp",
+      "bytes": 6133,
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/src/feature_harness.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\src\\feature_harness.cpp",
+      "bytes": 25946,
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/src/fixed_feature_readouts.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\src\\fixed_feature_readouts.cpp",
+      "bytes": 21926,
+      "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/deps/src/fixed_regression.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\deps\\src\\fixed_regression.cpp",
+      "bytes": 22417,
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/evaluation.mk",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\evaluation.mk",
+      "bytes": 1865,
+      "sha256": "1dc128215c4022cb2ff2f227e4a5b55ca60002d97dd4bc5ffddb8aea61e6ab8c"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/extract_main.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\extract_main.cpp",
+      "bytes": 16933,
+      "sha256": "bb5de53a9c02588df912f5ee3de1723f56bc65becbcf90d28349c36560643c9e"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/market_read_main.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\market_read_main.cpp",
+      "bytes": 2438,
+      "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/README.md",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\README.md",
+      "bytes": 3870,
+      "sha256": "82041c58f1d852bd7b41ad916d8ed38c147a798f5ccee565b56ab7e92358587e"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/report.py",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\report.py",
+      "bytes": 34916,
+      "sha256": "96c7c4c1a9d3ba1aadbe96aefbdfb2166256298ccb8297fe4d7d27ddb4359c2a"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/evaluation/synthetic_read_main.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\evaluation\\synthetic_read_main.cpp",
+      "bytes": 12041,
+      "sha256": "d2a5e8bdef243779c4b4c39a94f3f46baa69d648d240bc2664dbba6a07e19f8b"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/include/context_deletion.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\include\\context_deletion.h",
+      "bytes": 10829,
+      "sha256": "e3df0f9e9d1249f81b2f671f93ae370ea8cdb6708ef17c076e80c79b03d1e4d2"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/include/market_data.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\include\\market_data.h",
+      "bytes": 4984,
+      "sha256": "e4bc23f04a7a27e6807f773f3276f86f7616496730cbe8db5d71414eb17f8391"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/include/training_utils.h",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\include\\training_utils.h",
+      "bytes": 1571,
+      "sha256": "72661b8c01317a9fc277f2a0263c3ff7ccd4e926cb0934c25ba68506f1ba82a8"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/Makefile",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\Makefile",
+      "bytes": 1326,
+      "sha256": "79426df9252597d40d624001451769af755dfa9c2f0507ba484ea7911a1104ac"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/train_main.cpp",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\train_main.cpp",
+      "bytes": 35007,
+      "sha256": "2675f79f9b98cd71f67ebe935ac84abcdad21a631c7ec958fca84880b52def8a"
+    },
+    {
+      "container_path": "code/research/causal_finetune_v2/training-helper-provenance.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\code\\research\\causal_finetune_v2\\training-helper-provenance.json",
+      "bytes": 1435,
+      "sha256": "287b93eb56897ae22167db2f736efa1f92d0e69ba4b048a6629a41ff63322d6a"
+    },
+    {
+      "container_path": "doc/CAUSAL_FINETUNE_V2_CARD.json",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FINETUNE_V2_CARD.json",
+      "bytes": 31611,
+      "sha256": "30aa70ce6f3999d9f6a991c1b298516db41caf3db276cacb75d91c9d3dcba222"
+    },
+    {
+      "container_path": "doc/CAUSAL_FINETUNE_V2_CARD.md",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\CAUSAL_FINETUNE_V2_CARD.md",
+      "bytes": 9676,
+      "sha256": "de06129ec9e36b1b3b1fc948a33eaf1f274bcb2d6b1a0043c1586dc069cc9421"
+    },
+    {
+      "container_path": "doc/causal_finetune_v2/audit-build.py",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_finetune_v2\\audit-build.py",
+      "bytes": 3295,
+      "sha256": "78b07794f28147dee67790b7518c1f6a77ba1b9c0d73d3c40598f2bb83797eac"
+    },
+    {
+      "container_path": "doc/causal_finetune_v2/run-quality.py",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_finetune_v2\\run-quality.py",
+      "bytes": 5319,
+      "sha256": "74078e1110fc069577ab2e95350de524a84ed2569e2ca4df82b90ca4cfe9a3a1"
+    },
+    {
+      "container_path": "doc/causal_finetune_v2/stage-source.ps1",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_finetune_v2\\stage-source.ps1",
+      "bytes": 4897,
+      "sha256": "9328b2b21d6b503c424c2d2a3c3ad604af6c31403c01274ebce117cd1bd23ff9"
+    },
+    {
+      "container_path": "doc/causal_finetune_v2/unpack-source.py",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\doc\\causal_finetune_v2\\unpack-source.py",
+      "bytes": 2305,
+      "sha256": "f0d1110ba88bfbef00896cd53fa4ddf2b1b40393bef8e77ea417f594e6790d0b"
+    },
+    {
+      "container_path": "LICENSE",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\LICENSE",
+      "bytes": 1085,
+      "sha256": "1e172347c1eeedb54928c97d79dd7b19bba447f8414f6467d722ead8dffcd5d8"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/checkpoints/inference-0.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\checkpoints\\inference-0.pt",
+      "bytes": 1291519,
+      "sha256": "e9fb6604508f933a4f676391624adf3fc09aecfdc056526dc3e0c103faf30d76"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-feature-parity.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-feature-parity.pt",
+      "bytes": 46246,
+      "sha256": "f1585523cd4636c61b60a0c8c71b83e7a07741486950e1eb8ec53fc14587499e"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-train.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-native-train.pt",
+      "bytes": 35889,
+      "sha256": "f5f22b86bef9a7cf25a587d40897867b8906230df1aad581842d256f5b6bba70"
+    },
+    {
+      "container_path": "/opt/cuwacunu/research/causal-finetune-v2/attempt-003/run-001/witnesses/initial-native-validation.pt",
+      "local_path": "C:\\Work\\cuwacunu\\cuwacunu_embedding\\output\\runs\\causal-finetune-v2\\run-001\\witnesses\\initial-native-validation.pt",
+      "bytes": 12323,
+      "sha256": "c3c2736a09d38e82f9532ba972d1046dd9e745e0b8359edefedf002ca14d2e55"
+    }
+  ]
+}

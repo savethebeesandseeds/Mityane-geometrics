@@ -1,0 +1,64 @@
+{
+  "kind": "causal_fresh_v10_report_completion_v1",
+  "status": "complete",
+  "model": "CPB-v10.market-01",
+  "runtime_trust_admission_passed": true,
+  "trust_protocol_admission_passed": false,
+  "mandatory_postmeasurement_trust": {
+    "initial_full40_and_statistics_pairings": "pending",
+    "independent_training_audit": "pending",
+    "independent_quality_audit": "pending"
+  },
+  "overall_establishment_passed": false,
+  "full_coverage": true,
+  "clean_causal_candidate_measured": true,
+  "clean_baseline": "CPB-v3.market-01",
+  "clean_baseline_unchanged": true,
+  "scoped_reference": "CPB-v9.market-01",
+  "objective_policy": "huber1-mean-plus-joint-gaussian-nll-v1",
+  "gradient_policy": "huber1-mean-live;joint-gaussian-mean-live-and-uncertainty4-live;shared-global-clip1-v1",
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": false,
+  "reporting_nll_backpropagated": false,
+  "direct_gradient_routes": "Huber->parent32+mean4;Gaussian-mean->parent32+mean4;Gaussian-variance->uncertainty4;mean-reads0:36;variance-reads36:40;shared-global-clip1",
+  "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "registered_learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "historical_encoder_quality_targets_used": false,
+  "overall_winner_declared": false,
+  "new_market_rows": 8,
+  "synthetic_panels": 4,
+  "reporting_seconds": 0.07561646699832636,
+  "report": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/quality-001/report/RESULTS.md",
+    "bytes": 22740,
+    "sha256": "f25ee0d2dfcabae6981582e4aa5f42e2db43c1e071b9a7dda93229db65314f3e"
+  },
+  "tables": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/quality-001/report/table_rows.json",
+    "bytes": 399754,
+    "sha256": "9b27a3f0de6fc49f36c11d473f192f299b06addc2bc213e5c124caad724cb789"
+  },
+  "assets": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v10/attempt-001/quality-001/report/asset_hashes.json",
+    "bytes": 78040,
+    "sha256": "cba15e39ad3cae7c1dde9e8bc8659d48c733cb222239a710e09fe71872d5c570"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "mityane_embeddings_structural_cleanup_summary_v1",
+  "date": "2026-10-18",
+  "upstream_base_revision": "b15702b29753188482b11ca85e997006b503d0f0",
+  "source_revision_role": "Historical upstream base only; the snapshot inventory identifies the actual working tree, including operational adaptations and later provider registration.",
+  "historical_root": "archive/embeddings/pre-cleanup-2026-10-18",
+  "preserved_file_count": 6424,
+  "preserved_bytes": 261415337.0,
+  "maintained_file_count": 1626,
+  "historical_only_tools": 73,
+  "detailed_manifest": "archive/embeddings/CLEANUP_MANIFEST_2026-10-18.json",
+  "detailed_manifest_sha256": "346f93c67b498a505dabc606298178808e7c223c601c92d95d4bfa4d1d68447e",
+  "canonical_entries": [
+    "container.ps1",
+    "setup.sh",
+    "dependencies.lock",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "Makefile",
+    "code/scripts/task.sh"
+  ],
+  "untouched_artifact_roots": [
+    "code/embeddings/output",
+    "code/embeddings/.build",
+    "code/embeddings/.external"
+  ],
+  "identity_policy": "Original bytes and identities are immutable. Maintained path/content changes establish new source identities; historical checkpoints/results are not rebound.",
+  "historical_tools_policy": "Completed-run audit, repair and registry publication tools are archive-only. Six legacy protocol global publication entry points reject execution before any writes; importable arithmetic remains available.",
+  "verification": {
+    "archive_sha256_mismatches": 0,
+    "final_maintained_destinations_present": 1626,
+    "preserved_original_hashes_verified": 6424,
+    "maintained_markdown_links_verified": 786,
+    "python_syntax_files": 78,
+    "bash_syntax_files": 69,
+    "historical_publisher_refusals": 6,
+    "settings_test": "passed",
+    "literal_shell_roots_verified": 68,
+    "engineering_suite": "passed",
+    "container_id": "381c6b78f4fdb301cd132050ffd8095587c0794829a7a73a547fdbc0484630e1",
+    "engineering_targets": [
+      "all",
+      "test",
+      "smoke",
+      "test-rpb-core",
+      "test-rpb-mae",
+      "test-feature-harness",
+      "test-artifacts-v1",
+      "test-predictive-v1",
+      "test-predictive-snapshot",
+      "test-latent-dynamics-v1-evaluation",
+      "test-latent-risk-v1-readouts",
+      "test-direct-control-v1",
+      "test-direct-control-artifact",
+      "test-forecast-issuance-v1",
+      "test-settings"
+    ],
+    "build_only_targets": [
+      "build-cpb-v1-engineering"
+    ],
+    "evaluated_observation_source_closures": 8,
+    "cli_help_and_smoke": "passed",
+    "commands": [
+      {
+        "launcher": "container.ps1",
+        "working_directory": "/mityane",
+        "container_command": [
+          "bash",
+          "output/migration/embeddings-cleanup-2026-10-18/verify.sh"
+        ]
+      },
+      {
+        "launcher": "container.ps1",
+        "working_directory": "/mityane",
+        "container_command": [
+          "bash",
+          "output/migration/embeddings-cleanup-2026-10-18/verify-cached.sh"
+        ]
+      },
+      {
+        "launcher": "container.ps1",
+        "working_directory": "/mityane",
+        "container_command": [
+          "bash",
+          "code/scripts/task.sh",
+          "cleanup-settings-20261018",
+          "test-settings"
+        ]
+      },
+      {
+        "launcher": "container.ps1",
+        "working_directory": "/mityane",
+        "container_command": [
+          "python3",
+          "-B",
+          "code/scripts/check-layout.py"
+        ]
+      },
+      {
+        "launcher": "container.ps1",
+        "working_directory": "/mityane",
+        "container_command": [
+          "python3",
+          "-B",
+          "output/migration/embeddings-cleanup-2026-10-18/verify-syntax.py"
+        ]
+      }
+    ],
+    "local_logs_sha256": {
+      "output/migration/embeddings-cleanup-2026-10-18/verification.log": "78b1d2ad0d9b0fff8824b73d7da3af3cfaf93bc5557d00fede20586424b02955",
+      "output/migration/embeddings-cleanup-2026-10-18/final-verification.log": "9b4648afba939e2f864150c1472d418cbc7a9c53b6494e19028391feb5aa4693",
+      "output/migration/embeddings-cleanup-2026-10-18/cli-help.txt": "cecacac7586ca9a6b7812b3dd0d690f6c76a707aacead69ccc43ded9382b85b8"
+    },
+    "initial_attempt": "Interrupted after a forecasting compilation stalled on Windows bind-mount include lookups; all selected targets rerun in the isolated final session.",
+    "project_header_cache": {
+      "project_header_count": 900,
+      "cache": "/opt/mityane-geometrics/embeddings/cleanup-project-headers-20261018",
+      "compiler": "/usr/bin/g++",
+      "wrapper": "/opt/mityane-geometrics/embeddings/build/cleanup-verification-local-20261018/g++-cached-includes",
+      "source_root": "/mityane",
+      "build_dir": "/opt/mityane-geometrics/embeddings/build/cleanup-verification-local-20261018",
+      "sdk_copied": false,
+      "interrupted_attempt_processes": [
+        {
+          "pid": 1555,
+          "name": "make"
+        },
+        {
+          "pid": 2543,
+          "name": "g++"
+        },
+        {
+          "pid": 2544,
+          "name": "cc1plus"
+        }
+      ],
+      "reason": "Avoid slow negative include lookups through the Windows bind mount. Project header bytes verified by SHA256; canonical source paths/identities remain in the root source tree."
+    }
+  }
+}

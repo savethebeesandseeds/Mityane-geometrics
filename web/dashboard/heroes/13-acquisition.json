@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-13-acquisition",
+  "number": 13,
+  "title": "OR-13 · Information acquisition and exploration",
+  "summary": "Choose observations, labels, revisits or experiments under a budget and measure the value of the acquired evidence.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-13-acquisition-contract",
+      "title": "Define the operation contract",
+      "description": "Define the acquisition pool, information objective, cost budget, selected output, feedback boundary and stopping conditions.",
+      "milestones": [
+        {
+          "id": "or-13-acquisition-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define the acquisition pool, information objective, cost budget, selected output, feedback boundary and stopping conditions. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Separate acquisition pool, development feedback and protected assessment data; define when acquired labels become available, the selection budget, update rule and stopping policy. Novelty, uncertainty and diversity are selection proxies until their learning value is evaluated."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-13-acquisition-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide a reproducible acquisition procedure that records selections, costs, model versions and feedback without evaluation leakage.",
+      "milestones": [
+        {
+          "id": "or-13-acquisition-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide a reproducible acquisition procedure that records selections, costs, model versions and feedback without evaluation leakage. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Retain the selection history, probabilities when required by the evaluation method, acquired feedback, full acquisition costs and resulting model revisions. Protected evaluation feedback cannot silently enter acquisition or fitting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-13-acquisition-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Compare budget-matched learning or decision improvement against passive and random baselines; diversity or novelty alone does not establish information value.",
+      "milestones": [
+        {
+          "id": "or-13-acquisition-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Compare budget-matched learning or decision improvement against passive and random baselines; diversity or novelty alone does not establish information value. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Compare complete budget-matched learning or decision curves against passive/random acquisition, including selection overhead and failed acquisitions. Evaluate realized information value rather than treating embedding coverage or prediction error alone as the outcome."
+          ]
+        }
+      ]
+    }
+  ]
+}

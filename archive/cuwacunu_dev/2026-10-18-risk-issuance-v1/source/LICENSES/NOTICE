@@ -1,0 +1,66 @@
+Cuwacunu licensing scope and retained notices
+
+Dashboard interface standard (16 October 2026)
+
+web/dashboard/src/template.html, dashboard.css, dashboard.js and model.js
+include the Non-verba dashboard interface under AGPL-3.0-only. Their source
+notices are retained. See web/dashboard/NOTICE.md for provenance/adaptations
+and web/dashboard/LICENSE for the complete inherited license. This entry
+does not change the licensing scope of unrelated Cuwacunu components.
+
+Policy established on 13 October 2026, after repository revision
+6aa36b66843aa098576c91cd7eb9e9e470d952a2.
+
+The root LICENSE reserves rights to new original Cuwacunu work while an
+open-source decision is pending. LICENSES/MIT.txt is the complete preserved
+MIT notice, including Copyright (c) 2026 Waajacu, for covered existing
+components. Its presence does not grant MIT permissions for all new work.
+
+Existing MIT components and portions
+
+1. The 17 imported RPB-v19 headers under
+   code/encoders/rpb_v19/include/embedding/ retain their original MIT notices.
+   Source: cuwacunu_embedding at
+   191cbaa44b921c37f8f458d474620e57a7924b0c.
+   Exact paths and hashes: code/encoders/rpb_v19/IMPORT_MANIFEST.json.
+
+2. The existing shared RPB-v20/RPB-v22 encoder, settings, parser, tests and
+   documentation recorded by doc/CONFIGURABLE_ENCODER_BACKPORT.json and
+   doc/CONTENT_ENCODER_SYNC.json retain their MIT licensing. Their source
+   files and original hashes remain unchanged by this policy update.
+   This includes code/config/include/piaabo/parse/simple_kv_block.h, imported
+   from cuwacunu_torch at 4abd3a4f544eeb5ab97a690281d54f13b27e29cd.
+
+3. Existing extracted market data loading code and adapted tests under
+   code/data/ retain MIT permissions for their previously licensed portions.
+   Source: cuwacunu_torch at
+   4abd3a4f544eeb5ab97a690281d54f13b27e29cd.
+   Provenance: code/data/README.md and doc/IMPORTS.md.
+
+4. Other pre-existing MIT-marked files, and frozen source snapshots and
+   evidence, retain their original notices. External dependencies retain
+   their own licenses; this repository does not change their terms.
+
+5. The eight unmodified shared classification/data files copied into
+   code/evaluation/market_synthetic_transfer_v1/deps/ retain their existing
+   MIT notices and the permission notice in LICENSES/MIT.txt. Their source is
+   the local cuwacunu_embedding code/shared include/src tree; exact source/copy
+   hashes are recorded with the frozen market synthetic transfer evidence.
+   The separate extractor, reader adapter, protocol and report files are new
+   reserved-rights application work and do not alter those inherited files.
+
+New original application work
+
+The root LICENSE governs new original files, documentation and additions
+unless an explicit separate license is authorized. Current application
+wrappers and integration tests with all-rights-reserved notices use that
+policy. Preserved MIT portions and earlier MIT-licensed versions remain
+subject to their prior permissions; this change does not withdraw them.
+
+When adding private original work alongside an MIT component, identify the
+reserved additions in separate files or clearly marked sections. Retain the
+original copyright and permission notices and avoid applying an MIT header
+to those new additions by default.
+
+Synchronizing changes into a sibling checkout does not authorize MIT
+licensing or publication to that sibling's public remote.

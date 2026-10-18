@@ -1,0 +1,1200 @@
+{
+  "kind": "clean_causal_encoder_search_goal_v11_retention_protocol_v1",
+  "declared_client_date": "2026-10-17",
+  "state": "prospective_future_use_awaiting_independent_review",
+  "user_authorization": "go for it, pursuit the finding of a good encoder as a goal",
+  "baseline": "CPB-v3.market-01",
+  "scoped_reference": "CPB-v4.market-01",
+  "application": "CPB-v3.market-01",
+  "overall_winner": false,
+  "reference_comparison": {
+    "path": "doc/results/causal_fresh_v11/comparison.json",
+    "bytes": 501651,
+    "sha256": "8662e3924e503d94283fcc2e5c7f6002e9f82fadf8e0362940d53aa6a1eef09c"
+  },
+  "criterion_count": 22,
+  "criteria": [
+    {
+      "id": "past_volatility:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.964673433811061,
+      "floor_source": "CPB-v3.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.7359692462937604,
+      "floor_source": "CPB-v8.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.9072134297036245,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.5698752307038314,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.9094387755129657,
+      "floor_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.7324899092829259,
+      "floor_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.6221006868548108,
+      "floor_source": "CPB-v6.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "category": "market_retention",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.4487745118258597,
+      "floor_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.98828125,
+      "floor_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9848090277777778,
+      "floor_source": "CPB-v6.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9557291666666666,
+      "floor_source": "CPB-v9.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9427083333333334,
+      "floor_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9986979166666666,
+      "floor_source": "CPB-v9.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9926215277777778,
+      "floor_source": "CPB-v8.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.97265625,
+      "floor_source": "CPB-v6.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "category": "tempo5_retention",
+      "dataset_id": "TEMPO-5",
+      "floor": 0.9561631944444444,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "train:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.24180533789857825,
+      "floor_source": "CPB-v7.market-01",
+      "rule": "candidate <= floor + 1e-12"
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0.30831692401624544,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate <= floor + 1e-12"
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "category": "variance_quality",
+      "dataset_id": "MKT-HIST-2",
+      "floor": -0.04538148809081624,
+      "floor_source": "CPB-v4.market-01",
+      "rule": "candidate < floor - 1e-12"
+    },
+    {
+      "id": "past_trend:all3_neural_R2_positive",
+      "category": "neural_trend_robustness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "all three final neural trend R2 values > 0"
+    },
+    {
+      "id": "past_relation:linear_r2:positive",
+      "category": "relation_usefulness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "candidate > 0"
+    },
+    {
+      "id": "past_relation:neural_mean_r2:positive",
+      "category": "relation_usefulness",
+      "dataset_id": "MKT-HIST-2",
+      "floor": 0,
+      "floor_source": "strict positivity",
+      "rule": "candidate > 0"
+    }
+  ],
+  "establishment": "All22 prospective numeric conditions, complete causal/fresh/GPU/typed-resume trust admission and100% declared scoring coverage",
+  "scope": "Known chronological market development and saved complexity5/5 timing; no forecasting or new-period confirmation claim",
+  "defaults": {
+    "updates": 2048,
+    "batch_size": 8,
+    "device": "CUDA:0",
+    "native_width": 36,
+    "data": "Existing frozen MKT-HIST-2 TRAIN anchors and saved probe/target/scaler recipes; TEMPO-5 saved cohorts",
+    "initialization": "Fresh learned weights, fresh permitted TRAIN-only calibration, fresh optimizer; no historical checkpoint/teacher initialization",
+    "heads": "Unchanged ridge1 and16-tanh Adam0.01/100-step recipes, three fixed repetitions; candidate dimensions/parameter counts/seeds declared before quality",
+    "checkpoint_policy": "New initial0 and final2048 embeddings and fixed heads; no intermediate selection"
+  },
+  "version_policy": "Every new numerical mechanism owns a complete separately named source copy and prospective card; no edits to evaluated versions",
+  "diagnosis": "Any future saved TRAIN-only diagnosis requires a separately frozen card. No encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays follow from this retention derivation.",
+  "preservation": "Retain every checkpoint/result/card/source and displaced scoped leader; never delete data or overwrite failed attempts",
+  "search_policy": "No coefficient, seed, rate, budget or head rescue of a stopped recipe; distinct mechanisms require separate declarations",
+  "future_dimensions": "Geometry or native-width changes must be explicitly declared with dimension-dependent fixed-head settings and cost/capacity disclosure before testing",
+  "application_promotion": "Requires a separate user selection; dev staysv3 during research",
+  "publication": "No commit/push requested for this continuation",
+  "container": "Reuse verified existing cuwacunu82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e only",
+  "independent_confirmation": "Separate prospectively frozen confirmation is needed before a generalization claim; do not inspect reserved/new-period data during mechanism selection",
+  "declared_utc": "2026-10-17T17:40:00.217159+00:00",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "parent_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v9_retention.json",
+    "bytes": 35421,
+    "sha256": "221f7cc748db8bc57bbb8dd066f569d957d16791d2a7cfe0ef0cc3785a579144"
+  },
+  "reference_tables": [
+    {
+      "instance": "CPB-v3.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v3/table_rows.json",
+        "bytes": 336076,
+        "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+      }
+    },
+    {
+      "instance": "CPB-v4.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v4/table_rows.json",
+        "bytes": 336377,
+        "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+      }
+    },
+    {
+      "instance": "CPB-v5.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v5/table_rows.json",
+        "bytes": 336740,
+        "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+      }
+    },
+    {
+      "instance": "CPB-v6.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v6/table_rows.json",
+        "bytes": 394229,
+        "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+      }
+    },
+    {
+      "instance": "CPB-v7.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v7/table_rows.json",
+        "bytes": 396737,
+        "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+      }
+    },
+    {
+      "instance": "CPB-v8.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v8/table_rows.json",
+        "bytes": 398100,
+        "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+      }
+    },
+    {
+      "instance": "CPB-v9.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v9/table_rows.json",
+        "bytes": 398749,
+        "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+      }
+    },
+    {
+      "instance": "CPB-v10.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v10/table_rows.json",
+        "bytes": 399754,
+        "sha256": "9b27a3f0de6fc49f36c11d473f192f299b06addc2bc213e5c124caad724cb789"
+      }
+    },
+    {
+      "instance": "CPB-v11.market-01",
+      "table": {
+        "path": "doc/results/causal_fresh_v11/table_rows.json",
+        "bytes": 401408,
+        "sha256": "d6eef160eaabb66122c2b09ab43c797d685336f48e0478320055e17f3b2accca"
+      }
+    }
+  ],
+  "reference_ledger": {
+    "path": "doc/clean_causal_encoder_research_ledger.json",
+    "bytes": 1237073,
+    "sha256": "7e4e792a845f9be8c2888107489b67e28cb0975b61799d24a28c70b70c1aa902"
+  },
+  "v5_final_preservation": {
+    "path": "doc/causal_fresh_v5/final-preservation.json",
+    "bytes": 46031,
+    "sha256": "0cb3ec54789c580df741d68b5923459040948a38284584eca9691540c597873a"
+  },
+  "scoped_references": [
+    "CPB-v4.market-01",
+    "CPB-v5.market-01",
+    "CPB-v6.market-01",
+    "CPB-v7.market-01",
+    "CPB-v8.market-01",
+    "CPB-v9.market-01",
+    "CPB-v10.market-01",
+    "CPB-v11.market-01"
+  ],
+  "changed_thresholds": [
+    {
+      "id": "past_activity:linear_r2",
+      "previous_threshold": 0.8628403110608782,
+      "previous_source": "CPB-v3.market-01",
+      "retained_threshold": 0.9094387755129657,
+      "retained_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "previous_threshold": 0.6873705450109496,
+      "previous_source": "CPB-v4.market-01",
+      "retained_threshold": 0.7324899092829259,
+      "retained_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "previous_threshold": 0.3705053482630968,
+      "previous_source": "CPB-v5.market-01",
+      "retained_threshold": 0.4487745118258597,
+      "retained_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "previous_threshold": 0.9869791666666666,
+      "previous_source": "CPB-v6.market-01",
+      "retained_threshold": 0.98828125,
+      "retained_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "previous_threshold": 0.9361979166666666,
+      "previous_source": "CPB-v9.market-01",
+      "retained_threshold": 0.9427083333333334,
+      "retained_source": "CPB-v11.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    }
+  ],
+  "retained_quality_policy": "Protect16 maximum final V3/V4/V5/V6/V7/V8/V9/V10/V11 quality values,2 minimum final MAE values and strict minimum final VALIDATION NLL; stable earlier ties; three positivity rules unchanged",
+  "additional_train_NLL_gate": false,
+  "candidate_declared": false,
+  "model_declared": false,
+  "next_version_declared": false,
+  "historical_pass_count_policy": "Prospective future floors only. Historical cards/results/counts remain unchanged and are not recomputed or ranked as identical protocols.",
+  "derivation_policy": "Existing-container standard-library max/min of pinned saved final aggregate JSON only; no model/head calls,refits,training,new quality scores or held-out tensor diagnosis",
+  "review_status": "derived_frozen_proposal_awaiting_independent_review",
+  "v6_final_establishment": {
+    "path": "doc/causal_fresh_v6/final-establishment.json",
+    "bytes": 3938,
+    "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd"
+  },
+  "v6_final_preservation": {
+    "path": "doc/causal_fresh_v6/final-preservation.json",
+    "bytes": 48110,
+    "sha256": "aa99ac04f3c4bd013c617450c6fde2f99e96c041e6b4c8f5465e2d551abe42ce"
+  },
+  "changed_threshold_count": 5,
+  "unchanged_criteria_count": 17,
+  "future_use": "No next candidate,mechanism,geometry or dimension-dependent head settings are declared; any candidate requires its own prospective source/card before execution",
+  "derivation_requires_new_TRAIN_diagnosis": false,
+  "inherited_default_geometry_note": "The inherited default width is historical protocol metadata, not a new candidate selection. Future dimensions/head settings must be separately declared.",
+  "derivation_manifest": {
+    "path": "/opt/cuwacunu/research/causal-v11-retention-review/attempt-001/source/admitted-manifest.json",
+    "bytes": 9381,
+    "sha256": "abd6b6fb0979480b22c5dd9194a4e6cc560a30a4684d5c7aa40c2630fa793eae"
+  },
+  "derivation_source": {
+    "path": "/opt/cuwacunu/research/causal-v11-retention-review/attempt-001/source/derive.py",
+    "bytes": 23336,
+    "sha256": "7abf2c5bbd8911887173cf843335bfa1afb60e13e65a7b8d934e8f45350f20d4"
+  },
+  "retention_derivation_history": [
+    {
+      "parent": {
+        "path": "doc/clean_causal_encoder_search_goal_v5_retention.json",
+        "bytes": 12897,
+        "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+      },
+      "prior_parent_protocol": {
+        "path": "doc/clean_causal_encoder_search_goal.json",
+        "bytes": 8692,
+        "sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25"
+      },
+      "prior_changed_thresholds": [
+        {
+          "id": "past_volatility:neural_mean_r2",
+          "previous_threshold": 0.5551762291104203,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.6481906853790493,
+          "retained_source": "CPB-v5.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_relation:neural_mean_r2",
+          "previous_threshold": 0.20951046448819055,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.3705053482630968,
+          "retained_source": "CPB-v5.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:neural_head_accuracy",
+          "previous_threshold": 0.98828125,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.9887152777777778,
+          "retained_source": "CPB-v5.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "train:standardized_MAE",
+          "previous_threshold": 0.25904599043427573,
+          "previous_source": "CPB-v3.market-01",
+          "retained_threshold": 0.25446393568049436,
+          "retained_source": "CPB-v5.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        }
+      ],
+      "prior_retained_quality_policy": "Protect the maximum final V3/V4/V5 value in each of the16 original market/timing scopes and minimum final TRAIN/VALIDATION standardized query MAE. The original strict best V4 known-VALIDATION Gaussian NLL and three positivity conditions remain unchanged. Literal copying only: exactlyfour supplied V5 thresholds/source labels change; the other18 criteria are identical. A tied best keeps the original earlier source.",
+      "prior_derivation_policy": "Metadata-only complete parent-protocol copy with four exact supplied threshold replacements; no model calls,head fitting,training,quality scoring or numeric reductions performed. Independent review must verify maxima/minima from the pinned final tables inside existing cuwacunu only.",
+      "prior_reference_comparison": {
+        "path": "doc/results/causal_fresh_v4/comparison.json",
+        "bytes": 114876,
+        "sha256": "305d34b525be81c33fb7f2ade2173e71162d7fce56d8fefc82783925607add13"
+      },
+      "prior_diagnosis": "Saved TRAIN-only V4/V5 features,fitted ridge coefficients,saved predictions and bounded original masked-query witnesses under their separately frozen diagnosis card; no encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays"
+    },
+    {
+      "parent": {
+        "path": "doc/clean_causal_encoder_search_goal_v6_retention.json",
+        "bytes": 18275,
+        "sha256": "0965842331056b61faee827a5ea782703205b23bd326298929ed3ecfca4604fb"
+      },
+      "prior_parent_protocol": {
+        "path": "doc/clean_causal_encoder_search_goal_v5_retention.json",
+        "bytes": 12897,
+        "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+      },
+      "prior_changed_thresholds": [
+        {
+          "id": "past_relation:linear_r2",
+          "previous_threshold": 0.3264050670418407,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.6221006868548108,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:linear_head_accuracy",
+          "previous_threshold": 0.9830729166666666,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.9869791666666666,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:neural_head_accuracy",
+          "previous_threshold": 0.9696180555555556,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.9848090277777778,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+          "previous_threshold": 0.9466145833333334,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.953125,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+          "previous_threshold": 0.93359375,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.9340277777777778,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:linear_head_accuracy",
+          "previous_threshold": 0.9934895833333334,
+          "previous_source": "CPB-v3.market-01",
+          "retained_threshold": 0.9973958333333334,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:neural_head_accuracy",
+          "previous_threshold": 0.9887152777777778,
+          "previous_source": "CPB-v5.market-01",
+          "retained_threshold": 0.9921875,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_deleted:linear_head_accuracy",
+          "previous_threshold": 0.9583333333333334,
+          "previous_source": "CPB-v4.market-01",
+          "retained_threshold": 0.97265625,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "train:standardized_MAE",
+          "previous_threshold": 0.25446393568049436,
+          "previous_source": "CPB-v5.market-01",
+          "retained_threshold": 0.2501725785157887,
+          "retained_source": "CPB-v6.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        }
+      ],
+      "prior_retained_quality_policy": "Protect16 maximum final V3/V4/V5/V6 quality values,2 minimum final MAE values and strict minimum final VALIDATION NLL; stable earlier ties; three positivity rules unchanged",
+      "prior_derivation_policy": "Existing-container standard-library max/min of pinned saved final aggregate JSON only; no model/head calls,refits,training,new quality scores or held-out tensor diagnosis",
+      "prior_reference_comparison": {
+        "path": "doc/results/causal_fresh_v6/comparison.json",
+        "bytes": 226032,
+        "sha256": "d4af012a653f85b8fcbd98f2d3d38bb7737305a61c8a6270477794c6b5035203"
+      },
+      "prior_diagnosis": "Any future saved TRAIN-only diagnosis requires a separately frozen card. No encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays follow from this retention derivation."
+    },
+    {
+      "parent": {
+        "path": "doc/clean_causal_encoder_search_goal_v7_retention.json",
+        "bytes": 21175,
+        "sha256": "c0a46527388032ea4f43dd9780ceedef486e5db7b4502ce37165d6e8616368b7"
+      },
+      "prior_parent_protocol": {
+        "path": "doc/clean_causal_encoder_search_goal_v6_retention.json",
+        "bytes": 18275,
+        "sha256": "0965842331056b61faee827a5ea782703205b23bd326298929ed3ecfca4604fb"
+      },
+      "prior_changed_thresholds": [
+        {
+          "id": "past_volatility:neural_mean_r2",
+          "previous_threshold": 0.6481906853790493,
+          "previous_source": "CPB-v5.market-01",
+          "retained_threshold": 0.6733049756106732,
+          "retained_source": "CPB-v7.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "train:standardized_MAE",
+          "previous_threshold": 0.2501725785157887,
+          "previous_source": "CPB-v6.market-01",
+          "retained_threshold": 0.24180533789857825,
+          "retained_source": "CPB-v7.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        }
+      ],
+      "prior_retained_quality_policy": "Protect16 maximum final V3/V4/V5/V6/V7 quality values,2 minimum final MAE values and strict minimum final VALIDATION NLL; stable earlier ties; three positivity rules unchanged",
+      "prior_derivation_policy": "Existing-container standard-library max/min of pinned saved final aggregate JSON only; no model/head calls,refits,training,new quality scores or held-out tensor diagnosis",
+      "prior_reference_comparison": {
+        "path": "doc/results/causal_fresh_v7/comparison.json",
+        "bytes": 280725,
+        "sha256": "1c1e22763231080bbb4b243f6c4fbc9d576364926c2d78da32289edfc697ed51"
+      },
+      "prior_diagnosis": "Any future saved TRAIN-only diagnosis requires a separately frozen card. No encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays follow from this retention derivation."
+    },
+    {
+      "parent": {
+        "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+        "bytes": 24084,
+        "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699"
+      },
+      "prior_criteria": [
+        {
+          "id": "past_volatility:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.964673433811061,
+          "floor_source": "CPB-v3.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_volatility:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.7359692462937604,
+          "floor_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_trend:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.9072134297036245,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_trend:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.5698752307038314,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_activity:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.8628403110608782,
+          "floor_source": "CPB-v3.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_activity:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.6873705450109496,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_relation:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.6221006868548108,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_relation:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.3705053482630968,
+          "floor_source": "CPB-v5.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9869791666666666,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9848090277777778,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.953125,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9340277777777778,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9973958333333334,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9926215277777778,
+          "floor_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_deleted:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.97265625,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_deleted:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9561631944444444,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "train:standardized_MAE",
+          "category": "fixed_query_MAE",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.24180533789857825,
+          "floor_source": "CPB-v7.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        },
+        {
+          "id": "validation:standardized_MAE",
+          "category": "fixed_query_MAE",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.30831692401624544,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        },
+        {
+          "id": "known_validation:Gaussian_NLL_F64",
+          "category": "variance_quality",
+          "dataset_id": "MKT-HIST-2",
+          "floor": -0.04538148809081624,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate < floor - 1e-12"
+        },
+        {
+          "id": "past_trend:all3_neural_R2_positive",
+          "category": "neural_trend_robustness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "all three final neural trend R2 values > 0"
+        },
+        {
+          "id": "past_relation:linear_r2:positive",
+          "category": "relation_usefulness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "candidate > 0"
+        },
+        {
+          "id": "past_relation:neural_mean_r2:positive",
+          "category": "relation_usefulness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "candidate > 0"
+        }
+      ],
+      "prior_reference_tables": [
+        {
+          "instance": "CPB-v3.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        }
+      ],
+      "prior_parent_protocol": {
+        "path": "doc/clean_causal_encoder_search_goal_v7_retention.json",
+        "bytes": 21175,
+        "sha256": "c0a46527388032ea4f43dd9780ceedef486e5db7b4502ce37165d6e8616368b7"
+      },
+      "prior_changed_thresholds": [
+        {
+          "id": "past_volatility:neural_mean_r2",
+          "previous_threshold": 0.6733049756106732,
+          "previous_source": "CPB-v7.market-01",
+          "retained_threshold": 0.7359692462937604,
+          "retained_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:neural_head_accuracy",
+          "previous_threshold": 0.9921875,
+          "previous_source": "CPB-v6.market-01",
+          "retained_threshold": 0.9926215277777778,
+          "retained_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        }
+      ],
+      "prior_retained_quality_policy": "Protect16 maximum final V3/V4/V5/V6/V7/V8 quality values,2 minimum final MAE values and strict minimum final VALIDATION NLL; stable earlier ties; three positivity rules unchanged",
+      "prior_derivation_policy": "Existing-container standard-library max/min of pinned saved final aggregate JSON only; no model/head calls,refits,training,new quality scores or held-out tensor diagnosis",
+      "prior_reference_comparison": {
+        "path": "doc/results/causal_fresh_v8/comparison.json",
+        "bytes": 336980,
+        "sha256": "a7308c1b1b4e1719eb5ffc4c82bc9a7e446a7a174c66daef53b2845ee59025dc"
+      },
+      "prior_diagnosis": "Any future saved TRAIN-only diagnosis requires a separately frozen card. No encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays follow from this retention derivation."
+    },
+    {
+      "parent": {
+        "path": "doc/clean_causal_encoder_search_goal_v9_retention.json",
+        "bytes": 35421,
+        "sha256": "221f7cc748db8bc57bbb8dd066f569d957d16791d2a7cfe0ef0cc3785a579144"
+      },
+      "prior_criteria": [
+        {
+          "id": "past_volatility:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.964673433811061,
+          "floor_source": "CPB-v3.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_volatility:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.7359692462937604,
+          "floor_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_trend:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.9072134297036245,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_trend:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.5698752307038314,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_activity:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.8628403110608782,
+          "floor_source": "CPB-v3.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_activity:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.6873705450109496,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_relation:linear_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.6221006868548108,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "past_relation:neural_mean_r2",
+          "category": "market_retention",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.3705053482630968,
+          "floor_source": "CPB-v5.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9869791666666666,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_intact:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9848090277777778,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9557291666666666,
+          "floor_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9361979166666666,
+          "floor_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9986979166666666,
+          "floor_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9926215277777778,
+          "floor_source": "CPB-v8.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_deleted:linear_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.97265625,
+          "floor_source": "CPB-v6.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_deleted:neural_head_accuracy",
+          "category": "tempo5_retention",
+          "dataset_id": "TEMPO-5",
+          "floor": 0.9561631944444444,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "train:standardized_MAE",
+          "category": "fixed_query_MAE",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.24180533789857825,
+          "floor_source": "CPB-v7.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        },
+        {
+          "id": "validation:standardized_MAE",
+          "category": "fixed_query_MAE",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0.30831692401624544,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate <= floor + 1e-12"
+        },
+        {
+          "id": "known_validation:Gaussian_NLL_F64",
+          "category": "variance_quality",
+          "dataset_id": "MKT-HIST-2",
+          "floor": -0.04538148809081624,
+          "floor_source": "CPB-v4.market-01",
+          "rule": "candidate < floor - 1e-12"
+        },
+        {
+          "id": "past_trend:all3_neural_R2_positive",
+          "category": "neural_trend_robustness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "all three final neural trend R2 values > 0"
+        },
+        {
+          "id": "past_relation:linear_r2:positive",
+          "category": "relation_usefulness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "candidate > 0"
+        },
+        {
+          "id": "past_relation:neural_mean_r2:positive",
+          "category": "relation_usefulness",
+          "dataset_id": "MKT-HIST-2",
+          "floor": 0,
+          "floor_source": "strict positivity",
+          "rule": "candidate > 0"
+        }
+      ],
+      "prior_reference_tables": [
+        {
+          "instance": "CPB-v3.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ],
+      "prior_parent_protocol": {
+        "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+        "bytes": 24084,
+        "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699"
+      },
+      "prior_changed_thresholds": [
+        {
+          "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+          "previous_threshold": 0.953125,
+          "previous_source": "CPB-v6.market-01",
+          "retained_threshold": 0.9557291666666666,
+          "retained_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+          "previous_threshold": 0.9340277777777778,
+          "previous_source": "CPB-v6.market-01",
+          "retained_threshold": 0.9361979166666666,
+          "retained_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        },
+        {
+          "id": "market_scaler:validation_intact:linear_head_accuracy",
+          "previous_threshold": 0.9973958333333334,
+          "previous_source": "CPB-v6.market-01",
+          "retained_threshold": 0.9986979166666666,
+          "retained_source": "CPB-v9.market-01",
+          "rule": "candidate + 1e-12 >= floor"
+        }
+      ],
+      "prior_retained_quality_policy": "Protect16 maximum final V3/V4/V5/V6/V7/V8/V9 quality values,2 minimum final MAE values and strict minimum final VALIDATION NLL; stable earlier ties; three positivity rules unchanged",
+      "prior_derivation_policy": "Existing-container standard-library max/min of pinned saved final aggregate JSON only; no model/head calls,refits,training,new quality scores or held-out tensor diagnosis",
+      "prior_reference_comparison": {
+        "path": "output/runs/causal-fresh-v9/run-001/quality-001/comparison/comparison.json",
+        "bytes": 391743,
+        "sha256": "6efe04164fdfff0d61190cfe63f0f7dbc1750f29b8102dd2649d33cfa8f7859f"
+      },
+      "prior_diagnosis": "Any future saved TRAIN-only diagnosis requires a separately frozen card. No encoder/decoder/neural forwards,head/statistics fits,held-out tensor analysis or old encoder replays follow from this retention derivation."
+    }
+  ],
+  "v7_final_establishment": {
+    "path": "doc/causal_fresh_v7/final-establishment.json",
+    "bytes": 2923,
+    "sha256": "7678e84a676453c0294f0654af6117e06246f1639f4e67f9ff78e9cf51049512"
+  },
+  "v7_final_preservation": {
+    "path": "doc/causal_fresh_v7/final-preservation.json",
+    "bytes": 33900,
+    "sha256": "b416cb5da433fa5db83e66b3024871cb3fefb55e7739bb8796c1aae06ad9029b"
+  },
+  "v8_final_establishment": {
+    "path": "doc/causal_fresh_v8/final-establishment.json",
+    "bytes": 6452,
+    "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba"
+  },
+  "v8_complete_mirror": {
+    "path": "doc/causal_fresh_v8/complete-mirror-attempt-001.json",
+    "bytes": 169457,
+    "sha256": "ab69cc66df4ba55a4baaf9b216185ff929d1d84a1d316b89802f04f4bb09f96c"
+  },
+  "v8_final_preservation": {
+    "path": "doc/causal_fresh_v8/final-preservation.json",
+    "bytes": 140977,
+    "sha256": "919b4f11610e3ab61b63afbc3612145506e4c47a3be3c777f119d47c49e7126a"
+  },
+  "v9_final_establishment": {
+    "path": "doc/causal_fresh_v9/final-establishment.json",
+    "bytes": 8847,
+    "sha256": "aeb9fbadcf8afad2bb48812b957ca23b122c3df92d5459c18859dd16637e4cdf"
+  },
+  "v9_complete_mirror": {
+    "path": "doc/causal_fresh_v9/complete-mirror-attempt-001.json",
+    "bytes": 208105,
+    "sha256": "fcee958e257a26b30e9e470bfcd0906d55f269f4952d8cc27a36e1cf89b0b115"
+  },
+  "v9_final_preservation": {
+    "path": "doc/causal_fresh_v9/final-preservation.json",
+    "bytes": 309861,
+    "sha256": "1bdf7642f82d49b21f59cbbfbbc8ce6a66d341fe72862f370cb9f0d3080cfaa7"
+  },
+  "v11_final_establishment": {
+    "path": "doc/causal_fresh_v11/final-establishment.json",
+    "bytes": 8729,
+    "sha256": "01f96fea179f6f7d8a7bb28befca9271cd048ac8d83f05f9e64418276c47dda2"
+  },
+  "v11_complete_mirror": {
+    "path": "doc/causal_fresh_v11/complete-mirror-attempt-001.json",
+    "bytes": 296981,
+    "sha256": "c18962bd15f876f4c0a2ec776bb2a00e687048673ba72f96d8b702c16c27fa26"
+  },
+  "v11_final_preservation": {
+    "path": "doc/causal_fresh_v11/final-preservation.json",
+    "bytes": 1066891,
+    "sha256": "805aa2183f14dbfd3a7bb521a67f5d01e33b22008b5244da45745baa8c51bab0"
+  },
+  "historical_V9_reporting_recovery_preserved": {
+    "card": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+      "bytes": 203096,
+      "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+    },
+    "receipt": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+      "bytes": 268051,
+      "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+    },
+    "failure_mirror": {
+      "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+      "bytes": 208493,
+      "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+    },
+    "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V11 recovery or recipe change"
+  }
+}

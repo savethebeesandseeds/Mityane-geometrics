@@ -1,0 +1,75 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 9,
+  "design_slot": "RPB-v9",
+  "canonical_registered_tag": "RPB-v9",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Global bottleneck with native view agreement",
+  "registered_design_parameters": {
+    "inference_architecture_tag": "RPB-v4",
+    "training_policy_id": "rpb-training-native-view-agreement-015-v1",
+    "native_global_size": 32,
+    "channel_mixer_layers": 1,
+    "global_bottleneck_mode": 2,
+    "reconstruction_signal": "ordinary-view exact served learned global32 export; original queries and hierarchical Huber unchanged",
+    "student_context_coordinate_deletion_rate": 0.15,
+    "agreement_coefficient": 0.05,
+    "variance_coefficient": 0.01,
+    "variance_std_threshold": 0.5,
+    "variance_epsilon": 0.0001,
+    "loss_scale_floor": 1e-06,
+    "loss_scale_recipe": "point0 legal TRAIN native32 population standard deviation; fit once without labels; loss-only"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/10"
+    }
+  ],
+  "declared_historical_instances": [],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Current shared implementation locator is verified, but byte-exact equivalence to every historical training-source snapshot is not re-proved. Frozen capsules remain authoritative.",
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0,
+  "current_component_locator": {
+    "status": "verified current shared component only; historical exact definition is not established by this locator",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "a76dc9fb9e767b56a5a3e7eeeb7de7742bdb2399cd9afb21b075fcb9a3ea3d01",
+      "bytes": 19785,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Model",
+      "ModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/learned_global.conf",
+      "sha256": "0587b62fab16245094b4ee9c936cc4c8ec94dbbca89be10776a7106e61c1c4d6",
+      "bytes": 649,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/learned_global.conf"
+  },
+  "historical_exact_definition_status": "unproved; use the pinned original registry/card/capsule and explicit gaps"
+}

@@ -1,0 +1,93 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v4_v5_TRAIN_diagnosis_independent_audit_card_v1",
+  "stage": "declared_after_main_diagnosis_before_independent_execution",
+  "scope": "Independent implementation of the previously declared saved TRAIN arithmetic; no selection of metrics, candidate or objective from the diagnosis outcome.",
+  "main_card": {
+    "path": "doc/CAUSAL_V4_V5_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 49118,
+    "sha256": "fcafd7c6dff4a0cbab6e103573e129532a8d9a733374971289c0da601f2d0aaa"
+  },
+  "main_diagnosis": {
+    "path": "doc/causal_v4_v5_train_diagnosis/diagnosis.json",
+    "bytes": 2079052,
+    "sha256": "e4d315a062f7021897476f154ce0bdc572d0e8dfb994fc4840b431dda6194b24"
+  },
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 40538,
+      "sha256": "4cfc9592a926dfcfce18a0a3e5b0bd671f600aef2ff9fa1090c4e70991d98e2a"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "source_ownership": "Complete owned physical source/reader copies of the previous independent V3/V4 audit, adapted independently for V4/V5/native40/all four tasks. No import of diagnostic producer, model or numeric framework.",
+  "allowed_inputs": "Exactly the same41 main-card IDs and independently checked per-kind tensor-field allowlists.37TRAINarchives/four aggregate queryJSONs with only TRAIN subtree used;23preservation-only files plus final V5 broad receipt hash only. No old V3 learned weights or held-out arrays.",
+  "scope_checks": [
+    "All four V4/V5 initial/final TRAIN112 coordinate moments/ranges/target correlations and population block covariance/participation ratios; native36/40 and uncertainty4 dimensions",
+    "All three saved TRAIN head predictions for every four tasks, exact targets/IDs/groups/support and frozen D36/D40 seeds; TRAIN normalizer moments, saved ridge reconstruction and fixed early56/late56 scores",
+    "All four task readout block contributions/covariances/residual alignment including V5 uncertainty4 and per-block early56/late56 summaries; no refit or neural forward",
+    "First8 masked TRAIN query cells per stage: exact masks/timestamps/hierarchical MAE/NLL,27 channel-feature panels/distributions/pressure; all112 TRAIN scalar arrays/means/quantiles/halves distinct from cell coverage",
+    "Independent local mean4 NLL/MAE/Huber1 adjoints, V4 detached variance hypothetical route versus V5 live separate uncertainty4, live variance-head parameter adjoints; same-mean-basis cosines only",
+    "Prespecified scalar finite differences: first16 supported cells/stage,64cells/four derivative kernels=256checks; unchanged prior successful finite-difference tolerance/step policy",
+    "Common initial36 prefix and masked distributions exact; extra uncertainty4 finite/nonzero; cross-model scalar differences and allowed-field producer trace;65input and preservation hashes checked before/after"
+  ],
+  "finite_difference_contract": {
+    "cells_per_stage": 16,
+    "stages": 4,
+    "derivatives_per_cell": 4,
+    "expected_checks": 256,
+    "mean_step": "h=min(1e-6*max(1,abs(error)),0.25*abs(error)) for nonzero error; h=1e-6 at zero",
+    "variance_step": "h=1e-5*variance; both perturbed variances stay positive",
+    "objectives": [
+      "0.5*(error^2/variance+log(variance)) mean derivative",
+      "abs(error), symmetric zero subgradient",
+      "Huber(delta1), derivative clip(error,-1,1)",
+      "Gaussian NLL variance derivative"
+    ],
+    "tolerance": "absolute1e-6+relative2e-4; fixed before execution",
+    "limits": "Scalar likelihood kernels plus independently reconstructed linear chain rules; no encoder or optimizer Jacobian replay."
+  },
+  "saved_arithmetic_tolerance": "absolute1e-10+relative1e-9 as main prospective card; exact masks/IDs/pairing/field selectors",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "exclusive_source_and_output_leaf": true,
+    "model_calls": 0,
+    "neural_forwards": 0,
+    "fits": 0,
+    "training_updates": 0,
+    "held_out_tensor_reads": 0,
+    "host_project_execution": false
+  },
+  "failure_policy": "Preserve failed source/card/stdout/output and use additive audit-only corrections if necessary. Never change main diagnosis or replay models/heads.",
+  "CLI": "--card FROZEN_MAIN_CARD --diagnosis SAVED_JSON --audit-card THIS_CARD --output EXCLUSIVE_JSON",
+  "declared_utc": "2026-10-15T22:34:33.8946103Z",
+  "native_dimensions": [
+    36,
+    40
+  ],
+  "parent_sources": [
+    {
+      "path": "code/research/causal_v3_v4_train_diagnosis_audit/audit.py",
+      "bytes": 32071,
+      "sha256": "1ccab1aa0cc5c64176f4440fe363b0d9e6170a60ebcabdd1afa29970be5a40dd"
+    },
+    {
+      "path": "code/research/causal_v3_v4_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "pre_execution_preservation": {
+    "path": "doc/causal_fresh_v5/final-preservation.json",
+    "bytes": 46031,
+    "sha256": "0cb3ec54789c580df741d68b5923459040948a38284584eca9691540c597873a"
+  },
+  "cross_basis_policy": "No mean4-versus-uncertainty4 or different-encoder cosine/orthogonality/conflict inference; local norms depend on coordinate scale; V4 hypothetical sensitivity is never applied."
+}

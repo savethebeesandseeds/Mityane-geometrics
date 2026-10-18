@@ -1,0 +1,554 @@
+{
+  "kind": "cpb_v8_owned_architecture_copy_provenance_v1",
+  "status": "implemented_source_pending_independent_admission_build_and_runtime",
+  "source_code_version": "CPB-v6",
+  "direct_source_root": "code/encoders/causal_patch_bottleneck_mae/versions/v6",
+  "source_files_read": 49,
+  "owned_version_folder_files": 50,
+  "owned_family_files_including_public_copy": 51,
+  "owned_headers": 43,
+  "operation": "Complete physical V6 family and external-public-header copies rewritten to V8 ownership. The sole architecture change is four original-position temporal softmax pools using disjoint rows of the existing export projection in both actual ordinary/contextual paths. No weights, optimizer state or fitted statistics imported. Only owned V8 files changed.",
+  "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+  "source_updates": 0,
+  "pretrained_ancestor": "none",
+  "temporal_pooling_policy": "original-position-four-bin-disjoint-export-rows-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_typed_partition": "Long[5]=[4,padded_original_patch_count,backbone_export_width,K/4,D/4]",
+  "typed_temporal_fields": [
+    "temporal_pooling_policy",
+    "temporal_pooling_partition_v1"
+  ],
+  "typed_locations": [
+    "inference root",
+    "inference payload",
+    "TRAIN root",
+    "TRAIN encoder",
+    "TRAIN encoder.payload"
+  ],
+  "typed_kinds": [
+    "cpb_v8_inference_checkpoint_v1",
+    "cpb_v8_location_scale_decoder_payload_v1",
+    "cpb_v8_causal_training_state_v1"
+  ],
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "optimizer_independence_claimed": false,
+  "geometry_expected_unexecuted": {
+    "native_width": 40,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "fixed_prior_tensors": 1,
+    "fixed_prior_values": 3888,
+    "total_tensors": 77,
+    "total_values": 298640,
+    "new_parameters": 0,
+    "new_constructor_random_draws": 0
+  },
+  "static_constructor_copy_check": {
+    "model_constructor_body_exact_after_namespace_and_validation_only_rewrite": true,
+    "no_module_registration_or_random_draw_change": true,
+    "public_header_copies_byte_exact": true
+  },
+  "trace_contract": {
+    "weights": "actual per-original-bin mass1/nonempty or exact0/empty; flat mass equals number nonempty bins",
+    "bin_valid": "bool[R,4] pool_bin_valid and contextual_pool_bin_valid",
+    "empty_bins": "finite score fallback before softmax; zero masked weights; zero projected slice after bias",
+    "membership": "original positions, never packed rank",
+    "legal_profile": "padded K and D divisible4; existing served globalmode2/source0"
+  },
+  "prospective_data_learning_admission": {
+    "requires_grad_optimizer_tensor_count": 76,
+    "mandatory_nonzero_data_gradient_and_movement_tensors": 75,
+    "only_exempt_tensor": "core.encoder.level.base.backbone.pool_score.bias",
+    "exempt_values": 1,
+    "gauge_observed_and_logged": true,
+    "roundoff_or_decay_not_data_learning": true,
+    "centered_positions": "each of four pool_positions.weight four-position blocks needs >=1 nonzero within-bin-centered postclip data-gradient event and final contrast movement",
+    "export_slices": "four eight-row export_projection.weight/bias slices each need >=1 actual data-gradient event and final movement",
+    "empty_bin_steps_legitimate": true,
+    "scalar_identifiability_claimed": false
+  },
+  "initial_numeric_pairings": {
+    "reference": "saved V6 initial DATA/statistics only, zero old encoder calls",
+    "features": "eight initial archive DATA tensors compare indices20:40; content20 intentionally changes",
+    "statistics": "five numeric fresh-stat archive pairings",
+    "own_initial_fixed_heads_required": true,
+    "old_checkpoint_import": false
+  },
+  "fixture_declared_unexecuted": {
+    "file": "tests/v8_temporal_pooling_test.cpp",
+    "backbone_encode_calls": 1,
+    "direct_owned_kernel_calls": 2,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_optimizer_steps": 1,
+    "optimizer_step_scope": "owned backbone pooling fixture parameters; not whole76 proof",
+    "manual_f32_absolute_relative_tolerance": 2E-05,
+    "gauge_absolute_relative_tolerance": 2E-06,
+    "per_bin_mass_absolute_tolerance": 2E-06,
+    "flat_mass_absolute_tolerance": 8E-06,
+    "empty_support_and_zero_exact": true,
+    "prefix": "PASS CPB-v8 original-position-four-bin-disjoint-export-rows-v1:"
+  },
+  "new_owned_additions": [
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/temporal_pooling.h",
+      "bytes": 4593,
+      "sha256": "6e743a5cd1ed72cc81330e9dea07a29df139197cb81052464eb4c1856cffb5df"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/tests/v8_temporal_pooling_test.cpp",
+      "bytes": 12832,
+      "sha256": "3ab76fc73b3f4c7b0353834129abb2c28483cf35810094c4dde2c7dfebf2059f"
+    }
+  ],
+  "source_bindings": [
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/config/v6.conf",
+      "source_bytes": 685,
+      "source_sha256": "e225b38409937b57edb00ab4ddbe3de1c9a508e2f44157e17891bdb41ac83df4",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/config/v8.conf",
+      "destination_bytes": 685,
+      "destination_sha256": "9e055ecfea383e135c88db42823c82e307a4f83a28455d8a3f61075d77eb3b84",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/conditioned_change_bank.h",
+      "source_bytes": 1651,
+      "source_sha256": "76655ce98b94cc71c16228a77711d0597837cf4bcade70d745a74adebea62910",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/conditioned_change_bank.h",
+      "destination_bytes": 1651,
+      "destination_sha256": "2c7bbd21cc2f7479e11d2137ae8d4e1c20e5275b3a870f2a7cb882a097fc6bc6",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/conditioned_change_config.h",
+      "source_bytes": 1480,
+      "source_sha256": "5e34aa0a214aa7b804e9880474d3d2d536394e848c6642b95170968360b2cdef",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/conditioned_change_config.h",
+      "destination_bytes": 1480,
+      "destination_sha256": "03f2178197ce388b699d039a2dd8a0ef858e0cc94e91b20ee30815af3fb0a126",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/conditioned_change_normalizer.h",
+      "source_bytes": 11393,
+      "source_sha256": "09c8650554532346828e41197afd2845477dc124680ac33183517b76cb936592",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/conditioned_change_normalizer.h",
+      "destination_bytes": 11393,
+      "destination_sha256": "8b9425466740606f333dce0da192285666e80c7e82184b3e21891dede2ae4a3e",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/config.h",
+      "source_bytes": 5959,
+      "source_sha256": "efec4beaf33c522f5e24af6dad2eb1e259b81beff636f175085dd10d9149384c",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/config.h",
+      "destination_bytes": 5959,
+      "destination_sha256": "b5a154a823c61d9019339bd7cd0b297ef265791a488f76fe406585b2a190a900",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/configurable_spectral_checkpoint_io.h",
+      "source_bytes": 3102,
+      "source_sha256": "b38723c1c880d461596116ebdc62a5f8027afa43d2f82e9e38469aaa25d8f2d4",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/configurable_spectral_checkpoint_io.h",
+      "destination_bytes": 3102,
+      "destination_sha256": "b0b24ce62f34cb75acdfcb9c320f97e1caba6654da8cecd86133095c22975815",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/configurable_spectral_checkpoint.h",
+      "source_bytes": 7352,
+      "source_sha256": "aa1114ceaf8f5ac420ebf48fd9bf70aa1071d9af7c4a6abbadf5b3c8248645b4",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/configurable_spectral_checkpoint.h",
+      "destination_bytes": 7352,
+      "destination_sha256": "60042caedfa1e4ee89f8c83df6b6fcc4e07f6809e31ed7cf590a1ad87c228e7a",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/configurable_spectral_config.h",
+      "source_bytes": 4835,
+      "source_sha256": "773e011e35e9282a830539805b05fb9e9e7b18b0f56c141ad31671497b51f0cb",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/configurable_spectral_config.h",
+      "destination_bytes": 4939,
+      "destination_sha256": "1522191de1c7b4a6911b1e9b5a6cdaf496ef7351d683ff1624e33af22858fb82",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/configurable_spectral_model.h",
+      "source_bytes": 13751,
+      "source_sha256": "e99297b783858fdcabc33da7071310da73911bfc83b499f2d91a9dbf871df562",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/configurable_spectral_model.h",
+      "destination_bytes": 13751,
+      "destination_sha256": "32cbfb4fc74500e1954444d23e3db4b31a71f69d74be49485ff491ae196d01a0",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/configurable_spectral_relation.h",
+      "source_bytes": 8180,
+      "source_sha256": "8ba0a94571983564d3848a25ece3cc518070deb63c753b94bc95e84ded8c5eed",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/configurable_spectral_relation.h",
+      "destination_bytes": 8180,
+      "destination_sha256": "2413a6d386d0c1f06834de75cc1bb8a21ae43610d0eaac70366b0417aa12e2ce",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/consecutive_change_bank.h",
+      "source_bytes": 3579,
+      "source_sha256": "e70a419e36f54ddf109503f061bc70b626af6a5bd90205a1ecc3cd35d0d051c0",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/consecutive_change_bank.h",
+      "destination_bytes": 3579,
+      "destination_sha256": "0846c779d5c2bc12f37ab54ed3802a742e7be883aa48ffa069c39210881756b3",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/consecutive_change_checkpoint.h",
+      "source_bytes": 5184,
+      "source_sha256": "e0a7c7dd78432b0603a75c5bb379773af939ed4bdaa0c5918674746b28feb3b7",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/consecutive_change_checkpoint.h",
+      "destination_bytes": 5184,
+      "destination_sha256": "e1023c211ec377588bc1bb2c96d0806c92d3af18ede8f12a9b6f79b35c5e9014",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/consecutive_change_config.h",
+      "source_bytes": 1704,
+      "source_sha256": "0eb80831adecb156b62462d5800303b37395d9aa0d4bf2ff7ea75f04d58821c2",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/consecutive_change_config.h",
+      "destination_bytes": 1704,
+      "destination_sha256": "60507d01b82524fbab46ee09050e12f48b5a1a86124713008a189a0305769739",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/consecutive_change_model.h",
+      "source_bytes": 4016,
+      "source_sha256": "08afed7fbd589d0b917a6fb649e992252b99922cd978d23b3f0a515673837bc2",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/consecutive_change_model.h",
+      "destination_bytes": 4016,
+      "destination_sha256": "95dcdcf3803725889a8f94ea53dc35b27b6f3bf9caf94b7937384fcf7ca984b2",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/consecutive_change_training_state.h",
+      "source_bytes": 14188,
+      "source_sha256": "ad1796a5f28066bc3bc3ebdbe09a577d1592d82b2fb4fe64438fd350d3d1df00",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/consecutive_change_training_state.h",
+      "destination_bytes": 14188,
+      "destination_sha256": "d9c87f545f5e66c22375158a7e95dd798039c142aafdc81bd4097fb333af82ef",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/content_ordered_relation_bank.h",
+      "source_bytes": 5882,
+      "source_sha256": "6fba02887fafd525ad9b88fba42b15afbbcb097dc6d5a0f3150cfcc31e50b130",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/content_ordered_relation_bank.h",
+      "destination_bytes": 5882,
+      "destination_sha256": "52121af4507ad6fb2601b7204bcfe21a5b2a71cb3f1b37a9a7ea3cec5cd5b737",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/content_ordered_relation_checkpoint.h",
+      "source_bytes": 5520,
+      "source_sha256": "95204c6b44004229f4391febbe7e3d1fe749387c7f1142cea4a05c96101b948d",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/content_ordered_relation_checkpoint.h",
+      "destination_bytes": 5520,
+      "destination_sha256": "2452dd301ce21b1a152b5d40debe260a8f6c211460ee711a2e606afe821f677c",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/content_ordered_relation_config.h",
+      "source_bytes": 2705,
+      "source_sha256": "9eb921892e6d17766d6b5b2b0c0fa2fe3ca48c606d488c8c8fc8866b5dde122d",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/content_ordered_relation_config.h",
+      "destination_bytes": 2705,
+      "destination_sha256": "bac233ca4b61645bcbc68984a3f1849ded709625e91b0c53b5519a5dddada277",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/content_ordered_relation_model.h",
+      "source_bytes": 6468,
+      "source_sha256": "df0aef775417c485185212d254e6a6d0791378b08ff9f8e9200861cd5a983fb5",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/content_ordered_relation_model.h",
+      "destination_bytes": 6468,
+      "destination_sha256": "7ac86f7f9a8794bea7947d93d705b224d5820a3daf5703c1ce374ebac0dfb3b3",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/document.h",
+      "source_bytes": 8087,
+      "source_sha256": "a6e611f1f9dc1d58c7c23e9283dbd9378f00a6419e98083ee15089083be004d1",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/document.h",
+      "destination_bytes": 8087,
+      "destination_sha256": "2a254cf648def5bb8b68291f0669dbce5666048359cf9192ddc56bc61cf03425",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/encoder.h",
+      "source_bytes": 3775,
+      "source_sha256": "534a995084e3ea63adba8eec6d056e5099bbea05005c31c891edc11a1f40fef6",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/encoder.h",
+      "destination_bytes": 3775,
+      "destination_sha256": "a54163adcd7348f9061d128be26b57c5de18a431e42374204c245df603452c5f",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/location_scale_decoder_checkpoint.h",
+      "source_bytes": 11093,
+      "source_sha256": "bf6f80ecdbd364a79d0c1b44660558f0828041c50b80cbcc7f81944322b239f6",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/location_scale_decoder_checkpoint.h",
+      "destination_bytes": 12010,
+      "destination_sha256": "e019b27c4d2c10c8c4b1d8ee52fdfcec5f3665d5cc4bef7e2d9c0d5c8325d349",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/location_scale_decoder_config.h",
+      "source_bytes": 3520,
+      "source_sha256": "074729698ea5d661a1ae19a30e699628f00af63d3ecf70f7ce730744b04cc518",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/location_scale_decoder_config.h",
+      "destination_bytes": 3557,
+      "destination_sha256": "e424448ef58dd9dd85b0ddf1839ced6433c215fa1bec4b59ad2cc27a97c022ec",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/location_scale_decoder_model.h",
+      "source_bytes": 17593,
+      "source_sha256": "ba45a5ed1b9ed6c93508eaee6e31715c3ba0cf787eebdb97c967ff9cda0bc897",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/location_scale_decoder_model.h",
+      "destination_bytes": 17593,
+      "destination_sha256": "209a6e0077f845191f60988118640089d11c9b57393ae655be3a7e667a173d71",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/location_scale_decoder_settings.h",
+      "source_bytes": 3225,
+      "source_sha256": "be335e45e72bed515ac5a6b95ee2764b83c3cfb8badeac7629c25472dc4e372b",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/location_scale_decoder_settings.h",
+      "destination_bytes": 3225,
+      "destination_sha256": "de0ca930d994dc971fc143815fbe4de0ac9ead5e847e5cd6dfc97d94635f9e5c",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/location_scale_decoder_training_state.h",
+      "source_bytes": 341,
+      "source_sha256": "5a8e0505c99f3d0b11b0b168409d21992040d580301319cf296f405716b5ed87",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/location_scale_decoder_training_state.h",
+      "destination_bytes": 341,
+      "destination_sha256": "860bc4d2d83579f73f22c55ccb95e8e35be3e15f208eedd2861c6c495d68892e",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/masking.h",
+      "source_bytes": 3877,
+      "source_sha256": "22e88bdab2ad187f182f26bcdb2917979a641d622c4b896d4db42ca14169afd2",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/masking.h",
+      "destination_bytes": 3877,
+      "destination_sha256": "a5b8cf5185c22becb08df6944f1c4fdf3f9be45110b91cef0c8231b0b679ef43",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/model.h",
+      "source_bytes": 20895,
+      "source_sha256": "a32d70d001d78e2bcf9746b7d66c88a1200cd17a2866702c576cd7795012393f",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/model.h",
+      "destination_bytes": 20768,
+      "destination_sha256": "2ea8e5a9607fd2151da9e505103b0fbfb5127bf76e87a964103e452e77b87172",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/objectives.h",
+      "source_bytes": 3159,
+      "source_sha256": "389d9bcb4daa297ecb9f4d9fb3220558a3d5b5c0848faf61bec64570f14c01c5",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/objectives.h",
+      "destination_bytes": 3159,
+      "destination_sha256": "2d5822cb780454421aa4fd282dc41ad3019de8c92390467573fea19d515023f7",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/preprocessing.h",
+      "source_bytes": 10346,
+      "source_sha256": "00adda534c0f419e9fa9cfb556f84aea8ccd198137673f8e8884f0f5c6fddf00",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/preprocessing.h",
+      "destination_bytes": 10346,
+      "destination_sha256": "134babda23cdfe6193ce2cb2488b93a0ec228768c23c377db22540ec19e1012e",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/relative_change_bank.h",
+      "source_bytes": 4784,
+      "source_sha256": "e7edd022e377b378689c2263f970feac846ba9e33cd9cc12a612392feda2a24c",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/relative_change_bank.h",
+      "destination_bytes": 4784,
+      "destination_sha256": "a03adad5eec2f150eeed9196feb9b24c8d5ce4931ff5d4eb5ee289544ad88fc2",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/relative_change_config.h",
+      "source_bytes": 1927,
+      "source_sha256": "2a75708916024565f6b1d628ba1069d4021edb5a4ccabc651aeab2e604a83625",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/relative_change_config.h",
+      "destination_bytes": 1927,
+      "destination_sha256": "20148315e12ac4e2852e4fffe09c134296b14abbadbe42c7d8e56d9e69eaa6a0",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/relative_change_normalizer.h",
+      "source_bytes": 3047,
+      "source_sha256": "86b234a6f1f58b1a3637b2962a0f7fdbca5651034669a2d269c4318762190bc3",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/relative_change_normalizer.h",
+      "destination_bytes": 3047,
+      "destination_sha256": "7229edc94a3d0f436c46308dd0c6b8c68e97b3ce395335539c43c28f2211a854",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/separated_change_checkpoint.h",
+      "source_bytes": 5379,
+      "source_sha256": "7ae240abf8e06079df5cbd14b9bb2408b69d050b9f83b599f3e6f11a552b9d4f",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/separated_change_checkpoint.h",
+      "destination_bytes": 5379,
+      "destination_sha256": "dcc461fd008e121ffa7d57ffc49b5794989cc7873e4fff706b5e04792293f0b8",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/separated_change_config.h",
+      "source_bytes": 1629,
+      "source_sha256": "a79547b646624cde132c2bc29f224e7724e662768359dadd1493ebaa4f695a92",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/separated_change_config.h",
+      "destination_bytes": 1629,
+      "destination_sha256": "86430a7dee07ad3689aa43be33acd04bf38277b6f59f44622f80c31dbf427c08",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/separated_change_frozen_level.h",
+      "source_bytes": 4534,
+      "source_sha256": "bb3e2deb7d09623d476caf6ab2d52f5eb2c23e74b7cd29c3935df91ceb419873",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/separated_change_frozen_level.h",
+      "destination_bytes": 4534,
+      "destination_sha256": "fc52fc7da10f3172c05ee03d3977389952f471aee6aecacf91520c28e274df3a",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/separated_change_model.h",
+      "source_bytes": 5723,
+      "source_sha256": "adb5d46f2c4e36cb943a3c13b1743816b40d41535b1800f25da052be964c92ea",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/separated_change_model.h",
+      "destination_bytes": 5723,
+      "destination_sha256": "141b2b5c6fdda53bca10a1cc5113aa6ebb5634a771c1aab34eb3ac9362a7690d",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/separated_change_training_state.h",
+      "source_bytes": 7342,
+      "source_sha256": "6c6fd0e5f8434055ee5735cfd797bc0fdb9261666f46e9ac7f5b8dcffc66d66a",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/separated_change_training_state.h",
+      "destination_bytes": 7342,
+      "destination_sha256": "bdd21b2191abb043e7ebd83653e6dbc76d715fbc8d90655d01c4df220fc50299",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/simple_kv_block.h",
+      "source_bytes": 8406,
+      "source_sha256": "8d3dc9030ea66c69cbcbd12ea033880561dde147e9e54480b58e3756a519e41e",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/simple_kv_block.h",
+      "destination_bytes": 8406,
+      "destination_sha256": "8a335cbbb226ad47d4eaf46bd149097988d90ef45b3fc4f133b8606048ed7905",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/tokenization.h",
+      "source_bytes": 3455,
+      "source_sha256": "d06bc12059de0849b9a0f9101d367cdd9f500605a719c7ece3916fef6bc543ef",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/tokenization.h",
+      "destination_bytes": 3657,
+      "destination_sha256": "e442b933e64eb4fa499db9eaca44dd65df3403130c4de4d9082c2edf6472d10f",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/types.h",
+      "source_bytes": 5710,
+      "source_sha256": "99c8a6ead166a82babffa21d392dd2cefa9460b94cb3e71335281cb69198a595",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/types.h",
+      "destination_bytes": 5710,
+      "destination_sha256": "3bacbde6d9bc5c804f7870b8234e52a858b6efd9caa93d546a7b36bf0203c45c",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v6/visible_difference.h",
+      "source_bytes": 4814,
+      "source_sha256": "2d87a1b6f586313b4151e73c70ea1abe1ea373db0a59a585581992d55025169f",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v8/visible_difference.h",
+      "destination_bytes": 4814,
+      "destination_sha256": "ae31926c3066e8f57e20e7a37bc5b196b2a6ee22684984174c8f0568ca0e259f",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v6.h",
+      "source_bytes": 34333,
+      "source_sha256": "0fea1c6353706df52b8e05a156edf202ceaef9b5272934fa1c8e6b7b90a1e1c2",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v8.h",
+      "destination_bytes": 35149,
+      "destination_sha256": "aebf6278062fd9637a14934c544593d52bdc2d85c693b63110aff1fc6213dbc4",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/provenance.json",
+      "source_bytes": 34590,
+      "source_sha256": "2448a923be799ed97d04cc380da4802fd4f0beca2fe53d4b2d7c6b8841e970bd",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/provenance.json",
+      "destination_bytes": null,
+      "destination_sha256": null,
+      "destination_self_binding_excluded": true
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/README.md",
+      "source_bytes": 4355,
+      "source_sha256": "a2b41bbd2cd3f334d64b072eb4a0e1293c20b389f997b531c84092315abb07a4",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/README.md",
+      "destination_bytes": 5229,
+      "destination_sha256": "5b3d8f43d604f5b255fcbf38133911a76379155022875f4dd40bf76241101a9e",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/tests/v6_test.cpp",
+      "source_bytes": 54799,
+      "source_sha256": "e65253b3980a27270df78fa51492d5aac62c7d1eb26ce1c6985ed80b52f2d0ba",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/tests/v8_test.cpp",
+      "destination_bytes": 57104,
+      "destination_sha256": "c49e7b8c0bc6eb376f70f3e74cdec4445ca111ea2236cd8386398b3bfdf11066",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/tests/v6_variance_gradient_test.cpp",
+      "source_bytes": 16467,
+      "source_sha256": "37e653e09a046f7e5607abe9d1a96f15e144d19e443294a40005d60f59c53c36",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/tests/v8_variance_gradient_test.cpp",
+      "destination_bytes": 16467,
+      "destination_sha256": "ff66866b75740438b89e797231f949cde5144ec2352f49f3165e0ad64d277598",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6/v6.mk",
+      "source_bytes": 1590,
+      "source_sha256": "9bc63585777c4b0a6735609375859e58434d776a1652c6182facfaf5feba22dc",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8/v8.mk",
+      "destination_bytes": 2293,
+      "destination_sha256": "9c3c3e6d311e092f46620e563ca90da3cb05b23b80ce54d8d09b321929d7caaa",
+      "destination_self_binding_excluded": false
+    },
+    {
+      "source_path": "code/encoders/causal_patch_bottleneck_mae/versions/v6.h",
+      "source_bytes": 34333,
+      "source_sha256": "0fea1c6353706df52b8e05a156edf202ceaef9b5272934fa1c8e6b7b90a1e1c2",
+      "destination_path": "code/encoders/causal_patch_bottleneck_mae/versions/v8.h",
+      "destination_bytes": 35149,
+      "destination_sha256": "aebf6278062fd9637a14934c544593d52bdc2d85c693b63110aff1fc6213dbc4",
+      "destination_self_binding_excluded": false
+    }
+  ]
+}

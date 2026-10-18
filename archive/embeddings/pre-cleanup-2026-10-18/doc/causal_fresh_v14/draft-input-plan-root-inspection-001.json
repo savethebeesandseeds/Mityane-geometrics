@@ -1,0 +1,74 @@
+{
+  "kind": "cpb_v14_false_input_plan_root_documentary_inspection_v1",
+  "status": "passed",
+  "proposal": {
+    "path": "doc/causal_fresh_v14/draft-input-plan-001.PROPOSED.json",
+    "bytes": 89201,
+    "sha256": "024a5c3fbcc192f994344f94fb7b986b617711ccee04a4544f1ebf2bb4f3d4e4"
+  },
+  "metadata_and_source_pins_rehashed": 211,
+  "saved_archive_files_hashed_only": 13,
+  "archive_numeric_reads": 0,
+  "literal_fixture_tokens": 32,
+  "source_derived_counts_status": "source_owner_derived_and_independently_reviewed",
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "linear_parameters": 164,
+      "neural_parameters": 724,
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "Unchanged dimension/repetition stream function copied as owned code; no historical encoder execution",
+      "linear_parameters": 82,
+      "neural_parameters": 690,
+      "input_scaler_policy": "Fresh cohortTRAIN fit once/cohort shared across initial/final, or freshly refitted marketTRAIN scaler; same numerical recipe as v3",
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "dimension_policy": "Same unchanged stream_seed(repetition,native_width) implementation for D40; widths/parameter counts differ from native36 references; no tuning"
+  },
+  "additional_execution_admitted": false,
+  "peer_review_pending": true,
+  "host_checker_note": "First read-only check stopped on self-imposed noPT-hash guard when legitimate declared V13 DATA pins appeared. No input changed. Actual byte/hash-only verification is authorized and completed here;no tensor values interpreted."
+}

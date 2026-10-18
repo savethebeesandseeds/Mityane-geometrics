@@ -1,0 +1,30 @@
+# Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.
+# Host metadata/hash inspection only; refuses an absent or incomplete diagnosis.
+param()
+$ErrorActionPreference='Stop'
+$researchRoot='C:\Work\cuwacunu\cuwacunu_embedding'
+$documentRoot='doc/causal_v6_v7_train_diagnosis/'
+$destination=Join-Path $researchRoot ($documentRoot+'independent-audit-card.json')
+if(Test-Path -LiteralPath $destination){throw 'Preserve the frozen independent audit card'}
+function Pin([string]$relative){
+ if([IO.Path]::IsPathRooted($relative)-or$relative.Contains(':')-or$relative.Contains('\')-or$relative-match'(^|/)\.\.(/|$)'){throw 'Bounded repository path required'}
+ $file=Join-Path $researchRoot $relative;$item=Get-Item -LiteralPath $file
+ if($item.PSIsContainer-or($item.Attributes-band[IO.FileAttributes]::ReparsePoint)){throw 'Regular nonlinked metadata required'}
+ [ordered]@{path=$relative;bytes=$item.Length;sha256=(Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()}
+}
+$mainCard=Pin 'doc/CAUSAL_V6_V7_TRAIN_DIAGNOSIS_CARD.json'
+if($mainCard.bytes-ne67180-or$mainCard.sha256-ne'6067c3f5128991619e72197dbc5b8ea3f44f6e7e4186a56f4962f70c43b03304'){throw 'Exact frozen main card required'}
+$main=Get-Content -LiteralPath (Join-Path $researchRoot $mainCard.path) -Raw|ConvertFrom-Json
+if($main.kind-ne'cpb_v6_v7_saved_train_diagnosis_card_v1'-or$main.allowed_inputs.Count-ne49){throw 'Exact49-role main declaration required'}
+$diagnosis=Pin ($documentRoot+'diagnosis.json')
+$result=Get-Content -LiteralPath (Join-Path $researchRoot $diagnosis.path) -Raw|ConvertFrom-Json
+if($result.kind-ne'cpb_v6_v7_saved_TRAIN_diagnosis_v1'-or$result.status-ne'passed'-or$result.card.bytes-ne$mainCard.bytes-or$result.card.sha256-ne$mainCard.sha256){throw 'Completed exact main diagnosis required before audit-card freeze'}
+foreach($counter in $result.counters.PSObject.Properties){if($counter.Value-ne0){throw 'Main diagnosis reports forbidden execution'}}
+$expected=[ordered]@{'audit.py'='ba69ecbc748a19e98eafdef60d2642a70e5e142b9bd65fe5e888c0621d655cba';'archive_reader.py'='1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9';'component_math.py'='7a42b5524a41a987f3df1fc9c582b144dd59ccbfec810be29adf88ccb3f7f68f';'README.md'='c010f4bf35480b064158fd2cf73761a666d85239637ee2a95bb4b90e0c9561db';'provenance.json'='12f7242a4369a01e1c8c0840d394bd24b18ffd67de7a7ea9f26d76eb923faa06'}
+$sources=@()
+foreach($file in $expected.Keys){$p=Pin ('code/research/causal_v6_v7_train_diagnosis_audit/'+$file);if($p.sha256-ne$expected[$file]){throw 'Root-reviewed auditor source changed'};$sources +=[ordered]@{file=$file;path=$p.path;bytes=$p.bytes;sha256=$p.sha256}}
+$helpers=@()
+foreach($name in @('audit-card-generator.ps1','audit-stage.ps1','audit-execute.py','audit-mirror.ps1')){$helpers+=Pin ($documentRoot+$name)}
+$card=[ordered]@{kind='cpb_v6_v7_TRAIN_diagnosis_independent_audit_card_v1';copyright='Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.';declared_utc=[DateTime]::UtcNow.ToString('o');stage='Frozen before independent numeric execution; main diagnosis completed once and immutable';main_card=$mainCard;main_diagnosis=$diagnosis;main_static_preflight=(Pin ($documentRoot+'preflight-review.json'));pre_execution_preservation=(Pin 'doc/causal_fresh_v7/final-preservation.json');auditor_sources=$sources;source_provenance=$sources[4];orchestration_helpers=$helpers;execution_wrapper=$helpers[2];numeric_input_scope='Exactly49 main-card roles with independent per-file field allowlists; all preservation hashes checked before storage values. No extra input or held-out selector.';all112_scope='Four tasks, three saved head repetitions, native40 block moments and exact saved ridge decomposition; saved Huber/variance/total rows in BOTH versions; no fit or forward';first8_scope='Four initial/final stage-matched query/decoder pairs; supported F64 kernels and local mean4/uncertainty4 adjoints only';temporal_bins=@(@(0,32),@(32,64),@(64,96),@(96,128));temporal_scope='Independent observed rawF64 and masked-error summaries only; separate support and bin-specific hierarchy, no labels/ablation/refit';actual_batch_scope='BOTH versions actual pre-step updates1/2048: support/components/artifact and CSV association only; no unmatched decoder weights/adjoints or replay';CSV_numeric_columns=[ordered]@{v6=@('update','Gaussian_NLL_F64','mean_Huber_F64','variance_NLL_F64','total_objective_F64','pre_clip_global_norm','clip_factor');v7=@('update','Gaussian_NLL_F64','mean_Huber_F64','variance_NLL_F64','total_objective_F64','mean_pre_clip_norm','uncertainty_pre_clip_norm','mean_clip_factor','uncertainty_clip_factor')};CSV_successful_updates_each=2048;CSV_fixed_groups_each=5;CSV_other_columns_read=$false;V6_split_norm_inferred=$false;counterfactual_clip_computed=$false;gradient_limits='Both apply Huber1 mean plus detached-error variance. No cross-basis/model/stage cosine, full encoder/optimizer Jacobian, scalar-loss dominance or full norm reconstruction.';finite_differences=[ordered]@{checks=256;cells_per_stage=16;stages=4;kernels=@('Gaussian mean','Gaussian variance','MAE','Huber1');traversal='Canonical b,c,f,h first16 supported';positive_step_rules='Inherited unchanged neutral audit kernel';tolerance_absolute=1e-6;tolerance_relative=2e-4};saved_scalar_tolerance=[ordered]@{absolute=1e-10;relative=1e-9;recorded_component_identity_absolute=2e-12;recorded_component_identity_relative=2e-12};container=[ordered]@{name='cuwacunu';id='82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e';output_root='/opt/cuwacunu/research/causal-v6-v7-train-diagnosis-audit/attempt-001'};model_calls=0;neural_forwards=0;head_fits=0;calibration_fits=0;training_updates=0;new_quality_scores=0;held_out_tensor_reads=0;old_encoder_replays=0;failures='Preserve every attempt/source/card/log. Additive correction only; never replay a producer/model/head.'}
+[IO.File]::WriteAllText($destination,(($card|ConvertTo-Json -Depth 15).Replace("`r`n","`n")+"`n"),[Text.UTF8Encoding]::new($false))
+Pin ($documentRoot+'independent-audit-card.json')|ConvertTo-Json

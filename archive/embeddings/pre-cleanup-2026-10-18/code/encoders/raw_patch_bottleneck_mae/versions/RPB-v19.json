@@ -1,0 +1,89 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 19,
+  "design_slot": "RPB-v19",
+  "canonical_registered_tag": "RPB-v19",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Learned shape with fixed generic low/high complex spectral relations",
+  "registered_design_parameters": {
+    "native_global_width": 32,
+    "architecture_id": "early-native20-shape-plus12-fixed-two-band-complex-relations-v1"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/20"
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/18"
+      },
+      "declaration": {
+        "id": "RPB-v19.alt-01",
+        "encoder_tag": "RPB-v19",
+        "status": "fresh_three_cohort_per_task_confirmation_not_promoted",
+        "description": "Unchanged spectral v19 on three fresh source cohorts for each two-rhythm task",
+        "master_seeds": [
+          930905,
+          930906,
+          930907
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "/embedding/output/runs/rpb-spectral-confirmation/admission-hzyMa2/v19/seed-{master}-{task}/point-512/checkpoint.pt",
+        "capsule": "/embedding/output/runs/rpb-spectral-confirmation/admission-hzyMa2",
+        "artifact_inventory_sha256": "29a5ec0e18b596668b78452287cd8f3130a94b2495f56b74f69a782fc60401f1",
+        "measured_record": "doc/SPECTRAL_CONFIRMATION_V1.md",
+        "source_fingerprint": "170e77892d97116cae3b3af219a34beaef605fdb3d51803345f6c2a17db8da65",
+        "card_sha256": "010138160358129f4c3a96ec8d6300e432130c5b66aeb7c43dd8ed74f91a5917"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "No dedicated current standalone config template is proved here; use the pinned historical card/registry declaration.",
+    "Current shared implementation locator is verified, but byte-exact equivalence to every historical training-source snapshot is not re-proved. Frozen capsules remain authoritative.",
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0,
+  "current_component_locator": {
+    "status": "verified current shared component only; historical exact definition is not established by this locator",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "sha256": "32d6b5b0446f663aa2a36826120d64588c3cfe7653f7471cb77708fe21fadf14",
+      "bytes": 3742,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "SpectralTemporalRelationModel",
+      "SpectralTemporalRelationModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": null,
+    "registered_configuration_path": null
+  },
+  "historical_exact_definition_status": "unproved; use the pinned original registry/card/capsule and explicit gaps"
+}

@@ -1,0 +1,953 @@
+{
+  "kind": "energy_change_embedding_versions_v1",
+  "date": "2026-10-15",
+  "model_tag": "RPB-v25",
+  "instance": "RPB-v25.market-01",
+  "initial_instance": "RPB-v25.market-01.init",
+  "description": "Exact protected trained v22 native32 prefix plus unchanged v24 learned4/native36 forward geometry; training-only balanced moment reconstruction auxiliary.",
+  "status": "completed_stopped_original7of9_strict6of8_both_volatility_heads_failed",
+  "architecture_id": "content-protected32-separate-change-energy-aux-v1",
+  "native_layout": "complete-v22-native-prefix;unchanged-v24-independent-change-suffix;canonical-visible-adjacent-global-and-quarter-moments-v1;training-only-bias-free-moment-decoder",
+  "input_shape": [
+    "B",
+    3,
+    128,
+    9
+  ],
+  "native_shape": [
+    "B",
+    36
+  ],
+  "preserved_level_width": 32,
+  "change_width": 4,
+  "learned_coordinates": 24,
+  "fixed_coordinates": 12,
+  "total_parameters": 298505,
+  "optimizer_updated_parameters": 15984,
+  "protected_parameters": 282521,
+  "new_moment_decoder_parameters": 1080,
+  "moment_bank_width": 270,
+  "encoder_trajectories": 1,
+  "branch_updates": 2048,
+  "parent_updates": 2048,
+  "attempted_batches": 2048,
+  "skipped_batches": 0,
+  "batch_size": 8,
+  "device": "cuda:0",
+  "GPU": "NVIDIA RTX A2000 8GB",
+  "execution_container": "existing managed cuwacunu container",
+  "standalone_embedding_builds_or_fixture_runs": 0,
+  "parent": "RPB-v22.market-02",
+  "parent_inference_path": "../../cuwacunu_dev/output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-2048.pt",
+  "parent_inference_sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c",
+  "matched_initialization_instance": "RPB-v24.market-01.alt-01.init",
+  "matched_initialization_path": "../../cuwacunu_dev/output/runs/market-separate-changes-native36/run-4SauBf/checkpoints/inference-0.pt",
+  "matched_initialization_sha256": "2b614ca9866048a850cdeb73dc719c5816fd04bb39e1746b626d1abf1ef68108",
+  "initial_full36_equal_saved_v24_init": true,
+  "initial_and_final_prefix32_equal_saved_trained_v22": true,
+  "parent_values_and_buffers_protected": true,
+  "protected_parameter_gradients_undefined": true,
+  "protected_optimizer_states": 0,
+  "source_run": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ",
+  "checkpoint_root": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints",
+  "checkpoint_files_local_and_git_ignored": true,
+  "checkpoint_availability_verified_date": "2026-10-15",
+  "checkpoints": [
+    {
+      "filename": "inference-0.pt",
+      "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/inference-0.pt",
+      "updates": 0,
+      "inherited_parent_updates": 2048,
+      "kind": "rpb_energy_change_inference_checkpoint_v1",
+      "sha256": "8428dfc3daf6fa63516332b01f263a50666a22482ae48dd0aed30ea2cba4f8bd",
+      "bytes": 1276132,
+      "availability_verified": true,
+      "local_and_git_ignored": true
+    },
+    {
+      "filename": "inference-2048.pt",
+      "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/inference-2048.pt",
+      "updates": 2048,
+      "inherited_parent_updates": 2048,
+      "kind": "rpb_energy_change_inference_checkpoint_v1",
+      "sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa",
+      "bytes": 1276877,
+      "availability_verified": true,
+      "local_and_git_ignored": true
+    },
+    {
+      "filename": "training-1024.pt",
+      "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-1024.pt",
+      "updates": 1024,
+      "inherited_parent_updates": 2048,
+      "kind": "rpb_energy_change_training_state_v1",
+      "sha256": "79603d473e6ecc51dccca73fd55264df71112c104f23928688f4abbbdb4aac36",
+      "bytes": 1427953,
+      "availability_verified": true,
+      "local_and_git_ignored": true
+    },
+    {
+      "filename": "training-2048.pt",
+      "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-2048.pt",
+      "updates": 2048,
+      "inherited_parent_updates": 2048,
+      "kind": "rpb_energy_change_training_state_v1",
+      "sha256": "d0a1f10957ee1e543c41fdd68a3f80a983c85bf79c1fc8b4c0ae448715d540f4",
+      "bytes": 1427953,
+      "availability_verified": true,
+      "local_and_git_ignored": true
+    },
+    {
+      "filename": "training-512.pt",
+      "path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/checkpoints/training-512.pt",
+      "updates": 512,
+      "inherited_parent_updates": 2048,
+      "kind": "rpb_energy_change_training_state_v1",
+      "sha256": "85774a3feecfe0be630e046356db7e56ca3cc7e732635204b9c4c5ded5e86deb",
+      "bytes": 1427691,
+      "availability_verified": true,
+      "local_and_git_ignored": true
+    }
+  ],
+  "initial_inference_checkpoint_sha256": "8428dfc3daf6fa63516332b01f263a50666a22482ae48dd0aed30ea2cba4f8bd",
+  "inference_checkpoint_sha256": "d489853dd54c151ceeea678db20f18f01e8f3434f66a3de1499c00cd566571aa",
+  "training_checkpoint_sha256": "d0a1f10957ee1e543c41fdd68a3f80a983c85bf79c1fc8b4c0ae448715d540f4",
+  "objective": {
+    "waveform": "unchanged hierarchical Huber1",
+    "auxiliary_weight": 0.1,
+    "signed_group_weight": 0.5,
+    "energy_group_weight": 0.5,
+    "moment_huber_delta": 1.0,
+    "targets": "Detached unchanged consecutive_change_bank values from the exact final visible input after query/context masking.",
+    "validity": "At least two actual visible adjacent pairs globally; each original-time quarter additionally needs at least two pairs. Valid zero energy remains valid; no gap bridging.",
+    "minimum_adjacent_pair_count": 2,
+    "decoder_initialization": "bias-free zero moment_decoder[270,4]; matched zero waveform residual decoder",
+    "export_projection_or_post_encoder_PCA": false,
+    "task_labels_enter_loss": false
+  },
+  "moment_normalizer": {
+    "method": "TRAIN-only RMS without centering",
+    "floor": 1E-06,
+    "TRAIN_anchors": 4096,
+    "validation_anchors": 0,
+    "encoder_calls": 0,
+    "counts_dtype": "int64",
+    "sumsq_and_scales_dtype": "float64",
+    "support_dtype": "bool",
+    "unsupported_scale": 1.0,
+    "unsupported_coordinates_excluded": true,
+    "source_identity": "MKT-HIST-2;full-natural-TRAIN4096;no-query-no-context;shared-ledger:dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10;input:BTC:acdcd5dee054732c93d60094c4be319447661dd5cc341fd206a6d9f87eb48c21;ETH:dec457e8d45557aef0106dfce9f0787b95691bd25bb7ba7a6716d5879258a6e0;SOL:5e61e86631e534cafcdc67ec51beb298ef35f5e90cc73bc76dbe9d51eb0863ae;manifest:828154b335670d4d97aeaac2f4a3839099abcdd31ef8bec1f031f54ff8ed3cd8;mmap:BTCUSDT-1m-2024-01.csv:67745d6acfcc42c3828802cea7bacdcd747ca033e3d3f3d6d49e0637cc6c6e58;mmap:ETHUSDT-1m-2024-01.csv:0aad9d117ba86a58086b185064b41a92d7906c68fef9cebc7bc38cf009c2abaa;mmap:SOLUSDT-1m-2024-01.csv:364fbf2c2e395b001b31d5c2daff6153f01812f679cb5002e52bd850c06e55a7;input-scaler:rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969;existing-adjacent-global-quarter-bank-v1;validity-not-value;RMS-f64-floor1e-6-no-center",
+    "archive_path": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/moment-rms-scaler.pt",
+    "archive_sha256": "81849e560ae067f466e38a53f83e2b93cf7957f396c64e2dada6ae37989a5450",
+    "frozen_in_inference_and_training_archives": true
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "combined_parameter_groups": 1,
+    "active_parameter_tensors": [
+      "moment_decoder",
+      "encoder.change_projection",
+      "encoder.change_decoder"
+    ],
+    "row_seed": 942002,
+    "mask_seed": 942003,
+    "context_seed": 942004,
+    "query_seed": 942005,
+    "counter_contract": "splitmix64-counter-v1",
+    "row_and_mask_streams_match_saved_v24": true,
+    "nonzero_projection_gradient_updates": 2047,
+    "nonzero_wave_decoder_gradient_updates": 2048,
+    "nonzero_moment_decoder_gradient_updates": 2048
+  },
+  "dataset_id": "MKT-HIST-2",
+  "dataset_recipe": "BTC/ETH/SOL January2024 minute candles; nine features; recent128 past-only volatility/trend/activity/relation.",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "view": "intact chronological known VALIDATION",
+  "evidence_stage": "known-source development",
+  "TRAIN_range": "2024-01-01 through 2024-01-21",
+  "VALIDATION_range": "2024-01-22 through 2024-01-28",
+  "unused_range": "2024-01-29 through 2024-01-31",
+  "training_anchors": 4096,
+  "training_probe_rows": 112,
+  "validation_probe_rows": 32,
+  "scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+  "shared_ledger_sha256": "dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10",
+  "input_manifest_sha256": "828154b335670d4d97aeaac2f4a3839099abcdd31ef8bec1f031f54ff8ed3cd8",
+  "settings_sha256": "ad99c3084826762af5e745c9b66e3d9288c01ca81863643c273da3732a8ce6e3",
+  "study_config_sha256": "589d9212fba20e9483f8e06149c9ee2e73455d8d8d1d81618696c3f657e131fa",
+  "evaluation": {
+    "head_width": 36,
+    "head_parameters": {
+      "linear": 148,
+      "neural": 660
+    },
+    "ridge_penalty": 1.0,
+    "neural_hidden_width": 16,
+    "neural_activation": "tanh",
+    "neural_optimizer": "Adam",
+    "neural_learning_rate": 0.01,
+    "neural_updates": 100,
+    "head_repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "actual_head_seeds_uint64_decimal_strings": [
+      "13088411117524848790",
+      "10018485049408248344",
+      "9083751155097190455"
+    ],
+    "head_seed_signed_int64_archive_decimal_strings": [
+      "-5358332956184702826",
+      "-8428259024301303272",
+      "9083751155097190455"
+    ],
+    "seed_storage_note": "Strings preserve every uint64/int64 decimal digit; no floating-point seed conversion.",
+    "ridge_pipeline_fits": 2,
+    "ridge_target_fits": 8,
+    "neural_fits": 6,
+    "old_encoder_replays": 0,
+    "old_head_refits": 0,
+    "CPU_encoder_calls": 0,
+    "post_encoder_PCA_fits": 0,
+    "fixed_evaluator_binary_sha256": "5f4dbe583f276f666a14065038061c9f624fbd00349f588975f2562d9fe52d14"
+  },
+  "market_metrics": [
+    {
+      "method": "RPB-v25.market-01.init",
+      "task": "past_volatility",
+      "size": 36,
+      "linear_r2": 0.5035857801117332,
+      "neural_mean_r2": 0.3548386449051743,
+      "neural_r2_each": [
+        0.21118439901696984,
+        0.3557315661584407,
+        0.49759996954011243
+      ],
+      "linear_mae": 0.00018148052789048995,
+      "linear_rmse": 0.00023803308382505772,
+      "neural_mean_mae": 0.00021373888098667914,
+      "neural_mean_rmse": 0.00027023157175652657,
+      "physical_unit": "logreturn",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01.init",
+      "task": "past_trend",
+      "size": 36,
+      "linear_r2": -0.561379378842829,
+      "neural_mean_r2": -0.8698117032602452,
+      "neural_r2_each": [
+        -0.7878431701378479,
+        -0.594221443054082,
+        -1.2273704965888057
+      ],
+      "linear_mae": 6.700907303081957E-05,
+      "linear_rmse": 8.36745803104372E-05,
+      "neural_mean_mae": 7.157984256321736E-05,
+      "neural_mean_rmse": 9.13421474601731E-05,
+      "physical_unit": "logreturn/tick",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01.init",
+      "task": "past_activity",
+      "size": 36,
+      "linear_r2": 0.7449072427948779,
+      "neural_mean_r2": 0.6081274526310124,
+      "neural_r2_each": [
+        0.6899605517525558,
+        0.6898348467320317,
+        0.44458695940844983
+      ],
+      "linear_mae": 0.22837325194028862,
+      "linear_rmse": 0.2902549029225483,
+      "neural_mean_mae": 0.2861750180945537,
+      "neural_mean_rmse": 0.3561130824571579,
+      "physical_unit": "log1p(base_volume)",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01.init",
+      "task": "past_relation",
+      "size": 36,
+      "linear_r2": 0.34218770702101575,
+      "neural_mean_r2": 0.20069637556969636,
+      "neural_r2_each": [
+        0.15469688814026183,
+        0.1276032983763432,
+        0.31978894019248405
+      ],
+      "linear_mae": 0.05725558074662891,
+      "linear_rmse": 0.06990480286326169,
+      "neural_mean_mae": 0.0618095801160079,
+      "neural_mean_rmse": 0.0769438027969424,
+      "physical_unit": "correlation",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_volatility",
+      "size": 36,
+      "linear_r2": 0.4092348232086709,
+      "neural_mean_r2": 0.23616117264697165,
+      "neural_r2_each": [
+        0.40654405949821515,
+        0.4191707627010839,
+        -0.11723130425838413
+      ],
+      "linear_mae": 0.00019412419625589484,
+      "linear_rmse": 0.0002596705274790023,
+      "neural_mean_mae": 0.00023216620031055456,
+      "neural_mean_rmse": 0.000291612093155517,
+      "physical_unit": "logreturn",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_trend",
+      "size": 36,
+      "linear_r2": 0.7742284351081326,
+      "neural_mean_r2": 0.4884646605379312,
+      "neural_r2_each": [
+        0.7113408172607991,
+        0.21087363085460287,
+        0.5431795334983915
+      ],
+      "linear_mae": 2.5411525396100982E-05,
+      "linear_rmse": 3.181807818491251E-05,
+      "neural_mean_mae": 3.892213037848131E-05,
+      "neural_mean_rmse": 4.690767778240372E-05,
+      "physical_unit": "logreturn/tick",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_activity",
+      "size": 36,
+      "linear_r2": 0.7552661777199126,
+      "neural_mean_r2": 0.5975198830887924,
+      "neural_r2_each": [
+        0.573023314397015,
+        0.6471890468017332,
+        0.5723472880676292
+      ],
+      "linear_mae": 0.22602718379098932,
+      "linear_rmse": 0.28430041723870614,
+      "neural_mean_mae": 0.3076513392764001,
+      "neural_mean_rmse": 0.3642291955754209,
+      "physical_unit": "log1p(base_volume)",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_relation",
+      "size": 36,
+      "linear_r2": 0.3735567618976694,
+      "neural_mean_r2": 0.4071495455067296,
+      "neural_r2_each": [
+        0.38468881496326546,
+        0.4031453837068151,
+        0.43361443785010834
+      ],
+      "linear_mae": 0.05771344634557965,
+      "linear_rmse": 0.06821767059274486,
+      "neural_mean_mae": 0.05261784208045396,
+      "neural_mean_rmse": 0.06635373795706452,
+      "physical_unit": "correlation",
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "evidence": "new fixed-head evaluation of saved native36 features"
+    }
+  ],
+  "original_criteria": [
+    {
+      "criterion": "positive_linear_r2_trend",
+      "candidate": 0.7742284351081326,
+      "floor": 0.0,
+      "difference": 0.7742284351081326,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "positive_neural_mean_r2_trend",
+      "candidate": 0.4884646605379312,
+      "floor": 0.0,
+      "difference": 0.4884646605379312,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "past_volatility_linear_r2_v22_retention",
+      "baseline": 0.7281069298378846,
+      "candidate": 0.4092348232086709,
+      "floor": 0.6781069298378846,
+      "difference": -0.3188721066292137,
+      "difference_from_floor": -0.2688721066292137,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "criterion": "past_volatility_neural_mean_r2_v22_retention",
+      "baseline": 0.38033644247607556,
+      "candidate": 0.23616117264697165,
+      "floor": 0.3303364424760756,
+      "difference": -0.14417526982910392,
+      "difference_from_floor": -0.09417526982910393,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "criterion": "past_activity_linear_r2_v22_retention",
+      "baseline": 0.7284311857420709,
+      "candidate": 0.7552661777199126,
+      "floor": 0.6784311857420708,
+      "difference": 0.02683499197784167,
+      "difference_from_floor": 0.07683499197784172,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_neural_mean_r2_v22_retention",
+      "baseline": 0.5121674596517269,
+      "candidate": 0.5975198830887924,
+      "floor": 0.46216745965172695,
+      "difference": 0.0853524234370655,
+      "difference_from_floor": 0.1353524234370655,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_linear_r2_v22_retention",
+      "baseline": 0.3885830932968374,
+      "candidate": 0.3735567618976694,
+      "floor": 0.3385830932968374,
+      "difference": -0.01502633139916798,
+      "difference_from_floor": 0.03497366860083201,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_neural_mean_r2_v22_retention",
+      "baseline": 0.2579958329149307,
+      "candidate": 0.4071495455067296,
+      "floor": 0.20799583291493073,
+      "difference": 0.14915371259179888,
+      "difference_from_floor": 0.19915371259179887,
+      "maximum_allowed_loss": 0.05,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "linear_trend_exceeds_saved_v23",
+      "baseline": 0.3871309972495327,
+      "floor": 0.3871309972495327,
+      "candidate": 0.7742284351081326,
+      "difference": 0.38709743785859985,
+      "comparison": ">",
+      "passed": true
+    }
+  ],
+  "strict_native36_criteria": [
+    {
+      "criterion": "past_volatility_linear_r2_native36_guard",
+      "candidate": 0.4092348232086709,
+      "floor": 0.6781069298378846,
+      "difference": -0.2688721066292137,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "criterion": "past_volatility_neural_mean_r2_native36_guard",
+      "candidate": 0.23616117264697165,
+      "floor": 0.3926141918082198,
+      "difference": -0.15645301916124818,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "criterion": "past_trend_linear_r2_native36_guard",
+      "candidate": 0.7742284351081326,
+      "floor": 0.6549112553681312,
+      "difference": 0.11931717974000133,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_trend_neural_mean_r2_native36_guard",
+      "candidate": 0.4884646605379312,
+      "floor": 0.1342955201053261,
+      "difference": 0.35416914043260506,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_linear_r2_native36_guard",
+      "candidate": 0.7552661777199126,
+      "floor": 0.7514296819362523,
+      "difference": 0.0038364957836602986,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_activity_neural_mean_r2_native36_guard",
+      "candidate": 0.5975198830887924,
+      "floor": 0.5631529010630465,
+      "difference": 0.03436698202574595,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_linear_r2_native36_guard",
+      "candidate": 0.3735567618976694,
+      "floor": 0.3406853885730756,
+      "difference": 0.03287137332459378,
+      "comparison": ">=",
+      "passed": true
+    },
+    {
+      "criterion": "past_relation_neural_mean_r2_native36_guard",
+      "candidate": 0.4071495455067296,
+      "floor": 0.3495834881128966,
+      "difference": 0.057566057393833026,
+      "comparison": ">=",
+      "passed": true
+    }
+  ],
+  "individual_neural_trend_criteria": [
+    {
+      "criterion": "final_neural_trend_rep_2701_positive",
+      "repetition": 2701,
+      "actual_seed_uint64_decimal_string": "13088411117524848790",
+      "candidate": 0.7113408172607991,
+      "floor": 0.0,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "final_neural_trend_rep_2802_positive",
+      "repetition": 2802,
+      "actual_seed_uint64_decimal_string": "10018485049408248344",
+      "candidate": 0.21087363085460287,
+      "floor": 0.0,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "criterion": "final_neural_trend_rep_2903_positive",
+      "repetition": 2903,
+      "actual_seed_uint64_decimal_string": "9083751155097190455",
+      "candidate": 0.5431795334983915,
+      "floor": 0.0,
+      "comparison": ">",
+      "passed": true
+    }
+  ],
+  "coverage_criterion": {
+    "criterion": "every_new_task_head_view_has_32_of_32_coverage",
+    "passed": true,
+    "required_valid": 32,
+    "required_total": 32,
+    "required_coverage": 1.0
+  },
+  "original_criteria_passed": 7,
+  "original_criteria_total": 9,
+  "strict_criteria_passed": 6,
+  "strict_criteria_total": 8,
+  "comparison_absolute_arithmetic_tolerance": 1E-12,
+  "full_market_gate_passed": false,
+  "failed_original_criteria": [
+    "past_volatility_linear_r2_v22_retention",
+    "past_volatility_neural_mean_r2_v22_retention"
+  ],
+  "failed_strict_criteria": [
+    "past_volatility_linear_r2_native36_guard",
+    "past_volatility_neural_mean_r2_native36_guard"
+  ],
+  "synthetic_transfer_authorized_by_gate": false,
+  "synthetic_transfer_measured": false,
+  "synthetic_quality": "Not measured for v25; the failed market gate stopped conditional TEMPO-5 transfer.",
+  "primary": "RPB-v22",
+  "primary_changed": false,
+  "leading_balanced_research_reference": "RPB-v24.market-01.alt-01",
+  "v25_disposition": "Preserved stronger trend reference; exact objective stopped without rescue.",
+  "fixed_query_captures": {
+    "initial_train": {
+      "mae_train_scaled": 0.27862535204206196,
+      "eligible_rows": 112,
+      "total_rows": 112,
+      "feature_seconds_including_io": 0.672566687,
+      "query_seconds_including_io": 0.46083465300000004,
+      "CUDA_encoder_calls": 28,
+      "CPU_encoder_calls": 0
+    },
+    "initial_validation": {
+      "mae_train_scaled": 0.39052824676036835,
+      "eligible_rows": 32,
+      "total_rows": 32,
+      "feature_seconds_including_io": 0.16116729700000001,
+      "query_seconds_including_io": 0.130773792,
+      "CUDA_encoder_calls": 8,
+      "CPU_encoder_calls": 0
+    },
+    "final_train": {
+      "mae_train_scaled": 0.2596174159220287,
+      "eligible_rows": 112,
+      "total_rows": 112,
+      "feature_seconds_including_io": 0.542586292,
+      "query_seconds_including_io": 0.5126466849999999,
+      "CUDA_encoder_calls": 28,
+      "CPU_encoder_calls": 0
+    },
+    "final_validation": {
+      "mae_train_scaled": 0.3880903348326683,
+      "eligible_rows": 32,
+      "total_rows": 32,
+      "feature_seconds_including_io": 0.186238253,
+      "query_seconds_including_io": 0.142037155,
+      "CUDA_encoder_calls": 8,
+      "CPU_encoder_calls": 0
+    }
+  },
+  "training_loss_components": {
+    "loss": {
+      "first": 0.2818795442581177,
+      "last": 0.18498578667640686,
+      "first64_mean": 0.20491063327062875,
+      "last64_mean": 0.18922497716266662
+    },
+    "wave_loss": {
+      "first": 0.1686248481273651,
+      "last": 0.10898365080356598,
+      "first64_mean": 0.11227293586125597,
+      "last64_mean": 0.1119763211463578
+    },
+    "aux_loss": {
+      "first": 1.1325470209121704,
+      "last": 0.7600212693214417,
+      "first64_mean": 0.9263769621029496,
+      "last64_mean": 0.7724865330383182
+    },
+    "signed_loss": {
+      "first": 1.7672004699707031,
+      "last": 1.4556167125701904,
+      "first64_mean": 1.5327765941619873,
+      "last64_mean": 1.46466732211411
+    },
+    "energy_loss": {
+      "first": 0.4978935420513153,
+      "last": 0.06442585587501526,
+      "first64_mean": 0.31997733376920223,
+      "last64_mean": 0.08030574396252632
+    }
+  },
+  "saved_TRAIN_context": [
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_volatility",
+      "view": "all112",
+      "linear_r2": 0.8286593304370686,
+      "neural_mean_r2": 0.9294293696658047,
+      "valid": 112,
+      "total": 112,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_trend",
+      "view": "all112",
+      "linear_r2": 0.8882979792934526,
+      "neural_mean_r2": 0.9177016683232335,
+      "valid": 112,
+      "total": 112,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_activity",
+      "view": "all112",
+      "linear_r2": 0.9621556294737138,
+      "neural_mean_r2": 0.95272410233544,
+      "valid": 112,
+      "total": 112,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_relation",
+      "view": "all112",
+      "linear_r2": 0.7146387794648861,
+      "neural_mean_r2": 0.8521952361902002,
+      "valid": 112,
+      "total": 112,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_volatility",
+      "view": "first56",
+      "linear_r2": 0.7709184205798866,
+      "neural_mean_r2": 0.916517810368342,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_trend",
+      "view": "first56",
+      "linear_r2": 0.9105891138300706,
+      "neural_mean_r2": 0.9185433519527662,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_activity",
+      "view": "first56",
+      "linear_r2": 0.9608334470566119,
+      "neural_mean_r2": 0.9446010525450677,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_relation",
+      "view": "first56",
+      "linear_r2": 0.7367009809649844,
+      "neural_mean_r2": 0.8907078173959885,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_volatility",
+      "view": "last56",
+      "linear_r2": 0.9025826718390808,
+      "neural_mean_r2": 0.9391536435139609,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_trend",
+      "view": "last56",
+      "linear_r2": 0.8460123075387219,
+      "neural_mean_r2": 0.9090113734586367,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_activity",
+      "view": "last56",
+      "linear_r2": 0.9586262081410475,
+      "neural_mean_r2": 0.9529314315736479,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    },
+    {
+      "method": "RPB-v25.market-01",
+      "task": "past_relation",
+      "view": "last56",
+      "linear_r2": 0.6673543579720715,
+      "neural_mean_r2": 0.8021136177067241,
+      "valid": 56,
+      "total": 56,
+      "coverage": 1,
+      "new_head_fits": 0,
+      "interpretation": "Descriptive scoring with the already fitted all-TRAIN head; not independent confirmation."
+    }
+  ],
+  "timings": {
+    "calibration_seconds": 2.192791702,
+    "GPU_training_seconds_including_checkpoint_IO": 170.846221952,
+    "saved_feature_head_fitting_scoring_and_IO_seconds": 2.971974627,
+    "pure_head_fit_seconds": null,
+    "saved_evidence_reporting_and_hash_seconds": 26.40427380700021,
+    "independent_saved_arithmetic_audit_seconds": 0.26111578099880717
+  },
+  "card": "../../cuwacunu_dev/doc/MARKET_CHANGE_ENERGY_CARD.md",
+  "card_sha256": "c67e5c37d56e5bc2801a9d32152589e3067ae11f8b18c8c804418b8cca807938",
+  "source_closure_sha256": "e910f91090ef6569a46187bad3b0d644a3ed1dead0737268f9860aaa51a36926",
+  "binary_sha256": "572fec5ec4bb4c1b160d08a128ab3aaacac9fb9eabfe01557f1ac6b47f558f0c",
+  "report": "../../cuwacunu_dev/doc/MARKET_CHANGE_ENERGY_RESULTS.md",
+  "report_sha256": "42a50ac642600538a7ec1e365e337802e006d681b1bcf0e4b5aa67965eb38f08",
+  "completion": "../../cuwacunu_dev/doc/results/market_change_energy_v1/completion.json",
+  "completion_sha256": "eda8887bae08a9c0a1bd9b8a9827e52e5b6dba3c37aec4d61636ff299d32f8a5",
+  "table_rows": "../../cuwacunu_dev/doc/results/market_change_energy_v1/table_rows.json",
+  "table_rows_sha256": "7d11f577beb61b924a9b896fe3f5dea9c464b779fc34bde19f99ef80751109de",
+  "asset_hashes": "../../cuwacunu_dev/doc/results/market_change_energy_v1/asset_hashes.json",
+  "asset_hashes_sha256": "18204e67b920e17908dc6ddd80e94df35b446fba010a03bcb6583af80999d881",
+  "independent_arithmetic_audit": "../../cuwacunu_dev/output/runs/market-change-energy/run-r297GQ/independent-audit.json",
+  "independent_arithmetic_audit_status": "passed",
+  "independent_arithmetic_checks": 31851,
+  "independent_arithmetic_audit_sha256": "1f86b7745bd9fe5ede899d393f97b5050bedd6cbc67ce2bbcdefac942fc22f45",
+  "guide": "CHANGE_ENERGY_V25.md",
+  "integration_cuda_fixture_log": "../../cuwacunu_dev/doc/results/market_change_energy_v1/engineering-01.log",
+  "integration_cuda_fixture_log_sha256": "e198ed437d2819cfb8be38379355f11dac3842b4c356c8ef2229996ce51c2e5c",
+  "integration_cuda_fixture_directory": "../../cuwacunu_dev/output/engineering/energy-change-fixture/run-NtPaVR",
+  "integration_cuda_fixture_executions": 1,
+  "portable_pair_count": 54,
+  "preserved_portable_pairs": 45,
+  "new_portable_pairs_count": 9,
+  "all_portable_pairs_byte_identical": true,
+  "portable_sync_receipt": "../../cuwacunu_dev/doc/results/market_change_energy_v1/portable-sync-final.json",
+  "portable_sync_receipt_sha256": "e48a72ffac5ea5be4b9d0185c2dd6da5bac855c5789a5d9e91e6c8bf87f63777",
+  "new_portable_pairs": [
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h",
+      "group": "v25_energy",
+      "bytes": 6679,
+      "expected_sha256": "3d8e426d76af1a524c90b16941c548408132aa7ac6da0e4023d13bb7fb1e898a",
+      "integration_sha256": "3d8e426d76af1a524c90b16941c548408132aa7ac6da0e4023d13bb7fb1e898a",
+      "embedding_sha256": "3d8e426d76af1a524c90b16941c548408132aa7ac6da0e4023d13bb7fb1e898a",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h",
+      "group": "v25_energy",
+      "bytes": 1474,
+      "expected_sha256": "4bec9280c619af69a43e10724095d749dea875d624aa4f64754f85d6a6e4ef07",
+      "integration_sha256": "4bec9280c619af69a43e10724095d749dea875d624aa4f64754f85d6a6e4ef07",
+      "embedding_sha256": "4bec9280c619af69a43e10724095d749dea875d624aa4f64754f85d6a6e4ef07",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h",
+      "group": "v25_energy",
+      "bytes": 3299,
+      "expected_sha256": "8360c32097ee34cb908c64075f554548b65d045d7baec3500750e610191ddf06",
+      "integration_sha256": "8360c32097ee34cb908c64075f554548b65d045d7baec3500750e610191ddf06",
+      "embedding_sha256": "8360c32097ee34cb908c64075f554548b65d045d7baec3500750e610191ddf06",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h",
+      "group": "v25_energy",
+      "bytes": 11923,
+      "expected_sha256": "23cc2e046985456a96d5f666a22dca9a010950e7d94e8d20deb7a47dd6e16a2f",
+      "integration_sha256": "23cc2e046985456a96d5f666a22dca9a010950e7d94e8d20deb7a47dd6e16a2f",
+      "embedding_sha256": "23cc2e046985456a96d5f666a22dca9a010950e7d94e8d20deb7a47dd6e16a2f",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h",
+      "group": "v25_energy",
+      "bytes": 2909,
+      "expected_sha256": "eb87c65fafb9e54baa47193a165ffc217f9081e99aff38281241070d5b2ae25f",
+      "integration_sha256": "eb87c65fafb9e54baa47193a165ffc217f9081e99aff38281241070d5b2ae25f",
+      "embedding_sha256": "eb87c65fafb9e54baa47193a165ffc217f9081e99aff38281241070d5b2ae25f",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h",
+      "group": "v25_energy",
+      "bytes": 9549,
+      "expected_sha256": "ff04ac6a2166301833faff9988504f6fd184922ab82ac31397cf69891414b99a",
+      "integration_sha256": "ff04ac6a2166301833faff9988504f6fd184922ab82ac31397cf69891414b99a",
+      "embedding_sha256": "ff04ac6a2166301833faff9988504f6fd184922ab82ac31397cf69891414b99a",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/include/cuwacunu/encoder/energy_encoder.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/cuwacunu/encoder/energy_encoder.h",
+      "group": "v25_energy",
+      "bytes": 1649,
+      "expected_sha256": "e5bf5b10970fcb3b6a1b5ff1e93cb12da91af767aa1ad37251331d7c02b4b33d",
+      "integration_sha256": "e5bf5b10970fcb3b6a1b5ff1e93cb12da91af767aa1ad37251331d7c02b4b33d",
+      "embedding_sha256": "e5bf5b10970fcb3b6a1b5ff1e93cb12da91af767aa1ad37251331d7c02b4b33d",
+      "match": true
+    },
+    {
+      "integration_path": "code/encoders/rpb_energy/tests/energy_change_test.cpp",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/tests/energy_change_test.cpp",
+      "group": "v25_energy",
+      "bytes": 30944,
+      "expected_sha256": "ec87576f3061c077cb42d0bc92ac8b843c2205f25a799135a166c65f2e056d7f",
+      "integration_sha256": "ec87576f3061c077cb42d0bc92ac8b843c2205f25a799135a166c65f2e056d7f",
+      "embedding_sha256": "ec87576f3061c077cb42d0bc92ac8b843c2205f25a799135a166c65f2e056d7f",
+      "match": true
+    },
+    {
+      "integration_path": "config/market_studies/encoder_change_energy.conf",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/config/energy_changes.conf",
+      "group": "v25_energy",
+      "bytes": 602,
+      "expected_sha256": "ad99c3084826762af5e745c9b66e3d9288c01ca81863643c273da3732a8ce6e3",
+      "integration_sha256": "ad99c3084826762af5e745c9b66e3d9288c01ca81863643c273da3732a8ce6e3",
+      "embedding_sha256": "ad99c3084826762af5e745c9b66e3d9288c01ca81863643c273da3732a8ce6e3",
+      "match": true
+    }
+  ],
+  "global_preservation_after_receipt_recorded_separately_by_controlling_task": true,
+  "local_sync_only": true,
+  "publication_authorized": false,
+  "committed_or_pushed_for_this_new_work": false,
+  "next_direction": "Proposed saved-TRAIN-only dimensionless-return versus raw-change scale/energy representation diagnosis, before a separately declared branch mechanism; no new experiment, head tuning, stopped-objective rescue or held-out diagnostic analysis."
+}

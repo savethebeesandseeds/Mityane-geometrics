@@ -1,0 +1,95 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 13,
+  "design_slot": "RPB-v13",
+  "canonical_registered_tag": "RPB-v13",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Early mixer with visible adjacent differences",
+  "registered_design_parameters": {
+    "architecture_id": "aligned-mixer-before-temporal-visible-first-difference-v1",
+    "temporal_difference_input": 1,
+    "channel_mixer_placement": 1,
+    "native_global_width": 32,
+    "training_policy_id": "rpb-training-context-deletion-015-v1"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/14"
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/15"
+      },
+      "declaration": {
+        "id": "RPB-v13",
+        "encoder_tag": "RPB-v13",
+        "status": "measured_descriptive_TEMPO3_no_promotion",
+        "description": "Early mixer with visible adjacent differences",
+        "master_seeds": [
+          75272,
+          76373,
+          77474,
+          78575,
+          79676
+        ],
+        "encoder_updates_each": 512,
+        "batch_size": 8,
+        "native_size": 32,
+        "checkpoint_path_pattern": "output/runs/rpb-visible-difference/visible-difference-wnUUCa/results/seed-{master}-lag_sign/candidate/point-{point}/checkpoint.pt",
+        "capsule": "output/runs/rpb-visible-difference/visible-difference-wnUUCa",
+        "artifact_inventory_sha256": "384ed378bd0cd563e2f0e38f65c35a20d4e8db746dac4830c86cb8f29129f2fb",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/VISIBLE_DIFFERENCE_DIAGNOSTIC.md",
+        "card_sha256": "75e30dce63ddadaeeaf9daa6b25fd540ed02f9e0e11374e8787a7f846eaf78bc"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "No dedicated current standalone config template is proved here; use the pinned historical card/registry declaration.",
+    "Current shared implementation locator is verified, but byte-exact equivalence to every historical training-source snapshot is not re-proved. Frozen capsules remain authoritative.",
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0,
+  "current_component_locator": {
+    "status": "verified current shared component only; historical exact definition is not established by this locator",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "a76dc9fb9e767b56a5a3e7eeeb7de7742bdb2399cd9afb21b075fcb9a3ea3d01",
+      "bytes": 19785,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Model",
+      "ModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": null,
+    "registered_configuration_path": null
+  },
+  "historical_exact_definition_status": "unproved; use the pinned original registry/card/capsule and explicit gaps"
+}

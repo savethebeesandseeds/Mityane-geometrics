@@ -1,0 +1,43 @@
+{
+  "kind": "cpb_v13_preservation_alias_repair001_source_preparation_admission_v1",
+  "status": "admitted_source_preparation_only",
+  "created_utc": "2026-10-17T22:31:55.9619748Z",
+  "original_verifier": {
+    "path": "code/research/causal_fresh_v13_preservation/verify.ps1",
+    "bytes": 42795,
+    "sha256": "b84e858e7dd845f08f428f7743e0c8373f94642a26a9942e5b8804f5e6787299"
+  },
+  "original_card": {
+    "path": "doc/causal_fresh_v13/preservation-card.json",
+    "bytes": 2011593,
+    "sha256": "6a25dc5c5f50029b72104c4bd9ee45948cf28bc285d155ecfc0114f51ad3d551"
+  },
+  "failed_first_transcript": {
+    "path": "output/engineering/causal-fresh-v13-final-preservation/attempt-001/verifier-host.log",
+    "bytes": 1968,
+    "sha256": "e091249584a71a7c18ed91a720f608391fa2ff444b1584b10f0e3dcc0e8109b6"
+  },
+  "exact_issue": "V12 additional protected pin AGENTS63603 has an existing whole intermediate source-preparation snapshot, omitted by the final verifier alias registry",
+  "owned_directory": "code/research/causal_fresh_v13_preservation_repair_001",
+  "new_assets": [
+    "verify.ps1",
+    "README.md",
+    "provenance.json"
+  ],
+  "scope": [
+    "Preserve whole original verifier/card/front-note-preservation manifest and failed transcript before source edits",
+    "Copy complete original verifier to owned directory, never import or invoke original body",
+    "Verify exact intermediate front-note manifest and whole snapshot, register exact path-size-hash alias before historical pin-tree traversal",
+    "Require the intermediate new note identity to equal the already registered premeasurement V13 AGENTS snapshot",
+    "Keep original nine workflow source guards and all checkpoint/source/history/metadata verification rules",
+    "Add repair provenance and exact current source path/parent to final receipt"
+  ],
+  "new_card_field": "intermediate_front_note_preservation",
+  "new_repair_evidence_field": "additive_repair",
+  "algorithm_execution_admitted": false,
+  "card_creation_admitted": false,
+  "Docker_admitted": false,
+  "original_mutation_allowed": false,
+  "additional_diagnosis_scope": "Metadata/source only; no encoder/head/trust/quality arithmetic replay",
+  "baseline": "CPB-v3.market-01"
+}

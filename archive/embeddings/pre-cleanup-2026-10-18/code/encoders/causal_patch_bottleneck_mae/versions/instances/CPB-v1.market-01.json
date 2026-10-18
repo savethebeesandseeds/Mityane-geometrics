@@ -1,0 +1,287 @@
+{
+  "kind": "causal_patch_bottleneck_mae_instance_v1",
+  "version": "CPB-v1",
+  "instance": "CPB-v1.market-01",
+  "protocol": "causal-patch-bottleneck-mae-v1",
+  "procedure_status": "passed",
+  "overall_winner": false,
+  "date": "2026-10-15",
+  "artifact_base": "C:/Work/cuwacunu/cuwacunu_dev; mirrored metadata does not copy local ignored artifacts",
+  "version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v1",
+  "public_entry": "include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h",
+  "settings": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/config/v1.conf",
+    "sha256": "8946440d0e9834465d7d8e7fcc973bb42f462edb1342e6f618f314f5f67a6f11",
+    "bytes": 631
+  },
+  "provenance": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/v1/provenance.json",
+    "sha256": "a901f7334a7643a680d6a1ab80601539b3f36358a8bf429f5ac669204790539c",
+    "bytes": 25245
+  },
+  "source_checkpoint": {
+    "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+    "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb",
+    "bytes": 1285583
+  },
+  "usable_checkpoint": {
+    "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/inference.pt",
+    "sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895",
+    "bytes": 1290592
+  },
+  "checkpoint_kind": "cpb_v1_inference_checkpoint_v1",
+  "checkpoint_tag": "CPB-v1",
+  "checkpoint_local_Git_ignored": true,
+  "source_branch_updates": 2048,
+  "inherited_parent_updates": 2048,
+  "new_encoder_updates": 0,
+  "new_input_or_bank_fits": 0,
+  "old_encoder_calls": 0,
+  "native_width": 36,
+  "parameter_tensors": 76,
+  "parameter_count": 297560,
+  "causal_policy": "crop-before-validation;rolling-last-H;masked-left-pad;original-patch-end-causal-attention;prefix-only-banks-pooling-v1",
+  "gates": {
+    "causal_proof": true,
+    "original_market": {
+      "passed": 9,
+      "total": 9
+    },
+    "strict_market": {
+      "passed": 8,
+      "total": 8
+    },
+    "positive_neural_trend_repetitions": {
+      "passed": 2,
+      "total": 3,
+      "scores": [
+        -0.33939984380671695,
+        0.657262428919963,
+        0.4132006631059153
+      ]
+    },
+    "full_market": false,
+    "synthetic_retention": {
+      "passed": 3,
+      "total": 8
+    },
+    "full_synthetic": false,
+    "full_market_and_synthetic_coverage": true,
+    "arithmetic_tolerance": 1e-12
+  },
+  "scoped_task_head_references": {
+    "scope": "Matched trained-final market subset; same saved known VALIDATION task targets and fixed head recipes. CPB causal execution is distinct; these descriptive records are not a universal encoder winner claim. Broader v23 alternative geometry, raw/no-encoder and initialized controls remain preserved separately.",
+    "methods": [
+      "RPB-v22.market-02",
+      "RPB-v23.market-01",
+      "RPB-v24.market-01",
+      "RPB-v24.market-01.alt-01",
+      "RPB-v25.market-01",
+      "RPB-v26.market-01",
+      "RPB-v27.market-01",
+      "RPB-v28.market-01",
+      "RPB-v29.market-01",
+      "RPB-v30.market-01",
+      "CPB-v1.market-01"
+    ],
+    "leaders": [
+      {
+        "task": "past_volatility",
+        "head": "linear",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.954421680571244,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_volatility",
+        "head": "neural_mean",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.6059305827863365,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_trend",
+        "head": "linear",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.7968036456603806,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_trend",
+        "head": "neural_mean",
+        "method": "RPB-v25.market-01",
+        "native_width": 36,
+        "r2": 0.4884646605379312,
+        "new_CPB_reference": false
+      },
+      {
+        "task": "past_activity",
+        "head": "linear",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.8751252139115532,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_activity",
+        "head": "neural_mean",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.6866466216076083,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_relation",
+        "head": "linear",
+        "method": "CPB-v1.market-01",
+        "native_width": 36,
+        "r2": 0.49370525358462336,
+        "new_CPB_reference": true
+      },
+      {
+        "task": "past_relation",
+        "head": "neural_mean",
+        "method": "RPB-v25.market-01",
+        "native_width": 36,
+        "r2": 0.4071495455067296,
+        "new_CPB_reference": false
+      }
+    ],
+    "old_ledger_changed": false
+  },
+  "proof": {
+    "passing_attempt": "attempt-002",
+    "all_cutoffs": 128,
+    "suffix_cases": 2350,
+    "internal_temporal_cases": 30,
+    "typed_negative_cases": 14,
+    "CUDA_calls": 3687,
+    "checks": 107766,
+    "state_unchanged": true,
+    "failed_attempt_001_preserved": true,
+    "both_attempts_three_binaries_preserved": true,
+    "refusal_1_through_10_pt": "Deliberately malformed typed-loader test inputs; preserved engineering evidence, unusable as models. Only attempt002/proof/inference.pt is a usable CPB model."
+  },
+  "quality": {
+    "run": "output/runs/causal-patch-bottleneck-mae-v1/run-001",
+    "device": "CUDA:0 NVIDIA RTX A2000 8GB",
+    "batch": 8,
+    "CUDA_calls": 786,
+    "market_calls": 18,
+    "synthetic_calls": 768,
+    "market_dataset": "MKT-HIST-2 complexity4/5; TRAIN112/known chronological VALIDATION32; past-window retention, not forecasting",
+    "synthetic_dataset": "TEMPO-5 complexity5/5; 3 cohorts, both fixed scaler policies, intact/additional30%-erased views",
+    "same_fixed_heads_no_PCA_or_tuning": true,
+    "market_new_ridge_pipelines": 1,
+    "market_new_neural_fits": 3,
+    "synthetic_new_outer_normalizers": 6,
+    "synthetic_new_ridge_fits": 18,
+    "synthetic_new_neural_fits": 18,
+    "saved_scalar_checks": 2562,
+    "prediction_CI_scope": "Full predictions/bootstrap quantiles rely on unchanged pinned eight-source evaluator; reporter validates saved scalar arithmetic without tensor replay."
+  },
+  "costs_seconds": {
+    "new_encoder_training": 0,
+    "proof_import": 0.76141305,
+    "proof_state_checks": 167.33324873,
+    "proof_typed_artifacts": 2.929673615,
+    "quality_extraction": 39.33743146300185,
+    "market_heads": 2.3194627049997507,
+    "synthetic_heads": 5.941477216998464,
+    "report_hash_capture": 16.575647551999282
+  },
+  "preservation": {
+    "old_checkpoint_pins": 55,
+    "old_portable_pairs": 99,
+    "old_RPB_history_unchanged": true,
+    "primary": "RPB-v22",
+    "balanced_reference": "RPB-v24.market-01.alt-01",
+    "primary_or_balanced_changed": false,
+    "historical_closure_files": 77831,
+    "stopped_unscored_V30_transfer_preserved": true,
+    "physical_implementation_and_prospective_metadata_unchanged": true,
+    "local_unpublished": true
+  },
+  "full_metrics_sources": {
+    "market": "table_rows.json#/market_rows (96 historical+4 CPB rows; all errors, repetitions, seeds and coverage)",
+    "synthetic": "table_rows.json#/synthetic (all panels, floors, cohorts, repetitions, intervals and coverage)",
+    "source_and_artifact_inventory": "asset_hashes.json; exact 47 version-owned source assets, admitted closure/binaries/dependencies, run/proof assets; hashes only",
+    "completion": "Procedure passed; full market and synthetic quality gates failed. No overall winner."
+  },
+  "bindings": [
+    {
+      "path": "doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1_CARD.md",
+      "sha256": "3b059b84a60a7d193ffcb034480f54fa5aba532ed6cb6b541fa620c4ab584d5f",
+      "bytes": 13293
+    },
+    {
+      "path": "doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1_LAYOUT_ADDENDUM.md",
+      "sha256": "ae0a8adae317a7b2daee3f58a645c9000faab130cde17ba6662a66fae06047dd",
+      "bytes": 2124
+    },
+    {
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/completion.json",
+      "sha256": "cc4948effa5920aae6b3204eee754cbe352559401a88217074f1beee687fed0c",
+      "bytes": 6746
+    },
+    {
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/table_rows.json",
+      "sha256": "905c2fcd69e8c0d513db589213a5c1e4da67b51407d2fcea0bcfcf389f61c6f6",
+      "bytes": 693935
+    },
+    {
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/asset_hashes.json",
+      "sha256": "8c6134fb8e9a08f8cfa0c447a5939e05ac110779bdff1eb036598357767ce26b",
+      "bytes": 105204
+    },
+    {
+      "path": "doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1_RESULTS.md",
+      "sha256": "12409f35f7f7d2dabf4837d3bde142bec5197a4f5d8dd70dc98c3e6da9ce0ad3",
+      "bytes": 25529
+    },
+    {
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+      "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+      "bytes": 126493
+    },
+    {
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/engineering-failure-01.json",
+      "sha256": "30acab231593e596f7034cc4186fd577418eb3fd4ca1f36f9ca07bd1e108773c",
+      "bytes": 31059
+    },
+    {
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/source-manifest.json",
+      "sha256": "663f5999b13789505eff67afc9b57919334836b126f22b9f0711f813448aeaa2",
+      "bytes": 20293
+    },
+    {
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/admission.json",
+      "sha256": "68e6273bb4199bbbd1991c993237bbca1de057cb76c3a0cdde854b2439cce8f3",
+      "bytes": 51042
+    },
+    {
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/quality-tools-admission.json",
+      "sha256": "0822653c13e37c747f38ef6ce9afbcaa772b9ad92039207f258e8d8bcbd6efc0",
+      "bytes": 3644
+    },
+    {
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/independent-audit.json",
+      "sha256": "ee85c2cc6b5165436cb9df72973464bef468998bec394a0bcba7b8dd668f3ce8",
+      "bytes": 6346
+    },
+    {
+      "path": "output/engineering/causal-patch-bottleneck-mae-v1/attempt-002/proof/proof.json",
+      "sha256": "cfa8b8a2879d3c7366c15d53f1114193339e7fb56d2a84cc80e9c5fad0a39c99",
+      "bytes": 1974
+    },
+    {
+      "path": "output/runs/causal-patch-bottleneck-mae-v1/run-001/verification.json",
+      "sha256": "817eaef147f523f6893bad33cf27c857601dbbfe3a53701eadfe92e4e13c0a93",
+      "bytes": 1865
+    }
+  ],
+  "next_direction": "Preserve this stopped zero-update reference. Later causal training or fresh chronology/forecasting requires a separate prospectively fixed card."
+}

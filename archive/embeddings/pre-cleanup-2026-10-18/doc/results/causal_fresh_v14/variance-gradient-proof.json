@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "model": "CPB-v14",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "actual_CUDA": true,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "direct_NLL_mean_gradient_zero": true,
+  "huber_mean_gradient_live": true,
+  "direct_Huber_uncertainty_gradient_zero": true,
+  "shared_clip_coupling_witness": true,
+  "mean_native_variance_gradient_blocked": true,
+  "uncertainty_native_variance_gradient_live": true,
+  "uncertainty_projection_learning": true,
+  "mean_path_live": true,
+  "variance_head_learning": true,
+  "forward_variance_input_dependence": true,
+  "manual_composite_gradient_parity": true,
+  "nonvacuous_nonzero_fixture": true,
+  "binary": {
+    "path": "/opt/cuwacunu/build/causal-fresh-v14-attempt001/test_cpb_v14_variance_gradient",
+    "bytes": 584776,
+    "sha256": "eac42891dc71723fbaacc40dfe8a0c40302ccd5f35001fa535a21316c4f34a6c"
+  },
+  "log": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/variance-gradient.log",
+    "bytes": 397,
+    "sha256": "9b81f90da77eae0f5cd7b7f8de863ef5e446d03047bf18822af1c92651265592"
+  },
+  "execution": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v14/attempt-001/variance-gradient-stage.json",
+    "bytes": 873,
+    "sha256": "b959068bb81af0012606380cd999638264f0ec3713065e3d84d633d96b678e8f"
+  }
+}

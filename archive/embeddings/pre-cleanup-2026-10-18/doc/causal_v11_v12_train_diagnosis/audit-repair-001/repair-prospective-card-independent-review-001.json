@@ -1,0 +1,126 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v11_v12_TRAIN_diagnosis_repair_prospective_card_independent_review_v1",
+  "status": "passed_metadata_delta_review",
+  "reviewed_utc": "2026-10-17T20:27:40.9739427Z",
+  "execution_admitted": false,
+  "scope": "Independent actual metadata-delta/source-binding review only. Reviewer authored auditor repair; independent algorithm review is separately pinned in the root repair review, not claimed here.",
+  "original_false_card": {
+    "path": "doc/causal_v11_v12_train_diagnosis/independent-audit-card.PROPOSED.json",
+    "bytes": 6196,
+    "sha256": "c289931df5842d4c6c04c34c3e27c2b00de4ca32e5d88f19ceda51eb1d803fe8"
+  },
+  "repair_false_card": {
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/independent-audit-card.PROPOSED.json",
+    "bytes": 8091,
+    "sha256": "963e466c6e9b37ebaa143657ea1db9789795aa52f71b6be28878763513cbbc2b"
+  },
+  "repair_source_root_review": {
+    "file": "source-root-review-001.json",
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/source-root-review-001.json",
+    "bytes": 4532,
+    "sha256": "10a8ebe2e45bd7a471452847c3b753c38cd001ade1b17aebc481ac4178e51245"
+  },
+  "original_twenty_source_review": {
+    "path": "doc/causal_v11_v12_train_diagnosis/source-root-review-001.json",
+    "bytes": 8303,
+    "sha256": "58f632151cda90398853acbaad1d2e38322eda7b52d48418ad470109a016384e"
+  },
+  "repair_source_admission": {
+    "file": "source-preparation-admission.json",
+    "path": "doc/causal_v11_v12_train_diagnosis/audit-repair-001/source-preparation-admission.json",
+    "bytes": 4852,
+    "sha256": "5972dcb9028339d561fc2fa4d2a566655d5461279f975d0251ab49019e428267"
+  },
+  "preserved_failed_audit_card": {
+    "file": "independent-audit-card.ADMITTED.json",
+    "path": "doc/causal_v11_v12_train_diagnosis/independent-audit-card.ADMITTED.json",
+    "bytes": 6965,
+    "sha256": "f2af84ad89c85ddfb9c696fff0e4cf0473c7900f2c7c91bd8ab355adfbeb22ab"
+  },
+  "JSON_comparison": {
+    "mechanism": "JsonNode DeepEquals on every original top-level field; exact expected changed/added/removed sets; container object separately compared with output leaf restored.",
+    "changed_top_level_fields": [
+      "declared_utc",
+      "auditor_sources",
+      "source_provenance",
+      "orchestration_helpers",
+      "execution_wrapper",
+      "orchestration_provenance",
+      "container"
+    ],
+    "added_top_level_fields": [
+      "repair_source_review",
+      "parent_prospective_audit_card",
+      "parent_failed_audit_card",
+      "repair_source_admission",
+      "repair_scope"
+    ],
+    "removed_top_level_fields": [],
+    "execution_admitted_JSON_type": "boolean",
+    "execution_admitted_value": false,
+    "declared_utc_JSON_type": "string",
+    "all_other_original_JSON_values_types_preserved": true,
+    "container_change": "Only attempt-001 output_root to attempt-002; name/id identical"
+  },
+  "invariants": {
+    "original_main_card": {
+      "path": "doc/CAUSAL_V11_V12_TRAIN_DIAGNOSIS_CARD.ADMITTED.json",
+      "bytes": 72224,
+      "sha256": "9a8abd89b11798104ff8e7241b2810a53026d9cb8fe05be99f9db1707fcbc49a"
+    },
+    "original_main_diagnosis": {
+      "path": "doc/causal_v11_v12_train_diagnosis/diagnosis.json",
+      "bytes": 4069556,
+      "sha256": "44d33fab98e8f39d09d2b829f659e7122353e5775149b776080bbbbfbc813e3d"
+    },
+    "original_main_mirror": {
+      "path": "doc/causal_v11_v12_train_diagnosis/mirror.json",
+      "bytes": 7383,
+      "sha256": "1b1bb43b6aaae9127a1fceccb59dc7d5956552203b49f1879f6fdb345b3a3ec3"
+    },
+    "original_source_review20_unchanged": true,
+    "original20_source_hashes_unchanged": true,
+    "input_binding_counts": {
+      "numeric_roles": 25,
+      "hash_only_guards": 35,
+      "context_roles": 14,
+      "preservation_roles": 0,
+      "pre_execution_roles": 1,
+      "occurrences": 75,
+      "unique_host_files": 75,
+      "unique_container_paths": 75
+    },
+    "saved_scalar_tolerance": {
+      "absolute": 1E-10,
+      "relative": 1E-09,
+      "scope": "Existing independent scalar descriptor comparison; no changed V12 local-adjoint trust tolerance"
+    },
+    "repair_auditor_files": 5,
+    "repair_workflow_files": 5,
+    "exact_one_auditor_metadata_line_change": true,
+    "reader_component_math_unchanged": true,
+    "roles_allowlists_math_counters_tolerances_unchanged": true,
+    "failed_attempt001_preserved": true
+  },
+  "blocking_findings": [],
+  "notes": [
+    "Source-only metadata writer refusal occurred before this actual card existed; the independently pinned source-root review remains unchanged.",
+    "Exactly original main/result/mirror/scope/counts/tolerance and source review20 remain semantically identical; no new numerical selector, heldout data, quality gate or candidate is added.",
+    "False repair proposal still requires separate true-copy semantic review, then explicit AST Stage and once-only first numerical audit admission."
+  ],
+  "actions": {
+    "host_JSON_text_and_file_hash_only": true,
+    "helper_invocations": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "tensor_values_or_storage_reads": 0,
+    "numerical_reductions": 0,
+    "models": 0,
+    "heads": 0,
+    "fits": 0,
+    "training_updates": 0,
+    "source_or_prior_evidence_changes": 0
+  }
+}

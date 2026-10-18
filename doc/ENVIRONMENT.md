@@ -4,8 +4,9 @@ This project reuses the local `cuwacunu-dev:2026-10-12` image, which was made by
 `docker commit cuwacunu_embedding cuwacunu-dev:2026-10-12`. Its source container
 and immutable image ID are recorded in `environment-image.json`. A project tag,
 `mityane-geometrics:embedding-2026-10-12`, names that same image. Docker shares
-all existing layers: no dependency download, additional SDK copy or new snapshot
-of the actively used research container is required.
+all existing layers: no dependency download, additional SDK copy or new base
+image is required. The original container name is retained here as provenance;
+the current project uses only the managed `mityane-geometrics` container.
 
 The image contains installed tools and historical internal caches, but excludes
 the source container's host bind-mounted research files. Neither sibling source
@@ -74,6 +75,49 @@ The source image retains the SDK at `/opt/cuwacunu_embedding/libtorch` and CUDA
 paths. Keep build artifacts, temporary files, toolchains and caches on the
 container filesystem under `/opt/mityane-geometrics`. Persist selected research
 artifacts under the ignored `data/` and `output/` host directories.
+
+## Embeddings component
+
+The former standalone embedding project is integrated across `code/embeddings/`,
+`code/operations/forecasting/`, `code/data/` and `code/shared/`. The same
+container, pinned image, single bind mount, GPU access and port mapping are
+reused. The root `container.ps1`, `setup.sh`, `dependencies.lock` and Makefile
+own the environment and build. Component container/setup/lock duplicates have
+been removed. Run from `/mityane` through the root task entry:
+
+```powershell
+.\container.ps1 -Action exec -Command @('bash', 'code/scripts/task.sh', 'baseline', '-j2', 'all', 'test')
+```
+
+New component builds, temporary files and task locks live under
+`/opt/mityane-geometrics/embeddings/build/<session>`. Named task outputs live
+under `/mityane/output/embeddings/runs/<session>`. Imported historical artifacts
+remain in the component's ignored `output/`, `.build/` and `.external/`
+directories. Prefer named tasks; direct research runners require their own
+declared output path and frozen procedure before research. The complete
+pre-cleanup source/documentation component is preserved in
+`archive/embeddings/pre-cleanup-2026-10-18/`. Historical source capsules and
+receipts retain their original bytes, paths and hashes. Those identities are
+evidence, not paths to rewrite or a request to replay old experiments. Read
+[the archive guide](../archive/embeddings/README.md) for source ownership and
+historical path mapping, and [the research guide](EMBEDDINGS.md) for pause status.
+
+The imported archived headers exceed Windows' legacy path length under the
+component directory. This checkout uses repository-local `core.longpaths=true`;
+set the same local Git option on another Windows checkout before adding these
+paths. No global Git setting or hosting identity is changed.
+
+## Optional dashboard runtime
+
+The local dashboard opens directly as `web/dashboard/public/index.html`, without
+a service. Refreshes run through `container.ps1` inside this same container.
+The dashboard's dependency-only `web/dashboard/scripts/setup.sh` verifies and
+installs pinned Linux Node 22.23.3 from an existing exact archive under
+`/opt/mityane-geometrics/web/downloads/`. It performs no downloads or APT changes.
+The runtime, upstream license, refresh lock and temporary files stay under
+`/opt/mityane-geometrics/web/`. The base image and root dependency lock are
+unchanged. See [the dashboard guide](../web/dashboard/README.md) for the checksum,
+cache restoration details and refresh command.
 
 ## Restoring the local image
 

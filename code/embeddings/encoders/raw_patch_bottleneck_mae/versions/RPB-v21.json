@@ -1,0 +1,123 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 21,
+  "design_slot": "RPB-v21",
+  "canonical_registered_tag": "RPB-v21",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "See pinned instance registries",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "sha256": "8fa00e78314f8fc59d85f487dd167af6357b36857d755c1510bc5ffca3d1d9f3",
+      "bytes": 6123,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "LearnedOrderedRelationModel",
+      "LearnedOrderedRelationModelImpl",
+      "LearnedOrderedRelationProjection",
+      "LearnedOrderedRelationProjectionImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf",
+      "sha256": "226fafc20519775c4a8b9601e941fbd3e2834194c7c98dc12125d8d0e103fbd2",
+      "bytes": 565,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/configurable_learned_relation_embedding_versions.json",
+      "sha256": "2e36ea3f1f0ed02c181a331284ae7e9434ea71558837a4bd9594572f8cf77cf1",
+      "bytes": 3109,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_learned_relation_embedding_versions.json",
+        "sha256": "2e36ea3f1f0ed02c181a331284ae7e9434ea71558837a4bd9594572f8cf77cf1",
+        "bytes": 3109,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/0"
+      },
+      "declaration": {
+        "id": "RPB-v21.alt-01",
+        "description": "Learned ordered lag projection with unchanged spectral prior",
+        "master": 941101,
+        "checkpoints": [
+          {
+            "updates": 0,
+            "path": "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-0/checkpoint.pt",
+            "sha256": "c3c9b778bf789070e372834597e26d98bfa0e2bfe454e61504bce8fcf0b29e27",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-ac9d9673f1e24751"
+          },
+          {
+            "updates": 512,
+            "path": "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941101/point-512/checkpoint.pt",
+            "sha256": "5c3cd76bb6ce3559d569ba176d39c7d40806da7b20a835b3df993e63f7b4b6a6",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-ac9d9673f1e24751"
+          }
+        ]
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_learned_relation_embedding_versions.json",
+        "sha256": "2e36ea3f1f0ed02c181a331284ae7e9434ea71558837a4bd9594572f8cf77cf1",
+        "bytes": 3109,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/1"
+      },
+      "declaration": {
+        "id": "RPB-v21.alt-01",
+        "description": "Learned ordered lag projection with unchanged spectral prior",
+        "master": 941102,
+        "checkpoints": [
+          {
+            "updates": 0,
+            "path": "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-0/checkpoint.pt",
+            "sha256": "5818b4465fd91d817563cf1eeba5ededa6c9dc35670cc25322fa96e24e8a0b48",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-5f51eb3918f161a4"
+          },
+          {
+            "updates": 512,
+            "path": "output/runs/rpb-v21-learned-relation/admission-0PGNmn/candidates/master-941102/point-512/checkpoint.pt",
+            "sha256": "67f6053bc27575379054c024e18e3fd0dda0317d88dfb05a68725c999e923914",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-5f51eb3918f161a4"
+          }
+        ]
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved.",
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

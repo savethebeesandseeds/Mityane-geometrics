@@ -1,0 +1,197 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 27,
+  "design_slot": "RPB-v27",
+  "canonical_registered_tag": "RPB-v27",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Frozen TRAIN parent-conditional map of the unchanged conditioned adjacent-change bank",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h",
+      "sha256": "dbc9d9aa7c8a0563f6e4ce73d55cdc943df3013a287b8041c31555e871428758",
+      "bytes": 5819,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "ParentConditionalChangeModel",
+      "ParentConditionalChangeModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/parent_conditional_changes.conf",
+      "sha256": "dd608af9f10819587dcef84b4e57f74edcac4e987286c3f04e8727021cd8be93",
+      "bytes": 618,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/parent_conditional_changes.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_conditional_changes_v1/completion.json",
+        "sha256": "ea8f754edfaf105de64dc55b8064606c497079f0dd9fdbb726b70c1b2a2f0076",
+        "bytes": 42071
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_conditional/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h",
+        "sha256": "dbc9d9aa7c8a0563f6e4ce73d55cdc943df3013a287b8041c31555e871428758",
+        "bytes": 5819
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/parent_conditional_change_embedding_versions.json",
+      "sha256": "e72e7b0f2ebae3262ab0146167e4117cf6c4ccbf5979d0f0a54ac9a171d0dce5",
+      "bytes": 45644,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/parent_conditional_change_embedding_versions.json",
+        "sha256": "e72e7b0f2ebae3262ab0146167e4117cf6c4ccbf5979d0f0a54ac9a171d0dce5",
+        "bytes": 45644,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v27.market-01",
+        "status": "measured stopped mechanism; original5/9, strict2/8; all3 final neural trend repetitions negative",
+        "batch_size": 8,
+        "geometry": {
+          "C": 3,
+          "H": 128,
+          "F": 9,
+          "P": 8,
+          "W": 64,
+          "canonical_channel_ids": [
+            0,
+            1,
+            2
+          ],
+          "sampling_interval_ms": 60000,
+          "parent_width": 32,
+          "change_width": 4,
+          "native_width": 36
+        }
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v27.market-01",
+      "description": "Frozen TRAIN parent-conditional map of the unchanged conditioned adjacent-change bank",
+      "status": "stopped exact declared mechanism; preserved task references",
+      "input_geometry": {
+        "C": 3,
+        "H": 128,
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "native_width": 36,
+        "output": "one native vector per window"
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_PARENT_CONDITIONAL_CHANGE_CARD.md",
+        "sha256": "6e24e48bfdd05148f99446cf1421a713a7736d522f6c00159ba156e43b39c29b",
+        "bytes": 11764
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_PARENT_CONDITIONAL_CHANGE_RESULTS.md",
+        "sha256": "cb2d4548a8d35cf47b258e397161f50e1db04e224ae1b831309e6dbb9730ecb7",
+        "bytes": 22525
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_conditional_changes_v1/completion.json",
+        "sha256": "ea8f754edfaf105de64dc55b8064606c497079f0dd9fdbb726b70c1b2a2f0076",
+        "bytes": 42071
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_parent_conditional_changes_v1/table_rows.json",
+        "sha256": "a0e6e91f577d377006201c9212025dda90a6e3553803e27f63334fa341f8beb0",
+        "bytes": 217298
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-0.pt",
+          "sha256": "48fb7c71b87b3111ae8ab7dfda756563681a126cd3b5b2d14f7a65c469ee69ee",
+          "bytes": 3860393,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-2048.pt",
+          "sha256": "192cc9c7bf5e511aad6fcbf3745b127d16f500563b7942b885567e94dd996956",
+          "bytes": 3861383,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-1024.pt",
+          "sha256": "56508727ef7acec80bdf1c358f3db2b88875b0c5f5b1f45c75963895c1231a60",
+          "bytes": 4003046,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-2048.pt",
+          "sha256": "feadc430ce986ab046e3545b9f928c7b0405220448f148cd92e52edca135bc39",
+          "bytes": 4003046,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-512.pt",
+          "sha256": "f51de93f376c52917f6188ef98779eadfb41ca39eea90d23d68dd2307e81b367",
+          "bytes": 4002685,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

@@ -1,0 +1,56 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "family": "causal_patch_bottleneck_mae",
+  "version": "CPB-v6",
+  "instance": "CPB-v6.market-01",
+  "created_utc": "2026-10-15T22:47:04.6675756Z",
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "stage": "prospective_unmeasured",
+  "immutable_prospective_semantics": true,
+  "declaration_provenance": "Frozen prospective descriptor after the machine card hash and before source admission/build/measurement; measured instance record may be added later without changing this declaration",
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V6_CARD.json",
+    "bytes": 74773,
+    "sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d"
+  },
+  "physical_version_root": "versions/v6",
+  "public_entry": "versions/v6/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v6.h",
+  "architecture_copy_parent": "CPB-v5",
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "fixed_prior_values": 3888,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "mechanism": "Same V5 native40 forward capacity/draws; fixed unweighted Huber1 live mean objective plus detached-error Gaussian variance calibration,live independent uncertainty projection/head. Shared globalclip1/AdamW and future-residual coupling remain",
+  "retention_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v5_retention.json",
+    "bytes": 12897,
+    "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+  },
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "measured_results_in_this_descriptor": false,
+  "metadata_only": true
+}

@@ -1,0 +1,115 @@
+{
+  "kind": "cpb_v10_actual_training_audit_card_independent_static_review_v1",
+  "status": "passed",
+  "reviewer": "causal_training_path",
+  "reviewed_utc": "2026-10-16T13:21:53.5205686Z",
+  "scope": "Host file/hash/JSON/source inspection only; actual independent audit remains unexecuted by reviewer",
+  "blockers": [],
+  "card": {
+    "path": "doc/causal_fresh_v10_training_audit/audit-card.json",
+    "bytes": 11092,
+    "sha256": "435a18a54a1d5cf37da84b491c6545b207e302b730d1a100b198a5dd19c75c3a"
+  },
+  "frozen_main_card": {
+    "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+    "bytes": 119685,
+    "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+  },
+  "completed_training_mirror": {
+    "path": "doc/causal_fresh_v10/training-mirror-attempt-001.json",
+    "bytes": 145496,
+    "sha256": "e39dc69341f28006578ab9e6725d971aca4c0d6b4a538112a50ad41ff9dcac2b"
+  },
+  "completed_training_stage": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/training-stage.json",
+    "bytes": 1258,
+    "sha256": "cc7664fa7daa516c4f21383341ae27edc74d9ad669445bf4c79fb29051289b47"
+  },
+  "completed_training_summary": {
+    "path": "output/runs/causal-fresh-v10/run-001/training-summary.json",
+    "bytes": 37812,
+    "sha256": "f5174d33023ad83edd9dadcf4f74331678021a295eb15d9ed9e9ee1935a72ba3"
+  },
+  "auditor_sources": [
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+      "bytes": 116406,
+      "sha256": "b44a62524a177b67ba2a12d98841ba851ef6a3d3138a82405a81cb7fb6ce2e7d"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/README.md",
+      "bytes": 6815,
+      "sha256": "834d613ce9193ce781a2f755afe2b9239f1ccdd5debf6cba398f2e850e75d4ef"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+      "bytes": 6999,
+      "sha256": "61dc066f7e34bd4c9bacdfb4860a2cbe63a95d11506a8f7324002bf5fe0bc342"
+    }
+  ],
+  "transport_sources": [
+    {
+      "path": "doc/causal_fresh_v10_training_audit/stage.ps1",
+      "bytes": 8724,
+      "sha256": "ed2d24bfe89f03f10dc81a0cf22f101a1229b9c12742401e0832cab966d7ba39"
+    },
+    {
+      "path": "doc/causal_fresh_v10_training_audit/run.ps1",
+      "bytes": 5436,
+      "sha256": "d3252f72842a8f451c15a573cebd9cfe31be23649b68743b62affae4ddbbe788"
+    },
+    {
+      "path": "doc/causal_fresh_v10_training_audit/execute.py",
+      "bytes": 9901,
+      "sha256": "5f28636a057fd6a0df3a612f71364521f10c3cb0f9db522937a5da042d79db0c"
+    },
+    {
+      "path": "doc/causal_fresh_v10_training_audit/mirror.ps1",
+      "bytes": 9020,
+      "sha256": "547a11d210c5b3282fc64b7740d749449c0cdf8d20ad836c44affc4f8faf3c9c"
+    },
+    {
+      "path": "doc/causal_fresh_v10_training_audit/prepare-card.ps1",
+      "bytes": 14316,
+      "sha256": "07029b477bed8f6e29664ca32b470ee1fdb1e1c6e858bd9efe6d0797a0913692"
+    },
+    {
+      "path": "doc/causal_fresh_v10_training_audit/provenance.json",
+      "bytes": 9136,
+      "sha256": "6f4652dbfc58fa3343407002ff98ec6c43166b2c49fc750278d60efa44d7dd58"
+    }
+  ],
+  "prior_source_review": {
+    "path": "doc/causal_fresh_v10/family-and-training-auditor-independent-static-review.json",
+    "bytes": 7729,
+    "sha256": "124ffe4801072e1877f58c40608cbb2f865f9044ec7683bccc8d3b4d7d1c4eee"
+  },
+  "prior_transport_review": {
+    "path": "doc/causal_fresh_v10_training_audit/workflow-independent-static-review-causal-training-path.json",
+    "bytes": 5212,
+    "sha256": "c296a3d3291d167c4c11c7907a52c5de80f30a9ba72cf902a62b16ba19bf1665"
+  },
+  "findings": [
+    "All22 declared local pin occurrences resolve to exact bytes/SHA, including three inert auditor sources, three preserved V9 parent sources, source review and all six transport/provenance bindings.",
+    "All436 Training mirror members independently hash exact on host; both actual stage and summary are members with identical card pins. Mirror declares scope Training, source127 and404 mirrored PT ignored; this review did not rerun Git ignore or parse checkpoint tensors.",
+    "Frozen main card42b16, Markdown9e418, inputc79f, manifest66b956 and ZIPd664 match the previously reviewed127-source/7-binary/11-TU closure. Canonical run/source/build/attempt001 and exclusive independent audit root agree with Stage/executor CLI.",
+    "Actual completed stage is passed/exit0 with admitted train binaryf524889c. Saved summary reports2048 successful updates and2048 attempts, cuda:0, B8/D40, source_updates0, seed943001, raw_load_calls2596 (512+actual attempts+36), exact typed512 resume and no old model/stat/encoder/head/replay calls.",
+    "Objective/gradient/direct-route fields and false detach/report-backward flags agree with reviewed source and saved summary. Typed temporal policy/partition/mix/empty contract matches unchanged V9 forward. Only objective.total_loss is the declared backward tensor.",
+    "75 identifiable learned tensor events and294751 tensor-numel capacity retain the scalar-gauge exemption and explicit no every-scalar proof. Four export rows, four within-bin contrasts, three Hadamard directions and overall final projection are saved summary assertions for the independent audit to verify, not newly recomputed findings.",
+    "Card predeclares F64-before-subtraction movement, independent8192 group/2048 gauge/2048 between rows and actual1/2048 twelve-array witnesses, with per-direction event and overall final norm gates only. Core plus five module counts remain separately scoped.",
+    "Stage6 payload files/AST2, external card/source/Stage/ZIP pins, once-only flock execution, and exact source-before/after mirror guards match the reviewed transports. No quality prerequisite or nonexistent skipped_batches field is introduced."
+  ],
+  "counters": {
+    "declared_local_pin_occurrences_verified": 22,
+    "training_mirror_file_hashes_verified": 436,
+    "AST_calls": 0,
+    "helper_invocations": 0,
+    "Docker_calls": 0,
+    "project_numeric_reductions": 0,
+    "checkpoint_tensor_reads": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0
+  },
+  "disposition": "No actual-card source/data-binding blocker found; root controls separate Stage and once-only numeric admission."
+}

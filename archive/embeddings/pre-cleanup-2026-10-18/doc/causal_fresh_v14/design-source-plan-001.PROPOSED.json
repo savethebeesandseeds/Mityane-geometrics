@@ -1,0 +1,943 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v14_design_source_plan_v1",
+  "status": "PROPOSED_pending_independent_and_root_review",
+  "candidate": "CPB-v14.market-01",
+  "version": "CPB-v14",
+  "design_only": true,
+  "authorizations": {
+    "source_preparation": false,
+    "source_copy": false,
+    "source_edit": false,
+    "card_generation": false,
+    "source_freeze": false,
+    "AST": false,
+    "Build": false,
+    "Engineering": false,
+    "Calibration": false,
+    "Train": false,
+    "InitialProof": false,
+    "FinalProof": false,
+    "Quality": false,
+    "independent_numeric_audit": false,
+    "metadata_application": false,
+    "DEV_replacement": false,
+    "Git_commit": false,
+    "Git_push": false,
+    "publication": false,
+    "deletion": false
+  },
+  "root_design_selection": {
+    "selected_for_design_only": true,
+    "single_hypothesis": "Replace four disjoint local temporal supports with four fixed nested trailing supports. Retain V13 regularized dispersion, globalhalf and all parameter registrations.",
+    "rationale": "Change allocation, overlap and recency of time information rather than dispersion scale. Keep the sqrt transform fixed to make this one mechanism comparison.",
+    "inference_limits": "Saved TRAIN descriptions and scoped quality gains do not prove the old bins caused failures, that nested windows will repair volatility/trend, or that this candidate will win.",
+    "alternative": "Do not combine with log1p variance, coefficient/length sweeps, capacity changes or head tuning.",
+    "current_state": "V13 is a trusted measured8/22 reference with five scoped quality records, no reconstruction record and no overall advancement. Preserve every earlier leader. V3 remains baseline and sole DEV encoder."
+  },
+  "source_ancestry": {
+    "scientific_source_parent": "CPB-v13",
+    "source_only": true,
+    "trained_weight_ancestor": "none",
+    "source_updates": 0,
+    "inherited_learned_values": 0,
+    "pretrained_checkpoint_import": false,
+    "optimizer_state_reused": false,
+    "fitted_statistics_reused": false,
+    "fresh_initialization_seed": 943001,
+    "initialization": "All learned values and optimizer state start fresh; refit the identical permitted TRAIN-only input scaler/bank/cohort calibration from identical frozen inputs. Old fitted artifacts are comparison DATA only."
+  },
+  "mechanism": {
+    "history": 128,
+    "patch_size": 8,
+    "fixed_original_position_bound": 16,
+    "trailing_lengths": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "fixed_local_supports_half_open": [
+      [
+        12,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        0,
+        16
+      ]
+    ],
+    "order": "Shortest to longest, each retaining its corresponding eight export rows.",
+    "membership": "valid_token && original_position >= 16 - trailing_lengths[j] && original_position < 16",
+    "endpoint": "Fixed edge16 belongs to the retained left-padded H128/P8 history ending at the requested cutoff. Never derive thresholds from packed length, valid count, last observed position, maximum visible index or future raw-array end.",
+    "crop_padding_packing": "Preserve prefix-to-cutoff crop, lastH retention, left-padding, causal mask and original0..15 prepacking patch positions. Sparse valid patches keep their original positions; packed padding is invalid/-1.",
+    "local": "Existing learned score softmax on valid members of the selected local support.",
+    "global": "Existing learned global score softmax across all valid retained causal states, for every present local support.",
+    "mixture": [
+      0.5,
+      0.5
+    ],
+    "mean": "Preserve actual two-sum0.5*local_mean+0.5*global_mean; membership can change the resulting values.",
+    "variance": "Preserve live attention-coupled centered variance using that mixture and actual mean, including hidden/center/score/position derivatives and finite-F32 center-residual correction. Never substitute V12 uniform-support/zero-score derivatives.",
+    "dispersion": "Actual F32 add -> sqrt -> subtract: sqrt(v+0.0009765625)-0.03125. No new epsilon, Bessel correction, scale, coefficient, transform or sweep.",
+    "absence": "No local valid members means mixture0 and whole8 served rows exact0 after bias even with nonempty global support. Raw zero-variance root is1/32; transformed dispersion0.",
+    "support_safety": "Retain support sanitization before subtract/square, including invalid slots inside present windows; retain supported nonfinite/variance-overflow refusal.",
+    "routes": "Same semantics in ordinary/contextual routes with each route's actual own valid support.",
+    "longest_window": "Length16 local and global supports coincide; preserve the two-sum expression/graph without algebraic simplification or new parameters.",
+    "interpretation": "All slices describe the same cutoff embedding. These are horizon emphases, not isolated horizon-only information: globalhalf and earlier causal hidden context remain.",
+    "support_examples": {
+      "position0_only": [
+        false,
+        false,
+        false,
+        true
+      ],
+      "position15_only": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "all_padding": "All served slices0 after bias; all raw roots1/32."
+    }
+  },
+  "typed_contract_proposal": {
+    "pooling_policy": {
+      "key": "temporal_pooling_policy",
+      "type": "String/rank1 UTF8 ByteStorage",
+      "value": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1"
+    },
+    "geometry": {
+      "key": "temporal_pooling_geometry_v1",
+      "dtype": "Long",
+      "shape": [
+        4
+      ],
+      "value": [
+        4,
+        16,
+        32,
+        8
+      ],
+      "semantics": [
+        "windows",
+        "fixed_original_position_bound",
+        "export_rows",
+        "rows_per_window"
+      ]
+    },
+    "trailing_lengths": {
+      "key": "temporal_pooling_trailing_lengths_v1",
+      "dtype": "Long",
+      "shape": [
+        4
+      ],
+      "value": [
+        4,
+        8,
+        12,
+        16
+      ]
+    },
+    "replaces": "temporal_pooling_partition_v1",
+    "no_legacy_alias": "Do not write or accept the old five-value disjoint-span field as V14 geometry. Reject parent V13 policy/partition despite compatible parameter shapes.",
+    "export_layout": "per-trailing-window-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "retained_transform": {
+      "key": "temporal_dispersion_transform_policy",
+      "type": "String/rank1 UTF8 ByteStorage",
+      "value": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1"
+    },
+    "retained_tau": {
+      "key": "temporal_dispersion_regularizer",
+      "dtype": "Double",
+      "shape": [
+        1
+      ],
+      "value": [
+        0.0009765625
+      ]
+    },
+    "retained_mix": {
+      "dtype": "Double",
+      "shape": [
+        2
+      ],
+      "value": [
+        0.5,
+        0.5
+      ]
+    },
+    "retained_moment_partition": {
+      "dtype": "Long",
+      "shape": [
+        2
+      ],
+      "value": [
+        4,
+        4
+      ]
+    },
+    "inference_nodes": [
+      "",
+      "payload"
+    ],
+    "training_nodes": [
+      "",
+      "encoder",
+      "encoder.payload"
+    ],
+    "strictness": "Exact key/type/rank/length/order/value at all five nodes. Reject missing/malformed/swapped/conflicting/legacy fields before loading learned or optimizer state. Typed resume applies only to this candidate's own fresh V14 trajectory."
+  },
+  "unchanged_recipe": {
+    "native_width": 40,
+    "native_layout": [
+      "learned20",
+      "literal_spectral12",
+      "mean_change4",
+      "uncertainty4"
+    ],
+    "expected_learned_tensors": 76,
+    "expected_fresh_learned_values": 294752,
+    "expected_fixed_prior_values": 3888,
+    "expected_total_parameters": 298640,
+    "count_status": "Source-structure expectations only, not measured V14 facts; prove exact registration/order/shapes/draw parity before scientific execution.",
+    "new_parameters": false,
+    "new_initialization_draws": false,
+    "initialization_seed": 943001,
+    "row_seed": 943002,
+    "mask_seed": 943003,
+    "context_seed": 943004,
+    "successful_updates": 2048,
+    "batch_size": 8,
+    "maximum_attempts": 4096,
+    "optimizer": "single AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "global_clip": 1.0,
+    "query_fraction": 0.25,
+    "extra_context_deletion": 0.15,
+    "dropout": 0.0,
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "mean_huber_delta": 1.0,
+    "loss_coefficients": [
+      1.0,
+      1.0
+    ],
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "calibration": "Fresh same4096 TRAIN anchors; no validation fit or old fitted-state import.",
+    "data": "Identical pinned V13 input manifest, saved selections/query plans/targets/cohorts and split/calibration recipes.",
+    "saved_stages": [
+      0,
+      2048
+    ],
+    "intermediate_checkpoint_selection": false,
+    "post_encoder_PCA": false,
+    "head_tuning": false,
+    "old_encoder_training_repeated": false,
+    "old_model_or_head_calls": 0
+  },
+  "initial_pairing_proposal": {
+    "reference": "CPB-v13.market-01 initial DATA and statistics only",
+    "reference_model_checkpoint_numeric_reads": 0,
+    "expected_archives": 13,
+    "feature_archives": 8,
+    "statistic_archives": 5,
+    "feature_coordinate_slice": [
+      20,
+      40
+    ],
+    "unpaired_learned_content_slice": [
+      0,
+      20
+    ],
+    "whole_native40_equality_claimed": false,
+    "statistic_numeric_equality_required": true,
+    "old_fitted_statistics_imported": false,
+    "new_own_initial_and_final_fixed_heads": true,
+    "pending": "Discover exact saved V13 reference identities from completed receipts and prospectively bind them before quality. Do not silently retain V11 as V14 pairing reference or invent V14 hashes."
+  },
+  "planned_owned_source_preparation": {
+    "status": "not_admitted",
+    "before_any_edit": "Enumerate complete current V13 parents from exact owned provenances/immutable source capsule; verify authority, preserve full physical parent bytes with manifest, then make complete owned physical V14 copies. No old runtime imports/forwarders/references.",
+    "family": {
+      "parent": "code/encoders/causal_patch_bottleneck_mae/versions/v13",
+      "destination": "code/encoders/causal_patch_bottleneck_mae/versions/v14",
+      "external_parent": "code/encoders/causal_patch_bottleneck_mae/versions/v13.h",
+      "external_destination": "code/encoders/causal_patch_bottleneck_mae/versions/v14.h"
+    },
+    "research": {
+      "parent": "code/research/causal_fresh_v13",
+      "destination": "code/research/causal_fresh_v14",
+      "scope": "Full support/training/evaluation dependencies and three research tests; preserve fixed-head numerical algorithms unchanged."
+    },
+    "auditors": [
+      {
+        "parent": "code/research/causal_fresh_v13_training_audit",
+        "destination": "code/research/causal_fresh_v14_training_audit"
+      },
+      {
+        "parent": "code/research/causal_fresh_v13_quality_audit",
+        "destination": "code/research/causal_fresh_v14_quality_audit"
+      }
+    ],
+    "workflow": "Enumerate/copy explicit final V13 workflow source assets only; no measured results/admitted cards/history DATA as executables. Later audit/join/finalization/preservation workflows require separately bounded source authorization.",
+    "descriptor": "Preserve whole V13 descriptor DATA; create unmeasured V14 DRAFT only after source admission. Canonical descriptor absent until separate prospective freeze.",
+    "adaptation": "Kernel and independent scalar/oracle membership; five-node serialization; JSON/report/auditor geometry; original-position local-member counts and stale disjoint descriptions. Keep unrelated algorithms and rawvariance/root/dispersion distinct.",
+    "proof_counts": "Derive all source/parent/binary/TU/archive/typed-negative/kernel/FD/isolated-gradient/check counts from final prepared sources before actual card/quality. Do not inherit V13's636/51/18/18/4/nine flags/143 source count as new V14 evidence."
+  },
+  "required_proofs": [
+    "Independent scalar membership/mixture/two-sum mean/rawvariance/actual F32 root+dispersion/export/full-adjoint references for both routes; tolerances/counts prospectively declared before testing.",
+    "FD and captured-F32 residual correction; live hidden/center/attention score/position routes, no uniform zero-score assumption.",
+    "Position0/15, sparse gaps/nesting, length16 local=global support, emptylocal/nonemptyglobal, allpadding, invalid NaN/Inf, supported nonfinite refusal and huge singleton safety.",
+    "Crop/leftpad/fixed endpoint across early histories/all cutoffs; later values AND masks cannot change embedding at cutoff; verify internal causal attention and both route traces.",
+    "Missing/wrong dtype/rank/length/order/value/legacy-policy/partition/geometry rejection at every typed node; exact own-trajectory resume/state preservation.",
+    "Unchanged registration/shapes/draw order and fresh seed943001/source0/noancestor/nooldopens/nooptimizerorstatimport; actual CUDA learning and identified tensor/group movement under unchanged sharedclip1/AdamW.",
+    "Saved initial/final embeddings with unchanged declared D40 heads/seeds, independent saved TRAIN+quality audits, measured-trust join and100% coverage; no old model/head replay/PCA/tuning."
+  ],
+  "pending_dependencies": [
+    {
+      "id": "human_V11_V13_diagnosis_report",
+      "status": "pending_author_closeout",
+      "note": "Main and independent audit are pinned; no future report hash invented."
+    },
+    {
+      "id": "V11_V13_documentary_completion",
+      "status": "pending_author_closeout",
+      "note": "Bind actual final receipt later; do not invent completion."
+    },
+    {
+      "id": "prospective_retention_derivation",
+      "status": "not_admitted",
+      "note": "Proposed22 criterion objects below are design-only, not a new canonical protocol or old-result rescoring."
+    },
+    {
+      "id": "V14_exact_parent_inventory_and_source_review",
+      "status": "not_prepared",
+      "note": "Requires separate source admission before any whole-parent copy or source edit."
+    }
+  ],
+  "future_phase_order": [
+    "Close pending diagnosis documentation",
+    "Independent design review and separate source-preparation admission",
+    "Whole-parent preservation, owned source preparation and independent static review",
+    "Declare exact criteria/heads/geometry/proof inputs before freeze",
+    "Separately admit metadata card/freeze/preflight/AST/build/engineering/calibration/sole fresh training",
+    "Separately admit saved endpoint proofs/fixed-head evaluation/audits/trust join",
+    "Review reports/leaders/preservation before any separate application selection"
+  ],
+  "boundaries": {
+    "allowed_now": "Existing source/JSON inspection and this false design only.",
+    "container": "Only existing immutable cuwacunu GPU container from V13 card, identity/binds/GPU reverified in a separately admitted phase. No host project execution or container creation/replacement.",
+    "application": "V3 remains sole DEV; no winner, publication, replacement or deletion."
+  },
+  "authoring_scope": {
+    "metadata_only": true,
+    "scientific_reductions": 0,
+    "PT_reads": 0,
+    "CSV_reads": 0,
+    "archive_or_binary_or_checkpoint_hashes": 0,
+    "project_helpers": 0,
+    "AST_imports": 0,
+    "Docker_calls": 0,
+    "source_edits": 0,
+    "DEV_mutations": 0,
+    "Git_mutations": 0,
+    "metadata_inspection_refusals": [
+      "A guessed direct kernel path did not exist; rg identified the actual nested include path. No source mutation.",
+      "First proposal assembly stopped at an incorrectly guessed comparison JSON path before directory/file creation. Corrected path copied from current instance.comparison; no partial proposal or scientific action."
+    ]
+  },
+  "declared_utc": "2026-10-17T23:33:52.2178247+00:00",
+  "evidence_pins": {
+    "v13_card": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/CAUSAL_FRESH_V13_CARD.json",
+      "bytes": 137257,
+      "sha256": "4d07167ac6dcd746215cb93d2487f016acf3e038df9ddbe5054bb7d372b617df"
+    },
+    "v13_descriptor": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v13.json",
+      "bytes": 5575,
+      "sha256": "0c90bc5f673283ca463b3652e3c53899238bb6a9628833e03498c0cc8f4b3349"
+    },
+    "source_manifest": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/results/causal_fresh_v13/source-manifest.json",
+      "bytes": 33178,
+      "sha256": "308c30565d8146dfc1582720f828f7237db289646093128cea91f7596341bf81"
+    },
+    "build_admission": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/results/causal_fresh_v13/build-admission.json",
+      "bytes": 40119,
+      "sha256": "f6c30058aa024ce47926336b08973ab8e79dabc81be5f873169daeba540e0d4a"
+    },
+    "complete_mirror": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/complete-mirror-attempt-001.json",
+      "bytes": 344830,
+      "sha256": "b8efa9d0b81b508907a0929001b26dfab9b30ccc7937f0e226586e5d66740b7f"
+    },
+    "final_establishment": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/final-establishment.json",
+      "bytes": 10158,
+      "sha256": "ca8eb76e9659b0b18b96b557b192970a1f0f14b00e2738cea34e70df81b13f7a"
+    },
+    "quality_audit": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/quality-independent-audit.json",
+      "bytes": 248064,
+      "sha256": "969c0de07f02b114bd9ea280e09753e65d703a45bb5dce917bac5619c243b59b"
+    },
+    "training_audit": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/independent-training-audit.json",
+      "bytes": 80738,
+      "sha256": "eae109fb33c85327bcdc619ec4339f0e6d3a943cca3e6ad9103f66c97d08fb7a"
+    },
+    "final119_preservation": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/final-preservation.json",
+      "bytes": 2053970,
+      "sha256": "ae11f853b6bd8462c766a939f69a513922aaa0d791a5bf9b156e485692f7adce"
+    },
+    "preservation_peer": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/preservation-repair-001/actual-result-independent-review-001.json",
+      "bytes": 10174,
+      "sha256": "2074bdfc154b8b65459edaadf01b966a7f1216cbbba3c1d8753f814da1bf9c45"
+    },
+    "table_rows": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/results/causal_fresh_v13/table_rows.json",
+      "bytes": 402248,
+      "sha256": "9c004fd29fc130f09cf05685309ee632146015399c7c5742cb0c85dc8658c006"
+    },
+    "comparison": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/results/causal_fresh_v13/comparison.json",
+      "bytes": 610958,
+      "sha256": "0b2c67fd17ce8ee854ab4fd56d9c9e009b5995b3c399d4b4598f71321c444d7d"
+    },
+    "metadata_application": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13_finalization/applied-metadata.json",
+      "bytes": 4514,
+      "sha256": "2afc7af8f9ee21b8a61f2f081d8bc3c880910d9d059531c2e2374e2226aba5f9"
+    },
+    "current_ledger": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/clean_causal_encoder_research_ledger.json",
+      "bytes": 1746343,
+      "sha256": "4ac9a0a3b73225b3ca33915176a2785dd23524d2464021a421a99c33f5464270"
+    },
+    "current_catalog": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "bytes": 112712,
+      "sha256": "1c6bf11f890fd6b2dbf569be6b0f6b2c383c102bb59cd86b9df00a4bca460191"
+    },
+    "current_instance": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v13.market-01.json",
+      "bytes": 28690,
+      "sha256": "ec44e86bbc4ee54b8331bd0426f7784f8ed59d5a57e80236ac4fb41288db17a8"
+    },
+    "strongest866_protocol": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/goal-protocol.json",
+      "bytes": 48667,
+      "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+    },
+    "input_manifest": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/input-manifest.json",
+      "bytes": 5465,
+      "sha256": "51e88810a23fc05128c62aa3b9ed23dc996fe6e5e5e934e398ba817f203ff3b0"
+    },
+    "family_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/family-source-provenance.json",
+      "bytes": 23275,
+      "sha256": "76fa301085757dc451b2bc59771b917f9f7e4fbcde90ecd212eb1f0acb3ef620"
+    },
+    "training_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/research/causal_fresh_v13/training-helper-provenance.json",
+      "bytes": 15164,
+      "sha256": "c382a4c7e3bd2148c5b5bdd1fc3ef304065e1fef2d09084b9a962731ed74a46d"
+    },
+    "evaluation_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/evaluation-source-provenance.json",
+      "bytes": 10178,
+      "sha256": "1084a7f32c4aefe78e07d530e951821b61e49568432d2d58639bdfc32b828f51"
+    },
+    "head_dependency_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/research/causal_fresh_v13/evaluation/dependency-provenance.json",
+      "bytes": 29574,
+      "sha256": "b9657819b47980f2bab34ba42bf68ff6274a868c410168236ab5766af29eaf38"
+    },
+    "workflow_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/orchestration-provenance.json",
+      "bytes": 25594,
+      "sha256": "e05104a8700f75b009cd91de947624c41452e199b71f5e5819f41977af72dada"
+    },
+    "TRAIN_auditor_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/research/causal_fresh_v13_training_audit/provenance.json",
+      "bytes": 12328,
+      "sha256": "792137c5beea1f145ee5c8ea687170304c01715738cde7620d0dbe674645225f"
+    },
+    "quality_auditor_provenance": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/research/causal_fresh_v13_quality_audit/provenance.json",
+      "bytes": 11817,
+      "sha256": "b5b2b9adf652b88f2ae5a56a9c7e024dc818a85bdce32bcd58698d8012c670ae"
+    },
+    "pool_kernel": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v13/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v13/temporal_pooling.h",
+      "bytes": 9292,
+      "sha256": "04e2adaecf3da9913763be7f9189dc9aff3824fa34a1321c8942650d8e1c4e4b"
+    },
+    "public_entry": {
+      "repository": "cuwacunu_embedding",
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v13.h",
+      "bytes": 36008,
+      "sha256": "906a9cc636fe28a893528fc09c6035ef1a2811291439caaf5005a7e5b1be7020"
+    },
+    "diagnosis_card": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/CAUSAL_V11_V13_TRAIN_DIAGNOSIS_CARD.ADMITTED.json",
+      "bytes": 74190,
+      "sha256": "6b2d4c3b995bc4904cbeaddf97a73a930866838a2338e15744b472da42bf232f"
+    },
+    "diagnosis_source_review": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/source-root-review-001.json",
+      "bytes": 7905,
+      "sha256": "ba0f516d9d9efe552f9ca1967fe8787b85de2623391d45094b3474785b7faf10"
+    },
+    "diagnosis": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/diagnosis.json",
+      "bytes": 4183840,
+      "sha256": "716959d4428b3b65d71d4e0fa84fe5d96a84bdd9ab40266785b837d84f54ab27"
+    },
+    "diagnosis_mirror": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/mirror.json",
+      "bytes": 7568,
+      "sha256": "86a5966991322d00cdc9f5402ece9f592471dc5157490cf93538038ad0b31386"
+    },
+    "diagnosis_audit": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/independent-audit.json",
+      "bytes": 52464,
+      "sha256": "0d47cc5306b6fbfae2a886c0cf1d1a90dc90a9b18c767cffef8357fdb20d3d11"
+    },
+    "diagnosis_audit_mirror": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/independent-audit-mirror.json",
+      "bytes": 9702,
+      "sha256": "9d1bbeda8ff047232e3a72fc547a9ac2dda8836d7cccfa008ce7f79cf0b89ce8"
+    },
+    "diagnosis_audit_peer": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/actual-audit-result-independent-review-001.json",
+      "bytes": 4235,
+      "sha256": "87dc94f7e7495772ce9b64d0201da23fc79647f3a6e7fd5a0049944a94b199ba"
+    },
+    "fresh119_and_V3_preservation": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_v11_v13_train_diagnosis/pre-execution-preservation.json",
+      "bytes": 75046,
+      "sha256": "29b2c796da6c8445c019109a3117298167780c402853798b1ade1c2035b95f4d"
+    }
+  },
+  "source_capsule_metadata": {
+    "pins": [
+      {
+        "path": "output/engineering/causal-fresh-v13/attempt-001/source.zip",
+        "bytes": 3530442,
+        "sha256": "135783596b8b7db09aa3dc226f8c8588a2ea8528f2676d625d42f3f196be3c9f"
+      },
+      {
+        "path": "output/engineering/causal-fresh-v13/attempt-001/source-manifest.json",
+        "bytes": 33178,
+        "sha256": "308c30565d8146dfc1582720f828f7237db289646093128cea91f7596341bf81"
+      },
+      {
+        "path": "output/engineering/causal-fresh-v13/attempt-001/package.json",
+        "bytes": 561,
+        "sha256": "51460bfc4322ae18f5febbd6794bbf3d24fbe5c4e4d8be63eb2e0f6767c47396"
+      }
+    ],
+    "authority": "current_instance.source_capsule",
+    "archive_contents_read_or_rehashed_for_design": false
+  },
+  "historical_preservation": {
+    "authority": "final119_preservation",
+    "status": "passed",
+    "critical_checkpoint_total": 119,
+    "historical_critical_checkpoints": 114,
+    "V13_new_main_checkpoints": 5,
+    "selected_V3_source_files_each_repo": 47,
+    "selected_V3_checkpoint_sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+    "V13_source_files": 143,
+    "V13_binaries": 7,
+    "V13_translation_units": 11,
+    "prior_V12_final": {
+      "path": "doc/causal_fresh_v12/final-preservation.json",
+      "bytes": 1551705,
+      "sha256": "db4e5f31737688e041784bd20d53747f10fc58b1e189041ca45bc2c2846fded7"
+    },
+    "design_checkpoint_hashes": 0,
+    "scope": "Preserve all historical models/checkpoints/results/failures/reviews/aliases, especially earlier RPB-v23/v24 references. Existing V13 counts are historical evidence, never future V14 proof."
+  },
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "linear_parameters": 164,
+      "neural_parameters": 724,
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "Unchanged dimension/repetition stream function copied as owned code; no historical encoder execution",
+      "linear_parameters": 82,
+      "neural_parameters": 690,
+      "input_scaler_policy": "Fresh cohortTRAIN fit once/cohort shared across initial/final, or freshly refitted marketTRAIN scaler; same numerical recipe as v3",
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "dimension_policy": "Same unchanged stream_seed(repetition,native_width) implementation for D40; widths/parameter counts differ from native36 references; no tuning"
+  },
+  "execution_container_metadata": {
+    "name": "cuwacunu",
+    "id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "image": "sha256:ed0d8a5141f073d5c961b95e65e9b3528a66e122bda4971ec8f47d925d717de7",
+    "GPU": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "device": "cuda:0",
+    "host_project_execution": false
+  },
+  "prospective_criteria_proposal": {
+    "status": "DESIGN_ONLY_not_canonical_protocol",
+    "parent_protocol": {
+      "repository": "cuwacunu_embedding",
+      "path": "doc/causal_fresh_v13/goal-protocol.json",
+      "bytes": 48667,
+      "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+    },
+    "criterion_count": 22,
+    "changed_floor_count": 5,
+    "unchanged_criteria_count": 17,
+    "unchanged_order_rules_tolerances_categories": true,
+    "changed_floors": [
+      {
+        "id": "past_activity:neural_mean_r2",
+        "prior_floor": 0.7324899092829259,
+        "prior_floor_source": "CPB-v11.market-01",
+        "proposed_floor": 0.762543630810775,
+        "floor_source": "CPB-v13.market-01",
+        "source": "current_ledger.stage_leaders",
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_activity",
+        "input_policy": null,
+        "view": "intact chronological VALIDATION",
+        "metric": "neural_mean_r2"
+      },
+      {
+        "id": "past_relation:neural_mean_r2",
+        "prior_floor": 0.4487745118258597,
+        "prior_floor_source": "CPB-v11.market-01",
+        "proposed_floor": 0.45719709780016277,
+        "floor_source": "CPB-v13.market-01",
+        "source": "current_ledger.stage_leaders",
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_relation",
+        "input_policy": null,
+        "view": "intact chronological VALIDATION",
+        "metric": "neural_mean_r2"
+      },
+      {
+        "id": "synthetic_train:validation_intact:linear_head_accuracy",
+        "prior_floor": 0.98828125,
+        "prior_floor_source": "CPB-v11.market-01",
+        "proposed_floor": 0.9895833333333334,
+        "floor_source": "CPB-v13.market-01",
+        "source": "current_ledger.stage_leaders",
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "input_policy": "synthetic_train",
+        "view": "validation_intact",
+        "metric": "linear_head_accuracy"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+        "prior_floor": 0.9557291666666666,
+        "prior_floor_source": "CPB-v9.market-01",
+        "proposed_floor": 0.9583333333333334,
+        "floor_source": "CPB-v13.market-01",
+        "source": "current_ledger.stage_leaders",
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "input_policy": "synthetic_train",
+        "view": "validation_deleted",
+        "metric": "linear_head_accuracy"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+        "prior_floor": 0.9427083333333334,
+        "prior_floor_source": "CPB-v11.market-01",
+        "proposed_floor": 0.9457465277777778,
+        "floor_source": "CPB-v13.market-01",
+        "source": "current_ledger.stage_leaders",
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "input_policy": "synthetic_train",
+        "view": "validation_deleted",
+        "metric": "neural_head_accuracy"
+      }
+    ],
+    "criteria": [
+      {
+        "id": "past_volatility:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.964673433811061,
+        "floor_source": "CPB-v3.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_volatility:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.7359692462937604,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_trend:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.9072134297036245,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_trend:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.5698752307038314,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_activity:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.9094387755129657,
+        "floor_source": "CPB-v11.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_activity:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.762543630810775,
+        "floor_source": "CPB-v13.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_relation:linear_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.6221006868548108,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "past_relation:neural_mean_r2",
+        "category": "market_retention",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.45719709780016277,
+        "floor_source": "CPB-v13.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9895833333333334,
+        "floor_source": "CPB-v13.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9848090277777778,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9583333333333334,
+        "floor_source": "CPB-v13.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9457465277777778,
+        "floor_source": "CPB-v13.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9986979166666666,
+        "floor_source": "CPB-v9.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_intact:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9926215277777778,
+        "floor_source": "CPB-v8.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:linear_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.97265625,
+        "floor_source": "CPB-v6.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "market_scaler:validation_deleted:neural_head_accuracy",
+        "category": "tempo5_retention",
+        "dataset_id": "TEMPO-5",
+        "floor": 0.9561631944444444,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate + 1e-12 >= floor"
+      },
+      {
+        "id": "train:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.24180533789857825,
+        "floor_source": "CPB-v7.market-01",
+        "rule": "candidate <= floor + 1e-12"
+      },
+      {
+        "id": "validation:standardized_MAE",
+        "category": "fixed_query_MAE",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0.30831692401624544,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate <= floor + 1e-12"
+      },
+      {
+        "id": "known_validation:Gaussian_NLL_F64",
+        "category": "variance_quality",
+        "dataset_id": "MKT-HIST-2",
+        "floor": -0.04538148809081624,
+        "floor_source": "CPB-v4.market-01",
+        "rule": "candidate < floor - 1e-12"
+      },
+      {
+        "id": "past_trend:all3_neural_R2_positive",
+        "category": "neural_trend_robustness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "all three final neural trend R2 values > 0"
+      },
+      {
+        "id": "past_relation:linear_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate > 0"
+      },
+      {
+        "id": "past_relation:neural_mean_r2:positive",
+        "category": "relation_usefulness",
+        "dataset_id": "MKT-HIST-2",
+        "floor": 0,
+        "floor_source": "strict positivity",
+        "rule": "candidate > 0"
+      }
+    ],
+    "additional_train_NLL_gate": false,
+    "historical_pass_counts_recomputed": false,
+    "historical_V13_pass_count": "8/22 under unchanged866 protocol",
+    "preserved_quality_leader_scopes": 16,
+    "preserved_reconstruction_leader_scopes": 4,
+    "tie_policy": "Strict improvements only; exact ties retain earliest chronological leader. TRAIN NLL stays descriptive and adds no floor.",
+    "canonical_derivation_or_application_admitted": false,
+    "advancement": "All22 proposed conditions plus complete causal/fresh/CUDA/typed-resume trust and100% scoring coverage; any DEV promotion requires separate user selection."
+  }
+}

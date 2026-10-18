@@ -1,0 +1,171 @@
+{
+  "protocol": "structured-hard-timing-information-v2",
+  "dataset_id": "TEMPO-3",
+  "task": "lag_sign",
+  "recipe_id": "structured-hard-timing-v1",
+  "rule_id": "observed-cross-feature-determinant-v2",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "status": "passed_information_admission_encoder_quality_not_generated",
+  "source_record_path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/information-record.json",
+  "source_record_sha256": "6c5f295c7c3956d5ede11a8f1bc28a8402031ee1946c769f876ce9e457aee8b8",
+  "thresholds": {
+    "intact": {
+      "conditional_accuracy_minimum": 0.99,
+      "coverage_minimum": 0.99
+    },
+    "deleted": {
+      "conditional_accuracy_minimum": 0.98,
+      "coverage_minimum": 0.95
+    }
+  },
+  "per_view_equal_master_means": {
+    "intact": {
+      "conditional_accuracy_mean": 1.0,
+      "coverage_mean": 1.0,
+      "full_population_correctness_mean": 1.0,
+      "masters": [
+        82585,
+        83686
+      ]
+    },
+    "deleted": {
+      "conditional_accuracy_mean": 1.0,
+      "coverage_mean": 0.998046875,
+      "full_population_correctness_mean": 0.998046875,
+      "masters": [
+        82585,
+        83686
+      ]
+    }
+  },
+  "information_receipt": {
+    "archive_reads": 0,
+    "card_sha256": "35f7aa9987f293bafbe735506cc86cd2af02f2ab39bec42dd1dc2d2dedfa758c",
+    "compiler_evidence": {
+      "commands": {
+        "code/evaluation/benchmarks/structured_hard_timing/cross_feature_solvability.cpp": "g++ -Icode/shared/include -Icode/shared/tests -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/evaluation/benchmarks/structured_hard_timing -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/benchmarks/structured_hard_timing/cross_feature_solvability.cpp -o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_solvability.o",
+        "code/evaluation/benchmarks/structured_hard_timing/cross_feature_test.cpp": "g++ -Icode/shared/include -Icode/shared/tests -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/evaluation/benchmarks/structured_hard_timing -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/benchmarks/structured_hard_timing/cross_feature_test.cpp -o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test.o",
+        "code/evaluation/benchmarks/structured_hard_timing/structured_hard_timing.cpp": "g++ -Icode/shared/include -Icode/shared/tests -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/evaluation/benchmarks/structured_hard_timing -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/benchmarks/structured_hard_timing/structured_hard_timing.cpp -o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/structured_hard_timing.o"
+      },
+      "link": "g++ /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test.o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_solvability.o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/structured_hard_timing.o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/shared/feature_harness.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test"
+    },
+    "encoder_or_head_fits": 0,
+    "information": {
+      "TEST_generated": false,
+      "complexity": 4,
+      "complexity_maximum": 5,
+      "dataset_id": "TEMPO-3",
+      "encoder_or_head_fits": 0,
+      "passed": true,
+      "protocol": "structured-hard-timing-information-v2",
+      "rule_id": "observed-cross-feature-determinant-v2",
+      "seeds": [
+        {
+          "deleted": {
+            "accuracy": 1,
+            "correct": 1020,
+            "coverage": 0.99609375,
+            "full_population_correctness": 0.99609375,
+            "passed": true,
+            "total": 1024,
+            "valid": 1020
+          },
+          "intact": {
+            "accuracy": 1,
+            "correct": 1024,
+            "coverage": 1,
+            "full_population_correctness": 1,
+            "passed": true,
+            "total": 1024,
+            "valid": 1024
+          },
+          "seed": 82585,
+          "training_source_pairs": 512,
+          "validation_source_pairs": 512
+        },
+        {
+          "deleted": {
+            "accuracy": 1,
+            "correct": 1024,
+            "coverage": 1,
+            "full_population_correctness": 1,
+            "passed": true,
+            "total": 1024,
+            "valid": 1024
+          },
+          "intact": {
+            "accuracy": 1,
+            "correct": 1024,
+            "coverage": 1,
+            "full_population_correctness": 1,
+            "passed": true,
+            "total": 1024,
+            "valid": 1024
+          },
+          "seed": 83686,
+          "training_source_pairs": 512,
+          "validation_source_pairs": 512
+        }
+      ]
+    },
+    "inputs": [
+      {
+        "bytes": 898,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/information.json",
+        "sha256": "d9bef21a3b35329ad6650c1de5b7a040cfecaa9df58e5c09ff934ad67182ff5e"
+      },
+      {
+        "bytes": 4175,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/build-and-tests.log",
+        "sha256": "9752fdcac89d7bb5eee0e8af3ee0906ea754c70ab773ea85e8ec9b556c26a433"
+      },
+      {
+        "bytes": 5600,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/source-manifest.json",
+        "sha256": "714bfb374f768d22759d6081c42974dcbcf69931a6026d8e02282ed8cb4793ee"
+      },
+      {
+        "bytes": 3465,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/source-inputs.sha256",
+        "sha256": "00a20994860bf361d47679a2f9eb7dd765c17e36250865e96d0192015a78666b"
+      },
+      {
+        "bytes": 65,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/source-fingerprint.txt",
+        "sha256": "e6ee103df9a18ae68910f31dba38d5b122c44d15c16ee0e760913ca49c156b75"
+      },
+      {
+        "bytes": 359,
+        "path": "/embedding/output/runs/rpb-structured-hard-timing/information-admission/info-AGAb6s/freeze.json",
+        "sha256": "1f7969bed9e692db218d1b2e2dad1995972d308bf12ed5d6641eeca00a7dfb01"
+      },
+      {
+        "bytes": 245376,
+        "path": "/opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test",
+        "sha256": "b427677a319d26efd351cd0863f230e384ac9075a4d32e31331f5272f02c6581"
+      }
+    ],
+    "passed": true,
+    "protocol": "structured-hard-timing-information-binding-v2",
+    "quality_generated": false,
+    "rule_id": "observed-cross-feature-determinant-v2",
+    "source_preserved_after": true,
+    "source_sha256": "00a20994860bf361d47679a2f9eb7dd765c17e36250865e96d0192015a78666b",
+    "status": "passed",
+    "utc": "2026-10-09T17:18:32.587513+00:00"
+  },
+  "preserved_v1": {
+    "report_path": "/embedding/doc/STRUCTURED_HARD_TIMING_INFORMATION_V1_FAILED.md",
+    "report_sha256": "ce936cfdaf3c644c31db7c92243509ff8638a71259a0da884d5025952926ac90",
+    "json_path": "/embedding/doc/results/structured_hard_timing_information_v1.json",
+    "json_sha256": "eff0cdb450e67658dc6a8f0f7bf033de651ea16c3d847b8f9632f154f681db79"
+  },
+  "reporting_scope": {
+    "metadata_only": true,
+    "tensor_archive_reads": 0,
+    "encoder_or_head_fits": 0,
+    "quality_generated": false,
+    "generator_or_gate_modified": false
+  }
+}

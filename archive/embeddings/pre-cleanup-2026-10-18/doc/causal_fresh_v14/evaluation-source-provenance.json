@@ -1,0 +1,643 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "status": "SOURCE_READY_pending_independent_static_review_no_execution",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+    "bytes": 47424,
+    "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+  },
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 86831,
+    "sha256": "2d72b4066571a9a65c037164aa33dd3f37fe24b80fc18daaf8ef2296073e237e"
+  },
+  "initial_exact_owned_copy_receipt": {
+    "path": "doc/causal_fresh_v14/initial-owned-copy-001.json",
+    "bytes": 95942,
+    "sha256": "e8fb5362a73c6dce353fd52fd3ac692ba8a9c9d00cc89cfdf59502b34b90ac78"
+  },
+  "own32_initial_subset": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/training-evaluation-auditor/initial-owned-subset-001.json",
+    "bytes": 26963,
+    "sha256": "b557295929458f94d94c70a1baea3bde11eca9f029799ebafc468ed3574836ba"
+  },
+  "source_parent": "CPB-v13 complete physical SOURCE only; no old learned/fitted/optimizer state or runtime implementation import",
+  "mechanism": {
+    "scientific_SOURCE_parent": "CPB-v13",
+    "source_only": true,
+    "trained_weight_ancestor": "none",
+    "source_updates": 0,
+    "temporal_pooling_policy": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1",
+    "temporal_pooling_geometry": [
+      4,
+      16,
+      32,
+      8
+    ],
+    "temporal_pooling_trailing_lengths": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "local_supports": [
+      [
+        12,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        0,
+        16
+      ]
+    ],
+    "membership": "valid &&16-trailing_lengths[j]<=original_position<16; original retained-window endpoint fixed, never packed or last-observed rank",
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+    "temporal_export_layout": "per-trailing-window-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+    "temporal_dispersion_regularizer": 0.0009765625,
+    "raw_root_absent_offset_exception": true,
+    "temporal_typed_nodes": 5,
+    "legacy_disjoint_partition_rejected": true,
+    "new_parameters": 0,
+    "new_forward_calls": 0,
+    "new_rng_draws": 0,
+    "parameter_and_objective_policy": "unchanged registrations/draw order/native40/2048B8/singleAdamW/globalclip1/Huber1+detached-error variance",
+    "fresh_weights_optimizer_and_TRAIN_statistics_required": true
+  },
+  "prospective_temporal_fixture_contract": {
+    "status": "SOURCE_DERIVED_NOT_EXECUTED_pending_independent_review",
+    "fixture_authority_path": "code/research/causal_fresh_v14/tests/v14_temporal_pooling_test.cpp",
+    "required_true_fields": [
+      "mean4_regularized_stddev4_export_layout",
+      "full_attention_dependent_regularized_moment_adjoints",
+      "live_dispersion_score_gradient",
+      "raw_variance_root_dispersion_trace",
+      "zero_tiny_large_analytic_dispersion_adjoints",
+      "supported_nonfinite_and_variance_overflow_refused",
+      "absent_local_huge_singleton_sanitized",
+      "captured_F32_residual_correction",
+      "raw_root_absent_offset_exception",
+      "nested_trailing_supports_fixed_edge16",
+      "per_window_local_weights_captured",
+      "longest_local_equals_global_two_sum",
+      "packed_padding_membership_invariance"
+    ],
+    "required_true_count": 13,
+    "direct_pool_kernel_calls": 53,
+    "direct_call_derivation": "36 F32 finite-difference evaluations +14 ordinary successful kernel calls +3 supported-numerical-refusal calls",
+    "F64_finite_difference_coordinates": 18,
+    "F32_finite_difference_coordinates": 18,
+    "isolated_autograd_grad_calls": 4,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_optimizer_steps": 1,
+    "manual_F32_absolute_tolerance": 3E-05,
+    "manual_F32_relative_tolerance": 3E-05,
+    "F64_finite_difference_step": 1E-05,
+    "F64_finite_difference_absolute_tolerance": 2E-08,
+    "F64_finite_difference_relative_tolerance": 2E-08,
+    "F32_finite_difference_step": 0.002,
+    "F32_finite_difference_absolute_tolerance": 0.002,
+    "F32_finite_difference_relative_tolerance": 0.002,
+    "softmax_gauge_tolerance": 2E-06,
+    "bin_mass_tolerance": 2E-06,
+    "flat_trace_tolerance": 8E-06,
+    "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+    "transform_derivative_upper_bound": 16,
+    "compiled_research_primary_fixture": {
+      "path": "code/research/causal_fresh_v14/tests/v14_test.cpp",
+      "typed_negative_cases": 821,
+      "full_invalid_archive_files": 817,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "derivation": "33 +10*(21 objective +55 temporal) +19 latearchive +4 cross/request +5 legacy-extra"
+    },
+    "family_primary_fixture": {
+      "typed_negative_cases": 676,
+      "full_invalid_archive_files": 672,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "compiled_by_primary_research_target": false
+    },
+    "source_author": "separate family/test owner; exact final fixture hashes belong to later combined source review/card before invocation"
+  },
+  "execution_counters": {
+    "project_helpers": 0,
+    "AST_or_import": 0,
+    "builds": 0,
+    "tests": 0,
+    "Docker_calls": 0,
+    "models": 0,
+    "encoder_calls": 0,
+    "head_calls": 0,
+    "fits": 0,
+    "updates": 0,
+    "quality": 0,
+    "DEV_mutations": 0,
+    "Git_mutations": 0,
+    "deletions": 0
+  },
+  "source_authoring_refusal_preserved": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/training-evaluation-auditor/authoring-inspection-refusal-001.json",
+    "bytes": 552,
+    "sha256": "c306c5f854cbeb1610798390596fde3822a071a08a973394363225add412b551"
+  },
+  "scientific_execution_admitted": false,
+  "kind": "cpb_v14_evaluation_source_readiness_provenance_v1",
+  "owned_evaluation_source_count": 20,
+  "owned_evaluation_sources": [
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/compare_baseline.py",
+      "bytes": 30796,
+      "sha256": "17efca1f9af5e87b0c0806ec9cd39122f5a289a330ffc919642d12198295a900"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/dependency-provenance.json",
+      "bytes": 51650,
+      "sha256": "c51c3ddfdf85d05a3e54bad75f1d56d2ae7a9a7154e8c5f5c0ea505c2b3db951"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/evaluation.mk",
+      "bytes": 1892,
+      "sha256": "e49c2c365fd5e9967af0d04d3f3f486441b040b532f34f1e6138e7b3cb09e121"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/extract_main.cpp",
+      "bytes": 20401,
+      "sha256": "4fb7156d1ec99be7dc08de34aa8af1e3d5cd9d6d777ba1a6b5d514e1f44809f1"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/market_read_main.cpp",
+      "bytes": 2438,
+      "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/README.md",
+      "bytes": 2378,
+      "sha256": "35428c5c539eaa49cbf6ae5a54532fce69d7d8e0c4d290b7085176ff994ac44a"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/report.py",
+      "bytes": 68065,
+      "sha256": "686b4a6abaae409bdab6288b829ec9459c2b0614b2a9bafdefad30d69149d62d"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/synthetic_read_main.cpp",
+      "bytes": 12344,
+      "sha256": "e90c82dd1afb70b9e9439d33cf3d1a12db671227997cf51ad5aafaca7c1c1833"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/record_types.h",
+      "bytes": 6598,
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/support.h",
+      "bytes": 329,
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+      "bytes": 2922,
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/data.h",
+      "bytes": 1292,
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/evaluation.h",
+      "bytes": 1311,
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/feature_harness.h",
+      "bytes": 5770,
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+      "bytes": 2428,
+      "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/types.h",
+      "bytes": 1083,
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/data.cpp",
+      "bytes": 6133,
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/feature_harness.cpp",
+      "bytes": 25946,
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_feature_readouts.cpp",
+      "bytes": 21926,
+      "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_regression.cpp",
+      "bytes": 22417,
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+    }
+  ],
+  "detailed_dependency_provenance": {
+    "path": "code/research/causal_fresh_v14/evaluation/dependency-provenance.json",
+    "bytes": 51650,
+    "sha256": "c51c3ddfdf85d05a3e54bad75f1d56d2ae7a9a7154e8c5f5c0ea505c2b3db951"
+  },
+  "unchanged_numeric_dependency_count": 12,
+  "all12_head_dependencies_byte_exact_to_preserved_V13_parents": true,
+  "scientific_SOURCE_reference": "CPB-v13.market-01 source only",
+  "infrastructure_SOURCE_reference": "Final V13 owned support/evaluation/normal workflow; separate owners cover primary workflow/family/tests/quality auditor",
+  "proof_contract": {
+    "status": "SOURCE_DERIVED_NOT_EXECUTED_pending_independent_review",
+    "fixture_authority_path": "code/research/causal_fresh_v14/tests/v14_temporal_pooling_test.cpp",
+    "required_true_fields": [
+      "mean4_regularized_stddev4_export_layout",
+      "full_attention_dependent_regularized_moment_adjoints",
+      "live_dispersion_score_gradient",
+      "raw_variance_root_dispersion_trace",
+      "zero_tiny_large_analytic_dispersion_adjoints",
+      "supported_nonfinite_and_variance_overflow_refused",
+      "absent_local_huge_singleton_sanitized",
+      "captured_F32_residual_correction",
+      "raw_root_absent_offset_exception",
+      "nested_trailing_supports_fixed_edge16",
+      "per_window_local_weights_captured",
+      "longest_local_equals_global_two_sum",
+      "packed_padding_membership_invariance"
+    ],
+    "required_true_count": 13,
+    "direct_pool_kernel_calls": 53,
+    "direct_call_derivation": "36 F32 finite-difference evaluations +14 ordinary successful kernel calls +3 supported-numerical-refusal calls",
+    "F64_finite_difference_coordinates": 18,
+    "F32_finite_difference_coordinates": 18,
+    "isolated_autograd_grad_calls": 4,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_optimizer_steps": 1,
+    "manual_F32_absolute_tolerance": 3E-05,
+    "manual_F32_relative_tolerance": 3E-05,
+    "F64_finite_difference_step": 1E-05,
+    "F64_finite_difference_absolute_tolerance": 2E-08,
+    "F64_finite_difference_relative_tolerance": 2E-08,
+    "F32_finite_difference_step": 0.002,
+    "F32_finite_difference_absolute_tolerance": 0.002,
+    "F32_finite_difference_relative_tolerance": 0.002,
+    "softmax_gauge_tolerance": 2E-06,
+    "bin_mass_tolerance": 2E-06,
+    "flat_trace_tolerance": 8E-06,
+    "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+    "transform_derivative_upper_bound": 16,
+    "compiled_research_primary_fixture": {
+      "path": "code/research/causal_fresh_v14/tests/v14_test.cpp",
+      "typed_negative_cases": 821,
+      "full_invalid_archive_files": 817,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "derivation": "33 +10*(21 objective +55 temporal) +19 latearchive +4 cross/request +5 legacy-extra"
+    },
+    "family_primary_fixture": {
+      "typed_negative_cases": 676,
+      "full_invalid_archive_files": 672,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "compiled_by_primary_research_target": false
+    },
+    "source_author": "separate family/test owner; exact final fixture hashes belong to later combined source review/card before invocation"
+  },
+  "retention_protocol": {
+    "status": "pending_separate_root_metadata_derivation_and_admission",
+    "expected_kind": "clean_causal_encoder_search_goal_v13_retention_protocol_v1",
+    "review_kind": "clean_causal_encoder_search_goal_v13_retention_independent_review_v1",
+    "application_kind": "clean_causal_encoder_search_goal_v13_retention_future_application_v1",
+    "exact_runtime_authority": "Future frozen V14 card pins protocol/review/application; all22 criterion objects equal card, no literal old866 current authority.",
+    "proposed_criteria_source": {
+      "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+      "bytes": 47424,
+      "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+    },
+    "criterion_count": 22,
+    "changed_floors": 5,
+    "other_criteria_unchanged": 17,
+    "additional_TRAIN_NLL_gate": false,
+    "actual_future_hash_invented": false
+  },
+  "criteria_count": 22,
+  "criteria_order_rules_tolerances_preserved_five_only_floors_strengthened": true,
+  "historical_DATA_controls": [
+    "CPB-v3.market-01",
+    "CPB-v4.market-01",
+    "CPB-v5.market-01",
+    "CPB-v6.market-01",
+    "CPB-v7.market-01",
+    "CPB-v8.market-01",
+    "CPB-v9.market-01",
+    "CPB-v10.market-01",
+    "CPB-v11.market-01",
+    "CPB-v12.market-01",
+    "CPB-v13.market-01"
+  ],
+  "historical_DATA_trust_joins": [
+    "CPB-v6.market-01",
+    "CPB-v7.market-01",
+    "CPB-v8.market-01",
+    "CPB-v9.market-01",
+    "CPB-v10.market-01",
+    "CPB-v11.market-01",
+    "CPB-v12.market-01",
+    "CPB-v13.market-01"
+  ],
+  "initial_reference_planning_authority": {
+    "path": "doc/causal_fresh_v14/parent-planning/source-parent-inventory-001.PROPOSED.json",
+    "bytes": 145653,
+    "sha256": "96b8d0a45c13f24c24207a442f3a7b6c61faf23358e966f2dc1f082bf868d30e"
+  },
+  "initial_reference_metadata": {
+    "quality_audit_field": "paired_initial_equality.pairs[].v13_initial_or_fresh_statistics",
+    "host_mapping_field": "complete-mirror.files keyed by container_path",
+    "paired_native_slice": [
+      20,
+      40
+    ],
+    "learned0_20_paired": false,
+    "whole_native40_equality_claimed": false,
+    "references": [
+      {
+        "id": "market_initial_train",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/market/cpb_v13-train.pt",
+          "bytes": 39403,
+          "sha256": "617af4ddf05d879a04eb95d55fa85d39d6da9b8f043a9e3b2e1ef655752641fa"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/market/cpb_v13-train.pt",
+          "bytes": 39403,
+          "sha256": "617af4ddf05d879a04eb95d55fa85d39d6da9b8f043a9e3b2e1ef655752641fa"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "market_initial_validation",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/market/cpb_v13-validation.pt",
+          "bytes": 13149,
+          "sha256": "c2f51055058774059de949ba9420d1b978afcfb154cfd2a41e5be6ba0355cbfa"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/market/cpb_v13-validation.pt",
+          "bytes": 13149,
+          "sha256": "c2f51055058774059de949ba9420d1b978afcfb154cfd2a41e5be6ba0355cbfa"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_synthetic_train_941101",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+          "bytes": 378522,
+          "sha256": "83da4ab81b81218bd41bdda748aea387bf361452a9dd6ebd16faf251b163b34d"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941101/features.pt",
+          "bytes": 378522,
+          "sha256": "83da4ab81b81218bd41bdda748aea387bf361452a9dd6ebd16faf251b163b34d"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_synthetic_train_941102",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+          "bytes": 378522,
+          "sha256": "6430e5ed47f6701f53f88a7746a413764d8044364288f8122fca494cd51f6ee3"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941102/features.pt",
+          "bytes": 378522,
+          "sha256": "6430e5ed47f6701f53f88a7746a413764d8044364288f8122fca494cd51f6ee3"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_synthetic_train_941103",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+          "bytes": 378522,
+          "sha256": "05bb587fa9f8040848206d0867aba3c3913fed2dba1e811687a1049b3032d2a4"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/synthetic_train/master-941103/features.pt",
+          "bytes": 378522,
+          "sha256": "05bb587fa9f8040848206d0867aba3c3913fed2dba1e811687a1049b3032d2a4"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_market_scaler_941101",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+          "bytes": 378522,
+          "sha256": "fabbec302bb5d78be7afd227d396d0720129f04a80897f6da2e436acddd1bd1f"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/market_scaler/master-941101/features.pt",
+          "bytes": 378522,
+          "sha256": "fabbec302bb5d78be7afd227d396d0720129f04a80897f6da2e436acddd1bd1f"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_market_scaler_941102",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+          "bytes": 378522,
+          "sha256": "cbbef4960c4a84682e06a0e515f0f6d6f40f9e005610c37875d4f54805091267"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/market_scaler/master-941102/features.pt",
+          "bytes": 378522,
+          "sha256": "cbbef4960c4a84682e06a0e515f0f6d6f40f9e005610c37875d4f54805091267"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "tempo_initial_market_scaler_941103",
+        "role": "initial_feature_DATA_tail20_40_only",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+          "bytes": 378522,
+          "sha256": "1f3bbf5fecf490e3a850a046cb844bb08ac5a7a288e0babb6e794837e5b31a80"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/initial/synthetic/market_scaler/master-941103/features.pt",
+          "bytes": 378522,
+          "sha256": "1f3bbf5fecf490e3a850a046cb844bb08ac5a7a288e0babb6e794837e5b31a80"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "fresh_market_input_scaler",
+        "role": "whole_fresh_statistic_DATA",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/calibration/input-scaler.pt",
+          "bytes": 39988,
+          "sha256": "5398c05bfeb7d409976a86ba4612d1461d853347e19f2ad56a896b2708e2f698"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/calibration/input-scaler.pt",
+          "bytes": 39988,
+          "sha256": "5398c05bfeb7d409976a86ba4612d1461d853347e19f2ad56a896b2708e2f698"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "fresh_market_bank_normalizer",
+        "role": "whole_fresh_statistic_DATA",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/calibration/bank-standardizer.pt",
+          "bytes": 53951,
+          "sha256": "5507866f4a52193c469b79add9d20857ee60fe74f63cb2a27c1b22fd7817e290"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/calibration/bank-standardizer.pt",
+          "bytes": 53951,
+          "sha256": "5507866f4a52193c469b79add9d20857ee60fe74f63cb2a27c1b22fd7817e290"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "fresh_synthetic_scaler_941101",
+        "role": "whole_fresh_statistic_DATA",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941101.pt",
+          "bytes": 3953,
+          "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/synthetic-scalers/master-941101.pt",
+          "bytes": 3953,
+          "sha256": "bf40051e51e5134d10df48e0dc6d6a938cfcad59ba95fee741407c22782a7d69"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "fresh_synthetic_scaler_941102",
+        "role": "whole_fresh_statistic_DATA",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941102.pt",
+          "bytes": 3953,
+          "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/synthetic-scalers/master-941102.pt",
+          "bytes": 3953,
+          "sha256": "1a06852acb6fdc7e62d8e75fbf69a247ad8d2978b9f719765f16e9a244f1bb71"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      },
+      {
+        "id": "fresh_synthetic_scaler_941103",
+        "role": "whole_fresh_statistic_DATA",
+        "container_pin": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/quality-001/features/synthetic-scalers/master-941103.pt",
+          "bytes": 3953,
+          "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+        },
+        "host_pin": {
+          "path": "output/runs/causal-fresh-v13/run-001/quality-001/features/synthetic-scalers/master-941103.pt",
+          "bytes": 3953,
+          "sha256": "f795f3ccf0127bd896e1e72ba15e99c2c1d47326476872e4b3eb46937f950c55"
+        },
+        "mapping_exact": true,
+        "archive_opened_or_rehashed": false,
+        "future_V14_pairing_not_yet_admitted": true
+      }
+    ],
+    "PT_or_CSV_values_read": false,
+    "PT_or_CSV_hashes_recomputed": false
+  },
+  "initial_pairing": {
+    "reference": "CPB-v13.market-01 initial saved DATA/statistics only",
+    "archives": 13,
+    "feature_DATA": 8,
+    "fresh_statistic_DATA": 5,
+    "native_coordinate_slice": [
+      20,
+      40
+    ],
+    "content0_20_paired": false,
+    "whole_native40_equality_claimed": false,
+    "new_own_initial_fixed_heads": true,
+    "old_statistics_imported": false,
+    "actual_future_candidate_pins": "Not created; separately declare before quality"
+  },
+  "source_text_verification": {
+    "head_dependency_bytes_exact": 12,
+    "reporter_stream_seed_market_rows_validate_classification_aggregate_classification": "Exact after version-only retag",
+    "criterion_evaluate": "byte-exact",
+    "market_and_synthetic_data_drivers": "Whole source exact after version-only retag",
+    "actual_project_execution": 0
+  },
+  "frozen_measured_results_or_main_card_created": false
+}

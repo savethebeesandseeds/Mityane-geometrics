@@ -1,0 +1,128 @@
+{
+  "kind": "cpb_v10_actual_build_closure_independent_metadata_review_v1",
+  "status": "passed",
+  "reviewed_utc": "2026-10-16T13:07:40.7171460Z",
+  "scope": "Completed root-owned compiler evidence and18 mirrored binary/dependency-file byte inspection only; no new tests or source execution",
+  "reviewer": "/root/causal_training_path",
+  "admission": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/build-admission.json",
+    "bytes": 40114,
+    "sha256": "3c07bc0ce375ac477bf78de0b23d27493afa8d6541f694d4e408ca48991bc876"
+  },
+  "build_stage": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/build-stage.json",
+    "bytes": 711,
+    "sha256": "fbae7b16d1abe76fcf659337ed832a661bf0910c26461737503b605c48b268ba"
+  },
+  "build_log": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/build.log",
+    "bytes": 17241,
+    "sha256": "3e78e5a2a1f4fcda2617331b5cc8a572e732aea638a8cf92160656ef4bcb674e"
+  },
+  "binary_and_dependency_mirror": {
+    "path": "doc/causal_fresh_v10/build-binaries-mirror.json",
+    "bytes": 6591,
+    "sha256": "dd7507be3b434ffe3b4ef1a0b297cea72b5f18a0fb8f7b5b4d54df677909b29e"
+  },
+  "source_stage": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/source-stage.json",
+    "bytes": 610,
+    "sha256": "81b962d7c75fdf5e8a0fa110d5540cb0954790b6a9527bef2a3f0b1bdfc5c2e4"
+  },
+  "manifest": {
+    "path": "output/engineering/causal-fresh-v10/attempt-001/source-manifest.json",
+    "bytes": 29659,
+    "sha256": "66b9563b987011833678a231409574ecff46e4e22c71764bef07e5782ca5dc98"
+  },
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+    "bytes": 119685,
+    "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+  },
+  "observed": {
+    "compiler": "g++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "build_exit_code": 0,
+    "build_elapsed_seconds": 85.96029924899995,
+    "admitted_source_files": 127,
+    "translation_units": 11,
+    "binaries": 7,
+    "exact_mirrored_files": 18,
+    "mirrored_hash_mismatches": 0,
+    "independently_parsed_unique_owned_paths": 63,
+    "dependency_set_mismatches": 0,
+    "old_or_external_project_paths": 0
+  },
+  "translation_units": [
+    "causal_fresh_v10_train.d",
+    "cpb_v10_extract_main.d",
+    "cpb_v10_fixed_regression.d",
+    "cpb_v10_head_data.d",
+    "cpb_v10_head_feature_harness.d",
+    "cpb_v10_head_fixed_feature_readouts.d",
+    "cpb_v10_market_read_main.d",
+    "cpb_v10_synthetic_read_main.d",
+    "test_causal_patch_bottleneck_mae_v10.d",
+    "test_cpb_v10_temporal_pooling.d",
+    "test_cpb_v10_variance_gradient.d"
+  ],
+  "admitted_binaries": [
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/test_causal_patch_bottleneck_mae_v10",
+      "bytes": 1004072,
+      "sha256": "06ddbbab85f59b81ee760bfdee251d754a9f8976ab5cb7bb50b583dea60e13df"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/test_cpb_v10_variance_gradient",
+      "bytes": 589056,
+      "sha256": "dd89994aef8dab124735f1abed3a5f140dd2d57c06bcdbf13ec9e1588dbb30fb"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/test_cpb_v10_temporal_pooling",
+      "bytes": 421360,
+      "sha256": "55b8885de9c7a9c44499fb68f0cbec3dac3e50945e74b1e084cb04ccf8ab6057"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/causal_fresh_v10_train",
+      "bytes": 987968,
+      "sha256": "f524889cd95aa7ea7143e5452865a1167c30132256e0b654db8869dd96fa21e3"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/causal_fresh_v10_extract",
+      "bytes": 703416,
+      "sha256": "3a09115439b5829628ebff26ff5c6268194d76e12e5f7b88c27bee255ad4a896"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/causal_fresh_v10_market_read",
+      "bytes": 205560,
+      "sha256": "b7b70ac4d71565e93a55ae645289e792c3bdfea1ee782a509a1ed5820e4e2b78"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v10-attempt001/causal_fresh_v10_synthetic_read",
+      "bytes": 384328,
+      "sha256": "4e4b72488e8052615e8b9ec85db525f5320dea7ae7d27ff535a36e27180a96c3"
+    }
+  ],
+  "findings": [
+    "All seven admitted executable pins and eleven dependency-file pins map once to their exact mirrored host files;all18 sizes and SHA256 match. The build log/source-stage/source-manifest bytes also match their actual recorded bindings.",
+    "Each first dependency rule was independently parsed from saved .d text. Every resulting source/header set exactly equals build-admission owned_paths;all63 unique first-party paths occur in the immutable127-member manifest. Encoder paths stay under owned versions/v10;research paths stay under causal_fresh_v10. No old encoder/research or external first-party include was observed.",
+    "Eleven translation units correspond to main train,three engineering fixtures,three evaluation entry points and four fixed-head/data implementation units. Exactly seven named admitted binaries match Makefile and prospective contracts. No compiler/library or binary was invoked by this review.",
+    "Actual root-owned build-stage passed once with exit0 and85.96029924899995seconds. Source-stage127/card42b16/manifest66b956/ZIPd66418 and new gradient policy are coherent. This receipt confirms only compiled closure/availability;it makes no fixture/CUDA/learning/quality outcome claim."
+  ],
+  "blockers": [],
+  "actions": {
+    "host_file_hash_text_and_JSON_only": true,
+    "source_changes": 0,
+    "AST": 0,
+    "builds": 0,
+    "binary_executions": 0,
+    "tests": 0,
+    "imports": 0,
+    "CUDA_calls": 0,
+    "models": 0,
+    "head_fits": 0,
+    "training": 0,
+    "quality": 0,
+    "Docker": 0,
+    "Git": 0
+  }
+}

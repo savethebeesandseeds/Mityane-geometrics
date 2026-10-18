@@ -1,0 +1,165 @@
+{
+  "kind": "causal_fresh_v13_orchestration_independent_static_review_v1",
+  "status": "passed",
+  "source_only": true,
+  "independent_of_author": true,
+  "scientific_execution_admitted": false,
+  "reviewer_scope": "Independent review of workflow12 authored by another agent;reviewer authored training8/evaluation20/TRAINauditor3 and does not call those independent here",
+  "reviewed_utc": "2026-10-17T20:56:29.5493039Z",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v13/design-source-plan.ADMITTED-002.json",
+    "bytes": 27667,
+    "sha256": "4d1648ed842a13bae850b47567a67cb8939f55b192e54f0c2f67afbaf6ef4a59"
+  },
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 69004,
+    "sha256": "0a0a345a141898db81900cb903151bc1c42785e3b7bf9fbb5b27d9e21153ea07"
+  },
+  "reviewed_orchestration_provenance": {
+    "path": "doc/causal_fresh_v13/orchestration-provenance.json",
+    "bytes": 25594,
+    "sha256": "e05104a8700f75b009cd91de947624c41452e199b71f5e5819f41977af72dada"
+  },
+  "reviewed_owned_files": [
+    {
+      "path": "doc/causal_fresh_v13/prepare-draft-card.ps1",
+      "bytes": 44994,
+      "sha256": "e98957f917ccc5da9a0255bcae0e3f9f447a0b0f3d23ef7ba702c4a674e7d4f7"
+    },
+    {
+      "path": "doc/causal_fresh_v13/freeze-card.ps1",
+      "bytes": 30284,
+      "sha256": "3a3383d3a3ebd508f5f0c73e98aedda90f3edd74ed2804206a099e11d081564e"
+    },
+    {
+      "path": "doc/causal_fresh_v13/preflight.ps1",
+      "bytes": 28886,
+      "sha256": "f61276970e6ce7a7deb0e4f2b86533565652935cda84f4669acd0fb530fada31"
+    },
+    {
+      "path": "doc/causal_fresh_v13/stage-source.ps1",
+      "bytes": 4581,
+      "sha256": "bb7a6a496dc93185e278083e623e433081f4cd16222339a6e90ed3faa94229e9"
+    },
+    {
+      "path": "doc/causal_fresh_v13/unpack-source.py",
+      "bytes": 2395,
+      "sha256": "f1ac3efeb89bc2a7fd04c2a0293a4a04801c832922f1d5e5ae633fbbb6a7dc32"
+    },
+    {
+      "path": "doc/causal_fresh_v13/audit-build.py",
+      "bytes": 4646,
+      "sha256": "c8acce7f9b51b46f66876a463209a7c76be0d110cce7d9311638eb7c7f6d6f53"
+    },
+    {
+      "path": "doc/causal_fresh_v13/execute-stage.py",
+      "bytes": 8746,
+      "sha256": "2c931c5e177e213d363667e0f29942fc3608ae7303dc08e2b6b46b3173be20c6"
+    },
+    {
+      "path": "doc/causal_fresh_v13/run-quality.py",
+      "bytes": 23043,
+      "sha256": "bf003d1b941935f3a8e63b634a8f43e5c2a823c14315168ace3fb8af0ff327df"
+    },
+    {
+      "path": "doc/causal_fresh_v13/verify-mirror.ps1",
+      "bytes": 10062,
+      "sha256": "549fb83bd120c57aaa5c78336acad61558f110f00f3f0965f4e26d998f7bc043"
+    },
+    {
+      "path": "doc/causal_fresh_v13/run-container.ps1",
+      "bytes": 9099,
+      "sha256": "f6aca93146cdd7de53b1387c39bbc32af9726aa8335f2036dfc16234bbe8a058"
+    },
+    {
+      "path": "doc/causal_fresh_v13/card-markdown-template.md",
+      "bytes": 8134,
+      "sha256": "8f24ba6cca538abf27f433cfa9813d7f8fbbab54de4db6f7947f1f60facea74d"
+    },
+    {
+      "path": "doc/causal_fresh_v13/orchestration-provenance.json",
+      "bytes": 25594,
+      "sha256": "e05104a8700f75b009cd91de947624c41452e199b71f5e5819f41977af72dada"
+    }
+  ],
+  "read_scope": "All10 executable helper texts,complete card Markdown template and provenance including12 parent mappings/adaptation/observations fully inspected as source;no import or invocation",
+  "parent_integrity": {
+    "workflow_whole_parents": 12,
+    "workflow_preserved_copies": 12,
+    "central_current_parents": 102,
+    "central_whole_preserved_copies": 102,
+    "all_exact": true
+  },
+  "closure": {
+    "freeze_preflight_path_declarations": [
+      {
+        "declaration": "docs",
+        "exact_literal_path_set_equal": true,
+        "members": 20,
+        "unique": 20
+      },
+      {
+        "declaration": "controls",
+        "exact_literal_path_set_equal": true,
+        "members": 38,
+        "unique": 38
+      }
+    ],
+    "full_relative_paths_preserved": true,
+    "dynamic_owner_pathset_not_count_only": true,
+    "duplicates_refused": true,
+    "capsule_count_derived_before_execution": true,
+    "binary_count": 7,
+    "translation_units": 11,
+    "current_completed_V12_critical_checkpoints": 114,
+    "current_completed_V12_source_members": 137,
+    "new_V13_saved_checkpoints_not_yet_counted": true,
+    "historical866_V11_109_ancestry_distinct": true
+  },
+  "findings": [
+    {
+      "area": "mechanism and typing",
+      "conclusion": "Both routes retain V11 learned attention/two-sum mean/rawvariance;transform F32 add sqrt subtract tau2^-10 offset1/32 with rawroot absent exception and whole8 zero afterbias. Strict String/Float64[1] identity atfive nodes;exact636 negative contract."
+    },
+    {
+      "area": "actual fixture and witness contracts",
+      "conclusion": "Exact complete compiled research fixture pin plus independent family/TRAIN source authority. Nine flags and51direct/18F64/18F32/4isolated/bound16. Unchanged prospective tolerances;no V12 uniform zero-score proof. Writer60/25,23base/12parameter,4 actual root/dispersion fields across both routes,rawvariance remainsraw;no extra forward."
+    },
+    {
+      "area": "criteria and controls",
+      "conclusion": "Strongest866 exact22 ordered objects are copied rather than regenerated;19 floors+3 positivity,no TRAIN-NLL gate. Ten saved V3-V12 DATAcontrols andseven V6-V12 trustjoins;source/scoped/pairing reference V11. Current completed V12 eligibility kept separate from historical floor ancestry."
+    },
+    {
+      "area": "completed diagnosis",
+      "conclusion": "Actual44d33 result/f9ce audit/fbadd completion chain and69952/2202 counts are bound as completed evidence. Prior68264 applies only cachedV11 four objects;failed metadata-only audit001 and copied repair remainhistorical,no replay."
+    },
+    {
+      "area": "metadata and capsule",
+      "conclusion": "External inputplan/provenance/DRAFT descriptor are hash-bound before parse/use. Draft descriptor reused and unmodified;canonical descriptor derives onlydeclared10fields and pins exact frozen card without cycle. Beforefiles snapshots precede changes. Copyright-safe uniqueMarkdownheader replacement. Freeze/preflight identical20staticdocs/38controls plusactualplan/review;fullownerpathsets and aliasuniqueness preserved."
+    },
+    {
+      "area": "execution and preservation",
+      "conclusion": "Metadata prepare/freeze/preflight/package separated from explicit existingGPUcontainer Stage/Build/Fixtures/Engineering/Training/savedproofs/Quality. Exact immutablecontainerID/image/soleDEVbind/GPUall checks,no lifecyclecreation. Exclusiveoutputs/logs refuse replay;actualproofs/freshCUDA/resume precede fixedhead extraction/fits. Bounded argv Gitignore batches avoid CRLF. Mirror hostsourcepackages distinct fromcontainerpayloadfiles."
+    }
+  ],
+  "blockers": [],
+  "limits": [
+    "Static review establishes source coherence,not observed AST/build/causal/GPU/learning/resume/quality correctness",
+    "Actual future inputplan/card/freeze/preflight/capsule need independent exact metadata review and separate root phase admission",
+    "No future measured count/hash,trust pass,quality gain,winner or DEVpromotion inferred"
+  ],
+  "invocations": {
+    "project_helpers": 0,
+    "AST": 0,
+    "imports": 0,
+    "Docker": 0,
+    "builds": 0,
+    "tests": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "quality": 0
+  },
+  "source_edits_by_reviewer": 0
+}

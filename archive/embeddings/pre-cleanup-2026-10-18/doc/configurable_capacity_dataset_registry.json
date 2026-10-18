@@ -1,0 +1,20 @@
+{
+  "registry_id": "configurable-capacity-tempo5-v1",
+  "registered_date": "2026-10-12",
+  "dataset": "TEMPO-5",
+  "task": "slow_lag_sign",
+  "designed_complexity": 5,
+  "complexity_maximum": 5,
+  "geometry": {"channels": 3, "history": 128, "features": 9},
+  "engineering_histories": [128, 256],
+  "engineering_master": 941000,
+  "quality_masters": [941101, 941102, 941103],
+  "examples_per_master": {"TRAIN": 512, "VALIDATION": 256},
+  "independent_source_pairs_per_master": {"TRAIN": 256, "VALIDATION": 128},
+  "scored_validation_views": ["intact", "extra30pct-coordinate-deleted"],
+  "recipe_card": "code/evaluation/cards/configurable_capacity_v1.md",
+  "implementation": "code/evaluation/benchmarks/configurable_capacity",
+  "information_rule": "observed-tempo5-integer-two-band-fit-v1",
+  "information_gate": "every row correct and supported; no redraw",
+  "meaning": "Structured larger-input timing capacity challenge, not market data. Complexity is a prospective ordinal design label; longer history can help observability."
+}

@@ -1,0 +1,2595 @@
+{
+  "kind": "cpb_v5_v6_TRAIN_diagnosis_independent_audit_v1",
+  "status": "passed",
+  "checks": 415326,
+  "mismatches": [],
+  "source": {
+    "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis-audit/attempt-001/source/audit.py",
+    "bytes": 55355,
+    "sha256": "399b290e60aacd8277443343b213e53ed88df9db7e76816f502b687b303361d3"
+  },
+  "reader": {
+    "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis-audit/attempt-001/source/archive_reader.py",
+    "bytes": 4035,
+    "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+  },
+  "card": {
+    "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis/attempt-001/source/CAUSAL_V5_V6_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 58713,
+    "sha256": "bf4c92e4edff4ba055a83ba6d699ace5e20dd4de654d55fc20e279cb389efff5"
+  },
+  "diagnosis": {
+    "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis/attempt-001/run-001/diagnosis.json",
+    "bytes": 2466550,
+    "sha256": "ca992a2a39dbcac5dd9c4a1f401ba4d2a779175a5cea91e9b33508f50e8e08dd"
+  },
+  "audit_card": {
+    "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis-audit/attempt-001/source/audit-card.json",
+    "bytes": 5522,
+    "sha256": "5d2ad9de443241f4f29bff0e2e0278ab479202f05983f8eded8f424586128cd5"
+  },
+  "finite_difference_checks": 256,
+  "finite_difference_max_absolute_error": 2.986109137737003e-10,
+  "finite_difference_policy": "First16 supported cells in canonical b,c,f,h traversal per stage; NLL mean/variance, MAE,Huber1 scalar contracts; fixed positive step rules",
+  "verified_inputs": [
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/initial/market/cpb_v5-train.pt",
+      "bytes": 39393,
+      "sha256": "b9601715631d51af99401ef7b628fc7ac37dd5be8bd6f487ecffc300e7d12357"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/witnesses/initial-train-query.pt",
+      "bytes": 1038074,
+      "sha256": "31f1032599bc1bc23d84a181ff082f722ae14f16de7e575581212bd8a89adcb5"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/query-initial.json",
+      "bytes": 6802,
+      "sha256": "0880a74682db37f9ce674aafb0617b16d5f9879c9a6807645c66182abb4fe220"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/checkpoints/inference-0.pt",
+      "bytes": 1296374,
+      "sha256": "2cd42f70e46d1aebaf7580601665a335e4a141bad89b0ba7f8195353342f543f"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "c4d3ecd89ad0bdefa4b87ccb00ab81fde1b04f17270c1d18178162dfe69670dd"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "e203a7cb488dfa7dfae423627ea0fb0f6034f8867bc58b0efc205ed7a794c30a"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "2b53ba2a9a2b8e3b3ba05c97f382003c64aa647cbbd6d9f2a468e8c1690cde12"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "827d6e2664ca6926e76f31c45cc0e534e4190e0f4b2dc2d49838fe518163cc49"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7e17d787d67dea880a7494f84d1de39fcc7e5430f42f05112c74bda693ddead4"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/initial/market-readouts/models/cpb_v5/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "981a95823649bd6c5e83ebeb39769835e220bff231934a4a68ec7cd00ccf0743"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/features/final/market/cpb_v5-train.pt",
+      "bytes": 39393,
+      "sha256": "677f0fec7aedf3bff4ce4f4c03161def987314c85e3c01e7b9c57950489a1d0b"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/witnesses/final-train-query.pt",
+      "bytes": 1038034,
+      "sha256": "2a68f6fed956189737ee48748ff0f3edafc575ea66e417816a0a5699d4528bfe"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/query-final.json",
+      "bytes": 6909,
+      "sha256": "0a7868fe0915e12b43172f290e21902690b4127ac8e279248246c41a24a2632a"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1297537,
+      "sha256": "65f52dfa3c3501bf2318426069214776cdfdad72d1f9add712ec2063a489805f"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7a35da29c1abf11ec47db1028db29f4a0529ffbdc683c328c7a4e741697c9fd7"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "d16bf2455dec30aa5515c8772dd15193e91cf51daccfc9d833e92e893cecf434"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "84c093746f303279f514c693f2b4cf1950dfdc4d3e2d628d982ae6c7466e6095"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "00c9ed817316964ddc1e84f22b318a0daa38d51d520e63daa2f32b111481d5ec"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "9e69b58d57a6a5319741cee6bff62d69fb1bb16b023c0e21a29945a7f492aad1"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/quality-001/final/market-readouts/models/cpb_v5/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "0bc672b223a9df07e6f5260e1c4b11c1ab92d0aa0d91b79d42756b270e8c92fe"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/features/initial/market/cpb_v6-train.pt",
+      "bytes": 39393,
+      "sha256": "a6eb909fbf41538927bf981a74246d4c2d144365eb936697e54d3abdff462388"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/initial-train-query.pt",
+      "bytes": 1039061,
+      "sha256": "dd700d265197d876aa0cba4972383fc8b1507e66867b44fabc6ab4027aef3611"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/query-initial.json",
+      "bytes": 15705,
+      "sha256": "54e65430509bcf3eb86dd2f8574475bdda30a10d232450afa86724a183a6e541"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/inference-0.pt",
+      "bytes": 1299890,
+      "sha256": "7fc69034f46682bfeb608c152368f2bbb23c10db9ccfecb93264b8d6e49e3ed1"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "c4d3ecd89ad0bdefa4b87ccb00ab81fde1b04f17270c1d18178162dfe69670dd"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "e203a7cb488dfa7dfae423627ea0fb0f6034f8867bc58b0efc205ed7a794c30a"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "2b53ba2a9a2b8e3b3ba05c97f382003c64aa647cbbd6d9f2a468e8c1690cde12"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "827d6e2664ca6926e76f31c45cc0e534e4190e0f4b2dc2d49838fe518163cc49"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7e17d787d67dea880a7494f84d1de39fcc7e5430f42f05112c74bda693ddead4"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "981a95823649bd6c5e83ebeb39769835e220bff231934a4a68ec7cd00ccf0743"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/features/final/market/cpb_v6-train.pt",
+      "bytes": 39393,
+      "sha256": "fe530380dbef0d3a9140521666c82e87d8f046f543ed28167a9c2629aac06526"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/final-train-query.pt",
+      "bytes": 1039015,
+      "sha256": "c79884908b2fac2797830895d1b29a7b54a203b9d18b75d05efc5460e86ac71e"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/query-final.json",
+      "bytes": 16107,
+      "sha256": "181a6476e59b2184be51ab3dd34090a167c53d83202c1ee3b6450fc0f845f52e"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1301025,
+      "sha256": "8cf6f12609b647871c4c42df39fc1c1d36b53a908e962585f17fe515d8ef193e"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "58eb8cd1595b58565165c7e212306aec74a8a8e292f379385c1134b45a78eb43"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "4518457d2cb4c48c6311238773fe7813ad1ac218076c33a7818892b9dc64eafb"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "6302e45bed577424d6a40fe4fa078ab0652d15df8161792b419e58728fad24cd"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "dd6ad8785912a8bb7fe18365c1949eeb9b29a7ae1a8a00496d503db29e82ffb7"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7743359606703e145792aef2173f245341119f1ae01bb4a51b6d0614001f9609"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "0d02181b5e433cfe994a581ed9a4bc1827f4f1a09e375f5eb179dd765fc86f64"
+    },
+    {
+      "path": "/cuwacunu/output/runs/market-capacity-study/shared-MKT-HIST-2-v1/features/train-targets.pt",
+      "bytes": 8782,
+      "sha256": "521d8662f498bce27ad26a41c4723bbebb9d2ab6b924cfbcce7132c25b7e43e6"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/training-update-1-components.pt",
+      "bytes": 488354,
+      "sha256": "5b9803b673989e5b454d26238961de2413d836e86d0a76b5f695c0d097c8abd1"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+      "bytes": 488444,
+      "sha256": "0f1093d1a29dfe4e5ae864d6eb91460e6804938ed410f8f3960eb807b196b3bc"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/optimization-component-witnesses.json",
+      "bytes": 532,
+      "sha256": "d346d8ddf017a0c9417abe1834bb682896549d9d555e2768ee31bb028a6ab4fb"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/training.csv",
+      "bytes": 596944,
+      "sha256": "f566cff439eb4dd0922eae7a72f7831072cfbcb0e37b2037585a5705d5d4e7fd"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-512.pt",
+      "bytes": 3757169,
+      "sha256": "1226f8adeed519919d11cf5e84ad420a7bd64dc04e846bff33e91a64b22177a3"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-1024.pt",
+      "bytes": 3757832,
+      "sha256": "c2126e0569cd15277b3edeb8afc6c6f5b5ada516d0eec3d2a09c81342acc5ff5"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/checkpoints/training-2048.pt",
+      "bytes": 3757832,
+      "sha256": "73a69fbe1ed159b5d573bba4e3d8367e1cb24c0b0968ab6007090e4a40ebe1e9"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "3a5452926f8dee5516a2369c9eb8867fabd65b636d00ab502856fda2c85fec92"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "b59b404668fda6b529c446a73785e90f97158c96e9f1f26ce41e32235581bf9f"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/source/doc/CAUSAL_FRESH_V3_CARD.json",
+      "bytes": 27995,
+      "sha256": "f88fa9751ff9da0e808805da9975fb0bf3afd4433688f3cfb420686392e6396f"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/source/doc/CAUSAL_FRESH_V3_CARD.md",
+      "bytes": 7556,
+      "sha256": "d03c4f60f2eb270bc7d6ba77d575f998703c2c204a90b3df9d5ec0d938039446"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/checkpoints/training-512.pt",
+      "bytes": 3758141,
+      "sha256": "40b5bc04116b2d6b925d6db5dcafdd21a97fc68cd66af61da79a0fb875b78bf0"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/checkpoints/training-1024.pt",
+      "bytes": 3758806,
+      "sha256": "e65c64a9d0e0d1de0635e5d6f4747778d1d918e4da09bdba381540e6a9a5d849"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/checkpoints/training-2048.pt",
+      "bytes": 3758806,
+      "sha256": "f3ae29bb9fc211a8daeb3dd8613520f1e280a13413514bb9aaa993b81ab64eb8"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "45ab47f8315c954d137c0c1a32100dfabc55fa6fb93b624f72e35194d8bbdd4f"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "e10d05596db6347282e9c622440fcb3fc127d750b52c6c429e2efd52935d5130"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/source/doc/CAUSAL_FRESH_V4_CARD.json",
+      "bytes": 31643,
+      "sha256": "114026b2e6d11d84aee1855a8af673d84e782ab057eb45d398a5d66fa94b1dce"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v4/attempt-001/source/doc/CAUSAL_FRESH_V4_CARD.md",
+      "bytes": 6293,
+      "sha256": "10cf7749d86a20fdb3ce1a18c3f88737e0e3d4747215aa8dd636cd831453c0b0"
+    },
+    {
+      "path": "/cuwacunu/output/baselines/CPB-v3.market-01/inference.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/checkpoints/training-512.pt",
+      "bytes": 3775305,
+      "sha256": "9b57f3549cfa44ba0fa3e823aa24778a8488d937e0177717364eef164b1b7c66"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/checkpoints/training-1024.pt",
+      "bytes": 3775918,
+      "sha256": "c5b7d618e1101d0775fe8ea2660f721ae1a709012b7c5a28d46889fe739f49c2"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/checkpoints/training-2048.pt",
+      "bytes": 3775918,
+      "sha256": "07ae58d64c4fb33f47b3a890cf0c28342c78f260281e7f1514b40e720deacc7d"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "e8df82b035a36c88bbdc9ae9c7c937894fc75d98a43ebf8f5f5ea5dbddaac12b"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "736ed6cc4feae4977fad333e26f06bdc5448f189b4facf5a2b38a42f50a25618"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/source/doc/CAUSAL_FRESH_V5_CARD.json",
+      "bytes": 36991,
+      "sha256": "a6da3a9501dd4247c40e3e24e42faf2c2c46620fda7e0a0568709276d0e84d09"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/source/doc/CAUSAL_FRESH_V5_CARD.md",
+      "bytes": 5295,
+      "sha256": "4afc10377a7a2711f0a4ae95615be050b5c405e5a53ada38ba234d7cb0d58955"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v5/attempt-003/source/doc/causal_fresh_v5/goal-protocol.json",
+      "bytes": 8692,
+      "sha256": "28f6bd35b4b2c66f3f906a374604952e79b07cc876b74e4ded16339fd535de25"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-512.pt",
+      "bytes": 3780661,
+      "sha256": "7a1845f5675f8ef061beed66b04f5aa0e26bc337616cdc89d3a68df21f59a8d5"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-1024.pt",
+      "bytes": 3781292,
+      "sha256": "2b6ac0100d093b14326fbaf124bb984c12f8930a36e2d4f6f15a943aa6ef546c"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-2048.pt",
+      "bytes": 3781292,
+      "sha256": "598fa2fe8cb1d4322e448cf35026f01a2deec090922b1b534b51393c3419d7b1"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "eb054a8f5643fe961b077f5fbfe94c483870600cfb66e549a88b261c371cb7d1"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "ac7c31b94ff6417bbe0fb02014b4f7ab1dc3ae3fd790d41da2c02835f7dc712c"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/doc/CAUSAL_FRESH_V6_CARD.json",
+      "bytes": 74773,
+      "sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/doc/CAUSAL_FRESH_V6_CARD.md",
+      "bytes": 7922,
+      "sha256": "1ec2a4a0e0d4d4ead2810ecccf3afcd20c8dc71fe87b54a7d978efadd1896ad0"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/doc/causal_fresh_v6/goal-protocol.json",
+      "bytes": 12897,
+      "sha256": "47fa165d325230ffca4f99c19bbec494d04f1daf0d99ae7e6bd197fdc47bec0d"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-v5-v6-train-diagnosis/attempt-001/source/final-preservation.json",
+      "bytes": 48110,
+      "sha256": "aa99ac04f3c4bd013c617450c6fde2f99e96c041e6b4c8f5465e2d551abe42ce"
+    }
+  ],
+  "numeric_fields_accessed": [
+    {
+      "id": "train_targets",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "train_targets",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "train_targets",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "train_targets",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_features",
+      "field": "values",
+      "values": 4480
+    },
+    {
+      "id": "v5_initial_features",
+      "field": "valid",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_features",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_head_2701",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2701",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_head_2802",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2802",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_head_2903",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_fit_2903",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "row_mae",
+      "values": 8
+    },
+    {
+      "id": "v5_initial_query",
+      "field": "row_nll",
+      "values": 8
+    },
+    {
+      "id": "v5_initial_query_summary",
+      "field": "train_only"
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.model.variance_projection",
+      "values": 108
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.model.variance_bias",
+      "values": 27
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.link_constants_f32",
+      "values": 3
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.softplus_parameters_f64",
+      "values": 2
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "channel_ids",
+      "values": 3
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "source_updates",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "causal_updates",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "initialization_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "pretrained_ancestor",
+      "values": 4
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "initialization_kind",
+      "values": 37
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "artifact_kind",
+      "values": 30
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "model_tag",
+      "values": 6
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "gradient_policy",
+      "values": 67
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.gradient_policy",
+      "values": 67
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "native_layout",
+      "values": 154
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "mean_width",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "native_width",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.native_layout",
+      "values": 154
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.mean_width",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v5_initial_checkpoint",
+      "field": "payload.native_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_features",
+      "field": "values",
+      "values": 4480
+    },
+    {
+      "id": "v5_final_features",
+      "field": "valid",
+      "values": 112
+    },
+    {
+      "id": "v5_final_features",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_head_2701",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2701",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_head_2802",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2802",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_head_2903",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v5_final_fit_2903",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_final_query",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v5_final_query",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v5_final_query",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v5_final_query",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v5_final_query",
+      "field": "row_mae",
+      "values": 8
+    },
+    {
+      "id": "v5_final_query",
+      "field": "row_nll",
+      "values": 8
+    },
+    {
+      "id": "v5_final_query_summary",
+      "field": "train_only"
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.model.variance_projection",
+      "values": 108
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.model.variance_bias",
+      "values": 27
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.link_constants_f32",
+      "values": 3
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.softplus_parameters_f64",
+      "values": 2
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "channel_ids",
+      "values": 3
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "source_updates",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "causal_updates",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "initialization_seed",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "pretrained_ancestor",
+      "values": 4
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "initialization_kind",
+      "values": 37
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "artifact_kind",
+      "values": 30
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "model_tag",
+      "values": 6
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "gradient_policy",
+      "values": 67
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.gradient_policy",
+      "values": 67
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "native_layout",
+      "values": 154
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "mean_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "native_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.native_layout",
+      "values": 154
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.mean_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v5_final_checkpoint",
+      "field": "payload.native_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_features",
+      "field": "values",
+      "values": 4480
+    },
+    {
+      "id": "v6_initial_features",
+      "field": "valid",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_features",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_mae",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_query_summary",
+      "field": "train_only"
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_mean_huber",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_variance_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_query",
+      "field": "row_total_objective",
+      "values": 8
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.model.variance_projection",
+      "values": 108
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.model.variance_bias",
+      "values": 27
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.link_constants_f32",
+      "values": 3
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.softplus_parameters_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "channel_ids",
+      "values": 3
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "source_updates",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "causal_updates",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "initialization_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "pretrained_ancestor",
+      "values": 4
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "initialization_kind",
+      "values": 37
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "artifact_kind",
+      "values": 30
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "model_tag",
+      "values": 6
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "gradient_policy",
+      "values": 90
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.gradient_policy",
+      "values": 90
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "native_layout",
+      "values": 154
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "mean_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "native_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.native_layout",
+      "values": 154
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.mean_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.native_width",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "objective_policy",
+      "values": 52
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "direct_gradient_routes",
+      "values": 85
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "mean_huber_delta_f64",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "loss_coefficients_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "variance_error_detached",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "reporting_nll_backpropagated",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.objective_policy",
+      "values": 52
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.direct_gradient_routes",
+      "values": 85
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.mean_huber_delta_f64",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.loss_coefficients_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.variance_error_detached",
+      "values": 1
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "field": "payload.reporting_nll_backpropagated",
+      "values": 1
+    },
+    {
+      "id": "v6_final_features",
+      "field": "values",
+      "values": 4480
+    },
+    {
+      "id": "v6_final_features",
+      "field": "valid",
+      "values": 112
+    },
+    {
+      "id": "v6_final_features",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_head_2701",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_head_2802",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "targets",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "target_valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "valid",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "ridge_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "neural_predictions",
+      "values": 448
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "row_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_head_2903",
+      "field": "group_ids",
+      "values": 112
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "feature_mean",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "feature_scale",
+      "values": 40
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "ridge_weights",
+      "values": 160
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "target_scale",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "target_mean",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "ridge_intercept",
+      "values": 4
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "field": "actual_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_final_query",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v6_final_query",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v6_final_query",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_mae",
+      "values": 8
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_final_query_summary",
+      "field": "train_only"
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_mean_huber",
+      "values": 8
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_variance_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_final_query",
+      "field": "row_total_objective",
+      "values": 8
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.model.encoder.change_decoder",
+      "values": 13824
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.model.variance_projection",
+      "values": 108
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.model.variance_bias",
+      "values": 27
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.link_constants_f32",
+      "values": 3
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.softplus_parameters_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "channel_ids",
+      "values": 3
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "source_updates",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "causal_updates",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "initialization_seed",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "pretrained_ancestor",
+      "values": 4
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "initialization_kind",
+      "values": 37
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "artifact_kind",
+      "values": 30
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "model_tag",
+      "values": 6
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "gradient_policy",
+      "values": 90
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.gradient_policy",
+      "values": 90
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "native_layout",
+      "values": 154
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "mean_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "native_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.native_layout",
+      "values": 154
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.mean_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.uncertainty_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.native_width",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "objective_policy",
+      "values": 52
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "direct_gradient_routes",
+      "values": 85
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "mean_huber_delta_f64",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "loss_coefficients_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "variance_error_detached",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "reporting_nll_backpropagated",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.objective_policy",
+      "values": 52
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.direct_gradient_routes",
+      "values": 85
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.mean_huber_delta_f64",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.loss_coefficients_f64",
+      "values": 2
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.variance_error_detached",
+      "values": 1
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "field": "payload.reporting_nll_backpropagated",
+      "values": 1
+    },
+    {
+      "id": "v6_training_csv",
+      "field": "update,Gaussian_NLL_F64,mean_Huber_F64,variance_NLL_F64,total_objective_F64,pre_clip_global_norm,clip_factor",
+      "successful_updates": 2048
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "update",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "attempt",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "context_deleted",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "eligible_channels",
+      "values": 24
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "row_mean_huber",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "mean_Huber_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "row_variance_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "variance_NLL_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "row_total_objective",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "total_objective_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "Gaussian_NLL_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "pre_clip_global_norm",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_1",
+      "field": "clip_factor",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "update",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "attempt",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "row_ids",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "timestamps",
+      "values": 1024
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "observed",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "hidden",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "context_deleted",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "visible",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "target_mask",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "targets",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "mean",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "variance",
+      "values": 27648
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "native",
+      "values": 320
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "eligible_channels",
+      "values": 24
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "row_mean_huber",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "mean_Huber_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "row_variance_nll",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "variance_NLL_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "row_total_objective",
+      "values": 8
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "total_objective_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "Gaussian_NLL_F64",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "pre_clip_global_norm",
+      "values": 1
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "field": "clip_factor",
+      "values": 1
+    }
+  ],
+  "native_dimensions": [
+    40,
+    40
+  ],
+  "all4_task_ridge_blocks_checked": true,
+  "independent_basis_cosines_computed": 0,
+  "four_model_stages": 4,
+  "TRAIN_rows_each": 112,
+  "detailed_query_rows_each": 8,
+  "actual_V6_batch_and_trajectory_audit": {
+    "batches": [
+      {
+        "update": 1,
+        "pre_step_state_updates": 0,
+        "target_cells": 6912,
+        "components": {
+          "mean_Huber_F64": 0.47000913863759153,
+          "variance_NLL_F64": 0.802452087668056,
+          "total_objective_F64": 1.2724612263056474,
+          "Gaussian_NLL_F64": 0.802452087668056
+        },
+        "observed_norm": 0.23443293571472168,
+        "clip_factor": 1.0
+      },
+      {
+        "update": 2048,
+        "pre_step_state_updates": 2047,
+        "target_cells": 6912,
+        "components": {
+          "mean_Huber_F64": 0.05782236355951684,
+          "variance_NLL_F64": -0.60382273850391,
+          "total_objective_F64": -0.5460003749443931,
+          "Gaussian_NLL_F64": -0.60382273850391
+        },
+        "observed_norm": 1.382457971572876,
+        "clip_factor": 0.7233487724140284
+      }
+    ],
+    "CSV_numeric_records": 2048,
+    "pre_step_decoder_weights_used": false,
+    "full_gradient_norm_independently_recomputed": false
+  },
+  "CSV_successful_rows": 2048,
+  "CSV_fixed_descriptive_groups": 5,
+  "actual_tensor_updates": [
+    1,
+    2048
+  ],
+  "model_calls": 0,
+  "neural_forwards": 0,
+  "fits": 0,
+  "training_updates": 0,
+  "held_out_tensor_reads": 0,
+  "scope": "Independent source implementation, saved data and F64 algebra only; never imports diagnosis code, Torch or numerical frameworks.",
+  "limits": [
+    "Scalar finite differences verify local likelihood kernels; full encoder/optimizer Jacobians are not replayed.",
+    "Detailed query/gradient evidence remains first8 TRAIN rows per stage.",
+    "Four JSON summary files are parsed whole but only train values accessed.",
+    "Saved coefficient reconstruction and population moments are descriptive checks, not fitting.",
+    "No candidate/objective/coefficient or validation gate is selected."
+  ],
+  "elapsed_seconds": 1.3403192789992318
+,
+  "execution_binding": {
+  "kind": "cpb_v5_v6_independent_TRAIN_audit_observed_execution_v1",
+  "status": "passed",
+  "observed_exit_code": 0,
+  "container_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+  "raw_result": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/audit.json",
+    "bytes": 62620,
+    "sha256": "40f3073484b5aa5512bae6d64d080c7c8ac35de64a033c03c1de572fa00be1a8"
+  },
+  "execution": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/execution.json",
+    "bytes": 2018,
+    "sha256": "e8af1a4ddfacd05b63e85dacfc7ccf24982ce900d929da3e961243955eb2edd5"
+  },
+  "stdout": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/stdout.log",
+    "bytes": 184,
+    "sha256": "542693dc2b3b592e0b8b1930c190d245351de0e4888f24d962cfa4564a1dd74d"
+  },
+  "stderr": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_stage": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/stage.json",
+    "bytes": 425,
+    "sha256": "504e487215326287332ba5b5bb1fcaa7c82ea1866e8990630725f0e15cbad671"
+  },
+  "source_manifest": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/source/CAPSULE_MANIFEST.json",
+    "bytes": 1745,
+    "sha256": "678c1ef1550c29eff53e6d8d886801e5de3bcb9cf57821b71ea471689a6ce990"
+  },
+  "source_archive": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/container-mirror/source.zip",
+    "bytes": 25384,
+    "sha256": "a29fd2cab40cc72582597233f55d9485980b037553edf7b5be2c7afeac02eb21"
+  },
+  "source": {
+    "path": "code/research/causal_v5_v6_train_diagnosis_audit/audit.py",
+    "bytes": 55355,
+    "sha256": "399b290e60aacd8277443343b213e53ed88df9db7e76816f502b687b303361d3"
+  },
+  "independent_scalar_helper": {
+    "path": "code/research/causal_v5_v6_train_diagnosis_audit/component_math.py",
+    "bytes": 4732,
+    "sha256": "068a41990169a507526400f0017483ba7c4082c1bd1bc33e07536e0fbf7a3554"
+  },
+  "audit_card": {
+    "path": "doc/causal_v5_v6_train_diagnosis/independent-audit-card.json",
+    "bytes": 5522,
+    "sha256": "5d2ad9de443241f4f29bff0e2e0278ab479202f05983f8eded8f424586128cd5"
+  },
+  "mirror": {
+    "path": "doc/causal_v5_v6_train_diagnosis/independent-audit-mirror.json",
+    "bytes": 6145,
+    "sha256": "aecee28e5ffa20e60ad4f9040faa4efefaa19f539068864264c76e36a1b96781"
+  },
+  "staging_preparation_failure": {
+    "path": "output/engineering/causal-v5-v6-train-diagnosis-audit/attempt-001/staging-preparation-failure.json",
+    "bytes": 922,
+    "sha256": "d52e7e2c249d43b75e7880d426cd9a1b4dc9e585f2c3d34f05c6301d260f0b36"
+  },
+  "elapsed_seconds": 1.3845794029984972,
+  "aggregation": "Saved JSON/hash metadata only; independent numerical audit not repeated; no models or fits"
+}
+}

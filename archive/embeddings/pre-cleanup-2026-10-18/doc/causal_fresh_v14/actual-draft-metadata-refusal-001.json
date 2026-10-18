@@ -1,0 +1,38 @@
+{
+  "kind": "cpb_v14_actual_draft_metadata_preparation_refusal_v1",
+  "status": "failed_before_first_helper_output",
+  "recorded_utc": "2026-10-18T07:45:53.6825383Z",
+  "admitted_input_plan": {
+    "path": "doc/causal_fresh_v14/draft-input-plan-001.ADMITTED.json",
+    "bytes": 90300,
+    "sha256": "ff5511b1785fad94879fccc859fc7f6d65573d9e155836533e8c4211c9a4a516"
+  },
+  "source_ready_authority": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/orchestration/source-ready-001.json",
+    "bytes": 12623,
+    "sha256": "8fa11d9ff0948082e0502e0849898285685c8b13caea349daa82c056224f60ab"
+  },
+  "helper_at_attempt": {
+    "path": "doc/causal_fresh_v14/prepare-draft-card.ps1",
+    "bytes": 50925,
+    "sha256": "56ea1b3747ffc1f9982c410a5f38d31aa77ff61e6fc0cf9ef8f506973a303028"
+  },
+  "command": "prepare-draft-card.ps1 -InputPlan draft-input-plan-001.ADMITTED.json -InputPlanSHA256 ff5511b1785fad94879fccc859fc7f6d65573d9e155836533e8c4211c9a4a516 -OrchestrationProvenanceSHA256 ffaff21978856f3e21b2a6912798a1b663163703bb0906bc5349b868335c1b67 -RootReviewedSourcesAndCompletedContext",
+  "failure_line": 61,
+  "exception": "Actual independently reviewed NEW owner binary/TU/count declaration required; no inherited V13 count",
+  "diagnosis": "The valid JSON counts parse as System.Int64 in PowerShell7.6.5; new32bit-only predicates rejected them. Source_derived_counts_status is correct;7binaries/11TUs/821typed and all scientific values unchanged.",
+  "observed_types": {
+    "binaries": "System.Int64",
+    "translation_units": "System.Int64",
+    "typed_cases": "System.Int64"
+  },
+  "main_card_created": false,
+  "preservation_before_created": false,
+  "parent_copy_attempt_created": false,
+  "source_files_modified_by_failed_helper": false,
+  "critical119_rehash_reached": false,
+  "AST_Docker_model_head_training_or_quality_calls": 0,
+  "scientific_failure": false,
+  "root_repair_authorization": "Preserve currentfour mainworkflow files; only integer type predicates become explicitInt32orInt64, retaining bool/string/float refusal and all values; updateprovenance/readiness then nonself delta review and newactualinputplan. No model/source change or execution before separate review.",
+  "historical_plan_and_source_receipts_preserved": true
+}

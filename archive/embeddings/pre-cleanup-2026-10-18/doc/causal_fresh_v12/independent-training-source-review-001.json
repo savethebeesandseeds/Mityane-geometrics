@@ -1,0 +1,218 @@
+{
+  "kind": "cpb_v12_independent_training_source_review_v1",
+  "status": "passed_static_source_review_after_reporting_literal_repair",
+  "created_utc": "2026-10-17T18:38:30.5830049Z",
+  "reviewer": "v11_preservation_readiness",
+  "source_only": true,
+  "execution_admitted": false,
+  "independence": {
+    "reviewed_training_sources_authored_by": "v11_join_review",
+    "reviewer_authored_these_eight": false,
+    "family_and_tests_authored_by_reviewer": true,
+    "family_tests_not_independently_approved_here": true,
+    "not_a_recomputation_of_TRAIN_or_quality": true
+  },
+  "evidence_pins": [
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/training/source-ready-002.json",
+      "bytes": 9344,
+      "sha256": "9b299b92fa695d067a2a5accdcabb4bf32cddb200d16161cd2c0f3e86b940e78"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/training/parent-copies/manifest.json",
+      "bytes": 5443,
+      "sha256": "362cec02e76cc0ad490fc6de5098280b45579aac5cc89162a9633c277e516484"
+    },
+    {
+      "path": "doc/causal_fresh_v12/design-source-plan.ADMITTED-001.json",
+      "bytes": 23839,
+      "sha256": "d5a6617010ca169c6392c7fac7fe97090185b02f126cf9e02323ff50ae3add23"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source-manifest.json",
+      "bytes": 30854,
+      "sha256": "b9a701bbfa3e98e4719853dfb1b2fad8d7610b3a86b475e43398ab43fea15778"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/training/source-ready-001.json",
+      "bytes": 8079,
+      "sha256": "6510eeb863b4f1931ae1596a8e79b992c0dad2970bcdd6706f8e8cf418804c13"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/training/repair-001/before-manifest.json",
+      "bytes": 2108,
+      "sha256": "10c29eef6fad8df6ea426856a84bc3ebdf8a43fdcc92cb29e4757e7875a20f6e"
+    }
+  ],
+  "reviewed_files": [
+    {
+      "path": "code/research/causal_fresh_v12/train_main.cpp",
+      "bytes": 64341,
+      "sha256": "48b7e4ce38c9944c3232973a01d081c777e9099e9a79939331db3870c52c105e"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/Makefile",
+      "bytes": 2781,
+      "sha256": "c83fe8fc909e91397226cb3819bc2fe18950c50db5566002f6a6aa054b69eede"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/README.md",
+      "bytes": 10467,
+      "sha256": "77438b65aa92483b6ac0e4007be5dbd1f7ea503e3c8dfe592e854dea6845f7f3"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/include/calibration.h",
+      "bytes": 6467,
+      "sha256": "8fab481a664af4b3dda20d502bffc874f7070eca7fa4ceef28ad641e8fdc5e67"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/include/context_deletion.h",
+      "bytes": 10832,
+      "sha256": "5304af6098ab4400b33db7741e86055e2362aa1776efe28f38238901916c727d"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/include/market_data.h",
+      "bytes": 5025,
+      "sha256": "2d89c83b43e58c6f9f6dd27ccfd8cf2efd50d1912ea4b8210a7d84b23865a39a"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/include/training_utils.h",
+      "bytes": 1574,
+      "sha256": "6b8265d81593865cef34919aad2697469fb11f9f1bf36715ce5e48753bedd5e7"
+    },
+    {
+      "path": "code/research/causal_fresh_v12/training-helper-provenance.json",
+      "bytes": 19262,
+      "sha256": "99ca1ad751e85c3f54f8d0537a4f7e15de2b8b454878147dc4ba95efe18eea08"
+    }
+  ],
+  "reviewed_file_count": 8,
+  "parent_live_and_copy_pin_checks": 16,
+  "current_pin_checks": 8,
+  "frozen_parent_membership_checks": 8,
+  "version_retag_only_files": 5,
+  "checks": [
+    {
+      "id": "complete_owned_scope",
+      "passed": true,
+      "evidence": "All eight current files read; eight current pins and sixteen live-parent/preserved-copy pins exact. Five source/build files are byte-exact under v11/V11 -> v12/V12 retag only."
+    },
+    {
+      "id": "frozen_parent_membership",
+      "passed": true,
+      "evidence": "All eight parent pins independently match their unique entries in frozen V11 source-manifest.json."
+    },
+    {
+      "id": "driver_delta",
+      "passed": true,
+      "evidence": "Full line-text comparison after version retag: only exact new policy guard, typed TRAIN identity wording, four trace writes and their CUDAF32 geometry guards, explanatory same-forward comments and corrected two receipt counts. No change to data, objective, update or random paths."
+    },
+    {
+      "id": "actual_archive_schema",
+      "passed": true,
+      "evidence": "Literal writer text plus bounded loop expansion independently gives23 base +12 before/after/postclip parameter +21 explicit trace +4 upstream fields=60 distinct keys. Sorted set exactly equals provenance actual_step_schema.exact_allowlist; temporal21+4=25."
+    },
+    {
+      "id": "four_new_fields",
+      "passed": true,
+      "evidence": "Both ordinary/contextual dispersion_weights map directly to Float32 CUDA[R,4,T]; own dispersion_mean maps to Float32 CUDA[R,4,64]. R/T derive from actual packed patch_positions. All new values pass defined/device/dtype/shape and finite guards before CPU archival."
+    },
+    {
+      "id": "same_forward_evidence",
+      "passed": true,
+      "evidence": "At successful updates1/2048, fields are direct trace.temporal members from the sole existing training forward_at local variable; writer adds no forward/encode. Actual2048 is pre-step2047 with saved before-step export coefficients. Existing attention local/global/mixture/mean and new uniform own-center fields stay distinct."
+    },
+    {
+      "id": "trace_interface_usage",
+      "passed": true,
+      "evidence": "Writer member spellings match current TemporalExecutionTrace and actual ordinary_pool/contextual_pool assignment sites. This is an interface usage cross-check only; the family implementation was authored by this reviewer and is not independently approved by this receipt."
+    },
+    {
+      "id": "upstream_stage",
+      "passed": true,
+      "evidence": "Existing projected nonleaf retain-grad values are archived PRECLIP with defined flags and explicit zero fallbacks; before/after/postclip parameter arrays and actual recorded global clip factor remain separate. No absent2046-step or full-encoder gradient reconstruction claim."
+    },
+    {
+      "id": "data_statistics_and_query",
+      "passed": true,
+      "evidence": "Data loader, calibration and counter utilities are retag-only. Same three CACHE88 hashes, TRAIN4096/probeTRAIN112/VALIDATION32, frozen selections/query masks, fresh TRAIN-only scaler/bank; calibration has no model encoder call. Fixed query1/16 uses saved masks and no query RNG draw."
+    },
+    {
+      "id": "fresh_source_and_rng",
+      "passed": true,
+      "evidence": "cp::fresh source_updates0/causal_updates0, seed943001 and direct seeded constructor full-state comparison remain. Row943002/mask943003/context943004 counter streams, zero dropout and query seed unused remain unchanged; no old weight/statistic/optimizer import added."
+    },
+    {
+      "id": "objective_and_optimizer",
+      "passed": true,
+      "evidence": "Only objective.total_loss backward; unit Huber1 plus detached-error variance calibration, reporting NLL detached. Same one global norm2 clip1 and one AdamW .001/.0001; no branch independence or new parameter/optimizer/RNG call."
+    },
+    {
+      "id": "budget_and_schedule",
+      "passed": true,
+      "evidence": "Batch8,2048 successful updates,max4096 attempts, exact absolute-attempt streams/skips. Same inference0/final2048, TRAIN512/1024/2048, exact typed continuation at512 without repeated updates. The new driver selects owned v12 public API and guards both exact new policy literals."
+    },
+    {
+      "id": "learning_evidence_semantics",
+      "passed": true,
+      "evidence": "Same four export groups,eight mean4/centered_variance4 subgroups,Hadamard position directions and separately observed score-bias gauge. Data-gradient/movement/final-change requirements apply to tensors/subgroups, not every scalar/update. Capacity294751 is explicitly labeled, decay alone is not data learning."
+    },
+    {
+      "id": "artifact_names_and_build",
+      "passed": true,
+      "evidence": "Makefile is full physical parent copy retagged only: exclusive V12 build directory/targets/objects/include,evaluation and three owned v12 test paths. No old source forwarding/import or new external dependency. Source preparation has not invoked the Makefile."
+    },
+    {
+      "id": "readme_and_provenance_boundary",
+      "passed": true,
+      "evidence": "README/provenance distinguish planned source from unobserved runtime evidence; V3 sole DEV baseline, source-only V11 ancestry, all-fresh statistics,13 partial20:40/statistic pairings and22 strongestV3-V11 floors with no TRAIN-NLL gate or historical replay. No quality/winner/proof success is asserted by preparation."
+    },
+    {
+      "id": "repair_preservation",
+      "passed": true,
+      "evidence": "All three whole before-files exact to pre-repair pins; readiness001 retained. Current driver equals before driver with exactly archive_fields56->60 and temporal_trace_fields21->25 and no other bytes. Readiness002/provenance bind repaired driver; six other files remain exact to001."
+    }
+  ],
+  "check_count": 16,
+  "blocking_findings": [],
+  "closed_findings": [
+    {
+      "id": "stale_v11_receipt_counts",
+      "first_observed_driver_sha256": "9941a14121bc28268e96a9cee9ae6db830ea0f7ebbc57e0938f8245752899196",
+      "location": "train_main.cpp component_witnesses emission",
+      "problem": "Actual writer60/25 contradicted stale receipt56/21",
+      "repair": "Preserved whole driver/provenance/readiness001, then narrow two literal correction only; independently exact-delta checked",
+      "repaired_driver_sha256": "48b7e4ce38c9944c3232973a01d081c777e9099e9a79939331db3870c52c105e"
+    }
+  ],
+  "nonblocking_scope_caveats": [
+    "README/provenance training_scalar_rows2048 denotes successful update rows. training.csv also records blank ineligible skipped attempts; total attempted rows derive from actual attempts<=4096, with skips=attempts-2048. This is an inherited label scope, not a new training mechanism; root card/template separately bind both counts.",
+    "Static source approval establishes no compilation, numerical parity, causal invariance, learning, typed-resume or quality result. These remain separate future frozen/admitted phases."
+  ],
+  "archive_schema": {
+    "base_fields": 23,
+    "parameter_fields": 12,
+    "explicit_temporal_fields": 21,
+    "upstream_fields": 4,
+    "total_fields": 60,
+    "unique_fields": 60,
+    "total_same_forward_temporal_fields": 25,
+    "exact_provenance_allowlist": true
+  },
+  "future_phase_boundary": "Pending complete independent family/tests/auditors/evaluation/workflow review, prospective exact freeze and separate execution admission. No actual card/build/test/training/quality action follows from this static receipt.",
+  "actions": {
+    "helper_calls": 0,
+    "AST_calls": 0,
+    "project_imports": 0,
+    "Docker_calls": 0,
+    "builds": 0,
+    "tests": 0,
+    "model_or_head_calls": 0,
+    "training_updates": 0,
+    "PT_value_reads": 0,
+    "scientific_execution": 0,
+    "training_source_edits_by_reviewer": 0,
+    "DEV_changes": 0,
+    "Git_operations": 0
+  }
+}

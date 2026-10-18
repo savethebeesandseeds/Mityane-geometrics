@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "id": "encoder-rpb",
+  "number": 16,
+  "title": "Encoder · Raw patch bottleneck MAE",
+  "summary": "Own the RPB-MAE encoder family, its versioned instances and preserved model-owned evidence; suitability remains specific to a declared operation.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "encoder-rpb-preservation",
+      "title": "Preserve the RPB family and evidence",
+      "description": "Keep existing versions, failures and original protocols traceable.",
+      "milestones": [
+        {
+          "id": "encoder-rpb-source-preserved",
+          "title": "Preserve RPB versions and original research records",
+          "status": "done",
+          "description": "The family and historical evidence remain in the imported component; no existing version is promoted to a universal default.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "The family guide and versioned source are retained under the verified component migration."
+          ],
+          "evidence": [
+            {
+              "label": "RPB family guide",
+              "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/README.md"
+            },
+            {
+              "label": "Migration verification",
+              "path": "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "encoder-rpb-provider",
+      "title": "Expose an explicitly selected RPB instance",
+      "description": "Bind native layout, fitted preprocessing and checkpoint identity to a declared representation space.",
+      "milestones": [
+        {
+          "id": "encoder-rpb-provider-contract",
+          "title": "Select and verify an operation-facing RPB contract",
+          "status": "proposed",
+          "description": "Select a version and trained RPB instance for a declared operation, document native outputs and masks, and verify record, fit-artifact and temporal compatibility. Preserve earlier scoped results and comparison limits; no instance becomes a universal default.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "RPB family guide",
+              "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/README.md"
+            },
+            {
+              "label": "Representation contracts",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Bind the exact checkpoint/content identity, architecture/configuration, trained preprocessing, output selector/layout and normalization, plus training/exposure provenance or explicit unknowns. A family/version label alone does not identify an experimental instance.",
+            "Provide source/support and availability metadata under foundations-temporal-integrity. End-of-window encodings may use the full available window but must not be labeled prefix-causal without the corresponding dependency and perturbation evidence.",
+            "Conformance tests exercise source hashes, native shapes, masks, non-finite data, changed preprocessing and incompatible consumer/index cases. The proposed starter composition is blocked until this bound provider contract and its engineering checks are available.",
+            "Retain original research receipts and failures under their original protocols. A probe follows or-05-readouts-probe-protocol; a provider implementation receipt is not evidence that retrieval, risk prediction or dynamics are useful."
+          ]
+        }
+      ]
+    }
+  ]
+}

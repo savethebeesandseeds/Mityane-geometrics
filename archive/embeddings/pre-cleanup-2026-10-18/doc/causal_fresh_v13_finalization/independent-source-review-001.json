@@ -1,0 +1,153 @@
+{
+  "kind": "cpb_v13_finalization_workflow_independent_static_review_v1",
+  "status": "blocked",
+  "reviewed_utc": "2026-10-17T22:00:36.5673728Z",
+  "source_only": true,
+  "metadata_and_text_only": true,
+  "independent_of_author": true,
+  "independent_reviewer": "/root/v11_join_review",
+  "author": "/root/v11_preservation_readiness",
+  "scientific_execution_admitted": false,
+  "stage_or_card_generation_admitted": false,
+  "live_application_admitted": false,
+  "source_readiness": {
+    "path": "output/engineering/causal-fresh-v13-finalization-source-preparation/attempt-001/source-ready-001.json",
+    "bytes": 4312,
+    "sha256": "87646f02325a6fd5cef237e07a7cbdfa4111436392bc1c9a4d3867d216a77f91"
+  },
+  "reviewed_sources": [
+    {
+      "path": "code/research/causal_fresh_v13_finalization/finalize.py",
+      "bytes": 64717,
+      "sha256": "4e1e8282619dfb7f1742ed1d2ece3fc9ecd955fc8894c536b89c942c332b964d"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_finalization/prepare_card.py",
+      "bytes": 14623,
+      "sha256": "ffb58cb3c0bdc6a4cbda3d23a73266788839c43cd034c0702b73f14dfbc0392f"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_finalization/review_proposals.py",
+      "bytes": 44198,
+      "sha256": "f804b390f0cc9fb230963b5cb5292839609cec257c0214f2d1d3bd7f76938488"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_finalization/README.md",
+      "bytes": 9541,
+      "sha256": "31120858f0c4035cde001a92dfcf3856f7d91d3c504980c7231081b436a4473d"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_finalization/provenance.json",
+      "bytes": 14818,
+      "sha256": "61e151b9edffb9fe2a2c3536dd78edf2c502441faf66aa798c40ebfad7ab12fc"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/prepare-input-plan.ps1",
+      "bytes": 8734,
+      "sha256": "001e2e0ab93aa920098add67770fbfaf2e83c8ace504fea8e6284ce512104a5b"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/stage-inputs.ps1",
+      "bytes": 18549,
+      "sha256": "0771a064850115ae985fb795325dbe8f2b3007ac68da35f9ed500f0d91a986c5"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/mirror-finalization.ps1",
+      "bytes": 8349,
+      "sha256": "a00863a37bcd51392da8b12827bc4cd8383cbc6d95d8bb3a0f78de68a743d54f"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/apply-reviewed-metadata.ps1",
+      "bytes": 12711,
+      "sha256": "d3d5c9027c0dcda0994b74dc89d8638638a36e70dbf447ab5f1ee8f819565e93"
+    },
+    {
+      "path": "doc/causal_fresh_v13_finalization/orchestration-provenance.json",
+      "bytes": 14973,
+      "sha256": "3060586e702fc2bbb40a1f9b0f03f20693e058d985549d9f0f160e09a6ecce03"
+    }
+  ],
+  "reviewed_source_count": 10,
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v13-finalization-source-preparation/attempt-001/parent-copies/manifest.json",
+    "bytes": 6865,
+    "sha256": "f61c4262815c0c59ba98ea0f016646c7f3b3bbc3f904daa3bc04a20b25e38594"
+  },
+  "initial_owned_copies": {
+    "path": "output/engineering/causal-fresh-v13-finalization-source-preparation/attempt-001/initial-owned-copies.json",
+    "bytes": 2430,
+    "sha256": "f86f475b739fdb7d9fb072e24988a9983fc038eaa2b2bdb656c7145665e541a9"
+  },
+  "completed_parent_authority": {
+    "path": "doc/causal_fresh_v12/final-preservation.json",
+    "bytes": 1551705,
+    "sha256": "db4e5f31737688e041784bd20d53747f10fc58b1e189041ca45bc2c2846fded7"
+  },
+  "inspection": {
+    "all_ten_owned_sources_read_in_full": true,
+    "algorithm_sources_read_as_text_not_imported": true,
+    "current_source_pins_exact": 10,
+    "complete_original_parent_pins_exact": 10,
+    "complete_preserved_parent_pins_exact": 10,
+    "initial_owned_copy_metadata_exact_against_parents": 10,
+    "provenance_current_pin_occurrences_exact": 19,
+    "explicit_binding_occurrences_exact": 52,
+    "explicit_binding_unique_files": 39,
+    "frozen_main_source_files_rehashed_exact": 143,
+    "source_main_closure_unchanged": true,
+    "current_main_card_descriptor_and_three_TRAIN_auditor_bindings_exact": true,
+    "all_remaining_old_version_mentions_reviewed_as_historical_except_blocker": true
+  },
+  "blockers": [
+    {
+      "id": "V13-physical-version-roots-still-V12",
+      "severity": "blocking_metadata_identity",
+      "path": "code/research/causal_fresh_v13_finalization/finalize.py",
+      "lines": [
+        715,
+        728
+      ],
+      "actual_assignments": [
+        "fresh_research_candidate.physical_version_root = 'v12'",
+        "new_instance.version_root = FAMILY + 'v12'"
+      ],
+      "required_assignments": [
+        "fresh_research_candidate.physical_version_root = 'v13'",
+        "new_instance.version_root = FAMILY + 'v13'"
+      ],
+      "consequence": "The proposed current catalog entry and new CPB-v13.market-01 instance would identify V12 physical encoder sources despite their V13 method, design and evidence identities.",
+      "reviewer_gap": "review_proposals.py does not independently check these two physical-root fields, so the proposal reviewer currently cannot reject this wrong-source identity.",
+      "requested_narrow_repair": "Preserve whole affected current source/provenances/readiness first; correct both physical roots and refresh affected source bindings. Add exact independent proposal checks for the V13 catalog and instance physical roots, then obtain additive independent review002 before any helper/card/Stage/body/application."
+    }
+  ],
+  "other_concrete_blockers": [],
+  "bounded_static_findings": [
+    "Owned physical copies and full-parent preservation are exact; no forwarding or imports of older proposer/reviewer bodies. Both provenance files exclude their own digest.",
+    "The declared input-role sets are47, with11 tables V3-through-V13, seven separate historical joins V6-through-V12, and14 establishment aliases. Future capsule is53 payload files,54 ZIP members andthree AST targets.",
+    "Completed evidence is externally hash-bound before parse. Actual input-plan/card/proposal-review/application remain separate phases; outputs and source leaves refuse overwrite. This review does not authorize any phase.",
+    "Current143 source/seven binary/eleven translation-unit declarations are distinct from historical V12 source137/checkpoints114 and strongest-protocol V11 opaque109 context.",
+    "V13 fields use actual60 witnesses/25 temporal/four root-dispersion additions, nine proof flags,51 direct calls,18 F64 and18 F32 finite-difference coordinates, four isolated gradient calls, and636 typed negative cases. No inherited uniform/direct-score-zero claim remains.",
+    "Saved-root beta, finite-F32 residual and live attention/score/position routes are bounded local evidence, with shared PRECLIP sum then one observed clip. Missing full-hidden/score-to-hidden/full-encoder/global-norm and remaining2046-step raw-gradient claims remain explicitly false.",
+    "Independent TRAIN count is CORE plusfive modules; the nested moment count is not added twice. Actual totals, coverage and Boolean22 pass count are derived from completed receipts, with no inherited8-pass requirement.",
+    "The strongest866 whole22 criteria/order remain exact and TRAIN NLL adds no gate. Measured-candidate trust and all22 numeric advancement are separate; winner/application selection remains false and V3 is sole DEV.",
+    "The proposal/reviewer retain entire prior histories, complete displaced leader records, strict score improvements and earliest exact ties. Only three new metadata proposals are produced; descriptor bytes are immutable.",
+    "Application checks whole six-file prior snapshot and four exact prepend suffixes before bounded three metadata plusfour front-note writes. No descriptor, producer, scientific source or DEV write is authorized.",
+    "Transport bounds the exact existing container and exclusive target leaves, preserves before/after inventories and all mirror bytes, and does not run numerical work or replay encoder/head training."
+  ],
+  "readiness": "NOT_READY: one metadata identity blocker comprising two stale physical-root assignments and a missing independent proposal check. All remaining source-scope findings above are static review only.",
+  "zero_execution": {
+    "helper_invocations": 0,
+    "AST_parser_calls": 0,
+    "imports": 0,
+    "Docker_calls": 0,
+    "project_body_calls": 0,
+    "model_or_head_calls": 0,
+    "tensor_value_reads": 0,
+    "numerical_reductions": 0,
+    "scientific_source_writes": 0,
+    "author_source_writes": 0,
+    "live_metadata_writes": 0,
+    "DEV_writes": 0,
+    "Git_mutations": 0
+  }
+}

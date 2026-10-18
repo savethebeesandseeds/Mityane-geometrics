@@ -1,10 +1,46 @@
 # Project scope
 
-Mityane geometrics extends the research in `cuwacunu/cuwacunu_embedding` to
-embedding methods and their applications. Keep reusable embedding contracts,
-application code and evaluation protocols distinct. Import any model, dataset
-or research implementation explicitly, with its source revision, license,
-configuration and artifact identity. Preserve original research evidence.
+Mityane geometrics studies operations over learned and externally supplied
+representations. Read `doc/operations_over_representations_design_spec_v0.1.0.md`
+(`ORR-DESIGN-001`, v0.1.0) as the project charter before changing scope, contracts
+or evaluation policy. The research unit is an operation, its input/output
+contract, required representation properties, dependencies and explicit test.
+
+Keep the OR-01 through OR-13 capability IDs stable. The families are composable
+research categories, not a claim of implementation, a sequential roadmap or
+authorization to start an experiment. Custom/frozen encoders and external/open
+models or API embeddings are first-class representation sources. Keep the
+project domain-agnostic; market/time-series research is one application lane.
+
+Keep representation providers and model-owned research in `code/embeddings/`,
+operation implementations and their protocols/evidence in `code/operations/`,
+data code in `code/data/`, and cross-component utilities in `code/shared/`.
+Use the existing flat ownership boundaries: embeddings `encoders/`,
+`state_representation/` and `evaluation/`; operation forecasting modules and
+their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
+`representation/` and `artifacts/`. Do not recreate the imported nested
+`code/embeddings/code/` tree or component-level environment/build configuration.
+Each serious operation needs an Operation Contract and a linked
+Requirements-and-Evidence Record as defined by the charter. Record which
+operation, population, horizon, representation version and geometry a result
+supports; include baselines, failure/abstention conditions and limitations.
+
+Keep current priorities, dependencies, acceptance criteria and work states in
+the Hero JSONs. Documentation defines shared principles and component boundaries;
+illustrative plans are not additional execution prerequisites. Reusable contracts
+and independent engineering work may proceed before an experimental instance is
+selected. Each experimental execution still needs its actual bindings, protocol
+and permissions; a proposed milestone or diagnostic label grants no authority.
+
+Distinguish observation embeddings, task-dependent latent states and predicted
+future states. Keep target readouts, latent dynamics and decision policies
+independently testable. Distinguish observed comparisons, controlled model
+responses and identified intervention effects. Test composed pipeline claims
+end to end; component tests alone do not establish downstream utility.
+
+Import any model, dataset or research implementation explicitly, with its source
+revision, license, configuration and artifact identity. Preserve original
+research evidence, model IDs, frozen protocols and hash-bound records.
 
 # Development environment
 
@@ -31,7 +67,39 @@ Build products, temporary files and dependency caches go under
 at `/opt/cuwacunu_embedding/libtorch`; its original verification records bind
 that path. Do not relocate, duplicate or modify the SDK. Persist selected data,
 checkpoints and reports under this repository's ignored `data/` and `output/`.
+The imported component's ignored `output/`, `.build/` and `.external/` retain
+historical files in place; do not delete or rewrite them as cleanup. New named
+embedding tasks write to `/opt/mityane-geometrics/embeddings/build` and
+`/mityane/output/embeddings/runs`. The root Makefile and `code/scripts/task.sh`
+are the build/test entries; `container.ps1`, `setup.sh` and `dependencies.lock`
+at the root are the authoritative shared environment configuration. Never recreate the
+retired standalone container.
 Use named directories for concurrent work and account for shared GPU capacity.
+
+Read `doc/EMBEDDINGS.md` for inherited research status and
+`archive/embeddings/README.md` for the preserved evidence boundary. The complete
+pre-cleanup source/documentation component is frozen at
+`archive/embeddings/pre-cleanup-2026-10-18/`, including source capsules, dated
+instructions, original configurations and research documents. Do not rewrite
+its bytes or treat archived instructions as current lifecycle commands.
+Original paths and hashes remain evidence identities. A historical reproduction
+needs an explicit path mapping and the relevant frozen admission/protocol;
+maintenance does not resume paused experiments, metadata application or training.
+
+# Project dashboard
+
+The shared dashboard backbone is in `web/dashboard/`. The owner defines its
+Heroes and branding; do not seed guessed Heroes, Goals or Milestones. Read
+`web/dashboard/SCHEMA.md` before progress edits. Keep one JSON per Hero in
+`heroes/`, listed in `manifest.json`, with the fixed Hero -> Goal -> Milestone
+hierarchy. Record only confirmed scope and evidence; only Milestones store states.
+
+After changing Hero JSON, the manifest, branding or interface, run
+`./web/dashboard/scripts/refresh.ps1` from the repository root. It delegates
+through `container.ps1` to the existing managed container, runs focused tests and
+regenerates `public/index.html`. Do not hand-edit that generated file or run a
+host toolchain. The finished HTML opens directly without a server. Use `-Check`
+to check freshness without rewriting it. Preserve the imported AGPL notices.
 
 # Research and publication
 
@@ -41,6 +109,7 @@ evaluation protocol with every result. Preserve failures and earlier references.
 Do not claim inherited dependencies establish model or application quality.
 Verify actual CUDA execution before substantial GPU work.
 
-The GitHub repository is private. Do not make it public, publish container
-images or include credentials, raw datasets, checkpoints or generated output
-in Git without explicit authorization.
+The GitHub repository is public. Do not change its visibility or publish
+container images without explicit authorization. Public source availability
+does not authorize including credentials, raw datasets, checkpoints or generated
+output in Git. Preserve dataset and model access, retention and license limits.

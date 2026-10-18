@@ -1,0 +1,1456 @@
+{
+  "kind": "clean_causal_v9_retention_derivation_v1",
+  "status": "passed_proposal_not_applied",
+  "source": {
+    "path": "/opt/cuwacunu/research/causal-v9-retention-review/attempt-001/source/derive.py",
+    "bytes": 22211,
+    "sha256": "ca846a9fd709606270aec04b05e3002d59664388650f722d4b71370c4b187e76"
+  },
+  "manifest": {
+    "path": "/opt/cuwacunu/research/causal-v9-retention-review/attempt-001/source/admitted-manifest.json",
+    "bytes": 8335,
+    "sha256": "7cdfcde6ba4522b9a01c495a0c5982d3a4adf9539b410049df9c822e34afce4d"
+  },
+  "inputs": [
+    {
+      "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+      "bytes": 24084,
+      "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699"
+    },
+    {
+      "path": "doc/results/causal_fresh_v3/table_rows.json",
+      "bytes": 336076,
+      "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+    },
+    {
+      "path": "doc/results/causal_fresh_v4/table_rows.json",
+      "bytes": 336377,
+      "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+    },
+    {
+      "path": "doc/results/causal_fresh_v5/table_rows.json",
+      "bytes": 336740,
+      "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+    },
+    {
+      "path": "doc/results/causal_fresh_v6/table_rows.json",
+      "bytes": 394229,
+      "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+    },
+    {
+      "path": "doc/results/causal_fresh_v7/table_rows.json",
+      "bytes": 396737,
+      "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+    },
+    {
+      "path": "doc/results/causal_fresh_v8/table_rows.json",
+      "bytes": 398100,
+      "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+    },
+    {
+      "path": "doc/results/causal_fresh_v9/table_rows.json",
+      "bytes": 398749,
+      "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+    },
+    {
+      "path": "doc/clean_causal_encoder_research_ledger.json",
+      "bytes": 820737,
+      "sha256": "f1f4e0698dea621830743a8135b3535f60a4d344cf6485e890a0c01036048d6f"
+    },
+    {
+      "path": "doc/causal_fresh_v9/final-establishment.json",
+      "bytes": 8847,
+      "sha256": "aeb9fbadcf8afad2bb48812b957ca23b122c3df92d5459c18859dd16637e4cdf"
+    },
+    {
+      "path": "doc/causal_fresh_v9/complete-mirror-attempt-001.json",
+      "bytes": 208105,
+      "sha256": "fcee958e257a26b30e9e470bfcd0906d55f269f4952d8cc27a36e1cf89b0b115"
+    },
+    {
+      "path": "doc/causal_fresh_v9/final-preservation.json",
+      "bytes": 309861,
+      "sha256": "1bdf7642f82d49b21f59cbbfbbc8ce6a66d341fe72862f370cb9f0d3080cfaa7"
+    }
+  ],
+  "criteria": 22,
+  "selected_final_floor_scopes": 19,
+  "unchanged_positivity_rules": 3,
+  "changed_thresholds": [
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "previous_threshold": 0.953125,
+      "previous_source": "CPB-v6.market-01",
+      "retained_threshold": 0.9557291666666666,
+      "retained_source": "CPB-v9.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "previous_threshold": 0.9340277777777778,
+      "previous_source": "CPB-v6.market-01",
+      "retained_threshold": 0.9361979166666666,
+      "retained_source": "CPB-v9.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "previous_threshold": 0.9973958333333334,
+      "previous_source": "CPB-v6.market-01",
+      "retained_threshold": 0.9986979166666666,
+      "retained_source": "CPB-v9.market-01",
+      "rule": "candidate + 1e-12 >= floor"
+    }
+  ],
+  "unchanged_criteria": 19,
+  "saved_final_choices": [
+    {
+      "id": "past_volatility:linear_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.964673433811061,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.849562210315651,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9522110896824942,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.877120188581859,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.8805095770749741,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9075813979360327,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9099222197983212,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_volatility:neural_mean_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.4630519227215611,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.5551762291104203,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.6481906853790493,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.5846337703472184,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.6733049756106732,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.7359692462937604,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.6185229581431438,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_trend:linear_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.2631329634696965,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9072134297036245,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.8686454446647044,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.6758607489688313,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.6850429733746501,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.6963065901488456,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.6608191981216143,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_trend:neural_mean_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": -0.2539790011410479,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.5698752307038314,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.5239287837355375,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.27070275120077564,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.10961324028398407,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": -0.03740784529247713,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": -0.1336738736969567,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.8628403110608782,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.8351430745456463,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.8442568194013671,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.6727699916736933,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.7123900475845468,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.8190834765584581,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.8305328696553401,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_activity:neural_mean_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.541426055582653,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.6873705450109496,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.6179837760969433,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.323179997610594,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.35263803411438105,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.6542563657116769,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.603294851230715,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_relation:linear_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": -0.00700444683432222,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.3264050670418407,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.25232855646478336,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.6221006868548108,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.6008005722563524,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.5044870165504869,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.5316911950863574,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "past_relation:neural_mean_r2",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": -0.08556567147059875,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.20951046448819055,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.3705053482630968,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.322683608668055,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.3248617437896359,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.038951219473933395,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.32655004855341613,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_intact:linear_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.96484375,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9830729166666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9713541666666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.9869791666666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9856770833333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9765625,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9869791666666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_intact:neural_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.95703125,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9696180555555556,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9657118055555556,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.9848090277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9787326388888888,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9722222222222222,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9787326388888888,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_deleted:linear_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.9114583333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9466145833333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9296875,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.953125,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.93359375,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9322916666666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9557291666666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "synthetic_train:validation_deleted:neural_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.9175347222222222,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.93359375,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9279513888888888,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.9340277777777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9223090277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9301215277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9361979166666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "market_scaler:validation_intact:linear_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.9934895833333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9934895833333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9921875,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.9973958333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9921875,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.99609375,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9986979166666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "market_scaler:validation_intact:neural_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.9817708333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.98828125,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9887152777777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.9921875,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9848090277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9926215277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9848090277777778,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "market_scaler:validation_deleted:linear_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.94921875,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9583333333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.94140625,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.97265625,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9453125,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9622395833333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.93359375,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "market_scaler:validation_deleted:neural_head_accuracy",
+      "direction": "max_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.9427083333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.9561631944444444,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.9409722222222222,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.953125,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.9188368055555556,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.9505208333333334,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.9283854166666666,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "train:standardized_MAE",
+      "direction": "min_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.25904599043427573,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.27250803234958165,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.25446393568049436,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.2501725785157887,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.24180533789857825,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.24714626069005793,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.2445403465007532,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "validation:standardized_MAE",
+      "direction": "min_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 0.376414230576159,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": 0.30831692401624544,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 0.37519629363955453,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.35451973488525984,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.3704205114995439,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.32497301192553923,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.3261075149884405,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "known_validation:Gaussian_NLL_F64",
+      "direction": "min_final",
+      "values": [
+        {
+          "instance": "CPB-v3.market-01",
+          "value": 1.521796577918092,
+          "table": {
+            "path": "doc/results/causal_fresh_v3/table_rows.json",
+            "bytes": 336076,
+            "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+          }
+        },
+        {
+          "instance": "CPB-v4.market-01",
+          "value": -0.04538148809081624,
+          "table": {
+            "path": "doc/results/causal_fresh_v4/table_rows.json",
+            "bytes": 336377,
+            "sha256": "ee1b52274599a37fe403eea4f1c13726cdbfae8cb005a2bf794f7fc096e84f58"
+          }
+        },
+        {
+          "instance": "CPB-v5.market-01",
+          "value": 2.6874502201003447,
+          "table": {
+            "path": "doc/results/causal_fresh_v5/table_rows.json",
+            "bytes": 336740,
+            "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+          }
+        },
+        {
+          "instance": "CPB-v6.market-01",
+          "value": 0.6484480452157971,
+          "table": {
+            "path": "doc/results/causal_fresh_v6/table_rows.json",
+            "bytes": 394229,
+            "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+          }
+        },
+        {
+          "instance": "CPB-v7.market-01",
+          "value": 0.868789873717446,
+          "table": {
+            "path": "doc/results/causal_fresh_v7/table_rows.json",
+            "bytes": 396737,
+            "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+          }
+        },
+        {
+          "instance": "CPB-v8.market-01",
+          "value": 0.4241678682268929,
+          "table": {
+            "path": "doc/results/causal_fresh_v8/table_rows.json",
+            "bytes": 398100,
+            "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+          }
+        },
+        {
+          "instance": "CPB-v9.market-01",
+          "value": 0.4753879245498305,
+          "table": {
+            "path": "doc/results/causal_fresh_v9/table_rows.json",
+            "bytes": 398749,
+            "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+          }
+        }
+      ]
+    }
+  ],
+  "stable_contract_fields": [
+    "establishment",
+    "scope",
+    "defaults",
+    "version_policy",
+    "preservation",
+    "search_policy",
+    "future_dimensions",
+    "application_promotion",
+    "publication",
+    "container",
+    "independent_confirmation",
+    "baseline",
+    "application",
+    "additional_train_NLL_gate"
+  ],
+  "candidate_declared": false,
+  "new_train_NLL_gate": false,
+  "historical_results_or_counts_recomputed": false,
+  "baseline_changed": false,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "new_quality_scores": 0,
+  "live_files_written": 0,
+  "outputs": [
+    {
+      "path": "/opt/cuwacunu/research/causal-v9-retention-review/attempt-001/output-001/clean_causal_encoder_search_goal_v9_retention.json",
+      "bytes": 35421,
+      "sha256": "221f7cc748db8bc57bbb8dd066f569d957d16791d2a7cfe0ef0cc3785a579144"
+    },
+    {
+      "path": "/opt/cuwacunu/research/causal-v9-retention-review/attempt-001/output-001/clean_causal_encoder_search_goal_v9_retention.md",
+      "bytes": 1994,
+      "sha256": "07cc5002917630c52582246dd37b75ac1678764a0cce443dabcde99712271e43"
+    }
+  ]
+}

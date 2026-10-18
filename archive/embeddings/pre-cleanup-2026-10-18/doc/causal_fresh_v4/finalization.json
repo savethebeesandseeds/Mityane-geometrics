@@ -1,0 +1,111 @@
+{
+  "kind": "causal_fresh_v4_research_finalization_v1",
+  "status": "complete_scoped_reference_failed_advancement",
+  "completed_utc": "2026-10-15T13:01:26.5189454Z",
+  "baseline": "CPB-v3.market-01",
+  "baseline_unchanged": true,
+  "application": "CPB-v3.market-01",
+  "candidate": "CPB-v4.market-01",
+  "numeric_passed": 19,
+  "numeric_total": 22,
+  "trust_admission_passed": true,
+  "full_coverage": true,
+  "advancement_passed": false,
+  "failed_conditions": [
+    {
+      "id": "past_volatility:linear_r2",
+      "category": "market_retention",
+      "candidate": 0.849562210315651,
+      "dataset_id": "MKT-HIST-2",
+      "baseline_or_floor": 0.964673433811061,
+      "rule": "candidate+1e-12>=baseline",
+      "passed": false
+    },
+    {
+      "id": "past_activity:linear_r2",
+      "category": "market_retention",
+      "candidate": 0.8351430745456463,
+      "dataset_id": "MKT-HIST-2",
+      "baseline_or_floor": 0.8628403110608782,
+      "rule": "candidate+1e-12>=baseline",
+      "passed": false
+    },
+    {
+      "id": "train:standardized_MAE",
+      "category": "fixed_query_MAE",
+      "candidate": 0.27250803234958165,
+      "dataset_id": "MKT-HIST-2",
+      "baseline_or_floor": 0.25904599043427573,
+      "rule": "candidate<=baseline+1e-12",
+      "passed": false
+    }
+  ],
+  "single_fresh_CUDA_trajectory": true,
+  "updates": 2048,
+  "batch_size": 8,
+  "pretrained_ancestor": "none",
+  "source_updates": 0,
+  "gradient_policy": "variance_input_gradient_stop-v1",
+  "training_audit_checks": 192545,
+  "quality_audit_checks": 10927,
+  "preservation_checks": 2012,
+  "actual_saved_initial_final_causal_proofs_passed": true,
+  "typed_resume_at512_passed": true,
+  "initial_numeric_pairing_archives": 13,
+  "main_checkpoints": 5,
+  "all_earlier_checkpoints_and_scoped_leaders_preserved": true,
+  "old_encoder_replays": 0,
+  "repeated_quality_fits": 0,
+  "later_encoder_runs": 0,
+  "Git_mutations_by_this_task": 0,
+  "dev_encoder_changes_by_this_task": 0,
+  "evidence": [
+    {
+      "path": "doc/CAUSAL_FRESH_V4_RESULTS.md",
+      "bytes": 18102,
+      "sha256": "683b3c1156245f0cc0d3cc0feae22e2d639790b6e0e3eac36508b275f0bb0d39"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V4_DETAIL.md",
+      "bytes": 20180,
+      "sha256": "9c7abd2bd561b38928d8ec59aa4d556cf14c6c7c8ce17d452899172b60900931"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V4_REVIEW.md",
+      "bytes": 3951,
+      "sha256": "bfeca37f4f786aad4ac601a37dc98ddf86ca2e835daf0c96725f5991c992344a"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v4.market-01.json",
+      "bytes": 19258,
+      "sha256": "c60caeacab3349d19d35de92240d44add6804bc7046e76113f968e2402b3aa50"
+    },
+    {
+      "path": "doc/results/causal_fresh_v4/comparison.json",
+      "bytes": 114876,
+      "sha256": "305d34b525be81c33fb7f2ade2173e71162d7fce56d8fefc82783925607add13"
+    },
+    {
+      "path": "doc/causal_fresh_v4/independent-training-audit.json",
+      "bytes": 33069,
+      "sha256": "29ff6c22d0629895addd7fc6de7d4843192e60872c9547d5dfa588f7036d18be"
+    },
+    {
+      "path": "doc/causal_fresh_v4/quality-independent-audit.json",
+      "bytes": 172194,
+      "sha256": "827b8ec20d5ba043d3118be64d97e194a9711ddb04a7c1d5fc50396bf7fa30b5"
+    },
+    {
+      "path": "doc/causal_fresh_v4/final-preservation.json",
+      "bytes": 113157,
+      "sha256": "46e0ede3fd0583a8515d328cdb2c56406a83133d3be1ffde8ac1ac68430ea65c"
+    },
+    {
+      "path": "doc/causal_fresh_v4/mirror-verification.json",
+      "bytes": 134871,
+      "sha256": "a7931f3f4fac116b95d248ac0024ad38cb8d3e3d598f5859c339e7456f3df03a"
+    }
+  ],
+  "next_direction": "Proposal only: saved TRAIN-only v3/v4 volatility/activity/reconstruction comparison before a separately declared mechanism; preserve v3 baseline and v4 scoped gains",
+  "reporting_correction": "Additive metadata-only raw-control-kind correction with stronger unchanged-file hash; original88 source and failures preserved; no fits/extraction/training repeated"
+}

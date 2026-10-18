@@ -1,0 +1,96 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v6_v7_saved_TRAIN_diagnosis_source_derivation_v1",
+  "status": "source_prepared_pending_card_root_and_independent_preflight",
+  "parent_sources_unchanged": true,
+  "mutable_old_imports": [],
+  "derivations": [
+    {
+      "original": {
+        "path": "code/research/causal_v5_v6_train_diagnosis/archive_reader.py",
+        "bytes": 4035,
+        "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+      },
+      "operation": "Complete byte-exact physical copy",
+      "destination": {
+        "path": "code/research/causal_v6_v7_train_diagnosis/archive_reader.py",
+        "bytes": 4035,
+        "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+      }
+    },
+    {
+      "original": {
+        "path": "code/research/causal_v5_v6_train_diagnosis/diagnose.py",
+        "bytes": 75845,
+        "sha256": "8943c15bf4c282977a837231a7c3c08e81f8d9a7ea38c6549a879e2ce72d499f"
+      },
+      "operation": "Complete physical copy followed by owned V6/V7 adaptation; no historical module imports",
+      "destination": {
+        "path": "code/research/causal_v6_v7_train_diagnosis/diagnose.py",
+        "bytes": 85149,
+        "sha256": "28d1d5c88e4bc34b1f3596acdc20b2e45118547da111c46fbd594fcaeeb00088"
+      }
+    },
+    {
+      "original": {
+        "path": "code/research/causal_v5_v6_train_diagnosis/schema.py",
+        "bytes": 1285,
+        "sha256": "341f2921fe55cbc4c0b97e35d38d4857898a25b77043511f397bd06977dc3c8d"
+      },
+      "operation": "Complete physical copy followed by owned V6/V7 adaptation; no historical module imports",
+      "destination": {
+        "path": "code/research/causal_v6_v7_train_diagnosis/schema.py",
+        "bytes": 1285,
+        "sha256": "d2d296270816b9fd4ea48bcdf308423d58ded907d6e10378f22de14c621480fc"
+      }
+    },
+    {
+      "original": {
+        "path": "code/research/causal_v5_v6_train_diagnosis/README.md",
+        "bytes": 4332,
+        "sha256": "30449c30314c093ca4d0f19e15d8708c0b4da0ec40fb0d070d08122d69a13624"
+      },
+      "operation": "Complete physical copy followed by owned V6/V7 adaptation; no historical module imports",
+      "destination": {
+        "path": "code/research/causal_v6_v7_train_diagnosis/README.md",
+        "bytes": 6364,
+        "sha256": "da95fc13da33e1e5d99ab947c3db7e4bffcdb9a5b43fbf65397496979f6f9765"
+      }
+    },
+    {
+      "original": {
+        "path": "code/research/causal_v5_v6_train_diagnosis/provenance.json",
+        "bytes": 5400,
+        "sha256": "2f0d2dcd334e29b17bfddbf1852b93b40fe9d130b1d912784c190db670ef4796"
+      },
+      "operation": "Complete physical copy followed by owned V6/V7 adaptation; no historical module imports",
+      "destination_binding": "This record replaces the copied parent provenance; the later admitted capsule externally binds its own final bytes"
+    }
+  ],
+  "prospective_card": {
+    "path": "doc/CAUSAL_V6_V7_TRAIN_DIAGNOSIS_CARD.json",
+    "status": "not_created_or_frozen_by_this_source_preparation",
+    "admission_required_before_schema_or_numeric_execution": true
+  },
+  "changes": [
+    "49 exact numeric input IDs:shared TRAIN targets,20 common roles per version,and four trajectory roles per version;no held-out field widening",
+    "Both versions use applied Huber1 mean plus detached-error Gaussian variance supervision;reporting NLL never applied to mean",
+    "V6 global norm/factor and V7 separate branch norms/factors kept distinct across all2048 rows and four fixed512 blocks;no V6 split inference,counterfactual clipping,loss-ratio dominance or later-trajectory attribution",
+    "Both versions saved actual pre-step updates1/2048:component/support/CSV recomputation,identical saved inputs/masks and exact first fresh forward;no actual-batch decoder adjoints or replay",
+    "All112 saved TRAIN native40/readouts and saved ridge block arithmetic retained;no neural weight read,fit,forward or block-ablation predictor",
+    "First8 fixed TRAIN rawF64 query witnesses,initial/final only:four fixed32-step bins of observed raw means/std/adjacent differences and supported reconstruction;no market labels in raw summaries or fitted temporal predictor",
+    "Stage-matched initial/final saved linear decoder local adjoints only;both applied mean gradients Huber1,independent uncertainty4 basis,no cross-basis/model/stage cosine or upstream Jacobian",
+    "Both full112 TRAIN component row arrays checked;four mixed-split JSONs decoded but only train subtree accessed",
+    "All allowed/preservation/broad-preservation/source/card hashes rechecked before/after arithmetic;no old source edits or model/head/statistic fitting"
+  ],
+  "execution_not_performed": true,
+  "forbidden": [
+    "Encoder/decoder/neural/head model execution",
+    "Training or head/scaler/statistic fitting",
+    "Held-out tensor or numeric summary selector",
+    "Raw cache reading",
+    "V6 branch-gradient dominance inference from V7 trajectory",
+    "Actual-batch pairing with final2048 decoder",
+    "New candidate/rescue/floor or application/Git mutation"
+  ]
+}

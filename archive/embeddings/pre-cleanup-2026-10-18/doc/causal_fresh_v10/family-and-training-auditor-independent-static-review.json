@@ -1,0 +1,125 @@
+{
+  "kind": "cpb_v10_family_and_training_auditor_independent_static_review_v1",
+  "status": "passed",
+  "scope": "Independent static source, file-byte and declared-schema review only; no runtime admission or numerical execution",
+  "reviewed_utc": "2026-10-16T12:47:38.2598538Z",
+  "reviewer": "/root/causal_training_path",
+  "source_provenance": {
+    "path": "doc/causal_fresh_v10/family-source-provenance.json",
+    "bytes": 48452,
+    "sha256": "e517970d5e31722db099e46b319bb6cfa1e88bc90e9a75bc00a76b5ef53a5c1b"
+  },
+  "root_review": {
+    "path": "doc/causal_fresh_v10/family-root-static-review.json",
+    "bytes": 2221,
+    "sha256": "e1ef2411776df87c9724bd9ffb14a47c3ca048360f5c63236597844ef3779a1e"
+  },
+  "auditor_sources": [
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+      "bytes": 116406,
+      "sha256": "b44a62524a177b67ba2a12d98841ba851ef6a3d3138a82405a81cb7fb6ce2e7d"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/README.md",
+      "bytes": 6815,
+      "sha256": "834d613ce9193ce781a2f755afe2b9239f1ccdd5debf6cba398f2e850e75d4ef"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+      "bytes": 6999,
+      "sha256": "61dc066f7e34bd4c9bacdfb4860a2cbe63a95d11506a8f7324002bf5fe0bc342"
+    }
+  ],
+  "critical_sources": [
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v10.h",
+      "bytes": 35431,
+      "sha256": "53d7451677db60a0736f81674796eff13f8cad400930103ab01a07ece9efcf5c"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v10/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v10/location_scale_decoder_config.h",
+      "bytes": 3593,
+      "sha256": "de1bd5853287d044c22bf8bd077beddc14e2ee11616db15ebfe6f865dec7efbd"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v10/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v10/location_scale_decoder_model.h",
+      "bytes": 17686,
+      "sha256": "cec2094b43412a64d0c30e9b8eb57ed345e4632c7ebc19f3537d86b489b83a8e"
+    },
+    {
+      "path": "code/encoders/causal_patch_bottleneck_mae/versions/v10/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v10/location_scale_decoder_checkpoint.h",
+      "bytes": 12521,
+      "sha256": "7dd8baf40a8543949f08b1f7306366680b556c89d0b45ce6263506fc58daae99"
+    },
+    {
+      "path": "code/research/causal_fresh_v10/tests/v10_separation_test.cpp",
+      "bytes": 20768,
+      "sha256": "4adfc03e31179bdbcc49419d5ad3e3c77287ca309575f4e4577add93ca76bf09"
+    },
+    {
+      "path": "code/research/causal_fresh_v10/tests/v10_test.cpp",
+      "bytes": 66570,
+      "sha256": "e28e4b56ef2eec3e72e863bd89499728aa2227c47c7ffaad67bc71dc58965b88"
+    },
+    {
+      "path": "code/research/causal_fresh_v10/train_main.cpp",
+      "bytes": 56356,
+      "sha256": "d487d585e1e4f5c6dfb8fc010d456fe8041c91f2e9cc8ef897c0c1ac621b2ac3"
+    },
+    {
+      "path": "code/research/causal_fresh_v10/training-helper-provenance.json",
+      "bytes": 16901,
+      "sha256": "9cf99e94082f4e88bb6c85337b8c8bebb9cd46bf303b7d18f380814d145201bb"
+    }
+  ],
+  "byte_checks": {
+    "family_current_files": 51,
+    "family_direct_V9_parent_files": 51,
+    "family_mismatches": 0,
+    "files_beyond_owned_version_renaming": 9,
+    "internal_family_files": 50,
+    "full_external_public_file": 1,
+    "public_internal_external_exact": true,
+    "constructor_encode_decode_forward_tail_characters": 10862,
+    "tail_exact_after_owned_version_and_component_rename": true,
+    "auditor_recorded_parent_current_family_fixture_pin_occurrences": 7,
+    "auditor_pin_mismatches": 0,
+    "research_provenance_parent_current_peer_pin_occurrences": 42,
+    "research_pin_mismatches": 0
+  },
+  "findings": [
+    "The only objective graph delta is Huber1 plus ONE joint Gaussian NLL with both predicted mean and variance live. Targets are detached. Unsupported cells are cleared before independent F64 operand promotion; exact eligible-channel/example reductions remain unchanged. No second Gaussian variance term remains.",
+    "Reporting NLL recomputes the ordinary identical forward value from detached mean and variance; only objective.total_loss is used by production and rich engineering backward. Gaussian/total values may be negative; Huber remains nonnegative.",
+    "All five typed nodes bind the new objective, gradient and direct-route strings, Double scalar delta1, Double[2] unit weights and scalar Long0 detach/report flags: inference root/payload and TRAIN root/encoder/encoder.payload. Wrong value, missing, dtype and shape mutations plus old-V9 kind/policy rejection are present; correctly typed wrong Double2 delta already exists in unchanged rich fixture e28e4b56.",
+    "Dedicated nonzero CUDA fixture source uses unequal channel support, an ineligible channel, semantic reordering, heteroscedastic variance, errors on both sides of the Huber kink and unsupported NaNs. It checks live Gaussian parent/mean/uncertainty gradients, isolated coordinate routes, Huber uncertainty exclusion, total gradient addition, and exact variance-head equality to ONE Gaussian component.",
+    "Fixture scalar oracle independently declares36 central finite differences:12 mean,12 variance and12 anchored-softplus-score derivatives, step1e-5 and tolerance2e-8*(1+abs(reference)); it also checks manual F64 native40 composite adjoints/reference graph, detached reporting, shared clip coupling and one actual five-parameter AdamW step. These are prospective checks, not execution results.",
+    "The complete V10 auditor physically owns its inert archive reader and standard-library arithmetic; no producer imports, Torch/model/head execution or old replay. It independently reduces saved F32 operands promoted before residual subtraction into Huber, joint Gaussian and total components at the two actual pre-step witnesses; scalar values are not used to infer autograd routing.",
+    "Auditor CSV and checkpoint streams support exactly2048 successes in2048..4096 attempted batches, explicit skipped rows, actual successful-attempt seed/progress bindings and first/last witnesses. Loader presentations are512+actual attempted batches+36 because raw loading precedes eligibility skip; no zero-skip assumption is introduced.",
+    "Actual component field names joint_Gaussian_NLL_F64 and row_joint_gaussian_nll, summary first/last fields, five typed policy nodes, fresh gradient_policy absence and common direct_gradient_routes agree with the current trainer/evaluation interfaces.",
+    "The audit retains CORE plus five independently counted modules,75 mandatory learned tensors/294751 numel capacity and one observed scalar gauge exemption, four export/within-bin groups, three Hadamard event directions and positive overall final projection. It reconstructs raw clipped-gradient arithmetic only at actual1/2048; full global norm and other saved scalar traces remain observed evidence. Shared global clip1 and AdamW coupling are disclosed."
+  ],
+  "blockers": [],
+  "limitations": [
+    "Static review confirms source contracts and byte bindings only; no compile, fixture, CUDA, training or quality outcome is inferred.",
+    "No actual V10 main card, source capsule, audit card, result score or pass count is anticipated by this receipt."
+  ],
+  "actions": {
+    "source_text_and_hash_inspection": true,
+    "AST": 0,
+    "module_imports": 0,
+    "development_checks": 0,
+    "builds": 0,
+    "fixtures": 0,
+    "CUDA_calls": 0,
+    "models": 0,
+    "training": 0,
+    "head_fits": 0,
+    "quality": 0,
+    "Docker": 0,
+    "Git": 0,
+    "old_file_edits": 0,
+    "source_edits": 0,
+    "baseline_or_application_changes": 0
+  }
+}

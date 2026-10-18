@@ -1,0 +1,83 @@
+{
+  "kind": "cpb_v12_temporal_pooling_mechanism_proof_v1",
+  "status": "passed",
+  "model": "CPB-v12",
+  "actual_CUDA": true,
+  "temporal_pooling_policy": "original-position-four-bin-attention-mean4-uniform-centered-variance4-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "temporal_moment_policy": "componentwise-centered-variance-half-local-global-uniform-own-two-sum-mean-v1",
+  "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "original_position_membership": true,
+  "both_temporal_paths": true,
+  "empty_bins_finite_zero": true,
+  "true_per_bin_trace_weights": true,
+  "manual_pooling_and_adjoint_parity": true,
+  "four_export_slices_gradient_and_movement": true,
+  "centered_position_contrasts_gradient_and_movement": true,
+  "common_softmax_gauge_invariance": true,
+  "shared_global_half_mixture": true,
+  "relative_bin_global_sensitivity": true,
+  "three_between_bin_contrasts_gradient_and_movement": true,
+  "mean4_centered_variance4_export_layout": true,
+  "attention_mean_and_uniform_dispersion_full_expression_adjoints": true,
+  "uniform_dispersion_own_center": true,
+  "uniform_dispersion_score_independent": true,
+  "uniform_dispersion_hidden_gradient_live": true,
+  "attention_mean_score_gradient_live": true,
+  "dual_support_actual_trace": true,
+  "independent_full_expression_F64_finite_differences": true,
+  "actual_F32_kernel_finite_differences": true,
+  "equal_mean_different_variance": true,
+  "present_constant_variance_dtype_tolerance": true,
+  "eight_moment_subgroups_gradient_and_movement": true,
+  "backbone_encode_calls": 1,
+  "direct_pool_kernel_calls": 47,
+  "public_encoder_calls": 0,
+  "head_fits": 0,
+  "synthetic_optimizer_steps": 1,
+  "manual_F32_absolute_tolerance": 3e-05,
+  "manual_F32_relative_tolerance": 3e-05,
+  "F64_finite_difference_coordinates": 18,
+  "F64_finite_difference_step": 1e-05,
+  "F64_finite_difference_absolute_tolerance": 2e-08,
+  "F64_finite_difference_relative_tolerance": 2e-08,
+  "F32_finite_difference_coordinates": 18,
+  "F32_finite_difference_step": 0.002,
+  "F32_finite_difference_absolute_tolerance": 0.002,
+  "F32_finite_difference_relative_tolerance": 0.002,
+  "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+  "softmax_gauge_tolerance": 2e-06,
+  "bin_mass_tolerance": 2e-06,
+  "flat_trace_tolerance": 8e-06,
+  "empty_and_membership_zero": "exact",
+  "binary": {
+    "path": "/opt/cuwacunu/build/causal-fresh-v12-attempt001/test_cpb_v12_temporal_pooling",
+    "bytes": 477584,
+    "sha256": "af05a2a163e0399505c3e8c7c622ecdda1a730e32c1f615bec62374a5ec2d46d"
+  },
+  "log": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v12/attempt-001/temporal-pooling.log",
+    "bytes": 1741,
+    "sha256": "7939af8e9e523b05369077804b50098920b6bc948b29695f5d7b979d74ac3a55"
+  },
+  "execution": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v12/attempt-001/temporal-pooling-stage.json",
+    "bytes": 872,
+    "sha256": "4a72eb2d86292fd86f17c8bfce98150e75265c1f2b81f24d83fd450db5c22d48"
+  }
+}

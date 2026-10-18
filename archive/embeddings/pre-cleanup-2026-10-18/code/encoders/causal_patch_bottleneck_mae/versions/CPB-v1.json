@@ -1,0 +1,236 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "causal_patch_bottleneck_mae",
+  "canonical_registered_tag": "CPB-v1",
+  "number": 1,
+  "status": "declared_implementation_under_review_admission_and_quality_pending",
+  "metadata_only": true,
+  "public_version_entry": "versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h",
+  "private_implementation_root": "versions/v1/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v1",
+  "defining_API": {
+    "encode_at": "cutoff-enforced CPU raw-F64 history and boolean mask; crop before arithmetic; explicit per-example cutoff",
+    "native_width": 36,
+    "measured_geometry": {
+      "C": 3,
+      "H": 128,
+      "F": 9,
+      "P": 8,
+      "W": 64
+    },
+    "sequence_policy": "every returned timestamp uses its own cutoff path; no broadcast of final vector",
+    "namespace_symbols_status": "Portable owner supplied final public contract; independent compiler/proof admission pending.",
+    "namespace": "embedding::encoders::causal_patch_bottleneck_mae::v1",
+    "public_types": [
+      "Config",
+      "FrozenScaler",
+      "BankStandardizer",
+      "RawHistory",
+      "Encoding",
+      "CausalTrace",
+      "Encoder",
+      "Loaded"
+    ],
+    "public_functions": [
+      "read_settings",
+      "input_config",
+      "import_v30_checkpoint",
+      "save_checkpoint",
+      "load_checkpoint"
+    ],
+    "guarded_encoder_methods": [
+      "encode_at",
+      "trace_at"
+    ],
+    "frozen_state_methods": [
+      "normalizer",
+      "config",
+      "source_updates",
+      "causal_updates",
+      "source_checkpoint_sha256",
+      "imported_model_identity",
+      "state_identity",
+      "validate_frozen"
+    ],
+    "public_training_contract": false
+  },
+  "causal_policy": {
+    "served_z_t_dependencies": "observations/masks at timestamps<=t, explicit schema, immutable weights and frozen TRAIN normalizers",
+    "future_discarded_before": [
+      "observed-finiteness checks",
+      "F32 rounding",
+      "input normalization",
+      "bank construction",
+      "token packing",
+      "support counting"
+    ],
+    "short_prefix": "left-pad unavailable past with hidden zeros",
+    "temporal_attention": "original-coordinate causal key mask plus padding mask; same-time channel mixing",
+    "future_poison_and_mask_invariance_required": true,
+    "old_full_window_encode_public_bypass": false,
+    "early_prefix_quality_target_added": false
+  },
+  "typed_artifacts": {
+    "new_inference_kind": "cpb_v1_inference_checkpoint_v1",
+    "status": "Declared new inference contract; import/typed roundtrip proof pending; no causal TRAIN artifact admitted by this zero-update card",
+    "new_checkpoint": null,
+    "model_tag": "CPB-v1",
+    "causal_policy": "crop-before-validation;rolling-last-H;masked-left-pad;original-patch-end-causal-attention;prefix-only-banks-pooling-v1"
+  },
+  "provenance": {
+    "derivation_design": "RPB-v30",
+    "source_instance": "RPB-v30.market-01",
+    "source_checkpoint": {
+      "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+      "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb",
+      "bytes": 1285583,
+      "local_only": true,
+      "git_ignored": true,
+      "deserialized_for_ledger": false
+    },
+    "source_card": {
+      "repository": "integration",
+      "path": "doc/MARKET_LOCATION_SCALE_DECODER_CARD.md",
+      "sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+      "bytes": 15300
+    },
+    "source_report": {
+      "repository": "integration",
+      "path": "doc/MARKET_LOCATION_SCALE_DECODER_RESULTS.md",
+      "sha256": "f5519bc661fb5072a74f36ebe4258c25862ebfb5c13117056ab000533a296ff8",
+      "bytes": 29946
+    },
+    "source_completion": {
+      "repository": "integration",
+      "path": "doc/results/market_location_scale_decoder_v1/completion.json",
+      "sha256": "0b91cded8a9f6cd9829886724e240eb2ce770a6fd60c31ec04d5db8ae59d7602",
+      "bytes": 44314
+    },
+    "prospective_card": {
+      "repository": "integration",
+      "path": "doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1_CARD.md",
+      "sha256": "3b059b84a60a7d193ffcb034480f54fa5aba532ed6cb6b541fa620c4ab584d5f",
+      "bytes": 13293,
+      "verified_available_at_indexing": true
+    },
+    "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+    "bank_normalizer_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-a79ac4a6bfe8d476",
+    "dependency_policy": "independent copied namespace/include closure, including parser utilities; no raw/rpb module implementation references or sibling runtime calls",
+    "source_copy_hash_manifest": null,
+    "source_copy_status": "pending portable implementation owner",
+    "layout_addendum": {
+      "repository": "integration",
+      "path": "doc/CAUSAL_PATCH_BOTTLENECK_MAE_V1_LAYOUT_ADDENDUM.md",
+      "sha256": "ae0a8adae317a7b2daee3f58a645c9000faab130cde17ba6662a66fae06047dd",
+      "bytes": 2124
+    }
+  },
+  "instances": [
+    {
+      "instance": "CPB-v1.market-01",
+      "status": "declared, zero newly trained updates, quality not measured",
+      "new_encoder_training_updates": 0,
+      "new_scaler_or_bank_fits": 0,
+      "inherited_parent_updates": 2048,
+      "inherited_V30_branch_updates": 2048,
+      "checkpoint": null,
+      "proof_result": null,
+      "market_fixed_head_result": null,
+      "TEMPO5_fixed_head_result": null
+    }
+  ],
+  "proof_required_before_quality": [
+    "every cutoff in H128 plus longer histories and heterogeneous per-example cutoffs",
+    "separate and joint suffix value/mask poison; exact same-cutoff vector/validity",
+    "legal prefix positive controls and observed-prefix rejection",
+    "packing/gaps/semantic permutations and completed-patch hidden-state invariance",
+    "eval/NoGrad zero-update state exactness and typed save/load/import tensor equality",
+    "compiler closure only independently copied causal family plus Torch/STL"
+  ],
+  "evaluation_plan": {
+    "market": {
+      "dataset_id": "MKT-HIST-2",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "TRAIN": 112,
+      "VALIDATION": 32,
+      "tasks": [
+        "past_volatility",
+        "past_trend",
+        "past_activity",
+        "past_relation"
+      ],
+      "ridge_parameters": 148,
+      "neural_parameters": 660,
+      "original_conditions": 9,
+      "strict_native36_floors": 8
+    },
+    "synthetic": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "cohorts": [
+        941101,
+        941102,
+        941103
+      ],
+      "TRAIN_each": 512,
+      "VALIDATION_each": 256,
+      "source_groups_TRAIN_each": 256,
+      "source_groups_VALIDATION_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "ridge_parameters": 74,
+      "neural_parameters": 626,
+      "retention_floors": 8
+    },
+    "repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "actual_D36_uint64_seed_decimal": [
+      "13088411117524848790",
+      "10018485049408248344",
+      "9083751155097190455"
+    ],
+    "head_recipe": "unchanged ridge1; neural16-tanh/Adam.01/100updates; TRAIN-only outer scaling; no PCA",
+    "new_encoder_updates": 0,
+    "old_encoder_or_head_replay": 0
+  },
+  "preservation": {
+    "compact_preflight": {
+      "repository": "integration",
+      "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+      "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+      "bytes": 126493,
+      "verified_available_at_indexing": true
+    },
+    "old_checkpoints": 55,
+    "old_portable_pairs": 99,
+    "frozen_document_bindings": 44,
+    "interrupted_unscored_V30_transfer_files": 23,
+    "historical_closure_files": 77831,
+    "new_broad_rescan": false
+  },
+  "primary_architecture_unchanged": "RPB-v22",
+  "balanced_reference_unchanged": "RPB-v24.market-01.alt-01",
+  "new_quality_results": false,
+  "new_encoder_calls_for_indexing": 0,
+  "tensor_deserializations_for_indexing": 0,
+  "physical_version_root": "versions/v1",
+  "public_version_entry_relative_to_version_root": "include/embedding/encoders/causal_patch_bottleneck_mae/versions/v1.h",
+  "version_owned_directories": [
+    "versions/v1/include",
+    "versions/v1/config",
+    "versions/v1/tests"
+  ],
+  "version_owned_make_fragment": "versions/v1/v1.mk",
+  "future_versions_require_independent_full_implementation_copies": true,
+  "family_level_shared_encoder_implementation_allowed": false
+}

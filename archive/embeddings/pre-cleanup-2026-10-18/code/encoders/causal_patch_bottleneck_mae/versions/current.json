@@ -1,0 +1,2746 @@
+{
+  "kind": "causal_encoder_live_catalog_v1",
+  "date": "2026-10-18",
+  "research_candidate": {
+    "instance": "CPB-v2.market-01",
+    "design_file": "CPB-v2.json",
+    "physical_version_root": "v2",
+    "stage": "complete_stopped_failed_frozen_gate",
+    "measured_instance_file": "instances/CPB-v2.market-01.json",
+    "advancement_passed": false
+  },
+  "historical_index": "index.json",
+  "historical_index_policy": "Preserved v1 prospective admission snapshot; later status lives in this catalog and additive instance records",
+  "training_provenance_correction": "doc/CAUSAL_TRAINING_PROVENANCE_CORRECTION_2026-10-15.md",
+  "clean_causal_training_baseline": {
+    "instance": "CPB-v3.market-01",
+    "design_file": "CPB-v3.json",
+    "measured_instance_file": "instances/CPB-v3.market-01.json",
+    "physical_version_root": "v3",
+    "checkpoint": "output/baselines/CPB-v3.market-01/inference.pt",
+    "checkpoint_sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+    "status": "complete_fresh_causal_reference_mixed_task_quality",
+    "pretrained_ancestor": "none",
+    "source_updates": 0,
+    "causal_updates": 2048,
+    "overall_winner": false
+  },
+  "fresh_research_candidate": {
+    "instance": "CPB-v13.market-01",
+    "stage": "complete_stopped_failed_stronger_goal22",
+    "pretrained_ancestor": "none",
+    "source_updates": 0,
+    "new_causal_updates": 2048,
+    "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "mean_huber_delta": 1,
+    "loss_coefficients": [
+      1,
+      1
+    ],
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+    "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-regularized-stddev4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ],
+    "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+    "temporal_dispersion_regularizer": 0.0009765625,
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "registered_learned_tensors": 76,
+    "mandatory_identifiable_learned_tensors": 75,
+    "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+    "shared_global_clip": true,
+    "optimizer_independence_claimed": false,
+    "card": {
+      "path": "doc/CAUSAL_FRESH_V13_CARD.json",
+      "bytes": 137257,
+      "sha256": "4d07167ac6dcd746215cb93d2487f016acf3e038df9ddbe5054bb7d372b617df"
+    },
+    "report": "doc/CAUSAL_FRESH_V13_RESULTS.md",
+    "review": "doc/CAUSAL_FRESH_V13_REVIEW.md",
+    "detail": "doc/CAUSAL_FRESH_V13_DETAIL.md",
+    "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v13.market-01.json",
+    "comparison": {
+      "path": "doc/results/causal_fresh_v13/comparison.json",
+      "bytes": 610958,
+      "sha256": "0b2c67fd17ce8ee854ab4fd56d9c9e009b5995b3c399d4b4598f71321c444d7d"
+    },
+    "table_rows": {
+      "path": "doc/results/causal_fresh_v13/table_rows.json",
+      "bytes": 402248,
+      "sha256": "9c004fd29fc130f09cf05685309ee632146015399c7c5742cb0c85dc8658c006"
+    },
+    "baseline": "CPB-v3.market-01",
+    "baseline_changed": false,
+    "full_coverage": true,
+    "runtime_trust_admission_passed": true,
+    "trust_admission_passed": true,
+    "measured_candidate_established": true,
+    "overall_establishment_passed": false,
+    "postmeasurement_establishment": {
+      "path": "doc/causal_fresh_v13/final-establishment.json",
+      "bytes": 10158,
+      "sha256": "ca8eb76e9659b0b18b96b557b192970a1f0f14b00e2738cea34e70df81b13f7a"
+    },
+    "initial_native20_40_and_statistics_pairings": {
+      "path": "doc/causal_fresh_v13/quality-independent-audit.json",
+      "bytes": 248064,
+      "sha256": "969c0de07f02b114bd9ea280e09753e65d703a45bb5dce917bac5619c243b59b"
+    },
+    "initial_pairing_native_coordinate_slice": [
+      20,
+      40
+    ],
+    "whole_native40_initial_equality_claimed": false,
+    "temporal_pooling_proof": {
+      "path": "doc/results/causal_fresh_v13/temporal-pooling-proof.json",
+      "bytes": 4277,
+      "sha256": "7ad8e0af904c31ebbf9687a26e43d85f356d46d760b1c19d68ad6b30272b8448"
+    },
+    "temporal_pooling_learning": {
+      "path": "doc/results/causal_fresh_v13/temporal-projection-learning.json",
+      "bytes": 6596,
+      "sha256": "28bb48cb083e0e7e1718b012fe1892e2ff25ff09873d13e7842778ad7eb4b736"
+    },
+    "temporal_moment_saved_learning": {
+      "status": "passed",
+      "checks": 239469,
+      "mismatches": [],
+      "moment_subgroup_rows_checked": 16384,
+      "moment_subgroup_event_counts": [
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        },
+        {
+          "weight_nonzero_data_gradient_steps": 2048,
+          "bias_nonzero_data_gradient_steps": 2048,
+          "weight_movement_steps": 2048,
+          "bias_movement_steps": 2048
+        }
+      ],
+      "whole_group_two_moment_partition_rows_checked": 8192,
+      "whole_group_partition_squared_norms_and_counts_verified": true,
+      "actual_same_forward_moment_witnesses": [
+        {
+          "update": 1,
+          "artifact": {
+            "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/witnesses/training-update-1-components.pt",
+            "bytes": 891772,
+            "sha256": "df1167ccff468ce3c39ad189acdbdb1b9501675fbed760a9b9fbc340d999393d"
+          },
+          "new_temporal_trace_fields": 25,
+          "total_component_archive_fields": 60,
+          "parameter_array_fields": 12,
+          "new_regularized_dispersion_trace_fields": 4,
+          "regularized_sqrt_uses_actual_saved_root": true,
+          "attention_dispersion_score_and_position_routes_live": true,
+          "same_forward_only": true,
+          "upstream_stage": "PRECLIP-post-empty-export",
+          "upstream_gradient_defined_by_route": [
+            false,
+            true
+          ],
+          "recorded_clip_factor_applied_once": 1.0,
+          "local_export_and_positions_adjoint_verified": true,
+          "local_adjoint_absolute_tolerance": 1e-09,
+          "local_adjoint_relative_tolerance": 0.0003,
+          "postclip_export_nonvacuity_threshold": 1e-06,
+          "postclip_export_expected_maximum": 0.00021972600051804107,
+          "local_parameter_gradient_error_summaries": {
+            "temporal_export_weight": {
+              "maximum_expected_absolute": 0.00021972600051804107,
+              "maximum_actual_absolute": 0.00021972598915454,
+              "maximum_absolute_error": 1.7786659379506395e-11,
+              "maximum_scaled_error": 0.005362088113392487
+            },
+            "temporal_export_bias": {
+              "maximum_expected_absolute": 0.0001222167238665861,
+              "maximum_actual_absolute": 0.00012221673387102783,
+              "maximum_absolute_error": 1.000444171950221e-11,
+              "maximum_scaled_error": 0.0015447009391715164
+            },
+            "temporal_pool_positions": {
+              "maximum_expected_absolute": 1.2189467974795742e-05,
+              "maximum_actual_absolute": 1.2189468179713003e-05,
+              "maximum_absolute_error": 1.6578659340396032e-12,
+              "maximum_scaled_error": 0.0008558228035890625
+            }
+          },
+          "common_score_bias_gauge_descriptive": {
+            "actual": 2.7284841053187847e-12,
+            "reference": -1.4815212898827284e-12,
+            "absolute_error": 4.210005395201513e-12,
+            "parity_gate": false,
+            "nonzero_gradient_required": false,
+            "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+          },
+          "full_hidden_encoder_or_global_norm_reconstruction": false,
+          "matched_pre_step_decoder_adjoint_replay": false
+        },
+        {
+          "update": 2048,
+          "artifact": {
+            "path": "/opt/cuwacunu/research/causal-fresh-v13/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+            "bytes": 891973,
+            "sha256": "99d84006a455c2021bd9fdbc1e941e203f30b843d6e801a15db2489d5dda5bfa"
+          },
+          "new_temporal_trace_fields": 25,
+          "total_component_archive_fields": 60,
+          "parameter_array_fields": 12,
+          "new_regularized_dispersion_trace_fields": 4,
+          "regularized_sqrt_uses_actual_saved_root": true,
+          "attention_dispersion_score_and_position_routes_live": true,
+          "same_forward_only": true,
+          "upstream_stage": "PRECLIP-post-empty-export",
+          "upstream_gradient_defined_by_route": [
+            false,
+            true
+          ],
+          "recorded_clip_factor_applied_once": 0.778486133962678,
+          "local_export_and_positions_adjoint_verified": true,
+          "local_adjoint_absolute_tolerance": 1e-09,
+          "local_adjoint_relative_tolerance": 0.0003,
+          "postclip_export_nonvacuity_threshold": 1e-06,
+          "postclip_export_expected_maximum": 0.001636565180136467,
+          "local_parameter_gradient_error_summaries": {
+            "temporal_export_weight": {
+              "maximum_expected_absolute": 0.001636565180136467,
+              "maximum_actual_absolute": 0.0016365650808438659,
+              "maximum_absolute_error": 1.5827770973204924e-10,
+              "maximum_scaled_error": 0.017416368321777054
+            },
+            "temporal_export_bias": {
+              "maximum_expected_absolute": 0.00047851018418396785,
+              "maximum_actual_absolute": 0.00047851019189693034,
+              "maximum_absolute_error": 3.947222987376632e-11,
+              "maximum_scaled_error": 0.005359769616474182
+            },
+            "temporal_pool_positions": {
+              "maximum_expected_absolute": 0.000156069886523179,
+              "maximum_actual_absolute": 0.00015606984379701316,
+              "maximum_absolute_error": 4.2726165839926736e-11,
+              "maximum_scaled_error": 0.0063710228158110616
+            }
+          },
+          "common_score_bias_gauge_descriptive": {
+            "actual": -3.065765696863565e-10,
+            "reference": -3.250110777716545e-10,
+            "absolute_error": 1.8434508085297985e-11,
+            "parity_gate": false,
+            "nonzero_gradient_required": false,
+            "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+          },
+          "full_hidden_encoder_or_global_norm_reconstruction": false,
+          "matched_pre_step_decoder_adjoint_replay": false
+        }
+      ],
+      "manual_F32_absolute_tolerance": 3e-05,
+      "manual_F32_relative_tolerance": 3e-05,
+      "per_scalar_gradient_proof_claimed": false,
+      "other2046_raw_gradients_reconstructed": false,
+      "pool_centered_variance_is_native_uncertainty": false,
+      "limits": [
+        "Observed2048 subgroup rows are scalar evidence; only actual1/2048 have raw arrays.",
+        "Raw variance/root/dispersion and three local exportW/exportbias/position adjoints use saved same-forward evidence, not a model replay;common scorebias gauge is descriptive.",
+        "beta=c/(2*saved_actual_F32_root); keep learned attention and finite-F32 two-sum center residual live. Rounded-zero tiny dispersion does not justify detaching its analytic/autograd route.",
+        "Undefined unused-route u has explicit zero fallback; PRECLIP u is summed and clipped once. No full hidden/encoder/global-norm reconstruction.",
+        "Intermediate pool variance is distinct from native uncertainty4/decoder variance."
+      ]
+    },
+    "all_eight_temporal_moment_subgroups_learned": true,
+    "scientific_recipe_parent": "CPB-v11.market-01",
+    "scientific_recipe_parent_is_source_only": true,
+    "scoped_reference": "CPB-v11.market-01",
+    "mandatory_identifiable_tensor_value_capacity": 294751,
+    "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+    "per_scalar_nonzero_gradient_proof_claimed": false,
+    "all_three_between_bin_position_directions_learned": true,
+    "final_between_bin_position_projection_changed": true,
+    "individual_final_coefficient_nonzero_gate": false,
+    "normal_prospective_source_admission": {
+      "source_files": 143,
+      "owner_source_files": 82,
+      "freeze_and_preflight_bound": true,
+      "normal_quality_all_stages_passed": true,
+      "scientific_model_head_or_training_replay": false
+    },
+    "historical_V9_reporting_recovery": {
+      "card": {
+        "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+        "bytes": 203096,
+        "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+      },
+      "receipt": {
+        "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+        "bytes": 268051,
+        "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+      },
+      "failure_mirror": {
+        "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+        "bytes": 208493,
+        "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+      },
+      "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V13 recovery or recipe change"
+    },
+    "prospective_freeze": {
+      "path": "doc/causal_fresh_v13/prospective-freeze.json",
+      "bytes": 2072,
+      "sha256": "de2fb314c25584e03974f42ac209435fb8b4da236cb4e1828f209e4f32a805ee"
+    },
+    "protocol_preflight": {
+      "path": "doc/causal_fresh_v13/protocol-preflight.json",
+      "bytes": 32659,
+      "sha256": "bb99f0c8c413dd654be7cb4410d22ab3d8b2fa351a2f9b8fce81693ca77294f0"
+    },
+    "numeric_passed": 8,
+    "numeric_total": 22,
+    "advancement_passed": false,
+    "failed_conditions": [
+      "past_volatility:linear_r2",
+      "past_volatility:neural_mean_r2",
+      "past_trend:linear_r2",
+      "past_trend:neural_mean_r2",
+      "past_activity:linear_r2",
+      "past_relation:linear_r2",
+      "synthetic_train:validation_intact:neural_head_accuracy",
+      "market_scaler:validation_intact:linear_head_accuracy",
+      "market_scaler:validation_intact:neural_head_accuracy",
+      "market_scaler:validation_deleted:linear_head_accuracy",
+      "market_scaler:validation_deleted:neural_head_accuracy",
+      "train:standardized_MAE",
+      "validation:standardized_MAE",
+      "known_validation:Gaussian_NLL_F64"
+    ],
+    "gate_scope": "V13 prospective strongest-final-V3-through-V11 retention22; historical counts retain their own cards",
+    "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+    "overall_winner": false,
+    "application_changed": false,
+    "human_report_assets": {
+      "results": {
+        "path": "doc/CAUSAL_FRESH_V13_RESULTS.md",
+        "bytes": 33325,
+        "sha256": "26fd4a82356f94412d196d84883ec04fb7a7b52174c262bd23084afb18569811"
+      },
+      "review": {
+        "path": "doc/CAUSAL_FRESH_V13_REVIEW.md",
+        "bytes": 5690,
+        "sha256": "f860523c8ea6319df07ccb7839f007e6504c56a00fcfef81c087e2433fd80fad"
+      },
+      "detail": {
+        "path": "doc/CAUSAL_FRESH_V13_DETAIL.md",
+        "bytes": 28349,
+        "sha256": "da2fa00434d7f8fdca2ffc5278e9a585c806c6755b772ddda4416c4eec5e75fd"
+      }
+    },
+    "design_file": "CPB-v13.json",
+    "physical_version_root": "v13",
+    "measured_instance_file": "instances/CPB-v13.market-01.json"
+  },
+  "historical_reference_and_application": {
+    "instance": "CPB-v1.market-01",
+    "design_file": "CPB-v1.json",
+    "measured_instance_file": "instances/CPB-v1.market-01.json",
+    "physical_version_root": "v1",
+    "checkpoint_sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895",
+    "research_local_checkpoint": "output/baselines/CPB-v1.market-01/inference.pt",
+    "role": "pretrained_historical_reference_only_former_application",
+    "clean_training_eligible": false,
+    "quality_gate_for_clean_candidates": false
+  },
+  "active_application": "CPB-v3.market-01",
+  "interpretation": "CPB-v3 is the clean causal baseline and sole selected dev application encoder; v1/v2 are preserved historical references, never oracle targets; no overall quality winner",
+  "application_selection_record": "../../../../../cuwacunu_dev/doc/CAUSAL_PRIMARY_INTEGRATION.md",
+  "fresh_research_candidate_history": [
+    {
+      "instance": "CPB-v4.market-01",
+      "design_file": "CPB-v4.json",
+      "physical_version_root": "v4",
+      "stage": "complete_stopped_failed_frozen_advancement_conditions",
+      "measured_instance_file": "instances/CPB-v4.market-01.json",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "variance_input_gradient_stop-v1",
+      "historical_reference_is_quality_gate": false,
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "card": "doc/CAUSAL_FRESH_V4_CARD.json",
+      "report": "doc/CAUSAL_FRESH_V4_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V4_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V4_DETAIL.md",
+      "numeric_passed": 19,
+      "numeric_total": 22,
+      "trust_admission_passed": true,
+      "full_coverage": true,
+      "advancement_passed": false,
+      "application_changed": false,
+      "overall_winner": false
+    },
+    {
+      "instance": "CPB-v5.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "separate-mean-and-uncertainty-bank-projections-live-gaussian-nll-v1",
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V5_CARD.json",
+        "bytes": 36991,
+        "sha256": "a6da3a9501dd4247c40e3e24e42faf2c2c46620fda7e0a0568709276d0e84d09"
+      },
+      "report": "doc/CAUSAL_FRESH_V5_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V5_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V5_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v5.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v5/comparison.json",
+        "bytes": 157617,
+        "sha256": "09addbeafdc80c5a9f8917d05122499b07e131a19522c7097cc433fdb0b010a7"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v5/table_rows.json",
+        "bytes": 336740,
+        "sha256": "768e0dd063bf60a544d35ed8d884c5126cac91b52022fb1e397e16789c990e7e"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "trust_admission_passed": true,
+      "numeric_passed": 7,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "synthetic_train:validation_intact:linear_head_accuracy",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "synthetic_train:validation_deleted:neural_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64"
+      ],
+      "gate_scope": "V5 stronger best-of-V3/V4 prospective22; V4 old19/22 is a different card",
+      "quality": "Retain three scoped quality leaders and TRAIN MAE gain; stop this exact recipe without promotion",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V5_RESULTS.md",
+          "bytes": 11744,
+          "sha256": "c92c299ecfa13200ea1e8e51f95d02f390d4cf03852792d85848fb9b67d34d16"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V5_REVIEW.md",
+          "bytes": 4584,
+          "sha256": "28b4bf78e4338df5fc534c3376f03959998fb67249c35803ca0bda0672ea63b9"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V5_DETAIL.md",
+          "bytes": 21797,
+          "sha256": "cedab60c256fb173bc5beb58e67dbe5dd05d61eea4db096266ce97e3f2c41c72"
+        }
+      },
+      "design_file": "CPB-v5.json",
+      "physical_version_root": "v5",
+      "measured_instance_file": "instances/CPB-v5.market-01.json"
+    },
+    {
+      "instance": "CPB-v6.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V6_CARD.json",
+        "bytes": 74773,
+        "sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d"
+      },
+      "report": "doc/CAUSAL_FRESH_V6_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V6_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V6_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v6.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v6/comparison.json",
+        "bytes": 226032,
+        "sha256": "d4af012a653f85b8fcbd98f2d3d38bb7737305a61c8a6270477794c6b5035203"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v6/table_rows.json",
+        "bytes": 394229,
+        "sha256": "0e4b665b7e7086271fe5a2556303c90383f467508ef1ab0e76507737414c491c"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v6/final-establishment.json",
+        "bytes": 3938,
+        "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd"
+      },
+      "initial_full40_pairings": {
+        "path": "doc/causal_fresh_v6/quality-independent-audit.json",
+        "bytes": 219068,
+        "sha256": "a1bcd600e7be558132eb2e77911e423a7f008d048951aed68c579671fb255fe3"
+      },
+      "numeric_passed": 12,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_volatility:neural_mean_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:neural_mean_r2",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64"
+      ],
+      "gate_scope": "V6 prospective strongest-final-V3/V4/V5 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V6_RESULTS.md",
+          "bytes": 15159,
+          "sha256": "7b628d074769eac6b98af81772d4b151f82196fab9ad84f6f482340d7d2792ef"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V6_REVIEW.md",
+          "bytes": 6716,
+          "sha256": "581110d8bc4f5dc69a48d42fb08bf7f1c26fae72100ef37fcd5274853057854f"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V6_DETAIL.md",
+          "bytes": 29997,
+          "sha256": "8ab47c493536e0d620b3df8959b5f824c7d876756f4ebb90e61b705cc34d4d9b"
+        }
+      },
+      "design_file": "CPB-v6.json",
+      "physical_version_root": "v6",
+      "measured_instance_file": "instances/CPB-v6.market-01.json"
+    },
+    {
+      "instance": "CPB-v7.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;disjoint-mean-uncertainty-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "gradient_clip_policy": "disjoint-mean-uncertainty-norm2-clip1-v1",
+      "gradient_clip_max_norms": [
+        1,
+        1
+      ],
+      "gradient_clip_norm_type": 2,
+      "mean_clip_tensors": 73,
+      "mean_clip_values": 293537,
+      "uncertainty_clip_tensors": 3,
+      "uncertainty_clip_values": 1215,
+      "fixed_excluded_tensors": 1,
+      "fixed_excluded_values": 3888,
+      "shared_global_clip": false,
+      "combined_post_clip_norm_upper_bound": "sqrt2",
+      "optimizer_independence_claimed": false,
+      "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;disjoint-mean-uncertainty-clip1",
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V7_CARD.json",
+        "bytes": 84463,
+        "sha256": "f913044fd4bdbeff637991087f91d0b47bca451b31dfe664fb70b9555bbae593"
+      },
+      "report": "doc/CAUSAL_FRESH_V7_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V7_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V7_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v7.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v7/comparison.json",
+        "bytes": 280725,
+        "sha256": "1c1e22763231080bbb4b243f6c4fbc9d576364926c2d78da32289edfc697ed51"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v7/table_rows.json",
+        "bytes": 396737,
+        "sha256": "08da35cffed8d933a4d1f859691f032ad40293e8087ec940b4159c12a515f78d"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v7/final-establishment.json",
+        "bytes": 2923,
+        "sha256": "7678e84a676453c0294f0654af6117e06246f1639f4e67f9ff78e9cf51049512"
+      },
+      "initial_full40_pairings": {
+        "path": "doc/causal_fresh_v7/quality-independent-audit.json",
+        "bytes": 217616,
+        "sha256": "7e70495f509000063ae32f145c705fe0662fb8121b06a2e5cc3d4ec519926404"
+      },
+      "numeric_passed": 4,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "past_relation:neural_mean_r2",
+        "synthetic_train:validation_intact:linear_head_accuracy",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "synthetic_train:validation_deleted:neural_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64",
+        "past_trend:all3_neural_R2_positive"
+      ],
+      "gate_scope": "V7 prospective strongest-final-V3/V4/V5/V6 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V7_RESULTS.md",
+          "bytes": 12345,
+          "sha256": "03688509bee4b141c1a303b631273657cea8b856a7ead0c74a6e1aeccd5fecb7"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V7_REVIEW.md",
+          "bytes": 5709,
+          "sha256": "d2aef992ccb2385d9cbae7efe0f1aae3e0b1fe7ea3aa4168e6e0e908e2f5b37a"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V7_DETAIL.md",
+          "bytes": 22986,
+          "sha256": "ec526a8eb7e739aaee21f88100167a1475c3b88399bbdbe6bd6d43dca179e8fb"
+        }
+      },
+      "design_file": "CPB-v7.json",
+      "physical_version_root": "v7",
+      "measured_instance_file": "instances/CPB-v7.market-01.json"
+    },
+    {
+      "instance": "CPB-v8.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "temporal_pooling_policy": "original-position-four-bin-disjoint-export-rows-v1",
+      "temporal_pooling_partition": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ],
+      "registered_learned_tensors": 76,
+      "mandatory_identifiable_learned_tensors": 75,
+      "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+      "shared_global_clip": true,
+      "optimizer_independence_claimed": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V8_CARD.json",
+        "bytes": 109378,
+        "sha256": "6acfaadfe758c0d252c8138fc2830807d40444f9a9adfa61f85ec13dde7c63a6"
+      },
+      "report": "doc/CAUSAL_FRESH_V8_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V8_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V8_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v8.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v8/comparison.json",
+        "bytes": 336980,
+        "sha256": "a7308c1b1b4e1719eb5ffc4c82bc9a7e446a7a174c66daef53b2845ee59025dc"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v8/table_rows.json",
+        "bytes": 398100,
+        "sha256": "61da557336146325bc496c9ff24d3d8a8e1d6eb110a90346fbe9036b52e259f9"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v8/final-establishment.json",
+        "bytes": 6452,
+        "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba"
+      },
+      "initial_native20_40_and_statistics_pairings": {
+        "path": "doc/causal_fresh_v8/quality-independent-audit.json",
+        "bytes": 229500,
+        "sha256": "bf3c0bc14b09745535795122fb747990c40ee9d26ccbb795c161dda955406c7a"
+      },
+      "initial_pairing_native_coordinate_slice": [
+        20,
+        40
+      ],
+      "whole_native40_initial_equality_claimed": false,
+      "temporal_pooling_proof": {
+        "path": "doc/results/causal_fresh_v8/temporal-pooling-proof.json",
+        "bytes": 1642,
+        "sha256": "8aa8187dcc54ac597f8567b75deb17cc5d1dc55da7966d4136f6202f06408699"
+      },
+      "temporal_pooling_learning": {
+        "path": "doc/results/causal_fresh_v8/temporal-projection-learning.json",
+        "bytes": 2927,
+        "sha256": "f9e2dee0d932cbd66c9723cad37c36dce06ec8996749d66c89e6c60efb4adaa6"
+      },
+      "host_orchestration_recovery": {
+        "preserved_host_Stage_failures": 1,
+        "failure_before_Docker_or_project_operations": true,
+        "successful_exclusive_container_source_Stage_passes": 1,
+        "scientific_card_or_source_revision": false,
+        "scientific_model_head_or_training_replay": false,
+        "original_scientific_source_files": 113,
+        "actual_external_helper_sha256": "0e9b471cb89bc7cecd363551a684c61f4f894409bd0c774cf4b4a5b37920366d",
+        "scope": "Full-copy host wrapper repair only; original113 source/binaries and all failures preserved."
+      },
+      "host_recovery_card": {
+        "path": "doc/causal_fresh_v8/host-orchestration-recovery-001.json",
+        "bytes": 2939,
+        "sha256": "526e51c1357d6f89b289cd96e202a7853ad54c17e991f01c8bcb293e3cbd28b9"
+      },
+      "host_recovery_review": {
+        "path": "doc/causal_fresh_v8/recovery-independent-review-001.json",
+        "bytes": 3937,
+        "sha256": "8557b4e386ebe43a7f8cfd1bf50d3222a0e3371f8fde66306114d99bc1fcd67f"
+      },
+      "numeric_passed": 4,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "past_relation:neural_mean_r2",
+        "synthetic_train:validation_intact:linear_head_accuracy",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "synthetic_train:validation_deleted:neural_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "train:standardized_MAE",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64",
+        "past_trend:all3_neural_R2_positive"
+      ],
+      "gate_scope": "V8 prospective strongest-final-V3/V4/V5/V6/V7 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V8_RESULTS.md",
+          "bytes": 15037,
+          "sha256": "d62d65f2df718ffa6d74189d39970d6c79c973571546f944a8384b933be5d3b4"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V8_REVIEW.md",
+          "bytes": 6747,
+          "sha256": "9eb4f2bdfb7207c1372c5a859a52c1ef386cec6805abba93b15f7efdcbdbebcb"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V8_DETAIL.md",
+          "bytes": 32376,
+          "sha256": "a7343e3beb01d050b050fc22a89970a7cc1845a0da206a2798cb63de416691d7"
+        }
+      },
+      "design_file": "CPB-v8.json",
+      "physical_version_root": "v8",
+      "measured_instance_file": "instances/CPB-v8.market-01.json"
+    },
+    {
+      "instance": "CPB-v9.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+      "temporal_pooling_partition": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ],
+      "temporal_pooling_mix": [
+        0.5,
+        0.5
+      ],
+      "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+      "registered_learned_tensors": 76,
+      "mandatory_identifiable_learned_tensors": 75,
+      "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+      "shared_global_clip": true,
+      "optimizer_independence_claimed": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V9_CARD.json",
+        "bytes": 114322,
+        "sha256": "94488bf2d42751b5a38c054eb5b6bbd7674e45d6e0bd444818b7f6fbcb34346d"
+      },
+      "report": "doc/CAUSAL_FRESH_V9_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V9_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V9_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v9.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v9/comparison.json",
+        "bytes": 391743,
+        "sha256": "6efe04164fdfff0d61190cfe63f0f7dbc1750f29b8102dd2649d33cfa8f7859f"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v9/table_rows.json",
+        "bytes": 398749,
+        "sha256": "2ab024401e56737523db40823388f9c026e1ace7f064018e4be069dcc26660ea"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v9/final-establishment.json",
+        "bytes": 8847,
+        "sha256": "aeb9fbadcf8afad2bb48812b957ca23b122c3df92d5459c18859dd16637e4cdf"
+      },
+      "initial_native20_40_and_statistics_pairings": {
+        "path": "doc/causal_fresh_v9/quality-independent-audit.json",
+        "bytes": 286407,
+        "sha256": "3ee9c6121279f7ee4db5d828d17c65e55c6b8b8615ad8c1fbad00d849639c701"
+      },
+      "initial_pairing_native_coordinate_slice": [
+        20,
+        40
+      ],
+      "whole_native40_initial_equality_claimed": false,
+      "temporal_pooling_proof": {
+        "path": "doc/results/causal_fresh_v9/temporal-pooling-proof.json",
+        "bytes": 1891,
+        "sha256": "bb01b4d8c9013219777530778bf9f9066d186ced7b77cdb07d985b945ab7deb8"
+      },
+      "temporal_pooling_learning": {
+        "path": "doc/results/causal_fresh_v9/temporal-projection-learning.json",
+        "bytes": 3799,
+        "sha256": "8699686a8fd6b9013157f1bd99c430ebd154b7a00b11a78d1aa57227ee221be8"
+      },
+      "mandatory_identifiable_tensor_value_capacity": 294751,
+      "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+      "per_scalar_nonzero_gradient_proof_claimed": false,
+      "all_three_between_bin_position_directions_learned": true,
+      "final_between_bin_position_projection_changed": true,
+      "individual_final_coefficient_nonzero_gate": false,
+      "normal_prospective_source_admission": {
+        "source_files": 118,
+        "owner_source_files": 82,
+        "freeze_and_preflight_bound": true,
+        "invented_V9_host_recovery": false,
+        "scientific_model_head_or_training_replay": false
+      },
+      "report_only_recovery": {
+        "status": "passed",
+        "card": {
+          "id": "reporting_recovery_card",
+          "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+          "bytes": 203096,
+          "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d",
+          "staged_path": "inputs/reporting_recovery_card.json"
+        },
+        "receipt": {
+          "id": "reporting_recovery_receipt",
+          "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+          "bytes": 268051,
+          "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72",
+          "staged_path": "inputs/reporting_recovery_receipt.json"
+        },
+        "original_quality_stage_status": "failed",
+        "completed_scientific_stages": 5,
+        "science_stages_replayed": 0,
+        "scientific_inputs_before_after_exact": true,
+        "frozen_scientific_source_unchanged": true,
+        "failed_quality_stage": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-stage.json",
+          "host_path": "output/engineering/causal-fresh-v9/attempt-001/quality-stage.json",
+          "bytes": 1683,
+          "sha256": "e9af7531e5b817e0db1c34aab372415658cb6fcb5be090af55c05126d3e31cd0"
+        },
+        "failed_report_stage": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/quality-001/report-stage.json",
+          "host_path": "output/runs/causal-fresh-v9/run-001/quality-001/report-stage.json",
+          "bytes": 979,
+          "sha256": "81e284e66037c7d90b79503837706d40de9ae0060f7234b73e43dec1e05f24aa"
+        },
+        "failure_mirror": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v9-report-recovery/attempt-001/source/failure-mirror.json",
+          "host_path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+          "bytes": 208493,
+          "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+        }
+      },
+      "reporting_recovery_card": {
+        "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+        "bytes": 203096,
+        "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+      },
+      "reporting_recovery_receipt": {
+        "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+        "bytes": 268051,
+        "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+      },
+      "prospective_freeze": {
+        "path": "doc/causal_fresh_v9/prospective-freeze.json",
+        "bytes": 1581,
+        "sha256": "2744b461d0e5c6c78769eb10ce75d60915113cf9ec31ca4808ceeef82d9f176b"
+      },
+      "protocol_preflight": {
+        "path": "doc/causal_fresh_v9/protocol-preflight.json",
+        "bytes": 27222,
+        "sha256": "7ecc0889e0cbfeb143a272b6f37e2c349841e766603b1f5fa42d081c6f46f6fe"
+      },
+      "numeric_passed": 6,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_volatility:neural_mean_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "past_relation:neural_mean_r2",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "train:standardized_MAE",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64",
+        "past_trend:all3_neural_R2_positive"
+      ],
+      "gate_scope": "V9 prospective strongest-final-V3/V4/V5/V6/V7/V8 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V9_RESULTS.md",
+          "bytes": 14458,
+          "sha256": "829b31666b2d8f364c61d829ae563b30a93045c13927f86f84abbe68de6355dc"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V9_REVIEW.md",
+          "bytes": 7372,
+          "sha256": "1aa30273a391e682ba35c0e85af6439d04d0ea75c170f03b0fdcab57e3df1f56"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V9_DETAIL.md",
+          "bytes": 32481,
+          "sha256": "8a1d2103036b9d54c413389fdd4efc10bde712d1f5da554161e7c77ec90e68ac"
+        }
+      },
+      "design_file": "CPB-v9.json",
+      "physical_version_root": "v9",
+      "measured_instance_file": "instances/CPB-v9.market-01.json"
+    },
+    {
+      "instance": "CPB-v10.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;joint-gaussian-mean-live-and-uncertainty4-live;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-joint-gaussian-nll-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": false,
+      "reporting_nll_backpropagated": false,
+      "direct_gradient_routes": "Huber->parent32+mean4;Gaussian-mean->parent32+mean4;Gaussian-variance->uncertainty4;mean-reads0:36;variance-reads36:40;shared-global-clip1",
+      "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+      "temporal_pooling_partition": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ],
+      "temporal_pooling_mix": [
+        0.5,
+        0.5
+      ],
+      "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+      "registered_learned_tensors": 76,
+      "mandatory_identifiable_learned_tensors": 75,
+      "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+      "shared_global_clip": true,
+      "optimizer_independence_claimed": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V10_CARD.json",
+        "bytes": 119685,
+        "sha256": "42b16f266e8b34af31db5de83edb1943d899fb4bf1141e4b5cc5c7308dacb865"
+      },
+      "report": "doc/CAUSAL_FRESH_V10_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V10_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V10_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v10.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v10/comparison.json",
+        "bytes": 446538,
+        "sha256": "029cdc0548e8e38b6583f846743ed9f9fd249f4de2b8bd20266b9803d5b3613b"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v10/table_rows.json",
+        "bytes": 399754,
+        "sha256": "9b27a3f0de6fc49f36c11d473f192f299b06addc2bc213e5c124caad724cb789"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v10/final-establishment.json",
+        "bytes": 7709,
+        "sha256": "551f7a31be44dcc68e61f4d0be7390843e66ac8138b542a3e47bd3526128946b"
+      },
+      "initial_full40_and_statistics_pairings": {
+        "path": "doc/causal_fresh_v10/quality-independent-audit.json",
+        "bytes": 243065,
+        "sha256": "724b3df988fcc2ee74e568734d76f4c5f985ddacfaeebae6bc12e102cc3b11a8"
+      },
+      "initial_pairing_native_coordinate_slice": [
+        0,
+        40
+      ],
+      "whole_native40_initial_equality_claimed": true,
+      "temporal_pooling_proof": {
+        "path": "doc/results/causal_fresh_v10/temporal-pooling-proof.json",
+        "bytes": 1897,
+        "sha256": "2eb59fce7a473dc574517406e101c55bbb240e85b48924c24990c4ac1339881f"
+      },
+      "temporal_pooling_learning": {
+        "path": "doc/results/causal_fresh_v10/temporal-projection-learning.json",
+        "bytes": 3803,
+        "sha256": "2364ec48002acf16aac61ad5ff4f660e93d4d756c6a3c82f52b10a1862b31c17"
+      },
+      "mandatory_identifiable_tensor_value_capacity": 294751,
+      "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+      "per_scalar_nonzero_gradient_proof_claimed": false,
+      "all_three_between_bin_position_directions_learned": true,
+      "final_between_bin_position_projection_changed": true,
+      "individual_final_coefficient_nonzero_gate": false,
+      "normal_prospective_source_admission": {
+        "source_files": 127,
+        "owner_source_files": 82,
+        "freeze_and_preflight_bound": true,
+        "normal_quality_all_stages_passed": true,
+        "scientific_model_head_or_training_replay": false
+      },
+      "historical_V9_reporting_recovery": {
+        "card": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+          "bytes": 203096,
+          "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+        },
+        "receipt": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+          "bytes": 268051,
+          "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+        },
+        "failure_mirror": {
+          "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+          "bytes": 208493,
+          "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+        },
+        "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V10 recovery or recipe change"
+      },
+      "prospective_freeze": {
+        "path": "doc/causal_fresh_v10/prospective-freeze.json",
+        "bytes": 1587,
+        "sha256": "c36d27a42d430d6587f8a2ca288ff48eee40cdfc1b46c080e1b901158dee774b"
+      },
+      "protocol_preflight": {
+        "path": "doc/causal_fresh_v10/protocol-preflight.json",
+        "bytes": 29110,
+        "sha256": "25e9eee0b601fa0b3061dcf511d88d4cbd05a122f8879faf1d0898d129db9fb1"
+      },
+      "numeric_passed": 3,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_volatility:neural_mean_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "past_relation:neural_mean_r2",
+        "synthetic_train:validation_intact:linear_head_accuracy",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "synthetic_train:validation_deleted:neural_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "train:standardized_MAE",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64"
+      ],
+      "gate_scope": "V10 prospective strongest-final-V3-through-V9 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V10_RESULTS.md",
+          "bytes": 28666,
+          "sha256": "2cd73cd233c946f07ff0911a704856fd4b1260a5ffd3918b3f777c6aa3fc7c46"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V10_REVIEW.md",
+          "bytes": 8512,
+          "sha256": "998254c05cc17b57455ecbebec3aedbb20a48f91f8011d0bac979db0a10d1b39"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V10_DETAIL.md",
+          "bytes": 33484,
+          "sha256": "276896b56153cc0135e173f611e7729562005b4b0ed61c02b089ddb224f51b94"
+        }
+      },
+      "design_file": "CPB-v10.json",
+      "physical_version_root": "v10",
+      "measured_instance_file": "instances/CPB-v10.market-01.json"
+    },
+    {
+      "instance": "CPB-v11.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+      "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-centered-variance4-v1",
+      "temporal_pooling_partition": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ],
+      "temporal_pooling_mix": [
+        0.5,
+        0.5
+      ],
+      "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-v1",
+      "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+      "temporal_moment_partition": [
+        4,
+        4
+      ],
+      "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+      "registered_learned_tensors": 76,
+      "mandatory_identifiable_learned_tensors": 75,
+      "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+      "shared_global_clip": true,
+      "optimizer_independence_claimed": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V11_CARD.json",
+        "bytes": 126555,
+        "sha256": "aa0c8cf06e10b4da7ce1ede0d2cc914bc05b244043ad4f0d3039305499a10aaa"
+      },
+      "report": "doc/CAUSAL_FRESH_V11_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V11_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V11_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v11.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v11/comparison.json",
+        "bytes": 501651,
+        "sha256": "8662e3924e503d94283fcc2e5c7f6002e9f82fadf8e0362940d53aa6a1eef09c"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v11/table_rows.json",
+        "bytes": 401408,
+        "sha256": "d6eef160eaabb66122c2b09ab43c797d685336f48e0478320055e17f3b2accca"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v11/final-establishment.json",
+        "bytes": 8729,
+        "sha256": "01f96fea179f6f7d8a7bb28befca9271cd048ac8d83f05f9e64418276c47dda2"
+      },
+      "initial_native20_40_and_statistics_pairings": {
+        "path": "doc/causal_fresh_v11/quality-independent-audit.json",
+        "bytes": 245070,
+        "sha256": "c37644fed46c8a0ec4916116fdb3eef5ab010e12383451e1213a0994cb74202b"
+      },
+      "initial_pairing_native_coordinate_slice": [
+        20,
+        40
+      ],
+      "whole_native40_initial_equality_claimed": false,
+      "temporal_pooling_proof": {
+        "path": "doc/results/causal_fresh_v11/temporal-pooling-proof.json",
+        "bytes": 2964,
+        "sha256": "e7ff4b7ae661af9ce86f94a83add6a561576d827bcb55fcc85cc9da3df4344f0"
+      },
+      "temporal_pooling_learning": {
+        "path": "doc/results/causal_fresh_v11/temporal-projection-learning.json",
+        "bytes": 6410,
+        "sha256": "c9c02098bb704af5132f7dc2cdbb1303eebd1d0c57233b50f8134a1c185163b6"
+      },
+      "temporal_moment_saved_learning": {
+        "status": "passed",
+        "checks": 190309,
+        "mismatches": [],
+        "moment_subgroup_rows_checked": 16384,
+        "moment_subgroup_event_counts": [
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          }
+        ],
+        "whole_group_two_moment_partition_rows_checked": 8192,
+        "whole_group_partition_squared_norms_and_counts_verified": true,
+        "actual_same_forward_moment_witnesses": [
+          {
+            "update": 1,
+            "artifact": {
+              "path": "/opt/cuwacunu/research/causal-fresh-v11/attempt-001/run-001/witnesses/training-update-1-components.pt",
+              "bytes": 792180,
+              "sha256": "5e238b22cc4bb15c93792efbbc7194b80a9a86d203cce1568bb31b9e9f4d0c19"
+            },
+            "new_temporal_trace_fields": 21,
+            "total_component_archive_fields": 56,
+            "parameter_array_fields": 12,
+            "same_forward_only": true,
+            "upstream_stage": "PRECLIP-post-empty-export",
+            "upstream_gradient_defined_by_route": [
+              false,
+              true
+            ],
+            "recorded_clip_factor_applied_once": 1.0,
+            "local_export_and_positions_adjoint_verified": true,
+            "local_adjoint_absolute_tolerance": 1e-09,
+            "local_adjoint_relative_tolerance": 0.0003,
+            "postclip_export_nonvacuity_threshold": 1e-06,
+            "postclip_export_expected_maximum": 0.00021477670277222834,
+            "local_parameter_gradient_error_summaries": {
+              "temporal_export_weight": {
+                "maximum_expected_absolute": 0.00021477670277222834,
+                "maximum_actual_absolute": 0.00021477672271430492,
+                "maximum_absolute_error": 2.5391213952360644e-11,
+                "maximum_scaled_error": 0.0040208625708524496
+              },
+              "temporal_export_bias": {
+                "maximum_expected_absolute": 0.00012038250406476436,
+                "maximum_actual_absolute": 0.00012038250861223787,
+                "maximum_absolute_error": 5.172751116333529e-12,
+                "maximum_scaled_error": 0.001938673908899262
+              },
+              "temporal_pool_positions": {
+                "maximum_expected_absolute": 1.427697423483443e-05,
+                "maximum_actual_absolute": 1.4276974980020896e-05,
+                "maximum_absolute_error": 2.1020250817060547e-12,
+                "maximum_scaled_error": 0.0010435988717914047
+              }
+            },
+            "common_score_bias_gauge_descriptive": {
+              "actual": -3.637978807091713e-12,
+              "reference": -5.064591942780861e-13,
+              "absolute_error": 3.131519612813627e-12,
+              "parity_gate": false,
+              "nonzero_gradient_required": false,
+              "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+            },
+            "full_hidden_encoder_or_global_norm_reconstruction": false,
+            "matched_pre_step_decoder_adjoint_replay": false
+          },
+          {
+            "update": 2048,
+            "artifact": {
+              "path": "/opt/cuwacunu/research/causal-fresh-v11/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+              "bytes": 792369,
+              "sha256": "df2b1c09e1637ccc84d3bd200edb4a2b2b06d69d8cfe457f78a050607b28f2dd"
+            },
+            "new_temporal_trace_fields": 21,
+            "total_component_archive_fields": 56,
+            "parameter_array_fields": 12,
+            "same_forward_only": true,
+            "upstream_stage": "PRECLIP-post-empty-export",
+            "upstream_gradient_defined_by_route": [
+              false,
+              true
+            ],
+            "recorded_clip_factor_applied_once": 0.7840339790102095,
+            "local_export_and_positions_adjoint_verified": true,
+            "local_adjoint_absolute_tolerance": 1e-09,
+            "local_adjoint_relative_tolerance": 0.0003,
+            "postclip_export_nonvacuity_threshold": 1e-06,
+            "postclip_export_expected_maximum": 0.0013685234173061184,
+            "local_parameter_gradient_error_summaries": {
+              "temporal_export_weight": {
+                "maximum_expected_absolute": 0.0013685234173061184,
+                "maximum_actual_absolute": 0.0013685235753655434,
+                "maximum_absolute_error": 1.5805942492341796e-10,
+                "maximum_scaled_error": 0.017908670346149985
+              },
+              "temporal_export_bias": {
+                "maximum_expected_absolute": 0.0006998585476318717,
+                "maximum_actual_absolute": 0.0006998585304245353,
+                "maximum_absolute_error": 4.882165272101016e-11,
+                "maximum_scaled_error": 0.0004675640535325913
+              },
+              "temporal_pool_positions": {
+                "maximum_expected_absolute": 0.00017495231525693167,
+                "maximum_actual_absolute": 0.00017495229258202016,
+                "maximum_absolute_error": 9.094245551798585e-11,
+                "maximum_scaled_error": 0.009557925016808196
+              }
+            },
+            "common_score_bias_gauge_descriptive": {
+              "actual": 7.344670011066867e-11,
+              "reference": 1.257693928967075e-10,
+              "absolute_error": 5.232269278603883e-11,
+              "parity_gate": false,
+              "nonzero_gradient_required": false,
+              "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+            },
+            "full_hidden_encoder_or_global_norm_reconstruction": false,
+            "matched_pre_step_decoder_adjoint_replay": false
+          }
+        ],
+        "manual_F32_absolute_tolerance": 3e-05,
+        "manual_F32_relative_tolerance": 3e-05,
+        "per_scalar_gradient_proof_claimed": false,
+        "other2046_raw_gradients_reconstructed": false,
+        "pool_centered_variance_is_native_uncertainty": false,
+        "limits": [
+          "Observed2048 subgroup rows are scalar evidence; only actual1/2048 have raw arrays.",
+          "Means/variances and three local exportW/exportbias/position adjoints use saved same-forward evidence, not a model replay;common scorebias gauge is descriptive.",
+          "Undefined unused-route u has explicit zero fallback; PRECLIP u is summed and clipped once. No full hidden/encoder/global-norm reconstruction.",
+          "Intermediate pool variance is distinct from native uncertainty4/decoder variance."
+        ]
+      },
+      "all_eight_temporal_moment_subgroups_learned": true,
+      "scientific_recipe_parent": "CPB-v9.market-01",
+      "scientific_recipe_parent_is_source_only": true,
+      "scoped_reference": "CPB-v10.market-01",
+      "mandatory_identifiable_tensor_value_capacity": 294751,
+      "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+      "per_scalar_nonzero_gradient_proof_claimed": false,
+      "all_three_between_bin_position_directions_learned": true,
+      "final_between_bin_position_projection_changed": true,
+      "individual_final_coefficient_nonzero_gate": false,
+      "normal_prospective_source_admission": {
+        "source_files": 132,
+        "owner_source_files": 82,
+        "freeze_and_preflight_bound": true,
+        "normal_quality_all_stages_passed": true,
+        "scientific_model_head_or_training_replay": false
+      },
+      "historical_V9_reporting_recovery": {
+        "card": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+          "bytes": 203096,
+          "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+        },
+        "receipt": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+          "bytes": 268051,
+          "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+        },
+        "failure_mirror": {
+          "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+          "bytes": 208493,
+          "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+        },
+        "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V11 recovery or recipe change"
+      },
+      "prospective_freeze": {
+        "path": "doc/causal_fresh_v11/prospective-freeze.json",
+        "bytes": 2071,
+        "sha256": "33e0d301baaae81400adebdc2f9140d6ad24a3a9192db948dab22b9f32f2fc69"
+      },
+      "protocol_preflight": {
+        "path": "doc/causal_fresh_v11/protocol-preflight.json",
+        "bytes": 30526,
+        "sha256": "2545cea625d4ad2ad5dfe371621da970eb21cb56f844acef61ead0e4fedae695"
+      },
+      "numeric_passed": 8,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_volatility:neural_mean_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_relation:linear_r2",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "train:standardized_MAE",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64"
+      ],
+      "gate_scope": "V11 prospective strongest-final-V3-through-V9 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V11_RESULTS.md",
+          "bytes": 29946,
+          "sha256": "a24c17710d115ce140f13b0616edc0995f5974fda8e6f748f09874086589778d"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V11_REVIEW.md",
+          "bytes": 9504,
+          "sha256": "afb36d186cfc185bbb124025c0c2da774ea5e7ab2d2342c86bdcf72e8f20fc2e"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V11_DETAIL.md",
+          "bytes": 29434,
+          "sha256": "8ddb041e32ffea10a551ff604e57560098bf962b2f5035154e0c86c7ec2fc5b7"
+        }
+      },
+      "design_file": "CPB-v11.json",
+      "physical_version_root": "v11",
+      "measured_instance_file": "instances/CPB-v11.market-01.json"
+    },
+    {
+      "instance": "CPB-v12.market-01",
+      "stage": "complete_stopped_failed_stronger_goal22",
+      "pretrained_ancestor": "none",
+      "source_updates": 0,
+      "new_causal_updates": 2048,
+      "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+      "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+      "mean_huber_delta": 1,
+      "loss_coefficients": [
+        1,
+        1
+      ],
+      "variance_error_detached": true,
+      "reporting_nll_backpropagated": false,
+      "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+      "temporal_pooling_policy": "original-position-four-bin-attention-mean4-uniform-centered-variance4-v1",
+      "temporal_pooling_partition": [
+        4,
+        16,
+        32,
+        4,
+        8
+      ],
+      "temporal_pooling_mix": [
+        0.5,
+        0.5
+      ],
+      "temporal_moment_policy": "componentwise-centered-variance-half-local-global-uniform-own-two-sum-mean-v1",
+      "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+      "temporal_moment_partition": [
+        4,
+        4
+      ],
+      "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+      "registered_learned_tensors": 76,
+      "mandatory_identifiable_learned_tensors": 75,
+      "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+      "shared_global_clip": true,
+      "optimizer_independence_claimed": false,
+      "card": {
+        "path": "doc/CAUSAL_FRESH_V12_CARD.json",
+        "bytes": 129316,
+        "sha256": "bf565e4d8b582c1e96c9374acc08391705a03472f27401397addb04e608f25d3"
+      },
+      "report": "doc/CAUSAL_FRESH_V12_RESULTS.md",
+      "review": "doc/CAUSAL_FRESH_V12_REVIEW.md",
+      "detail": "doc/CAUSAL_FRESH_V12_DETAIL.md",
+      "instance_record": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v12.market-01.json",
+      "comparison": {
+        "path": "doc/results/causal_fresh_v12/comparison.json",
+        "bytes": 556203,
+        "sha256": "dc4af09f8feab3e707641f8a3f2504575f4a809d3190e6a7361f445e2951419f"
+      },
+      "table_rows": {
+        "path": "doc/results/causal_fresh_v12/table_rows.json",
+        "bytes": 401852,
+        "sha256": "d13a0f28eb2907854466ac9392fbe0ba49ec538e5a8573406d3b36c30f9c7347"
+      },
+      "baseline": "CPB-v3.market-01",
+      "baseline_changed": false,
+      "full_coverage": true,
+      "runtime_trust_admission_passed": true,
+      "trust_admission_passed": true,
+      "measured_candidate_established": true,
+      "overall_establishment_passed": false,
+      "postmeasurement_establishment": {
+        "path": "doc/causal_fresh_v12/final-establishment.json",
+        "bytes": 9460,
+        "sha256": "65799b6b3ca58a3811fa1c3b8ab5beef1e198e1840734fc14e6bfcb578511cba"
+      },
+      "initial_native20_40_and_statistics_pairings": {
+        "path": "doc/causal_fresh_v12/quality-independent-audit.json",
+        "bytes": 246480,
+        "sha256": "0a9f86e118e5d77cbc7542e3ce92c3a78a72e384c7eb2802abfb23d869d21165"
+      },
+      "initial_pairing_native_coordinate_slice": [
+        20,
+        40
+      ],
+      "whole_native40_initial_equality_claimed": false,
+      "temporal_pooling_proof": {
+        "path": "doc/results/causal_fresh_v12/temporal-pooling-proof.json",
+        "bytes": 3229,
+        "sha256": "5035cde683902af4272b8a35631292d60a1105d3b5c2ad4768b90a5897aec4ac"
+      },
+      "temporal_pooling_learning": {
+        "path": "doc/results/causal_fresh_v12/temporal-projection-learning.json",
+        "bytes": 6432,
+        "sha256": "43e5fbad9ae75afc2baed254fa5063f5c676717438f6a89caff40b9afd0b8eaa"
+      },
+      "temporal_moment_saved_learning": {
+        "status": "passed",
+        "checks": 244077,
+        "mismatches": [],
+        "moment_subgroup_rows_checked": 16384,
+        "moment_subgroup_event_counts": [
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          },
+          {
+            "weight_nonzero_data_gradient_steps": 2048,
+            "bias_nonzero_data_gradient_steps": 2048,
+            "weight_movement_steps": 2048,
+            "bias_movement_steps": 2048
+          }
+        ],
+        "whole_group_two_moment_partition_rows_checked": 8192,
+        "whole_group_partition_squared_norms_and_counts_verified": true,
+        "actual_same_forward_moment_witnesses": [
+          {
+            "update": 1,
+            "artifact": {
+              "path": "/opt/cuwacunu/research/causal-fresh-v12/attempt-001/run-001/witnesses/training-update-1-components.pt",
+              "bytes": 851836,
+              "sha256": "b32e99ce3df3b3ab67ebc27c2cadbd87b797f7a9a4f0d7125e29fe54b7ee449b"
+            },
+            "new_temporal_trace_fields": 25,
+            "total_component_archive_fields": 60,
+            "parameter_array_fields": 12,
+            "new_uniform_dispersion_trace_fields": 4,
+            "same_forward_only": true,
+            "upstream_stage": "PRECLIP-post-empty-export",
+            "upstream_gradient_defined_by_route": [
+              false,
+              true
+            ],
+            "recorded_clip_factor_applied_once": 1.0,
+            "local_export_and_positions_adjoint_verified": true,
+            "local_adjoint_absolute_tolerance": 1e-09,
+            "local_adjoint_relative_tolerance": 0.0003,
+            "postclip_export_nonvacuity_threshold": 1e-06,
+            "postclip_export_expected_maximum": 0.0002150072266748483,
+            "local_parameter_gradient_error_summaries": {
+              "temporal_export_weight": {
+                "maximum_expected_absolute": 0.0002150072266748483,
+                "maximum_actual_absolute": 0.00021500722505152225,
+                "maximum_absolute_error": 2.2370243542768273e-11,
+                "maximum_scaled_error": 0.006783616783057107
+              },
+              "temporal_export_bias": {
+                "maximum_expected_absolute": 0.00011669210277887032,
+                "maximum_actual_absolute": 0.00011669210653053597,
+                "maximum_absolute_error": 7.73070496506989e-12,
+                "maximum_scaled_error": 0.0022252744705526916
+              },
+              "temporal_pool_positions": {
+                "maximum_expected_absolute": 9.676648809797883e-06,
+                "maximum_actual_absolute": 9.676648915046826e-06,
+                "maximum_absolute_error": 2.7726774005145402e-12,
+                "maximum_scaled_error": 0.0013834072397415158
+              }
+            },
+            "fixed_score_manual_hidden_reference_l2_by_present_route_bin": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              5.201237280282418e-06,
+              5.769197325949179e-06,
+              2.8210881702077387e-06,
+              6.315286034683509e-06,
+              6.573812002378454e-06,
+              4.827077505651449e-06,
+              5.062839145142033e-06,
+              6.60943652356786e-06,
+              6.5577497659910505e-06,
+              3.99990496288969e-06,
+              5.755424842154422e-06,
+              3.287474103069648e-06,
+              6.529517162054008e-06,
+              5.742260606319114e-06,
+              4.630104879153604e-06,
+              3.064938377037913e-06,
+              1.1548145440372418e-05,
+              5.693500536864582e-06,
+              7.260453792371873e-06,
+              4.18282221856914e-06,
+              6.311022760577076e-06,
+              4.2559456102984235e-06,
+              6.713560392077673e-06,
+              6.850330503600165e-06,
+              5.355524206401821e-06,
+              7.026611305374056e-06,
+              4.866871693638104e-06,
+              5.021974641863646e-06,
+              1.0390794943521173e-05,
+              8.596331940377744e-06,
+              9.786178921117179e-06,
+              5.428288974858885e-06,
+              9.155715250291584e-06,
+              6.173453701304848e-06,
+              7.444743385051751e-06,
+              5.1550069355019035e-06,
+              1.043972213452633e-05,
+              1.0505434145998426e-05,
+              8.680514651516533e-06,
+              1.0503263269810802e-05,
+              1.455728499017098e-05,
+              9.530935847447273e-06,
+              1.7277229170869416e-05,
+              7.446137263609808e-06,
+              1.6003322052527444e-05,
+              1.0272838039020295e-05,
+              1.1877853617487056e-05,
+              7.6070441574586406e-06,
+              7.13949861294952e-06,
+              1.0721397718133554e-05,
+              9.367266505962945e-06,
+              5.435287603062594e-06,
+              1.6471962839383915e-05,
+              5.6219977357581365e-06,
+              9.683377783733123e-06,
+              7.872234078451716e-06,
+              9.955151511923639e-06,
+              7.779854976352443e-06,
+              1.1955702957753139e-05,
+              7.137966719418887e-06,
+              7.958221436936822e-06,
+              1.021831008962852e-05,
+              4.695679426560813e-06,
+              1.1010235436966124e-05,
+              1.3513366499601947e-05,
+              1.0254742813065864e-05,
+              1.2130368681006815e-05,
+              8.379869066403681e-06,
+              1.2633412380719444e-05,
+              1.0006027369984997e-05,
+              1.2660249355565463e-05,
+              1.1266096601479288e-05,
+              8.614758990793977e-06,
+              8.700624520354322e-06,
+              5.431153761528039e-06,
+              6.741066119571029e-06,
+              1.1780631127301573e-05,
+              9.770954613726759e-06,
+              7.329974624789482e-06,
+              6.582116185678309e-06,
+              1.03339552334182e-05,
+              6.578264026755822e-06,
+              7.761077264452095e-06,
+              6.337348723332432e-06,
+              5.709958434978566e-06,
+              5.972365784993709e-06,
+              3.997902429901343e-06,
+              5.483101383359706e-06,
+              9.509399388835265e-06,
+              6.176726056570363e-06,
+              5.321833127495772e-06,
+              4.230335253085413e-06,
+              8.09650869643005e-06,
+              6.3958130640842076e-06,
+              5.882198345584303e-06,
+              5.617989620238276e-06
+            ],
+            "saved_F32_uniform_center_residual_maxima_by_present_route_bin": [
+              1.117587122845265e-07,
+              9.251137850219138e-08,
+              1.678547849603973e-07,
+              8.193834727387994e-08,
+              1.0554989493538613e-07,
+              1.3485537267432512e-07,
+              1.7914629757420641e-07,
+              1.024679969763298e-07,
+              1.3038516433194758e-07,
+              1.1430533752854188e-07,
+              2.1126540930560544e-07,
+              1.2601308096993336e-07,
+              1.5121895957648235e-07,
+              9.934107758624577e-08,
+              1.2370700885888652e-07,
+              1.5158267663295533e-07,
+              1.3347431167265444e-07,
+              7.450580818968433e-08,
+              1.3514212045956375e-07,
+              1.3348957300651776e-07,
+              1.428027990302283e-07,
+              1.291434008621195e-07,
+              1.2007889726994847e-07,
+              8.630252093522195e-08,
+              1.0248708470772527e-07,
+              1.1796752963366686e-07,
+              1.3399919329692977e-07,
+              1.5904909878017293e-07,
+              1.0679165840521421e-07,
+              1.3830140645210154e-07,
+              1.1309058112196624e-07,
+              1.5413484288906432e-07,
+              1.4404456250005637e-07,
+              1.4118916613625743e-07,
+              8.690514241571634e-08,
+              1.4708722639866778e-07,
+              1.2626126855153075e-07,
+              1.6887983189661782e-07,
+              1.4336374820622666e-07,
+              1.718674051964797e-07,
+              1.154681635862076e-07,
+              1.1398099758475055e-07,
+              9.171848347477862e-08,
+              1.2417634698280722e-07,
+              1.1610529519062718e-07,
+              1.37835745150916e-07,
+              1.645830093321976e-07,
+              1.3204829429902532e-07,
+              1.5791362709127732e-07,
+              1.3843195334484193e-07,
+              9.605125816936066e-08,
+              1.0679165840521421e-07,
+              1.6391277801730553e-07,
+              1.1920929310349493e-07,
+              1.1850476999697435e-07,
+              1.2823968875697034e-07,
+              1.4357890119887085e-07,
+              1.78471939352165e-07,
+              1.3755059699582795e-07,
+              1.315458497685995e-07,
+              1.349756023616422e-07,
+              1.2797777609874217e-07,
+              1.4031927209057216e-07,
+              1.243081154678194e-07,
+              8.288771161102382e-08,
+              1.0815248852047432e-07,
+              1.2790163739229143e-07,
+              1.9112743299132262e-07,
+              1.9371510129317926e-07,
+              1.1920929310349493e-07,
+              1.0786037663024217e-07,
+              2.0328899408283974e-07,
+              1.36237087944302e-07,
+              2.0861626293111613e-07,
+              1.2433156743041351e-07,
+              9.476290063759052e-08,
+              9.242841958467807e-08,
+              1.1507779396069395e-07,
+              1.3332767379026222e-07,
+              1.100512875135129e-07,
+              1.1424223922418264e-07,
+              1.0949946804839072e-07,
+              1.293708540295313e-07,
+              1.6864789662007773e-07,
+              1.4695304373368856e-07,
+              2.1606684375008456e-07,
+              1.6970848493169655e-07,
+              1.3021089140252684e-07,
+              1.3867588455340751e-07,
+              2.2745258720924255e-07,
+              1.1237959401944053e-07,
+              9.050229654583575e-08,
+              1.1226213558757081e-07,
+              1.0844641229468266e-07,
+              1.5412852727436643e-07,
+              1.5063633318490588e-07,
+              9.561578717676156e-08,
+              1.1672576616383878e-07,
+              1.356859604673133e-07,
+              8.731819445273459e-08,
+              2.533197478449267e-07,
+              2.511879562128172e-07,
+              2.667331209238455e-07,
+              1.6389105628178413e-07,
+              1.272807556573774e-07,
+              1.3937581727629933e-07,
+              8.134049545027722e-08,
+              1.1186571824417513e-07,
+              2.2573058799935097e-07,
+              8.878608809270716e-08,
+              1.1215784767593107e-07,
+              1.1253483966910949e-07,
+              1.1888570308760116e-07,
+              1.0865430360995632e-07,
+              9.385697063990506e-08,
+              7.761021686425451e-08,
+              1.5894572413799324e-07,
+              9.685755064658963e-08,
+              1.118444817871378e-07,
+              1.0427875413165921e-07,
+              1.728563794323179e-07,
+              9.437402370693349e-08,
+              1.6439059846717896e-07,
+              1.2181852016013295e-07,
+              1.1424223922418264e-07,
+              1.1424223922418264e-07,
+              9.748478374538294e-08,
+              9.655723476331701e-08,
+              1.1672576616383878e-07,
+              1.435196871693578e-07,
+              1.3756939298836812e-07,
+              8.664091299959154e-08,
+              9.590941438264444e-08,
+              1.291434008621195e-07,
+              2.868962214463977e-07,
+              2.473086837539995e-07,
+              1.5184248880473206e-07,
+              1.9113578986207358e-07,
+              1.7320729028824644e-07,
+              2.58286801724239e-07,
+              1.2790686798602735e-07,
+              8.443991594830891e-08,
+              1.238840142414599e-07,
+              1.4503905432228237e-07,
+              1.4603580533734117e-07,
+              1.627555819005977e-07,
+              7.456594114385595e-08,
+              1.1920929310349493e-07,
+              1.1424223922418264e-07,
+              1.3907750862074408e-07,
+              2.2678832634071e-07,
+              1.0819827456209907e-07,
+              1.8502275700438275e-07,
+              1.5226673255597234e-07,
+              1.4751334409535133e-07,
+              1.3099445006492516e-07,
+              1.9103702686429358e-07,
+              1.3650763938666266e-07,
+              8.443991594830891e-08,
+              1.267022873285839e-07,
+              1.0927518534487035e-07,
+              1.0028302477316231e-07,
+              2.731879633621759e-07,
+              9.452517343855327e-08,
+              8.723388375542207e-08,
+              1.564621971983371e-07,
+              9.628232633396294e-08,
+              9.421063851267064e-08,
+              1.9355803937415317e-07,
+              2.1109978987077227e-07,
+              1.961986282328354e-07,
+              1.0777571168851807e-07,
+              8.674114204687555e-08,
+              1.347553135744306e-07,
+              1.319269886668195e-07,
+              1.0430813146555806e-07,
+              1.37835745150916e-07,
+              1.4405518411475526e-07,
+              9.01788013152327e-08,
+              1.258761470612768e-07,
+              1.1171131841791748e-07,
+              1.0430813146555806e-07,
+              1.37245533604613e-07,
+              8.391838646204519e-08,
+              1.0082615090056812e-07,
+              1.6692200410783897e-07,
+              8.443991594830891e-08,
+              1.0161411911902007e-07,
+              1.767951145481561e-07,
+              1.8075056396060774e-07,
+              1.5145198922761338e-07,
+              1.4196869102534038e-07
+            ],
+            "uniform_dispersion_direct_score_adjoint": 0.0,
+            "local_hidden_adjoint_array_available": false,
+            "score_to_hidden_route_reconstructed": false,
+            "hidden_reference_is_observed_gradient_parity": false,
+            "common_score_bias_gauge_descriptive": {
+              "actual": -6.139089236967266e-12,
+              "reference": -2.9579014345180326e-12,
+              "absolute_error": 3.181187802449233e-12,
+              "parity_gate": false,
+              "nonzero_gradient_required": false,
+              "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+            },
+            "full_hidden_encoder_or_global_norm_reconstruction": false,
+            "matched_pre_step_decoder_adjoint_replay": false
+          },
+          {
+            "update": 2048,
+            "artifact": {
+              "path": "/opt/cuwacunu/research/causal-fresh-v12/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+              "bytes": 852037,
+              "sha256": "f3ee3d4d307b900bafd8109ccb283699130dfec837d4c5e144faffcf34ef3a49"
+            },
+            "new_temporal_trace_fields": 25,
+            "total_component_archive_fields": 60,
+            "parameter_array_fields": 12,
+            "new_uniform_dispersion_trace_fields": 4,
+            "same_forward_only": true,
+            "upstream_stage": "PRECLIP-post-empty-export",
+            "upstream_gradient_defined_by_route": [
+              false,
+              true
+            ],
+            "recorded_clip_factor_applied_once": 0.7837525419358512,
+            "local_export_and_positions_adjoint_verified": true,
+            "local_adjoint_absolute_tolerance": 1e-09,
+            "local_adjoint_relative_tolerance": 0.0003,
+            "postclip_export_nonvacuity_threshold": 1e-06,
+            "postclip_export_expected_maximum": 0.0015461462421966304,
+            "local_parameter_gradient_error_summaries": {
+              "temporal_export_weight": {
+                "maximum_expected_absolute": 0.0015461462421966304,
+                "maximum_actual_absolute": 0.0015461462317034602,
+                "maximum_absolute_error": 1.771439594403651e-10,
+                "maximum_scaled_error": 0.008973126821969154
+              },
+              "temporal_export_bias": {
+                "maximum_expected_absolute": 0.00032607601182968856,
+                "maximum_actual_absolute": 0.00032607599860057235,
+                "maximum_absolute_error": 2.2043752457082122e-11,
+                "maximum_scaled_error": 0.002960745238835049
+              },
+              "temporal_pool_positions": {
+                "maximum_expected_absolute": 0.000138424531138636,
+                "maximum_actual_absolute": 0.000138424540637061,
+                "maximum_absolute_error": 1.9314557772435754e-11,
+                "maximum_scaled_error": 0.003227952899708881
+              }
+            },
+            "fixed_score_manual_hidden_reference_l2_by_present_route_bin": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              8.55119474467343e-06,
+              1.1120734919834799e-05,
+              2.4294757190100118e-05,
+              1.7430079516838268e-05,
+              6.212866928504803e-06,
+              1.4067402581072387e-05,
+              1.1479837902781296e-05,
+              1.1733759696254927e-05,
+              1.8295744077134193e-05,
+              2.2796002581145214e-05,
+              3.0947303372159595e-05,
+              2.1944392130087372e-05,
+              3.4097672237400886e-05,
+              2.5633416834839503e-05,
+              4.589503452402223e-05,
+              4.8403894194164884e-05,
+              2.233335886823885e-05,
+              4.165130209737052e-05,
+              9.833727994502172e-05,
+              6.881320847975366e-05,
+              1.7728435372741036e-05,
+              1.7020666600288118e-05,
+              1.4985640292249581e-05,
+              1.86357475196617e-05,
+              5.663383149822955e-05,
+              3.210702928611631e-05,
+              3.3814152458520436e-05,
+              3.3703176538635475e-05,
+              3.804045625500143e-05,
+              2.633744314519719e-05,
+              2.8147320205997527e-05,
+              1.8804711490466256e-05,
+              6.884487117361524e-05,
+              5.775602752544415e-05,
+              0.00010831546383136682,
+              9.024467262905316e-05,
+              1.9786793751244406e-05,
+              1.975963139977156e-05,
+              1.2737764995821952e-05,
+              1.1242365005315366e-05,
+              1.847303818825138e-05,
+              1.827489835207879e-05,
+              1.2106213956870898e-05,
+              1.8367523199377616e-05,
+              3.64052330300374e-05,
+              4.1152180071877e-05,
+              9.273281410251826e-05,
+              5.625616149501017e-05,
+              1.5154014547224791e-05,
+              1.6882742453355176e-05,
+              3.913650130068453e-05,
+              3.068179209787006e-05,
+              8.224798293333389e-06,
+              1.0878206359957945e-05,
+              3.0468934614037374e-05,
+              1.982304089314859e-05,
+              1.822990131605348e-05,
+              2.0081738818065042e-05,
+              3.3906849403257715e-05,
+              2.447789241143286e-05,
+              3.392322250966824e-05,
+              5.336632015514491e-05,
+              4.7204078719047296e-05,
+              3.948156050824265e-05,
+              8.562341872829846e-05,
+              5.3838889044616655e-05,
+              0.0001590666311759593,
+              0.0001213518084557402,
+              9.029436082654383e-05,
+              5.72943610633505e-05,
+              0.00018560824553942443,
+              0.00011505028914112827,
+              6.143142050874165e-05,
+              9.033625395832827e-05,
+              0.00012100766593317413,
+              0.00011808686024482006,
+              3.314938438606896e-05,
+              4.093062723197556e-05,
+              9.633514876584169e-05,
+              0.00010800394243324927,
+              2.5739504150852452e-05,
+              2.6771351122407525e-05,
+              1.6755365578019095e-05,
+              2.2885911391751533e-05,
+              1.1151426993536155e-05,
+              1.3927537051927094e-05,
+              2.550456582235677e-05,
+              1.435032674810913e-05,
+              9.80125727675527e-06,
+              2.410963088134177e-05,
+              1.546270930891659e-05,
+              1.7572391373908705e-05,
+              2.968233430603942e-05,
+              2.9136567727032266e-05,
+              5.572886613384283e-05,
+              4.5654773485723856e-05
+            ],
+            "saved_F32_uniform_center_residual_maxima_by_present_route_bin": [
+              1.2908017676949157e-07,
+              1.1920929310349493e-07,
+              1.5369613182159014e-07,
+              1.1769954966212026e-07,
+              1.9997238531743733e-07,
+              1.566149041565268e-07,
+              1.5345745252304255e-07,
+              1.961986282328354e-07,
+              1.4075405863067658e-07,
+              2.0231738728782034e-07,
+              1.2945821881160668e-07,
+              1.4901161637936866e-07,
+              2.988984073581946e-07,
+              3.069266814037519e-07,
+              1.788139396552424e-07,
+              2.4502114026603294e-07,
+              1.988759188442657e-07,
+              3.0303025111422244e-07,
+              2.924760242883906e-07,
+              1.6391277801730553e-07,
+              1.4404456250005637e-07,
+              1.1159592228082715e-07,
+              2.922047119824356e-07,
+              2.314025953076282e-07,
+              2.40131566187074e-07,
+              2.7821184556131584e-07,
+              1.2884420286241038e-07,
+              2.7677241565271515e-07,
+              1.650194310087727e-07,
+              1.4404456250005637e-07,
+              1.7992402279176645e-07,
+              1.5282537235705718e-07,
+              1.9185590360848437e-07,
+              1.1920929310349493e-07,
+              1.0380452319935785e-07,
+              1.8874804741386697e-07,
+              9.853474058907352e-08,
+              1.29718057628736e-07,
+              1.3907750862074408e-07,
+              1.2099806578902417e-07,
+              2.0855893856364105e-07,
+              9.687307855887894e-08,
+              1.2417634698280722e-07,
+              1.3445923041643937e-07,
+              1.4611062804092967e-07,
+              1.5832765143386496e-07,
+              1.4562115469018977e-07,
+              1.4901161637936866e-07,
+              1.9868215517249155e-07,
+              1.2429278095638097e-07,
+              2.3834411555512247e-07,
+              1.2430563289811403e-07,
+              1.5397867025868095e-07,
+              1.909329898630574e-07,
+              1.9472592782676656e-07,
+              1.7969215249102888e-07,
+              1.341104547414318e-07,
+              1.544764147709543e-07,
+              1.495763650716242e-07,
+              1.1094887808482667e-07,
+              2.2839606117486255e-07,
+              2.2810993272059932e-07,
+              3.8597813567520234e-07,
+              2.6762190152851417e-07,
+              2.3008101512900225e-07,
+              1.503788493728564e-07,
+              1.3979876634095945e-07,
+              1.3907750862074408e-07,
+              1.1233021846024371e-07,
+              1.495922754557455e-07,
+              1.4367458678332667e-07,
+              1.4307971651916773e-07,
+              1.8874804741386697e-07,
+              1.6174392580836638e-07,
+              1.788139396552424e-07,
+              2.1113907600067705e-07,
+              1.1668839405842846e-07,
+              1.4156103556040023e-07,
+              1.4902735401278733e-07,
+              2.1837031560778541e-07,
+              1.1424223922418264e-07,
+              9.42358844291391e-08,
+              2.0894569630058868e-07,
+              1.6887983189661782e-07,
+              2.0181664428520207e-07,
+              2.4860272684890106e-07,
+              1.2908068924843974e-07,
+              1.4901161637936866e-07,
+              2.0364920905180384e-07,
+              2.200348676595354e-07,
+              1.7921629202888312e-07,
+              1.9847192866961905e-07,
+              1.3014470123806632e-07,
+              2.0204818484970133e-07,
+              2.0952417845165883e-07,
+              1.2417634698280722e-07,
+              1.3849249747011072e-07,
+              3.3775966379323563e-07,
+              1.2215872580156883e-07,
+              1.2632746182461574e-07,
+              1.0870993261136164e-07,
+              1.9033604381490932e-07,
+              1.6979846595432946e-07,
+              2.4835269396561444e-07,
+              1.1857893555955457e-07,
+              9.25014993491402e-08,
+              1.3668070253380904e-07,
+              1.4652808943971252e-07,
+              1.4846917206767785e-07,
+              2.3292643991368323e-07,
+              1.341104547414318e-07,
+              1.1361209217852775e-07,
+              1.5925947127737317e-07,
+              1.2979993679884672e-07,
+              1.0775113112870827e-07,
+              9.934107758624577e-08,
+              9.685755064658963e-08,
+              1.227407864790031e-07,
+              1.1854293857638254e-07,
+              1.234144471062848e-07,
+              2.0377350384848114e-07,
+              1.835531802107937e-07,
+              2.6276783726686403e-07,
+              2.621734367380668e-07,
+              1.2288288042672235e-07,
+              1.1424223922418264e-07,
+              2.3470979160222782e-07,
+              1.8337136564738898e-07,
+              1.764864854258974e-07,
+              2.3841858620698986e-07,
+              1.1830640644916457e-07,
+              1.788139396552424e-07,
+              2.587728671343825e-07,
+              2.6803158625909873e-07,
+              1.788139396552424e-07,
+              2.0250223498052833e-07,
+              1.6345101805370632e-07,
+              9.620315455372008e-08,
+              1.1610488442892475e-07,
+              1.182521118803237e-07,
+              1.3339050131122576e-07,
+              1.3592070113865873e-07,
+              1.987569850925297e-07,
+              1.0927518534487035e-07,
+              1.788139396552424e-07,
+              2.1900658175866283e-07,
+              1.394530033671515e-07,
+              2.1281330520039887e-07,
+              9.437402370693349e-08,
+              1.5419046484055343e-07,
+              1.1517125564353137e-07,
+              1.413986927545352e-07,
+              1.6887983189661782e-07,
+              1.6440687655716602e-07,
+              2.2916240061121584e-07,
+              1.4344437371249796e-07,
+              2.381079085012061e-07,
+              1.5799947927774838e-07,
+              2.1238178682381204e-07,
+              1.7375727612289893e-07,
+              1.398619420278635e-07,
+              1.6939015812234004e-07,
+              2.642942438235707e-07,
+              1.1796752963366686e-07,
+              1.683920713979603e-07,
+              2.1948174300234768e-07,
+              2.572145056944919e-07,
+              1.3084821226527765e-07,
+              1.8874804741386697e-07,
+              2.2153106193911754e-07,
+              1.788139396552424e-07,
+              2.181721487914956e-07,
+              1.112547716175527e-07,
+              1.1424223922418264e-07,
+              3.0365071523874576e-07,
+              2.4388912622796965e-07,
+              1.5894572413799324e-07,
+              1.6846912842538586e-07,
+              2.591181722522151e-07,
+              2.7815501724148817e-07,
+              1.0485233370438607e-07,
+              2.5280160098617444e-07,
+              1.636467437116096e-07,
+              2.2848447844836528e-07,
+              1.3162692780177565e-07,
+              1.4221915112244687e-07,
+              1.6055235274592405e-07,
+              1.1852879566731644e-07,
+              2.4684905053362627e-07,
+              8.588744249138358e-08,
+              1.1192135485060817e-07,
+              1.5397867025868095e-07
+            ],
+            "uniform_dispersion_direct_score_adjoint": 0.0,
+            "local_hidden_adjoint_array_available": false,
+            "score_to_hidden_route_reconstructed": false,
+            "hidden_reference_is_observed_gradient_parity": false,
+            "common_score_bias_gauge_descriptive": {
+              "actual": 8.62510757260182e-11,
+              "reference": 4.366563759441933e-11,
+              "absolute_error": 4.258543813159887e-11,
+              "parity_gate": false,
+              "nonzero_gradient_required": false,
+              "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+            },
+            "full_hidden_encoder_or_global_norm_reconstruction": false,
+            "matched_pre_step_decoder_adjoint_replay": false
+          }
+        ],
+        "manual_F32_absolute_tolerance": 3e-05,
+        "manual_F32_relative_tolerance": 3e-05,
+        "per_scalar_gradient_proof_claimed": false,
+        "other2046_raw_gradients_reconstructed": false,
+        "pool_centered_variance_is_native_uncertainty": false,
+        "limits": [
+          "Observed2048 subgroup rows are scalar evidence; only actual1/2048 have raw arrays.",
+          "Means/variances and three local exportW/exportbias/position adjoints use saved same-forward evidence, not a model replay;common scorebias gauge is descriptive.",
+          "Undefined unused-route u has explicit zero fallback; PRECLIP u is summed and clipped once. No full hidden/encoder/global-norm reconstruction.",
+          "Intermediate pool variance is distinct from native uncertainty4/decoder variance."
+        ]
+      },
+      "all_eight_temporal_moment_subgroups_learned": true,
+      "scientific_recipe_parent": "CPB-v11.market-01",
+      "scientific_recipe_parent_is_source_only": true,
+      "scoped_reference": "CPB-v11.market-01",
+      "mandatory_identifiable_tensor_value_capacity": 294751,
+      "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+      "per_scalar_nonzero_gradient_proof_claimed": false,
+      "all_three_between_bin_position_directions_learned": true,
+      "final_between_bin_position_projection_changed": true,
+      "individual_final_coefficient_nonzero_gate": false,
+      "normal_prospective_source_admission": {
+        "source_files": 137,
+        "owner_source_files": 82,
+        "freeze_and_preflight_bound": true,
+        "normal_quality_all_stages_passed": true,
+        "scientific_model_head_or_training_replay": false
+      },
+      "historical_V9_reporting_recovery": {
+        "card": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+          "bytes": 203096,
+          "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+        },
+        "receipt": {
+          "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+          "bytes": 268051,
+          "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+        },
+        "failure_mirror": {
+          "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+          "bytes": 208493,
+          "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+        },
+        "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V12 recovery or recipe change"
+      },
+      "prospective_freeze": {
+        "path": "doc/causal_fresh_v12/prospective-freeze.json",
+        "bytes": 2073,
+        "sha256": "56e2f02ca2d7aaab54b3ab220896ef3ce74a8e5c23404b3bd553eff8d9666a01"
+      },
+      "protocol_preflight": {
+        "path": "doc/causal_fresh_v12/protocol-preflight.json",
+        "bytes": 31547,
+        "sha256": "18df448ddc9c9ab636b7bb63909c8f852ff9a32e19ff6a15ea507f48f513dc2e"
+      },
+      "numeric_passed": 3,
+      "numeric_total": 22,
+      "advancement_passed": false,
+      "failed_conditions": [
+        "past_volatility:linear_r2",
+        "past_volatility:neural_mean_r2",
+        "past_trend:linear_r2",
+        "past_trend:neural_mean_r2",
+        "past_activity:linear_r2",
+        "past_activity:neural_mean_r2",
+        "past_relation:linear_r2",
+        "past_relation:neural_mean_r2",
+        "synthetic_train:validation_intact:linear_head_accuracy",
+        "synthetic_train:validation_intact:neural_head_accuracy",
+        "synthetic_train:validation_deleted:linear_head_accuracy",
+        "synthetic_train:validation_deleted:neural_head_accuracy",
+        "market_scaler:validation_intact:linear_head_accuracy",
+        "market_scaler:validation_intact:neural_head_accuracy",
+        "market_scaler:validation_deleted:linear_head_accuracy",
+        "market_scaler:validation_deleted:neural_head_accuracy",
+        "train:standardized_MAE",
+        "validation:standardized_MAE",
+        "known_validation:Gaussian_NLL_F64"
+      ],
+      "gate_scope": "V12 prospective strongest-final-V3-through-V11 retention22; historical counts retain their own cards",
+      "quality": "Preserve each saved scoped gain and failure; initial stages descriptive; no automatic application selection",
+      "overall_winner": false,
+      "application_changed": false,
+      "human_report_assets": {
+        "results": {
+          "path": "doc/CAUSAL_FRESH_V12_RESULTS.md",
+          "bytes": 31457,
+          "sha256": "f9041850fab88ba6a752475efbea055d5d64d4c30c8d2dfb5ec8c5c9ef2c8fa8"
+        },
+        "review": {
+          "path": "doc/CAUSAL_FRESH_V12_REVIEW.md",
+          "bytes": 8745,
+          "sha256": "aecc19693ff7d5e5101d00c91480b77ee676dc800a784d16cdfe69926b0b5e04"
+        },
+        "detail": {
+          "path": "doc/CAUSAL_FRESH_V12_DETAIL.md",
+          "bytes": 30549,
+          "sha256": "c91a5776557a8bfda18927f525a931bbf792f04ec4f3a8a9e97cbc33e188fda2"
+        }
+      },
+      "design_file": "CPB-v12.json",
+      "physical_version_root": "v12",
+      "measured_instance_file": "instances/CPB-v12.market-01.json"
+    }
+  ]
+}

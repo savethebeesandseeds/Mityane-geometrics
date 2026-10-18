@@ -1,0 +1,148 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v10_owned_independent_training_audit_source_preparation_v1",
+  "stage": "source_prepared_no_AST_import_body_execution_pending_independent_review_and_actual_card",
+  "direct_parent_version": "FINAL CPB-v9 independent training auditor",
+  "complete_physical_parent_copies": 3,
+  "parent_files": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v9_training_audit/audit_training.py",
+        "bytes": 115104,
+        "sha256": "753804faf3752c63fc93bf79c5dc7d46f123ae6cb874f0a8b04ffee9868fdbb7"
+      },
+      "owned_path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+      "initial_operation": "complete physical file copy, then owned V10 source adaptation; no parent code import"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v9_training_audit/README.md",
+        "bytes": 7968,
+        "sha256": "3a17238f96759993e7f45fe8c4cc16062ca914170962fbcbfc23e7d1580b8d98"
+      },
+      "owned_path": "code/research/causal_fresh_v10_training_audit/README.md",
+      "initial_operation": "complete physical file copy, then owned V10 source adaptation; no parent code import"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v9_training_audit/provenance.json",
+        "bytes": 7921,
+        "sha256": "d2c9f735e9e9845370efadb216d9e3f141214c125d6fdff08485f72b6da07f5d"
+      },
+      "owned_path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+      "initial_operation": "complete physical file copy, then owned V10 source adaptation; no parent code import"
+    }
+  ],
+  "current_nonself": [
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+      "bytes": 116406,
+      "sha256": "b44a62524a177b67ba2a12d98841ba851ef6a3d3138a82405a81cb7fb6ce2e7d"
+    },
+    {
+      "path": "code/research/causal_fresh_v10_training_audit/README.md",
+      "bytes": 6815,
+      "sha256": "834d613ce9193ce781a2f755afe2b9239f1ccdd5debf6cba398f2e850e75d4ef"
+    }
+  ],
+  "self_path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+  "self_hash_excluded": "External future audit card/source admission pins this final provenance; no circular self hash.",
+  "objective_policy": "huber1-mean-plus-joint-gaussian-nll-v1",
+  "gradient_policy": "huber1-mean-live;joint-gaussian-mean-live-and-uncertainty4-live;shared-global-clip1-v1",
+  "direct_gradient_routes": "Huber->parent32+mean4;Gaussian-mean->parent32+mean4;Gaussian-variance->uncertainty4;mean-reads0:36;variance-reads36:40;shared-global-clip1",
+  "variance_error_detached": false,
+  "reporting_nll_backpropagated": false,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "component_order": [
+    "mean_huber",
+    "joint_gaussian_nll"
+  ],
+  "component_fields": [
+    "mean_Huber_F64",
+    "joint_Gaussian_NLL_F64",
+    "total_objective_F64",
+    "Gaussian_NLL_F64",
+    "row_mean_huber",
+    "row_joint_gaussian_nll",
+    "row_total_objective"
+  ],
+  "adaptations": [
+    "V10 paths/namespaces/kinds and exact root-agreed objective/gradient/direct-route policy",
+    "Allfive typed objective nodes require false detach flag and strict UTF8 vector shape, Double1/[1,1], Long0 flags",
+    "SavedGaussian/Huber scalar arithmetic unchanged; labels truthfully jointGaussian; ONEGaussian component sum and detached reporting numeric equality",
+    "Replace old zero-NLLmean proof with live Gaussian mean/uncertainty, variance counted once, one-term addition and independentF64FD observed proof/log gates",
+    "Retain actual2048successful updates with permitted2048..4096attempts, explicit skips/actual seed/typed/witness counters; raw loader presentations now512+actualattempts+36 instead of inherited zero-skip constant",
+    "No model/Jacobian/optimizer gradient replay; preserve75identifiable/gauge and four local/export plus three Hadamard saved evidence contracts",
+    "No actual main/audit card/sourcecount/hash assumptions; external card must bind actual future artifacts before numeric reads"
+  ],
+  "inherited_unchanged_numeric_modules": [
+    "TRAIN4096 population scaler/bank arithmetic",
+    "embedded restricted inert C++archive reader",
+    "model/fixedprior/optimizer moments/order/content identities",
+    "savedGaussian and Huber/support/F64cell-channel-example reductions",
+    "observed clipfactor formula with un-reconstructed fullgradient norm",
+    "8192group2048gauge2048between CSV reductions and two12array witness math"
+  ],
+  "proof_contract_fields": [
+    "direct_joint_NLL_mean_gradient_live",
+    "direct_joint_NLL_uncertainty_gradient_live",
+    "joint_Gaussian_variance_counted_once",
+    "total_equals_Huber_plus_one_joint_Gaussian",
+    "independent_composite_F64_finite_differences"
+  ],
+  "required_observed_log_tokens": [
+    "PASS CPB-v10 huber1-mean-plus-joint-gaussian-nll-v1:",
+    "independent composite F64 finite differences",
+    "joint Gaussian mean and uncertainty live",
+    "variance counted once",
+    "manual composite-objective native40 gradient parity",
+    "synthetic optimizer steps=1"
+  ],
+  "no_scalar_autograd_inference": "At identical distributions Huber+jointGaussian scalar equals V9detached-mean total; new routing is source/CUDAfixture-bound, not inferred from archive scalar values.",
+  "attempt_policy": {
+    "successful_updates": 2048,
+    "minimum_attempts": 2048,
+    "maximum_attempts": 4096,
+    "zero_skips_assumed": false,
+    "loader_presentations": "512calibration+actualattempts+36queries",
+    "actual_witness_attempts": "derive from successful CSV schedule, never update-1 assumption"
+  },
+  "learning_scope": {
+    "registered_learned_tensors": 76,
+    "mandatory_identifiable_learned_tensors": 75,
+    "mandatory_identifiable_tensor_value_capacity": 294751,
+    "gauge": "core.encoder.level.base.backbone.pool_score.bias",
+    "per_scalar_gradient_proof_claimed": false,
+    "unsaved2046_gradients_reconstructed": false
+  },
+  "result_modules": [
+    "CORE",
+    "numeric_statistics",
+    "saved_tensor_state",
+    "manual_saved_Gaussian",
+    "actual_pre_step_composite_objective",
+    "temporal_pooling_saved_learning"
+  ],
+  "root_accepted_family_provenance": {
+    "path": "doc/causal_fresh_v10/family-source-provenance.json",
+    "bytes": 48452,
+    "sha256": "e517970d5e31722db099e46b319bb6cfa1e88bc90e9a75bc00a76b5ef53a5c1b"
+  },
+  "owned_objective_fixture": {
+    "path": "code/research/causal_fresh_v10/tests/v10_separation_test.cpp",
+    "bytes": 20768,
+    "sha256": "4adfc03e31179bdbcc49419d5ad3e3c77287ca309575f4e4577add93ca76bf09"
+  },
+  "execution": {
+    "source_text_hash_inspection_only": true,
+    "AST": 0,
+    "module_import": 0,
+    "numeric_body": 0,
+    "model_head_training_calls": 0,
+    "actual_audit_card_created": false,
+    "execution_admitted": false
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "version": "CPB-v14",
+  "instance": "CPB-v14.market-01",
+  "stage": "prospectively_frozen_unmeasured_before_build_training_quality",
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V14_CARD.json",
+    "bytes": 140239,
+    "sha256": "546e3c15488169b0d416c6264159234c5840fdb71a9e0739599c922de57ca4e1"
+  },
+  "immutable_prospective_semantics": true,
+  "physical_version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v14",
+  "public_entry": "code/encoders/causal_patch_bottleneck_mae/versions/v14/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v14.h",
+  "architecture_copy_parent": "CPB-v13",
+  "source_parent_descriptor": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v13.json",
+    "bytes": 5575,
+    "sha256": "0c90bc5f673283ca463b3652e3c53899238bb6a9628833e03498c0cc8f4b3349"
+  },
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "fixed_prior_values": 3888,
+  "parameter_count_stage": "Intended unchanged source structure; no AST/build/runtime parity claimed",
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "temporal_pooling_policy": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1",
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+  "temporal_export_layout": "per-trailing-window-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+  "temporal_dispersion_regularizer": 0.0009765625,
+  "temporal_dispersion_regularizer_typed_contract": "Float64 vector shape[1], exactly0.0009765625 at inference root/payload and TRAIN root/encoder/encoder.payload",
+  "temporal_dispersion_root_offset": 0.03125,
+  "raw_root_absent_offset_exception": true,
+  "raw_root_absent_semantics": "Unmasked raw root1/32 at v=0 including absent/all-padding bins; dispersion0; served whole8 slice zero AFTER bias",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "planned_training_updates": 2048,
+  "planned_batch_size": 8,
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "retention_protocol": {
+    "path": "doc/causal_fresh_v14/goal-protocol.json",
+    "bytes": 17536,
+    "sha256": "4ace8b79a496ff24440ef1a269b63b45b746624f51dbd734e1b9c013b8a93245",
+    "state": "Prospective exact-byte alias of actual canonical V13-retention JSON; separate review/application and alias creation remain pending, no helper/card/freeze admitted"
+  },
+  "source_preparation_declaration": {
+    "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+    "bytes": 47424,
+    "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+  },
+  "parent_preservation_manifest": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 86831,
+    "sha256": "2d72b4066571a9a65c037164aa33dd3f37fe24b80fc18daaf8ef2296073e237e"
+  },
+  "mechanism": "Only local attention membership changes from V13 disjoint quarters to original-position trailing4/8/12/16 ending at fixed16. Preserve half-global/two-sum mean/live attention-centered raw variance/F32sqrt(v+2^-10)-1/32, parameter/native/data shapes, registration/draw order/objective/budget/fixed heads. Exact local trace instrumentation becomes[R,4,T] at both routes; no new encoder forward.",
+  "initial_pairing": {
+    "reference": "Eight saved V13 own initial DATA tails20:40 plus five whole fresh-statistic archives; exact paths from completed V13 receipts must be frozen in future card; no old model/head execution",
+    "feature_value_coordinate_slice": [
+      20,
+      40
+    ],
+    "unpaired_learned_content_slice": [
+      0,
+      20
+    ],
+    "whole_native40_equality_required": false,
+    "content20_equality_required": false,
+    "reference_feature_archives": 8,
+    "reference_statistic_archives": 5,
+    "old_encoder_or_head_execution_allowed": false
+  },
+  "between_bin_learning_gate": "Each direction data-gradient/movement events; positive OVERALL final change; no each-final-coefficient gate",
+  "canonical_descriptor_pending_card_freeze": false,
+  "measured_results_in_this_descriptor": false,
+  "model_or_training_execution_performed": false,
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "family": "causal_patch_bottleneck_mae",
+  "created_utc": "2026-10-18T07:52:13.2924030Z",
+  "declaration_provenance": "Prospective immutable descriptor pins the frozen card;card names descriptor path without its hash,avoiding a cycle. No measured results.",
+  "temporal_pooling_geometry": [
+    4,
+    16,
+    32,
+    8
+  ],
+  "temporal_pooling_trailing_lengths": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "temporal_local_weight_witness_shape": [
+    "R",
+    4,
+    "T"
+  ],
+  "temporal_local_weight_witness_semantics": "Two existing fields now exact per-window same-forward local softmax; old V13 SUM[R,T] archives remain incompatible. Other58 actual fields unchanged.",
+  "source_interface_clarification": {
+    "path": "doc/causal_fresh_v14/source-interface-clarification-001.json",
+    "bytes": 3445,
+    "sha256": "c44f0753ffb9980aa899984c798399408c40e1780595860bf9dfc47cf7f232c0"
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "clean_causal_v9_retention_manifest_draft_schema_v1",
+  "state": "source_only_schema_not_an_input_manifest",
+  "execution_admitted": false,
+  "manifest_kind": "clean_causal_v9_retention_derivation_manifest_v1",
+  "prospective_authorized_for_derivation": false,
+  "manifest_required_fields": [
+    "kind",
+    "state",
+    "client_date",
+    "authorized_for_derivation",
+    "container_id",
+    "container_scope",
+    "source",
+    "independent_reviewer",
+    "owned_sources",
+    "execution_wrapper",
+    "orchestration_helpers",
+    "manifest_schema",
+    "orchestration_provenance",
+    "root_supplied_final_metadata",
+    "inputs",
+    "prospective_contract",
+    "future_output_paths",
+    "execution_policy"
+  ],
+  "source_assets": [
+    "derive.py",
+    "independent_review.py",
+    "README.md",
+    "provenance.json"
+  ],
+  "orchestration_helpers": [
+    "prepare-manifest.ps1",
+    "stage-retention.ps1",
+    "execute-retention.py",
+    "mirror-retention.ps1"
+  ],
+  "input_roles": [
+    {
+      "id": "parent",
+      "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+      "staged_path": "inputs/parent.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v3",
+      "path": "doc/results/causal_fresh_v3/table_rows.json",
+      "staged_path": "inputs/v3.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v4",
+      "path": "doc/results/causal_fresh_v4/table_rows.json",
+      "staged_path": "inputs/v4.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v5",
+      "path": "doc/results/causal_fresh_v5/table_rows.json",
+      "staged_path": "inputs/v5.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v6",
+      "path": "doc/results/causal_fresh_v6/table_rows.json",
+      "staged_path": "inputs/v6.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v7",
+      "path": "doc/results/causal_fresh_v7/table_rows.json",
+      "staged_path": "inputs/v7.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v8",
+      "path": "doc/results/causal_fresh_v8/table_rows.json",
+      "staged_path": "inputs/v8.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "v9",
+      "path": "doc/results/causal_fresh_v9/table_rows.json",
+      "staged_path": "inputs/v9.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "ledger",
+      "path": "doc/clean_causal_encoder_research_ledger.json",
+      "staged_path": "inputs/ledger.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "establishment",
+      "path": "doc/causal_fresh_v9/final-establishment.json",
+      "staged_path": "inputs/establishment.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "complete_mirror",
+      "path": "doc/causal_fresh_v9/complete-mirror-attempt-001.json",
+      "staged_path": "inputs/complete_mirror.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    },
+    {
+      "id": "preservation",
+      "path": "doc/causal_fresh_v9/final-preservation.json",
+      "staged_path": "inputs/preservation.json",
+      "required_fields": [
+        "id",
+        "path",
+        "staged_path",
+        "bytes",
+        "sha256"
+      ],
+      "bytes_policy": "Positive integer observed before manifest freeze",
+      "sha256_policy": "Exact lower-case SHA256 frozen before admission; ledger and preservation must match explicit root-supplied hashes"
+    }
+  ],
+  "parent_protocol_sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699",
+  "preservation_contract": {
+    "critical_checkpoint_total": 99,
+    "selected_V3_sources_each_repository": 47,
+    "separate_establishment_bound": true,
+    "Complete_mirror_bound": true,
+    "old_history_retained": true,
+    "post_V9_ledger_bound": true,
+    "report_only_recovery_531_inputs_and_original_failed_stages_bound": true
+  },
+  "prospective_contract": {
+    "criteria": 22,
+    "quality_maximum_final_scopes": 16,
+    "minimum_final_MAE_scopes": 2,
+    "strict_minimum_final_validation_NLL_scopes": 1,
+    "strict_positivity_rules": 3,
+    "expected_strengthened_floors": "UNKNOWN;0to19 from actual saved final aggregates",
+    "expected_strengthened_IDs": [],
+    "historical_cards_results_counts_unchanged": true,
+    "TRAIN_NLL_gate": false,
+    "initial_selection": false,
+    "candidate_or_head_settings_declared": false,
+    "baseline": "CPB-v3.market-01",
+    "unchanged_criteria": "22 minus actual strengthened existing criteria"
+  },
+  "admission": "Root reviews the false manifest and twelve exact inputs after V9 finalization/preservation. A separate admitted copy retains all original fields and adds root_review.parent_manifest_sha256 plus authorized_for_derivation=true. External admitted-manifest SHA and external Stage SHA are mandatory at execution; mirror additionally requires external execution/inventory SHA. No future protocol is applied by these helpers.",
+  "stage_layout": {
+    "owned_sources": 4,
+    "execution_wrapper": 1,
+    "metadata_inputs": 12,
+    "prospective_manifest": 1,
+    "admitted_manifest": 1,
+    "license": 1,
+    "payload_files": 20,
+    "ZIP_members_including_capsule_manifest": 21,
+    "AST_files": 3,
+    "module_executions": 0
+  },
+  "container_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+  "container_scope": "/opt/cuwacunu/research/causal-v9-retention-review",
+  "exclusive_attempt": "/opt/cuwacunu/research/causal-v9-retention-review/attempt-001",
+  "execution_argv": [
+    "python3 source/execute.py --root ATTEMPT --kind derivation --admitted-manifest-sha256 ROOT_ADMITTED_SHA --stage-sha256 ROOT_STAGE_SHA",
+    "python3 source/execute.py --root ATTEMPT --kind review --admitted-manifest-sha256 ROOT_ADMITTED_SHA --stage-sha256 ROOT_STAGE_SHA"
+  ],
+  "publication": "Mirror exact generated proposal/evidence only. No helper applies the future protocol or changes live metadata.",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "numeric_derivations_executed": 0,
+  "live_files_written": 0
+}

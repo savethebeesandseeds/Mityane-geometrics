@@ -1,0 +1,246 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 7,
+  "design_slot": "RPB-v7",
+  "canonical_registered_tag": "RPB-v7",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Global bottleneck with lighter context deletion",
+  "registered_design_parameters": {
+    "inference_architecture_tag": "RPB-v4",
+    "native_global_size": 32,
+    "channel_mixer_layers": 1,
+    "global_bottleneck_mode": 2,
+    "reconstruction_signal": "same exact learned global export; original reconstruction targets unchanged",
+    "training_policy_id": "rpb-training-context-deletion-015-v1",
+    "context_coordinate_deletion_rate": 0.15
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/8"
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/0"
+      },
+      "declaration": {
+        "id": "RPB-v7",
+        "encoder_tag": "RPB-v7",
+        "status": "frozen_working_reference_do_not_replace",
+        "description": "Original five saved v7 instances behind the earlier timing results",
+        "master_seeds": [
+          4404,
+          5505,
+          6606,
+          7707,
+          8808
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-{master}-lag_sign/milestone-512/checkpoint.pt",
+        "capsule": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2",
+        "artifact_inventory_sha256": "d4b38150814d65b21712a6371348b76bbc0d539a60009152932d293557b45821",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/CONTEXT_LIGHTER_VALIDATION_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/2"
+      },
+      "declaration": {
+        "id": "RPB-v7.alt-01",
+        "encoder_tag": "RPB-v7",
+        "status": "separate_replication_not_a_reference_replacement",
+        "description": "New v7 instances trained with the same recipe on different sources and seeds",
+        "master_seeds": [
+          9109,
+          10210,
+          11311,
+          12412,
+          13513
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "output/runs/rpb-fresh-decoder-replication/fresh-decoder-replication-4p9U4b/results/seed-{master}-lag_sign/v7/point-512/checkpoint.pt",
+        "capsule": "output/runs/rpb-fresh-decoder-replication/fresh-decoder-replication-4p9U4b",
+        "artifact_inventory_sha256": "a65901eb7f14d57152188a86297ed44a966b9858d84848e3ae7e5b047d083a90",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/FRESH_DECODER_REPLICATION_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/3"
+      },
+      "declaration": {
+        "id": "RPB-v7.alt-02",
+        "encoder_tag": "RPB-v7",
+        "status": "measured_matched_fresh_control_no_reference_replacement",
+        "description": "Fresh late-mixing v7 controls for the early-mixer comparison",
+        "master_seeds": [
+          19119,
+          20220,
+          21321,
+          22422,
+          23523
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "output/runs/rpb-early-mixer-reliability/early-mixer-reliability-b6DsL0/results/seed-{master}-lag_sign/late/point-512/checkpoint.pt",
+        "capsule": "output/runs/rpb-early-mixer-reliability/early-mixer-reliability-b6DsL0",
+        "artifact_inventory_sha256": "426a1c17288f6b2781d25ca6c5ea94af7f1bb8f041bcc07a9a5412b92e1d50f5",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/EARLY_MIXER_RELIABILITY_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/5"
+      },
+      "declaration": {
+        "id": "RPB-v7.alt-03",
+        "encoder_tag": "RPB-v7",
+        "status": "measured_continuous_learning_curve_no_reference_replacement",
+        "description": "Fresh late-mixing group for the continuous longer-budget comparison",
+        "master_seeds": [
+          30130,
+          31231,
+          32332,
+          33433,
+          34534
+        ],
+        "encoder_updates_each": 2048,
+        "checkpoint_path_pattern": "output/runs/rpb-early-mixer-learning-curve/early-mixer-learning-curve-FDv5b0/results/seed-{master}-lag_sign/late/point-{budget}/checkpoint.pt",
+        "capsule": "output/runs/rpb-early-mixer-learning-curve/early-mixer-learning-curve-FDv5b0",
+        "artifact_inventory_sha256": "b153296974bb15d03d181c455f67a79b486d980631ebc2484e5c6ffe5b345d85",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/EARLY_MIXER_LEARNING_CURVE_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/11"
+      },
+      "declaration": {
+        "id": "RPB-v7.alt-04",
+        "encoder_tag": "RPB-v7",
+        "status": "measured_fresh_confirmation_no_promotion_no_reference_replacement",
+        "description": "Fresh fixed512 late-mixer confirmation group; retain every paired cohort",
+        "master_seeds": [
+          64161,
+          65262,
+          66363,
+          67464,
+          68565
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "output/runs/rpb-early-mixer-confirmation/early-mixer-confirmation-uJ1Ack/results/seed-{master}-lag_sign/late/point-512/checkpoint.pt",
+        "capsule": "output/runs/rpb-early-mixer-confirmation/early-mixer-confirmation-uJ1Ack",
+        "artifact_inventory_sha256": "d7f6db6dccad050eec984196d28e99b2cc1091c537edf40049ce2be117454846",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/EARLY_MIXER_CONFIRMATION_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/13"
+      },
+      "declaration": {
+        "id": "RPB-v7.alt-05",
+        "encoder_tag": "RPB-v7",
+        "status": "measured_fresh_structured_hard_timing_no_promotion_no_reference_replacement",
+        "description": "Fresh late mixer on TEMPO-3; unchanged architecture and fixed512 recipe",
+        "master_seeds": [
+          75272,
+          76373,
+          77474,
+          78575,
+          79676
+        ],
+        "encoder_updates_each": 512,
+        "batch_size": 8,
+        "native_size": 32,
+        "checkpoint_path_pattern": "output/runs/rpb-structured-hard-timing/structured-hard-timing-xrZMAS/results/seed-{master}-lag_sign/late/point-{updates}/checkpoint.pt",
+        "capsule": "output/runs/rpb-structured-hard-timing/structured-hard-timing-xrZMAS",
+        "artifact_inventory_sha256": "9bd9efe7c1e6c536ba57970c8db4f5549f3a06480a2407ab8d2d5ff38efc08aa",
+        "measured_record": "code/encoders/raw_patch_bottleneck_mae/STRUCTURED_HARD_TIMING_DIAGNOSTIC.md"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Current shared implementation locator is verified, but byte-exact equivalence to every historical training-source snapshot is not re-proved. Frozen capsules remain authoritative.",
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0,
+  "current_component_locator": {
+    "status": "verified current shared component only; historical exact definition is not established by this locator",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "a76dc9fb9e767b56a5a3e7eeeb7de7742bdb2399cd9afb21b075fcb9a3ea3d01",
+      "bytes": 19785,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Model",
+      "ModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/learned_global.conf",
+      "sha256": "0587b62fab16245094b4ee9c936cc4c8ec94dbbca89be10776a7106e61c1c4d6",
+      "bytes": 649,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/learned_global.conf"
+  },
+  "historical_exact_definition_status": "unproved; use the pinned original registry/card/capsule and explicit gaps"
+}

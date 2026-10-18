@@ -1,0 +1,67 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "version": "CPB-v9",
+  "instance": "CPB-v9.market-01",
+  "stage": "prospectively_frozen_unmeasured_before_build_training_quality",
+  "immutable_prospective_semantics": true,
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V9_CARD.json",
+    "bytes": 114322,
+    "sha256": "94488bf2d42751b5a38c054eb5b6bbd7674e45d6e0bd444818b7f6fbcb34346d"
+  },
+  "physical_version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v9",
+  "public_entry": "code/encoders/causal_patch_bottleneck_mae/versions/v9/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v9.h",
+  "architecture_copy_parent": "CPB-v8",
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "fixed_prior_values": 3888,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "training_updates": 2048,
+  "batch_size": 8,
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "retention_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+    "bytes": 24084,
+    "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699"
+  },
+  "mechanism": "For each nonempty original bin use .5 local hidden+.5 shared global hidden from same scores, then existing8 export rows/bias once; empty whole slice zero. No parameter/draw/objective/clip/head/budget change.",
+  "measured_results_in_this_descriptor": false,
+  "canonical_descriptor_pending_card_freeze": false,
+  "between_bin_learning_gate": "Each Hadamard direction nonzero data-gradient and movement events; positive overall final projection change; signed final coefficients descriptive, no individual final-nonzero requirement.",
+  "family": "causal_patch_bottleneck_mae",
+  "created_utc": "2026-10-16T10:57:30.3250502Z",
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "declaration_provenance": "Prospective immutable descriptor pins the frozen card;card names descriptor path without its hash,avoiding a cycle. No measured results."
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-10-alignment",
+  "number": 10,
+  "title": "OR-10 · Representation alignment and interoperability",
+  "summary": "Connect distinct representation spaces through fitted mappings or validated correspondences without assuming coordinate compatibility.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-10-alignment-contract",
+      "title": "Define the operation contract",
+      "description": "Define source and target SpaceRefs, anchors, mapping output, correspondence requirements and unsupported cases.",
+      "milestones": [
+        {
+          "id": "or-10-alignment-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define source and target SpaceRefs, anchors, mapping output, correspondence requirements and unsupported cases. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Compatibility is directional and operation/role-specific: this operation intentionally accepts declared distinct source and target spaces. Define training anchors, mapping identity, target-side use, supported population and failure policy; global SpaceRef equality is not required."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-10-alignment-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide a versioned mapping fitted only to permitted training anchors with explicit compatibility and failure checks.",
+      "milestones": [
+        {
+          "id": "or-10-alignment-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide a versioned mapping fitted only to permitted training anchors with explicit compatibility and failure checks. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Mappings produce derived records retaining source-space, mapping and temporal/fit provenance. Do not merely relabel source vectors as target-native observations. The consumer must accept the declared mapped-output contract and its scope."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-10-alignment-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Evaluate held-out correspondences and target-side operation utility against alignment baselines; low mapping error alone does not establish interoperability.",
+      "milestones": [
+        {
+          "id": "or-10-alignment-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Evaluate held-out correspondences and target-side operation utility against alignment baselines; low mapping error alone does not establish interoperability. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Separate training/development anchors from held-out correspondences, including source/entity or temporal leakage controls. A mapping is accepted only for tested target-side roles and populations; low mapping error does not grant universal or reversible compatibility."
+          ]
+        }
+      ]
+    }
+  ]
+}

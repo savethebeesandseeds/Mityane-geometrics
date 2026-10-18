@@ -1,0 +1,54 @@
+{
+  "registry_id": "configurable-capacity-embedding-instances-v1",
+  "registered_date": "2026-10-12",
+  "design": "RPB-v20",
+  "dataset_id": "TEMPO-5",
+  "task": "slow_lag_sign",
+  "recipe_id": "configurable-capacity-tempo5-v1",
+  "designed_complexity_level": 5,
+  "complexity_scale_max": 5,
+  "protocol": "configurable-capacity-v1",
+  "master_seeds": [941101, 941102, 941103],
+  "encoder_updates_each": 512,
+  "batch_size": 8,
+  "geometry": {"C": 3, "H": 128, "F": 9, "P": 8},
+  "capsule": "output/runs/rpb-v20-capacity/admission-0gN4uD",
+  "artifact_inventory_sha256": "62f7e52a1d94815ec44ec90bae052c52ba2e89e9e809f851afdb11a15da0aa83",
+  "source_id": "8033ad0e20c8aa31cdda6befe340aed6001758233295fdaf78f14e3db2225fd1",
+  "source_base_revision": "912389139b024a7c795c46bcf2ee50fab489b11c",
+  "measured_record": "doc/CONFIGURABLE_CAPACITY_V1.md",
+  "result_json": "doc/results/configurable_capacity_v1.json",
+  "historical_instances_replaced": false,
+  "TEST_accessed": false,
+  "market_data_accessed": false,
+  "promotion": false,
+  "instance_bundles": [
+    {
+      "id": "RPB-v20.alt-01",
+      "profile": "A",
+      "description": "Compact spectral encoder, 20 learned plus 12 fixed coordinates",
+      "encoder_width": 64,
+      "native_size": 32,
+      "status": "measured_compact_continuation_configuration",
+      "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/A/master-{master}/point-512/checkpoint.pt"
+    },
+    {
+      "id": "RPB-v20.alt-02",
+      "profile": "B",
+      "description": "Wider backbone, unchanged 32-number embedding",
+      "encoder_width": 128,
+      "native_size": 32,
+      "status": "measured_no_consistent_final_classification_gain_at512",
+      "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/B/master-{master}/point-512/checkpoint.pt"
+    },
+    {
+      "id": "RPB-v20.alt-03",
+      "profile": "C",
+      "description": "Larger embedding, 52 learned plus 12 fixed coordinates",
+      "encoder_width": 64,
+      "native_size": 64,
+      "status": "measured_modest_reconstruction_gain_mixed_classification_at512",
+      "checkpoint_path_pattern": "output/runs/rpb-v20-capacity/admission-0gN4uD/profiles/C/master-{master}/point-512/checkpoint.pt"
+    }
+  ]
+}

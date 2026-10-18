@@ -1,0 +1,68 @@
+{
+  "kind": "causal_fresh_v4_saved_quality_audit_card_v1",
+  "declared_utc": "2026-10-15T12:18:49.6029085Z",
+  "stage": "declared_before_saved_quality_audit_execution",
+  "execution_pending": true,
+  "candidate": "CPB-v4.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "baseline_unchanged": true,
+  "frozen_experiment_card": {
+    "path": "doc/CAUSAL_FRESH_V4_CARD.json",
+    "sha256": "114026b2e6d11d84aee1855a8af673d84e782ab057eb45d398a5d66fa94b1dce"
+  },
+  "frozen_input_manifest_sha256": "a6bff90ffc9dd917c6a9c446659c52e0c76b5fb34a9f67201788eb3168948eb9",
+  "baseline_control_sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c",
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "bytes": 49872,
+      "sha256": "5997c47c716b78db75a81673f72f7e47da9a0de54fb0233e4a76890e1cda1045"
+    },
+    {
+      "file": "archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "doc/causal_fresh_v3/audit-quality.py",
+      "bytes": 28884,
+      "sha256": "fb7fd2e40cf79b2672d797b9edf2b2df89cca6460e16f7a523fb5cb8f63f801d"
+    },
+    {
+      "path": "code/research/causal_v3_train_diagnosis/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    }
+  ],
+  "source_ownership": "Complete owned auditor and inert reader outside frozen88-source V4 capsule; no V3 source edits",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "Torch_imports": 0,
+    "new_containers": 0,
+    "host_project_execution": false,
+    "execute_only_after_root_supplies_actual_quality_paths": true
+  },
+  "scope": [
+    "All initial/final saved market linear and three neural predictions on112TRAIN+32VALIDATION,4tasks; independent physical R2/MAE/RMSE/support arithmetic",
+    "Fresh TRAIN feature/target normalization moments and head coefficient/shape/seed bindings; reconstruct saved ridge outputs algebraically without fitting or neural forward",
+    "Both stages3TEMPOcohorts,2scalerpolicies,3fixed repetitions; saved correct/count/coverage/group arithmetic, means and retained intervals; no classification prediction regeneration",
+    "All112TRAIN/32VALIDATION fixed-query row/support aggregation plus first8 saved query cell witnesses per stage/split for independent MAE/GaussianNLL reductions",
+    "Exactly22 prospective clean-V3 advancement conditions independently coded without importing V4 reporter/comparator; trust and coverage separate",
+    "Card/input/source/artifact/checkpoint/proof/log/binary hashes and explicit variance input gradient policy;6admitted binaries; baseline controls reused without old execution"
+  ],
+  "model_calls": 0,
+  "head_fits": 0,
+  "neural_head_forward_calls": 0,
+  "encoder_training_updates": 0,
+  "post_encoder_PCA_fits": 0,
+  "raw_cache_numeric_reads": 0,
+  "checkpoint_numeric_deserializations": 0,
+  "allowed_numeric_arrays": "Current V4 saved features, target archives, prediction arrays, fitted readout coefficients and masked-query witnesses only; baseline V3 JSON results only",
+  "independence": "V3 saved-quality audit copied and adapted; inert reader copied unchanged. No V4 reporter/comparator function is imported.",
+  "failure_policy": "Exclusive output receipt; preserve mismatches and failed attempts. No automatic fits, reruns, rescue, promotion or publication.",
+  "quality_interpretation": "Audit saved evidence only; no new encoder trajectory, readout fit, confirmation or forecasting result"
+}

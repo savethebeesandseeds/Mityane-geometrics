@@ -1,0 +1,155 @@
+{
+  "kind": "cpb_v11_training_audit_actual_result_scope_independent_review_v1",
+  "status": "passed",
+  "reviewer": "/root/v11_audit_readiness",
+  "reviewed_utc": "2026-10-17T16:28:22.7144410Z",
+  "scope": "Metadata and recorded-result scope review only; no auditor/model/numeric archive replay and no quality admission.",
+  "evidence": [
+    {
+      "path": "doc/causal_fresh_v11/independent-training-audit.json",
+      "bytes": 79566,
+      "sha256": "96c11ddc1c9f5881319674c8262c8e81d780c0e2c0b96817b9ac9e9abc4687dd"
+    },
+    {
+      "path": "doc/causal_fresh_v11/training-audit-execution-attempt001.json",
+      "bytes": 5852,
+      "sha256": "7f818409499f8dfe5f4f579b90a2a5259fa4465cf638ca4b720c7fc48b74679b"
+    },
+    {
+      "path": "doc/causal_fresh_v11/training-audit-mirror-attempt001.json",
+      "bytes": 7901,
+      "sha256": "30882984910010d22060d9a8ffabe03bc5981efbba49114f3066b9e486ac8985"
+    },
+    {
+      "path": "doc/causal_fresh_v11_training_audit/audit-card.json",
+      "bytes": 13034,
+      "sha256": "e020fbf5ad709443943bb2656ba06b2d51d00107f70f957d7b9a492ca7dd94ae"
+    },
+    {
+      "path": "doc/causal_fresh_v11_training_audit/actual-card-independent-review-v11-audit-readiness.json",
+      "bytes": 9692,
+      "sha256": "8d2f13c077f9be0cfa7d39f8bedaa1f2f708e457f7ec54510bbe37a5d2ac09fd"
+    },
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/typed-resume-512.json",
+      "bytes": 1313,
+      "sha256": "8b5bca63d4e6faf132bcd7a4ea245b97976564de26c7135c6b0bfccfda675ea3"
+    }
+  ],
+  "recorded_result_predicates_verified": 51,
+  "additional_inventory_checks": 2,
+  "blockers": [],
+  "core_plus_five": {
+    "CORE": 25603,
+    "numeric_statistics": 61153,
+    "saved_tensor_state": 1216,
+    "manual_saved_Gaussian": 117864,
+    "actual_pre_step_composite_objective": 69301,
+    "temporal_pooling_saved_learning": 241728,
+    "total": 516865,
+    "all_status_passed": true,
+    "all_mismatch_arrays_empty": true,
+    "nested_temporal_moment_checks": 190309,
+    "nested_count_added_again": false
+  },
+  "actual_moment_scope": {
+    "subgroup_rows": 16384,
+    "subgroups": 8,
+    "whole8_two4_partition_rows": 8192,
+    "component_fields": 56,
+    "parameter_array_fields": 12,
+    "new_trace_fields": 21,
+    "actual_updates": [
+      1,
+      2048
+    ],
+    "same_forward_only": true,
+    "upstream_stage": "PRECLIP-post-empty-export",
+    "clip_factors": [
+      1.0,
+      0.7840339790102095
+    ],
+    "local_three_tensors": [
+      "temporal_export_weight",
+      "temporal_export_bias",
+      "temporal_pool_positions"
+    ],
+    "absolute_tolerance": 1E-09,
+    "relative_tolerance": 0.0003,
+    "export_weight_OR_bias_postclip_nonvacuity_minimum": 1E-06,
+    "actual_expected_export_maxima": [
+      0.00021477670277222834,
+      0.0013685234173061184
+    ],
+    "maximum_reported_local_scaled_error": 0.017908670346149985,
+    "all_three_local_parity_summaries_within_bound": true,
+    "common_score_bias_finite_descriptive_only": true,
+    "common_score_bias_parity_gate": false,
+    "common_score_bias_nonzero_gradient_required": false,
+    "other2046_raw_gradients_reconstructed": false,
+    "full_hidden_encoder_or_global_norm_reconstructed": false,
+    "pool_centered_variance_is_native_uncertainty": false
+  },
+  "source_and_transport": {
+    "source_before_after_equal": true,
+    "source_before_after_manifest_equal": true,
+    "transport_unchanged": true,
+    "actual_moment_saved_learning_admission_passed": true,
+    "mirrored_payload_files_rehashed": 14,
+    "inventory_file_rehashed": {
+      "path": "output/engineering/causal-fresh-v11-training-audit/attempt-001/container-mirror/mirror-inventory.json",
+      "bytes": 3800,
+      "sha256": "5eee002037d2aea2692ac8825690b6a813013183b28a6314d199360042fff994"
+    },
+    "exact_current_mirror_members": 15,
+    "inventory_included_as_fifteenth_file": true,
+    "no_source_edits": true
+  },
+  "freshness_and_resume": {
+    "fresh_learned_values": 294752,
+    "initialization_seed": 943001,
+    "pretrained_ancestor": "none",
+    "source_updates": 0,
+    "inherited_learned_parameters": 0,
+    "old_model_artifacts_opened": 0,
+    "old_normalization_artifacts_opened": 0,
+    "direct_seeded_constructor_parameter_equality": "Source-bound completed producer evidence, bound by audit; no fresh constructor rerun in this review or audit",
+    "independent_TRAIN_calibration_anchors": 4096,
+    "calibration_validation_rows": 0,
+    "calibration_test_rows": 0,
+    "inert_typed_state_updates": [
+      512,
+      1024,
+      2048
+    ],
+    "moment_tensors_each": 152,
+    "fixed_prior_and_statistics_bitexact": true,
+    "actual_typed512_receipt_sha256": "8b5bca63d4e6faf132bcd7a4ea245b97976564de26c7135c6b0bfccfda675ea3",
+    "actual_typed512_continued_saved_trajectory": true,
+    "actual_typed512_repeated_training_updates": 0,
+    "actual_typed512_parameters_buffers_moments_steps_order_exact": true,
+    "actual_typed512_attempt_counter_and_three_seeds_exact": true
+  },
+  "actual_scope_and_limits": [
+    "Independent standard-library inert archive/data arithmetic audit; encoder/decoder/head calls and encoder updates are zero. The audit did not train or reconstruct a model.",
+    "All75 identifiable tensors have producer data-gradient/movement events and recorded final tensor movement, independently checked against saved states/scalars.294751 is tensor numel capacity, not proof of every scalar learning. Registered common scorebias is an exempt numerical softmax gauge; decay/movement is not data learning.",
+    "Fresh TRAIN statistics are independently recomputed from declared TRAIN data and inert saved statistics. Fresh constructor equality and actual live CUDA provenance/resume continuation are source-bound producer evidence, not an independent training replay.",
+    "Only actual1/2048 have saved raw local adjoint arrays. Other2046 observations are saved scalar row evidence. Local3-tensor adjoints do not reconstruct full hidden/backbone/encoder gradients or the shared global norm.",
+    "Unit detached-error variance scalar objective alone cannot prove stop-gradient routing. Source-bound nonzero CUDA fixture and strict typed policy evidence provide that check. Shared clip1/AdamW keeps optimization coupled.",
+    "Known112TRAIN/32VALIDATION query scalar arithmetic is within the frozen audit scope. It adds no quality gate, head fitting, held-out diagnosis, forecast claim or model selection.",
+    "This passed TRAIN audit does not replace pending/completed saved initial/final causal proofs, fixed-head quality, independent quality audit or final trust join. Root must complete/admit those stages separately."
+  ],
+  "timing_seconds": {
+    "auditor": 7.157570995000015,
+    "wrapper": 7.2200314059999755
+  },
+  "review_helper_calls": 0,
+  "review_AST_calls": 0,
+  "review_Docker_calls": 0,
+  "review_numeric_archive_reads": 0,
+  "review_auditor_replays": 0,
+  "review_model_calls": 0,
+  "review_head_fits": 0,
+  "review_training_updates": 0,
+  "quality_admitted": false
+}

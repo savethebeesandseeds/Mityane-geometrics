@@ -1,0 +1,192 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 30,
+  "design_slot": "RPB-v30",
+  "canonical_registered_tag": "RPB-v30",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Unchanged raw-relative native36 and V28 normalizer; unmodulated mean plus change-conditioned diagonal Gaussian waveform variance and proper NLL64",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h",
+      "sha256": "79d4644e19affbb314cc4da36ff5e34b362205407828f4601afcb319609c7fb6",
+      "bytes": 12819,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "Contract",
+      "LocationScaleDecoderModel",
+      "LocationScaleDecoderModelImpl",
+      "LocationScaleDecoderTrace",
+      "LocationScaleForwardTrace",
+      "LocationScaleNllOutput"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/location_scale_decoder.conf",
+      "sha256": "43320396447ca80be5fde4324d17c3a9ab129e116bf184455fcb6261aeb6923c",
+      "bytes": 633,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/location_scale_decoder.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_location_scale_decoder_v1/completion.json",
+        "sha256": "0b91cded8a9f6cd9829886724e240eb2ce770a6fd60c31ec04d5db8ae59d7602",
+        "bytes": 44314
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_location_scale/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h",
+        "sha256": "79d4644e19affbb314cc4da36ff5e34b362205407828f4601afcb319609c7fb6",
+        "bytes": 12819
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/location_scale_decoder_embedding_versions.json",
+      "sha256": "3f219fc32fa8e0b9a9cb201f53ffc92918c527eb7613e04fd867335bed60e54b",
+      "bytes": 124637,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/location_scale_decoder_embedding_versions.json",
+        "sha256": "3f219fc32fa8e0b9a9cb201f53ffc92918c527eb7613e04fd867335bed60e54b",
+        "bytes": 124637,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v30.market-01",
+        "design": "RPB-v30",
+        "status": "verified_market_pass_transfer_pending",
+        "geometry": {
+          "C": 3,
+          "H": 128,
+          "F": 9,
+          "parent_width": 32,
+          "change_width": 4,
+          "native_width": 36
+        }
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v30.market-01",
+      "description": "Unchanged raw-relative native36 and V28 normalizer; unmodulated mean plus change-conditioned diagonal Gaussian waveform variance and proper NLL64",
+      "status": "market gate passed; separate conditional transfer pending; no balanced promotion",
+      "input_geometry": {
+        "C": 3,
+        "H": 128,
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "native_width": 36,
+        "output": "one native vector per window"
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_LOCATION_SCALE_DECODER_CARD.md",
+        "sha256": "f620298e9ecf9f73a32ae61737b67295f8dcde709416aa3d6ed16feee613e45c",
+        "bytes": 15300
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_LOCATION_SCALE_DECODER_RESULTS.md",
+        "sha256": "f5519bc661fb5072a74f36ebe4258c25862ebfb5c13117056ab000533a296ff8",
+        "bytes": 29946
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_location_scale_decoder_v1/completion.json",
+        "sha256": "0b91cded8a9f6cd9829886724e240eb2ce770a6fd60c31ec04d5db8ae59d7602",
+        "bytes": 44314
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_location_scale_decoder_v1/table_rows.json",
+        "sha256": "b73008d6eb2796570de60914365582a916237348958a54156f9745b2666cb46b",
+        "bytes": 344722
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-0.pt",
+          "sha256": "52b6c9881f13e852a86e3e7b22558f27d68616e06c6d638ebbd97344e20ac3c5",
+          "bytes": 1284638,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/inference-2048.pt",
+          "sha256": "c4b1495c179738f9b24447d484220fa82fdd38c44e683a0ec7b2377e8545e1cb",
+          "bytes": 1285583,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-1024.pt",
+          "sha256": "8728c3908b95c9685bc28ade55b47e2eecc22be6cfbfb15d4b57f9ce9dfba691",
+          "bytes": 1430905,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-2048.pt",
+          "sha256": "57c01efe74e2fadf3941ca6c713ddcb8976074c156904372fa2af87e0e777907",
+          "bytes": 1430905,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-location-scale-decoder/run-MAmvTJ/checkpoints/training-512.pt",
+          "sha256": "bc383e51f7e8dc411acb568b0428d1a7cb8fc10267d3d5cc750e5635603a90d3",
+          "bytes": 1430551,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

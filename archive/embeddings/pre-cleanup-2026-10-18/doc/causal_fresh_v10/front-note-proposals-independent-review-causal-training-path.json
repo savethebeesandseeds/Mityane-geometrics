@@ -1,0 +1,127 @@
+{
+  "kind": "cpb_v10_actual_front_note_proposals_independent_review_v1",
+  "status": "passed",
+  "reviewer": "causal_training_path",
+  "reviewed_utc": "2026-10-16T13:52:12.6604832Z",
+  "scope": "Four actual prefix texts, byte tails, six live/snapshot files, manifest/evidence hashes and local link resolution only",
+  "manifest": {
+    "path": "output/engineering/causal-fresh-v10-finalization/front-note-proposals-001/manifest.json",
+    "bytes": 5330,
+    "sha256": "96e86a8a54ca539ab4c9beecec2c50c049e1070201870a87df87c078a8212c3c"
+  },
+  "prior_snapshot": {
+    "path": "output/engineering/causal-fresh-v10-finalization/prior-live-001/manifest.json",
+    "bytes": 2253,
+    "sha256": "a52a6919c9fe2d0f35c7ff7a851acf07962e439083d36749b8f61e984ed92389"
+  },
+  "final_establishment": {
+    "path": "doc/causal_fresh_v10/final-establishment.json",
+    "bytes": 7709,
+    "sha256": "551f7a31be44dcc68e61f4d0be7390843e66ac8138b542a3e47bd3526128946b"
+  },
+  "human_reports": [
+    {
+      "path": "doc/CAUSAL_FRESH_V10_RESULTS.md",
+      "bytes": 28666,
+      "sha256": "2cd73cd233c946f07ff0911a704856fd4b1260a5ffd3918b3f777c6aa3fc7c46"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V10_DETAIL.md",
+      "bytes": 33484,
+      "sha256": "276896b56153cc0135e173f611e7729562005b4b0ed61c02b089ddb224f51b94"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V10_REVIEW.md",
+      "bytes": 8512,
+      "sha256": "998254c05cc17b57455ecbebec3aedbb20a48f91f8011d0bac979db0a10d1b39"
+    }
+  ],
+  "applier_source": {
+    "path": "doc/causal_fresh_v10_finalization/apply-reviewed-metadata.ps1",
+    "bytes": 9026,
+    "sha256": "0892304d0fee30605834b0e6d77e7fcf0241348a787566f7ec4e9d1df5d15498"
+  },
+  "proposals": [
+    {
+      "destination": "AGENTS.md",
+      "file": {
+        "path": "output/engineering/causal-fresh-v10-finalization/front-note-proposals-001/AGENTS.md",
+        "bytes": 57261,
+        "sha256": "a17a3f5e2068f78d0b8e88e0feee04b048d1bb41167d480b91523f87cd5e1713"
+      },
+      "prefix_bytes": 2616,
+      "prior_snapshot": "output/engineering/causal-fresh-v10-finalization/prior-live-001/files/AGENTS.md",
+      "prior_bytes": 54645,
+      "prior_sha256": "5aa28badff10eca4d4a827732a2de5981293316fccaad99f9a6a8ec85b243a44",
+      "whole_prior_tail_exact": true
+    },
+    {
+      "destination": "doc/CURRENT_STATUS.md",
+      "file": {
+        "path": "output/engineering/causal-fresh-v10-finalization/front-note-proposals-001/doc/CURRENT_STATUS.md",
+        "bytes": 53612,
+        "sha256": "5f970c8a4ded157f9cbcf76810bdf8e004e7e9482428cd200a72476f6cb8bd26"
+      },
+      "prefix_bytes": 2596,
+      "prior_snapshot": "output/engineering/causal-fresh-v10-finalization/prior-live-001/files/doc/CURRENT_STATUS.md",
+      "prior_bytes": 51016,
+      "prior_sha256": "e1ba23cdc65ae393578574d0feb726748a61c39f8d1cec2f744881bc8c344668",
+      "whole_prior_tail_exact": true
+    },
+    {
+      "destination": "doc/EMBEDDING_VERSIONS.md",
+      "file": {
+        "path": "output/engineering/causal-fresh-v10-finalization/front-note-proposals-001/doc/EMBEDDING_VERSIONS.md",
+        "bytes": 52405,
+        "sha256": "1119bc431017f78483fc84d82e033fd35a6803ca1df443e91474b09b4a6fdbc0"
+      },
+      "prefix_bytes": 2596,
+      "prior_snapshot": "output/engineering/causal-fresh-v10-finalization/prior-live-001/files/doc/EMBEDDING_VERSIONS.md",
+      "prior_bytes": 49809,
+      "prior_sha256": "0a5a0b7b92fcb4a948eea3818aab71e264673dae3623937cb2080b05a39c8ef2",
+      "whole_prior_tail_exact": true
+    },
+    {
+      "destination": "code/encoders/causal_patch_bottleneck_mae/README.md",
+      "file": {
+        "path": "output/engineering/causal-fresh-v10-finalization/front-note-proposals-001/code/encoders/causal_patch_bottleneck_mae/README.md",
+        "bytes": 23216,
+        "sha256": "8f5df2dc7241624c00c07a1343aa9938b2df5857b674a01542c8c42962f23349"
+      },
+      "prefix_bytes": 2661,
+      "prior_snapshot": "output/engineering/causal-fresh-v10-finalization/prior-live-001/files/code/encoders/causal_patch_bottleneck_mae/README.md",
+      "prior_bytes": 20555,
+      "prior_sha256": "2e1e06b559419f2f3de2c1ea8c4b464ea4641a5c200c7a26ef725a1ebf05d011",
+      "whole_prior_tail_exact": true
+    }
+  ],
+  "blockers": [],
+  "findings": [
+    "All four proposed files match96e86a8a manifest pins; exact scope AGENTS,CURRENT_STATUS,EMBEDDING_VERSIONS,familyREADME. Every full previous byte tail hashes exactly to the corresponding prior snapshot; only the new prefix is added.",
+    "All six original live files and all six physical snapshot files remain exact to a52a6919. No live application, current ledger/catalog write or old-tail normalization occurred in this review.",
+    "All twenty prefix Markdown links resolve from their intended LIVE destination directories to existing canonical3reports,finaltrustjoin and ledger. Human report/applier/snapshot/join pins in manifest remain exact.",
+    "Prefix3of22/fullcoverage/fulltrust and326495core-plus-five training checks/13089quality checks align saved551f establishment; numericadvancement/overallwinner/winnerselection remain false. Producer pending fields remain historical bytes unchanged; no new quality-scope/reconstruction leader orV3DEVselection change is claimed.",
+    "Objective explanation correctly distinguishes Huber plus ONE live jointGaussian from V9 detached-error variance calibration, with reportcopy detached and same forward/native40/draws/fresh2048B8 recipe. Trend gain is explicitly versusV9; V4 record and everyV3–V9scoped leader remain protected.",
+    "Next direction remains a V9-based source-review proposal: fourmean/fourcentereddispersion rows under actual normalized half-local/half-global attention, V9 detached-error objective retained, full attention-dependent adjoints and causal/learning/resume proof pending. No candidate/code/card/build/training/quality admission or validation-cause/promise is created."
+  ],
+  "checks_summary": {
+    "proposal_files": 4,
+    "whole_prior_tails_exact": 4,
+    "original_live_files_exact": 6,
+    "physical_snapshot_files_exact": 6,
+    "prefix_links_resolved": 20
+  },
+  "actions": {
+    "live_writes": 0,
+    "proposal_edits": 0,
+    "helper_invocations": 0,
+    "AST_calls": 0,
+    "Docker_calls": 0,
+    "project_numeric_reductions": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "Git_mutations": 0
+  },
+  "disposition": "No concrete prefix/tail/link/evidence blocker. Root-reviewed seven-file metadata application remains separate."
+}

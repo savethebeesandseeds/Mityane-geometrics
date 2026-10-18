@@ -1,0 +1,205 @@
+{
+  "kind": "cpb_v6_v8_TRAIN_diagnosis_independent_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-16T10:25:53.5643898Z",
+  "stage": "Frozen before independent numeric execution; main diagnosis completed once and immutable",
+  "main_card": {
+    "path": "doc/CAUSAL_V6_V8_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 81588,
+    "sha256": "49b22f1360593f2f0dd6d8ebb7fd8b0d4baa4749fe01ad8875fa79e5fe529829"
+  },
+  "main_diagnosis": {
+    "path": "doc/causal_v6_v8_train_diagnosis/diagnosis.json",
+    "bytes": 4617944,
+    "sha256": "e48e0dc05a72cd2e514ad8a5480106ba2eba5c49e7903f9565cf1b9d1c552a43"
+  },
+  "main_static_preflight": {
+    "path": "doc/causal_v6_v8_train_diagnosis/preflight-review.json",
+    "bytes": 50919,
+    "sha256": "07b40a93afb05244810aa21526a276434e18ce481d3bfe53cb28181576db388f"
+  },
+  "pre_execution_preservation": {
+    "path": "doc/causal_fresh_v8/final-preservation.json",
+    "bytes": 140977,
+    "sha256": "919b4f11610e3ab61b63afbc3612145506e4c47a3be3c777f119d47c49e7126a"
+  },
+  "auditor_sources": [
+    {
+      "file": "audit.py",
+      "path": "code/research/causal_v6_v8_train_diagnosis_audit/audit.py",
+      "bytes": 74693,
+      "sha256": "b528beb76716e9e2ffa2313309253213ce1fe977785bc06797c9cfb996732b86"
+    },
+    {
+      "file": "archive_reader.py",
+      "path": "code/research/causal_v6_v8_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "file": "component_math.py",
+      "path": "code/research/causal_v6_v8_train_diagnosis_audit/component_math.py",
+      "bytes": 13300,
+      "sha256": "18084fb7e78322c09946626661d853628bf063e0e45df9fd1fe053a0a684c514"
+    },
+    {
+      "file": "README.md",
+      "path": "code/research/causal_v6_v8_train_diagnosis_audit/README.md",
+      "bytes": 5477,
+      "sha256": "13d308bdf7c917111967ec394975a4eaf74561b8fc9756a1bba45b229613b300"
+    },
+    {
+      "file": "provenance.json",
+      "path": "code/research/causal_v6_v8_train_diagnosis_audit/provenance.json",
+      "bytes": 5222,
+      "sha256": "5a480e11425037a9f0550d8f2c804ff64e730e6fa782bab8ef8eb5aefb6371bf"
+    }
+  ],
+  "source_provenance": {
+    "file": "provenance.json",
+    "path": "code/research/causal_v6_v8_train_diagnosis_audit/provenance.json",
+    "bytes": 5222,
+    "sha256": "5a480e11425037a9f0550d8f2c804ff64e730e6fa782bab8ef8eb5aefb6371bf"
+  },
+  "orchestration_helpers": [
+    {
+      "path": "doc/causal_v6_v8_train_diagnosis/audit-card-generator.ps1",
+      "bytes": 8530,
+      "sha256": "6279262ca07ca5b57085a3cbda59f266276cea82652440623e2971a8276e1a4f"
+    },
+    {
+      "path": "doc/causal_v6_v8_train_diagnosis/audit-stage.ps1",
+      "bytes": 10683,
+      "sha256": "1b33c87b09d67a0492ca68e4e1e92d461cc4c745ebcfbeec96cceb202f6357ad"
+    },
+    {
+      "path": "doc/causal_v6_v8_train_diagnosis/audit-execute.py",
+      "bytes": 5792,
+      "sha256": "0e1e089bfb4c8d700d05b3771c8d299505bc50e2653218d4f67125d4ff96d916"
+    },
+    {
+      "path": "doc/causal_v6_v8_train_diagnosis/audit-mirror.ps1",
+      "bytes": 7280,
+      "sha256": "653675b4450de5788eb8119ebe50089630e6a0a04b9a987f9061aec3b28e0e36"
+    }
+  ],
+  "execution_wrapper": {
+    "path": "doc/causal_v6_v8_train_diagnosis/audit-execute.py",
+    "bytes": 5792,
+    "sha256": "0e1e089bfb4c8d700d05b3771c8d299505bc50e2653218d4f67125d4ff96d916"
+  },
+  "numeric_input_scope": "Exactly52 main-card roles (common41+actual8+V8temporal3), exact33 preservation guards plus broad919b, all verified before storage. No extra input or held-out selector.",
+  "all112_scope": "Four tasks, three saved head repetitions, native40 block moments and exact saved ridge decomposition; saved Huber/variance/total rows in BOTH versions; no fit or forward",
+  "first8_scope": "Four initial/final stage-matched query/decoder pairs; supported F64 kernels and local mean4/uncertainty4 adjoints only",
+  "temporal_bins": [
+    [
+      0,
+      32
+    ],
+    [
+      32,
+      64
+    ],
+    [
+      64,
+      96
+    ],
+    [
+      96,
+      128
+    ]
+  ],
+  "temporal_scope": "Independent observed rawF64 and masked-error summaries only; separate support and bin-specific hierarchy, no labels/ablation/refit",
+  "actual_batch_scope": "BOTH versions actual pre-step updates1/2048: support/components/artifact and CSV association only; no unmatched decoder weights/adjoints or replay",
+  "CSV_numeric_columns": {
+    "v6": [
+      "update",
+      "Gaussian_NLL_F64",
+      "mean_Huber_F64",
+      "variance_NLL_F64",
+      "total_objective_F64",
+      "pre_clip_global_norm",
+      "clip_factor"
+    ],
+    "v8": [
+      "update",
+      "Gaussian_NLL_F64",
+      "mean_Huber_F64",
+      "variance_NLL_F64",
+      "total_objective_F64",
+      "pre_clip_global_norm",
+      "clip_factor"
+    ]
+  },
+  "CSV_successful_updates_each": 2048,
+  "CSV_fixed_groups_each": 5,
+  "CSV_other_columns_read": false,
+  "V6_split_norm_inferred": false,
+  "counterfactual_clip_computed": false,
+  "gradient_limits": "Both apply Huber1 mean plus detached-error variance and globalclip1. Bounded manual saved mean4 linear residual, variance affine/softplus-link and scalar FD arithmetic allowed. Full encoder/nonlinear parent/librarymodel/head execution, cross-basis cosine, parameter Jacobians, loss-ratio dominance, missing branch inference and optimizer replay forbidden.",
+  "finite_differences": {
+    "checks": 256,
+    "cells_per_stage": 16,
+    "stages": 4,
+    "kernels": [
+      "Gaussian mean",
+      "Gaussian variance",
+      "MAE",
+      "Huber1"
+    ],
+    "traversal": "Canonical b,c,f,h first16 supported",
+    "positive_step_rules": "Inherited unchanged neutral audit kernel",
+    "tolerance_absolute": 1E-06,
+    "tolerance_relative": 0.0002
+  },
+  "saved_scalar_tolerance": {
+    "absolute": 1E-10,
+    "relative": 1E-09,
+    "recorded_component_identity_absolute": 2E-12,
+    "recorded_component_identity_relative": 2E-12
+  },
+  "container": {
+    "name": "cuwacunu",
+    "id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "output_root": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis-audit/attempt-001"
+  },
+  "model_calls": 0,
+  "neural_forwards": 0,
+  "head_fits": 0,
+  "calibration_fits": 0,
+  "training_updates": 0,
+  "new_quality_scores": 0,
+  "held_out_tensor_reads": 0,
+  "old_encoder_replays": 0,
+  "failures": "Preserve every attempt/source/card/log. Additive correction only; never replay a producer/model/head.",
+  "initial_pairing_coordinate_slice": [
+    20,
+    40
+  ],
+  "whole_native40_equality_claimed": false,
+  "initial_mean_variance_equality_required": false,
+  "V8_split_norm_inferred": false,
+  "V8_temporal_observations": {
+    "group_rows": 8192,
+    "gauge_rows": 2048,
+    "actual_array_updates": [
+      1,
+      2048
+    ],
+    "actual_array_fields_each": 12,
+    "original_storage": "F32",
+    "movement_arithmetic": "F64 operands before subtraction/centering",
+    "summary_blocks": "Overall and four fixed512 blocks",
+    "observed_post_globalclip_only": true,
+    "V6_subgroup_counterfactual": false,
+    "gauge_is_not_data_learning_proof": true,
+    "checkpoint_encoder_weights_read": false
+  },
+  "execution_admitted": false,
+  "orchestration_provenance": {
+    "path": "doc/causal_v6_v8_train_diagnosis/audit-orchestration-provenance.json",
+    "bytes": 5970,
+    "sha256": "8142949e69ee68590cd45edd0bec474d33e88e9caf15f7297170fbc85a23e430"
+  },
+  "root_supplied_main_diagnosis_sha256": "e48e0dc05a72cd2e514ad8a5480106ba2eba5c49e7903f9565cf1b9d1c552a43"
+}

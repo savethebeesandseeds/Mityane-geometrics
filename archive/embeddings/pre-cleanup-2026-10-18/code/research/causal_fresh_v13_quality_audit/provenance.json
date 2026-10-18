@@ -1,0 +1,284 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v13_owned_independent_quality_audit_source_preparation_v1",
+  "status": "SOURCE_ONLY_READY_FOR_INDEPENDENT_STATIC_REVIEW",
+  "prepared_utc": "2026-10-17T20:52:12.1117701Z",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v13/design-source-plan.ADMITTED-002.json",
+    "bytes": 27667,
+    "sha256": "4d1648ed842a13bae850b47567a67cb8939f55b192e54f0c2f67afbaf6ef4a59"
+  },
+  "direct_source_version": "CPB-v12 final completed normal quality auditor; complete infrastructure SOURCE copy only; new encoder scientific SOURCE parentV11",
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 69004,
+    "sha256": "0a0a345a141898db81900cb903151bc1c42785e3b7bf9fbb5b27d9e21153ea07"
+  },
+  "complete_physical_parent_copies": 4,
+  "parent_mapping": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v12_quality_audit/archive_reader.py",
+        "bytes": 4035,
+        "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+      },
+      "role": "V12_quality_auditor_infrastructure",
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v12_quality_audit/archive_reader.py",
+      "owned_path": "code/research/causal_fresh_v13_quality_audit/archive_reader.py",
+      "immutable_capsule_parent_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v12_quality_audit/audit.py",
+        "bytes": 94532,
+        "sha256": "089d026506c9b626e90fd1bca264bc1ca9562dc5d68413d8aa1acde31ff7a5b6"
+      },
+      "role": "V12_quality_auditor_infrastructure",
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v12_quality_audit/audit.py",
+      "owned_path": "code/research/causal_fresh_v13_quality_audit/audit.py",
+      "immutable_capsule_parent_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v12_quality_audit/provenance.json",
+        "bytes": 8827,
+        "sha256": "6afa4ff12fe9586ce37600807cb9e031c403618b585cc061f8d0bf2ccdebc172"
+      },
+      "role": "V12_quality_auditor_infrastructure",
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v12_quality_audit/provenance.json",
+      "owned_path": "code/research/causal_fresh_v13_quality_audit/provenance.json",
+      "immutable_capsule_parent_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v12_quality_audit/README.md",
+        "bytes": 3577,
+        "sha256": "77b733868bf5ec700a0293c2b87a689e1613fe9cf1ed2ad877e0203c3ad73fb8"
+      },
+      "role": "V12_quality_auditor_infrastructure",
+      "preserved_copy": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v12_quality_audit/README.md",
+      "owned_path": "code/research/causal_fresh_v13_quality_audit/README.md",
+      "immutable_capsule_parent_exact": true
+    }
+  ],
+  "owned_nonself_sources": [
+    {
+      "path": "code/research/causal_fresh_v13_quality_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_quality_audit/audit.py",
+      "bytes": 96206,
+      "sha256": "113a6e802848153f6701c34f3c0c9ed79bc6615d3e3ce86acfca8b161d36a5d9"
+    },
+    {
+      "path": "code/research/causal_fresh_v13_quality_audit/README.md",
+      "bytes": 4942,
+      "sha256": "b276e408da4e0723f471948080f279c726d9747f888c9f8fde70d000dac4016a"
+    }
+  ],
+  "self_path": "code/research/causal_fresh_v13_quality_audit/provenance.json",
+  "self_hash_excluded": true,
+  "neutral_archive_reader_byte_exact": true,
+  "objective_contract": {
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "direct_gradient_routes": "mean-\u003Eparent32\u002Bmean4;variance-\u003Euncertainty4;no-direct-cross-paths;shared-global-clip1",
+    "mean_huber_delta": 1.0,
+    "loss_coefficients": [
+      1.0,
+      1.0
+    ],
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false
+  },
+  "temporal_contract": {
+    "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-regularized-stddev4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ],
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+    "temporal_dispersion_regularizer": 0.0009765625
+  },
+  "typed_metadata": {
+    "nodes": [
+      "inference.root",
+      "inference.payload",
+      "TRAIN.root",
+      "TRAIN.encoder",
+      "TRAIN.encoder.payload"
+    ],
+    "transform": "exact String policy",
+    "tau": "Float64 vector shape[1] exact2^-10;0-D/Float32/missing/changed/old/shape/value refused",
+    "negative_fixture_cases": 636,
+    "case_count_basis": "Existing491 \u002B14 new wrong_pool replacements times2(replacement/missing) times5nodes \u002B5oldV11 artifact kinds; source-derived,not observed here"
+  },
+  "prospective_temporal_fixture": {
+    "compiled_fixture_source": {
+      "path": "code/research/causal_fresh_v13/tests/v13_temporal_pooling_test.cpp",
+      "bytes": 34336,
+      "sha256": "8e7d68207d815c043b824bd46fdcc5a822d8c39dee9aa95f84b83f716bd4385a"
+    },
+    "direct_pool_kernel_calls": 51,
+    "F64_finite_difference_coordinates": 18,
+    "F64_step": 1E-05,
+    "F64_abs_rel_tolerance": 2E-08,
+    "F32_finite_difference_coordinates": 18,
+    "F32_step": 0.002,
+    "F32_abs_rel_tolerance": 0.002,
+    "isolated_autograd_grad_calls": 4,
+    "manual_F32_abs_rel_tolerance": 3E-05,
+    "gauge_tolerance": 2E-06,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "synthetic_optimizer_steps": 1,
+    "head_fits": 0,
+    "transform_derivative_upper_bound": 16,
+    "new_required_true_predicates": [
+      "mean4_regularized_stddev4_export_layout",
+      "full_attention_dependent_regularized_moment_adjoints",
+      "live_dispersion_score_gradient",
+      "raw_variance_root_dispersion_trace",
+      "zero_tiny_large_analytic_dispersion_adjoints",
+      "supported_nonfinite_and_variance_overflow_refused",
+      "absent_local_huge_singleton_sanitized",
+      "captured_F32_residual_correction",
+      "raw_root_absent_offset_exception"
+    ],
+    "observed_pass_claimed": false
+  },
+  "controls_and_pairing": {
+    "baseline": "CPB-v3.market-01",
+    "scoped_reference": "CPB-v11.market-01",
+    "scientific_recipe_parent": "CPB-v11.market-01",
+    "trained_ancestor": "none",
+    "historical_final_controls": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "separate_establishment_controls": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "full40_historical_pairing_versions": [
+      6,
+      7,
+      10
+    ],
+    "partial20_40_historical_pairing_versions": [
+      8,
+      9,
+      11,
+      12
+    ],
+    "initial_reference_version": 11,
+    "initial_feature_archives": 8,
+    "initial_feature_coordinate_slice": [
+      20,
+      40
+    ],
+    "initial_whole_statistics": 5,
+    "content0_20_paired": false,
+    "old_model_or_head_calls": 0,
+    "methods": 12,
+    "comparison_market_rows": 48,
+    "primary_raw_own_market_rows": 16
+  },
+  "strongest_future_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v11_retention.json",
+    "bytes": 48667,
+    "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b",
+    "criteria": 22,
+    "retention_reconstruction_floors": 19,
+    "positivity_rules": 3,
+    "derivation_review_checks": 723,
+    "V12_new_floor_records": 0,
+    "additional_TRAIN_NLL_gate": false,
+    "preserve_order_and_whole_criterion_objects": true,
+    "historical_pass_counts_recomputed": false
+  },
+  "imports": {
+    "standard_library": [
+      "argparse",
+      "datetime",
+      "hashlib",
+      "json",
+      "math",
+      "struct",
+      "pathlib"
+    ],
+    "local_owned_reader": "archive_reader.py",
+    "producer_or_reporter_or_comparator_or_training_auditor_or_model_imports": []
+  },
+  "saved_arithmetic": "Unchanged prediction/physical-error/scaler/ridge and TEMPO saved-scalar kernels; no neural forward,fit,training,PCA or historical encoder/head replay. New code binds exact transform proof fields/logtokens,636 typed cases and current ten-control/seven-trust comparison. Source ownership does not admit numeric execution.",
+  "normal_quality_stages": "Five current extraction/head-fitting stage receipts plus two aggregation stages; checked from saved actual runtime paths/hashes,not replayed by auditor.",
+  "temporal_learning": {
+    "group_rows": 8192,
+    "gauge_rows": 2048,
+    "between_bin_rows": 2048,
+    "moment_subgroup_rows": 16384,
+    "moment_labels": [
+      "mean",
+      "regularized_stddev"
+    ],
+    "actual_component_fields": 60,
+    "parameter_arrays": 12,
+    "temporal_trace_fields": 25,
+    "new_root_and_transformed_fields": 4,
+    "extra_encoder_calls": 0,
+    "root_absent_exception": "Actual raw root stays1/32; raw variance/transformed dispersion/served absent slice zero",
+    "actual_update2048": "BEFORE step,completed2047,owncoefficients",
+    "local_actual_adjoint_ownership": "Separate independent TRAINauditor checks actual adjoints. Quality binds main producer temporal-learning/proof receipts; a separate final establishment joins independentTRAINaudit and qualityaudit results. This checker declares no independentTRAINaudit receipt input.",
+    "per_scalar_learning_claimed": false,
+    "full_encoder_gradient_or_global_norm_reconstructed": false
+  },
+  "authoring_note": "One apply_patch Delete\u002BAdd request for the same owned README path was refused atomically before changes; corrected with host file write. No source helper,AST,scientific body or measurement ran.",
+  "actual_card_created": false,
+  "numeric_body_calls": 0,
+  "AST_or_import_or_project_helper_calls": 0,
+  "Docker_calls": 0,
+  "build_test_train_quality_calls": 0,
+  "DEV_changes": 0,
+  "Git_publication": 0,
+  "deletions": 0,
+  "pending": "Independent static source review and root actual-source/input-plan/card freeze; all actual execution requires a later separate admission.",
+  "independent_review_documentary_clarification": {
+    "before": {
+      "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/quality-receipt-scope-clarification-001/before-manifest.json",
+      "bytes": 1522,
+      "sha256": "d0a1151d920a5b1b6fb05c65b493ec80a6a99ecf359c714b5218779bf04a1791"
+    },
+    "change": "Clarify exact receipt ownership after independent static review; executable audit and all numeric kernels remain unchanged.",
+    "algorithm_changes": 0,
+    "new_invocations": 0
+  }
+}

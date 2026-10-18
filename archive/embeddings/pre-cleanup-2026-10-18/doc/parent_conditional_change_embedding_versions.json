@@ -1,0 +1,1339 @@
+{
+  "kind": "parent_conditional_change_embedding_versions_v1",
+  "design_tag": "RPB-v27",
+  "instance": "RPB-v27.market-01",
+  "initial_control": "RPB-v27.market-01.init",
+  "architecture_id": "content-protected32-parent-conditional-train-change-v1",
+  "status": "measured stopped mechanism; original5/9, strict2/8; all3 final neural trend repetitions negative",
+  "primary_architecture": "RPB-v22",
+  "leading_balanced_reference": "RPB-v24.market-01.alt-01",
+  "retained_neural_volatility_head_leader": {
+    "model": "RPB-v26.market-01",
+    "r2": 0.41926036121396154
+  },
+  "integration_run": "output/runs/market-parent-conditional-changes/run-1KSQSS",
+  "path_semantics": "Run/evidence/checkpoint paths resolve from C:/Work/cuwacunu/cuwacunu_dev; weights remain ignored local files",
+  "geometry": {
+    "C": 3,
+    "H": 128,
+    "F": 9,
+    "P": 8,
+    "W": 64,
+    "canonical_channel_ids": [
+      0,
+      1,
+      2
+    ],
+    "sampling_interval_ms": 60000,
+    "parent_width": 32,
+    "change_width": 4,
+    "native_width": 36
+  },
+  "parameters": {
+    "total": 297425,
+    "optimizer_updated": 14904,
+    "protected_parent": 282521,
+    "frozen_map_coefficients": 8910,
+    "frozen_map_coefficient_F64_bytes": 71280,
+    "frozen_map_coefficient_F32_bytes": 35640,
+    "frozen_map_all_tensor_bytes": 2571950
+  },
+  "new_updates": 2048,
+  "inherited_updates": 2048,
+  "batch_size": 8,
+  "device": "RTX A2000 8GB/cuda:0",
+  "dataset_id": "MKT-HIST-2",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "view": "intact known chronological VALIDATION",
+  "split": {
+    "TRAIN_anchors": 4096,
+    "TRAIN_readout_rows": 112,
+    "VALIDATION_readout_rows": 32,
+    "TRAIN_dates": "Jan1-21",
+    "VALIDATION_dates": "Jan22-28",
+    "unused_dates": "Jan29-31"
+  },
+  "head_recipe": {
+    "ridge_penalty": 1,
+    "neural_hidden": 16,
+    "neural_activation": "tanh",
+    "neural_optimizer": "Adam",
+    "neural_learning_rate": 0.01,
+    "neural_updates": 100,
+    "outputs": 4,
+    "repetitions": [
+      2701,
+      2802,
+      2903
+    ],
+    "uint64_actual_seeds_decimal": [
+      "13088411117524848790",
+      "10018485049408248344",
+      "9083751155097190455"
+    ],
+    "ridge_parameters": 148,
+    "neural_parameters": 660,
+    "feature_and_target_normalizers": "TRAIN-only; original fixed evaluator",
+    "post_encoder_PCA": false
+  },
+  "initial_task_rows": [
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01.init",
+      "source_method": "initialized_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.2696412540867311,
+      "linear_mae": 0.00021974717695724474,
+      "linear_rmse": 0.00028872429761877253,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00021974717695724474,
+              "rmse": 0.00028872429761877253,
+              "r2": 0.2696412540867311
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00019116065707375013,
+              "rmse": 0.00023794145288852744,
+              "r2": 0.5039678962784762
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00021974717695724474,
+              "rmse": 0.00028872429761877253,
+              "r2": 0.2696412540867311
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00019614677466071092,
+              "rmse": 0.00023606694471240333,
+              "r2": 0.5117526153014623
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00021974717695724474,
+              "rmse": 0.00028872429761877253,
+              "r2": 0.2696412540867311
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.0003183606629448497,
+              "rmse": 0.00036835768961548113,
+              "r2": -0.18880068846665332
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        0.5039678962784762,
+        0.5117526153014623,
+        -0.18880068846665332
+      ],
+      "neural_mean_r2": 0.27563994103776174,
+      "neural_mae_each": [
+        0.00019116065707375013,
+        0.00019614677466071092,
+        0.0003183606629448497
+      ],
+      "neural_mean_mae": 0.00023522269822643692,
+      "neural_rmse_each": [
+        0.00023794145288852744,
+        0.00023606694471240333,
+        0.00036835768961548113
+      ],
+      "neural_mean_rmse": 0.00028078869573880394
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01.init",
+      "source_method": "initialized_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.18245416143714,
+      "linear_mae": 5.192311838784385e-05,
+      "linear_rmse": 6.054738335274575e-05,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn/tick",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.192311838784385e-05,
+              "rmse": 6.054738335274575e-05,
+              "r2": 0.18245416143714
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.097350015406216e-05,
+              "rmse": 7.863113908619082e-05,
+              "r2": -0.3788292508477564
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.192311838784385e-05,
+              "rmse": 6.054738335274575e-05,
+              "r2": 0.18245416143714
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.0968938381646086e-05,
+              "rmse": 7.089004529946152e-05,
+              "r2": -0.12070642466483106
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.192311838784385e-05,
+              "rmse": 6.054738335274575e-05,
+              "r2": 0.18245416143714
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 7.201358710236335e-05,
+              "rmse": 8.66107699939446e-05,
+              "r2": -0.6728814024713168
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        -0.3788292508477564,
+        -0.12070642466483106,
+        -0.6728814024713168
+      ],
+      "neural_mean_r2": -0.39080569266130144,
+      "neural_mae_each": [
+        6.097350015406216e-05,
+        6.0968938381646086e-05,
+        7.201358710236335e-05
+      ],
+      "neural_mean_mae": 6.465200854602386e-05,
+      "neural_rmse_each": [
+        7.863113908619082e-05,
+        7.089004529946152e-05,
+        8.66107699939446e-05
+      ],
+      "neural_mean_rmse": 7.871065145986565e-05
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01.init",
+      "source_method": "initialized_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.7329077522354625,
+      "linear_mae": 0.2346236800519684,
+      "linear_rmse": 0.2970032091934568,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "log1p(base_volume)",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.2346236800519684,
+              "rmse": 0.2970032091934568,
+              "r2": 0.7329077522354625
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.28621883264177084,
+              "rmse": 0.34332579850420103,
+              "r2": 0.6430956209239367
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.2346236800519684,
+              "rmse": 0.2970032091934568,
+              "r2": 0.7329077522354625
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.3155233966040005,
+              "rmse": 0.39188983232555824,
+              "r2": 0.534984969664419
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.2346236800519684,
+              "rmse": 0.2970032091934568,
+              "r2": 0.7329077522354625
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.34369737158515,
+              "rmse": 0.4251038834804503,
+              "r2": 0.452821349687505
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        0.6430956209239367,
+        0.534984969664419,
+        0.452821349687505
+      ],
+      "neural_mean_r2": 0.5436339800919535,
+      "neural_mae_each": [
+        0.28621883264177084,
+        0.3155233966040005,
+        0.34369737158515
+      ],
+      "neural_mean_mae": 0.3151465336103071,
+      "neural_rmse_each": [
+        0.34332579850420103,
+        0.39188983232555824,
+        0.4251038834804503
+      ],
+      "neural_mean_rmse": 0.3867731714367365
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01.init",
+      "source_method": "initialized_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.3285227374988863,
+      "linear_mae": 0.05868656752025944,
+      "linear_rmse": 0.07062714946356502,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "correlation",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05868656752025944,
+              "rmse": 0.07062714946356502,
+              "r2": 0.3285227374988863
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05058565436398492,
+              "rmse": 0.06440814866206628,
+              "r2": 0.4415689131947109
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05868656752025944,
+              "rmse": 0.07062714946356502,
+              "r2": 0.3285227374988863
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.058634521279927965,
+              "rmse": 0.0720338090534641,
+              "r2": 0.30150915996941163
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.05868656752025944,
+              "rmse": 0.07062714946356502,
+              "r2": 0.3285227374988863
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.07274772344929718,
+              "rmse": 0.09155349391169319,
+              "r2": -0.12833432503959674
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        0.4415689131947109,
+        0.30150915996941163,
+        -0.12833432503959674
+      ],
+      "neural_mean_r2": 0.20491458270817528,
+      "neural_mae_each": [
+        0.05058565436398492,
+        0.058634521279927965,
+        0.07274772344929718
+      ],
+      "neural_mean_mae": 0.06065596636440335,
+      "neural_rmse_each": [
+        0.06440814866206628,
+        0.0720338090534641,
+        0.09155349391169319
+      ],
+      "neural_mean_rmse": 0.0759984838757412
+    }
+  ],
+  "final_task_rows": [
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01",
+      "source_method": "trained_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.5237963525418771,
+      "linear_mae": 0.000182198801873854,
+      "linear_rmse": 0.00023313719941779802,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.000182198801873854,
+              "rmse": 0.00023313719941779802,
+              "r2": 0.5237963525418771
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.0003066871471617935,
+              "rmse": 0.0003764002077064466,
+              "r2": -0.2412786226862118
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.000182198801873854,
+              "rmse": 0.00023313719941779802,
+              "r2": 0.5237963525418771
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00017785423467491315,
+              "rmse": 0.00022538622269970031,
+              "r2": 0.5549341238498595
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_volatility",
+            "unit": "logreturn",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.0009869792090940073,
+            "train_target_scale": 0.0005033346033711354,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.000182198801873854,
+              "rmse": 0.00023313719941779802,
+              "r2": 0.5237963525418771
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.00022660670271317066,
+              "rmse": 0.00028969994243528664,
+              "r2": 0.2646969201680831
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        -0.2412786226862118,
+        0.5549341238498595,
+        0.2646969201680831
+      ],
+      "neural_mean_r2": 0.19278414044391026,
+      "neural_mae_each": [
+        0.0003066871471617935,
+        0.00017785423467491315,
+        0.00022660670271317066
+      ],
+      "neural_mean_mae": 0.00023704936151662577,
+      "neural_rmse_each": [
+        0.0003764002077064466,
+        0.00022538622269970031,
+        0.00028969994243528664
+      ],
+      "neural_mean_rmse": 0.00029716212428047785
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01",
+      "source_method": "trained_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.11759449438517522,
+      "linear_mae": 5.234270745810229e-05,
+      "linear_rmse": 6.290329969031975e-05,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "logreturn/tick",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.234270745810229e-05,
+              "rmse": 6.290329969031975e-05,
+              "r2": 0.11759449438517522
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 6.474647634903622e-05,
+              "rmse": 7.574021088110468e-05,
+              "r2": -0.2793058146638554
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.234270745810229e-05,
+              "rmse": 6.290329969031975e-05,
+              "r2": 0.11759449438517522
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.9830465467764316e-05,
+              "rmse": 7.242359454188073e-05,
+              "r2": -0.16971889651719896
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_trend",
+            "unit": "logreturn/tick",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 3.4416387739644602e-06,
+            "train_target_scale": 8.34951996973826e-05,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.234270745810229e-05,
+              "rmse": 6.290329969031975e-05,
+              "r2": 0.11759449438517522
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 5.538130127562082e-05,
+              "rmse": 6.753057420244515e-05,
+              "r2": -0.017003011252068934
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        -0.2793058146638554,
+        -0.16971889651719896,
+        -0.017003011252068934
+      ],
+      "neural_mean_r2": -0.15534257414437444,
+      "neural_mae_each": [
+        6.474647634903622e-05,
+        5.9830465467764316e-05,
+        5.538130127562082e-05
+      ],
+      "neural_mean_mae": 5.9986081030807116e-05,
+      "neural_rmse_each": [
+        7.574021088110468e-05,
+        7.242359454188073e-05,
+        6.753057420244515e-05
+      ],
+      "neural_mean_rmse": 7.189812654181019e-05
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01",
+      "source_method": "trained_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.7417729793945342,
+      "linear_mae": 0.22494258414231533,
+      "linear_rmse": 0.2920326051604261,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "log1p(base_volume)",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22494258414231533,
+              "rmse": 0.2920326051604261,
+              "r2": 0.7417729793945342
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.26147645476814474,
+              "rmse": 0.3135363119052293,
+              "r2": 0.702343966637148
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22494258414231533,
+              "rmse": 0.2920326051604261,
+              "r2": 0.7417729793945342
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.239006901501475,
+              "rmse": 0.3063744509622729,
+              "r2": 0.7157869004378195
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_activity",
+            "unit": "log1p(base_volume)",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 5.42006528250114,
+            "train_target_scale": 0.620939182647599,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.22494258414231533,
+              "rmse": 0.2920326051604261,
+              "r2": 0.7417729793945342
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.3405772303733515,
+              "rmse": 0.42808169086371367,
+              "r2": 0.44512864421376985
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        0.702343966637148,
+        0.7157869004378195,
+        0.44512864421376985
+      ],
+      "neural_mean_r2": 0.6210865037629124,
+      "neural_mae_each": [
+        0.26147645476814474,
+        0.239006901501475,
+        0.3405772303733515
+      ],
+      "neural_mean_mae": 0.2803535288809904,
+      "neural_rmse_each": [
+        0.3135363119052293,
+        0.3063744509622729,
+        0.42808169086371367
+      ],
+      "neural_mean_rmse": 0.34933081791040527
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "market-parent-conditional-changes-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "evidence_stage": "known-source development",
+      "view": "intact chronological VALIDATION",
+      "method": "RPB-v27.market-01",
+      "source_method": "trained_v27",
+      "reused": false,
+      "size": 36,
+      "linear_r2": 0.3608922714799607,
+      "linear_mae": 0.057351158061543304,
+      "linear_rmse": 0.06890378155974548,
+      "valid": 32,
+      "total": 32,
+      "coverage": 1,
+      "unit": "correlation",
+      "report_path": "output/runs/market-parent-conditional-changes/run-1KSQSS/readouts/report.json",
+      "report_sha256": "e61edf9deba67702150e8d8fafb6dada9f951611d63cb751e378dee343314e85",
+      "repetitions": [
+        {
+          "repetition": 2701,
+          "actual_seed": 13088411117524848790,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.057351158061543304,
+              "rmse": 0.06890378155974548,
+              "r2": 0.3608922714799607
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.06393521311865105,
+              "rmse": 0.07583893353978524,
+              "r2": 0.22576573279199807
+            }
+          }
+        },
+        {
+          "repetition": 2802,
+          "actual_seed": 10018485049408248344,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.057351158061543304,
+              "rmse": 0.06890378155974548,
+              "r2": 0.3608922714799607
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.04818232579329848,
+              "rmse": 0.06673130287360829,
+              "r2": 0.4005580078382266
+            }
+          }
+        },
+        {
+          "repetition": 2903,
+          "actual_seed": 9083751155097190455,
+          "neural_updates_completed": 100,
+          "target": {
+            "name": "past_relation",
+            "unit": "correlation",
+            "train_target_eligible": 112,
+            "train_target_supported": true,
+            "method_training_supported": true,
+            "train_target_mean": 0.695825515355408,
+            "train_target_scale": 0.10157396122110604,
+            "ridge": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.057351158061543304,
+              "rmse": 0.06890378155974548,
+              "r2": 0.3608922714799607
+            },
+            "neural": {
+              "total": 32,
+              "target_eligible": 32,
+              "valid": 32,
+              "coverage": 1,
+              "mae": 0.061502038137122204,
+              "rmse": 0.07801805831815799,
+              "r2": 0.1806334510484353
+            }
+          }
+        }
+      ],
+      "neural_r2_each": [
+        0.22576573279199807,
+        0.4005580078382266,
+        0.1806334510484353
+      ],
+      "neural_mean_r2": 0.2689857305595533,
+      "neural_mae_each": [
+        0.06393521311865105,
+        0.04818232579329848,
+        0.061502038137122204
+      ],
+      "neural_mean_mae": 0.05787319234969058,
+      "neural_rmse_each": [
+        0.07583893353978524,
+        0.06673130287360829,
+        0.07801805831815799
+      ],
+      "neural_mean_rmse": 0.07352943157718383
+    }
+  ],
+  "original_conditions_passed": 5,
+  "original_conditions_total": 9,
+  "strict_native36_floors_passed": 2,
+  "strict_native36_floors_total": 8,
+  "positive_final_neural_trend_repetitions": 0,
+  "coverage": 1.0,
+  "full_market_gate_passed": false,
+  "synthetic_transfer_measured": false,
+  "old_encoder_quality_replays": 0,
+  "old_head_refits": 0,
+  "standardizer": {
+    "archive": {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/bank-standardizer.pt",
+      "sha256": "15e11373b14fe438fe920ccf13a72b86aa4719ea1c17dee8422249db1c185535",
+      "bytes": 18092
+    },
+    "identity": "rpb-bank-standardizer-v1-fnv1a64-59b99cdeeeadc038",
+    "reused_from": "output/runs/market-conditioned-changes/run-RjTTZZ/bank-standardizer.pt",
+    "new_fits": 0
+  },
+  "conditional_map": {
+    "archive": {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/conditional-map.pt",
+      "sha256": "924bb40a6aad8214f2cd551001db5793ee03439f9914104ba610d28f2950353d",
+      "bytes": 2581318
+    },
+    "identity": "rpb-parent-conditional-map-v1-fnv1a64-720a882648f22bb6",
+    "source_identity": "MKT-HIST-2;natural-TRAIN4096;recent128;ordered-B8;parent-calibration-once512CUDA;zero-updates;shared-ledger:dbc208fb7c858909ff6f04e70b939adaab1c3e8c27f8e72f261a620cf1b55e10;bank-archive:e375dbbfc29cbb6a0d70def2de42d83a68bc5d376a8cef6daf88edbfd7d73c08;bank-normalizer-archive:15e11373b14fe438fe920ccf13a72b86aa4719ea1c17dee8422249db1c185535;parent-init:2b614ca9866048a850cdeb73dc719c5816fd04bb39e1746b626d1abf1ef68108;parent-v22:e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c;parent-stats-F64-population-floor1e-6;map-F64-unit-slope-ridge-unpenalized-intercept-countge2",
+    "compact_summary": {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/conditional-map-summary.json",
+      "sha256": "f13c2657660a2b4d77a28a6a383be93aa136b64c83c121a203701fbb971b7a99",
+      "bytes": 1807
+    },
+    "TRAIN_anchors": 4096,
+    "VALIDATION_anchors": 0,
+    "new_parent_CUDA_forwards": 512,
+    "new_encoder_updates": 0,
+    "fit_recipe": "F64 parent population normalization; conditioned F32 bank copied to F64; masked coordinate ridge1 slopes/unpenalized intercept; count>=2; F32 runtime",
+    "coefficients_exported": false
+  },
+  "initial_query_mae": {
+    "train": 0.27862535204206196,
+    "validation": 0.39052824676036835
+  },
+  "final_query_mae": {
+    "train": 0.27492174186876844,
+    "validation": 0.3880198262631893
+  },
+  "times_seconds": {
+    "parent_calibration_including_IO": 14.210417854,
+    "conditional_map_fit_including_IO": 1.730320335,
+    "GPU_training_including_checkpoint_IO": 148.800206036,
+    "initial_feature_extraction_including_IO": 0.914576875,
+    "final_feature_extraction_including_IO": 0.8725582839999999,
+    "head_fitting_scoring_IO": 2.690933644,
+    "pure_head_fitting": null,
+    "independent_saved_arithmetic_audit": 9.257464197000445
+  },
+  "report": {
+    "path": "doc/MARKET_PARENT_CONDITIONAL_CHANGE_RESULTS.md",
+    "sha256": "cb2d4548a8d35cf47b258e397161f50e1db04e224ae1b831309e6dbb9730ecb7",
+    "bytes": 22525
+  },
+  "completion": {
+    "path": "doc/results/market_parent_conditional_changes_v1/completion.json",
+    "sha256": "ea8f754edfaf105de64dc55b8064606c497079f0dd9fdbb726b70c1b2a2f0076",
+    "bytes": 42071
+  },
+  "card": {
+    "path": "doc/MARKET_PARENT_CONDITIONAL_CHANGE_CARD.md",
+    "sha256": "6e24e48bfdd05148f99446cf1421a713a7736d522f6c00159ba156e43b39c29b",
+    "bytes": 11764
+  },
+  "table_rows": {
+    "path": "doc/results/market_parent_conditional_changes_v1/table_rows.json",
+    "sha256": "a0e6e91f577d377006201c9212025dda90a6e3553803e27f63334fa341f8beb0",
+    "bytes": 217298
+  },
+  "report_verification": {
+    "path": "doc/results/market_parent_conditional_changes_v1/report-verification.json",
+    "sha256": "fe2b980a2b66453282b0c2a5267a371e98fee2af96a61ef596922695349b288d",
+    "bytes": 1108
+  },
+  "ledger_append_receipt": {
+    "path": "doc/results/market_parent_conditional_changes_v1/search-ledger-update.json",
+    "sha256": "f09d2cdf401e0b86359343f4e646932312d9076cecfab9b9547ee1f4b7dbd3ba",
+    "bytes": 1922
+  },
+  "portable_sync": {
+    "path": "doc/results/market_parent_conditional_changes_v1/portable-sync-final.json",
+    "sha256": "60073979a23f8bd353c711121adfd704f50c750ae1c0753af2331504f6bf5c93",
+    "bytes": 48382
+  },
+  "portable_pairs": 73,
+  "embedding_fixture_or_quality_executed": false,
+  "engineering": {
+    "fixture_invocations": 2,
+    "failed": 1,
+    "passed": 1,
+    "receipt": {
+      "path": "doc/results/market_parent_conditional_changes_v1/engineering-admission.json",
+      "sha256": "06d13fdf199040791f97e95cbe79cbfd4df47683b872c2f82ad576da600387da",
+      "bytes": 7923
+    },
+    "saved_arithmetic_checks": 2716060
+  },
+  "checkpoints_local_and_ignored": [
+    {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-0.pt",
+      "sha256": "48fb7c71b87b3111ae8ab7dfda756563681a126cd3b5b2d14f7a65c469ee69ee",
+      "bytes": 3860393
+    },
+    {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/inference-2048.pt",
+      "sha256": "192cc9c7bf5e511aad6fcbf3745b127d16f500563b7942b885567e94dd996956",
+      "bytes": 3861383
+    },
+    {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-1024.pt",
+      "sha256": "56508727ef7acec80bdf1c358f3db2b88875b0c5f5b1f45c75963895c1231a60",
+      "bytes": 4003046
+    },
+    {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-2048.pt",
+      "sha256": "feadc430ce986ab046e3545b9f928c7b0405220448f148cd92e52edca135bc39",
+      "bytes": 4003046
+    },
+    {
+      "path": "output/runs/market-parent-conditional-changes/run-1KSQSS/checkpoints/training-512.pt",
+      "sha256": "f51de93f376c52917f6188ef98779eadfb41ca39eea90d23d68dd2307e81b367",
+      "bytes": 4002685
+    }
+  ],
+  "source_closure_sha256": "838d1bfb3240c1f4784256d115bb2ade7aa641b4e93753c9359b8b3353205120",
+  "producer_binary_sha256": "8d0e7c83e0e3a4866d04fcd04d81f4ebee297d6eb961847eb9e3e4cb1e070cde",
+  "fixed_evaluator_binary_sha256": "5f4dbe583f276f666a14065038061c9f624fbd00349f588975f2562d9fe52d14",
+  "new_work_publication_authorized": false,
+  "next_direction": {
+    "design_tag": "RPB-v28",
+    "status": "separately declared; admission/calibration/quality pending",
+    "card": {
+      "path": "doc/MARKET_RELATIVE_CHANGE_CARD.md",
+      "sha256": "f4378d4a76185fc17b6c0adbadab5af27accd772ed66e5a8bc628ab7848f94a2",
+      "bytes": 12447
+    },
+    "mechanism": "raw F64 symmetric-relative adjacent increments with a new TRAIN bank standardizer",
+    "waveform_only": true,
+    "native_width": 36,
+    "new_updates": 2048,
+    "batch_size": 8
+  }
+}

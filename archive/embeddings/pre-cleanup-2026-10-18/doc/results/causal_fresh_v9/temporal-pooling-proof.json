@@ -1,0 +1,56 @@
+{
+  "kind": "cpb_v9_temporal_pooling_mechanism_proof_v1",
+  "status": "passed",
+  "model": "CPB-v9",
+  "actual_CUDA": true,
+  "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "original_position_membership": true,
+  "both_temporal_paths": true,
+  "empty_bins_finite_zero": true,
+  "true_per_bin_trace_weights": true,
+  "manual_pooling_and_adjoint_parity": true,
+  "four_export_slices_gradient_and_movement": true,
+  "centered_position_contrasts_gradient_and_movement": true,
+  "common_softmax_gauge_invariance": true,
+  "shared_global_half_mixture": true,
+  "relative_bin_global_sensitivity": true,
+  "three_between_bin_contrasts_gradient_and_movement": true,
+  "backbone_encode_calls": 1,
+  "direct_pool_kernel_calls": 5,
+  "public_encoder_calls": 0,
+  "head_fits": 0,
+  "synthetic_optimizer_steps": 1,
+  "manual_F32_absolute_tolerance": 2e-05,
+  "manual_F32_relative_tolerance": 2e-05,
+  "softmax_gauge_tolerance": 2e-06,
+  "bin_mass_tolerance": 2e-06,
+  "flat_trace_tolerance": 8e-06,
+  "empty_and_membership_zero": "exact",
+  "binary": {
+    "path": "/opt/cuwacunu/build/causal-fresh-v9-attempt001/test_cpb_v9_temporal_pooling",
+    "bytes": 421240,
+    "sha256": "f4fd9a36fa6cb5394b7299272823fd6639cb10d6b69f9f61ca62bde315356266"
+  },
+  "log": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/temporal-pooling.log",
+    "bytes": 748,
+    "sha256": "279095abe4fb1e10c32b642b5e515628fc7302b8a912a4a9087d93689fb69556"
+  },
+  "execution": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/temporal-pooling-stage.json",
+    "bytes": 861,
+    "sha256": "701fa0c6869a3d69f9966338754cc56c0812d8155cbde50608a7b53a6b377299"
+  }
+}

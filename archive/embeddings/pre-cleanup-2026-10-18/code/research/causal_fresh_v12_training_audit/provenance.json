@@ -1,0 +1,275 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v12_owned_independent_training_audit_source_v1",
+  "status": "SOURCE_ONLY_READY_FOR_INDEPENDENT_STATIC_REVIEW",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v12/design-source-plan.ADMITTED-001.json",
+    "bytes": 23839,
+    "sha256": "d5a6617010ca169c6392c7fac7fe97090185b02f126cf9e02323ff50ae3add23"
+  },
+  "direct_source_version": "CPB-v11 final completed normal sources; source copies only",
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/parent-copies/manifest.json",
+    "bytes": 22298,
+    "sha256": "08279d13b404b835b7b0c36ff016af708a17c988c0bb6493194268d8e2f9dac3"
+  },
+  "complete_physical_parent_copies": 3,
+  "parent_mapping": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/audit_training.py",
+        "bytes": 141694,
+        "sha256": "12faca04f410c7d78e73b8348143a346b1a809e9ddff31921af8996f0a621b52"
+      },
+      "authority": {
+        "path": "doc/causal_fresh_v11_training_audit/audit-card.json",
+        "bytes": 13034,
+        "sha256": "e020fbf5ad709443943bb2656ba06b2d51d00107f70f957d7b9a492ca7dd94ae"
+      },
+      "preserved_copy_path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/parent-copies/code/research/causal_fresh_v11_training_audit/audit_training.py",
+      "owned_target": "code/research/causal_fresh_v12_training_audit/audit_training.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/provenance.json",
+        "bytes": 6419,
+        "sha256": "098e0521f15e99c84e51027b519aa4be89ac5bdcb141491a395fe140b6fe5ee8"
+      },
+      "authority": {
+        "path": "doc/causal_fresh_v11_training_audit/audit-card.json",
+        "bytes": 13034,
+        "sha256": "e020fbf5ad709443943bb2656ba06b2d51d00107f70f957d7b9a492ca7dd94ae"
+      },
+      "preserved_copy_path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/parent-copies/code/research/causal_fresh_v11_training_audit/provenance.json",
+      "owned_target": "code/research/causal_fresh_v12_training_audit/provenance.json"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v11_training_audit/README.md",
+        "bytes": 6401,
+        "sha256": "cc2cf8ca02e3b1dcf1ef9849105fff35db7dce29c990d0afae6102cef07ef5ce"
+      },
+      "authority": {
+        "path": "doc/causal_fresh_v11_training_audit/audit-card.json",
+        "bytes": 13034,
+        "sha256": "e020fbf5ad709443943bb2656ba06b2d51d00107f70f957d7b9a492ca7dd94ae"
+      },
+      "preserved_copy_path": "output/engineering/causal-fresh-v12-source-preparation/attempt-001/auditor-evaluation/parent-copies/code/research/causal_fresh_v11_training_audit/README.md",
+      "owned_target": "code/research/causal_fresh_v12_training_audit/README.md"
+    }
+  ],
+  "owned_nonself_sources": [
+    {
+      "path": "code/research/causal_fresh_v12_training_audit/audit_training.py",
+      "bytes": 146160,
+      "sha256": "d4387a2fb14247a39ad6f132c30e97459f57f0f82d29aa372ae28655e460f737"
+    },
+    {
+      "path": "code/research/causal_fresh_v12_training_audit/README.md",
+      "bytes": 5333,
+      "sha256": "90a49c7d83dc331ba93b5e55482a47f36b4869738455dcc6422db551b4798502"
+    }
+  ],
+  "self_path": "code/research/causal_fresh_v12_training_audit/provenance.json",
+  "self_hash_excluded": true,
+  "objective_contract": {
+    "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+    "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "loss_coefficients": [
+      1.0,
+      1.0
+    ],
+    "mean_huber_delta": 1.0
+  },
+  "temporal_contract": {
+    "temporal_pooling_policy": "original-position-four-bin-attention-mean4-uniform-centered-variance4-v1",
+    "temporal_pooling_partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+    "temporal_moment_policy": "componentwise-centered-variance-half-local-global-uniform-own-two-sum-mean-v1",
+    "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+    "temporal_moment_partition": [
+      4,
+      4
+    ]
+  },
+  "controls_and_pairing": {
+    "baseline": "CPB-v3.market-01",
+    "historical_controls": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "historical_trust_joins": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "whole40_historical": [
+      6,
+      7,
+      10
+    ],
+    "partial20_40_historical": [
+      8,
+      9,
+      11
+    ],
+    "historical_V9_recovery": "Opaque saved recovery card/receipt only; never a current V12 recovery or replay",
+    "current_reference": "CPB-v11.market-01 saved initial DATA and five whole fresh statistics",
+    "pairing_archives": 13,
+    "feature_archives": 8,
+    "whole_statistic_archives": 5,
+    "feature_coordinate_slice": [
+      20,
+      40
+    ],
+    "content0_20_equality_required": false,
+    "whole_native40_equality_claimed": false,
+    "comparison_methods": 11,
+    "comparison_market_rows": 44,
+    "TEMPO_panels": 4
+  },
+  "strongest_future_protocol": {
+    "protocol": {
+      "path": "doc/clean_causal_encoder_search_goal_v11_retention.json",
+      "bytes": 48667,
+      "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b"
+    },
+    "independent_review": {
+      "path": "doc/causal_v11_retention_review/independent-review.json",
+      "bytes": 3839,
+      "sha256": "9d15d8df155460787270df8fedc75f08ea31ad1381d6061a73e264343c5c78ee"
+    },
+    "application": {
+      "path": "doc/causal_v11_retention_review/applied-future-protocol.json",
+      "bytes": 3032,
+      "sha256": "e59f8eeaa4993ec116eca2751c2cbb9a957c6ae81b95047917b71e01485f3035"
+    },
+    "criteria": 22,
+    "numeric_floors": 19,
+    "positivity": 3,
+    "independent_review_checks": 723,
+    "prospective_future_use_applied": true,
+    "numeric_tolerance": 1E-12,
+    "earlier_chronological_ties": true,
+    "additional_TRAIN_NLL_gate": false,
+    "historical_counts_recomputed": false,
+    "future_main_card_hash": "Externally bound after complete source freeze; no invented hash"
+  },
+  "imports": "Full physical owned sources; no prior implementation import or forwarding shim. Auditors: stdlib/local inert reader only. Comparator imports its OWN report.py.",
+  "actual_card_created": false,
+  "execution": {
+    "source_file_hash_text_JSON_only": true,
+    "AST": 0,
+    "imports": 0,
+    "build": 0,
+    "tests": 0,
+    "Docker": 0,
+    "CUDA": 0,
+    "body": 0,
+    "model": 0,
+    "head": 0,
+    "training": 0,
+    "fits": 0,
+    "quality": 0,
+    "DEV_writes": 0,
+    "Git_operations": 0
+  },
+  "new_numeric_scope": {
+    "actual_updates": [
+      1,
+      2048
+    ],
+    "actual_2048_before_coefficients": "pre-step2047; never final decoder substitution",
+    "component_archive_fields": 60,
+    "base_fields": 23,
+    "parameter_array_fields": 12,
+    "temporal_trace_fields": 25,
+    "new_dispersion_fields": [
+      "temporal_pool_dispersion_weights",
+      "temporal_pool_dispersion_mean",
+      "temporal_contextual_pool_dispersion_weights",
+      "temporal_contextual_pool_dispersion_mean"
+    ],
+    "dispersion_weights_shape": "[R,4,T]",
+    "dispersion_center_shape": "[R,4,64]",
+    "attention_mean_formula": "0.5*sum(local_attention*safe_h)+0.5*sum(global_attention*safe_h), unchanged two sums",
+    "uniform_center_formula": "0.5*sum(local_uniform*safe_h)+0.5*sum(global_uniform*safe_h), OWN two sums",
+    "variance_formula": "sum(captured_u_actual*(safe_h-captured_own_center)^2)",
+    "fixed_score_hidden_formula": "attention_two_sum_coeff*a+2*b*(u_actual*(h-c)-center_coeff*sum(u_actual*(h-c)))",
+    "center_coeff": "0.5*f32(1/local_count)*local_member+0.5*f32(1/global_count); separate from rounded mixture values",
+    "dispersion_direct_score_derivative": 0,
+    "position_score_reference": "attention mean only q=a dot safe_h; local/global softmax adjoints",
+    "retained_upstream": "PRECLIP-post-empty-export; explicit undefined-route flag with zero fallback",
+    "sum_both_routes_then_clip_once": true,
+    "parameter_parity": [
+      "export weight",
+      "export bias",
+      "pool_positions"
+    ],
+    "manual_F32_abs_rel": 3E-05,
+    "actual_local_adjoint_abs": 1E-09,
+    "actual_local_adjoint_rel": 0.0003,
+    "each_update_expected_postclip_export_maximum_floor": 1E-06,
+    "gauge": "finite descriptive actual/reference/error; no tight parity or nonzero gate",
+    "fixed_score_hidden_reference_is_parity": false,
+    "score_to_hidden_route_reconstructed": false,
+    "hidden_adjoint_arrays_available": false,
+    "full_hidden_encoder_global_norm_reconstructed": false,
+    "other2046_raw_gradients_reconstructed": false,
+    "per_scalar_learning_proof_claimed": false,
+    "observed_moment_subgroup_rows": 16384,
+    "whole8_two4_norm_partition_abs_rel": 2E-12,
+    "actual_check_total": "unknown until separately admitted run"
+  },
+  "mechanism_fixture_contract": {
+    "direct_pool_kernel_calls": 47,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_optimizer_steps": 1,
+    "F64_FD_coordinates": 18,
+    "F32_FD_coordinates": 18,
+    "isolated_autograd_grad_calls": 2,
+    "required_flags": [
+      "attention_mean_and_uniform_dispersion_full_expression_adjoints",
+      "uniform_dispersion_own_center",
+      "uniform_dispersion_score_independent",
+      "uniform_dispersion_hidden_gradient_live",
+      "attention_mean_score_gradient_live",
+      "dual_support_actual_trace"
+    ],
+    "source_only_not_claimed_passed": true
+  },
+  "preserved_numeric_modules": [
+    "TRAIN4096 input/bank statistics",
+    "inert archive reader",
+    "all registered model/fixedprior/optimizer state",
+    "manual Huber/Gaussian/support/F64 hierarchy",
+    "all2048 success rows with actual permitted attempts/skips",
+    "group/gauge/Hadamard observations"
+  ],
+  "result_accounting": "CORE plus five modules; new moments nested within temporal_pooling_saved_learning; no anticipated total"
+}

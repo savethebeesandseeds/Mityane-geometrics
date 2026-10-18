@@ -1,0 +1,88 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 18,
+  "design_slot": "RPB-v18",
+  "canonical_registered_tag": "RPB-v18",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Learned shape with fixed generic unit temporal relations",
+  "registered_design_parameters": {
+    "architecture_id": "early-native20-shape-plus12-fixed-unit-grouped-time-odd-relations-v1",
+    "native_global_width": 32
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/embedding_versions.json",
+      "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+      "bytes": 1234427,
+      "verified_available_at_indexing": true,
+      "json_pointer": "/versions/19"
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/embedding_versions.json",
+        "sha256": "8b6aa0e3070af835b3e259ecab9aab3e8098f97334482028cbb685fd479e55a5",
+        "bytes": 1234427,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/17"
+      },
+      "declaration": {
+        "id": "RPB-v18.alt-01",
+        "encoder_tag": "RPB-v18",
+        "status": "separate_two_component_matched_control_no_reference_replacement",
+        "description": "New unchanged v18 instances for separate two-component timing and balance tasks",
+        "master_seeds": [
+          920903,
+          920904
+        ],
+        "encoder_updates_each": 512,
+        "checkpoint_path_pattern": "/embedding/output/runs/rpb-multiband-screen/admission-0Yzi6p/v18/seed-{master}-{task}/point-512/checkpoint.pt",
+        "capsule": "/embedding/output/runs/rpb-multiband-screen/admission-0Yzi6p",
+        "artifact_inventory_sha256": "e1ddeb7044b4846cb4be4d6eaad079d42d7e06e9a006ba01035942f1b79f0545",
+        "measured_record": "doc/MULTIBAND_SCREEN_V1.md",
+        "source_fingerprint": "f966efd3745727447e1a601b08e354761b1ad554d380d34a8ee610192848a2ee",
+        "card_sha256": "8fdbdf57363e5cbeaf2e55d267770ffb59a3dccb253109204d2f77b7577079a5"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "No dedicated current standalone config template is proved here; use the pinned historical card/registry declaration.",
+    "Current shared implementation locator is verified, but byte-exact equivalence to every historical training-source snapshot is not re-proved. Frozen capsules remain authoritative.",
+    "Checkpoint availability outside the55 matched market pins is not rechecked by this bounded index; declared historical references remain preserved."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0,
+  "current_component_locator": {
+    "status": "verified current shared component only; historical exact definition is not established by this locator",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "sha256": "e7461311768c67208f0c915ec5777495c3c246b378d4e9a38ef012fc9589ef8c",
+      "bytes": 4189,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "UnitTemporalRelationModel",
+      "UnitTemporalRelationModelImpl"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": null,
+    "registered_configuration_path": null
+  },
+  "historical_exact_definition_status": "unproved; use the pinned original registry/card/capsule and explicit gaps"
+}

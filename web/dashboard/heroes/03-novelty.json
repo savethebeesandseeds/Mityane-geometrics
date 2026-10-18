@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-03-novelty",
+  "number": 3,
+  "title": "OR-03 · Anomaly and novelty scoring",
+  "summary": "Score departures from an explicit reference population and distinguish unusual observations from useful or harmful ones.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-03-novelty-contract",
+      "title": "Define the operation contract",
+      "description": "Define reference data, observation or transition scores, calibration, threshold policy and failure or abstention behavior.",
+      "milestones": [
+        {
+          "id": "or-03-novelty-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define reference data, observation or transition scores, calibration, threshold policy and failure or abstention behavior. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Separate reference fitting, threshold calibration and assessment populations. Declare whether alerts are per point, window, transition or event, and define the false-alert denominator and score-versus-probability interpretation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-03-novelty-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide a reproducible scorer with versioned reference artifacts and explicit handling of missing or unsupported inputs.",
+      "milestones": [
+        {
+          "id": "or-03-novelty-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide a reproducible scorer with versioned reference artifacts and explicit handling of missing or unsupported inputs. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Persist reference and calibration artifacts separately with frozen threshold policy. Unsupported inputs return an explicit result state; the scorer does not silently refit its definition of normality on assessment data."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-03-novelty-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Measure detection and false alerts on a declared population against appropriate baselines, with thresholds fitted outside held-out assessment.",
+      "milestones": [
+        {
+          "id": "or-03-novelty-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Measure detection and false alerts on a declared population against appropriate baselines, with thresholds fitted outside held-out assessment. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Report detection, false alerts and threshold sensitivity at the declared alert unit using held-out calibration boundaries; normal-only assessment can measure false alerts but does not establish sensitivity to unobserved anomaly classes."
+          ]
+        }
+      ]
+    }
+  ]
+}

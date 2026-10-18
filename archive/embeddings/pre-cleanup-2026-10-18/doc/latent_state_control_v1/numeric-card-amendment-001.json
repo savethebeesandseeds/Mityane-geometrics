@@ -1,0 +1,23 @@
+{
+  "schema": "cuwacunu-latent-state-prospective-amendment-v1",
+  "id": "latent-state-development-2026-10-18-v1-scientific-rules-001",
+  "registeredOn": "2026-10-18",
+  "originalCard": "doc/latent_state_control_v1/numeric-card.json",
+  "originalCardSha256": "38a551055a0bc329dde059e403d7f791cc812c123e6f5837f7840fc273287325",
+  "reason": "Independent pre-execution review identified an unjustified superiority margin over refitted ridge and an embedding-target scope mismatch. Correct the scientific registration before any market outcome is generated or inspected. The residual-MLP architecture, counts, initialization, optimizer, transforms, seeds and budget remain exactly as originally registered.",
+  "supersedes": ["decisions.pointSkill", "decisions.attribution"],
+  "pointSkill": {
+    "coordinates": "Score each prediction only against the future observations in its own exact frozen target coordinate system. State forecasts use that checkpoint's target-state bank, with separately fitted mean/persistence/K1/K4 ridge in the identical bank. Direct-embedding mean/persistence/K1/K4/ridge/residual-MLP forecasts are scored only against their own frozen native-e targets. Never compare raw latent losses across these coordinate spaces or map embedding-control outputs into a different target space to claim the direct-embedding result.",
+    "usefulEffect": "For each coordinate space separately, the simultaneous95% lower confidence bound on relative normalized MSE reduction versus both matched mean and persistence must exceed0.05.",
+    "linearControlNoninferiority": "For state point-skill admission, the simultaneous95% upper bound on relative normalized MSE degradation versus each refitted K1/K4 ridge in the same target-state coordinates must be at most0.02. No positive superiority margin over refitted ridge is required or inferred. For direct-embedding methods, report the same within-native-e comparisons separately.",
+    "challenge": "Report all1/16/128-tick horizons and overlap/support strata. A supported state point-skill decision requires the128-tick h>=H challenge to satisfy useful-effect and noninferiority rules, passing retention/diversity/coverage safeguards, and the actually fitted registered residual-MLP native-e control results and pinned artifacts.",
+    "interpretation": "An affine predictive-state pipeline and its compatible affine readout do not introduce additional observations or a larger affine function class than the same complete embedding history. Differences may reflect conditioning, regularization or training; they do not by themselves establish new information or nonlinear expressivity."
+  },
+  "attribution": {
+    "task": "Compare full minus blocked-prediction and full minus frozen-state on the identical common-observable task and matched populations only. Learned target-coordinate losses from different checkpoints cannot supply this contrast.",
+    "rule": "To attribute a practically useful predictive-shaping gain on a declared common observable, both contrasts must have simultaneous95% lower confidence bounds above0.05 relative MSE reduction and pass the registered safeguards. Otherwise record the narrower observed, negative or inconclusive disposition without crediting an unsupported mechanism.",
+    "riskLimit": "Forecast augmentation of a complete identical history with affine forecasts remains an affine reparameterization under affine risk heads. Verify folding without refitting; any observed benefit is scoped to the declared optimization/regularization recipe and requires the registered controls."
+  },
+  "executionPolicy": "The execution closure must pin both the unchanged original card and this amendment. All later implementations, outputs and reports retain both identities. No market capture, fitted control, quality result, state/point-skill decision or confirmation is produced by this amendment.",
+  "outcome": "prospective-registration-only"
+}

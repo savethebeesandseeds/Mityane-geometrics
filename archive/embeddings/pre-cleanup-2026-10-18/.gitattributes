@@ -1,0 +1,201 @@
+# Linux entry points must survive a Windows checkout without CRLF conversion.
+*.sh text eol=lf
+Makefile text eol=lf
+# Keep Linux C++ sources consistent when staged from Windows.
+*.cpp text eol=lf
+*.h text eol=lf
+# Preserve the exact SOURCE and report bytes pinned by the TEMPO-3 evidence.
+code/evaluation/protocols/structured_hard_timing_v1/** text eol=lf
+code/evaluation/tools/structured_hard_timing_v1/** text eol=lf
+code/evaluation/cards/structured_hard_timing_comparison_v*.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/STRUCTURED_HARD_TIMING_DIAGNOSTIC.md text eol=lf
+doc/dataset_registry.json text eol=lf
+doc/results/structured_hard_timing_*.json text eol=lf
+doc/STRUCTURED_HARD_TIMING*.md text eol=lf
+# Preserve the saved TRAIN diagnosis and future difference-input experiment pins.
+code/evaluation/tools/structured_hard_timing_train_v1/** text eol=lf
+code/evaluation/cards/structured_hard_timing_train_diagnostic_v1.md text eol=lf
+code/evaluation/protocols/visible_difference_v1/** text eol=lf
+code/evaluation/cards/visible_difference_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/STRUCTURED_HARD_TIMING_TRAIN_DIAGNOSTIC.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/VISIBLE_DIFFERENCE_DIAGNOSTIC.md text eol=lf
+code/evaluation/tools/visible_difference_v1/** text eol=lf
+doc/results/visible_difference_v1.json text eol=lf
+doc/embedding_versions.json text eol=lf
+# Small architecture screens retain exact source/card/result bytes.
+code/evaluation/protocols/architecture_screen_v1/** text eol=lf
+code/evaluation/cards/architecture_screen_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/TEMPORAL_ARCHITECTURE_SCREEN.md text eol=lf
+doc/results/architecture_screen_v1.json text eol=lf
+code/evaluation/protocols/partitioned_relation_screen_v1/** text eol=lf
+code/evaluation/cards/partitioned_relation_screen_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/PARTITIONED_TEMPORAL_RELATION_SCREEN.md text eol=lf
+doc/results/partitioned_relation_screen_v1.json text eol=lf
+code/evaluation/protocols/fixed_prior_relation_screen_v1/** text eol=lf
+code/evaluation/cards/fixed_prior_relation_screen_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/FIXED_PRIOR_TEMPORAL_RELATION_SCREEN.md text eol=lf
+doc/results/fixed_prior_relation_screen_v1.json text eol=lf
+code/evaluation/protocols/fixed_prior_fresh_confirmation_v1/** text eol=lf
+code/evaluation/cards/fixed_prior_fresh_confirmation_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/FIXED_PRIOR_FRESH_CONFIRMATION.md text eol=lf
+doc/results/fixed_prior_fresh_confirmation_v1.json text eol=lf
+doc/MILESTONE_2026-10-10_RPB_V17.md text eol=lf
+code/evaluation/protocols/unit_relation_screen_v1/** text eol=lf
+code/evaluation/cards/unit_relation_screen_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/UNIT_TEMPORAL_RELATION_SCREEN.md text eol=lf
+doc/results/unit_relation_screen_v1.json text eol=lf
+doc/MILESTONE_2026-10-10_RPB_V18.md text eol=lf
+doc/CONTINUATION_2026-10-10_AFTER_FRESH_V17.md text eol=lf
+doc/PROPOSED_TEMPO4_CHALLENGE.md text eol=lf
+# Preserve the prospective two-component data-only admission and witnesses.
+code/evaluation/protocols/two_component_information_v1/** text eol=lf
+code/evaluation/cards/two_component_information_v1.md text eol=lf
+doc/results/two_component_information_v1.json text eol=lf
+doc/TWO_COMPONENT_INFORMATION_V1.md text eol=lf
+doc/two_component_dataset_registry.json text eol=lf
+# Preserve the prospective multiband screen and its saved arithmetic.
+code/evaluation/protocols/multiband_screen_v1/** text eol=lf
+code/evaluation/cards/multiband_screen_v1.md text eol=lf
+doc/results/multiband_screen_v1.json text eol=lf
+doc/MULTIBAND_SCREEN_V1.md text eol=lf
+doc/CONTINUATION_2026-10-10_AFTER_MULTIBAND.md text eol=lf
+# Preserve unchanged-v19 fresh-source confirmation evidence.
+code/evaluation/protocols/spectral_confirmation_v1/** text eol=lf
+code/evaluation/cards/spectral_confirmation_v1.md text eol=lf
+doc/results/spectral_confirmation_v1.json text eol=lf
+doc/SPECTRAL_CONFIRMATION_V1.md text eol=lf
+doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md text eol=lf
+# Keep the reusable v20 file-pair hashes stable on fresh Windows checkouts.
+code/shared/config/README.md text eol=lf
+code/shared/config/IMPORT.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/configurable_spectral.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/configurable_spectral.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/CONFIGURABLE_SPECTRAL.md text eol=lf
+# Preserve the configurable capacity recipe, runner and measured records.
+code/evaluation/protocols/configurable_capacity_v1/** text eol=lf
+code/evaluation/cards/configurable_capacity_v1.md text eol=lf
+doc/configurable_capacity_dataset_registry.json text eol=lf
+doc/configurable_capacity_embedding_versions.json text eol=lf
+doc/results/configurable_capacity_v1.json text eol=lf
+doc/CONFIGURABLE_CAPACITY_V1.md text eol=lf
+doc/CONTINUATION_2026-10-12_AFTER_CONFIGURABLE_CAPACITY.md text eol=lf
+# Evidence captures retain original line endings/whitespace rather than being reformatted.
+doc/results/configurable_capacity_v1/** -text -whitespace
+doc/results/configurable_capacity_review_2026_10_12/** -text -whitespace
+doc/results/configurable_capacity_review_2026_10_12.json text eol=lf
+doc/CODE_REVIEW_2026-10-12.md text eol=lf
+code/evaluation/protocols/configurable_branch_v1/** text eol=lf
+code/evaluation/cards/configurable_branch_v1.md text eol=lf
+doc/CONFIGURABLE_BRANCH_V1.md text eol=lf
+doc/results/configurable_branch_v1.json text eol=lf
+doc/results/configurable_branch_v1/** -text -whitespace
+code/evaluation/protocols/learned_train_v1/** text eol=lf
+code/evaluation/cards/learned_train_v1.md text eol=lf
+doc/results/learned_train_v1/** -text -whitespace
+code/evaluation/protocols/configurable_learned_relation_v1/** text eol=lf
+code/evaluation/cards/configurable_learned_relation_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/learned_ordered_relation.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/LEARNED_ORDERED_RELATION.md text eol=lf
+doc/results/configurable_learned_relation_v1/** -text -whitespace
+code/evaluation/protocols/configurable_content_relation_v1/** text eol=lf
+code/evaluation/cards/configurable_content_relation_v1.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/content_ordered_relation.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/consecutive_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/consecutive_change.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/CONSECUTIVE_CHANGES.md text eol=lf
+doc/consecutive_change_embedding_versions.json text eol=lf
+code/encoders/raw_patch_bottleneck_mae/content_ordered_relation.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/CONTENT_ORDERED_RELATION.md text eol=lf
+doc/results/configurable_content_relation_v1/** -text -whitespace
+code/encoders/raw_patch_bottleneck_mae/frozen_level.mk text eol=lf
+doc/frozen_change_embedding_versions.json text eol=lf
+
+code/encoders/raw_patch_bottleneck_mae/FROZEN_LEVEL_TRAINING.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/separated_change.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/separated_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/SEPARATED_CHANGES.md text eol=lf
+doc/separated_change_embedding_versions.json text eol=lf
+doc/HANDOFF_2026-10-14.md text eol=lf
+# Keep native36 portable pairs and the saved transfer documentation stable.
+code/encoders/raw_patch_bottleneck_mae/config/separated_changes_native36.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/separated_change_native36.mk text eol=lf
+doc/separated_change_native36_embedding_versions.json text eol=lf
+doc/SEPARATED_CHANGE_NATIVE36.md text eol=lf
+doc/MARKET_ENCODER_SYNTHETIC_TRANSFER.md text eol=lf
+doc/MILESTONE_2026-10-14_NATIVE36_TRANSFER.md text eol=lf
+doc/MARKET_TRAIN_VOLATILITY_DIAGNOSIS.md text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/energy_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/energy_change.mk text eol=lf
+doc/CHANGE_ENERGY_V25.md text eol=lf
+doc/change_energy_embedding_versions.json text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/conditioned_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/conditioned_change.mk text eol=lf
+doc/TRAIN_CONDITIONED_CHANGE_V26.md text eol=lf
+doc/conditioned_change_embedding_versions.json text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/parent_conditional_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/parent_conditional_change.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/relative_changes.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/relative_change.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/parent_modulated_decoder.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder.mk text eol=lf
+code/encoders/raw_patch_bottleneck_mae/config/location_scale_decoder.conf text eol=lf
+code/encoders/raw_patch_bottleneck_mae/location_scale_decoder.mk text eol=lf
+# Hash-bound source archives, version bodies and audit records retain exact bytes.
+archive/** -text -whitespace
+code/encoders/raw_patch_bottleneck_mae/** -text -whitespace
+code/encoders/causal_patch_bottleneck_mae/** -text -whitespace
+doc/rpb_layout_cleanup/** -text -whitespace
+AGENTS.md -text
+doc/CURRENT_STATUS.md -text
+# Prospective causal-training declarations and owned admission sources.
+doc/CAUSAL_FINETUNE_V2_CARD.* -text -whitespace
+doc/causal_finetune_v2/** -text -whitespace
+code/research/causal_finetune_v2/** -text -whitespace
+doc/results/causal_finetune_v2/** -text -whitespace
+doc/CAUSAL_FINETUNE_V2_RESULTS.md -text -whitespace
+doc/CAUSAL_FINETUNE_V2_REVIEW.md -text -whitespace
+doc/causal_encoder_research_ledger.json -text -whitespace
+doc/CAUSAL_TRAINING_PROVENANCE_CORRECTION_2026-10-15.md -text -whitespace
+doc/CAUSAL_FRESH_V3_CARD.* -text -whitespace
+doc/causal_fresh_v3/** -text -whitespace
+code/research/causal_fresh_v3/** -text -whitespace
+doc/CAUSAL_FRESH_V3_RESULTS.md -text -whitespace
+doc/results/causal_fresh_v3/** -text -whitespace
+doc/CAUSAL_FRESH_V3_REVIEW.md -text -whitespace
+doc/clean_causal_encoder_research_ledger.json -text -whitespace
+README.md -text
+doc/ENVIRONMENT.md -text
+
+doc/cpb_v3_primary_integration/** -text -whitespace
+
+code/networks/** -text -whitespace
+
+code/evaluation/latent_dynamics/** -text -whitespace
+
+doc/LATENT_MARKET_NETWORKS_V1_BACKPORT_2026-10-15_DOCS.json -text -whitespace
+
+doc/CAUSAL_V3_TRAIN_DIAGNOSIS_CARD.* -text -whitespace
+
+doc/causal_v3_train_diagnosis/** -text -whitespace
+
+code/research/causal_v3_train_diagnosis/** -text -whitespace
+
+doc/CAUSAL_FRESH_V4_CARD.* -text -whitespace
+
+doc/causal_fresh_v4/** -text -whitespace
+
+code/research/causal_fresh_v4/** -text -whitespace
+
+doc/results/causal_fresh_v4/** -text -whitespace
+
+code/research/causal_fresh_v4_audit/** -text -whitespace
+code/research/causal_fresh_v4_training_audit/** -text -whitespace
+code/research/causal_fresh_v4_reporting_attempt_002/** -text -whitespace
+doc/CAUSAL_V3_TRAIN_DIAGNOSIS.md -text -whitespace
+doc/CAUSAL_FRESH_V4_RESULTS.md -text -whitespace
+doc/CAUSAL_FRESH_V4_DETAIL.md -text -whitespace
+doc/CAUSAL_FRESH_V4_REVIEW.md -text -whitespace
+
+# Imported research retains exact working-tree bytes in the parent repository.
+* -text -whitespace

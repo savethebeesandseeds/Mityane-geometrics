@@ -1,0 +1,3737 @@
+{
+  "format_version": 1,
+  "protocol": "v7-decoder-calibration-v1",
+  "evidence_stage": "known-development TRAIN/VALIDATION decoder-only sufficiency diagnosis",
+  "status": "measured; independent audit passed",
+  "created_utc": "2026-10-08T09:51:22.168292+00:00",
+  "capsule": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20",
+  "human_card": {
+    "path": "code/evaluation/cards/v7_decoder_calibration_v1.md",
+    "bytes": 6008,
+    "sha256": "5ae05a3b5ec253d1743842f82fc28b45e0f20c8c84da1b58bf4ab9c514d292e9"
+  },
+  "source_fingerprint": "fb5aef0d015b9ca373bc7a52a24ada6cb86bde3f9ac0e451d7a419c684d8de4d",
+  "admission": {
+    "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/admission/passed.json",
+    "bytes": 784,
+    "sha256": "cdee6112143bf4dc26d80239cc88f2555f1cf4e5e6a68bd4fb21768b34f20852"
+  },
+  "admission_log": {
+    "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/admission/build-and-tests.log",
+    "bytes": 8145,
+    "sha256": "1166d23bd5894835116b31fb6edef1028eec7047008bdb00e5bebcf1b69bec8b"
+  },
+  "capsule_inventory": {
+    "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/artifact-integrity.json",
+    "bytes": 46596,
+    "sha256": "51400954bc2e9cae483de2e2a784e83f93482b02a888a3bdf95581d207967442"
+  },
+  "capsule_inventory_file_count": 227,
+  "capsule_inventory_total_bytes": 130624183,
+  "completed": {
+    "protocol": "v7-decoder-calibration-v1",
+    "status": "complete",
+    "masters": 5,
+    "points": 10,
+    "new_encoder_updates": 0,
+    "decoder_updates_each": 128,
+    "head_fits": 0,
+    "testing_accessed": false,
+    "stress_accessed": false
+  },
+  "new_encoder_updates": 0,
+  "new_head_fits": 0,
+  "new_accuracy_measurements": 0,
+  "training_device": "CUDA, NVIDIA RTX A2000 8 GB",
+  "batch_size": 8,
+  "engineering_admission_history": {
+    "first_compile_only_failure": "output/runs/rpb-v7-decoder-calibration/admission/admission-rZA1Ma",
+    "repair": "two const-reference fixes; no model/card/numerical change",
+    "quality_payloads_opened_before_repair": 0,
+    "failure_preserved": true
+  },
+  "cached_intact_validation_quality": {
+    "RPB-v4": {
+      "size": 32,
+      "linear_percent": 93.59375,
+      "neural_percent": 95.98958333333334,
+      "coverage_percent": 100.0,
+      "per_master": [
+        {
+          "master_seed": 4404,
+          "linear_accuracy": 0.984375,
+          "neural_accuracy": 1.0,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 254,
+                "abstained": 0,
+                "full_population_correctness": 0.9921875,
+                "coverage": 1,
+                "accuracy": 0.9921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 254,
+                "abstained": 0,
+                "full_population_correctness": 0.9921875,
+                "coverage": 1,
+                "accuracy": 0.9921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 254,
+                "abstained": 0,
+                "full_population_correctness": 0.9921875,
+                "coverage": 1,
+                "accuracy": 0.9921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 5505,
+          "linear_accuracy": 0.9140625,
+          "neural_accuracy": 0.9244791666666666,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 237,
+                "abstained": 0,
+                "full_population_correctness": 0.92578125,
+                "coverage": 1,
+                "accuracy": 0.92578125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 254,
+                "abstained": 0,
+                "full_population_correctness": 0.9921875,
+                "coverage": 1,
+                "accuracy": 0.9921875
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 117,
+                "abstained": 0,
+                "full_population_correctness": 0.9140625,
+                "coverage": 1,
+                "accuracy": 0.9140625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 118,
+                "abstained": 0,
+                "full_population_correctness": 0.921875,
+                "coverage": 1,
+                "accuracy": 0.921875
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 237,
+                "abstained": 0,
+                "full_population_correctness": 0.92578125,
+                "coverage": 1,
+                "accuracy": 0.92578125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 252,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 117,
+                "abstained": 0,
+                "full_population_correctness": 0.9140625,
+                "coverage": 1,
+                "accuracy": 0.9140625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 117,
+                "abstained": 0,
+                "full_population_correctness": 0.9140625,
+                "coverage": 1,
+                "accuracy": 0.9140625
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 237,
+                "abstained": 0,
+                "full_population_correctness": 0.92578125,
+                "coverage": 1,
+                "accuracy": 0.92578125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 117,
+                "abstained": 0,
+                "full_population_correctness": 0.9140625,
+                "coverage": 1,
+                "accuracy": 0.9140625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 120,
+                "abstained": 0,
+                "full_population_correctness": 0.9375,
+                "coverage": 1,
+                "accuracy": 0.9375
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 6606,
+          "linear_accuracy": 1.0,
+          "neural_accuracy": 1.0,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 7707,
+          "linear_accuracy": 0.890625,
+          "neural_accuracy": 0.9479166666666666,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 255,
+                "abstained": 0,
+                "full_population_correctness": 0.99609375,
+                "coverage": 1,
+                "accuracy": 0.99609375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 120,
+                "abstained": 0,
+                "full_population_correctness": 0.9375,
+                "coverage": 1,
+                "accuracy": 0.9375
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 255,
+                "abstained": 0,
+                "full_population_correctness": 0.99609375,
+                "coverage": 1,
+                "accuracy": 0.99609375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 122,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 122,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 8808,
+          "linear_accuracy": 0.890625,
+          "neural_accuracy": 0.9270833333333334,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 228,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 255,
+                "abstained": 0,
+                "full_population_correctness": 0.99609375,
+                "coverage": 1,
+                "accuracy": 0.99609375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 119,
+                "abstained": 0,
+                "full_population_correctness": 0.9296875,
+                "coverage": 1,
+                "accuracy": 0.9296875
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 228,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 255,
+                "abstained": 0,
+                "full_population_correctness": 0.99609375,
+                "coverage": 1,
+                "accuracy": 0.99609375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 121,
+                "abstained": 0,
+                "full_population_correctness": 0.9453125,
+                "coverage": 1,
+                "accuracy": 0.9453125
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 228,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 253,
+                "abstained": 0,
+                "full_population_correctness": 0.98828125,
+                "coverage": 1,
+                "accuracy": 0.98828125
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 114,
+                "abstained": 0,
+                "full_population_correctness": 0.890625,
+                "coverage": 1,
+                "accuracy": 0.890625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 116,
+                "abstained": 0,
+                "full_population_correctness": 0.90625,
+                "coverage": 1,
+                "accuracy": 0.90625
+              }
+            }
+          ]
+        }
+      ],
+      "status": "historical_cached; no new classification"
+    },
+    "RPB-v7": {
+      "size": 32,
+      "linear_percent": 97.96875,
+      "neural_percent": 98.95833333333334,
+      "coverage_percent": 100.0,
+      "per_master": [
+        {
+          "master_seed": 4404,
+          "linear_accuracy": 1.0,
+          "neural_accuracy": 1.0,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 5505,
+          "linear_accuracy": 0.9375,
+          "neural_accuracy": 0.9609375,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 243,
+                "abstained": 0,
+                "full_population_correctness": 0.94921875,
+                "coverage": 1,
+                "accuracy": 0.94921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 120,
+                "abstained": 0,
+                "full_population_correctness": 0.9375,
+                "coverage": 1,
+                "accuracy": 0.9375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 121,
+                "abstained": 0,
+                "full_population_correctness": 0.9453125,
+                "coverage": 1,
+                "accuracy": 0.9453125
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 243,
+                "abstained": 0,
+                "full_population_correctness": 0.94921875,
+                "coverage": 1,
+                "accuracy": 0.94921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 120,
+                "abstained": 0,
+                "full_population_correctness": 0.9375,
+                "coverage": 1,
+                "accuracy": 0.9375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 123,
+                "abstained": 0,
+                "full_population_correctness": 0.9609375,
+                "coverage": 1,
+                "accuracy": 0.9609375
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 243,
+                "abstained": 0,
+                "full_population_correctness": 0.94921875,
+                "coverage": 1,
+                "accuracy": 0.94921875
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 120,
+                "abstained": 0,
+                "full_population_correctness": 0.9375,
+                "coverage": 1,
+                "accuracy": 0.9375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 125,
+                "abstained": 0,
+                "full_population_correctness": 0.9765625,
+                "coverage": 1,
+                "accuracy": 0.9765625
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 6606,
+          "linear_accuracy": 1.0,
+          "neural_accuracy": 1.0,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 7707,
+          "linear_accuracy": 0.9765625,
+          "neural_accuracy": 1.0,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 247,
+                "abstained": 0,
+                "full_population_correctness": 0.96484375,
+                "coverage": 1,
+                "accuracy": 0.96484375
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 125,
+                "abstained": 0,
+                "full_population_correctness": 0.9765625,
+                "coverage": 1,
+                "accuracy": 0.9765625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 247,
+                "abstained": 0,
+                "full_population_correctness": 0.96484375,
+                "coverage": 1,
+                "accuracy": 0.96484375
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 125,
+                "abstained": 0,
+                "full_population_correctness": 0.9765625,
+                "coverage": 1,
+                "accuracy": 0.9765625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 247,
+                "abstained": 0,
+                "full_population_correctness": 0.96484375,
+                "coverage": 1,
+                "accuracy": 0.96484375
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 125,
+                "abstained": 0,
+                "full_population_correctness": 0.9765625,
+                "coverage": 1,
+                "accuracy": 0.9765625
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 128,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              }
+            }
+          ]
+        },
+        {
+          "master_seed": 8808,
+          "linear_accuracy": 0.984375,
+          "neural_accuracy": 0.9869791666666666,
+          "coverage": 1.0,
+          "repetitions": [
+            {
+              "id": "rep-1",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "15952039642448263928",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              }
+            },
+            {
+              "id": "rep-2",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "10925781080001991545",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 256,
+                "abstained": 0,
+                "full_population_correctness": 1,
+                "coverage": 1,
+                "accuracy": 1
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 127,
+                "abstained": 0,
+                "full_population_correctness": 0.9921875,
+                "coverage": 1,
+                "accuracy": 0.9921875
+              }
+            },
+            {
+              "id": "rep-3",
+              "status": "measured",
+              "reason": "",
+              "size": 32,
+              "actual_probe_seed": "14020430036991234725",
+              "ridge_parameters": 66,
+              "neural_parameters": 562,
+              "training_population": {
+                "total_rows": 256,
+                "valid_rows": 256,
+                "class_valid_rows": [
+                  128,
+                  128
+                ],
+                "total_source_groups": 128,
+                "valid_source_groups": 128,
+                "complete_source_pairs": 128,
+                "coverage": 1
+              },
+              "validation_population": {
+                "total_rows": 128,
+                "valid_rows": 128,
+                "class_valid_rows": [
+                  64,
+                  64
+                ],
+                "total_source_groups": 64,
+                "valid_source_groups": 64,
+                "complete_source_pairs": 64,
+                "coverage": 1
+              },
+              "ridge_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 244,
+                "abstained": 0,
+                "full_population_correctness": 0.953125,
+                "coverage": 1,
+                "accuracy": 0.953125
+              },
+              "tiny_training": {
+                "total": 256,
+                "valid": 256,
+                "correct": 255,
+                "abstained": 0,
+                "full_population_correctness": 0.99609375,
+                "coverage": 1,
+                "accuracy": 0.99609375
+              },
+              "ridge_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              },
+              "tiny_secondary_validation": {
+                "total": 128,
+                "valid": 128,
+                "correct": 126,
+                "abstained": 0,
+                "full_population_correctness": 0.984375,
+                "coverage": 1,
+                "accuracy": 0.984375
+              }
+            }
+          ]
+        }
+      ],
+      "status": "historical_cached; no new classification"
+    },
+    "raw": {
+      "size": 576,
+      "linear_percent": 49.6875,
+      "neural_percent": 50.8333333,
+      "coverage_percent": 100.0,
+      "status": "historical_published_cached; not newly recomputed"
+    },
+    "pca_only": {
+      "size": 32,
+      "linear_percent": 49.0625,
+      "neural_percent": 70.9895833,
+      "coverage_percent": 100.0,
+      "status": "historical_published_cached; not newly recomputed"
+    }
+  },
+  "historical_encoder_seconds": {
+    "RPB-v4": 13.847804410999998,
+    "RPB-v7": 15.6919237332
+  },
+  "reconstruction_aggregates": {
+    "0": {
+      "encoder_updates_retained": 512,
+      "decoder_updates_new": 0,
+      "training_standardized_mae": 0.08117869543536713,
+      "validation_standardized_mae": 0.08362986890671145,
+      "training_standardized_huber": 0.005302762202546421,
+      "validation_standardized_huber": 0.005613870916550705,
+      "decoder_training_loop_seconds": 0.0
+    },
+    "128": {
+      "encoder_updates_retained": 512,
+      "decoder_updates_new": 128,
+      "training_standardized_mae": 0.054038532332366426,
+      "validation_standardized_mae": 0.05698931712331416,
+      "training_standardized_huber": 0.0023432351144385953,
+      "validation_standardized_huber": 0.002603503456046148,
+      "decoder_training_loop_seconds": 2.0918182938000003
+    }
+  },
+  "recovery_thresholds": {
+    "training_standardized_mae": 0.0675931436195981,
+    "validation_standardized_mae": 0.07130906590008225
+  },
+  "recovery_guards": {
+    "training_standardized_mae": true,
+    "validation_standardized_mae": true,
+    "equal_full_support": true,
+    "encoder_parameters_buffers_scaler_and_native_exact": true,
+    "actual_finite_cuda_decoder_updates": true
+  },
+  "recovery_numeric_passed": true,
+  "per_master": [
+    {
+      "master_seed": 4404,
+      "v4_training_mae": 0.07269656396255328,
+      "v4_validation_mae": 0.07539036034224855,
+      "v7_before_training_mae": 0.07652934787615043,
+      "v7_before_validation_mae": 0.07853252803721296,
+      "v7_after_training_mae": 0.05426477792272874,
+      "v7_after_validation_mae": 0.055832798091661154,
+      "after_minus_v4_training_mae": -0.018431786039824538,
+      "after_minus_v4_validation_mae": -0.0195575622505874,
+      "decoder_training_loop_seconds": 1.973433869,
+      "finite_cuda_invariant_guard_passed": true
+    },
+    {
+      "master_seed": 5505,
+      "v4_training_mae": 0.05951363892793765,
+      "v4_validation_mae": 0.06416419579068944,
+      "v7_before_training_mae": 0.07969801774621191,
+      "v7_before_validation_mae": 0.08392551070934104,
+      "v7_after_training_mae": 0.05435331496766793,
+      "v7_after_validation_mae": 0.059321371354706685,
+      "after_minus_v4_training_mae": -0.005160323960269719,
+      "after_minus_v4_validation_mae": -0.004842824435982752,
+      "decoder_training_loop_seconds": 2.113318742,
+      "finite_cuda_invariant_guard_passed": true
+    },
+    {
+      "master_seed": 6606,
+      "v4_training_mae": 0.06253996046917608,
+      "v4_validation_mae": 0.06525504362104675,
+      "v7_before_training_mae": 0.08775463416963811,
+      "v7_before_validation_mae": 0.090370941781299,
+      "v7_after_training_mae": 0.05454935779761634,
+      "v7_after_validation_mae": 0.05713463211905248,
+      "after_minus_v4_training_mae": -0.007990602671559738,
+      "after_minus_v4_validation_mae": -0.008120411501994274,
+      "decoder_training_loop_seconds": 2.083855775,
+      "finite_cuda_invariant_guard_passed": true
+    },
+    {
+      "master_seed": 7707,
+      "v4_training_mae": 0.08021573989966033,
+      "v4_validation_mae": 0.08501756312646416,
+      "v7_before_training_mae": 0.08266849966238769,
+      "v7_before_validation_mae": 0.08578280484417306,
+      "v7_after_training_mae": 0.05368321682758932,
+      "v7_after_validation_mae": 0.057841230500247684,
+      "after_minus_v4_training_mae": -0.026532523072071004,
+      "after_minus_v4_validation_mae": -0.02717633262621648,
+      "decoder_training_loop_seconds": 2.001541492,
+      "finite_cuda_invariant_guard_passed": true
+    },
+    {
+      "master_seed": 8808,
+      "v4_training_mae": 0.06299981483866317,
+      "v4_validation_mae": 0.06671816661996235,
+      "v7_before_training_mae": 0.07924297772244746,
+      "v7_before_validation_mae": 0.07953755916153123,
+      "v7_after_training_mae": 0.053341994146229796,
+      "v7_after_validation_mae": 0.0548165535509028,
+      "after_minus_v4_training_mae": -0.009657820692433372,
+      "after_minus_v4_validation_mae": -0.011901613069059555,
+      "decoder_training_loop_seconds": 2.286941591,
+      "finite_cuda_invariant_guard_passed": true
+    }
+  ],
+  "all_ten_new_points": [
+    {
+      "master_seed": 4404,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 0,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 0,
+        "decoder_completed": 0,
+        "sampled_rows": 0,
+        "next_absolute_attempt": 512,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 0,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": false,
+        "last_latent_cuda": false,
+        "last_loss_cuda": false,
+        "finite_decoder_gradients": false,
+        "decoder_weights_changed": false
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66258,
+        "requested_observed_target_cells": 66258,
+        "target_coverage": 1,
+        "standardized_mae": 0.07652934787615043,
+        "standardized_huber": 0.0047154736862893565,
+        "query_checksum_fnv1a64": "6a0e008aa804ab5d",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33228,
+        "requested_observed_target_cells": 33228,
+        "target_coverage": 1,
+        "standardized_mae": 0.07853252803721296,
+        "standardized_huber": 0.004991105579166391,
+        "query_checksum_fnv1a64": "9da17086277f7df9",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 4404,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 128,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 128,
+        "decoder_completed": 128,
+        "sampled_rows": 1024,
+        "next_absolute_attempt": 640,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 1.973433869,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": true,
+        "last_latent_cuda": true,
+        "last_loss_cuda": true,
+        "finite_decoder_gradients": true,
+        "decoder_weights_changed": true
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66258,
+        "requested_observed_target_cells": 66258,
+        "target_coverage": 1,
+        "standardized_mae": 0.05426477792272874,
+        "standardized_huber": 0.0023643720131965064,
+        "query_checksum_fnv1a64": "6a0e008aa804ab5d",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33228,
+        "requested_observed_target_cells": 33228,
+        "target_coverage": 1,
+        "standardized_mae": 0.055832798091661154,
+        "standardized_huber": 0.0024691657417068957,
+        "query_checksum_fnv1a64": "9da17086277f7df9",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 5505,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 0,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 0,
+        "decoder_completed": 0,
+        "sampled_rows": 0,
+        "next_absolute_attempt": 512,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 0,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": false,
+        "last_latent_cuda": false,
+        "last_loss_cuda": false,
+        "finite_decoder_gradients": false,
+        "decoder_weights_changed": false
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66272,
+        "requested_observed_target_cells": 66272,
+        "target_coverage": 1,
+        "standardized_mae": 0.07969801774621191,
+        "standardized_huber": 0.005038706905378178,
+        "query_checksum_fnv1a64": "f84b37052e285545",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33182,
+        "requested_observed_target_cells": 33182,
+        "target_coverage": 1,
+        "standardized_mae": 0.08392551070934104,
+        "standardized_huber": 0.00569699361343889,
+        "query_checksum_fnv1a64": "76b0ffb382c9f681",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 5505,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 128,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 128,
+        "decoder_completed": 128,
+        "sampled_rows": 1024,
+        "next_absolute_attempt": 640,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 2.113318742,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": true,
+        "last_latent_cuda": true,
+        "last_loss_cuda": true,
+        "finite_decoder_gradients": true,
+        "decoder_weights_changed": true
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66272,
+        "requested_observed_target_cells": 66272,
+        "target_coverage": 1,
+        "standardized_mae": 0.05435331496766793,
+        "standardized_huber": 0.0023315987086074165,
+        "query_checksum_fnv1a64": "f84b37052e285545",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33182,
+        "requested_observed_target_cells": 33182,
+        "target_coverage": 1,
+        "standardized_mae": 0.059321371354706685,
+        "standardized_huber": 0.002810007950080798,
+        "query_checksum_fnv1a64": "76b0ffb382c9f681",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 6606,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 0,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 0,
+        "decoder_completed": 0,
+        "sampled_rows": 0,
+        "next_absolute_attempt": 512,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 0,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": false,
+        "last_latent_cuda": false,
+        "last_loss_cuda": false,
+        "finite_decoder_gradients": false,
+        "decoder_weights_changed": false
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66430,
+        "requested_observed_target_cells": 66430,
+        "target_coverage": 1,
+        "standardized_mae": 0.08775463416963811,
+        "standardized_huber": 0.006081322138165826,
+        "query_checksum_fnv1a64": "af7db440e4ebe8a1",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33276,
+        "requested_observed_target_cells": 33276,
+        "target_coverage": 1,
+        "standardized_mae": 0.090370941781299,
+        "standardized_huber": 0.006402144231618266,
+        "query_checksum_fnv1a64": "bf07f67403597ef9",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 6606,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 128,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 128,
+        "decoder_completed": 128,
+        "sampled_rows": 1024,
+        "next_absolute_attempt": 640,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 2.083855775,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": true,
+        "last_latent_cuda": true,
+        "last_loss_cuda": true,
+        "finite_decoder_gradients": true,
+        "decoder_weights_changed": true
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66430,
+        "requested_observed_target_cells": 66430,
+        "target_coverage": 1,
+        "standardized_mae": 0.05454935779761634,
+        "standardized_huber": 0.002422131959683047,
+        "query_checksum_fnv1a64": "af7db440e4ebe8a1",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33276,
+        "requested_observed_target_cells": 33276,
+        "target_coverage": 1,
+        "standardized_mae": 0.05713463211905248,
+        "standardized_huber": 0.0026900735918475235,
+        "query_checksum_fnv1a64": "bf07f67403597ef9",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 7707,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 0,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 0,
+        "decoder_completed": 0,
+        "sampled_rows": 0,
+        "next_absolute_attempt": 512,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 0,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": false,
+        "last_latent_cuda": false,
+        "last_loss_cuda": false,
+        "finite_decoder_gradients": false,
+        "decoder_weights_changed": false
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66206,
+        "requested_observed_target_cells": 66206,
+        "target_coverage": 1,
+        "standardized_mae": 0.08266849966238769,
+        "standardized_huber": 0.005700244345785223,
+        "query_checksum_fnv1a64": "7e515ef1afcdb4e9",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33084,
+        "requested_observed_target_cells": 33084,
+        "target_coverage": 1,
+        "standardized_mae": 0.08578280484417306,
+        "standardized_huber": 0.005924478235556273,
+        "query_checksum_fnv1a64": "2fdaac79eeb034dd",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 7707,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 128,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 128,
+        "decoder_completed": 128,
+        "sampled_rows": 1024,
+        "next_absolute_attempt": 640,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 2.001541492,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": true,
+        "last_latent_cuda": true,
+        "last_loss_cuda": true,
+        "finite_decoder_gradients": true,
+        "decoder_weights_changed": true
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66206,
+        "requested_observed_target_cells": 66206,
+        "target_coverage": 1,
+        "standardized_mae": 0.05368321682758932,
+        "standardized_huber": 0.002311904931639533,
+        "query_checksum_fnv1a64": "7e515ef1afcdb4e9",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33084,
+        "requested_observed_target_cells": 33084,
+        "target_coverage": 1,
+        "standardized_mae": 0.057841230500247684,
+        "standardized_huber": 0.002647191648103016,
+        "query_checksum_fnv1a64": "2fdaac79eeb034dd",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 8808,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 0,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 0,
+        "decoder_completed": 0,
+        "sampled_rows": 0,
+        "next_absolute_attempt": 512,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 0,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": false,
+        "last_latent_cuda": false,
+        "last_loss_cuda": false,
+        "finite_decoder_gradients": false,
+        "decoder_weights_changed": false
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66178,
+        "requested_observed_target_cells": 66178,
+        "target_coverage": 1,
+        "standardized_mae": 0.07924297772244746,
+        "standardized_huber": 0.0049780639371135235,
+        "query_checksum_fnv1a64": "76060a9f9269a835",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33282,
+        "requested_observed_target_cells": 33282,
+        "target_coverage": 1,
+        "standardized_mae": 0.07953755916153123,
+        "standardized_huber": 0.005054632922973709,
+        "query_checksum_fnv1a64": "ee1e0afeb9cb97d1",
+        "artifact": "validation-reconstruction.pt"
+      }
+    },
+    {
+      "master_seed": 8808,
+      "model_tag": "RPB-v7",
+      "decoder_stage": 128,
+      "progress": {
+        "original_encoder_attempted": 512,
+        "original_encoder_completed": 512,
+        "decoder_attempted": 128,
+        "decoder_completed": 128,
+        "sampled_rows": 1024,
+        "next_absolute_attempt": 640,
+        "decoder_parameters": 11528,
+        "frozen_parameters": 214277,
+        "decoder_training_loop_seconds": 2.286941591,
+        "encoder_parameters_exact": true,
+        "encoder_buffers_exact": true,
+        "scaler_exact": true,
+        "native_exports_exact": true,
+        "zero_encoder_gradients": true,
+        "last_input_cuda": true,
+        "last_latent_cuda": true,
+        "last_loss_cuda": true,
+        "finite_decoder_gradients": true,
+        "decoder_weights_changed": true
+      },
+      "training_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 256,
+        "valid_examples": 256,
+        "example_coverage": 1,
+        "valid_channels": 768,
+        "valid_target_cells": 66178,
+        "requested_observed_target_cells": 66178,
+        "target_coverage": 1,
+        "standardized_mae": 0.053341994146229796,
+        "standardized_huber": 0.0022861679590664738,
+        "query_checksum_fnv1a64": "76060a9f9269a835",
+        "artifact": "training-reconstruction.pt"
+      },
+      "validation_reconstruction": {
+        "status": "measured",
+        "units": "frozen training-scaler standardized",
+        "total_examples": 128,
+        "valid_examples": 128,
+        "example_coverage": 1,
+        "valid_channels": 384,
+        "valid_target_cells": 33282,
+        "requested_observed_target_cells": 33282,
+        "target_coverage": 1,
+        "standardized_mae": 0.0548165535509028,
+        "standardized_huber": 0.0024010783484925084,
+        "query_checksum_fnv1a64": "ee1e0afeb9cb97d1",
+        "artifact": "validation-reconstruction.pt"
+      }
+    }
+  ],
+  "report_metadata_inputs": [
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-4404-lag_sign/stage-0/point.json",
+      "bytes": 1460,
+      "sha256": "de2d2de4828f0e59e2f8cf9629259124f8e5714c67096dae15945a2b299976ec"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-4404-lag_sign/stage-128/point.json",
+      "bytes": 1474,
+      "sha256": "f51488f40be51dc37df440ea6fafed47e99b63c845011582e34cfd61ea6ab7f6"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-5505-lag_sign/stage-0/point.json",
+      "bytes": 1458,
+      "sha256": "7ac4f9b35ceeef57134324b3fbb6e00b6c15c597c5adc284cea1ab9174e64f17"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-5505-lag_sign/stage-128/point.json",
+      "bytes": 1481,
+      "sha256": "0154d608493b4a291b78bee6b5fb05a1af0f1e5360f08e331ca97c16e1e528cb"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-6606-lag_sign/stage-0/point.json",
+      "bytes": 1460,
+      "sha256": "d3b27fa5040c106fe37217b226ee87dd8c894bf8c22d6cef2c38c811c4dcc135"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-6606-lag_sign/stage-128/point.json",
+      "bytes": 1474,
+      "sha256": "b1da3a4f193a57232ac4bd48c86fc698c56b1de9ffa013c17b700b1752d1c197"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-7707-lag_sign/stage-0/point.json",
+      "bytes": 1460,
+      "sha256": "75af3cefde3c0cd2e72092a4be82de2a956f6ffd95126e1ac2af530aea92a2e9"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-7707-lag_sign/stage-128/point.json",
+      "bytes": 1481,
+      "sha256": "abf71e12852e4fbab90729123724774d4f82e0d83cfa86b0f941c9dfd584e8bc"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-8808-lag_sign/stage-0/point.json",
+      "bytes": 1460,
+      "sha256": "7cfd5228c07ebcf572c5fe8a8bce84d50d0d3b25d52a5a427116679b0fb2e9c5"
+    },
+    {
+      "path": "output/runs/rpb-v7-decoder-calibration/decoder-calibration-jXsW20/results/seed-8808-lag_sign/stage-128/point.json",
+      "bytes": 1479,
+      "sha256": "027b2b0274c11eaabf1f77491b0caff91d9de8a543a2b0f871dc82788e7c712e"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/validation-report.json",
+      "bytes": 77788,
+      "sha256": "72c1cba5f0ecbd949b0c21eb13c0ebf95714ce99db091a2f4d21620e64635dc4"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/seed-4404-lag_sign/milestone-512/point.json",
+      "bytes": 10798,
+      "sha256": "cb064b3057b6fa8cb504147db3e8da49d2ce3b1e84b72ab3411a2e805ad4846d"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/seed-5505-lag_sign/milestone-512/point.json",
+      "bytes": 10889,
+      "sha256": "57e36a1e7bf9b80a80b6178e55f1e03b3a34e1fecd507380b0c883d57979610b"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/seed-6606-lag_sign/milestone-512/point.json",
+      "bytes": 10722,
+      "sha256": "24db1dcd7703a2b5de5bcdd5fc3fb6af067f73f35e8afd649a564a48c559ff06"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/seed-7707-lag_sign/milestone-512/point.json",
+      "bytes": 10888,
+      "sha256": "141dfff170937bbed974157facd9708926068f8e9b3f6d006224da52740f692f"
+    },
+    {
+      "path": "output/runs/rpb-context-replication/context-replication-JjNEUc/reference/seed-8808-lag_sign/milestone-512/point.json",
+      "bytes": 10897,
+      "sha256": "a5538598b0287f0cdab3154cbe40c4e512a6d4b8d49580fd9eba1a35a596fa45"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/validation-report.json",
+      "bytes": 77540,
+      "sha256": "6facdcda4d851d76d99a780dfe71e5ea537492a18fda6a8eda175dc734a57124"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-4404-lag_sign/milestone-512/point.json",
+      "bytes": 10707,
+      "sha256": "a10d2a3de7308ea4e2a2f9e1c792be4f377239147c4e769eb313333b1da04b66"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-5505-lag_sign/milestone-512/point.json",
+      "bytes": 10841,
+      "sha256": "216ae4e97b9acccc19c94f875c1d6a3a13f93435c54b6c57f1d724d4fc2aaddf"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-6606-lag_sign/milestone-512/point.json",
+      "bytes": 10722,
+      "sha256": "39272e6d6566868917c6f5322959edec48f52d238b9d547e7b7114c4922d72d8"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-7707-lag_sign/milestone-512/point.json",
+      "bytes": 10814,
+      "sha256": "a56e8107904bd2d43ae43ffac5a17a4dbbad53c302c80fc0239b8f3196148ab1"
+    },
+    {
+      "path": "output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2/results/candidate-development/seed-8808-lag_sign/milestone-512/point.json",
+      "bytes": 10862,
+      "sha256": "88a4e8b92a2762c1b3218d672498e5decabd8f6e5ca51312d1ceb4ae0629e9ee"
+    },
+    {
+      "path": "code/encoders/raw_patch_bottleneck_mae/NATIVE_VIEW_AGREEMENT_VALIDATION_DIAGNOSTIC.md",
+      "bytes": 13104,
+      "sha256": "4eb75de5b3fe02fb9170ce96733096f6223f11d1a2e887a5ddb2f84ba959cf1d"
+    }
+  ],
+  "independent_audit": {
+    "status": "passed",
+    "auditor_sha256": "bf85b364ad9b41d4d6abc23756dd2d0b216ba877d71377b99a786ce37a0a6628",
+    "scope": "independent saved-query/state/role arithmetic; no CUDA encoder or AdamW execution",
+    "validation": {
+      "path": "output/runs/rpb-decoder-calibration/audit-tools/run-jXsW20-v2/validation.json",
+      "bytes": 23735,
+      "sha256": "dfc8d96b0f1657d22c7e2f8dbd6ae53637f62f3d627d3763d4f5f47ef2808cea"
+    },
+    "checks": 25450287,
+    "record": {
+      "protocol": "v7-decoder-calibration-v1",
+      "status": "passed",
+      "checks": 25450287,
+      "archive_payload_reads": 115,
+      "source": {
+        "source_fingerprint": "fb5aef0d015b9ca373bc7a52a24ada6cb86bde3f9ac0e451d7a419c684d8de4d",
+        "compiled_source_count": 71,
+        "human_card_sha256": "5ae05a3b5ec253d1743842f82fc28b45e0f20c8c84da1b58bf4ab9c514d292e9",
+        "admission_sha256": "cdee6112143bf4dc26d80239cc88f2555f1cf4e5e6a68bd4fb21768b34f20852",
+        "admission_log_sha256": "1166d23bd5894835116b31fb6edef1028eec7047008bdb00e5bebcf1b69bec8b"
+      },
+      "capsule_inventory_sha256": "51400954bc2e9cae483de2e2a784e83f93482b02a888a3bdf95581d207967442",
+      "closed_parent_roles": 85,
+      "points": [
+        {
+          "master_seed": 4404,
+          "decoder_stage": 0,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66258,
+            "requested_observed_target_cells": 66258,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07652934787615043,
+            "standardized_huber": 0.0047154736862893565,
+            "query_checksum_fnv1a64": "6a0e008aa804ab5d"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33228,
+            "requested_observed_target_cells": 33228,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07853252803721296,
+            "standardized_huber": 0.004991105579166391,
+            "query_checksum_fnv1a64": "9da17086277f7df9"
+          },
+          "decoder_training_loop_seconds": 0.0,
+          "update_arithmetic": {
+            "updates": 0,
+            "sampled_rows": 0,
+            "absolute_attempts": [],
+            "maximum_saved_huber_replay_difference": 0.0,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66258,
+            "requested_observed_target_cells": 66258,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07269656396255329,
+            "standardized_huber": 0.004248995186846559,
+            "query_checksum_fnv1a64": "6a0e008aa804ab5d"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33228,
+            "requested_observed_target_cells": 33228,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07539036034224855,
+            "standardized_huber": 0.0046333541047237446,
+            "query_checksum_fnv1a64": "9da17086277f7df9"
+          }
+        },
+        {
+          "master_seed": 4404,
+          "decoder_stage": 128,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66258,
+            "requested_observed_target_cells": 66258,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.054264777922728734,
+            "standardized_huber": 0.002364372013196506,
+            "query_checksum_fnv1a64": "6a0e008aa804ab5d"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33228,
+            "requested_observed_target_cells": 33228,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.055832798091661154,
+            "standardized_huber": 0.0024691657417068957,
+            "query_checksum_fnv1a64": "9da17086277f7df9"
+          },
+          "decoder_training_loop_seconds": 1.973433869,
+          "update_arithmetic": {
+            "updates": 128,
+            "sampled_rows": 1024,
+            "absolute_attempts": [
+              512,
+              639
+            ],
+            "maximum_saved_huber_replay_difference": 3.8329382202884066e-10,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66258,
+            "requested_observed_target_cells": 66258,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07269656396255329,
+            "standardized_huber": 0.004248995186846559,
+            "query_checksum_fnv1a64": "6a0e008aa804ab5d"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33228,
+            "requested_observed_target_cells": 33228,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07539036034224855,
+            "standardized_huber": 0.0046333541047237446,
+            "query_checksum_fnv1a64": "9da17086277f7df9"
+          }
+        },
+        {
+          "master_seed": 5505,
+          "decoder_stage": 0,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66272,
+            "requested_observed_target_cells": 66272,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07969801774621191,
+            "standardized_huber": 0.005038706905378178,
+            "query_checksum_fnv1a64": "f84b37052e285545"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33182,
+            "requested_observed_target_cells": 33182,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08392551070934104,
+            "standardized_huber": 0.00569699361343889,
+            "query_checksum_fnv1a64": "76b0ffb382c9f681"
+          },
+          "decoder_training_loop_seconds": 0.0,
+          "update_arithmetic": {
+            "updates": 0,
+            "sampled_rows": 0,
+            "absolute_attempts": [],
+            "maximum_saved_huber_replay_difference": 0.0,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66272,
+            "requested_observed_target_cells": 66272,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.059513638927937644,
+            "standardized_huber": 0.002802604835253207,
+            "query_checksum_fnv1a64": "f84b37052e285545"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33182,
+            "requested_observed_target_cells": 33182,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06416419579068944,
+            "standardized_huber": 0.0032857995970347986,
+            "query_checksum_fnv1a64": "76b0ffb382c9f681"
+          }
+        },
+        {
+          "master_seed": 5505,
+          "decoder_stage": 128,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66272,
+            "requested_observed_target_cells": 66272,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.05435331496766793,
+            "standardized_huber": 0.002331598708607417,
+            "query_checksum_fnv1a64": "f84b37052e285545"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33182,
+            "requested_observed_target_cells": 33182,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.05932137135470668,
+            "standardized_huber": 0.0028100079500807977,
+            "query_checksum_fnv1a64": "76b0ffb382c9f681"
+          },
+          "decoder_training_loop_seconds": 2.113318742,
+          "update_arithmetic": {
+            "updates": 128,
+            "sampled_rows": 1024,
+            "absolute_attempts": [
+              512,
+              639
+            ],
+            "maximum_saved_huber_replay_difference": 3.6260664436349455e-10,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66272,
+            "requested_observed_target_cells": 66272,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.059513638927937644,
+            "standardized_huber": 0.002802604835253207,
+            "query_checksum_fnv1a64": "f84b37052e285545"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33182,
+            "requested_observed_target_cells": 33182,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06416419579068944,
+            "standardized_huber": 0.0032857995970347986,
+            "query_checksum_fnv1a64": "76b0ffb382c9f681"
+          }
+        },
+        {
+          "master_seed": 6606,
+          "decoder_stage": 0,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66430,
+            "requested_observed_target_cells": 66430,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08775463416963812,
+            "standardized_huber": 0.006081322138165825,
+            "query_checksum_fnv1a64": "af7db440e4ebe8a1"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33276,
+            "requested_observed_target_cells": 33276,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.090370941781299,
+            "standardized_huber": 0.006402144231618266,
+            "query_checksum_fnv1a64": "bf07f67403597ef9"
+          },
+          "decoder_training_loop_seconds": 0.0,
+          "update_arithmetic": {
+            "updates": 0,
+            "sampled_rows": 0,
+            "absolute_attempts": [],
+            "maximum_saved_huber_replay_difference": 0.0,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66430,
+            "requested_observed_target_cells": 66430,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06253996046917608,
+            "standardized_huber": 0.003137254067181496,
+            "query_checksum_fnv1a64": "af7db440e4ebe8a1"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33276,
+            "requested_observed_target_cells": 33276,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06525504362104675,
+            "standardized_huber": 0.0033789384026232504,
+            "query_checksum_fnv1a64": "bf07f67403597ef9"
+          }
+        },
+        {
+          "master_seed": 6606,
+          "decoder_stage": 128,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66430,
+            "requested_observed_target_cells": 66430,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.05454935779761634,
+            "standardized_huber": 0.002422131959683047,
+            "query_checksum_fnv1a64": "af7db440e4ebe8a1"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33276,
+            "requested_observed_target_cells": 33276,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.05713463211905248,
+            "standardized_huber": 0.0026900735918475235,
+            "query_checksum_fnv1a64": "bf07f67403597ef9"
+          },
+          "decoder_training_loop_seconds": 2.083855775,
+          "update_arithmetic": {
+            "updates": 128,
+            "sampled_rows": 1024,
+            "absolute_attempts": [
+              512,
+              639
+            ],
+            "maximum_saved_huber_replay_difference": 4.809127505944755e-10,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66430,
+            "requested_observed_target_cells": 66430,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06253996046917608,
+            "standardized_huber": 0.003137254067181496,
+            "query_checksum_fnv1a64": "af7db440e4ebe8a1"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33276,
+            "requested_observed_target_cells": 33276,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06525504362104675,
+            "standardized_huber": 0.0033789384026232504,
+            "query_checksum_fnv1a64": "bf07f67403597ef9"
+          }
+        },
+        {
+          "master_seed": 7707,
+          "decoder_stage": 0,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66206,
+            "requested_observed_target_cells": 66206,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.0826684996623877,
+            "standardized_huber": 0.005700244345785223,
+            "query_checksum_fnv1a64": "7e515ef1afcdb4e9"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33084,
+            "requested_observed_target_cells": 33084,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08578280484417304,
+            "standardized_huber": 0.005924478235556272,
+            "query_checksum_fnv1a64": "2fdaac79eeb034dd"
+          },
+          "decoder_training_loop_seconds": 0.0,
+          "update_arithmetic": {
+            "updates": 0,
+            "sampled_rows": 0,
+            "absolute_attempts": [],
+            "maximum_saved_huber_replay_difference": 0.0,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66206,
+            "requested_observed_target_cells": 66206,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08021573989966033,
+            "standardized_huber": 0.005048607753952115,
+            "query_checksum_fnv1a64": "7e515ef1afcdb4e9"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33084,
+            "requested_observed_target_cells": 33084,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08501756312646418,
+            "standardized_huber": 0.005684524724287785,
+            "query_checksum_fnv1a64": "2fdaac79eeb034dd"
+          }
+        },
+        {
+          "master_seed": 7707,
+          "decoder_stage": 128,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66206,
+            "requested_observed_target_cells": 66206,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.053683216827589315,
+            "standardized_huber": 0.002311904931639533,
+            "query_checksum_fnv1a64": "7e515ef1afcdb4e9"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33084,
+            "requested_observed_target_cells": 33084,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.057841230500247684,
+            "standardized_huber": 0.002647191648103016,
+            "query_checksum_fnv1a64": "2fdaac79eeb034dd"
+          },
+          "decoder_training_loop_seconds": 2.001541492,
+          "update_arithmetic": {
+            "updates": 128,
+            "sampled_rows": 1024,
+            "absolute_attempts": [
+              512,
+              639
+            ],
+            "maximum_saved_huber_replay_difference": 5.220461415586519e-10,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66206,
+            "requested_observed_target_cells": 66206,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08021573989966033,
+            "standardized_huber": 0.005048607753952115,
+            "query_checksum_fnv1a64": "7e515ef1afcdb4e9"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33084,
+            "requested_observed_target_cells": 33084,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.08501756312646418,
+            "standardized_huber": 0.005684524724287785,
+            "query_checksum_fnv1a64": "2fdaac79eeb034dd"
+          }
+        },
+        {
+          "master_seed": 8808,
+          "decoder_stage": 0,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66178,
+            "requested_observed_target_cells": 66178,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07924297772244746,
+            "standardized_huber": 0.0049780639371135235,
+            "query_checksum_fnv1a64": "76060a9f9269a835"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33282,
+            "requested_observed_target_cells": 33282,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.07953755916153123,
+            "standardized_huber": 0.005054632922973709,
+            "query_checksum_fnv1a64": "ee1e0afeb9cb97d1"
+          },
+          "decoder_training_loop_seconds": 0.0,
+          "update_arithmetic": {
+            "updates": 0,
+            "sampled_rows": 0,
+            "absolute_attempts": [],
+            "maximum_saved_huber_replay_difference": 0.0,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66178,
+            "requested_observed_target_cells": 66178,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06299981483866317,
+            "standardized_huber": 0.00317250802327088,
+            "query_checksum_fnv1a64": "76060a9f9269a835"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33282,
+            "requested_observed_target_cells": 33282,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06671816661996235,
+            "standardized_huber": 0.003575952689768723,
+            "query_checksum_fnv1a64": "ee1e0afeb9cb97d1"
+          }
+        },
+        {
+          "master_seed": 8808,
+          "decoder_stage": 128,
+          "training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66178,
+            "requested_observed_target_cells": 66178,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.0533419941462298,
+            "standardized_huber": 0.0022861679590664738,
+            "query_checksum_fnv1a64": "76060a9f9269a835"
+          },
+          "validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33282,
+            "requested_observed_target_cells": 33282,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.0548165535509028,
+            "standardized_huber": 0.002401078348492508,
+            "query_checksum_fnv1a64": "ee1e0afeb9cb97d1"
+          },
+          "decoder_training_loop_seconds": 2.286941591,
+          "update_arithmetic": {
+            "updates": 128,
+            "sampled_rows": 1024,
+            "absolute_attempts": [
+              512,
+              639
+            ],
+            "maximum_saved_huber_replay_difference": 3.451380639618584e-10,
+            "exact_mask_generator_reexecuted": false
+          },
+          "v4_training_reconstruction": {
+            "total_examples": 256,
+            "valid_examples": 256,
+            "valid_channels": 768,
+            "valid_target_cells": 66178,
+            "requested_observed_target_cells": 66178,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06299981483866317,
+            "standardized_huber": 0.00317250802327088,
+            "query_checksum_fnv1a64": "76060a9f9269a835"
+          },
+          "v4_validation_reconstruction": {
+            "total_examples": 128,
+            "valid_examples": 128,
+            "valid_channels": 384,
+            "valid_target_cells": 33282,
+            "requested_observed_target_cells": 33282,
+            "example_coverage": 1.0,
+            "target_coverage": 1.0,
+            "standardized_mae": 0.06671816661996235,
+            "standardized_huber": 0.003575952689768723,
+            "query_checksum_fnv1a64": "ee1e0afeb9cb97d1"
+          }
+        }
+      ],
+      "mean_reconstruction_and_decoder_training": {
+        "0": {
+          "training_mae": 0.08117869543536713,
+          "validation_mae": 0.08362986890671145,
+          "decoder_training_loop_seconds": 0.0
+        },
+        "128": {
+          "training_mae": 0.054038532332366426,
+          "validation_mae": 0.05698931712331416,
+          "decoder_training_loop_seconds": 2.0918182938
+        }
+      },
+      "paired_v4_reference": {
+        "training_mae": 0.0675931436195981,
+        "validation_mae": 0.07130906590008225
+      },
+      "recovery_guards": {
+        "training": true,
+        "known_validation": true
+      },
+      "update_huber_arithmetic_tolerance": {
+        "absolute": 2e-06,
+        "relative": 2e-05
+      },
+      "fixed_query_double_tolerance": 2e-11,
+      "classifier_fits": 0,
+      "new_accuracy_measurements": 0,
+      "testing_accessed": false,
+      "stress_accessed": false,
+      "selection": false,
+      "promotion": false,
+      "limits": [
+        "Saved arithmetic only; no CUDA/model/autodiff/AdamW execution.",
+        "Original std::shuffle patch choices are producer/admission-bound; saved complete-patch/support law is replayed.",
+        "Parent checkpoint parameter composition and zero encoder gradients are producer/admission-bound; saved named before/after state is byte-checked.",
+        "Classification is retained/state-bound, not rescored or newly confirmed.",
+        "Positive decoder recovery is not an improved embedding; finite failure is not proof of encoding loss."
+      ],
+      "auditor_sha256": "bf85b364ad9b41d4d6abc23756dd2d0b216ba877d71377b99a786ce37a0a6628",
+      "created_utc": "2026-10-08T09:46:13.636018+00:00"
+    }
+  },
+  "source_only_replay_bundle": {
+    "path": "output/runs/rpb-decoder-calibration/audit-tools/replay-bundle-jXsW20-20261008T094909Z-f32057cd",
+    "readme": {
+      "path": "output/runs/rpb-decoder-calibration/audit-tools/replay-bundle-jXsW20-20261008T094909Z-f32057cd/README.md",
+      "bytes": 1606,
+      "sha256": "7b77e8232a7fa2d91a4290bb8a2495e0a88aa7b779ec3e30d73b1523ac0e87bf"
+    },
+    "inventory": {
+      "path": "output/runs/rpb-decoder-calibration/audit-tools/replay-bundle-jXsW20-20261008T094909Z-f32057cd/bundle-integrity.json",
+      "bytes": 18968,
+      "sha256": "20279aa73d6c6bad15a24457ba61100c06a36f66f6123bb67ff8150aa4919fd4"
+    },
+    "source_manifest": {
+      "path": "output/runs/rpb-decoder-calibration/audit-tools/replay-bundle-jXsW20-20261008T094909Z-f32057cd/source-manifest.json",
+      "bytes": 33116,
+      "sha256": "464010d177eddfa6d8eaadcff7405b71fec70337fa8a7bb091a74d9d4e804471"
+    },
+    "audit_binding": {
+      "path": "output/runs/rpb-decoder-calibration/audit-tools/replay-bundle-jXsW20-20261008T094909Z-f32057cd/audit-binding.json",
+      "bytes": 2133,
+      "sha256": "1e17cecd5c7bac054d65e3c4ccc8653687bd5c13956f8153c46c7e9409621ddb"
+    },
+    "file_count_excluding_inventory": 90,
+    "bytes_excluding_inventory": 1307790,
+    "tensor_copies": 0,
+    "audit_or_fixture_reruns_for_bundle": 0,
+    "dependency_limit": "Original completed capsule, closed85 roles and original pinned helper path remain required."
+  },
+  "limitations": [
+    "No new embedding version, classifier fitting, accuracy measurement, selection or promotion.",
+    "Known synthetic cohorts; no TEST/stress payload accessed.",
+    "Fresh decoder AdamW has no parent moments; 128 extra decoder updates are not an equal-total-budget encoder comparison.",
+    "Synchronized decoder loop seconds include CPU evidence capture, exclude query/export/audit and are not kernel-only GPU time.",
+    "CPU reader independently replays saved query/support/target and state witnesses; encoder inference, zero gradients and AdamW execution remain hash-bound CUDA-admission/source evidence."
+  ]
+}

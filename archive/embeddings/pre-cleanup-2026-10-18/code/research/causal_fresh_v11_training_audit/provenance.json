@@ -1,0 +1,138 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v11_owned_independent_training_audit_source_v1",
+  "stage": "source_ready_no_AST_import_or_body_pending_independent_review",
+  "complete_physical_parent_copies": 3,
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-parent-copies-001/manifest.json",
+    "bytes": 1673,
+    "sha256": "91977cf1c5b88af6a66080080891d1dae63b3b0781be943aafca3d4ea4722f96"
+  },
+  "parent_files": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_training_audit/audit_training.py",
+        "bytes": 116406,
+        "sha256": "b44a62524a177b67ba2a12d98841ba851ef6a3d3138a82405a81cb7fb6ce2e7d"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-parent-copies-001/files/code/research/causal_fresh_v10_training_audit/audit_training.py",
+      "owned_path": "code/research/causal_fresh_v11_training_audit/audit_training.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_training_audit/README.md",
+        "bytes": 6815,
+        "sha256": "834d613ce9193ce781a2f755afe2b9239f1ccdd5debf6cba398f2e850e75d4ef"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-parent-copies-001/files/code/research/causal_fresh_v10_training_audit/README.md",
+      "owned_path": "code/research/causal_fresh_v11_training_audit/README.md"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v10_training_audit/provenance.json",
+        "bytes": 6999,
+        "sha256": "61dc066f7e34bd4c9bacdfb4860a2cbe63a95d11506a8f7324002bf5fe0bc342"
+      },
+      "preserved_copy": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-parent-copies-001/files/code/research/causal_fresh_v10_training_audit/provenance.json",
+      "owned_path": "code/research/causal_fresh_v11_training_audit/provenance.json"
+    }
+  ],
+  "owned_nonself_sources": [
+    {
+      "path": "code/research/causal_fresh_v11_training_audit/audit_training.py",
+      "bytes": 141694,
+      "sha256": "12faca04f410c7d78e73b8348143a346b1a809e9ddff31921af8996f0a621b52"
+    },
+    {
+      "path": "code/research/causal_fresh_v11_training_audit/README.md",
+      "bytes": 6401,
+      "sha256": "cc2cf8ca02e3b1dcf1ef9849105fff35db7dce29c990d0afae6102cef07ef5ce"
+    }
+  ],
+  "self_path": "code/research/causal_fresh_v11_training_audit/provenance.json",
+  "self_hash_excluded": true,
+  "family_source_provenance": {
+    "path": "doc/causal_fresh_v11/family-source-provenance.json",
+    "bytes": 56329,
+    "sha256": "4daff58001ae76c48493bd8284cd3599b6a3c5af2e0ae9bf9cd463a2dba6ed4a"
+  },
+  "owned_temporal_fixture": {
+    "path": "code/research/causal_fresh_v11/tests/v11_temporal_pooling_test.cpp",
+    "bytes": 25319,
+    "sha256": "9afb33ee0bdb8f1a3d476d69ef0bf65c6e612d9ba7732b129cd34d45ee996acb"
+  },
+  "owned_objective_fixture": {
+    "path": "code/research/causal_fresh_v11/tests/v11_separation_test.cpp",
+    "bytes": 16472,
+    "sha256": "2aa668d7d3878c47469448ec596df3fd2e2c4227cf47521f1bdaad2eacdfaa37"
+  },
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-centered-variance4-v1",
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-v1",
+  "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "new_numeric_scope": {
+    "observed_moment_subgroup_rows": 16384,
+    "actual_updates": [
+      1,
+      2048
+    ],
+    "component_archive_fields": 56,
+    "parameter_array_fields": 12,
+    "temporal_trace_fields": 21,
+    "retained_nonleaf_upstream_stage": "PRECLIP-post-empty-export",
+    "explicit_defined_flags": true,
+    "undefined_route_zero_fallback_only": true,
+    "sum_both_routes_then_apply_recorded_clip_factor_once": true,
+    "compared_local_parameters": [
+      "export weight",
+      "export bias",
+      "pool_positions"
+    ],
+    "full_hidden_encoder_jacobian_or_norm_reconstructed": false,
+    "other2046_raw_gradients_reconstructed": false,
+    "per_scalar_learning_proof_claimed": false,
+    "manual_F32_forward_moment_abs_rel_tolerance": 3E-05,
+    "actual_local_adjoint_absolute_tolerance": 1E-09,
+    "actual_local_adjoint_relative_tolerance": 0.0003,
+    "each_actual_update_postclip_export_expected_maximum_threshold": 1E-06,
+    "common_score_bias": "finite descriptive actual/reference/error;no parity/nonzero gate",
+    "all2048_whole8_two4_partition": "squared-norm sum abs2e-12+rel2e-12;integer counts additive"
+  },
+  "preserved_numeric_modules": [
+    "TRAIN statistics",
+    "inert archive reader",
+    "registered model/fixedprior/optimizer state",
+    "manual Gaussian/support/F64 hierarchy",
+    "2048 successful updates with actual permitted attempts/skips",
+    "group/gauge/Hadamard saved observations"
+  ],
+  "result_accounting": "CORE plus five modules;new moments nested inside temporal_pooling_saved_learning;no anticipated totals",
+  "actual_card_created": false,
+  "execution": {
+    "source_file_hash_text_only": true,
+    "AST": 0,
+    "imports": 0,
+    "body": 0,
+    "model": 0,
+    "head": 0,
+    "training": 0
+  },
+  "pre_execution_refinement": {
+    "preserved_before": {
+      "path": "output/engineering/causal-fresh-v11-family-preparation/training-auditor-preflight-repairs/attempt-001/before-actual-local-adjoint-contract/manifest.json",
+      "bytes": 1663,
+      "sha256": "e1a7d94ceba23cca9fc25545e9cd2a8ef18d5ba38c2bcc8a38e54a5bbf57252c"
+    },
+    "scope": "Root-declared tighter actual three-parameter local parity/nonvacuity;gauge descriptive;whole-group partition identities;actual constant proof key and FD counts",
+    "numeric_execution": 0,
+    "thresholds_changed_after_results": false
+  }
+}

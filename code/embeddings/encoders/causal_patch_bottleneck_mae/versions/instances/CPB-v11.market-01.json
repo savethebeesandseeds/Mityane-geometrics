@@ -1,0 +1,649 @@
+{
+  "kind": "causal_encoder_measured_instance_v1",
+  "date": "2026-10-16",
+  "version": "CPB-v11",
+  "instance": "CPB-v11.market-01",
+  "initial_quality_label": "CPB-v11.market-01.init",
+  "protocol": "causal-fresh-v11",
+  "procedure_status": "complete_stopped_failed_stronger_goal22",
+  "clean_causal_candidate_measured": true,
+  "measured_candidate_established": true,
+  "overall_establishment_passed": false,
+  "clean_baseline": "CPB-v3.market-01",
+  "clean_baseline_unchanged": true,
+  "application_selection": "CPB-v3.market-01",
+  "application_selection_changed": false,
+  "historical_reference_is_quality_gate": false,
+  "overall_winner": false,
+  "advancement_passed": false,
+  "new_research_published": false,
+  "version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v11",
+  "prospective_descriptor": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v11.json",
+    "bytes": 3706,
+    "sha256": "2cb25d674aa9cf9ebd136359c259e5498b0dd00786cf6606e07afb7e2f5b0db8"
+  },
+  "prospective_descriptor_rewritten": false,
+  "physical_owned_family_files": 51,
+  "physical_owned_research_files": 31,
+  "frozen_source_capsule_files": 132,
+  "source_manifest": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/source-manifest.json",
+    "bytes": 30854,
+    "sha256": "b9a701bbfa3e98e4719853dfb1b2fad8d7610b3a86b475e43398ab43fea15778"
+  },
+  "source_capsule": [
+    {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source.zip",
+      "bytes": 2585105,
+      "sha256": "7c76afbbce09eb84e17ce865d942ab340988d4127d5a06839ccb1634babf6a26"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/source-manifest.json",
+      "bytes": 30854,
+      "sha256": "b9a701bbfa3e98e4719853dfb1b2fad8d7610b3a86b475e43398ab43fea15778"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v11/attempt-001/package.json",
+      "bytes": 561,
+      "sha256": "79cab450a9295ff94fdf2a84bad97b4bd7247ce65aa64fd42d893bbd975ffc8f"
+    }
+  ],
+  "build_admission": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/build-admission.json",
+    "bytes": 40119,
+    "sha256": "51fbaa4ed1630f4daa175c628f83700977614f031bce02a086c150183ed08723"
+  },
+  "binaries": [
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/test_causal_patch_bottleneck_mae_v11",
+      "bytes": 1035552,
+      "sha256": "4c6a0995c98339673b6266bfdd60833d777d59a9ec659e4961e55f66f7fcff44"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/test_cpb_v11_variance_gradient",
+      "bytes": 584776,
+      "sha256": "939a5adeb2f2e713183e39e3a885e6084a073b9a00d3473e75cc25db89617659"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/test_cpb_v11_temporal_pooling",
+      "bytes": 452440,
+      "sha256": "7ad771217988f6ac3e5919df4cd5b5c134910cafcab605088b62e187d5ebc9c1"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/causal_fresh_v11_train",
+      "bytes": 1009968,
+      "sha256": "099ae0337897c31b8ee0452820ee6bfc68179146e35df21a960715f712514b39"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/causal_fresh_v11_extract",
+      "bytes": 707496,
+      "sha256": "2ebf0d5ffaf25c814c77f88f0bf26bb9bad27f6e9f2a1a4efa80cbad7e79dd5b"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/causal_fresh_v11_market_read",
+      "bytes": 205560,
+      "sha256": "b7b70ac4d71565e93a55ae645289e792c3bdfea1ee782a509a1ed5820e4e2b78"
+    },
+    {
+      "path": "/opt/cuwacunu/build/causal-fresh-v11-attempt001/causal_fresh_v11_synthetic_read",
+      "bytes": 384328,
+      "sha256": "67cd672e60fca62b692b730221c9973863b2198d668b599e54a84d4e6061ede4"
+    }
+  ],
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V11_CARD.json",
+    "bytes": 126555,
+    "sha256": "aa0c8cf06e10b4da7ce1ede0d2cc914bc05b244043ad4f0d3039305499a10aaa"
+  },
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-centered-variance4-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-v1",
+  "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-centered-variance-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "registered_learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "encoder_gradient_kind": "Huber1-mean-gradient;detached-error-Gaussian-variance;live-uncertainty4;shared-global-clip1",
+  "single_AdamW": true,
+  "shared_global_clip": true,
+  "optimizer_independence_claimed": false,
+  "temporal_pooling_learning": {
+    "path": "doc/results/causal_fresh_v11/temporal-projection-learning.json",
+    "bytes": 6410,
+    "sha256": "c9c02098bb704af5132f7dc2cdbb1303eebd1d0c57233b50f8134a1c185163b6"
+  },
+  "temporal_pooling_proof": {
+    "path": "doc/results/causal_fresh_v11/temporal-pooling-proof.json",
+    "bytes": 2964,
+    "sha256": "e7ff4b7ae661af9ce86f94a83add6a561576d827bcb55fcc85cc9da3df4344f0"
+  },
+  "temporal_moment_saved_learning": {
+    "status": "passed",
+    "checks": 190309,
+    "mismatches": [],
+    "moment_subgroup_rows_checked": 16384,
+    "moment_subgroup_event_counts": [
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      },
+      {
+        "weight_nonzero_data_gradient_steps": 2048,
+        "bias_nonzero_data_gradient_steps": 2048,
+        "weight_movement_steps": 2048,
+        "bias_movement_steps": 2048
+      }
+    ],
+    "whole_group_two_moment_partition_rows_checked": 8192,
+    "whole_group_partition_squared_norms_and_counts_verified": true,
+    "actual_same_forward_moment_witnesses": [
+      {
+        "update": 1,
+        "artifact": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v11/attempt-001/run-001/witnesses/training-update-1-components.pt",
+          "bytes": 792180,
+          "sha256": "5e238b22cc4bb15c93792efbbc7194b80a9a86d203cce1568bb31b9e9f4d0c19"
+        },
+        "new_temporal_trace_fields": 21,
+        "total_component_archive_fields": 56,
+        "parameter_array_fields": 12,
+        "same_forward_only": true,
+        "upstream_stage": "PRECLIP-post-empty-export",
+        "upstream_gradient_defined_by_route": [
+          false,
+          true
+        ],
+        "recorded_clip_factor_applied_once": 1.0,
+        "local_export_and_positions_adjoint_verified": true,
+        "local_adjoint_absolute_tolerance": 1e-09,
+        "local_adjoint_relative_tolerance": 0.0003,
+        "postclip_export_nonvacuity_threshold": 1e-06,
+        "postclip_export_expected_maximum": 0.00021477670277222834,
+        "local_parameter_gradient_error_summaries": {
+          "temporal_export_weight": {
+            "maximum_expected_absolute": 0.00021477670277222834,
+            "maximum_actual_absolute": 0.00021477672271430492,
+            "maximum_absolute_error": 2.5391213952360644e-11,
+            "maximum_scaled_error": 0.0040208625708524496
+          },
+          "temporal_export_bias": {
+            "maximum_expected_absolute": 0.00012038250406476436,
+            "maximum_actual_absolute": 0.00012038250861223787,
+            "maximum_absolute_error": 5.172751116333529e-12,
+            "maximum_scaled_error": 0.001938673908899262
+          },
+          "temporal_pool_positions": {
+            "maximum_expected_absolute": 1.427697423483443e-05,
+            "maximum_actual_absolute": 1.4276974980020896e-05,
+            "maximum_absolute_error": 2.1020250817060547e-12,
+            "maximum_scaled_error": 0.0010435988717914047
+          }
+        },
+        "common_score_bias_gauge_descriptive": {
+          "actual": -3.637978807091713e-12,
+          "reference": -5.064591942780861e-13,
+          "absolute_error": 3.131519612813627e-12,
+          "parity_gate": false,
+          "nonzero_gradient_required": false,
+          "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+        },
+        "full_hidden_encoder_or_global_norm_reconstruction": false,
+        "matched_pre_step_decoder_adjoint_replay": false
+      },
+      {
+        "update": 2048,
+        "artifact": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v11/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+          "bytes": 792369,
+          "sha256": "df2b1c09e1637ccc84d3bd200edb4a2b2b06d69d8cfe457f78a050607b28f2dd"
+        },
+        "new_temporal_trace_fields": 21,
+        "total_component_archive_fields": 56,
+        "parameter_array_fields": 12,
+        "same_forward_only": true,
+        "upstream_stage": "PRECLIP-post-empty-export",
+        "upstream_gradient_defined_by_route": [
+          false,
+          true
+        ],
+        "recorded_clip_factor_applied_once": 0.7840339790102095,
+        "local_export_and_positions_adjoint_verified": true,
+        "local_adjoint_absolute_tolerance": 1e-09,
+        "local_adjoint_relative_tolerance": 0.0003,
+        "postclip_export_nonvacuity_threshold": 1e-06,
+        "postclip_export_expected_maximum": 0.0013685234173061184,
+        "local_parameter_gradient_error_summaries": {
+          "temporal_export_weight": {
+            "maximum_expected_absolute": 0.0013685234173061184,
+            "maximum_actual_absolute": 0.0013685235753655434,
+            "maximum_absolute_error": 1.5805942492341796e-10,
+            "maximum_scaled_error": 0.017908670346149985
+          },
+          "temporal_export_bias": {
+            "maximum_expected_absolute": 0.0006998585476318717,
+            "maximum_actual_absolute": 0.0006998585304245353,
+            "maximum_absolute_error": 4.882165272101016e-11,
+            "maximum_scaled_error": 0.0004675640535325913
+          },
+          "temporal_pool_positions": {
+            "maximum_expected_absolute": 0.00017495231525693167,
+            "maximum_actual_absolute": 0.00017495229258202016,
+            "maximum_absolute_error": 9.094245551798585e-11,
+            "maximum_scaled_error": 0.009557925016808196
+          }
+        },
+        "common_score_bias_gauge_descriptive": {
+          "actual": 7.344670011066867e-11,
+          "reference": 1.257693928967075e-10,
+          "absolute_error": 5.232269278603883e-11,
+          "parity_gate": false,
+          "nonzero_gradient_required": false,
+          "reason": "Common softmax gauge F32 mass/cancellation residual;descriptive only"
+        },
+        "full_hidden_encoder_or_global_norm_reconstruction": false,
+        "matched_pre_step_decoder_adjoint_replay": false
+      }
+    ],
+    "manual_F32_absolute_tolerance": 3e-05,
+    "manual_F32_relative_tolerance": 3e-05,
+    "per_scalar_gradient_proof_claimed": false,
+    "other2046_raw_gradients_reconstructed": false,
+    "pool_centered_variance_is_native_uncertainty": false,
+    "limits": [
+      "Observed2048 subgroup rows are scalar evidence; only actual1/2048 have raw arrays.",
+      "Means/variances and three local exportW/exportbias/position adjoints use saved same-forward evidence, not a model replay;common scorebias gauge is descriptive.",
+      "Undefined unused-route u has explicit zero fallback; PRECLIP u is summed and clipped once. No full hidden/encoder/global-norm reconstruction.",
+      "Intermediate pool variance is distinct from native uncertainty4/decoder variance."
+    ]
+  },
+  "all_eight_temporal_moment_subgroups_learned": true,
+  "scientific_recipe_parent": "CPB-v9.market-01",
+  "scientific_recipe_parent_is_source_only": true,
+  "scoped_reference": "CPB-v10.market-01",
+  "mandatory_identifiable_tensor_value_capacity": 294751,
+  "mandatory_identifiable_count_semantics": "tensor numel capacity, not every-scalar gradient/movement proof",
+  "per_scalar_nonzero_gradient_proof_claimed": false,
+  "weight_decay_counted_as_data_learning": false,
+  "training_objective": "R[Huber_delta1(mu-y)] + R[0.5*(stopgrad(mu-y)^2/v+log(v))], unit coefficients",
+  "reporting_metrics": "Unchanged saved Gaussian NLL/standardized and physical MAE; reporting NLL is never backpropagated",
+  "native_width": 40,
+  "native_layout": "parent32[0:32];mean4[32:36];uncertainty4[36:40];independent-frozen-bank270-projections;mean-reads-parent32-and-mean4;variance-reads-live-uncertainty4-only",
+  "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+  "initialization_seed": 943001,
+  "pretrained_ancestor": "none",
+  "source_updates": 0,
+  "inherited_learned_values": 0,
+  "fresh_learned_values": 294752,
+  "fresh_learned_tensors": 76,
+  "analytic_prior_values": 3888,
+  "total_parameters": 298640,
+  "fresh_initialization": {
+    "path": "output/runs/causal-fresh-v11/run-001/fresh-initialization.json",
+    "bytes": 2052,
+    "sha256": "a2ddbbd31eeea493f15d619b7d47fd43440ca06b2ce29440fe87edfdff35b1ca"
+  },
+  "fresh_calibration": {
+    "path": "output/runs/causal-fresh-v11/run-001/calibration/summary.json",
+    "bytes": 882,
+    "sha256": "7cafe367e61e4268dcea0d1f014515e35d2a7e49f11639aae4e4152700142e30"
+  },
+  "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+  "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-d4549591e8700837",
+  "initial_native20_40_and_statistics_pairings": {
+    "path": "doc/causal_fresh_v11/quality-independent-audit.json",
+    "bytes": 245070,
+    "sha256": "c37644fed46c8a0ec4916116fdb3eef5ab010e12383451e1213a0994cb74202b"
+  },
+  "initial_pairing_native_coordinate_slice": [
+    20,
+    40
+  ],
+  "whole_native40_initial_equality_claimed": false,
+  "new_causal_updates": 2048,
+  "attempts": 2048,
+  "successful_updates": 2048,
+  "skipped_ineligible_attempts": 0,
+  "batch_size": 8,
+  "training_runs": 1,
+  "training_replays": 0,
+  "training_summary": {
+    "path": "output/runs/causal-fresh-v11/run-001/training-summary.json",
+    "bytes": 38399,
+    "sha256": "a0281af36e999c3e5e36d9247f65949f2a407cdb1b4e534e08d72863e46b2567"
+  },
+  "typed_resume": {
+    "path": "output/runs/causal-fresh-v11/run-001/typed-resume-512.json",
+    "bytes": 1313,
+    "sha256": "8b5bca63d4e6faf132bcd7a4ea245b97976564de26c7135c6b0bfccfda675ea3"
+  },
+  "all_75_mandatory_identifiable_tensors_with_nonzero_CUDA_gradients_and_movement": true,
+  "data_learning_is_tensor_event_evidence_not_every_scalar": true,
+  "all_four_temporal_export_row_groups_learned": true,
+  "all_four_pool_position_contrasts_learned": true,
+  "all_three_between_bin_position_directions_learned": true,
+  "final_between_bin_position_projection_changed": true,
+  "individual_final_coefficient_nonzero_gate": false,
+  "fixed_prior_scaler_normalizer_unchanged": true,
+  "GPU_compute_seconds": 146.4979745189998,
+  "training_trajectory_wall_seconds": 205.102069907,
+  "calibration_seconds": 2.917579377,
+  "timing_scope": "forward_at+F64_Huber+detached-error-variance-NLL+detached-reporting-NLL-copy+backward+joint-clip+AdamW;synchronized_wall;includes_in_step_contract_checks;excludes_loader_masks_checkpoints_evidence_logging",
+  "main_checkpoints": [
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/checkpoints/inference-0.pt",
+      "bytes": 1304440,
+      "sha256": "f8a4372718060c0de1f2c533536064290228cbd95158e6cb18e1b424c469a626"
+    },
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1305617,
+      "sha256": "9325231356595e165b7729ebca3303b60bf83bce44748760a71b27b2b732df85"
+    },
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/checkpoints/training-1024.pt",
+      "bytes": 3788799,
+      "sha256": "6a81ebba14644436978ca72b392666f193ab89b564eb08418abecd1d017ad7ea"
+    },
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/checkpoints/training-2048.pt",
+      "bytes": 3788799,
+      "sha256": "5a8498e2608df545f0e014aee377134837941dd98c0b5f1ba282dd1ddbe9565b"
+    },
+    {
+      "path": "output/runs/causal-fresh-v11/run-001/checkpoints/training-512.pt",
+      "bytes": 3788147,
+      "sha256": "a129adbd5aa9f944ad4bbf1a22db3aa8ea7a89ba711ab6fea6b42dca9dc5089c"
+    }
+  ],
+  "checkpoints_local_git_ignored": true,
+  "initial_checkpoint": {
+    "path": "output/runs/causal-fresh-v11/run-001/checkpoints/inference-0.pt",
+    "bytes": 1304440,
+    "sha256": "f8a4372718060c0de1f2c533536064290228cbd95158e6cb18e1b424c469a626"
+  },
+  "usable_final_checkpoint": {
+    "path": "output/runs/causal-fresh-v11/run-001/checkpoints/inference-2048.pt",
+    "bytes": 1305617,
+    "sha256": "9325231356595e165b7729ebca3303b60bf83bce44748760a71b27b2b732df85"
+  },
+  "stable_clean_baseline_checkpoint": {
+    "path": "output/baselines/CPB-v3.market-01/inference.pt",
+    "bytes": 1290625,
+    "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+  },
+  "engineering_proof": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/engineering-proof/proof.json",
+    "bytes": 5154,
+    "sha256": "e095def9edd5dbd7cf978ba097200e7a8b67a8c01fe1e95ecd84a8debae83618"
+  },
+  "variance_gradient_proof": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/variance-gradient-proof.json",
+    "bytes": 1659,
+    "sha256": "a03f3e6c660124715d1d518166ac2765dc39a482f1ef326c6f99f8e0d57a42b7"
+  },
+  "initial_causal_proof": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/initial-proof/proof.json",
+    "bytes": 1699,
+    "sha256": "f1674892d1ada2c6a40eaa0fe5194aeed63aaebd5324b7f92669f2558d08332c"
+  },
+  "final_causal_proof": {
+    "path": "output/engineering/causal-fresh-v11/attempt-001/final-proof/proof.json",
+    "bytes": 1705,
+    "sha256": "cb8910ca99df44760697bdb994e965d17c3ae57318e638fb32c4206eb96c8a55"
+  },
+  "causal_proof_scope": {
+    "cutoffs": 128,
+    "suffix_cases_per_stage": 2350,
+    "internal_temporal_cases_per_stage": 30,
+    "state_unchanged": true
+  },
+  "independent_training_audit": {
+    "path": "doc/causal_fresh_v11/independent-training-audit.json",
+    "bytes": 79566,
+    "sha256": "96c11ddc1c9f5881319674c8262c8e81d780c0e2c0b96817b9ac9e9abc4687dd"
+  },
+  "independent_training_audit_checks": 25603,
+  "independent_training_audit_core_checks": 25603,
+  "independent_training_audit_module_checks": {
+    "numeric_statistics": 61153,
+    "saved_tensor_state": 1216,
+    "manual_saved_Gaussian": 117864,
+    "actual_pre_step_composite_objective": 69301,
+    "temporal_pooling_saved_learning": 241728
+  },
+  "independent_training_audit_core_plus_modules_checks": 516865,
+  "independent_quality_audit": {
+    "path": "doc/causal_fresh_v11/quality-independent-audit.json",
+    "bytes": 245070,
+    "sha256": "c37644fed46c8a0ec4916116fdb3eef5ab010e12383451e1213a0994cb74202b"
+  },
+  "independent_quality_audit_checks": 13287,
+  "postmeasurement_establishment": {
+    "path": "doc/causal_fresh_v11/final-establishment.json",
+    "bytes": 8729,
+    "sha256": "01f96fea179f6f7d8a7bb28befca9271cd048ac8d83f05f9e64418276c47dda2"
+  },
+  "producer_pending_trust_preserved": true,
+  "final_quality_report": "doc/CAUSAL_FRESH_V11_RESULTS.md",
+  "review": "doc/CAUSAL_FRESH_V11_REVIEW.md",
+  "detail": "doc/CAUSAL_FRESH_V11_DETAIL.md",
+  "human_report_assets": {
+    "results": {
+      "path": "doc/CAUSAL_FRESH_V11_RESULTS.md",
+      "bytes": 29946,
+      "sha256": "a24c17710d115ce140f13b0616edc0995f5974fda8e6f748f09874086589778d"
+    },
+    "review": {
+      "path": "doc/CAUSAL_FRESH_V11_REVIEW.md",
+      "bytes": 9504,
+      "sha256": "afb36d186cfc185bbb124025c0c2da774ea5e7ab2d2342c86bdcf72e8f20fc2e"
+    },
+    "detail": {
+      "path": "doc/CAUSAL_FRESH_V11_DETAIL.md",
+      "bytes": 29434,
+      "sha256": "8ddb041e32ffea10a551ff604e57560098bf962b2f5035154e0c86c7ec2fc5b7"
+    }
+  },
+  "table_rows": {
+    "path": "doc/results/causal_fresh_v11/table_rows.json",
+    "bytes": 401408,
+    "sha256": "d6eef160eaabb66122c2b09ab43c797d685336f48e0478320055e17f3b2accca"
+  },
+  "comparison": {
+    "path": "doc/results/causal_fresh_v11/comparison.json",
+    "bytes": 501651,
+    "sha256": "8662e3924e503d94283fcc2e5c7f6002e9f82fadf8e0362940d53aa6a1eef09c"
+  },
+  "quality_execution_receipt": {
+    "path": "output/runs/causal-fresh-v11/run-001/quality-001/quality-receipt.json",
+    "bytes": 5265,
+    "sha256": "a83f2b8e840109516e1a7644a8a3a87a7760dcd2f0cd455c2243fd17ac7bd6dd"
+  },
+  "quality": {
+    "numeric_passed": 8,
+    "numeric_total": 22,
+    "runtime_trust_admission_passed": true,
+    "trust_admission_passed": true,
+    "full_coverage": true,
+    "advancement_passed": false,
+    "failed_conditions": [
+      "past_volatility:linear_r2",
+      "past_volatility:neural_mean_r2",
+      "past_trend:linear_r2",
+      "past_trend:neural_mean_r2",
+      "past_relation:linear_r2",
+      "synthetic_train:validation_intact:neural_head_accuracy",
+      "synthetic_train:validation_deleted:linear_head_accuracy",
+      "market_scaler:validation_intact:linear_head_accuracy",
+      "market_scaler:validation_intact:neural_head_accuracy",
+      "market_scaler:validation_deleted:linear_head_accuracy",
+      "market_scaler:validation_deleted:neural_head_accuracy",
+      "train:standardized_MAE",
+      "validation:standardized_MAE",
+      "known_validation:Gaussian_NLL_F64"
+    ],
+    "gate_scope": "V11 prospective strongest-final-V3-through-V9 retention22; historical counts retain their own cards",
+    "strict_new_scoped_quality_leaders": 5,
+    "initial_and_final_descriptive_scorecards_retained": true
+  },
+  "next_direction": {
+    "status": "proposal_only_after_completed_measurements_no_scientific_execution_admitted",
+    "action": "Close the exact measured V11 recipe without coefficient/seed/rate/budget/head/checkpoint rescue. Preserve every V3-through-V11 scoped record and first strengthen prospective retention floors. Then separately declare saved TRAIN-only V9/V11 diagnosis of moments/native blocks, saved readout contributions and reconstruction tradeoffs before selecting a mechanism. Zero old model/head execution or refits and no held-out diagnostic tensors; no next encoder admitted.",
+    "goal_active": true,
+    "goal_criteria_satisfied": false,
+    "validation_in_diagnosis": false,
+    "encoder_calls": 0,
+    "head_fits": 0,
+    "head_tuning": false,
+    "later_training_authorized_by_this_finalization": false,
+    "exact_V11_recipe_complete": true,
+    "exact_V11_recipe_stopped": true
+  },
+  "local_run_root": "output/runs/causal-fresh-v11/run-001",
+  "local_quality_root": "output/runs/causal-fresh-v11/run-001/quality-001",
+  "local_engineering_root": "output/engineering/causal-fresh-v11/attempt-001",
+  "container_root": "/opt/cuwacunu/research/causal-fresh-v11/attempt-001",
+  "normal_prospective_source_admission": {
+    "source_files": 132,
+    "owner_source_files": 82,
+    "freeze_and_preflight_bound": true,
+    "normal_quality_all_stages_passed": true,
+    "scientific_model_head_or_training_replay": false
+  },
+  "historical_V9_reporting_recovery": {
+    "card": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-card-001.json",
+      "bytes": 203096,
+      "sha256": "9c61e4517bc74f0e6a9327ba7f8ec11908b1c1c4f0f804bd7ac76a51631aa82d"
+    },
+    "receipt": {
+      "path": "doc/causal_fresh_v9/reporting-recovery-receipt-001.json",
+      "bytes": 268051,
+      "sha256": "5f96dfab1b22a6c2df7f4bd8a0f55eeb0cb15ef072b05f80473707a31c63de72"
+    },
+    "failure_mirror": {
+      "path": "doc/causal_fresh_v9/failure-mirror-before-report-recovery-001.json",
+      "bytes": 208493,
+      "sha256": "e30f6cd71267be7b97337423b9fa2029922ee059685736bcff0fa53ac9cba532"
+    },
+    "scope": "HistoricalV9 reporting-only/no-science-replay evidence;not a V11 recovery or recipe change"
+  },
+  "prospective_freeze": {
+    "path": "doc/causal_fresh_v11/prospective-freeze.json",
+    "bytes": 2071,
+    "sha256": "33e0d301baaae81400adebdc2f9140d6ad24a3a9192db948dab22b9f32f2fc69"
+  },
+  "protocol_preflight": {
+    "path": "doc/causal_fresh_v11/protocol-preflight.json",
+    "bytes": 30526,
+    "sha256": "2545cea625d4ad2ad5dfe371621da970eb21cb56f844acef61ead0e4fedae695"
+  },
+  "preservation": {
+    "complete_mirror": {
+      "path": "doc/causal_fresh_v11/complete-mirror-attempt-001.json",
+      "bytes": 296981,
+      "sha256": "c18962bd15f876f4c0a2ec776bb2a00e687048673ba72f96d8b702c16c27fa26"
+    },
+    "baseline_changed": false,
+    "V4_reference_intact": true,
+    "V5_reference_intact": true,
+    "V6_reference_intact": true,
+    "V7_reference_intact": true,
+    "V8_reference_intact": true,
+    "V9_reference_intact": true,
+    "V10_reference_intact": true,
+    "V6_separate_establishment": {
+      "path": "doc/causal_fresh_v6/final-establishment.json",
+      "bytes": 3938,
+      "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd"
+    },
+    "V7_separate_establishment": {
+      "path": "doc/causal_fresh_v7/final-establishment.json",
+      "bytes": 2923,
+      "sha256": "7678e84a676453c0294f0654af6117e06246f1639f4e67f9ff78e9cf51049512"
+    },
+    "V8_separate_establishment": {
+      "path": "doc/causal_fresh_v8/final-establishment.json",
+      "bytes": 6452,
+      "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba"
+    },
+    "V9_separate_establishment": {
+      "path": "doc/causal_fresh_v9/final-establishment.json",
+      "bytes": 8847,
+      "sha256": "aeb9fbadcf8afad2bb48812b957ca23b122c3df92d5459c18859dd16637e4cdf"
+    },
+    "V10_separate_establishment": {
+      "path": "doc/causal_fresh_v10/final-establishment.json",
+      "bytes": 7709,
+      "sha256": "551f7a31be44dcc68e61f4d0be7390843e66ac8138b542a3e47bd3526128946b"
+    },
+    "prior_live_snapshot": {
+      "path": "output/engineering/causal-fresh-v11-finalization/prior-live-001/manifest.json",
+      "bytes": 2257,
+      "sha256": "e61788f70e3afdcf9b69c51c1cf570cae4ac68902324f2466b227f7cf98543de"
+    }
+  }
+}

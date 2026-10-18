@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "id": "encoder-google-multimodal",
+  "number": 18,
+  "title": "Encoder · Google multimodal embeddings",
+  "summary": "Use Google Gemini Embedding 2 as a documented external representation source for text, image, video, audio and PDF; an API adapter and local operation evidence remain proposed.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "encoder-google-multimodal-provider",
+      "title": "Register and integrate the external provider",
+      "description": "Use a hosted pretrained model rather than planning foundation-model training; preserve service identity and request provenance.",
+      "milestones": [
+        {
+          "id": "encoder-google-multimodal-provider-record",
+          "title": "Document the stable Gemini Embedding 2 provider",
+          "status": "done",
+          "description": "The local provider record identifies gemini-embedding-2, official documentation and a proposed 3072-dimensional output contract. A hosted model ID is not an immutable checkpoint identity.",
+          "updatedAt": "2026-10-18",
+          "acceptance": [
+            "README and provider.json identify the selected stable model, supported modalities, official sources and hosted-version limits.",
+            "The record explicitly marks the adapter unimplemented, live API unverified and local operation quality unmeasured."
+          ],
+          "evidence": [
+            {
+              "label": "Provider scope and official references",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Provider identity record",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/provider.json"
+            }
+          ],
+          "completedAt": "2026-10-18"
+        },
+        {
+          "id": "encoder-google-multimodal-api-adapter",
+          "title": "Implement a source-linked multimodal API adapter",
+          "status": "proposed",
+          "description": "Define permissions, credentials, service route, request budget and cache/retry/retention policy before live use. Separate representation configuration from per-call provenance; strengthen the existing response-identity requirement with canonical request and response digests plus retained permitted artifacts, without promising deterministic future service re-execution.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Provider integration scope",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Representation contracts",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The representation contract identifies the requested model, route, returned revision when exposed, declared revision-uncertainty policy, dimensions, normalization, task/role instructions and content-grouping semantics. Per-request and per-response identity is attached to the execution/records rather than creating a unique SpaceRef for every response.",
+            "A canonical semantic request manifest covers permitted content digests or immutable source versions, input ordering/grouping, relevant task/role instructions and all effective parameters. Hash the manifest using a specified canonicalization and digest scheme; exclude credentials/secrets and document any protected-content retention constraints.",
+            "For each attempt, retain a local execution/attempt ID, request digest, provider response/request ID when actually exposed, explicit absence otherwise, timestamp, returned model/revision metadata when exposed, status and response/artifact digest. Preserve the actual embedding/result artifact needed for offline replay when permitted; retries cannot overwrite earlier attempts.",
+            "Distinguish replay of saved response artifacts from a fresh live call. A request hash and response ID alone cannot regenerate an unretained vector or pin an undisclosed provider revision; state that limitation. Fresh responses do not silently enter a frozen corpus/evaluation snapshot; anchor checks can detect some change but do not certify immutable provider identity.",
+            "Verify input-to-output grouping/order, shape, finite values, unsupported content, partial batch failures, retries and cache provenance. Declare which task/role pairs are compatible rather than forcing exact task-string equality. No live request is authorized merely by this milestone or by preservation of the provider documentation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encoder-google-multimodal-evaluation",
+      "title": "Verify multimodal records and operation utility",
+      "description": "Separate request/shape correctness from retrieval usefulness and composed-operation claims.",
+      "milestones": [
+        {
+          "id": "encoder-google-multimodal-retrieval-fixture",
+          "title": "Validate a bounded multimodal retrieval fixture",
+          "status": "proposed",
+          "description": "After explicitly admitting permitted inputs and a request budget, preserve a fixed response-artifact snapshot and validate record conformance before assessing bounded cross-modal retrieval. Treat offline replay and fresh-provider execution as different evidence scopes; the documented provider remains locally unverified until actual receipts exist.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Provider evaluation scope",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Operation and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Resolve the input manifest, supported grouping and task conventions, actual response IDs when exposed, request/response digests, shape/finite-value checks and permitted replay artifacts. Record unsupported content and unavailable revision metadata rather than inventing either.",
+            "Use a frozen query/corpus response snapshot, independent relevance definition, baseline and explicit allowed role/space pairs under OR-01; leaked or incompatible entries are rejected with indexed reasons.",
+            "Replay the retained pipeline and report task results, uncertainty scope, costs, abstention/partial-failure coverage and provider-version limitations. A successful fixture does not imply general modality support, unchanged future hosted behavior or utility outside its tested population.",
+            "No completion is recorded from documentation alone. Adapter correctness, live service verification and operation utility require distinct receipts and must respect foundations-evidence-ledger."
+          ]
+        }
+      ]
+    }
+  ]
+}

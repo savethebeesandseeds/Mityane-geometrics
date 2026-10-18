@@ -1,0 +1,2013 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v6_v8_saved_train_diagnosis_card_v1",
+  "declared_utc": "2026-10-16T10:14:58.4024364Z",
+  "stage": "prospective_before_diagnostic_arithmetic",
+  "baseline": "CPB-v3.market-01",
+  "comparison_references": [
+    "CPB-v6.market-01",
+    "CPB-v8.market-01"
+  ],
+  "versions": [
+    "v6",
+    "v8"
+  ],
+  "candidate_declared": false,
+  "diagnosis_executed": false,
+  "baseline_or_application_change": false,
+  "parent_card_pattern": {
+    "path": "doc/CAUSAL_V6_V7_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 67180,
+    "sha256": "6067c3f5128991619e72197dbc5b8ea3f44f6e7e4186a56f4962f70c43b03304"
+  },
+  "goal_protocol": {
+    "path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+    "bytes": 24084,
+    "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699",
+    "status": "independently_reviewed_and_applied_for_future_use",
+    "used_as_numeric_diagnosis_input": false
+  },
+  "planning_handoff": "Root-authorized savedTRAIN V6/V8 source preparation;no newmodel/quality/fits/AST/bodyexecution.",
+  "final_establishment_context": {
+    "path": "doc/causal_fresh_v8/final-establishment.json",
+    "bytes": 6452,
+    "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba"
+  },
+  "current_clean_ledger": {
+    "path": "doc/clean_causal_encoder_research_ledger.json",
+    "bytes": 635322,
+    "sha256": "b5fa203f97b754523e9a3f929026ac1a5d2c879ae2cc84dca396fbd4200339ef"
+  },
+  "dataset_id": "MKT-HIST-2",
+  "designed_complexity_level": 4,
+  "complexity_scale_max": 5,
+  "recipe_id": "causal-v6-v8-saved-train-diagnosis-v1",
+  "view": "TRAIN112 saved features/heads/components;first8 fixed-query raw and adjoints;both actual1/2048;both2048 observed clipping CSV traces",
+  "train_rows": 112,
+  "query_rows": 8,
+  "stages": [
+    "initial0",
+    "final2048"
+  ],
+  "train_begin_ms": 1704067259999,
+  "train_end_ms": 1705881599999,
+  "canonical_channel_ids": [
+    0,
+    1,
+    2
+  ],
+  "head_repetitions": [
+    2701,
+    2802,
+    2903
+  ],
+  "native_widths": {
+    "v6": 40,
+    "v8": 40
+  },
+  "native_blocks": {
+    "v6": [
+      {
+        "name": "learned20",
+        "begin": 0,
+        "end": 20
+      },
+      {
+        "name": "fixed_spectral12",
+        "begin": 20,
+        "end": 32
+      },
+      {
+        "name": "mean4",
+        "begin": 32,
+        "end": 36
+      },
+      {
+        "name": "uncertainty4",
+        "begin": 36,
+        "end": 40
+      }
+    ],
+    "v8": [
+      {
+        "name": "learned20",
+        "begin": 0,
+        "end": 20
+      },
+      {
+        "name": "fixed_spectral12",
+        "begin": 20,
+        "end": 32
+      },
+      {
+        "name": "mean4",
+        "begin": 32,
+        "end": 36
+      },
+      {
+        "name": "uncertainty4",
+        "begin": 36,
+        "end": 40
+      }
+    ]
+  },
+  "head_seeds_unsigned_decimal": {
+    "v6": [
+      "6049515622977958931",
+      "8262941649267994858",
+      "2095371932330426401"
+    ],
+    "v8": [
+      "6049515622977958931",
+      "8262941649267994858",
+      "2095371932330426401"
+    ]
+  },
+  "cross_basis_cosine_policy": "forbidden-between-independent-mean4-and-uncertainty4",
+  "gradient_objectives": [
+    "Gaussian_NLL",
+    "MAE",
+    "Huber_delta1"
+  ],
+  "Huber_delta": 1.0,
+  "MAE_zero_subgradient": 0.0,
+  "temporal_bins": [
+    [
+      0,
+      32
+    ],
+    [
+      32,
+      64
+    ],
+    [
+      64,
+      96
+    ],
+    [
+      96,
+      128
+    ]
+  ],
+  "chronological_TRAIN_halves": [
+    {
+      "name": "early56",
+      "begin": 0,
+      "end": 56
+    },
+    {
+      "name": "late56",
+      "begin": 56,
+      "end": 112
+    }
+  ],
+  "quantiles": [
+    0.0,
+    0.01,
+    0.05,
+    0.25,
+    0.5,
+    0.75,
+    0.95,
+    0.99,
+    1.0
+  ],
+  "allowed_inputs": [
+    {
+      "id": "train_targets",
+      "host_repository": "cuwacunu_dev",
+      "host_path": "output/runs/market-capacity-study/shared-MKT-HIST-2-v1/features/train-targets.pt",
+      "container_path": "/cuwacunu/output/runs/market-capacity-study/shared-MKT-HIST-2-v1/features/train-targets.pt",
+      "bytes": 8782,
+      "sha256": "521d8662f498bce27ad26a41c4723bbebb9d2ab6b924cfbcce7132c25b7e43e6",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "row_ids",
+        "group_ids",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_initial_features",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/features/initial/market/cpb_v6-train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/features/initial/market/cpb_v6-train.pt",
+      "bytes": 39393,
+      "sha256": "a6eb909fbf41538927bf981a74246d4c2d144365eb936697e54d3abdff462388",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "row_ids",
+        "valid",
+        "values"
+      ]
+    },
+    {
+      "id": "v6_initial_query",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/witnesses/initial-train-query.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/initial-train-query.pt",
+      "bytes": 1039061,
+      "sha256": "dd700d265197d876aa0cba4972383fc8b1507e66867b44fabc6ab4027aef3611",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "hidden",
+        "mean",
+        "native",
+        "observed",
+        "raw",
+        "row_ids",
+        "row_mae",
+        "row_mean_huber",
+        "row_nll",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "variance",
+        "visible"
+      ]
+    },
+    {
+      "id": "v6_initial_query_summary",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/query-initial.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/query-initial.json",
+      "bytes": 15705,
+      "sha256": "54e65430509bcf3eb86dd2f8574475bdda30a10d232450afa86724a183a6e541",
+      "role": "aggregate_JSON_TRAIN_key_only",
+      "numeric_json_selector": "train"
+    },
+    {
+      "id": "v6_initial_checkpoint",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/checkpoints/inference-0.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/inference-0.pt",
+      "bytes": 1299890,
+      "sha256": "7fc69034f46682bfeb608c152368f2bbb23c10db9ccfecb93264b8d6e49e3ed1",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "artifact_kind",
+        "causal_updates",
+        "channel_ids",
+        "direct_gradient_routes",
+        "gradient_policy",
+        "initialization_kind",
+        "initialization_seed",
+        "loss_coefficients_f64",
+        "mean_huber_delta_f64",
+        "mean_width",
+        "model_tag",
+        "native_layout",
+        "native_width",
+        "objective_policy",
+        "payload.direct_gradient_routes",
+        "payload.gradient_policy",
+        "payload.link_constants_f32",
+        "payload.loss_coefficients_f64",
+        "payload.mean_huber_delta_f64",
+        "payload.mean_width",
+        "payload.model.encoder.change_decoder",
+        "payload.model.variance_bias",
+        "payload.model.variance_projection",
+        "payload.native_layout",
+        "payload.native_width",
+        "payload.objective_policy",
+        "payload.reporting_nll_backpropagated",
+        "payload.softplus_parameters_f64",
+        "payload.uncertainty_width",
+        "payload.variance_error_detached",
+        "pretrained_ancestor",
+        "reporting_nll_backpropagated",
+        "source_updates",
+        "uncertainty_width",
+        "variance_error_detached"
+      ]
+    },
+    {
+      "id": "v6_initial_head_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "c4d3ecd89ad0bdefa4b87ccb00ab81fde1b04f17270c1d18178162dfe69670dd",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_initial_fit_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "e203a7cb488dfa7dfae423627ea0fb0f6034f8867bc58b0efc205ed7a794c30a",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_initial_head_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "2b53ba2a9a2b8e3b3ba05c97f382003c64aa647cbbd6d9f2a468e8c1690cde12",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_initial_fit_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "827d6e2664ca6926e76f31c45cc0e534e4190e0f4b2dc2d49838fe518163cc49",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_initial_head_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7e17d787d67dea880a7494f84d1de39fcc7e5430f42f05112c74bda693ddead4",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_initial_fit_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/initial/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "981a95823649bd6c5e83ebeb39769835e220bff231934a4a68ec7cd00ccf0743",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_final_features",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/features/final/market/cpb_v6-train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/features/final/market/cpb_v6-train.pt",
+      "bytes": 39393,
+      "sha256": "fe530380dbef0d3a9140521666c82e87d8f046f543ed28167a9c2629aac06526",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "row_ids",
+        "valid",
+        "values"
+      ]
+    },
+    {
+      "id": "v6_final_query",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/witnesses/final-train-query.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/final-train-query.pt",
+      "bytes": 1039015,
+      "sha256": "c79884908b2fac2797830895d1b29a7b54a203b9d18b75d05efc5460e86ac71e",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "hidden",
+        "mean",
+        "native",
+        "observed",
+        "raw",
+        "row_ids",
+        "row_mae",
+        "row_mean_huber",
+        "row_nll",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "variance",
+        "visible"
+      ]
+    },
+    {
+      "id": "v6_final_query_summary",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/query-final.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/query-final.json",
+      "bytes": 16107,
+      "sha256": "181a6476e59b2184be51ab3dd34090a167c53d83202c1ee3b6450fc0f845f52e",
+      "role": "aggregate_JSON_TRAIN_key_only",
+      "numeric_json_selector": "train"
+    },
+    {
+      "id": "v6_final_checkpoint",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/checkpoints/inference-2048.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1301025,
+      "sha256": "8cf6f12609b647871c4c42df39fc1c1d36b53a908e962585f17fe515d8ef193e",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "artifact_kind",
+        "causal_updates",
+        "channel_ids",
+        "direct_gradient_routes",
+        "gradient_policy",
+        "initialization_kind",
+        "initialization_seed",
+        "loss_coefficients_f64",
+        "mean_huber_delta_f64",
+        "mean_width",
+        "model_tag",
+        "native_layout",
+        "native_width",
+        "objective_policy",
+        "payload.direct_gradient_routes",
+        "payload.gradient_policy",
+        "payload.link_constants_f32",
+        "payload.loss_coefficients_f64",
+        "payload.mean_huber_delta_f64",
+        "payload.mean_width",
+        "payload.model.encoder.change_decoder",
+        "payload.model.variance_bias",
+        "payload.model.variance_projection",
+        "payload.native_layout",
+        "payload.native_width",
+        "payload.objective_policy",
+        "payload.reporting_nll_backpropagated",
+        "payload.softplus_parameters_f64",
+        "payload.uncertainty_width",
+        "payload.variance_error_detached",
+        "pretrained_ancestor",
+        "reporting_nll_backpropagated",
+        "source_updates",
+        "uncertainty_width",
+        "variance_error_detached"
+      ]
+    },
+    {
+      "id": "v6_final_head_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "58eb8cd1595b58565165c7e212306aec74a8a8e292f379385c1134b45a78eb43",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_final_fit_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "4518457d2cb4c48c6311238773fe7813ad1ac218076c33a7818892b9dc64eafb",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_final_head_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "6302e45bed577424d6a40fe4fa078ab0652d15df8161792b419e58728fad24cd",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_final_fit_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "dd6ad8785912a8bb7fe18365c1949eeb9b29a7ae1a8a00496d503db29e82ffb7",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_final_head_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "7743359606703e145792aef2173f245341119f1ae01bb4a51b6d0614001f9609",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v6_final_fit_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/quality-001/final/market-readouts/models/cpb_v6/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "0d02181b5e433cfe994a581ed9a4bc1827f4f1a09e375f5eb179dd765fc86f64",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v6_actual_update_1",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/witnesses/training-update-1-components.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/training-update-1-components.pt",
+      "bytes": 488354,
+      "sha256": "5b9803b673989e5b454d26238961de2413d836e86d0a76b5f695c0d097c8abd1",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "attempt",
+        "clip_factor",
+        "context_deleted",
+        "eligible_channels",
+        "Gaussian_NLL_F64",
+        "hidden",
+        "mean",
+        "mean_Huber_F64",
+        "native",
+        "observed",
+        "pre_clip_global_norm",
+        "row_ids",
+        "row_mean_huber",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "total_objective_F64",
+        "update",
+        "variance",
+        "variance_NLL_F64",
+        "visible"
+      ]
+    },
+    {
+      "id": "v6_actual_update_2048",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/witnesses/training-update-2048-components.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+      "bytes": 488444,
+      "sha256": "0f1093d1a29dfe4e5ae864d6eb91460e6804938ed410f8f3960eb807b196b3bc",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "attempt",
+        "clip_factor",
+        "context_deleted",
+        "eligible_channels",
+        "Gaussian_NLL_F64",
+        "hidden",
+        "mean",
+        "mean_Huber_F64",
+        "native",
+        "observed",
+        "pre_clip_global_norm",
+        "row_ids",
+        "row_mean_huber",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "total_objective_F64",
+        "update",
+        "variance",
+        "variance_NLL_F64",
+        "visible"
+      ]
+    },
+    {
+      "id": "v6_actual_bindings",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/optimization-component-witnesses.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/optimization-component-witnesses.json",
+      "bytes": 532,
+      "sha256": "d346d8ddf017a0c9417abe1834bb682896549d9d555e2768ee31bb028a6ab4fb",
+      "role": "actual_batch_binding_metadata"
+    },
+    {
+      "id": "v6_training_csv",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/training.csv",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/training.csv",
+      "bytes": 596944,
+      "sha256": "f566cff439eb4dd0922eae7a72f7831072cfbcb0e37b2037585a5705d5d4e7fd",
+      "role": "TRAIN_CSV_2048_scalar_rows_only",
+      "allowed_CSV_fields": [
+        "update",
+        "Gaussian_NLL_F64",
+        "mean_Huber_F64",
+        "variance_NLL_F64",
+        "total_objective_F64",
+        "pre_clip_global_norm",
+        "clip_factor"
+      ],
+      "numeric_update_scope": "all2048successfulupdates",
+      "fixed_update_blocks": [
+        [
+          1,
+          512
+        ],
+        [
+          513,
+          1024
+        ],
+        [
+          1025,
+          1536
+        ],
+        [
+          1537,
+          2048
+        ]
+      ]
+    },
+    {
+      "id": "v8_initial_features",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/features/initial/market/cpb_v8-train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/features/initial/market/cpb_v8-train.pt",
+      "bytes": 39393,
+      "sha256": "bcc99d9e8f27640baf9ed8dc7c57bb82ab428b03b2a6ab45ba6859a7d6e94cae",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "row_ids",
+        "valid",
+        "values"
+      ]
+    },
+    {
+      "id": "v8_initial_query",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/witnesses/initial-train-query.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/witnesses/initial-train-query.pt",
+      "bytes": 1039061,
+      "sha256": "ede28fb7e8b64f8241bf8b8fb2cb50658ca771f792e161d1158512385bdb3dad",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "hidden",
+        "mean",
+        "native",
+        "observed",
+        "raw",
+        "row_ids",
+        "row_mae",
+        "row_mean_huber",
+        "row_nll",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "variance",
+        "visible"
+      ]
+    },
+    {
+      "id": "v8_initial_query_summary",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/query-initial.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/query-initial.json",
+      "bytes": 15708,
+      "sha256": "12471f5719efa5b63d47df765ba35e22f19adac51de46a4610a025ff4df4f45d",
+      "role": "aggregate_JSON_TRAIN_key_only",
+      "numeric_json_selector": "train"
+    },
+    {
+      "id": "v8_initial_checkpoint",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/checkpoints/inference-0.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/checkpoints/inference-0.pt",
+      "bytes": 1301126,
+      "sha256": "58fce6c7fa1cfd3c9a4f74edb9efc891fcf180de2c8b79cb10650f7abab6a567",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "artifact_kind",
+        "causal_updates",
+        "channel_ids",
+        "direct_gradient_routes",
+        "gradient_policy",
+        "initialization_kind",
+        "initialization_seed",
+        "loss_coefficients_f64",
+        "mean_huber_delta_f64",
+        "mean_width",
+        "model_tag",
+        "native_layout",
+        "native_width",
+        "objective_policy",
+        "payload.direct_gradient_routes",
+        "payload.gradient_policy",
+        "payload.link_constants_f32",
+        "payload.loss_coefficients_f64",
+        "payload.mean_huber_delta_f64",
+        "payload.mean_width",
+        "payload.model.encoder.change_decoder",
+        "payload.model.variance_bias",
+        "payload.model.variance_projection",
+        "payload.native_layout",
+        "payload.native_width",
+        "payload.objective_policy",
+        "payload.reporting_nll_backpropagated",
+        "payload.softplus_parameters_f64",
+        "payload.temporal_pooling_partition_v1",
+        "payload.temporal_pooling_policy",
+        "payload.uncertainty_width",
+        "payload.variance_error_detached",
+        "pretrained_ancestor",
+        "reporting_nll_backpropagated",
+        "source_updates",
+        "temporal_pooling_partition_v1",
+        "temporal_pooling_policy",
+        "uncertainty_width",
+        "variance_error_detached"
+      ]
+    },
+    {
+      "id": "v8_initial_head_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2701/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "ed81cba8685e2e07fe22bf0d02c47eeb9fd5971f0092090e5b28ab5ad6fba471",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_initial_fit_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2701/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "65c41ff8acd6fcc95c1a6d273bcf0e6f93c3420f7b674e881d31c21eca829140",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_initial_head_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2802/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "777a6f203810c4d3452872950b0e71625684f32492b6f5bb1e4f8c4089ef85a4",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_initial_fit_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2802/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "4b663a9856127366d129a2f9c30548575c651f633324ea74c766528d09f5ad19",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_initial_head_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2903/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "50028f42efda55730873b68a24506655241a80f0f5880fff36e9b75ef793e40c",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_initial_fit_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2903/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/initial/market-readouts/models/cpb_v8/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "1faf4c15232abe70b6b1bd551235cada7c00b86b85f50178d0e98b8e8efe36cd",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_final_features",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/features/final/market/cpb_v8-train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/features/final/market/cpb_v8-train.pt",
+      "bytes": 39393,
+      "sha256": "279a1e8660ec36ad6ee39a2cfd1bfdfcc96f488add431111e2ec145c393cbb94",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "row_ids",
+        "valid",
+        "values"
+      ]
+    },
+    {
+      "id": "v8_final_query",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/witnesses/final-train-query.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/witnesses/final-train-query.pt",
+      "bytes": 1039015,
+      "sha256": "63fedd1d5e068dad0f314f85d0a37c4de35aea234102b71bd72f3369f70204a1",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "hidden",
+        "mean",
+        "native",
+        "observed",
+        "raw",
+        "row_ids",
+        "row_mae",
+        "row_mean_huber",
+        "row_nll",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "timestamps",
+        "variance",
+        "visible"
+      ]
+    },
+    {
+      "id": "v8_final_query_summary",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/query-final.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/query-final.json",
+      "bytes": 16116,
+      "sha256": "1f5bcf2427a53f36a30d4f23508091a017012807338579632570c31f24e75fe4",
+      "role": "aggregate_JSON_TRAIN_key_only",
+      "numeric_json_selector": "train"
+    },
+    {
+      "id": "v8_final_checkpoint",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/checkpoints/inference-2048.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1302273,
+      "sha256": "a31be7cb561dcfc65e6aa6e15d10da90acedd94f92bafa612e605b651aaaa369",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "artifact_kind",
+        "causal_updates",
+        "channel_ids",
+        "direct_gradient_routes",
+        "gradient_policy",
+        "initialization_kind",
+        "initialization_seed",
+        "loss_coefficients_f64",
+        "mean_huber_delta_f64",
+        "mean_width",
+        "model_tag",
+        "native_layout",
+        "native_width",
+        "objective_policy",
+        "payload.direct_gradient_routes",
+        "payload.gradient_policy",
+        "payload.link_constants_f32",
+        "payload.loss_coefficients_f64",
+        "payload.mean_huber_delta_f64",
+        "payload.mean_width",
+        "payload.model.encoder.change_decoder",
+        "payload.model.variance_bias",
+        "payload.model.variance_projection",
+        "payload.native_layout",
+        "payload.native_width",
+        "payload.objective_policy",
+        "payload.reporting_nll_backpropagated",
+        "payload.softplus_parameters_f64",
+        "payload.temporal_pooling_partition_v1",
+        "payload.temporal_pooling_policy",
+        "payload.uncertainty_width",
+        "payload.variance_error_detached",
+        "pretrained_ancestor",
+        "reporting_nll_backpropagated",
+        "source_updates",
+        "temporal_pooling_partition_v1",
+        "temporal_pooling_policy",
+        "uncertainty_width",
+        "variance_error_detached"
+      ]
+    },
+    {
+      "id": "v8_final_head_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2701/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2701/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "aeb2306c29e06911442ae758826bea3ee7c79a180709d35038326f94613a09c5",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_final_fit_2701",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2701/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2701/fit.pt",
+      "bytes": 13098,
+      "sha256": "fd63993d802129f3a68ae64aa9a5583cd74116322ea18bd0720e250c0701fb95",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_final_head_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2802/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2802/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "a671ecb057d9915b91dedfc5ff41e371dccee89166abfdf5d675404eafd6a33b",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_final_fit_2802",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2802/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2802/fit.pt",
+      "bytes": 13098,
+      "sha256": "258f6edfd86a0d244d1f3ab8636d472c2c25968ff08a4cff300ecaf15391a700",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_final_head_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2903/predictions_train.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2903/predictions_train.pt",
+      "bytes": 17173,
+      "sha256": "4229f5fe505544dfc2fb02c71f8831dd6660b9ba4d33e9eb3c0b871955da600b",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "group_ids",
+        "neural_predictions",
+        "ridge_predictions",
+        "row_ids",
+        "target_valid",
+        "targets",
+        "valid"
+      ]
+    },
+    {
+      "id": "v8_final_fit_2903",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/quality-001/final/market-readouts/models/cpb_v8/rep-2903/fit.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/quality-001/final/market-readouts/models/cpb_v8/rep-2903/fit.pt",
+      "bytes": 13098,
+      "sha256": "4041e9b42b0e98c64439b3a718430ac31d15ebaa4014f09853f18b692fda70ce",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "actual_seed",
+        "feature_mean",
+        "feature_scale",
+        "ridge_intercept",
+        "ridge_weights",
+        "target_mean",
+        "target_scale"
+      ]
+    },
+    {
+      "id": "v8_actual_update_1",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/witnesses/training-update-1-components.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/witnesses/training-update-1-components.pt",
+      "bytes": 517178,
+      "sha256": "7e950a3f5d0c2a6f14b632af3c1833b6c7fd5adc6d9e1c6d6f1457e78af92002",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "attempt",
+        "clip_factor",
+        "context_deleted",
+        "eligible_channels",
+        "Gaussian_NLL_F64",
+        "hidden",
+        "mean",
+        "mean_Huber_F64",
+        "native",
+        "observed",
+        "pre_clip_global_norm",
+        "row_ids",
+        "row_mean_huber",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "temporal_export_bias_after",
+        "temporal_export_bias_before",
+        "temporal_export_bias_clipped_gradient",
+        "temporal_export_weight_after",
+        "temporal_export_weight_before",
+        "temporal_export_weight_clipped_gradient",
+        "temporal_pool_positions_after",
+        "temporal_pool_positions_before",
+        "temporal_pool_positions_clipped_gradient",
+        "temporal_pool_score_bias_after",
+        "temporal_pool_score_bias_before",
+        "temporal_pool_score_bias_clipped_gradient",
+        "timestamps",
+        "total_objective_F64",
+        "update",
+        "variance",
+        "variance_NLL_F64",
+        "visible"
+      ]
+    },
+    {
+      "id": "v8_actual_update_2048",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/witnesses/training-update-2048-components.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/witnesses/training-update-2048-components.pt",
+      "bytes": 517304,
+      "sha256": "8d3f6f6f019ce59e4624a10a0cc508de2e5a52667561225602b556c0d3cfd77a",
+      "role": "TRAIN_archive",
+      "allowed_tensor_fields": [
+        "attempt",
+        "clip_factor",
+        "context_deleted",
+        "eligible_channels",
+        "Gaussian_NLL_F64",
+        "hidden",
+        "mean",
+        "mean_Huber_F64",
+        "native",
+        "observed",
+        "pre_clip_global_norm",
+        "row_ids",
+        "row_mean_huber",
+        "row_total_objective",
+        "row_variance_nll",
+        "target_mask",
+        "targets",
+        "temporal_export_bias_after",
+        "temporal_export_bias_before",
+        "temporal_export_bias_clipped_gradient",
+        "temporal_export_weight_after",
+        "temporal_export_weight_before",
+        "temporal_export_weight_clipped_gradient",
+        "temporal_pool_positions_after",
+        "temporal_pool_positions_before",
+        "temporal_pool_positions_clipped_gradient",
+        "temporal_pool_score_bias_after",
+        "temporal_pool_score_bias_before",
+        "temporal_pool_score_bias_clipped_gradient",
+        "timestamps",
+        "total_objective_F64",
+        "update",
+        "variance",
+        "variance_NLL_F64",
+        "visible"
+      ]
+    },
+    {
+      "id": "v8_actual_bindings",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/optimization-component-witnesses.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/optimization-component-witnesses.json",
+      "bytes": 532,
+      "sha256": "72f49e6bacd7c4adfa267855694b4cbe5a21848bc0b4fe839851a329de3c7698",
+      "role": "actual_batch_binding_metadata"
+    },
+    {
+      "id": "v8_training_csv",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/training.csv",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/training.csv",
+      "bytes": 596999,
+      "sha256": "582e882ff283ddb9c20ab9a7ef2f8a7a97a1dc692b193846f58b34fef2334cdc",
+      "role": "TRAIN_CSV_2048_scalar_rows_only",
+      "allowed_CSV_fields": [
+        "update",
+        "Gaussian_NLL_F64",
+        "mean_Huber_F64",
+        "variance_NLL_F64",
+        "total_objective_F64",
+        "pre_clip_global_norm",
+        "clip_factor"
+      ],
+      "numeric_update_scope": "all2048successfulupdates",
+      "fixed_update_blocks": [
+        [
+          1,
+          512
+        ],
+        [
+          513,
+          1024
+        ],
+        [
+          1025,
+          1536
+        ],
+        [
+          1537,
+          2048
+        ]
+      ]
+    },
+    {
+      "id": "v8_temporal_learning_receipt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/temporal-projection-learning.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/temporal-projection-learning.json",
+      "role": "V8_TRAIN_temporal_receipt_restricted_JSON",
+      "allowed_JSON_fields": [
+        "kind",
+        "status",
+        "updates",
+        "group_rows",
+        "temporal_pooling_policy",
+        "temporal_pooling_partition",
+        "gradients",
+        "movement_includes_AdamW_weight_decay",
+        "weight_decay_counted_as_data_gradient",
+        "extra_encoder_calls",
+        "groups",
+        "gauge",
+        "artifacts"
+      ],
+      "allowed_JSON_nested_fields": {
+        "groups": [
+          "bin",
+          "export_row_begin",
+          "export_row_end",
+          "position_begin",
+          "position_end",
+          "weight_nonzero_data_gradient_steps",
+          "bias_nonzero_data_gradient_steps",
+          "weight_movement_steps",
+          "bias_movement_steps",
+          "position_centered_data_gradient_steps",
+          "position_centered_movement_steps",
+          "final_weight_changed",
+          "final_bias_changed",
+          "final_position_centered_change_l2"
+        ],
+        "gauge": [
+          "name",
+          "data_gradient_requirement_exempt",
+          "registered_in_same_AdamW",
+          "gradient_defined_steps",
+          "nonzero_recorded_gradient_steps",
+          "maximum_absolute_recorded_gradient",
+          "movement_steps",
+          "final_movement",
+          "movement_is_not_data_learning_proof"
+        ],
+        "artifacts": [
+          "path",
+          "bytes",
+          "sha256"
+        ]
+      },
+      "bytes": 2927,
+      "sha256": "f9e2dee0d932cbd66c9723cad37c36dce06ec8996749d66c89e6c60efb4adaa6"
+    },
+    {
+      "id": "v8_temporal_learning_csv",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/temporal-projection-learning.csv",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/temporal-projection-learning.csv",
+      "role": "V8_TRAIN_temporal_8192_rows",
+      "allowed_CSV_fields": [
+        "update",
+        "bin",
+        "export_row_begin",
+        "export_row_end",
+        "position_begin",
+        "position_end",
+        "weight_gradient_l2",
+        "bias_gradient_l2",
+        "weight_movement_l2",
+        "bias_movement_l2",
+        "nonzero_export_gradient_values",
+        "moved_export_values",
+        "pool_position_centered_gradient_l2",
+        "pool_position_centered_movement_l2",
+        "nonzero_centered_position_gradient_values",
+        "moved_centered_position_values"
+      ],
+      "numeric_update_scope": "all2048successfulupdates",
+      "bytes": 1332004,
+      "sha256": "e2b66e79a74500fd7fb61b72d8b78f2fc1e69ccb12217d9167cfa572f6c153f2"
+    },
+    {
+      "id": "v8_temporal_gauge_csv",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/temporal-pool-score-bias-learning.csv",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/temporal-pool-score-bias-learning.csv",
+      "role": "V8_TRAIN_gauge_2048_rows",
+      "allowed_CSV_fields": [
+        "update",
+        "gradient_defined",
+        "clipped_data_gradient",
+        "step_movement",
+        "weight_before",
+        "weight_after"
+      ],
+      "numeric_update_scope": "all2048successfulupdates",
+      "bytes": 198451,
+      "sha256": "4307ffbddd6b569d059b678691969a37eaf4d54fe1445414bde6e9d3e1620a38"
+    }
+  ],
+  "preservation_pins": [
+    {
+      "id": "preserve-v6-training-512-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-512.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-512.pt",
+      "bytes": 3780661,
+      "sha256": "7a1845f5675f8ef061beed66b04f5aa0e26bc337616cdc89d3a68df21f59a8d5",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-training-1024-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-1024.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-1024.pt",
+      "bytes": 3781292,
+      "sha256": "2b6ac0100d093b14326fbaf124bb984c12f8930a36e2d4f6f15a943aa6ef546c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-training-2048-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/checkpoints/training-2048.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/checkpoints/training-2048.pt",
+      "bytes": 3781292,
+      "sha256": "598fa2fe8cb1d4322e448cf35026f01a2deec090922b1b534b51393c3419d7b1",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-input-scaler-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/calibration/input-scaler.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "eb054a8f5643fe961b077f5fbfe94c483870600cfb66e549a88b261c371cb7d1",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-bank-standardizer-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v6/run-001/calibration/bank-standardizer.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "ac7c31b94ff6417bbe0fb02014b4f7ab1dc3ae3fd790d41da2c02835f7dc712c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-card-json",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/CAUSAL_FRESH_V6_CARD.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/doc/CAUSAL_FRESH_V6_CARD.json",
+      "bytes": 74773,
+      "sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-card-md",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/CAUSAL_FRESH_V6_CARD.md",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/doc/CAUSAL_FRESH_V6_CARD.md",
+      "bytes": 7922,
+      "sha256": "1ec2a4a0e0d4d4ead2810ecccf3afcd20c8dc71fe87b54a7d978efadd1896ad0",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-establishment",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/final-establishment.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-establishment.json",
+      "bytes": 3938,
+      "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-complete-mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/complete-mirror-proof-recovery-002-attempt-001.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-complete-mirror.json",
+      "bytes": 158350,
+      "sha256": "6838663b49f8a77a9dfd4fd08bbb6a9a9758d8df3c090f963e1cffe82cbf17cb",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-training-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/independent-training-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-training-audit.json",
+      "bytes": 38112,
+      "sha256": "ce548d9100d6137381c7c863c796c947fbce940e52f7e45406718b9dd3be4169",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-quality-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/quality-independent-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-quality-audit.json",
+      "bytes": 219068,
+      "sha256": "a1bcd600e7be558132eb2e77911e423a7f008d048951aed68c579671fb255fe3",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-source-manifest",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/engineering/causal-fresh-v6/attempt-001/source-manifest.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source/CAPSULE_MANIFEST.json",
+      "bytes": 24421,
+      "sha256": "ee145b968d430c7c63544539c173ea18b232f6fdba1238cf41fdcc15bacd4b9c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-source-ZIP",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/engineering/causal-fresh-v6/attempt-001/source.zip",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source.zip",
+      "bytes": 1199418,
+      "sha256": "7ecf64630328ae00aa5dd4029bc595633cfebe2aa0c25ed516f44a150722a20e",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-training-512-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/checkpoints/training-512.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/checkpoints/training-512.pt",
+      "bytes": 3782937,
+      "sha256": "7e4411ee3b863e7e8790d9bb7fbe4c09054a9ab191687ea5403249d25adc386c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-training-1024-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/checkpoints/training-1024.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/checkpoints/training-1024.pt",
+      "bytes": 3783638,
+      "sha256": "6087de333b0c3e1f09955a364978e13a6e679a1b3a9459ae29ef3891fb16b55d",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-training-2048-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/checkpoints/training-2048.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/checkpoints/training-2048.pt",
+      "bytes": 3783638,
+      "sha256": "508c667f273ef425942e9304778dc2fe35603aba1d6640ebca0e43d958879e11",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-input-scaler-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/calibration/input-scaler.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "1395d80ab4f98cdeaa8febc552e83cd2514bff883a5572c580488a2c576528bc",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-bank-standardizer-pt",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/runs/causal-fresh-v8/run-001/calibration/bank-standardizer.pt",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001/calibration/bank-standardizer.pt",
+      "bytes": 53951,
+      "sha256": "5c90353868a2cf9f11047e08eb6f107f320019300f8f68605aed546912c5a842",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-card-json",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/CAUSAL_FRESH_V8_CARD.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/source/doc/CAUSAL_FRESH_V8_CARD.json",
+      "bytes": 109378,
+      "sha256": "6acfaadfe758c0d252c8138fc2830807d40444f9a9adfa61f85ec13dde7c63a6",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-card-md",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/CAUSAL_FRESH_V8_CARD.md",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/source/doc/CAUSAL_FRESH_V8_CARD.md",
+      "bytes": 12857,
+      "sha256": "9ff08641cf020252873d469248463361071ee4a3d8f02fc0b53f9ea56797840c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-establishment",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/final-establishment.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-establishment.json",
+      "bytes": 6452,
+      "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-complete-mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/complete-mirror-attempt-001.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-complete-mirror.json",
+      "bytes": 169457,
+      "sha256": "ab69cc66df4ba55a4baaf9b216185ff929d1d84a1d316b89802f04f4bb09f96c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-training-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/independent-training-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-training-audit.json",
+      "bytes": 43601,
+      "sha256": "885a5e6d7dc0e5c688a816c29fe989d030908e433d40ebf2b5e388c629df5a5f",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-quality-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/quality-independent-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-quality-audit.json",
+      "bytes": 229500,
+      "sha256": "bf3c0bc14b09745535795122fb747990c40ee9d26ccbb795c161dda955406c7a",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-source-manifest",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/engineering/causal-fresh-v8/attempt-001/source-manifest.json",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/source/CAPSULE_MANIFEST.json",
+      "bytes": 26693,
+      "sha256": "8daba935ee45332b892225c6994a00b59ad95b2e4da4fe7348f6c6518266cf2e",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-source-ZIP",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/engineering/causal-fresh-v8/attempt-001/source.zip",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/source.zip",
+      "bytes": 1818112,
+      "sha256": "bc883e6e14365f68e02e7f5b0e5c3df9eeca204cbdb7140d34de775768d14591",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-selected-v3-cuwacunu_dev",
+      "host_repository": "cuwacunu_dev",
+      "host_path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "container_path": "/cuwacunu/output/baselines/CPB-v3.market-01/inference.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-selected-v3-cuwacunu_embedding",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "output/baselines/CPB-v3.market-01/inference.pt",
+      "container_path": "/cuwacunu/output/baselines/CPB-v3.market-01/inference.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-current-clean-ledger",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_research_ledger.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-current-clean-ledger.json",
+      "bytes": 635322,
+      "sha256": "b5fa203f97b754523e9a3f929026ac1a5d2c879ae2cc84dca396fbd4200339ef",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-current-catalog",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-current-catalog.json",
+      "bytes": 21098,
+      "sha256": "e16d07610cd27cb367d2418098191b2f53d87c2bb23273505cff7b2a31b0e8a1",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-future-v8-retention",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention.json",
+      "bytes": 24084,
+      "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-future-v8-retention-review",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_retention_review/independent-review.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention-review.json",
+      "bytes": 3697,
+      "sha256": "54895c7266b8c164ef48a101246313dab8c54112a03915d10d9a01bb195ffdcd"
+    },
+    {
+      "id": "preserve-future-v8-retention-admission",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_retention_review/applied-future-protocol.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention-admission.json",
+      "bytes": 1480,
+      "sha256": "8c2ebe5f240e43762bcf079bc61b09a0fe6c2ae5dd64aee2ad365ce418f0d622"
+    }
+  ],
+  "preservation_pin_count": 33,
+  "pre_execution_preservation": {
+    "id": "final-v8-preservation",
+    "host_repository": "cuwacunu_embedding",
+    "host_path": "doc/causal_fresh_v8/final-preservation.json",
+    "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/final-preservation.json",
+    "bytes": 140977,
+    "sha256": "919b4f11610e3ab61b63afbc3612145506e4c47a3be3c777f119d47c49e7126a"
+  },
+  "actual_batches": [
+    1,
+    2048
+  ],
+  "actual_batch_decoder_adjoints": "forbidden-no-matched-prestep-decoder-weights",
+  "full112_component_rows": "saved-both-versions",
+  "actual_batch_tensors": "saved-both-versions-no-replay",
+  "V6_split_norm_inference": "forbidden",
+  "numeric_policy": "Verify52 allowedinputs,33 declaredpreservation-onlypins and finalV8broadreceipt before tensorstorage;rechecksource/card/allpins afterward. Draftnotexecutable. Inertstdlibonly;no models/fits/heldoutnumeric.",
+  "mixed_summary_policy": "Four JSON files contain both splits and are decoded;only train numeric subtree used. Head archives may contain other metadata;only declared fields read.",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policies": {
+    "v6": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+    "v8": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1"
+  },
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "clipping_policy": {
+    "v6": "shared-global-norm2-clip1",
+    "v8": "shared-global-norm2-clip1",
+    "branch_norm_inference": "forbidden-both-versions",
+    "observed_global_norm_independently_recomputed": false,
+    "optimizer_independence_claimed": false,
+    "counterfactual_global_clipping": "forbidden"
+  },
+  "diagnostics": [
+    "Both2048globalclip traces:component/norm/factor observations overall+four512blocks;actual1/2048component/support/CSV checks withoutprestepdecoderpairing.",
+    "All112 native40fourblock statistics and exactalreadyfittedridgecontributions;all3savedneuralpredictions,no forward/refit.",
+    "First8 initial/final fixedqueries:fouroriginal32tickraw/error/support bins,notagecontrolled;stage-matchedmean4/separateunc4localadjoints only.",
+    "V8only8192group+2048gauge logs:fixedperbin512blockobservations andtwoactual12array F64before-subtraction checks;noV6counterfactual/fullJacobian/optimizerreplay."
+  ],
+  "derivative_limits": "Both actual mean paths useHuber1;GaussianmeanNLL/MAE alternatives are diagnostic only. Localmean4cosines onlywithinoneversion/stage/basis;uncertainty4separate. No parent20/upstream/fullparametergradient replay. Actual2048forwardusesstate2047 andhasnomatcheddecoder;no actual-batch decoderadjoints.",
+  "raw_temporal_scope": "First8TRAIN originalrawF64 andfour32tickquerysupport/error bins;unequalsupport/targetdistributions,notagecontrolled. No tasklabel-conditioned rawsummary,agefailure/capacitycause,full112orheldoutgeneralizationclaim.",
+  "tolerances": {
+    "saved_scalar_prediction_and_NLL_arithmetic": "absolute1e-10+relative1e-9",
+    "saved_variance_link_consistency": "absolute5e-6+relative5e-5 for saved F32 intermediate approximation",
+    "mask_row_support_and_paired_initial_data": "exact",
+    "temporal_observed_norm_and_F64movement_arithmetic": "absolute1e-10+relative1e-9;originalF32operands promoted BEFORE subtraction;exact nonzero counts/geometry/gaugeCSV association"
+  },
+  "owned_source_files": [
+    {
+      "path": "code/research/causal_v6_v8_train_diagnosis/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v6_v8_train_diagnosis/diagnose.py",
+      "bytes": 101170,
+      "sha256": "5c8f2fde1206fdf066ca57d10a48e50f1fe4abf994a4ee05735aa1ac9b9db693"
+    },
+    {
+      "path": "code/research/causal_v6_v8_train_diagnosis/provenance.json",
+      "bytes": 6011,
+      "sha256": "cdfc6a62f2dce8904967e7ecbad7e66d8e88441210cb9fe800b6c853d049f060"
+    },
+    {
+      "path": "code/research/causal_v6_v8_train_diagnosis/README.md",
+      "bytes": 9784,
+      "sha256": "4084580138eca45a495c9b72128cbb08d7f10ffe9127e8e0d0bdf659856d94d2"
+    },
+    {
+      "path": "code/research/causal_v6_v8_train_diagnosis/schema.py",
+      "bytes": 1620,
+      "sha256": "608463a484807a704f5deeabdbffe3d3d303b7bb57ad135abfbd97614247abac"
+    }
+  ],
+  "card_generator": {
+    "kind": "bounded_host_file_JSON_metadata_copy_edit_only",
+    "project_source_executed": false,
+    "old_parent_card_unchanged": true
+  },
+  "metadata_copies_required_before_execution": [
+    {
+      "id": "preserve-v6-establishment",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/final-establishment.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-establishment.json",
+      "bytes": 3938,
+      "sha256": "ff3a26ea261fb9a8aa9ce681ee37ff882ef703f0056dce421eefc3e1a641c6fd",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-complete-mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/complete-mirror-proof-recovery-002-attempt-001.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-complete-mirror.json",
+      "bytes": 158350,
+      "sha256": "6838663b49f8a77a9dfd4fd08bbb6a9a9758d8df3c090f963e1cffe82cbf17cb",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-training-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/independent-training-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-training-audit.json",
+      "bytes": 38112,
+      "sha256": "ce548d9100d6137381c7c863c796c947fbce940e52f7e45406718b9dd3be4169",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v6-quality-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v6/quality-independent-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v6-quality-audit.json",
+      "bytes": 219068,
+      "sha256": "a1bcd600e7be558132eb2e77911e423a7f008d048951aed68c579671fb255fe3",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-establishment",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/final-establishment.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-establishment.json",
+      "bytes": 6452,
+      "sha256": "0ea5b99a8417c74d589cef79ce83953450f0b499eec85d1359ab8f40e7878cba",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-complete-mirror",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/complete-mirror-attempt-001.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-complete-mirror.json",
+      "bytes": 169457,
+      "sha256": "ab69cc66df4ba55a4baaf9b216185ff929d1d84a1d316b89802f04f4bb09f96c",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-training-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/independent-training-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-training-audit.json",
+      "bytes": 43601,
+      "sha256": "885a5e6d7dc0e5c688a816c29fe989d030908e433d40ebf2b5e388c629df5a5f",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-v8-quality-audit",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_fresh_v8/quality-independent-audit.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-v8-quality-audit.json",
+      "bytes": 229500,
+      "sha256": "bf3c0bc14b09745535795122fb747990c40ee9d26ccbb795c161dda955406c7a",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-current-clean-ledger",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_research_ledger.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-current-clean-ledger.json",
+      "bytes": 635322,
+      "sha256": "b5fa203f97b754523e9a3f929026ac1a5d2c879ae2cc84dca396fbd4200339ef",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-current-catalog",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-current-catalog.json",
+      "bytes": 21098,
+      "sha256": "e16d07610cd27cb367d2418098191b2f53d87c2bb23273505cff7b2a31b0e8a1",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-future-v8-retention",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/clean_causal_encoder_search_goal_v8_retention.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention.json",
+      "bytes": 24084,
+      "sha256": "e7920442fbc5528cbe7e67f71ada65101974a6a28ad4d39bc57dea461c477699",
+      "role": "preservation_only_no_numeric_access"
+    },
+    {
+      "id": "preserve-future-v8-retention-review",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_retention_review/independent-review.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention-review.json",
+      "bytes": 3697,
+      "sha256": "54895c7266b8c164ef48a101246313dab8c54112a03915d10d9a01bb195ffdcd"
+    },
+    {
+      "id": "preserve-future-v8-retention-admission",
+      "host_repository": "cuwacunu_embedding",
+      "host_path": "doc/causal_v8_retention_review/applied-future-protocol.json",
+      "container_path": "/opt/cuwacunu/research/causal-v6-v8-train-diagnosis/attempt-001/source/preservation/preserve-future-v8-retention-admission.json",
+      "bytes": 1480,
+      "sha256": "8c2ebe5f240e43762bcf079bc61b09a0fe6c2ae5dd64aee2ad365ce418f0d622"
+    }
+  ],
+  "admission": "Prospective frozen source/card only,not execution admission. Root+independent actualsource/card/wrapper preflight and explicit separate Stage/Schema/Run admission required in existingcontainer,with external exact card/preflight/ZIP/capsule SHA before parse;preserve every refusal. No AST/schema/body/numericexecution has occurred.",
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "new_quality_scores": 0,
+  "raw_cache_numeric_reads": 0,
+  "forbidden": [
+    "Full encoder/nonlinear-parent-decoder/librarymodel/neural/head execution;boundedmanual savedlinear-residual/variance-link/finite-difference scalar kernels explicitly allowed",
+    "Newtraining/head/scaler/normalizer/statisticfits",
+    "V6orV8branchsplitinference,unavailableV6subgroup/gaugecounterfactual,globalcliporoptimizerreplay",
+    "Actualbatchdecoderpairing/fullupstreamJacobian",
+    "Heldoutnumericfields/rawcache/PCA",
+    "NewV9/candidate/rescue/floors/TRAINNLLgate",
+    "Dev/publication/Gitmutations"
+  ],
+  "interpretation": "SavedTRAIN evidence can constrain a future hypothesis but cannot explain heldoutNNvolatility/MAE shifts,trend/relation robustness or pooling causation. Both versions shareglobalclip;newV8content20maydifferatinit. Preserve allV3–V8 leaders;no V9/candidate/floor/rate/seed/head rescue.",
+  "freeze_can_proceed": true,
+  "pending_before_freeze": [],
+  "initial_pairing_coordinate_slice": [
+    20,
+    40
+  ],
+  "whole_native40_equality_required": false,
+  "first_fresh_mean_variance_equality_required": false,
+  "V8_split_norm_inference": "forbidden",
+  "temporal_observation_scope": "V8-only-saved8192group2048gauge-two12field-witnesses",
+  "temporal_statistics_update_blocks": [
+    [
+      1,
+      512
+    ],
+    [
+      513,
+      1024
+    ],
+    [
+      1025,
+      1536
+    ],
+    [
+      1537,
+      2048
+    ]
+  ],
+  "temporal_observation_contract": {
+    "policy": "original-position-four-bin-disjoint-export-rows-v1",
+    "partition": [
+      4,
+      16,
+      32,
+      4,
+      8
+    ],
+    "group_rows": 8192,
+    "gauge_rows": 2048,
+    "actual_updates": [
+      1,
+      2048
+    ],
+    "actual_temporal_array_fields": [
+      "temporal_export_weight_before",
+      "temporal_export_weight_after",
+      "temporal_export_weight_clipped_gradient",
+      "temporal_export_bias_before",
+      "temporal_export_bias_after",
+      "temporal_export_bias_clipped_gradient",
+      "temporal_pool_positions_before",
+      "temporal_pool_positions_after",
+      "temporal_pool_positions_clipped_gradient",
+      "temporal_pool_score_bias_before",
+      "temporal_pool_score_bias_after",
+      "temporal_pool_score_bias_clipped_gradient"
+    ],
+    "actual_shapes": {
+      "temporal_export_weight": [
+        32,
+        64
+      ],
+      "temporal_export_bias": [
+        32
+      ],
+      "temporal_pool_positions": [
+        16,
+        1
+      ],
+      "temporal_pool_score_bias": [
+        1
+      ]
+    },
+    "gradient_scope": "observed_post_global_clip1",
+    "subtraction": "Promote each originalF32operand toPythonF64 BEFORE subtraction/centering",
+    "decoder_or_optimizer_replay": false,
+    "V6_subgroup_evidence_inferred": false,
+    "gauge": "core.encoder.level.base.backbone.pool_score.bias",
+    "gauge_movement_is_data_learning": false,
+    "weight_decay_counted_as_data_gradient": false,
+    "scalar_identifiability_claimed": false,
+    "receipt_final_change": "Pinned source receipt only;diagnosisdoesnotreadencoderprojectionparametersfromcheckpoint"
+  },
+  "frozen_utc": "2026-10-16T10:16:53.1620812Z",
+  "execution_admitted": false,
+  "root_and_independent_frozen_card_review": "pending_before_any_phase",
+  "retention_independent_review": {
+    "path": "doc/causal_v8_retention_review/independent-review.json",
+    "bytes": 3697,
+    "sha256": "54895c7266b8c164ef48a101246313dab8c54112a03915d10d9a01bb195ffdcd"
+  },
+  "retention_application_admission": {
+    "path": "doc/causal_v8_retention_review/applied-future-protocol.json",
+    "bytes": 1480,
+    "sha256": "8c2ebe5f240e43762bcf079bc61b09a0fe6c2ae5dd64aee2ad365ce418f0d622"
+  },
+  "current_catalog": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+    "bytes": 21098,
+    "sha256": "e16d07610cd27cb367d2418098191b2f53d87c2bb23273505cff7b2a31b0e8a1"
+  },
+  "preserved_original_unfrozen_draft": {
+    "path": "output/engineering/causal-v6-v8-train-diagnosis-preparation/before-context-freeze-001/manifest.json",
+    "bytes": 2940,
+    "sha256": "ec508827fcc38aa84b9e5ee1f113f28935a02e1f4b439c905970fce9827049a9",
+    "files": 7
+  },
+  "context_changes_after_draft_review": "Completed currentledger/catalog,futureprotocol/review/application/final94preservation pins andreadinessprose;rootclarification of alreadydeclared manualsaveddecoder scalararithmetic. No numericalcode/allowlist/schema/scope change.",
+  "manual_saved_decoder_arithmetic": {
+    "status": "already_declared_bounded_scalar_arithmetic_no_scope_or_code_change",
+    "linear_residual": "Contract savedmean4[32:36] with savedchange_decoder[3456,4]",
+    "parent_allocation": "Storedtotalmean-minus-savedlinearresidual approximatesF32addition;no nonlinearparentdecoder orcontent20/fixed12split",
+    "variance_link": "Saveduncertainty4[36:40]affineprojection+bias/softpluslink consistency andlocalanalytic/finite-difference scalar kernels",
+    "forbidden": "Fullencoder/nonlinearparentdecoder/librarymodel/headexecution orfullupstreamJacobian",
+    "counter_semantics": "decoder/model/encoder executioncounters arelibrary/module calls,not manualscalar contraction counts"
+  },
+  "preserved_pre_wording_context": {
+    "path": "output/engineering/causal-v6-v8-train-diagnosis-preparation/before-manual-decoder-wording-001/manifest.json",
+    "bytes": 2946,
+    "sha256": "42784f29bf26ccb6690a90251a2e5168f98b45ecad5ddccfab065aaabc126d80",
+    "files": 7
+  }
+}

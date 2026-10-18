@@ -1,0 +1,251 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 22,
+  "design_slot": "RPB-v22",
+  "canonical_registered_tag": "RPB-v22",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Content-only ordered relation native32, freshly trained2048; same saved market input scaler and matched base geometry",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "sha256": "7358647e99d2ffaa8d5739416f9562c12b400db62e5b1559c7f47bec4b48819f",
+      "bytes": 6123,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "ContentOrderedRelationModel",
+      "ContentOrderedRelationModelImpl",
+      "ContentOrderedRelationProjection",
+      "ContentOrderedRelationProjectionImpl",
+      "Contract"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/content_ordered_relation.conf",
+      "sha256": "7fa6acc6c85e0d16262bdcab22657b70e1751545d002a3084cb4cc369bbb87fc",
+      "bytes": 645,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/content_ordered_relation.conf"
+  },
+  "historical_definition_header_checks": [],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/configurable_content_relation_embedding_versions.json",
+      "sha256": "2c297cd64098234b7a52a1bfebff740ed0856ef234703b512070085aecb8a23e",
+      "bytes": 11358,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_content_relation_embedding_versions.json",
+        "sha256": "2c297cd64098234b7a52a1bfebff740ed0856ef234703b512070085aecb8a23e",
+        "bytes": 11358,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/0"
+      },
+      "declaration": {
+        "id": "RPB-v22.alt-01",
+        "description": "Learned ordered content relations; fixed spectral prior preserved",
+        "master": 941101,
+        "checkpoints": [
+          {
+            "updates": 0,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941101/point-0/checkpoint.pt",
+            "sha256": "4be41303a032eb8022d020caea35b891692a6800b34705019e0f8fad03bc274f",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-ac9d9673f1e24751"
+          },
+          {
+            "updates": 512,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941101/point-512/checkpoint.pt",
+            "sha256": "c6242cf2b7f023104f052c37548a74e7841a591047984253741f998440719e09",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-ac9d9673f1e24751"
+          }
+        ],
+        "source_fingerprint": "a9e625650b4d40b2658211d1f3f8f5b06a17d71b79ec4f22f491f02460198519",
+        "config_sha256": "7fa6acc6c85e0d16262bdcab22657b70e1751545d002a3084cb4cc369bbb87fc",
+        "card_sha256": "53b0bcc2dc1b30f0b8060448d151def9a4305ba89f22039c5ad79eaca5d5d349"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_content_relation_embedding_versions.json",
+        "sha256": "2c297cd64098234b7a52a1bfebff740ed0856ef234703b512070085aecb8a23e",
+        "bytes": 11358,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/1"
+      },
+      "declaration": {
+        "id": "RPB-v22.alt-01",
+        "description": "Learned ordered content relations; fixed spectral prior preserved",
+        "master": 941102,
+        "checkpoints": [
+          {
+            "updates": 0,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941102/point-0/checkpoint.pt",
+            "sha256": "9f661c73ef92deba6fbd3689fa4a1bec975f2cabc2c55ecf630783473478eb09",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-5f51eb3918f161a4"
+          },
+          {
+            "updates": 512,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941102/point-512/checkpoint.pt",
+            "sha256": "c4b853aa3d9ef1b1ef8ccf753186ab14d0e623bda5f7367bd87e817d237d05ad",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-5f51eb3918f161a4"
+          }
+        ],
+        "source_fingerprint": "a9e625650b4d40b2658211d1f3f8f5b06a17d71b79ec4f22f491f02460198519",
+        "config_sha256": "7fa6acc6c85e0d16262bdcab22657b70e1751545d002a3084cb4cc369bbb87fc",
+        "card_sha256": "53b0bcc2dc1b30f0b8060448d151def9a4305ba89f22039c5ad79eaca5d5d349"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    },
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/configurable_content_relation_embedding_versions.json",
+        "sha256": "2c297cd64098234b7a52a1bfebff740ed0856ef234703b512070085aecb8a23e",
+        "bytes": 11358,
+        "verified_available_at_indexing": true,
+        "json_pointer": "/instance_bundles/2"
+      },
+      "declaration": {
+        "id": "RPB-v22.alt-01",
+        "description": "Learned ordered content relations; fixed spectral prior preserved",
+        "master": 941103,
+        "checkpoints": [
+          {
+            "updates": 0,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941103/point-0/checkpoint.pt",
+            "sha256": "c521cf9d9de573458e76f2c5ff4d4256c4d3c06cd5c577d0e0c49e2eb59f4cec",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-3a642694962518e9"
+          },
+          {
+            "updates": 512,
+            "path": "output/runs/rpb-v22-content-relation/admission-53b82q/candidates/master-941103/point-512/checkpoint.pt",
+            "sha256": "1ab3df4ddc4f1299e3aa03f7cc4f287d1846cac1f96a014a7a706449c6728c61",
+            "scaler_identity": "rpb-scaler-v1-fnv1a64-3a642694962518e9"
+          }
+        ],
+        "source_fingerprint": "a9e625650b4d40b2658211d1f3f8f5b06a17d71b79ec4f22f491f02460198519",
+        "config_sha256": "7fa6acc6c85e0d16262bdcab22657b70e1751545d002a3084cb4cc369bbb87fc",
+        "card_sha256": "53b0bcc2dc1b30f0b8060448d151def9a4305ba89f22039c5ad79eaca5d5d349"
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v22.market-02",
+      "description": "Content-only ordered relation native32, freshly trained2048; same saved market input scaler and matched base geometry",
+      "status": "primary architecture parent/reference; no retroactive nine-condition score",
+      "input_geometry": {
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "H": 128,
+        "output": "one native vector per window",
+        "native_width": 32,
+        "C": 3
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_CAPACITY_STUDY_CARD.md",
+        "sha256": "dc64e6cdc81ff67cef0d8c127e910afb1f8e7b44f1212eb47a51f29b2c52e67b",
+        "bytes": 12611
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_TRAINING_STUDY_RESULTS.md",
+        "sha256": "eebe455472eb2f4a8dea9e2e3404f0cf547e6fae1c61eefc30b131ef88a6b556",
+        "bytes": 18614
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_training_study_v1/capacity-completion.json",
+        "sha256": "92e07ff944d02e40538f93a5a22de7bc1597aa8c5ee71e5719ba414a995870b3",
+        "bytes": 63804
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_change_energy_v1/table_rows.json",
+        "sha256": "7d11f577beb61b924a9b896fe3f5dea9c464b779fc34bde19f99ef80751109de",
+        "bytes": 225314
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-0.pt",
+          "sha256": "1074b99c1bd0c799d5b44636aa01e11b873dea5b859be2ada2195b1c87041ce9",
+          "bytes": 1196590,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/inference-2048.pt",
+          "sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c",
+          "bytes": 1197263,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-1024.pt",
+          "sha256": "583361d7d291927c311cd5ad8667c196ef029d57a7d7c1070115b81e621f0eef",
+          "bytes": 3536501,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-2048.pt",
+          "sha256": "ee0b274af9d562c7e4a034046ab71b77455a9696a07b2a972d481003d8b3f389",
+          "bytes": 3536501,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-capacity-study/run-base-gryiAV/checkpoints/training-512.pt",
+          "sha256": "d3edf1292e5409d6f9a8476f824a3973e4e0bf4fd619a8788ae5da0a99fa397e",
+          "bytes": 3535927,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}

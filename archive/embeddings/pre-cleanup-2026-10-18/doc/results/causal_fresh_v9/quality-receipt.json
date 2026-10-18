@@ -1,0 +1,115 @@
+{
+  "kind": "causal_fresh_v9_quality_execution_v1",
+  "status": "passed",
+  "protocol": "causal-fresh-v9",
+  "model": "CPB-v9.market-01",
+  "completed_utc": "2026-10-16T11:20:16.429917+00:00",
+  "card_sha256": "94488bf2d42751b5a38c054eb5b6bbd7674e45d6e0bd444818b7f6fbcb34346d",
+  "initial_checkpoint": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/checkpoints/inference-0.pt",
+    "bytes": 1302234,
+    "sha256": "f6f3bea8507b2e39d473c5a671e41d9b5072fddb5e3b96b11606bf566b810830"
+  },
+  "final_checkpoint": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/checkpoints/inference-2048.pt",
+    "bytes": 1303521,
+    "sha256": "fa92a17acd18763e2dcaddc8bdb88b5aa2db4d1bde29527388b624ba4569a7c8"
+  },
+  "initial_saved_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/initial-proof/proof.json",
+    "bytes": 1354,
+    "sha256": "3b1da96c86bb83fa9dfb5cc1159a8478dcbd1818f2a62903f6841f8c0ad7fb26"
+  },
+  "post_training_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/final-proof/proof.json",
+    "bytes": 1360,
+    "sha256": "5b94cc97f48c87a7c2618d589874cb7254addcc39a0c7ae00470a254d726fa86"
+  },
+  "fresh_initialization": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/fresh-initialization.json",
+    "bytes": 1706,
+    "sha256": "dfc3efaf2751288e1b7f377069a5b2503613d38c1f129911aa0e68a1bd90d4a2"
+  },
+  "build_admission": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/build-admission.json",
+    "bytes": 39629,
+    "sha256": "b9440dfdc12fdb312b981eb0251df8a2dc5c17a757acdbbe6649c796e7551655"
+  },
+  "engineering_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/engineering-proof/proof.json",
+    "bytes": 3876,
+    "sha256": "2be06df79b63344cd09baf2333bf4898d85640ddd56179fb1e7bfcb4b5316174"
+  },
+  "variance_gradient_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/variance-gradient-proof.json",
+    "bytes": 1537,
+    "sha256": "1445026b7c8b6891ec1f47b254e4276dbcc15412cd06a8ddd52b8a243ff4287e"
+  },
+  "temporal_pooling_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/temporal-pooling-proof.json",
+    "bytes": 1891,
+    "sha256": "bb01b4d8c9013219777530778bf9f9066d186ced7b77cdb07d985b945ab7deb8"
+  },
+  "temporal_learning": {
+    "receipt": {
+      "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/temporal-projection-learning.json",
+      "bytes": 3799,
+      "sha256": "8699686a8fd6b9013157f1bd99c430ebd154b7a00b11a78d1aa57227ee221be8"
+    },
+    "artifacts": [
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/temporal-projection-learning.csv",
+        "bytes": 1332715,
+        "sha256": "0b7af2b193c715a82de6cdad6ef982c94ce0931b94c9b58782203d52a48a8367"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/temporal-pool-score-bias-learning.csv",
+        "bytes": 198033,
+        "sha256": "6598d702ff99dda68a1ee2a3c818e0b2c4003a1dbc12cde87076d4de7def0aac"
+      },
+      {
+        "path": "/opt/cuwacunu/research/causal-fresh-v9/attempt-001/run-001/temporal-between-bin-position-learning.csv",
+        "bytes": 390756,
+        "sha256": "1b7a770d750cd9136c2f1830324ebedbe7e549349269049cf934a1cab33d0890"
+      }
+    ]
+  },
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "stage_seconds": {
+    "extraction": 71.20720771299966,
+    "initial_market_heads": 1.2260921310007689,
+    "initial_synthetic_heads": 2.269819319000817,
+    "final_market_heads": 1.1312482829998771,
+    "final_synthetic_heads": 2.2994907649990637
+  },
+  "old_encoder_calls": 0,
+  "initial_quality_reused": false,
+  "initial_and_final_heads_new": true,
+  "checkpoint_selection": "fresh initial0 and final2048 only",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "shared_global_clip": true,
+  "optimizer_independence_claimed": false,
+  "temporal_pooling_policy": "original-position-four-bin-shared-global-half-mixture-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "registered_learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias"
+}

@@ -1,0 +1,81 @@
+{
+  "kind": "cpb_v14_source_interface_clarification_v1",
+  "status": "source_preparation_only_authorized",
+  "declared_utc": "2026-10-18T06:00:53.4291363Z",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+    "bytes": 47424,
+    "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+  },
+  "reason": "Disjoint V13 local_weights[R,T] SUM cannot expose each exact local softmax under overlapping windows. F32 mixture inversion or global renormalization is not an exact same-forward local witness.",
+  "actual_step_temporal_witness_contract": {
+    "total_fields": 60,
+    "per_window_local_weight_fields": [
+      "temporal_pool_local_weights",
+      "temporal_contextual_pool_local_weights"
+    ],
+    "parent_V13_shape": [
+      "R",
+      "T"
+    ],
+    "per_window_local_weight_shape": [
+      "R",
+      4,
+      "T"
+    ],
+    "new_semantics": "Captured actual same-forward local softmax for each of four nested windows, zero for absent windows",
+    "kernel_member": "local_weights now[R,4,T]; no redundant extra window_local_weights member",
+    "pool_weights": "Existing[R,T]aggregate SUM remains diagnostic, not one probability",
+    "global_weights": "Existing[R,T]unchanged",
+    "other_58_fields_and_shapes": "unchanged",
+    "no_reconstruction_or_extra_forward": true
+  },
+  "JSON_evidence_contract": {
+    "temporal_pooling_geometry": [
+      4,
+      16,
+      32,
+      8
+    ],
+    "temporal_pooling_trailing_lengths": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "old_temporal_pooling_partition_allowed": false
+  },
+  "storage_contract": {
+    "geometry_key": "temporal_pooling_geometry_v1",
+    "trailing_key": "temporal_pooling_trailing_lengths_v1",
+    "legacy_partition_key": "temporal_pooling_partition_v1",
+    "legacy_key_must_refuse_even_with_valid_new_fields": true,
+    "all_five_nodes": true
+  },
+  "position_contrast_diagnostics": "Keep existing fixed-quarter position contrast CSV columns, masks and arithmetic. They describe original position quarters, not the nested pooling supports; receipt/README must distinguish them explicitly.",
+  "full_refusal_archives": "Keep full invalid archives forV14; optional compact fixture/control pathway not implemented. Compact0/restored-controls0; no old artifact change.",
+  "family_source_declared_counts": {
+    "status": "source_owner_declared_pending_final_static_review_not_observed",
+    "research_primary_full_typed_refusals": 821,
+    "family_primary_full_typed_refusals": 676,
+    "direct_temporal_kernel_calls": 53,
+    "F64_FD_coordinates": 18,
+    "F32_FD_coordinates": 18,
+    "isolated_autograd_grad_calls": 4,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_AdamW_steps": 1,
+    "new_required_flags": [
+      "nested_trailing_supports_fixed_edge16",
+      "per_window_local_weights_captured",
+      "longest_local_equals_global_two_sum",
+      "packed_padding_membership_invariance"
+    ],
+    "scientific_tolerances": "retain inherited fixed tolerances; actual final source declarations independently reviewed before testing"
+  },
+  "model_parameter_native_data_shapes_and_RNG_unchanged": true,
+  "sole_scientific_model_hypothesis_unchanged": true,
+  "frozen_existing_history_changed": false,
+  "project_or_scientific_execution_admitted": false
+}

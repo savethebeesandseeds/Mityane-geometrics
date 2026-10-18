@@ -1,0 +1,200 @@
+{
+  "kind": "cpb_v8_saved_training_independent_audit_card_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "declared_utc": "2026-10-16T01:20:25.175262Z",
+  "stage": "declared_before_independent_saved_data_execution",
+  "required_frozen_stage": "declared_before_independent_saved_data_execution",
+  "execution_pending": true,
+  "model": "CPB-v8.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "baseline_unchanged": true,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "temporal_pooling_policy": "original-position-four-bin-disjoint-export-rows-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "frozen_training_card_sha256": "6acfaadfe758c0d252c8138fc2830807d40444f9a9adfa61f85ec13dde7c63a6",
+  "frozen_training_markdown_sha256": "9ff08641cf020252873d469248463361071ee4a3d8f02fc0b53f9ea56797840c",
+  "frozen_input_manifest_sha256": "827f292f6cafa815ff722814e2c60684fc907bebc7d1c9087ec1358c61b4db04",
+  "main_source_manifest_sha256": "8daba935ee45332b892225c6994a00b59ad95b2e4da4fe7348f6c6518266cf2e",
+  "main_source_zip_sha256": "bc883e6e14365f68e02e7f5b0e5c3df9eeca204cbdb7140d34de775768d14591",
+  "main_source_files": 113,
+  "main_protocol_preflight": {
+    "path": "doc/causal_fresh_v8/protocol-preflight.json",
+    "bytes": 26272,
+    "sha256": "5bd0b5f70d8e4e6c69cb94f982d7738fff7246957ac4a99ede5834e0fc833883"
+  },
+  "outside_frozen_main_source": true,
+  "main_input_bindings": [
+    {
+      "path": "doc/CAUSAL_FRESH_V8_CARD.json",
+      "bytes": 109378,
+      "sha256": "6acfaadfe758c0d252c8138fc2830807d40444f9a9adfa61f85ec13dde7c63a6"
+    },
+    {
+      "path": "doc/CAUSAL_FRESH_V8_CARD.md",
+      "bytes": 12857,
+      "sha256": "9ff08641cf020252873d469248463361071ee4a3d8f02fc0b53f9ea56797840c"
+    },
+    {
+      "path": "doc/causal_fresh_v8/input-manifest.json",
+      "bytes": 5462,
+      "sha256": "827f292f6cafa815ff722814e2c60684fc907bebc7d1c9087ec1358c61b4db04"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v8/attempt-001/source-manifest.json",
+      "bytes": 26693,
+      "sha256": "8daba935ee45332b892225c6994a00b59ad95b2e4da4fe7348f6c6518266cf2e"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v8/attempt-001/source.zip",
+      "bytes": 1818112,
+      "sha256": "bc883e6e14365f68e02e7f5b0e5c3df9eeca204cbdb7140d34de775768d14591"
+    }
+  ],
+  "auditor_source": {
+    "path": "code/research/causal_fresh_v8_training_audit/audit_training.py",
+    "bytes": 101587,
+    "sha256": "a19fa3a65d602b40ba05cb7bbe0957e7f264f733d414eaf0f9dc416d3f6650b9"
+  },
+  "auditor_support": [
+    {
+      "path": "code/research/causal_fresh_v8_training_audit/README.md",
+      "bytes": 5125,
+      "sha256": "6145b758605c464f442c7279fe2f061bfa2b25c323b27308a95e1771c92b26d5"
+    },
+    {
+      "path": "code/research/causal_fresh_v8_training_audit/provenance.json",
+      "bytes": 4961,
+      "sha256": "802fc1a630c0d513327bee8039b250b78e30b2df16476f3a7c5ba426912ba50a"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/audit_training.py",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v6-training-audit/attempt-001/source/audit_training.py",
+      "bytes": 78757,
+      "sha256": "e7350c1b75d5101735de7a9948077a201257c4974d2e41d7699609c227f68b82"
+    }
+  ],
+  "expected_main_paths": {
+    "attempt": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001",
+    "run": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/run-001",
+    "source": "/opt/cuwacunu/research/causal-fresh-v8/attempt-001/source",
+    "build": "/opt/cuwacunu/build/causal-fresh-v8-attempt001"
+  },
+  "expected_audit_root": "/opt/cuwacunu/research/causal-fresh-v8-training-audit/attempt-001",
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "image": "sha256:ed0d8a5141f073d5c961b95e65e9b3528a66e122bda4971ec8f47d925d717de7",
+    "standard_library_only": true,
+    "host_project_execution": false,
+    "new_containers": 0,
+    "root_must_admit_stage_AST_and_numeric_phases_separately": true
+  },
+  "scope": [
+    "One completed2048/B8 fresh V8 CUDA trajectory; independent row/counter/MT19937_64 schedule and frozen TRAIN calibration with no old model/statistics imports",
+    "All five typed checkpoints: inference0/2048 and TRAIN512/1024/2048; exact objective/routing and temporal policy/Long[5] at inference outer/payload and TRAIN root/encoder/payload",
+    "All77 parameter arrays/76 learned/294752 values; fixed3888 prior and all frozen statistics; exact moment/order/progress/stream and actual512 continuation receipts without optimizer replay",
+    "Exactly75 other tensors/294751 values need actual nonzero CUDA data gradients and movement; only scalar pool_score.bias exempt and observed separately, never roundoff/decay counted as meaningful learning",
+    "All2048 ordinary training rows, separate F64 Huber/variance/total/reportingNLL components and unchanged globalclip1 factor; full112TRAIN/32known-VALIDATION fixed-query means and first8 saved cells per split/stage",
+    "All8192 temporal group and2048 gauge CSV rows: exact indices/capacities, finite norm/count/events, signed gauge continuity and all aggregate receipt pins",
+    "Actual pre-step1/2048 witnesses contain12 pooling arrays; independent F64-promoted movement/centering and postclip norm/count arithmetic, first-before binds initial and final-after binds final checkpoint",
+    "Four export eight-row weight/bias slices and four within-bin-centered position contrasts have actual data-gradient events and final changes; empty-bin steps may be zero",
+    "Actual admitted seven-binary/eleven-TU closure plus source-bound objective and temporal CUDA fixtures, never repeated; no claim to reconstruct unsaved upstream/full gradient arrays"
+  ],
+  "expected": {
+    "updates": 2048,
+    "batch_size": 8,
+    "native_width": 40,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "mandatory_nonzero_data_learning_tensors": 75,
+    "mandatory_nonzero_data_learning_values": 294751,
+    "gauge": "core.encoder.level.base.backbone.pool_score.bias",
+    "fixed_values": 3888,
+    "parameter_tensors": 77,
+    "global_clip_max_norm": 1,
+    "binary_count": 7,
+    "translation_units": 11,
+    "temporal_group_rows": 8192,
+    "gauge_rows": 2048,
+    "actual_temporal_raw_array_witness_updates": [
+      1,
+      2048
+    ],
+    "arrays_per_witness": 12,
+    "independently_counted_modules": [
+      "numeric_statistics",
+      "saved_tensor_state",
+      "manual_saved_Gaussian",
+      "actual_pre_step_composite_objective",
+      "temporal_pooling_saved_learning"
+    ]
+  },
+  "temporal_numeric_contract": {
+    "movement": "Promote EACH F32 before/after parameter operand to F64 before subtraction, matching actual frozen writer",
+    "centering": "Subtract within-bin four-position mean in F64",
+    "norms": "F64 sqrt(sum of squares); independent math.fsum",
+    "norm_absolute_tolerance": 2E-12,
+    "norm_relative_tolerance": 2E-12,
+    "gauge_requirement": "No positive gradient/movement lower bound; independently observe counts, continuity and signed movement",
+    "unsaved_steps": "All8192 row arithmetic/reductions checked; raw norm reconstruction only actual1/2048, no invented arrays",
+    "data_learning": "Movement includes AdamW decay; separately observed nonzero gradients required for75 and temporal slices/contrasts"
+  },
+  "fresh_schema_contract": "Only fresh-initialization JSON legitimately lacks gradient_policy; require absence there. All actual typed policies and other relevant JSON objective/temporal fields remain strict.",
+  "module_counting": "Core checks and each five module checks remain distinct. Any later total must explicitly include all five; wrapper prints copied component counts, no fabricated total.",
+  "model_calls": 0,
+  "decoder_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "forbidden": [
+    "Torch/NumPy/producer imports or executable module deserialization",
+    "Encoder/decoder/head calls, training/optimizer replay or refits",
+    "Old checkpoint/statistic numeric reads",
+    "Post-encoder PCA, quality selection or fixed-head tuning",
+    "Mutation of frozen main113/card/source/results, old artifacts or dev"
+  ],
+  "execution_wrapper": {
+    "path": "doc/causal_fresh_v8/training-audit-execute.py",
+    "bytes": 6012,
+    "sha256": "16d6a0124aacf50df7c9ef9b4479de21f30b1523c1909959457f3e3a960cf81d"
+  },
+  "stage_helper": {
+    "path": "doc/causal_fresh_v8/training-audit-stage.ps1",
+    "bytes": 7542,
+    "sha256": "daf8ec1a3b473df7cd39684618f1c9394e1e3161d422f8089aeaf70dbff09482"
+  },
+  "mirror_helper": {
+    "path": "doc/causal_fresh_v8/training-audit-mirror.ps1",
+    "bytes": 6215,
+    "sha256": "690ec5c2c9be17e23d6b7211e4a73b9d88b46f44ed8f5c6f04712743330dfa5b"
+  },
+  "orchestration_parent_sources": [
+    {
+      "path": "doc/causal_fresh_v7/training-audit-stage.ps1",
+      "bytes": 7306,
+      "sha256": "54dd9a6c1b52c21c7a822fb4a2ac93a16f9a9929885e70fdbc1168429fa80e37"
+    },
+    {
+      "path": "doc/causal_fresh_v7/training-audit-execute.py",
+      "bytes": 6263,
+      "sha256": "376954b9402a7928bbe752534b8c0a2cfeb7c8d9b85c662a3b545ecf223f6485"
+    },
+    {
+      "path": "doc/causal_fresh_v7/training-audit-mirror.ps1",
+      "bytes": 5660,
+      "sha256": "9eff9d02bea3ab5ac08a16827c00e8743edca48c3751fe4c991eaa395c91ef94"
+    }
+  ],
+  "orchestration_operation": "Complete physical V7 recipe copies with V8 identities, training-only scope, explicit docker.exe application calls, exact ZIP/manifest-before-AST guards, required temporal-proof CLI and five copied module counters. No mutable old helper imports.",
+  "execution_authorization": "Root separately authorizes AST-only staging and then the once-only numerical invocation; freezing this declaration invokes neither.",
+  "frozen_utc": "2026-10-16T01:22:42.6135515Z",
+  "source_static_reviews": "Root independently inspected card/three wrappers with scope, once guards, native Docker binding, capsule hashes, AST restriction and exact CLI; causal_next_design independently reviewed full auditor source a19fa3 with no blocker. Auditor body has not run."
+}

@@ -1,0 +1,159 @@
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/data/tests/test_memory_mapped.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_memory_mapped.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/data/src/record_types.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/data/tests/test_data_safety.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_data_safety.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/config/include -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/config/tests/document_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_config.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/integration/tests/causal_encoder_input_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/causal_encoder_input_test.o
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:56:44: warning: ignoring return value of 'std::string cuwacunu::config::Block::string(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   56 |     rejects([&] { encoder.string("missing"); }, "missing required key");
+      |                                            ^
+In file included from code/config/tests/document_test.cpp:2:
+code/config/include/cuwacunu/config/document.h:30:29: note: declared here
+   30 |   [[nodiscard]] std::string string(std::string_view key) const {
+      |                             ^~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:59:28: warning: ignoring return value of 'const cuwacunu::config::Block& cuwacunu::config::Document::block(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   59 |     rejects([&] { doc.block("missing"); }, "missing block");
+      |                   ~~~~~~~~~^~~~~~~~~~~
+code/config/include/cuwacunu/config/document.h:134:30: note: declared here
+  134 |   [[nodiscard]] const Block &block(std::string_view name) const {
+      |                              ^~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:60:56: warning: ignoring return value of 'static cuwacunu::config::Document cuwacunu::config::Document::parse(const std::string&, std::filesystem::__cxx11::path)', declared with attribute 'nodiscard' [-Wunused-result]
+   60 |     rejects([] { Document::parse("A { X = 1; x = 2; }"); }, "duplicate key");
+      |                                                        ^
+code/config/include/cuwacunu/config/document.h:109:3: note: declared here
+  109 |   parse(const std::string &text, std::filesystem::path origin = {}) {
+      |   ^~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:61:46: warning: ignoring return value of 'static cuwacunu::config::Document cuwacunu::config::Document::parse(const std::string&, std::filesystem::__cxx11::path)', declared with attribute 'nodiscard' [-Wunused-result]
+   61 |     rejects([] { Document::parse("A {} a {}"); }, "duplicate block");
+      |                                              ^
+code/config/include/cuwacunu/config/document.h:109:3: note: declared here
+  109 |   parse(const std::string &text, std::filesystem::path origin = {}) {
+      |   ^~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:63:42: warning: ignoring return value of 'static cuwacunu::config::Document cuwacunu::config::Document::parse(const std::string&, std::filesystem::__cxx11::path)', declared with attribute 'nodiscard' [-Wunused-result]
+   63 |       rejects([&] { Document::parse(text); }, "malformed syntax");
+      |                                          ^
+code/config/include/cuwacunu/config/document.h:109:3: note: declared here
+  109 |   parse(const std::string &text, std::filesystem::path origin = {}) {
+      |   ^~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:67:42: warning: ignoring return value of 'static cuwacunu::config::Document cuwacunu::config::Document::parse(const std::string&, std::filesystem::__cxx11::path)', declared with attribute 'nodiscard' [-Wunused-result]
+   67 |       rejects([&] { Document::parse(text); },
+      |                                          ^
+code/config/include/cuwacunu/config/document.h:109:3: note: declared here
+  109 |   parse(const std::string &text, std::filesystem::path origin = {}) {
+      |   ^~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:82:44: warning: ignoring return value of 'int64_t cuwacunu::config::Block::integer(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   81 |       rejects([&] { Document::parse(std::string("A { X = ") + value + "; }")
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   82 |                         .block("A").integer("X"); }, "malformed integer");
+      |                         ~~~~~~~~~~~~~~~~~~~^~~~~
+code/config/include/cuwacunu/config/document.h:37:25: note: declared here
+   37 |   [[nodiscard]] int64_t integer(std::string_view key) const {
+      |                         ^~~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:85:43: warning: ignoring return value of 'double cuwacunu::config::Block::number(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   84 |       rejects([&] { Document::parse(std::string("A { X = ") + value + "; }")
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   85 |                         .block("A").number("X"); }, "malformed number");
+      |                         ~~~~~~~~~~~~~~~~~~^~~~~
+code/config/include/cuwacunu/config/document.h:44:24: note: declared here
+   44 |   [[nodiscard]] double number(std::string_view key) const {
+      |                        ^~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:88:50: warning: ignoring return value of 'std::vector<long int> cuwacunu::config::Block::integers(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   88 |                         .block("A").integers("X"); }, "malformed list");
+      |                                                  ^
+code/config/include/cuwacunu/config/document.h:61:38: note: declared here
+   61 |   [[nodiscard]] std::vector<int64_t> integers(std::string_view key) const {
+      |                                      ^~~~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:89:72: warning: ignoring return value of 'bool cuwacunu::config::Block::boolean(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   89 |     rejects([] { Document::parse("A { X = maybe; }").block("A").boolean("X"); },
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+code/config/include/cuwacunu/config/document.h:55:22: note: declared here
+   55 |   [[nodiscard]] bool boolean(std::string_view key) const {
+      |                      ^~~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:91:70: warning: ignoring return value of 'int64_t cuwacunu::config::Block::integer_or(std::string_view, int64_t) const', declared with attribute 'nodiscard' [-Wunused-result]
+   91 |     rejects([] { Document::parse("A { X = ; }").block("A").integer_or("X", 5); },
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+code/config/include/cuwacunu/config/document.h:40:25: note: declared here
+   40 |   [[nodiscard]] int64_t integer_or(std::string_view key,
+      |                         ^~~~~~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:93:70: warning: ignoring return value of 'std::filesystem::__cxx11::path cuwacunu::config::Document::resolve_path(std::string_view) const', declared with attribute 'nodiscard' [-Wunused-result]
+   93 |     rejects([] { Document::parse("A {}").resolve_path("relative.csv"); },
+      |                                                                      ^
+code/config/include/cuwacunu/config/document.h:146:39: note: declared here
+  146 |   [[nodiscard]] std::filesystem::path resolve_path(std::string_view raw) const {
+      |                                       ^~~~~~~~~~~~
+code/config/tests/document_test.cpp: In lambda function:
+code/config/tests/document_test.cpp:117:39: warning: ignoring return value of 'static cuwacunu::config::Document cuwacunu::config::Document::read(const std::filesystem::__cxx11::path&)', declared with attribute 'nodiscard' [-Wunused-result]
+  117 |     rejects([&] { Document::read(file); }, "missing file");
+      |                                       ^
+code/config/include/cuwacunu/config/document.h:123:33: note: declared here
+  123 |   [[nodiscard]] static Document read(const std::filesystem::path &path) {
+      |                                 ^~~~
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/integration/src/encode_history.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/encode_history.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/networks/state_representation/versions/v1/include -Icode/networks/latent_dynamics/versions/v1/include -Icode/networks/predictive_training/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/latent_market/versions/v1/include -Icode/evaluation/latent_dynamics/versions/v1/include -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/latent_market/versions/v1/src/prepare_main.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_prepare.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/networks/state_representation/versions/v1/include -Icode/networks/latent_dynamics/versions/v1/include -Icode/networks/predictive_training/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/latent_market/versions/v1/include -Icode/evaluation/latent_dynamics/versions/v1/include -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/latent_market/versions/v1/src/study_main.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_study.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/evaluation/latent_dynamics/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/latent_dynamics/versions/v1/src/baselines.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -Icode/data/include -Icode/config/include -Icode/integration/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/networks/state_representation/versions/v1/include -Icode/networks/latent_dynamics/versions/v1/include -Icode/networks/predictive_training/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -Icode/latent_market/versions/v1/include -Icode/evaluation/latent_dynamics/versions/v1/include -Icode/encoders/causal_patch_bottleneck_mae/versions/v3/include -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/latent_market/versions/v1/src/utility_main.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_utility.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/evaluation/latent_dynamics/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/latent_dynamics/versions/v1/src/risk_readouts.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/latent_market/versions/v1/include -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/latent_market/versions/v1/tests/timeline_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_timeline_test.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/evaluation/latent_dynamics/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/latent_dynamics/versions/v1/tests/baselines_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines_test.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/evaluation/latent_dynamics/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/evaluation/latent_dynamics/versions/v1/tests/risk_readouts_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts_test.o
+mkdir -p "/opt/cuwacunu/build/cpb-v3-primary-integration"
+g++ -Icode/networks/state_representation/versions/v1/include -Icode/networks/latent_dynamics/versions/v1/include -Icode/networks/predictive_training/versions/v1/include -isystem /opt/cuwacunu_embedding/libtorch/include -isystem /opt/cuwacunu_embedding/libtorch/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP -c code/networks/predictive_training/versions/v1/tests/v1_test.cpp -o /opt/cuwacunu/build/cpb-v3-primary-integration/predictive_v1_test.o
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/test_memory_mapped.o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_memory_mapped
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/test_data_safety.o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_data_safety
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/test_config.o -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_config
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/causal_encoder_input_test.o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_causal_encoder_input
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/encode_history.o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/encode_history
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_prepare.o /opt/cuwacunu/build/cpb-v3-primary-integration/record_types.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_prepare
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_study.o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_study
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_utility.o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts.o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_utility
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_timeline_test.o -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_timeline_test
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines_test.o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines_test
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts_test.o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts_test
+bash code/scripts/test-setup.sh
+Setup fixture: 7 cases pass; real APT operations, package changes and SDK reads/mutations: 0.
+/opt/cuwacunu/build/cpb-v3-primary-integration/test_memory_mapped
+[MemoryMappedDataLoader] The global anchor grid uses the finest source cadence; native channel timestamps are retained and encoder alignment must be checked separately.
+	 - [sanitize_csv_into_binary_file] zero/eps increment, line 3 in /opt/cuwacunu/build/cpb-v3-primary-integration/tmp/cuwacunu_ujcamei_mm_sanitize_7410_7/duplicate_gap.csv
+	 - [sanitize_csv_into_binary_file] extra large step (d=2) at line 4 in /opt/cuwacunu/build/cpb-v3-primary-integration/tmp/cuwacunu_ujcamei_mm_sanitize_7410_7/duplicate_gap.csv
+[MemoryMappedStorage test] ok
+/opt/cuwacunu/build/cpb-v3-primary-integration/test_data_safety
+Data safety passed: cache failure atomicity, live raw/normalized mappings, mixed normalization rejection, causal anchors, horizon bounds, strict CSV tokens
+/opt/cuwacunu/build/cpb-v3-primary-integration/test_config
+configuration document checks passed
+/opt/cuwacunu/build/cpb-v3-primary-integration/test_causal_encoder_input config/encoder.conf config/encoder_runtime.conf
+PASS CPB-v3.market-01 primary integration: 4389 checks, 14 future value/mask cases, 29 CUDA encode attempts; raw CACHE88 F64 parity, explicit close-time cutoffs, native36, typed fresh checkpoint/config/TRAIN statistics and frozen state; new encoder updates/head fits: 0
+/opt/cuwacunu/build/cpb-v3-primary-integration/latent_market_v1_timeline_test
+latent-market v1 temporal admission: 54 checks passed
+/opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_baselines_test "/opt/cuwacunu/build/cpb-v3-primary-integration/tmp/baselines-$(date +%s%N)"
+latent-dynamics-v1 synthetic baseline checks=47; zero encoder calls, zero market quality fits
+/opt/cuwacunu/build/cpb-v3-primary-integration/latent_dynamics_v1_risk_readouts_test "/opt/cuwacunu/build/cpb-v3-primary-integration/tmp/risk-readouts-$(date +%s%N)"
+latent-risk-readouts-v1 synthetic checks=31; no encoder calls, no market utility claim
+g++ /opt/cuwacunu/build/cpb-v3-primary-integration/predictive_v1_test.o -L/opt/cuwacunu_embedding/libtorch/lib -Wl,-rpath,'/opt/cuwacunu_embedding/libtorch/lib' -Wl,-rpath-link,/opt/cuwacunu_embedding/libtorch/lib -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread -o /opt/cuwacunu/build/cpb-v3-primary-integration/test_predictive_v1
+/opt/cuwacunu/build/cpb-v3-primary-integration/test_predictive_v1
+PASS predictive v1: actual CUDA gradients/updates, frozen/blocked/full attribution, detached teacher and encoder boundary, distinct-origin pooled covariance and rank bound, fixed transforms, successful-update EMA/skip, affine/readout folding, all-arm exact next-update AdamW/RNG/sampler/EMA resume, typed identity admission and immutable archives; artificial engineering only

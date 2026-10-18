@@ -1,0 +1,1594 @@
+{
+  "kind": "causal_patch_bottleneck_mae_instance_v3",
+  "date": "2026-10-15",
+  "version": "CPB-v3",
+  "instance": "CPB-v3.market-01",
+  "initial_quality_label": "CPB-v3.market-01.init",
+  "protocol": "causal-fresh-v3",
+  "procedure_status": "complete",
+  "clean_fresh_baseline_established": true,
+  "overall_winner": false,
+  "quality_gate_against_pretrained_reference": false,
+  "historical_reference": "CPB-v1.market-01",
+  "application_selection": "CPB-v1.market-01",
+  "application_selection_changed": false,
+  "new_research_published": false,
+  "version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v3",
+  "public_entry": "include/embedding/encoders/causal_patch_bottleneck_mae/versions/v3.h",
+  "settings": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/v3/config/v3.conf",
+    "bytes": 624,
+    "sha256": "01b1209f20959ba0d99fbbcca3809160f282bc1fe26a3975e1ce9006bb9372f2"
+  },
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V3_CARD.json",
+    "bytes": 27995,
+    "sha256": "f88fa9751ff9da0e808805da9975fb0bf3afd4433688f3cfb420686392e6396f"
+  },
+  "input_manifest": {
+    "path": "doc/causal_fresh_v3/input-manifest.json",
+    "bytes": 5462,
+    "sha256": "ce691b6ec2563cbf7a6b2a615c3912e3a9ec586f5198e1655450a22c9f9c9ffd"
+  },
+  "source_capsule": {
+    "path": "output/engineering/causal-fresh-v3/attempt-001/source.zip",
+    "bytes": 303969,
+    "sha256": "4708108750506298cea9b532b60bcbb20318afde57be106ac28933c99a2af2cb"
+  },
+  "source_manifest": {
+    "path": "output/engineering/causal-fresh-v3/attempt-001/source-manifest.json",
+    "bytes": 20317,
+    "sha256": "9555e522350585ee3b6beadfb10d2ca7304ed00e8ed3d849d8b0bf2b8664e2e0"
+  },
+  "build_admission": {
+    "path": "output/engineering/causal-fresh-v3/attempt-001/build-evidence.json",
+    "bytes": 25527,
+    "sha256": "bb46b40d7bdac25f518eea2639c5a47377f6c4283609b5ac6496dd505ded35f2"
+  },
+  "initialization_kind": "fresh-seeded-constructor-no-import-v1",
+  "initialization_seed": 943001,
+  "pretrained_ancestor": "none",
+  "source_updates": 0,
+  "inherited_learned_values": 0,
+  "fresh_learned_values": 293672,
+  "fresh_learned_tensors": 75,
+  "analytic_prior_values": 3888,
+  "total_parameters": 297560,
+  "fresh_initialization": {
+    "path": "output/runs/causal-fresh-v3/run-001/fresh-initialization.json",
+    "bytes": 1067,
+    "sha256": "33bcdccab5d3b30c207342e1e5c807dddcd9b491ad00f09a83ee9a549c5efaa0"
+  },
+  "fresh_calibration": {
+    "path": "output/runs/causal-fresh-v3/run-001/calibration/summary.json",
+    "bytes": 888,
+    "sha256": "17271351b1d37ccc2edadfc005b5ed0b7606ab1d0312e6b3c002d7f3b06868b1"
+  },
+  "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+  "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-4d6d0b5761eaad8f",
+  "training_runs": 1,
+  "new_causal_updates": 2048,
+  "attempts": 2048,
+  "batch_size": 8,
+  "training_replays": 0,
+  "fresh_optimizer": true,
+  "training_summary": {
+    "path": "output/runs/causal-fresh-v3/run-001/training-summary.json",
+    "bytes": 16650,
+    "sha256": "1ae18a1fc055b4d7bba0a66238f6bebebb0334a27980603c55bb6791bb31f373"
+  },
+  "typed_resume": {
+    "path": "output/runs/causal-fresh-v3/run-001/typed-resume-512.json",
+    "bytes": 221,
+    "sha256": "8add75a3eeb7cf30f03e18a13599adc27f890dd52265b3eb2dcd0bb44b468942"
+  },
+  "GPU_compute_seconds": 144.3411162490003,
+  "calibration_seconds": 2.991649873,
+  "timing_scope": "forward_at+F64_NLL+backward+clip+AdamW;synchronized_wall;includes_in_step_contract_checks;excludes_loader_masks_checkpoints_evidence_logging",
+  "inference_kind": "cpb_v3_inference_checkpoint_v1",
+  "training_kind": "cpb_v3_causal_training_state_v1",
+  "native_width": 36,
+  "initial_checkpoint": {
+    "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-0.pt",
+    "bytes": 1289550,
+    "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+  },
+  "usable_final_checkpoint": {
+    "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-2048.pt",
+    "bytes": 1290625,
+    "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+  },
+  "stable_clean_baseline_checkpoint": {
+    "path": "output/baselines/CPB-v3.market-01/inference.pt",
+    "bytes": 1290625,
+    "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+  },
+  "main_checkpoints": [
+    {
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-0.pt",
+      "bytes": 1289550,
+      "sha256": "41e3b7b39f4aca2b3fff3cb43e74509e380e673e9782377c2c6fb24ba1755ed6"
+    },
+    {
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/inference-2048.pt",
+      "bytes": 1290625,
+      "sha256": "50e1d6514076ab34dcfa1194d8f0d97296f176e76174a78efadc97c5c0d1c34e"
+    },
+    {
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-1024.pt",
+      "bytes": 3757832,
+      "sha256": "c2126e0569cd15277b3edeb8afc6c6f5b5ada516d0eec3d2a09c81342acc5ff5"
+    },
+    {
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-2048.pt",
+      "bytes": 3757832,
+      "sha256": "73a69fbe1ed159b5d573bba4e3d8367e1cb24c0b0968ab6007090e4a40ebe1e9"
+    },
+    {
+      "path": "output/runs/causal-fresh-v3/run-001/checkpoints/training-512.pt",
+      "bytes": 3757169,
+      "sha256": "1226f8adeed519919d11cf5e84ad420a7bd64dc04e846bff33e91a64b22177a3"
+    }
+  ],
+  "checkpoints_local_git_ignored": true,
+  "engineering_proof": {
+    "path": "doc/results/causal_fresh_v3/engineering-proof.json",
+    "bytes": 1629,
+    "sha256": "7f371973a755280c9da1f5803fc4005ce671316b29ef1aba0db4547f1b6ec026"
+  },
+  "initial_causal_proof": {
+    "path": "doc/results/causal_fresh_v3/initial-causal-proof.json",
+    "bytes": 604,
+    "sha256": "346663cb4eaed4eae7c235527107e475cb6f8f13ba856810da38fad2591be9f5"
+  },
+  "final_causal_proof": {
+    "path": "doc/results/causal_fresh_v3/final-causal-proof.json",
+    "bytes": 610,
+    "sha256": "6692dbc56d026fac790cbf2e95e3ddc042740e37930e81f6d6e708bfa65affc9"
+  },
+  "final_quality_report": {
+    "path": "doc/CAUSAL_FRESH_V3_RESULTS.md",
+    "bytes": 19714,
+    "sha256": "6007f6c2521ee509ce8b60a51acb162523cdd91e09d7f6e3d0edb67740c7e3de"
+  },
+  "table_rows": {
+    "path": "doc/results/causal_fresh_v3/table_rows.json",
+    "bytes": 336076,
+    "sha256": "7e267cba02d9a96ca396aa78327cbcf2ec5e8c213782ce78631938ae331df01c"
+  },
+  "report_completion": {
+    "path": "doc/results/causal_fresh_v3/completion.json",
+    "bytes": 1061,
+    "sha256": "b0a8db50639c52d8aeac16c90beb44bc0f867b7accc6430ac820b440a0166a55"
+  },
+  "review": "doc/CAUSAL_FRESH_V3_REVIEW.md",
+  "quality": {
+    "descriptive_only": true,
+    "historical_quality_targets_used": false,
+    "initial_scores_reused": false,
+    "old_encoder_calls": 0,
+    "post_encoder_PCA_fits": 0,
+    "fixed_head_recipes_unchanged": true,
+    "market_TRAIN": 112,
+    "market_known_VALIDATION": 32,
+    "TEMPO5_cohorts": 3,
+    "TEMPO5_TRAIN_each": 512,
+    "TEMPO5_VALIDATION_each": 256,
+    "head_repetitions": 3,
+    "full_coverage": true,
+    "market_rows": [
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_volatility",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01.init",
+        "checkpoint_stage": "initial",
+        "size": 36,
+        "unit": "logreturn",
+        "linear_r2": 0.4516155042650637,
+        "linear_mae": 0.00020329626814686734,
+        "linear_rmse": 0.00025018300246663807,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 0.0009869792090940073,
+        "train_target_scale": 0.0005033346033711354,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00020329626814686734,
+                "rmse": 0.00025018300246663807,
+                "r2": 0.4516155042650637
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0002752223888555803,
+                "rmse": 0.00031949051780623216,
+                "r2": 0.10569529906697439
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00020329626814686734,
+                "rmse": 0.00025018300246663807,
+                "r2": 0.4516155042650637
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0001525165035976803,
+                "rmse": 0.00021385161716435465,
+                "r2": 0.5993227865507641
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00020329626814686734,
+                "rmse": 0.00025018300246663807,
+                "r2": 0.4516155042650637
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0002692944136825577,
+                "rmse": 0.0003187674020205199,
+                "r2": 0.10973894966309383
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/initial/market-readouts/report.json",
+          "bytes": 7723,
+          "sha256": "7615fc84b42cdc6e5c16a7de596f4214db36a5488fd4750e744f80a52144be2f"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          0.10569529906697439,
+          0.5993227865507641,
+          0.10973894966309383
+        ],
+        "neural_mean_r2": 0.2715856784269441,
+        "neural_mae_each": [
+          0.0002752223888555803,
+          0.0001525165035976803,
+          0.0002692944136825577
+        ],
+        "neural_mean_mae": 0.0002323444353786061,
+        "neural_rmse_each": [
+          0.00031949051780623216,
+          0.00021385161716435465,
+          0.0003187674020205199
+        ],
+        "neural_mean_rmse": 0.00028403651233036893
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_trend",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01.init",
+        "checkpoint_stage": "initial",
+        "size": 36,
+        "unit": "logreturn/tick",
+        "linear_r2": -0.7904225769179378,
+        "linear_mae": 6.435650933826231E-05,
+        "linear_rmse": 8.96018746079617E-05,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 3.4416387739644602E-06,
+        "train_target_scale": 8.34951996973826E-05,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 6.435650933826231E-05,
+                "rmse": 8.96018746079617E-05,
+                "r2": -0.7904225769179378
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 7.711557171819577E-05,
+                "rmse": 0.00010460126547952715,
+                "r2": -1.4400303669384704
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 6.435650933826231E-05,
+                "rmse": 8.96018746079617E-05,
+                "r2": -0.7904225769179378
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 6.113922667805852E-05,
+                "rmse": 7.82212858047061E-05,
+                "r2": -0.3644928212076355
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 6.435650933826231E-05,
+                "rmse": 8.96018746079617E-05,
+                "r2": -0.7904225769179378
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 8.630018091521611E-05,
+                "rmse": 0.00011730148697286363,
+                "r2": -2.0685159767141794
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/initial/market-readouts/report.json",
+          "bytes": 7723,
+          "sha256": "7615fc84b42cdc6e5c16a7de596f4214db36a5488fd4750e744f80a52144be2f"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          -1.4400303669384704,
+          -0.3644928212076355,
+          -2.0685159767141794
+        ],
+        "neural_mean_r2": -1.2910130549534284,
+        "neural_mae_each": [
+          7.711557171819577E-05,
+          6.113922667805852E-05,
+          8.630018091521611E-05
+        ],
+        "neural_mean_mae": 7.485165977049013E-05,
+        "neural_rmse_each": [
+          0.00010460126547952715,
+          7.82212858047061E-05,
+          0.00011730148697286363
+        ],
+        "neural_mean_rmse": 0.00010004134608569896
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_activity",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01.init",
+        "checkpoint_stage": "initial",
+        "size": 36,
+        "unit": "log1p(base_volume)",
+        "linear_r2": 0.16845197492995934,
+        "linear_mae": 0.4231467113802751,
+        "linear_rmse": 0.5240517417161427,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 5.42006528250114,
+        "train_target_scale": 0.620939182647599,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.4231467113802751,
+                "rmse": 0.5240517417161427,
+                "r2": 0.16845197492995934
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.2675139362612514,
+                "rmse": 0.32391856619924264,
+                "r2": 0.6823047790930041
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.4231467113802751,
+                "rmse": 0.5240517417161427,
+                "r2": 0.16845197492995934
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.2521936358534078,
+                "rmse": 0.3187295191941266,
+                "r2": 0.6924019526619386
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.4231467113802751,
+                "rmse": 0.5240517417161427,
+                "r2": 0.16845197492995934
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.3468297370621795,
+                "rmse": 0.42703809599744846,
+                "r2": 0.4478307222593211
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/initial/market-readouts/report.json",
+          "bytes": 7723,
+          "sha256": "7615fc84b42cdc6e5c16a7de596f4214db36a5488fd4750e744f80a52144be2f"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          0.6823047790930041,
+          0.6924019526619386,
+          0.4478307222593211
+        ],
+        "neural_mean_r2": 0.6075124846714213,
+        "neural_mae_each": [
+          0.2675139362612514,
+          0.2521936358534078,
+          0.3468297370621795
+        ],
+        "neural_mean_mae": 0.28884576972561293,
+        "neural_rmse_each": [
+          0.32391856619924264,
+          0.3187295191941266,
+          0.42703809599744846
+        ],
+        "neural_mean_rmse": 0.3565620604636059
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_relation",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01.init",
+        "checkpoint_stage": "initial",
+        "size": 36,
+        "unit": "correlation",
+        "linear_r2": 0.08343718254161314,
+        "linear_mae": 0.06919728961048666,
+        "linear_rmse": 0.08251580488319568,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 0.695825515355408,
+        "train_target_scale": 0.10157396122110604,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.06919728961048666,
+                "rmse": 0.08251580488319568,
+                "r2": 0.08343718254161314
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.07938865578269391,
+                "rmse": 0.09112265098409388,
+                "r2": -0.11773962267266325
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.06919728961048666,
+                "rmse": 0.08251580488319568,
+                "r2": 0.08343718254161314
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.07801972749673727,
+                "rmse": 0.09993640317480135,
+                "r2": -0.3444212979580612
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.06919728961048666,
+                "rmse": 0.08251580488319568,
+                "r2": 0.08343718254161314
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.06162301326355968,
+                "rmse": 0.079760572710929,
+                "r2": 0.14362401118698986
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/initial/market-readouts/report.json",
+          "bytes": 7723,
+          "sha256": "7615fc84b42cdc6e5c16a7de596f4214db36a5488fd4750e744f80a52144be2f"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          -0.11773962267266325,
+          -0.3444212979580612,
+          0.14362401118698986
+        ],
+        "neural_mean_r2": -0.1061789698145782,
+        "neural_mae_each": [
+          0.07938865578269391,
+          0.07801972749673727,
+          0.06162301326355968
+        ],
+        "neural_mean_mae": 0.07301046551433028,
+        "neural_rmse_each": [
+          0.09112265098409388,
+          0.09993640317480135,
+          0.079760572710929
+        ],
+        "neural_mean_rmse": 0.09027320895660808
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_volatility",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01",
+        "checkpoint_stage": "final",
+        "size": 36,
+        "unit": "logreturn",
+        "linear_r2": 0.964673433811061,
+        "linear_mae": 5.1438244510906345E-05,
+        "linear_rmse": 6.349886008234189E-05,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 0.0009869792090940073,
+        "train_target_scale": 0.0005033346033711354,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 5.1438244510906345E-05,
+                "rmse": 6.349886008234189E-05,
+                "r2": 0.964673433811061
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00023591343985291372,
+                "rmse": 0.0002735225377249185,
+                "r2": 0.3445254991038764
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 5.1438244510906345E-05,
+                "rmse": 6.349886008234189E-05,
+                "r2": 0.964673433811061
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00023639862741390167,
+                "rmse": 0.0002584726225273775,
+                "r2": 0.4146728543258612
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_volatility",
+              "unit": "logreturn",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.0009869792090940073,
+              "train_target_scale": 0.0005033346033711354,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 5.1438244510906345E-05,
+                "rmse": 6.349886008234189E-05,
+                "r2": 0.964673433811061
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.00017443214975385827,
+                "rmse": 0.00020551383789714291,
+                "r2": 0.6299574147349457
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/final/market-readouts/report.json",
+          "bytes": 7725,
+          "sha256": "2c7f467d82c4c34b916a35472159267c992f3150b7b03b4a13a646fddbd22b81"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          0.3445254991038764,
+          0.4146728543258612,
+          0.6299574147349457
+        ],
+        "neural_mean_r2": 0.4630519227215611,
+        "neural_mae_each": [
+          0.00023591343985291372,
+          0.00023639862741390167,
+          0.00017443214975385827
+        ],
+        "neural_mean_mae": 0.00021558140567355788,
+        "neural_rmse_each": [
+          0.0002735225377249185,
+          0.0002584726225273775,
+          0.00020551383789714291
+        ],
+        "neural_mean_rmse": 0.0002458363327164796
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_trend",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01",
+        "checkpoint_stage": "final",
+        "size": 36,
+        "unit": "logreturn/tick",
+        "linear_r2": 0.2631329634696965,
+        "linear_mae": 4.3723491614761766E-05,
+        "linear_rmse": 5.748226699026696E-05,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 3.4416387739644602E-06,
+        "train_target_scale": 8.34951996973826E-05,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 4.3723491614761766E-05,
+                "rmse": 5.748226699026696E-05,
+                "r2": 0.2631329634696965
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 6.396353413683345E-05,
+                "rmse": 7.691341198606016E-05,
+                "r2": -0.31924515917541196
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 4.3723491614761766E-05,
+                "rmse": 5.748226699026696E-05,
+                "r2": 0.2631329634696965
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 5.5858253568333586E-05,
+                "rmse": 7.449985393887224E-05,
+                "r2": -0.23774789512546346
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_trend",
+              "unit": "logreturn/tick",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 3.4416387739644602E-06,
+              "train_target_scale": 8.34951996973826E-05,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 4.3723491614761766E-05,
+                "rmse": 5.748226699026696E-05,
+                "r2": 0.2631329634696965
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 5.5898049050683185E-05,
+                "rmse": 7.350599244724585E-05,
+                "r2": -0.2049439491222682
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/final/market-readouts/report.json",
+          "bytes": 7725,
+          "sha256": "2c7f467d82c4c34b916a35472159267c992f3150b7b03b4a13a646fddbd22b81"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          -0.31924515917541196,
+          -0.23774789512546346,
+          -0.2049439491222682
+        ],
+        "neural_mean_r2": -0.2539790011410479,
+        "neural_mae_each": [
+          6.396353413683345E-05,
+          5.5858253568333586E-05,
+          5.5898049050683185E-05
+        ],
+        "neural_mean_mae": 5.857327891861674E-05,
+        "neural_rmse_each": [
+          7.691341198606016E-05,
+          7.449985393887224E-05,
+          7.350599244724585E-05
+        ],
+        "neural_mean_rmse": 7.497308612405942E-05
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_activity",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01",
+        "checkpoint_stage": "final",
+        "size": 36,
+        "unit": "log1p(base_volume)",
+        "linear_r2": 0.8628403110608782,
+        "linear_mae": 0.17814355298975235,
+        "linear_rmse": 0.2128353423147603,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 5.42006528250114,
+        "train_target_scale": 0.620939182647599,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.17814355298975235,
+                "rmse": 0.2128353423147603,
+                "r2": 0.8628403110608782
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.29089899562705657,
+                "rmse": 0.38467061163255906,
+                "r2": 0.551959766394002
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.17814355298975235,
+                "rmse": 0.2128353423147603,
+                "r2": 0.8628403110608782
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.27367612028609056,
+                "rmse": 0.33999163060351023,
+                "r2": 0.6499940302989589
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_activity",
+              "unit": "log1p(base_volume)",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 5.42006528250114,
+              "train_target_scale": 0.620939182647599,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.17814355298975235,
+                "rmse": 0.2128353423147603,
+                "r2": 0.8628403110608782
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.3460835404495114,
+                "rmse": 0.4367898359263375,
+                "r2": 0.422324370054998
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/final/market-readouts/report.json",
+          "bytes": 7725,
+          "sha256": "2c7f467d82c4c34b916a35472159267c992f3150b7b03b4a13a646fddbd22b81"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          0.551959766394002,
+          0.6499940302989589,
+          0.422324370054998
+        ],
+        "neural_mean_r2": 0.541426055582653,
+        "neural_mae_each": [
+          0.29089899562705657,
+          0.27367612028609056,
+          0.3460835404495114
+        ],
+        "neural_mean_mae": 0.3035528854542195,
+        "neural_rmse_each": [
+          0.38467061163255906,
+          0.33999163060351023,
+          0.4367898359263375
+        ],
+        "neural_mean_rmse": 0.38715069272080227
+      },
+      {
+        "dataset_id": "MKT-HIST-2",
+        "task": "past_relation",
+        "recipe_id": "causal-fresh-v3",
+        "designed_complexity_level": 4,
+        "complexity_scale_max": 5,
+        "view": "intact chronological VALIDATION",
+        "evidence_stage": "known-source development",
+        "method": "CPB-v3.market-01",
+        "checkpoint_stage": "final",
+        "size": 36,
+        "unit": "correlation",
+        "linear_r2": -0.00700444683432222,
+        "linear_mae": 0.0723982928946316,
+        "linear_rmse": 0.0864911590228179,
+        "valid": 32,
+        "total": 32,
+        "coverage": 1,
+        "train_target_mean": 0.695825515355408,
+        "train_target_scale": 0.10157396122110604,
+        "repetitions": [
+          {
+            "repetition": 2701,
+            "actual_seed": 13088411117524848790,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0723982928946316,
+                "rmse": 0.0864911590228179,
+                "r2": -0.00700444683432222
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.07493939034814016,
+                "rmse": 0.09829625232474871,
+                "r2": -0.3006542810590347
+              }
+            }
+          },
+          {
+            "repetition": 2802,
+            "actual_seed": 10018485049408248344,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0723982928946316,
+                "rmse": 0.0864911590228179,
+                "r2": -0.00700444683432222
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.06204959112686677,
+                "rmse": 0.07894656082613412,
+                "r2": 0.16101463449470332
+              }
+            }
+          },
+          {
+            "repetition": 2903,
+            "actual_seed": 9083751155097190455,
+            "target": {
+              "name": "past_relation",
+              "unit": "correlation",
+              "train_target_eligible": 112,
+              "train_target_supported": true,
+              "method_training_supported": true,
+              "train_target_mean": 0.695825515355408,
+              "train_target_scale": 0.10157396122110604,
+              "ridge": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.0723982928946316,
+                "rmse": 0.0864911590228179,
+                "r2": -0.00700444683432222
+              },
+              "neural": {
+                "total": 32,
+                "target_eligible": 32,
+                "valid": 32,
+                "coverage": 1,
+                "mae": 0.07367078296847546,
+                "rmse": 0.09109483665384363,
+                "r2": -0.1170573678474649
+              }
+            }
+          }
+        ],
+        "report": {
+          "path": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001/quality-001/final/market-readouts/report.json",
+          "bytes": 7725,
+          "sha256": "2c7f467d82c4c34b916a35472159267c992f3150b7b03b4a13a646fddbd22b81"
+        },
+        "reused": false,
+        "neural_r2_each": [
+          -0.3006542810590347,
+          0.16101463449470332,
+          -0.1170573678474649
+        ],
+        "neural_mean_r2": -0.08556567147059875,
+        "neural_mae_each": [
+          0.07493939034814016,
+          0.06204959112686677,
+          0.07367078296847546
+        ],
+        "neural_mean_mae": 0.0702199214811608,
+        "neural_rmse_each": [
+          0.09829625232474871,
+          0.07894656082613412,
+          0.09109483665384363
+        ],
+        "neural_mean_rmse": 0.08944588326824215
+      }
+    ],
+    "synthetic_panels": [
+      {
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+        "designed_complexity_level": 5,
+        "complexity_scale_max": 5,
+        "view": "validation_intact",
+        "input_policy": "synthetic_train",
+        "head_fitting_dataset_id": "TEMPO-5",
+        "scoring_dataset_id": "TEMPO-5",
+        "rows": [
+          {
+            "method": "CPB-v3.market-01.init",
+            "size": 36,
+            "checkpoint_stage": "initial",
+            "reused": false,
+            "linear_head_accuracy": 0.9401041666666666,
+            "neural_head_accuracy": 0.927517361111111,
+            "coverage": 1
+          },
+          {
+            "method": "CPB-v3.market-01",
+            "size": 36,
+            "checkpoint_stage": "final",
+            "reused": false,
+            "linear_head_accuracy": 0.96484375,
+            "neural_head_accuracy": 0.95703125,
+            "coverage": 1
+          }
+        ]
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+        "designed_complexity_level": 5,
+        "complexity_scale_max": 5,
+        "view": "validation_deleted",
+        "input_policy": "synthetic_train",
+        "head_fitting_dataset_id": "TEMPO-5",
+        "scoring_dataset_id": "TEMPO-5",
+        "rows": [
+          {
+            "method": "CPB-v3.market-01.init",
+            "size": 36,
+            "checkpoint_stage": "initial",
+            "reused": false,
+            "linear_head_accuracy": 0.8854166666666666,
+            "neural_head_accuracy": 0.8589409722222222,
+            "coverage": 1
+          },
+          {
+            "method": "CPB-v3.market-01",
+            "size": 36,
+            "checkpoint_stage": "final",
+            "reused": false,
+            "linear_head_accuracy": 0.9114583333333334,
+            "neural_head_accuracy": 0.9175347222222222,
+            "coverage": 1
+          }
+        ]
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+        "designed_complexity_level": 5,
+        "complexity_scale_max": 5,
+        "view": "validation_intact",
+        "input_policy": "market_scaler",
+        "head_fitting_dataset_id": "TEMPO-5",
+        "scoring_dataset_id": "TEMPO-5",
+        "rows": [
+          {
+            "method": "CPB-v3.market-01.init",
+            "size": 36,
+            "checkpoint_stage": "initial",
+            "reused": false,
+            "linear_head_accuracy": 0.9479166666666666,
+            "neural_head_accuracy": 0.9357638888888888,
+            "coverage": 1
+          },
+          {
+            "method": "CPB-v3.market-01",
+            "size": 36,
+            "checkpoint_stage": "final",
+            "reused": false,
+            "linear_head_accuracy": 0.9934895833333334,
+            "neural_head_accuracy": 0.9817708333333334,
+            "coverage": 1
+          }
+        ]
+      },
+      {
+        "dataset_id": "TEMPO-5",
+        "task": "lag_sign",
+        "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+        "designed_complexity_level": 5,
+        "complexity_scale_max": 5,
+        "view": "validation_deleted",
+        "input_policy": "market_scaler",
+        "head_fitting_dataset_id": "TEMPO-5",
+        "scoring_dataset_id": "TEMPO-5",
+        "rows": [
+          {
+            "method": "CPB-v3.market-01.init",
+            "size": 36,
+            "checkpoint_stage": "initial",
+            "reused": false,
+            "linear_head_accuracy": 0.8815104166666666,
+            "neural_head_accuracy": 0.8394097222222222,
+            "coverage": 1
+          },
+          {
+            "method": "CPB-v3.market-01",
+            "size": 36,
+            "checkpoint_stage": "final",
+            "reused": false,
+            "linear_head_accuracy": 0.94921875,
+            "neural_head_accuracy": 0.9427083333333334,
+            "coverage": 1
+          }
+        ]
+      }
+    ],
+    "descriptive_changes": {
+      "market": [
+        {
+          "task": "past_volatility",
+          "linear_r2": {
+            "initial": 0.4516155042650637,
+            "final": 0.964673433811061,
+            "difference": 0.5130579295459973
+          },
+          "neural_mean_r2": {
+            "initial": 0.2715856784269441,
+            "final": 0.4630519227215611,
+            "difference": 0.191466244294617
+          },
+          "linear_mae": {
+            "initial": 0.00020329626814686734,
+            "final": 5.1438244510906345E-05,
+            "difference": -0.000151858023635961
+          },
+          "neural_mean_mae": {
+            "initial": 0.0002323444353786061,
+            "final": 0.00021558140567355788,
+            "difference": -1.6763029705048224E-05
+          }
+        },
+        {
+          "task": "past_trend",
+          "linear_r2": {
+            "initial": -0.7904225769179378,
+            "final": 0.2631329634696965,
+            "difference": 1.0535555403876344
+          },
+          "neural_mean_r2": {
+            "initial": -1.2910130549534284,
+            "final": -0.2539790011410479,
+            "difference": 1.0370340538123806
+          },
+          "linear_mae": {
+            "initial": 6.435650933826231E-05,
+            "final": 4.3723491614761766E-05,
+            "difference": -2.0633017723500548E-05
+          },
+          "neural_mean_mae": {
+            "initial": 7.485165977049013E-05,
+            "final": 5.857327891861674E-05,
+            "difference": -1.627838085187339E-05
+          }
+        },
+        {
+          "task": "past_activity",
+          "linear_r2": {
+            "initial": 0.16845197492995934,
+            "final": 0.8628403110608782,
+            "difference": 0.6943883361309189
+          },
+          "neural_mean_r2": {
+            "initial": 0.6075124846714213,
+            "final": 0.541426055582653,
+            "difference": -0.06608642908876827
+          },
+          "linear_mae": {
+            "initial": 0.4231467113802751,
+            "final": 0.17814355298975235,
+            "difference": -0.24500315839052275
+          },
+          "neural_mean_mae": {
+            "initial": 0.28884576972561293,
+            "final": 0.3035528854542195,
+            "difference": 0.014707115728606557
+          }
+        },
+        {
+          "task": "past_relation",
+          "linear_r2": {
+            "initial": 0.08343718254161314,
+            "final": -0.00700444683432222,
+            "difference": -0.09044162937593536
+          },
+          "neural_mean_r2": {
+            "initial": -0.1061789698145782,
+            "final": -0.08556567147059875,
+            "difference": 0.020613298343979444
+          },
+          "linear_mae": {
+            "initial": 0.06919728961048666,
+            "final": 0.0723982928946316,
+            "difference": 0.0032010032841449376
+          },
+          "neural_mean_mae": {
+            "initial": 0.07301046551433028,
+            "final": 0.0702199214811608,
+            "difference": -0.002790544033169487
+          }
+        }
+      ],
+      "synthetic": [
+        {
+          "mode": "synthetic_train",
+          "view": "validation_intact",
+          "head": "ridge",
+          "initial": 0.9401041666666666,
+          "final": 0.96484375,
+          "difference": 0.02473958333333337
+        },
+        {
+          "mode": "synthetic_train",
+          "view": "validation_intact",
+          "head": "tiny_secondary",
+          "initial": 0.927517361111111,
+          "final": 0.95703125,
+          "difference": 0.02951388888888895
+        },
+        {
+          "mode": "synthetic_train",
+          "view": "validation_deleted",
+          "head": "ridge",
+          "initial": 0.8854166666666666,
+          "final": 0.9114583333333334,
+          "difference": 0.02604166666666674
+        },
+        {
+          "mode": "synthetic_train",
+          "view": "validation_deleted",
+          "head": "tiny_secondary",
+          "initial": 0.8589409722222222,
+          "final": 0.9175347222222222,
+          "difference": 0.05859375
+        },
+        {
+          "mode": "market_scaler",
+          "view": "validation_intact",
+          "head": "ridge",
+          "initial": 0.9479166666666666,
+          "final": 0.9934895833333334,
+          "difference": 0.04557291666666674
+        },
+        {
+          "mode": "market_scaler",
+          "view": "validation_intact",
+          "head": "tiny_secondary",
+          "initial": 0.9357638888888888,
+          "final": 0.9817708333333334,
+          "difference": 0.04600694444444453
+        },
+        {
+          "mode": "market_scaler",
+          "view": "validation_deleted",
+          "head": "ridge",
+          "initial": 0.8815104166666666,
+          "final": 0.94921875,
+          "difference": 0.06770833333333337
+        },
+        {
+          "mode": "market_scaler",
+          "view": "validation_deleted",
+          "head": "tiny_secondary",
+          "initial": 0.8394097222222222,
+          "final": 0.9427083333333334,
+          "difference": 0.10329861111111116
+        }
+      ]
+    }
+  },
+  "local_run_root": "output/runs/causal-fresh-v3/run-001",
+  "local_engineering_root": "output/engineering/causal-fresh-v3/attempt-001",
+  "container_root": "/opt/cuwacunu/research/causal-fresh-v3/attempt-001",
+  "finalization": "doc/causal_fresh_v3/finalization.json"
+}

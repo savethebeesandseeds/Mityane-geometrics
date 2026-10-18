@@ -1,0 +1,84 @@
+{
+  "kind": "causal_fresh_v7_quality_execution_v1",
+  "status": "passed",
+  "protocol": "causal-fresh-v7",
+  "model": "CPB-v7.market-01",
+  "completed_utc": "2026-10-16T00:21:24.540656+00:00",
+  "card_sha256": "f913044fd4bdbeff637991087f91d0b47bca451b31dfe664fb70b9555bbae593",
+  "initial_checkpoint": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/run-001/checkpoints/inference-0.pt",
+    "bytes": 1312612,
+    "sha256": "66b7d4bb29f9b18154f735ebd98c28c3ef69c10d41e8251a1adf38bc0a0c3727"
+  },
+  "final_checkpoint": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/run-001/checkpoints/inference-2048.pt",
+    "bytes": 1313777,
+    "sha256": "25f082bb22076aea26739c8ec9157d385c45e4413b42668d51d14ef40ce1f6a6"
+  },
+  "initial_saved_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/initial-proof/proof.json",
+    "bytes": 1444,
+    "sha256": "b058fff1d95cea4df17032fd058fef7fdf71cc034e56aa727955c9ae4e558150"
+  },
+  "post_training_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/final-proof/proof.json",
+    "bytes": 1450,
+    "sha256": "242f99750ac852b30627c9a6eddab9b8958b69194a78b2f3ac97fbac0b76fb13"
+  },
+  "fresh_initialization": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/run-001/fresh-initialization.json",
+    "bytes": 1784,
+    "sha256": "c714b3609701111d3a03b24fe05a38114bbed243ab8a0a21b5b62a9298ead1a4"
+  },
+  "build_admission": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/build-admission.json",
+    "bytes": 32911,
+    "sha256": "cbc288d7e10e3962ac6aec312227c3a7674275a5d2b8f295975c7b230e5cd10b"
+  },
+  "engineering_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/engineering-proof/proof.json",
+    "bytes": 2569,
+    "sha256": "7bb3cfae60663a1245a367283a427fe5ff37257979990f075bacadf6e8df9641"
+  },
+  "variance_gradient_proof": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/variance-gradient-proof.json",
+    "bytes": 2145,
+    "sha256": "2fb4127650e2c72e96feb46e42023195a93dea85f5dc559972f5a94b5f87dbe8"
+  },
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;disjoint-mean-uncertainty-clip1-v1",
+  "stage_seconds": {
+    "extraction": 72.63298055199994,
+    "initial_market_heads": 1.214540611999837,
+    "initial_synthetic_heads": 2.2939442139995663,
+    "final_market_heads": 1.201938786998653,
+    "final_synthetic_heads": 2.311575969999467
+  },
+  "old_encoder_calls": 0,
+  "initial_quality_reused": false,
+  "initial_and_final_heads_new": true,
+  "checkpoint_selection": "fresh initial0 and final2048 only",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "gradient_clip_policy": "disjoint-mean-uncertainty-norm2-clip1-v1",
+  "gradient_clip_max_norms": [
+    1,
+    1
+  ],
+  "gradient_clip_norm_type": 2,
+  "mean_clip_tensors": 73,
+  "mean_clip_values": 293537,
+  "uncertainty_clip_tensors": 3,
+  "uncertainty_clip_values": 1215,
+  "fixed_excluded_tensors": 1,
+  "fixed_excluded_values": 3888,
+  "shared_global_clip": false,
+  "combined_post_clip_norm_upper_bound": "sqrt2",
+  "optimizer_independence_claimed": false,
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;disjoint-mean-uncertainty-clip1"
+}

@@ -1,0 +1,1121 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "status": "SOURCE_READY_pending_independent_static_review_no_execution",
+  "admitted_source_plan": {
+    "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+    "bytes": 47424,
+    "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+  },
+  "parent_manifest": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 86831,
+    "sha256": "2d72b4066571a9a65c037164aa33dd3f37fe24b80fc18daaf8ef2296073e237e"
+  },
+  "initial_exact_owned_copy_receipt": {
+    "path": "doc/causal_fresh_v14/initial-owned-copy-001.json",
+    "bytes": 95942,
+    "sha256": "e8fb5362a73c6dce353fd52fd3ac692ba8a9c9d00cc89cfdf59502b34b90ac78"
+  },
+  "own32_initial_subset": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/training-evaluation-auditor/initial-owned-subset-001.json",
+    "bytes": 26963,
+    "sha256": "b557295929458f94d94c70a1baea3bde11eca9f029799ebafc468ed3574836ba"
+  },
+  "source_parent": "CPB-v13 complete physical SOURCE only; no old learned/fitted/optimizer state or runtime implementation import",
+  "mechanism": {
+    "scientific_SOURCE_parent": "CPB-v13",
+    "source_only": true,
+    "trained_weight_ancestor": "none",
+    "source_updates": 0,
+    "temporal_pooling_policy": "original-position-nested-trailing-local-global-half-mixture-mean4-regularized-stddev4-v1",
+    "temporal_pooling_geometry": [
+      4,
+      16,
+      32,
+      8
+    ],
+    "temporal_pooling_trailing_lengths": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "local_supports": [
+      [
+        12,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        0,
+        16
+      ]
+    ],
+    "membership": "valid &&16-trailing_lengths[j]<=original_position<16; original retained-window endpoint fixed, never packed or last-observed rank",
+    "temporal_pooling_mix": [
+      0.5,
+      0.5
+    ],
+    "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+    "temporal_export_layout": "per-trailing-window-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+    "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+    "temporal_dispersion_regularizer": 0.0009765625,
+    "raw_root_absent_offset_exception": true,
+    "temporal_typed_nodes": 5,
+    "legacy_disjoint_partition_rejected": true,
+    "new_parameters": 0,
+    "new_forward_calls": 0,
+    "new_rng_draws": 0,
+    "parameter_and_objective_policy": "unchanged registrations/draw order/native40/2048B8/singleAdamW/globalclip1/Huber1+detached-error variance",
+    "fresh_weights_optimizer_and_TRAIN_statistics_required": true
+  },
+  "prospective_temporal_fixture_contract": {
+    "status": "SOURCE_DERIVED_NOT_EXECUTED_pending_independent_review",
+    "fixture_authority_path": "code/research/causal_fresh_v14/tests/v14_temporal_pooling_test.cpp",
+    "required_true_fields": [
+      "mean4_regularized_stddev4_export_layout",
+      "full_attention_dependent_regularized_moment_adjoints",
+      "live_dispersion_score_gradient",
+      "raw_variance_root_dispersion_trace",
+      "zero_tiny_large_analytic_dispersion_adjoints",
+      "supported_nonfinite_and_variance_overflow_refused",
+      "absent_local_huge_singleton_sanitized",
+      "captured_F32_residual_correction",
+      "raw_root_absent_offset_exception",
+      "nested_trailing_supports_fixed_edge16",
+      "per_window_local_weights_captured",
+      "longest_local_equals_global_two_sum",
+      "packed_padding_membership_invariance"
+    ],
+    "required_true_count": 13,
+    "direct_pool_kernel_calls": 53,
+    "direct_call_derivation": "36 F32 finite-difference evaluations +14 ordinary successful kernel calls +3 supported-numerical-refusal calls",
+    "F64_finite_difference_coordinates": 18,
+    "F32_finite_difference_coordinates": 18,
+    "isolated_autograd_grad_calls": 4,
+    "backbone_encode_calls": 1,
+    "public_encoder_calls": 0,
+    "head_fits": 0,
+    "synthetic_optimizer_steps": 1,
+    "manual_F32_absolute_tolerance": 3E-05,
+    "manual_F32_relative_tolerance": 3E-05,
+    "F64_finite_difference_step": 1E-05,
+    "F64_finite_difference_absolute_tolerance": 2E-08,
+    "F64_finite_difference_relative_tolerance": 2E-08,
+    "F32_finite_difference_step": 0.002,
+    "F32_finite_difference_absolute_tolerance": 0.002,
+    "F32_finite_difference_relative_tolerance": 0.002,
+    "softmax_gauge_tolerance": 2E-06,
+    "bin_mass_tolerance": 2E-06,
+    "flat_trace_tolerance": 8E-06,
+    "present_constant_variance_bound": "1e-10*(1+max_abs_hidden_squared)",
+    "transform_derivative_upper_bound": 16,
+    "compiled_research_primary_fixture": {
+      "path": "code/research/causal_fresh_v14/tests/v14_test.cpp",
+      "typed_negative_cases": 821,
+      "full_invalid_archive_files": 817,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "derivation": "33 +10*(21 objective +55 temporal) +19 latearchive +4 cross/request +5 legacy-extra"
+    },
+    "family_primary_fixture": {
+      "typed_negative_cases": 676,
+      "full_invalid_archive_files": 672,
+      "direct_loader_requests_no_new_archive": 4,
+      "compact_archive_files": 0,
+      "restored_target_controls": 0,
+      "legacy_conflict_files": 5,
+      "compiled_by_primary_research_target": false
+    },
+    "source_author": "separate family/test owner; exact final fixture hashes belong to later combined source review/card before invocation"
+  },
+  "execution_counters": {
+    "project_helpers": 0,
+    "AST_or_import": 0,
+    "builds": 0,
+    "tests": 0,
+    "Docker_calls": 0,
+    "models": 0,
+    "encoder_calls": 0,
+    "head_calls": 0,
+    "fits": 0,
+    "updates": 0,
+    "quality": 0,
+    "DEV_mutations": 0,
+    "Git_mutations": 0,
+    "deletions": 0
+  },
+  "source_authoring_refusal_preserved": {
+    "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/training-evaluation-auditor/authoring-inspection-refusal-001.json",
+    "bytes": 552,
+    "sha256": "c306c5f854cbeb1610798390596fde3822a071a08a973394363225add412b551"
+  },
+  "scientific_execution_admitted": false,
+  "kind": "cpb_v14_fixed_evaluation_dependency_provenance_v1",
+  "direct_source_version": "CPB-v13",
+  "complete_physical_parent_copies": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/compare_baseline.py",
+        "bytes": 29703,
+        "sha256": "fc64f2240eb64946adaf750a16a1356d23977dd8da9a997bee8463675bd1eda5"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/compare_baseline.py",
+        "bytes": 29703,
+        "sha256": "fc64f2240eb64946adaf750a16a1356d23977dd8da9a997bee8463675bd1eda5"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/compare_baseline.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/dependency-provenance.json",
+        "bytes": 29574,
+        "sha256": "b9657819b47980f2bab34ba42bf68ff6274a868c410168236ab5766af29eaf38"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/dependency-provenance.json",
+        "bytes": 29574,
+        "sha256": "b9657819b47980f2bab34ba42bf68ff6274a868c410168236ab5766af29eaf38"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/dependency-provenance.json"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/evaluation.mk",
+        "bytes": 1892,
+        "sha256": "9396be3663fb240e57a6ccd40f7782cf1099b2047c09c8f0df19c938d093a5fe"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/evaluation.mk",
+        "bytes": 1892,
+        "sha256": "9396be3663fb240e57a6ccd40f7782cf1099b2047c09c8f0df19c938d093a5fe"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/evaluation.mk"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/extract_main.cpp",
+        "bytes": 20289,
+        "sha256": "5aefb81476608de606fbe4c8cd2721d87c59b2bc3c99077c68787e5bc377581e"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/extract_main.cpp",
+        "bytes": 20289,
+        "sha256": "5aefb81476608de606fbe4c8cd2721d87c59b2bc3c99077c68787e5bc377581e"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/extract_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/market_read_main.cpp",
+        "bytes": 2438,
+        "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/market_read_main.cpp",
+        "bytes": 2438,
+        "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/market_read_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/README.md",
+        "bytes": 3024,
+        "sha256": "1867948f55d8d88a956cef897ecea0e8d62d935e778aaa51cf319c51fcccec17"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/README.md",
+        "bytes": 3024,
+        "sha256": "1867948f55d8d88a956cef897ecea0e8d62d935e778aaa51cf319c51fcccec17"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/README.md"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/report.py",
+        "bytes": 66705,
+        "sha256": "aa756ce6b79ed32745e0c370e32cd27c2d8daa7fabbe0ca3da180cbfaeccf33b"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/report.py",
+        "bytes": 66705,
+        "sha256": "aa756ce6b79ed32745e0c370e32cd27c2d8daa7fabbe0ca3da180cbfaeccf33b"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/report.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/synthetic_read_main.cpp",
+        "bytes": 12344,
+        "sha256": "afda13013dbed9c504dd11d97af290c1dc5078dbbf66f895f10136452fec30aa"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/synthetic_read_main.cpp",
+        "bytes": 12344,
+        "sha256": "afda13013dbed9c504dd11d97af290c1dc5078dbbf66f895f10136452fec30aa"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/synthetic_read_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/record_types.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/support.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/data.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/evaluation.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/feature_harness.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/types.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/data.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/feature_harness.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_feature_readouts.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_regression.cpp"
+    }
+  ],
+  "parent_mapping": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/compare_baseline.py",
+        "bytes": 29703,
+        "sha256": "fc64f2240eb64946adaf750a16a1356d23977dd8da9a997bee8463675bd1eda5"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/compare_baseline.py",
+        "bytes": 29703,
+        "sha256": "fc64f2240eb64946adaf750a16a1356d23977dd8da9a997bee8463675bd1eda5"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/compare_baseline.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/dependency-provenance.json",
+        "bytes": 29574,
+        "sha256": "b9657819b47980f2bab34ba42bf68ff6274a868c410168236ab5766af29eaf38"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/dependency-provenance.json",
+        "bytes": 29574,
+        "sha256": "b9657819b47980f2bab34ba42bf68ff6274a868c410168236ab5766af29eaf38"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/dependency-provenance.json"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/evaluation.mk",
+        "bytes": 1892,
+        "sha256": "9396be3663fb240e57a6ccd40f7782cf1099b2047c09c8f0df19c938d093a5fe"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/evaluation.mk",
+        "bytes": 1892,
+        "sha256": "9396be3663fb240e57a6ccd40f7782cf1099b2047c09c8f0df19c938d093a5fe"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/evaluation.mk"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/extract_main.cpp",
+        "bytes": 20289,
+        "sha256": "5aefb81476608de606fbe4c8cd2721d87c59b2bc3c99077c68787e5bc377581e"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/extract_main.cpp",
+        "bytes": 20289,
+        "sha256": "5aefb81476608de606fbe4c8cd2721d87c59b2bc3c99077c68787e5bc377581e"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/extract_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/market_read_main.cpp",
+        "bytes": 2438,
+        "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/market_read_main.cpp",
+        "bytes": 2438,
+        "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/market_read_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/README.md",
+        "bytes": 3024,
+        "sha256": "1867948f55d8d88a956cef897ecea0e8d62d935e778aaa51cf319c51fcccec17"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/README.md",
+        "bytes": 3024,
+        "sha256": "1867948f55d8d88a956cef897ecea0e8d62d935e778aaa51cf319c51fcccec17"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/README.md"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/report.py",
+        "bytes": 66705,
+        "sha256": "aa756ce6b79ed32745e0c370e32cd27c2d8daa7fabbe0ca3da180cbfaeccf33b"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/report.py",
+        "bytes": 66705,
+        "sha256": "aa756ce6b79ed32745e0c370e32cd27c2d8daa7fabbe0ca3da180cbfaeccf33b"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/report.py"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/synthetic_read_main.cpp",
+        "bytes": 12344,
+        "sha256": "afda13013dbed9c504dd11d97af290c1dc5078dbbf66f895f10136452fec30aa"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/synthetic_read_main.cpp",
+        "bytes": 12344,
+        "sha256": "afda13013dbed9c504dd11d97af290c1dc5078dbbf66f895f10136452fec30aa"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/synthetic_read_main.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/record_types.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/support.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/data.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/evaluation.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/feature_harness.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/types.h"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/data.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/feature_harness.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_feature_readouts.cpp"
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "owned_path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_regression.cpp"
+    }
+  ],
+  "owned_nonself_sources": [
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/compare_baseline.py",
+      "bytes": 30796,
+      "sha256": "17efca1f9af5e87b0c0806ec9cd39122f5a289a330ffc919642d12198295a900"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/evaluation.mk",
+      "bytes": 1892,
+      "sha256": "e49c2c365fd5e9967af0d04d3f3f486441b040b532f34f1e6138e7b3cb09e121"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/extract_main.cpp",
+      "bytes": 20401,
+      "sha256": "4fb7156d1ec99be7dc08de34aa8af1e3d5cd9d6d777ba1a6b5d514e1f44809f1"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/market_read_main.cpp",
+      "bytes": 2438,
+      "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/README.md",
+      "bytes": 2378,
+      "sha256": "35428c5c539eaa49cbf6ae5a54532fce69d7d8e0c4d290b7085176ff994ac44a"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/report.py",
+      "bytes": 68065,
+      "sha256": "686b4a6abaae409bdab6288b829ec9459c2b0614b2a9bafdefad30d69149d62d"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/synthetic_read_main.cpp",
+      "bytes": 12344,
+      "sha256": "e90c82dd1afb70b9e9439d33cf3d1a12db671227997cf51ad5aafaca7c1c1833"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/record_types.h",
+      "bytes": 6598,
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/support.h",
+      "bytes": 329,
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+      "bytes": 2922,
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/data.h",
+      "bytes": 1292,
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/evaluation.h",
+      "bytes": 1311,
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/feature_harness.h",
+      "bytes": 5770,
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+      "bytes": 2428,
+      "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/types.h",
+      "bytes": 1083,
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/data.cpp",
+      "bytes": 6133,
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/feature_harness.cpp",
+      "bytes": 25946,
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_feature_readouts.cpp",
+      "bytes": 21926,
+      "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+    },
+    {
+      "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_regression.cpp",
+      "bytes": 22417,
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+    }
+  ],
+  "self_omitted_to_avoid_cycle": true,
+  "unchanged_numeric_dependencies": [
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/record_types.h",
+        "bytes": 6598,
+        "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/data/support.h",
+        "bytes": 329,
+        "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+        "bytes": 2922,
+        "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/data.h",
+        "bytes": 1292,
+        "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/evaluation.h",
+        "bytes": 1311,
+        "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/feature_harness.h",
+        "bytes": 5770,
+        "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+        "bytes": 2428,
+        "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/include/embedding/shared/types.h",
+        "bytes": 1083,
+        "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/src/data.cpp",
+        "bytes": 6133,
+        "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/src/feature_harness.cpp",
+        "bytes": 25946,
+        "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_feature_readouts.cpp",
+        "bytes": 21926,
+        "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c"
+      },
+      "byte_exact": true
+    },
+    {
+      "parent": {
+        "path": "code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "preserved_copy": {
+        "path": "output/engineering/causal-fresh-v14-source-preparation/attempt-001/parents/files/code/research/causal_fresh_v13/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "owned": {
+        "path": "code/research/causal_fresh_v14/evaluation/deps/src/fixed_regression.cpp",
+        "bytes": 22417,
+        "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5"
+      },
+      "byte_exact": true
+    }
+  ],
+  "unchanged_numeric_dependency_count": 12,
+  "fixed_heads": {
+    "market": {
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "neural_repetitions": [
+        2701,
+        2802,
+        2903
+      ],
+      "linear_parameters": 164,
+      "neural_parameters": 724,
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "tempo5": {
+      "dataset_id": "TEMPO-5",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "master_seeds": [
+        941101,
+        941102,
+        941103
+      ],
+      "training_examples_each": 512,
+      "validation_examples_each": 256,
+      "training_source_groups_each": 256,
+      "validation_source_groups_each": 128,
+      "policies": [
+        "synthetic_train",
+        "market_scaler"
+      ],
+      "views": [
+        "validation_intact",
+        "validation_deleted"
+      ],
+      "deletion_fraction": 0.3,
+      "ridge_penalty": 1.0,
+      "neural_hidden": 16,
+      "neural_steps": 100,
+      "neural_learning_rate": 0.01,
+      "repetition_seed_policy": "Unchanged dimension/repetition stream function copied as owned code; no historical encoder execution",
+      "linear_parameters": 82,
+      "neural_parameters": 690,
+      "input_scaler_policy": "Fresh cohortTRAIN fit once/cohort shared across initial/final, or freshly refitted marketTRAIN scaler; same numerical recipe as v3",
+      "dimension40_seeds": [
+        "6049515622977958931",
+        "8262941649267994858",
+        "2095371932330426401"
+      ]
+    },
+    "dimension_policy": "Same unchanged stream_seed(repetition,native_width) implementation for D40; widths/parameter counts differ from native36 references; no tuning"
+  },
+  "comparison": {
+    "historical_DATA_controls": [
+      "CPB-v3.market-01",
+      "CPB-v4.market-01",
+      "CPB-v5.market-01",
+      "CPB-v6.market-01",
+      "CPB-v7.market-01",
+      "CPB-v8.market-01",
+      "CPB-v9.market-01",
+      "CPB-v10.market-01",
+      "CPB-v11.market-01",
+      "CPB-v12.market-01",
+      "CPB-v13.market-01"
+    ],
+    "historical_trust_joins": [
+      "CPB-v6.market-01",
+      "CPB-v7.market-01",
+      "CPB-v8.market-01",
+      "CPB-v9.market-01",
+      "CPB-v10.market-01",
+      "CPB-v11.market-01",
+      "CPB-v12.market-01",
+      "CPB-v13.market-01"
+    ],
+    "source_reference": "CPB-v13.market-01",
+    "new_stages": [
+      "initial",
+      "final"
+    ],
+    "expected_methods": 13,
+    "expected_market_rows": 52,
+    "historical_pass_counts_recomputed": false,
+    "new_model_head_calls_in_comparator": 0
+  },
+  "retention_protocol": {
+    "status": "pending_separate_root_metadata_derivation_and_admission",
+    "expected_kind": "clean_causal_encoder_search_goal_v13_retention_protocol_v1",
+    "review_kind": "clean_causal_encoder_search_goal_v13_retention_independent_review_v1",
+    "application_kind": "clean_causal_encoder_search_goal_v13_retention_future_application_v1",
+    "exact_runtime_authority": "Future frozen V14 card pins protocol/review/application; all22 criterion objects equal card, no literal old866 current authority.",
+    "proposed_criteria_source": {
+      "path": "doc/causal_fresh_v14/design-source-plan.ADMITTED-001.json",
+      "bytes": 47424,
+      "sha256": "7df193a3f74c0c99ee88318d12052dbb55c9ceb90fdd008d029cf43eb1c58d76"
+    },
+    "criterion_count": 22,
+    "changed_floors": 5,
+    "other_criteria_unchanged": 17,
+    "additional_TRAIN_NLL_gate": false,
+    "actual_future_hash_invented": false
+  },
+  "source_text_verification": {
+    "head_dependency_bytes_exact": 12,
+    "reporter_stream_seed_market_rows_validate_classification_aggregate_classification": "Exact after version-only retag",
+    "criterion_evaluate": "byte-exact",
+    "market_and_synthetic_data_drivers": "Whole source exact after version-only retag",
+    "actual_project_execution": 0
+  }
+}

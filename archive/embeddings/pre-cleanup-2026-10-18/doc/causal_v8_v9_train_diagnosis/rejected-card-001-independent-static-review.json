@@ -1,0 +1,329 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v8_v9_rejected_actual_diagnosis_card_independent_static_review_v1",
+  "status": "rejected_before_project_execution",
+  "review_completed": true,
+  "reviewed_utc": "2026-10-16T12:21:57.2163695Z",
+  "reviewer": "causal_training_path",
+  "rejected_card": {
+    "path": "output/engineering/causal-v8-v9-train-diagnosis/rejected-card-001/files/doc/CAUSAL_V8_V9_TRAIN_DIAGNOSIS_CARD.json",
+    "bytes": 90868,
+    "sha256": "5e6b559122b391ec1b2227094fbba93d0c071a986de2f39cba29c8d31ac93f75"
+  },
+  "rejected_card_original_path": "doc/CAUSAL_V8_V9_TRAIN_DIAGNOSIS_CARD.json",
+  "preserved_nine_originals": {
+    "path": "output/engineering/causal-v8-v9-train-diagnosis/rejected-card-001/manifest-v2.json",
+    "bytes": 3046,
+    "sha256": "5f1f1b69e1fe1b8baa249c9f37830275d877623f36e3edb222e9808238234c73"
+  },
+  "preserved_original_files_verified": 9,
+  "finding": {
+    "severity": "blocking",
+    "location": "doc/causal_v8_v9_train_diagnosis/prepare-card.ps1 checkpointFields/layoutFields construction",
+    "expression": "$checkpointFields+=@($field,'payload.'+$field)",
+    "required_expression": "$checkpointFields+=@($field,('payload.'+$field))",
+    "cause": "PowerShell array-comma and concatenation grouping produced repeated outer keys plus literal payload. strings instead of the required payload.<field> keys",
+    "expected_unique_v8_checkpoint_fields": 39,
+    "expected_unique_v9_checkpoint_fields": 43,
+    "all_four_checkpoint_allowlists": [
+      {
+        "id": "v8_initial_checkpoint",
+        "observed_entries": 51,
+        "observed_unique_entries": 28,
+        "expected_unique_entries": 39,
+        "literal_payload_dot_entries": 12,
+        "duplicated_fields": [
+          {
+            "field": "direct_gradient_routes",
+            "occurrences": 2
+          },
+          {
+            "field": "loss_coefficients_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_huber_delta_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_width",
+            "occurrences": 2
+          },
+          {
+            "field": "native_layout",
+            "occurrences": 2
+          },
+          {
+            "field": "native_width",
+            "occurrences": 2
+          },
+          {
+            "field": "objective_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "payload.",
+            "occurrences": 12
+          },
+          {
+            "field": "reporting_nll_backpropagated",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_partition_v1",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "uncertainty_width",
+            "occurrences": 2
+          },
+          {
+            "field": "variance_error_detached",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "id": "v8_final_checkpoint",
+        "observed_entries": 51,
+        "observed_unique_entries": 28,
+        "expected_unique_entries": 39,
+        "literal_payload_dot_entries": 12,
+        "duplicated_fields": [
+          {
+            "field": "direct_gradient_routes",
+            "occurrences": 2
+          },
+          {
+            "field": "loss_coefficients_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_huber_delta_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_width",
+            "occurrences": 2
+          },
+          {
+            "field": "native_layout",
+            "occurrences": 2
+          },
+          {
+            "field": "native_width",
+            "occurrences": 2
+          },
+          {
+            "field": "objective_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "payload.",
+            "occurrences": 12
+          },
+          {
+            "field": "reporting_nll_backpropagated",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_partition_v1",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "uncertainty_width",
+            "occurrences": 2
+          },
+          {
+            "field": "variance_error_detached",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "id": "v9_initial_checkpoint",
+        "observed_entries": 55,
+        "observed_unique_entries": 32,
+        "expected_unique_entries": 43,
+        "literal_payload_dot_entries": 12,
+        "duplicated_fields": [
+          {
+            "field": "direct_gradient_routes",
+            "occurrences": 2
+          },
+          {
+            "field": "loss_coefficients_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_huber_delta_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_width",
+            "occurrences": 2
+          },
+          {
+            "field": "native_layout",
+            "occurrences": 2
+          },
+          {
+            "field": "native_width",
+            "occurrences": 2
+          },
+          {
+            "field": "objective_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "payload.",
+            "occurrences": 12
+          },
+          {
+            "field": "reporting_nll_backpropagated",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_partition_v1",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "uncertainty_width",
+            "occurrences": 2
+          },
+          {
+            "field": "variance_error_detached",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "id": "v9_final_checkpoint",
+        "observed_entries": 55,
+        "observed_unique_entries": 32,
+        "expected_unique_entries": 43,
+        "literal_payload_dot_entries": 12,
+        "duplicated_fields": [
+          {
+            "field": "direct_gradient_routes",
+            "occurrences": 2
+          },
+          {
+            "field": "loss_coefficients_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_huber_delta_f64",
+            "occurrences": 2
+          },
+          {
+            "field": "mean_width",
+            "occurrences": 2
+          },
+          {
+            "field": "native_layout",
+            "occurrences": 2
+          },
+          {
+            "field": "native_width",
+            "occurrences": 2
+          },
+          {
+            "field": "objective_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "payload.",
+            "occurrences": 12
+          },
+          {
+            "field": "reporting_nll_backpropagated",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_partition_v1",
+            "occurrences": 2
+          },
+          {
+            "field": "temporal_pooling_policy",
+            "occurrences": 2
+          },
+          {
+            "field": "uncertainty_width",
+            "occurrences": 2
+          },
+          {
+            "field": "variance_error_detached",
+            "occurrences": 2
+          }
+        ]
+      }
+    ],
+    "missing_nested_fields_each": [
+      "payload.native_layout",
+      "payload.mean_width",
+      "payload.uncertainty_width",
+      "payload.native_width",
+      "payload.objective_policy",
+      "payload.mean_huber_delta_f64",
+      "payload.loss_coefficients_f64",
+      "payload.variance_error_detached",
+      "payload.direct_gradient_routes",
+      "payload.reporting_nll_backpropagated",
+      "payload.temporal_pooling_policy",
+      "payload.temporal_pooling_partition_v1"
+    ],
+    "producer_and_independent_reader_response": "Frozen exact field-set allowlists in5743c08c/af116a50 reject this generated metadata before allowed tensor access",
+    "numerical_or_scientific_source_change_required": false
+  },
+  "passed_remainder": {
+    "actual_host_guard_files_hashed": 93,
+    "guard_hash_mismatches": 0,
+    "guard_unique_IDs": 93,
+    "numeric_role_IDs": 56,
+    "preservation_roles": 36,
+    "metadata_context_copies": 16,
+    "future_capsule_file_count": 24,
+    "actual_context_aliases": 9,
+    "source_helper_contextplan_template_bindings": 13,
+    "source_hash_mismatches_at_original_review": 0,
+    "non_checkpoint_tensor_CSV_JSON_fieldsets": 46,
+    "non_checkpoint_fieldset_mismatches": 0,
+    "summary_JSON_and_actual_binding_metadata_roles": 6,
+    "heldout_numeric_paths": 0,
+    "V8_typed_temporal_fields_expected": 2,
+    "V9_typed_temporal_fields_expected": 4,
+    "freeze_can_proceed": false,
+    "execution_admitted": false,
+    "candidate_declared": false,
+    "diagnosis_executed": false
+  },
+  "scope": "Host metadata/static-source/file-byte inspection only. Expected field lists were independently enumerated; no producer/auditor module was evaluated or imported. Mixed JSON result/checkpoint/cache/tensor numeric contents were not inspected.",
+  "execution_disposition": {
+    "root_metadata_card_generator_calls_before_rejection": 1,
+    "preflight_helper_calls_by_this_review": 0,
+    "AST_calls": 0,
+    "Schema_calls": 0,
+    "diagnosis_body_calls": 0,
+    "audit_body_calls": 0,
+    "model_calls": 0,
+    "head_fits": 0,
+    "training_updates": 0,
+    "Docker_calls": 0,
+    "Tensor_numeric_reads": 0
+  },
+  "repair_admission": "Preserve bad card/MD/generator/provenance/context/review bytes, repair the parenthesized metadata expression in source only, independently review source+new external context, generate a separate actual replacement card and review it before preflight/Stage. This rejected card is never admitted.",
+  "historical_source_results_checkpoints_changed": false
+}

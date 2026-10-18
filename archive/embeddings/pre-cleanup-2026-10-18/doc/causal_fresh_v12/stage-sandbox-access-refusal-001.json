@@ -1,0 +1,22 @@
+{
+  "kind": "cpb_v12_stage_sandbox_docker_access_refusal_v1",
+  "status": "refused_before_container_workspace_or_project_body",
+  "observed_utc": "2026-10-17T19:00:13.4748150Z",
+  "command_phase": "run-container.ps1 -Phase Stage -Attempt 1",
+  "card_sha256": "bf565e4d8b582c1e96c9374acc08391705a03472f27401397addb04e608f25d3",
+  "preflight_sha256": "18df448ddc9c9ab636b7bb63909c8f852ff9a32e19ff6a15ea507f48f513dc2e",
+  "observed_messages": [
+    "Error loading config file: open C:\\Users\\santi\\.docker\\config.json: Access is denied.",
+    "permission denied while trying to connect to the docker API at npipe:////./pipe/docker_engine",
+    "Exact existing managed GPU container required"
+  ],
+  "container_exec_calls": 0,
+  "container_mutations": 0,
+  "AST": 0,
+  "build": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "frozen_source_or_card_changes": 0,
+  "next": "Retry exact frozen staging command with sandbox permission escalation;no container recreation or configuration changes"
+}

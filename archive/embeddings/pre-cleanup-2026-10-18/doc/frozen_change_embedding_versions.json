@@ -1,0 +1,49 @@
+{
+  "kind": "frozen_change_embedding_versions_v1",
+  "model_tag": "RPB-v23",
+  "instance": "RPB-v23.market-01.alt-01",
+  "description": "Trained v22 level/decoder held fixed; only zero-start change projection learns.",
+  "status": "development_goal_not_met_primary_unchanged",
+  "architecture_changed": false,
+  "native_shape": [
+    "B",
+    32
+  ],
+  "input_shape": [
+    "B",
+    3,
+    128,
+    9
+  ],
+  "learned_coordinates": 20,
+  "fixed_coordinates": 12,
+  "optimizer_updated_parameters": 5400,
+  "protected_parameters": 282521,
+  "branch_updates": 2048,
+  "parent_updates": 2048,
+  "parent": "RPB-v22.market-02",
+  "parent_inference_sha256": "e58e26dfc178fc26bc2181f6d76b37565f5cb786c0f5b3dd3ad0c6bae564740c",
+  "inference_checkpoint_sha256": "9f4a207b8eb22a6aad2d4ed0ebc36f8df6975e414e5961a3c22945b064f81649",
+  "training_checkpoint_sha256": "f68731295e46e0cdeba7d084f31965a1854ed71744369339024021e1e9a8b7ec",
+  "dataset_id": "MKT-HIST-2",
+  "designed_complexity_level": 4,
+  "report": "../cuwacunu_dev/doc/MARKET_FROZEN_CHANGE_RESULTS.md",
+  "source_run": "../cuwacunu_dev/output/runs/market-frozen-changes/run-tVEpLV",
+  "source_closure_sha256": "ecda892127b0fc4077ed6ba0d56ec5d03dca63df73d424381b4fcaa6bb4897c3",
+  "binary_sha256": "9a6440bee9dc69a9d4e34b395208341155edc9521e51cd26d4d0fe2498215ec6",
+  "criteria_passed": 4,
+  "criteria_total": 8,
+  "primary_changed": false,
+  "portable_pairs": [
+    {
+      "integration_path": "code/encoders/rpb_changes/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h",
+      "sha256": "733b1b2361eb2b7f5bd96524dd78d67be1a72247d77f83031cc422ea47476b3e"
+    },
+    {
+      "integration_path": "code/encoders/rpb_changes/tests/frozen_level_test.cpp",
+      "embedding_path": "code/encoders/raw_patch_bottleneck_mae/tests/frozen_level_test.cpp",
+      "sha256": "ab7d523118c74e54b32aeb337bcc6b0c5dad7fc0746c2b2aace6b241375b2a09"
+    }
+  ]
+}

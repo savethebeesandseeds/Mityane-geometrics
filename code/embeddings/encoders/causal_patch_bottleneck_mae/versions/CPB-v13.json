@@ -1,0 +1,116 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "version": "CPB-v13",
+  "instance": "CPB-v13.market-01",
+  "stage": "prospectively_frozen_unmeasured_before_build_training_quality",
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V13_CARD.json",
+    "bytes": 137257,
+    "sha256": "4d07167ac6dcd746215cb93d2487f016acf3e038df9ddbe5054bb7d372b617df"
+  },
+  "immutable_prospective_semantics": true,
+  "physical_version_root": "code/encoders/causal_patch_bottleneck_mae/versions/v13",
+  "public_entry": "code/encoders/causal_patch_bottleneck_mae/versions/v13/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v13.h",
+  "architecture_copy_parent": "CPB-v11",
+  "source_parent_descriptor": {
+    "path": "code/encoders/causal_patch_bottleneck_mae/versions/CPB-v11.json",
+    "bytes": 3706,
+    "sha256": "2cb25d674aa9cf9ebd136359c259e5498b0dd00786cf6606e07afb7e2f5b0db8"
+  },
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "mandatory_identifiable_learned_tensors": 75,
+  "fixed_prior_values": 3888,
+  "parameter_count_stage": "Intended unchanged source structure; no AST/build/runtime parity claimed",
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias",
+  "temporal_pooling_policy": "original-position-four-bin-half-mixture-mean4-regularized-stddev4-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "temporal_pooling_mix": [
+    0.5,
+    0.5
+  ],
+  "empty_local_bin_policy": "zero-whole-export-slice-after-bias-v1",
+  "temporal_moment_policy": "componentwise-centered-variance-two-sum-mean-live-attention-regularized-sqrt-v1",
+  "temporal_export_layout": "per-original-bin-eight-rows:first4-mean;last4-zero-based-regularized-stddev-v1",
+  "temporal_moment_partition": [
+    4,
+    4
+  ],
+  "temporal_dispersion_transform_policy": "sqrt-variance-plus-tau-minus-sqrt-tau-F32-add-sqrt-subtract-v1",
+  "temporal_dispersion_regularizer": 0.0009765625,
+  "temporal_dispersion_regularizer_typed_contract": "Float64 vector shape[1], exactly0.0009765625 at inference root/payload and TRAIN root/encoder/encoder.payload",
+  "temporal_dispersion_root_offset": 0.03125,
+  "raw_root_absent_offset_exception": true,
+  "raw_root_absent_semantics": "Unmasked raw root1/32 at v=0 including absent/all-padding bins; dispersion0; served whole8 slice zero AFTER bias",
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;shared-global-clip1",
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "planned_training_updates": 2048,
+  "planned_batch_size": 8,
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "retention_protocol": {
+    "path": "doc/causal_fresh_v13/goal-protocol.json",
+    "bytes": 48667,
+    "sha256": "866dec8a2d7fc3ab36383435295c785e71eea84ea701276cb6552ed4999a603b",
+    "state": "Prospective future exact byte copy, not created by this source preparation"
+  },
+  "source_preparation_declaration": {
+    "path": "doc/causal_fresh_v13/design-source-plan.ADMITTED-002.json",
+    "bytes": 27667,
+    "sha256": "4d1648ed842a13bae850b47567a67cb8939f55b192e54f0c2f67afbaf6ef4a59"
+  },
+  "parent_preservation_manifest": {
+    "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/parents/manifest.json",
+    "bytes": 69004,
+    "sha256": "0a0a345a141898db81900cb903151bc1c42785e3b7bf9fbb5b27d9e21153ea07"
+  },
+  "mechanism": "Keep V11 live attention/two-sum mean/raw centered variance; last4 existing export rows per bin now read actual F32 sqrt(v+2^-10)-1/32. First4 mean rows, native40, shapes/counts/draw order/objective/heads unchanged. No V12 uniform support, learned scale or new parameters.",
+  "initial_pairing": {
+    "reference": "Saved V11 initial DATA20:40 plus five whole fresh-statistic archives, prospective exact paths to be reviewed before freeze",
+    "feature_value_coordinate_slice": [
+      20,
+      40
+    ],
+    "unpaired_learned_content_slice": [
+      0,
+      20
+    ],
+    "whole_native40_equality_required": false,
+    "content20_equality_required": false,
+    "reference_feature_archives": 8,
+    "reference_statistic_archives": 5,
+    "old_encoder_or_head_execution_allowed": false
+  },
+  "between_bin_learning_gate": "Each direction data-gradient/movement events; positive OVERALL final change; no each-final-coefficient gate",
+  "canonical_descriptor_pending_card_freeze": false,
+  "measured_results_in_this_descriptor": false,
+  "model_or_training_execution_performed": false,
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "family": "causal_patch_bottleneck_mae",
+  "created_utc": "2026-10-17T21:16:40.0243192Z",
+  "declaration_provenance": "Prospective immutable descriptor pins the frozen card;card names descriptor path without its hash,avoiding a cycle. No measured results."
+}

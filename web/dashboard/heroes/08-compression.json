@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-08-compression",
+  "number": 8,
+  "title": "OR-08 · Compression, aggregation, and summarization",
+  "summary": "Produce compact codes or aggregates with measured storage or compute savings and retained operation-specific utility.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-08-compression-contract",
+      "title": "Define the operation contract",
+      "description": "Define what is compressed or aggregated, output code, resource budget, required retained information and acceptable distortion.",
+      "milestones": [
+        {
+          "id": "or-08-compression-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define what is compressed or aggregated, output code, resource budget, required retained information and acceptable distortion. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Specify output layout/code identity, grouping or pooling semantics, reconstruction requirements and the operation whose utility must survive. A lossy transform or new aggregation defines an explicit representation contract rather than inheriting coordinate compatibility by name."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-08-compression-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide a fitted compressor or aggregation procedure with versioned decoding or grouping metadata and training provenance.",
+      "milestones": [
+        {
+          "id": "or-08-compression-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide a fitted compressor or aggregation procedure with versioned decoding or grouping metadata and training provenance. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Preserve grouping membership, source dependencies, codebooks and fitted transform identities. Derived temporal availability cannot precede the latest required source availability; compressed or aggregated output is not a newly observed source."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-08-compression-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Measure rate, distortion and downstream utility against matched baselines; report lost information and failure regimes.",
+      "milestones": [
+        {
+          "id": "or-08-compression-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Measure rate, distortion and downstream utility against matched baselines; report lost information and failure regimes. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Account for codes, codebooks, side metadata, indexes and relevant encode/decode costs under an explicit amortization policy. Compare actual resource savings and retained utility against matched baselines, not dimension count alone."
+          ]
+        }
+      ]
+    }
+  ]
+}

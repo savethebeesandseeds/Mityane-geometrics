@@ -1,0 +1,125 @@
+{
+  "kind": "cpb_v13_final_preservation_failure_independent_metadata_diagnosis_v1",
+  "status": "diagnosed_missing_intermediate_whole_snapshot_alias",
+  "metadata_only": true,
+  "independent_of_verifier_author": true,
+  "scientific_execution_admitted": false,
+  "diagnosed_utc": "2026-10-17T22:33:37.9089253Z",
+  "scope": "Independentmetadata/source-order diagnosis;no verifier/helper execution",
+  "failed_attempt": {
+    "transcript": {
+      "path": "output/engineering/causal-fresh-v13-final-preservation/attempt-001/verifier-host.log",
+      "bytes": 1968,
+      "sha256": "e091249584a71a7c18ed91a720f608391fa2ff444b1584b10f0e3dcc0e8109b6"
+    },
+    "observed_error": "Frozen bytes changed: cuwacunu_embedding/AGENTS.md",
+    "original_card": {
+      "path": "doc/causal_fresh_v13/preservation-card.json",
+      "bytes": 2011593,
+      "sha256": "6a25dc5c5f50029b72104c4bd9ee45948cf28bc285d155ecfc0114f51ad3d551"
+    },
+    "original_verifier": {
+      "path": "code/research/causal_fresh_v13_preservation/verify.ps1",
+      "bytes": 42795,
+      "sha256": "b84e858e7dd845f08f428f7743e0c8373f94642a26a9942e5b8804f5e6787299"
+    },
+    "final_receipt_absent": true
+  },
+  "exact_first_unresolved_pin": {
+    "historical_receipt": "doc/causal_fresh_v12/final-preservation.json",
+    "JSON_pointer": "additional_protected_pins[4362]",
+    "current_card_pointer": "protected_pins[4362]",
+    "repository": "cuwacunu_embedding",
+    "path": "AGENTS.md",
+    "bytes": 63603,
+    "sha256": "38faffca90bf63da7e2dc47a8d0641a4c3de9e547949e2311209f28462583f2b",
+    "registered_alias_count": 0
+  },
+  "causal_order": [
+    "verify.ps1 lines108–127 registerV6olderaliases plusV7–V12 priorwhole snapshots;preV12AGENTS is61496B/9fa09de8...",
+    "lines128–130 register premeasurementV13 prior_live_snapshot:AGENTS67495B/fbf4bf69...",
+    "line134 calls Verify-PinTree V6,V7,V8,V9,V10,V11,V12 inthatorder",
+    "V12.additional_protected_pins[4362] requestslogicalAGENTS63603B/38faff...;noKey(repo,path,size,hash) alias exists",
+    "Verify-Historical line39+ falls through to direct Verify ofcurrentlogicalAGENTS70031B/b259...;expected63603 differs,so Check throws",
+    "The required63603wholebytes alreadyexist;theywere preserved before earlierSOURCE-preparation note,which occurred beforethelaterpremeasurement6snapshot"
+  ],
+  "main_source_exclusion": "Frozen143 main source manifest hasNOAGENTS.md member;thisfailure is historicalpin-tree aliasresolution,line134,notdirectmainmanifestverification.",
+  "all_intermediate_manifest_entries": {
+    "manifest": {
+      "path": "doc/causal_fresh_v13/front-notes-preservation-001.json",
+      "bytes": 810,
+      "sha256": "a51fbd20da93c7314aaf13e0eb88cf5fd23dc0627b6c5a351aca902bd5ba907c"
+    },
+    "actual_schema": "Singleton prior/whole_prior_snapshot/new;NO files array",
+    "declared_entry_count": 1,
+    "actual_prior_live_leaf_file_count": 1,
+    "entries": [
+      {
+        "logical_prior_pin": {
+          "path": "AGENTS.md",
+          "bytes": 63603,
+          "sha256": "38faffca90bf63da7e2dc47a8d0641a4c3de9e547949e2311209f28462583f2b"
+        },
+        "whole_saved_pin": {
+          "path": "output/engineering/causal-fresh-v13-source-preparation/attempt-001/prior-live/AGENTS.md",
+          "bytes": 63603,
+          "sha256": "38faffca90bf63da7e2dc47a8d0641a4c3de9e547949e2311209f28462583f2b"
+        },
+        "declared_next_pin": {
+          "path": "AGENTS.md",
+          "bytes": 67495,
+          "sha256": "fbf4bf69edcee99b9196325b4f3436a4bfadcec6f8ac035862a4d7386bdd6c93"
+        },
+        "next_generation_whole_snapshot": {
+          "path": "output/engineering/causal-fresh-v13-finalization/prior-live-001/files/AGENTS.md",
+          "bytes": 67495,
+          "sha256": "fbf4bf69edcee99b9196325b4f3436a4bfadcec6f8ac035862a4d7386bdd6c93"
+        },
+        "current_live_pin": {
+          "path": "AGENTS.md",
+          "bytes": 70031,
+          "sha256": "b25973f6740ae8d7959b215e0f625e8d0278ad9830c1dc5cfc9da65ca1dbdcf2"
+        },
+        "source_preparation_prefix_bytes": 3892,
+        "source_preparation_prior_suffix_exact": true,
+        "later_measurement_prior_suffix_exact": true,
+        "original_card_already_pins_manifest_and_wholesnapshot": true
+      }
+    ]
+  },
+  "six_logical_paths_generation_scan": {
+    "paths": [
+      "AGENTS.md",
+      "doc/CURRENT_STATUS.md",
+      "doc/EMBEDDING_VERSIONS.md",
+      "doc/clean_causal_encoder_research_ledger.json",
+      "code/encoders/causal_patch_bottleneck_mae/versions/current.json",
+      "code/encoders/causal_patch_bottleneck_mae/README.md"
+    ],
+    "method": "IndependentJSONpin-identity traversal ofV6–V12receipttrees andcardprotectedpins;comparedactualregistered snapshot identities pluscurrentliveidentities,without executing projectcode",
+    "unresolved_unique_generation_count": 1,
+    "unresolved": "AGENTS63603/38faff only;noadditionalfrontnoteentryorgenerationfound"
+  },
+  "recommended_minimal_source_only_repair": {
+    "ownership": "Newexclusivephysicalfullverifiercopy+README/provenance,not edit original9 or frozenoriginalcard",
+    "preserve_before": "Wholeoriginalverifier/card/failedtranscript/intermediatemanifest andsnapshot pins plus originalsource/admission review context beforecopies;keepfailed001 immutable",
+    "new_alias_validation": "Verifyexternallyreviewedexact810B/a51fbd20...manifest;requireexpectedkind/status/singletonschema/zero source-CP-DEV-body counters;verifyprior and whole_prior_snapshot samebytes/hash andactualwholefile;bind manifest.new topremeasurementV13 snapshotentry67495/fbf4,NOT live70031",
+    "register_before": "CallstrictAdd-Snapshot withlogicalmanifest.prior andphysicalwhole_prior_snapshot.path aftervalidation andbeforefirsthistoricalVerify-PinTree atoriginal line134",
+    "scope": "Only exactmissing63603identity isredirectedtoitswholepreservedsnapshot;retainall priorhistorical guards/current70031guard;no skips/globalAGENTSexception/equality weakening",
+    "otherwise": "Preserveoriginalbehaviorforall114+5checkpoints/sourceZIP/build/ignore/typed/history/inventory/currentmetadata checks;fullverifierstill separatelyrequired",
+    "proposed_repair_card_schema": "A separatelyreviewed additivecard mayclone originaldeclaration;retainall original8489pinobjects/30inventories/source_workflow9/currentroles andchange onlyverifier binding plusadd repairnamespace. repair binds original_card,original_verifier,failed_attempt,intermediate_snapshot_manifests,owned_repair_sources,new independent source/rootreviews. Newsourcepins remainuncreateduntilseparatelyauthorized/reviewed;do not inventhashes.",
+    "self_binding": "Newownedverifier mustverifynewselfpin andnew independent repair-source authority whilealso verifyingold9/source/card immutablecontext;originaloldverifierb84 isretained,notmislabeledasnewsource",
+    "result_chain": "Anyfuturepassedreceipt mustbindnewrepaircard/source,originaldeclarationandfailed001 evidence;no old finalreceipt exists tooverwrite",
+    "admission": "Sourcepreparation/reviewfirst;separateactualrepaircardreview/rootadmission;thenexplicitonce-onlyverifier admission innewattempt002 outsideclosed4roots"
+  },
+  "prior_review_limitation": "Earlierstatic/cardreviews verifiedpreservedobjects andmajoralias levels butmissedthepreSOURCE AGENTS63603intermediatealias. Thisdiagnosis explicitly checksall sixlogical livepathgenerations;no claimofexhaustivefullverifier replay.",
+  "actions": {
+    "verifier_helper_calls": 0,
+    "Docker": 0,
+    "AST_import": 0,
+    "archive_CP_binary_hashes": 0,
+    "tensor_CSV_numeric_or_readout_arithmetic": 0,
+    "source_card_live_DEV_Git_mutations": 0,
+    "diagnosis_file_writes": 1
+  }
+}

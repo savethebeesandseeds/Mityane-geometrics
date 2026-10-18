@@ -1,0 +1,57 @@
+{
+  "kind": "cpb_v6_training_audit_independent_static_review_v1",
+  "status": "passed",
+  "verified_utc": "2026-10-15T22:58:37.0165085Z",
+  "checks": 21,
+  "auditor": {
+    "path": "code/research/causal_fresh_v6_training_audit/audit_training.py",
+    "bytes": 78757,
+    "sha256": "e7350c1b75d5101735de7a9948077a201257c4974d2e41d7699609c227f68b82"
+  },
+  "card": {
+    "path": "doc/causal_fresh_v6/training-audit-card.json",
+    "bytes": 8800,
+    "sha256": "d8227365782ab180dcec1a58183504cb4dcff7d869f8e812f0d08b59ee31a1dd"
+  },
+  "support": [
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/README.md",
+      "bytes": 2983,
+      "sha256": "1e89e1c3fedec3cab8c81d4a887fafb9fb9c37d3e763e5d83d88901ee17df958"
+    },
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/provenance.json",
+      "bytes": 2115,
+      "sha256": "71f985242ee253baa14d9f74e7c87ecfbf776e5b1b04314e1267c2b270ea224e"
+    }
+  ],
+  "review": {
+    "restricted_inert_reader_exact_to_neutral_parent": true,
+    "metadata_FNV_kernel_exact_to_neutral_parent": true,
+    "fresh_TRAIN_calibration_kernel_only_mechanical_version_changes": true,
+    "all2048_component_sums_and_observed_clip_factor": true,
+    "first_last_actual_pre_step_support_context_rows_time_F64_arithmetic": true,
+    "full112_32_query_summaries_distinct_from_first8_cells": true,
+    "F64_promotion_before_subtraction": true,
+    "Huber1_both_branches_and_nonnegative_mean_component": true,
+    "variance_total_NLL_may_be_negative": true,
+    "typed_outer_encoder_payload_objective_fields": true,
+    "total_objective_only_backward_source_bound": true,
+    "no_scalar_inference_of_detachment_or_unsaved_global_norm": true,
+    "no_models_fits_neural_forwards_or_old_weight_arrays": true,
+    "source102_six_binary_execution_bindings": true,
+    "exact_main_attempt001": true
+  },
+  "actions": {
+    "numeric_saved_data_execution": 0,
+    "models": 0,
+    "fits": 0,
+    "builds": 0,
+    "Git_mutations": 0
+  },
+  "limitations": [
+    "Static review only; runtime AST and actual saved arithmetic execution remain pending",
+    "First/last minibatch cells and full fixed-query scalar populations retain their separately declared coverage",
+    "Actual stop-gradient and full preclip norm are source-bound CUDA producer evidence, not reconstructed from scalar losses"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "or-11-dynamics",
+  "number": 11,
+  "title": "OR-11 · Latent dynamics and forecasting",
+  "summary": "Predict future latent states, trajectories or transition distributions while preserving state, time and action semantics.",
+  "updatedAt": "2026-10-18",
+  "goals": [
+    {
+      "id": "or-11-dynamics-contract",
+      "title": "Define the operation contract",
+      "description": "Define the task-dependent state, history, horizon, action conditioning, output distribution and rollout validity limits.",
+      "milestones": [
+        {
+          "id": "or-11-dynamics-define-contract",
+          "title": "Specify inputs, outputs and requirements",
+          "status": "proposed",
+          "description": "Define the task-dependent state, history, horizon, action conditioning, output distribution and rollout validity limits. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
+            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
+            "Distinguish observation embeddings, task-specific latent states and predicted states. Declare forecast origin, allowed history, target interval, action timing and teacher-forced versus free-running use; a predicted future timestamp is not evidence of a future observation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-11-dynamics-implementation",
+      "title": "Provide a reference implementation",
+      "description": "Provide a dynamics interface with temporal cutoff checks, transition provenance and distinct observed versus predicted states.",
+      "milestones": [
+        {
+          "id": "or-11-dynamics-reference-implementation",
+          "title": "Implement the agreed operation interface",
+          "status": "proposed",
+          "description": "Provide a dynamics interface with temporal cutoff checks, transition provenance and distinct observed versus predicted states. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
+            "Rollouts preserve origin-time information and model-artifact availability, predicted-state kind and transition lineage. Feeding predictions back to the model does not advance the observation cutoff or permit evaluator-only future targets to enter inference."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-11-dynamics-evaluation",
+      "title": "Establish operation-specific evidence",
+      "description": "Measure time-separated multi-horizon prediction and rollout behavior against dynamics baselines; evaluate target readouts and policies independently.",
+      "milestones": [
+        {
+          "id": "or-11-dynamics-evaluation-protocol",
+          "title": "Define and execute the admitted evaluation",
+          "status": "proposed",
+          "description": "Measure time-separated multi-horizon prediction and rollout behavior against dynamics baselines; evaluate target readouts and policies independently. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
+          "updatedAt": "2026-10-18",
+          "evidence": [
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
+            "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
+            "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
+            "Report one-step/teacher-forced and multi-step/free-running behavior separately against declared persistence and simple dynamics controls where appropriate. Evaluate collapsed or trivial predictions and representation changes explicitly; readout and decision benefits require their own evidence."
+          ]
+        }
+      ]
+    }
+  ]
+}

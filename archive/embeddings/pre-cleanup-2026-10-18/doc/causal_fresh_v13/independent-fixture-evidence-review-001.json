@@ -1,0 +1,136 @@
+{
+  "kind": "cpb_v13_saved_fixture_evidence_independent_metadata_review_v1",
+  "status": "passed",
+  "reviewed_utc": "2026-10-17T21:23:09.5495273Z",
+  "independent_of_execution_author": true,
+  "authority": {
+    "frozen_card": {
+      "path": "doc/CAUSAL_FRESH_V13_CARD.json",
+      "bytes": 137257,
+      "sha256": "4d07167ac6dcd746215cb93d2487f016acf3e038df9ddbe5054bb7d372b617df"
+    },
+    "protocol_preflight": {
+      "path": "doc/causal_fresh_v13/protocol-preflight.json",
+      "bytes": 32659,
+      "sha256": "bb99f0c8c413dd654be7cb4410d22ab3d8b2fa351a2f9b8fce81693ca77294f0"
+    },
+    "actual_build_admission": {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/stage-build-evidence/build-admission.json",
+      "bytes": 40119,
+      "sha256": "f6c30058aa024ce47926336b08973ab8e79dabc81be5f873169daeba540e0d4a"
+    },
+    "source_manifest": {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/source-manifest.json",
+      "bytes": 33178,
+      "sha256": "308c30565d8146dfc1582720f828f7237db289646093128cea91f7596341bf81"
+    },
+    "scientific_source_review": {
+      "path": "doc/causal_fresh_v13/independent-family-and-training-auditor-source-review-002.json",
+      "bytes": 90158,
+      "sha256": "dbee874eed9ddf237474c3417ba4891e1656de66946823b23c9f83efa9710c3a"
+    },
+    "compiled_temporal_fixture": {
+      "path": "code/research/causal_fresh_v13/tests/v13_temporal_pooling_test.cpp",
+      "bytes": 34336,
+      "sha256": "8e7d68207d815c043b824bd46fdcc5a822d8c39dee9aa95f84b83f716bd4385a"
+    },
+    "admitted_input_plan": {
+      "path": "doc/causal_fresh_v13/draft-input-plan-002.ADMITTED.json",
+      "bytes": 84329,
+      "sha256": "ccb2716b313db5d9d6463732d6064ee1d5f3c4b3433b3a4f623c42dbc5c56062"
+    }
+  },
+  "evidence_files": [
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/temporal-pooling-proof.json",
+      "bytes": 4277,
+      "sha256": "7ad8e0af904c31ebbf9687a26e43d85f356d46d760b1c19d68ad6b30272b8448"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/temporal-pooling-stage.json",
+      "bytes": 872,
+      "sha256": "582fc573288aac8f5f1bff2ed1456e7fc0bf1550e68151f601ee6ee7264d9dca"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/temporal-pooling.log",
+      "bytes": 1789,
+      "sha256": "ebedc9c5c82620070e3c22752e5f0e61fdc17c60750dcde5db7df561439a5943"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/variance-gradient-proof.json",
+      "bytes": 1659,
+      "sha256": "2fc220a82673d29749ee2a2b37208e6dc024c4fb2d2be05be41c6ce6f5e497c8"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/variance-gradient-stage.json",
+      "bytes": 873,
+      "sha256": "ce15828ab953313907b9162840c0863bab145d23e14f86e29f339b574d1b8754"
+    },
+    {
+      "path": "output/engineering/causal-fresh-v13/attempt-001/fixture-evidence/variance-gradient.log",
+      "bytes": 397,
+      "sha256": "37991959fe2a4409467fbe1d151f08efda7b043b4570183577ba039547107b2d"
+    }
+  ],
+  "evidence_file_count": 6,
+  "metadata_checks": 155,
+  "observed_scopes": [
+    {
+      "fixture": "variance-gradient",
+      "observed_CUDA_checks": 48,
+      "observed_decoder_calls": 10,
+      "encoder_forwards": 0,
+      "old_artifacts": 0,
+      "quality_fits": 0,
+      "synthetic_optimizer_steps": 1,
+      "scope": "Dedicated synthetic native40 composite-objective partial adjoints and decoder movement,not encoder training/quality."
+    },
+    {
+      "fixture": "temporal-pooling",
+      "observed_checks": 200,
+      "required_true_flags": 9,
+      "direct_pool_kernel_calls": 51,
+      "F64_finite_difference_coordinates": 18,
+      "F32_finite_difference_coordinates": 18,
+      "isolated_autograd_grad_calls": 4,
+      "backbone_encode_calls": 1,
+      "public_encoder_calls": 0,
+      "head_fits": 0,
+      "synthetic_optimizer_steps": 1,
+      "transform_derivative_upper_bound": 16,
+      "raw_root_absent_offset_exception": true,
+      "gauge_gradient_printed_literal": "-1.902625140770553e-10",
+      "gauge_movement_printed_literal": "1.8656253814697266e-05",
+      "gauge_gradient_required_nonzero": false,
+      "gauge_decay_movement_is_data_learning": false,
+      "scope": "Dedicated synthetic owned-backbone full-expression pooling adjoints/FD. No full encoder/globalnorm or quality claim."
+    }
+  ],
+  "result": "All six actual saved fixture files consistently bind their passed stdout/stage/proof to exact frozen card,actual build7binary/11TU/143source closure and reviewed compiled V13 source. Every frozen required temporal field and nine literal flags/counts/tolerances match.",
+  "native_width": 40,
+  "transform": "Actual F32add/sqrt/subtract,tau2^-10,offset1/32;rawroot absent1/32 exception/live finite-F32 residual and attention-score route are saved source-bound fixture declarations,not independently replayed tensors.",
+  "scope": "Independent DOCUMENTARY metadata/stdout/hash join only. No tensor values/reductions,GPU replay,model/head or project helper invocation. This review does not establish encoder learning/resume/causality/quality or admit another phase.",
+  "limits": [
+    "Objective fixture:48CUDAchecks/10decoder calls,0encoder/oldartifact/qualityfit;temporal fixture200checks,1backbone,51kernels,18+18FD,4isolatedgrad,0public/heads. Both synthetic1AdamW step.",
+    "Gauge scalar strings copied verbatim;nonzero gauge gradient is not a gate,and decay movement is not data learning.",
+    "Engineering/TRAIN/saved initial/final proofs/independent numerical audits/final trust join and all22 criteria remain separate."
+  ],
+  "reviewer_metadata_inspection_refusals": "Two reviewer-only serialization comparisons distinguished JSON numeric1 from1.0 at scalar Huber delta then its coefficient array;both stopped before output write. Corrected metadata comparison preserves Boolean/string/object fields and compares numeric scalar values recursively in arrays. No evidence/source or project helper was run or changed.",
+  "blockers": [],
+  "actions": {
+    "helpers": 0,
+    "AST": 0,
+    "project_imports": 0,
+    "Docker": 0,
+    "PT_numeric_reads": 0,
+    "independent_tensor_reductions": 0,
+    "GPU_replay": 0,
+    "models": 0,
+    "heads": 0,
+    "training_updates": 0,
+    "quality": 0,
+    "source_or_evidence_mutations": 0,
+    "DEV_changes": 0,
+    "Git_mutations": 0
+  }
+}

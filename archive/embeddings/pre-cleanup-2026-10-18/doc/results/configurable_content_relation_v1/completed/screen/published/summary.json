@@ -1,0 +1,675 @@
+{
+  "protocol": "configurable-content-relation-v1",
+  "dataset_id": "TEMPO-5",
+  "task": "slow timing",
+  "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+  "designed_complexity_level": 5,
+  "complexity_scale_max": 5,
+  "evidence_stage": "known-validation development",
+  "model_tag": "RPB-v22.alt-01",
+  "masters": [
+    941101,
+    941102
+  ],
+  "source_fingerprint": "a9e625650b4d40b2658211d1f3f8f5b06a17d71b79ec4f22f491f02460198519",
+  "card_sha256": "53b0bcc2dc1b30f0b8060448d151def9a4305ba89f22039c5ad79eaca5d5d349",
+  "input_manifest_sha256": "6121773c0b97e5490f191a9f8ff013e90f27a9a557376ac8256bdbb2d6af6091",
+  "scores": {
+    "candidate_full": {
+      "941101": {
+        "validation_intact": {
+          "ridge": 0.98046875,
+          "tiny_secondary": 0.9765625,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.91796875,
+          "tiny_secondary": 0.91796875,
+          "coverage": 1.0
+        }
+      },
+      "941102": {
+        "validation_intact": {
+          "ridge": 0.96875,
+          "tiny_secondary": 0.9544270833333334,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.8828125,
+          "tiny_secondary": 0.8763020833333334,
+          "coverage": 1.0
+        }
+      }
+    },
+    "candidate_learned": {
+      "941101": {
+        "validation_intact": {
+          "ridge": 0.6640625,
+          "tiny_secondary": 0.6471354166666666,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.6640625,
+          "tiny_secondary": 0.65625,
+          "coverage": 1.0
+        }
+      },
+      "941102": {
+        "validation_intact": {
+          "ridge": 0.6015625,
+          "tiny_secondary": 0.5833333333333334,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.57421875,
+          "tiny_secondary": 0.5872395833333334,
+          "coverage": 1.0
+        }
+      }
+    },
+    "initial_learned": {
+      "941101": {
+        "validation_intact": {
+          "ridge": 0.515625,
+          "tiny_secondary": 0.4908854166666667,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.5,
+          "tiny_secondary": 0.5065104166666666,
+          "coverage": 1.0
+        }
+      },
+      "941102": {
+        "validation_intact": {
+          "ridge": 0.4921875,
+          "tiny_secondary": 0.5026041666666666,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.51171875,
+          "tiny_secondary": 0.5052083333333334,
+          "coverage": 1.0
+        }
+      }
+    },
+    "reference_full": {
+      "941101": {
+        "validation_intact": {
+          "ridge": 0.953125,
+          "tiny_secondary": 0.9583333333333334,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.8984375,
+          "tiny_secondary": 0.890625,
+          "coverage": 1.0
+        }
+      },
+      "941102": {
+        "validation_intact": {
+          "ridge": 0.94921875,
+          "tiny_secondary": 0.9401041666666666,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.875,
+          "tiny_secondary": 0.8671875,
+          "coverage": 1.0
+        }
+      }
+    },
+    "reference_learned": {
+      "941101": {
+        "validation_intact": {
+          "ridge": 0.5,
+          "tiny_secondary": 0.5013020833333334,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.49609375,
+          "tiny_secondary": 0.4986979166666667,
+          "coverage": 1.0
+        }
+      },
+      "941102": {
+        "validation_intact": {
+          "ridge": 0.49609375,
+          "tiny_secondary": 0.50390625,
+          "coverage": 1.0
+        },
+        "validation_deleted": {
+          "ridge": 0.5,
+          "tiny_secondary": 0.4986979166666667,
+          "coverage": 1.0
+        }
+      }
+    }
+  },
+  "training": [
+    {
+      "master": 941101,
+      "updates": 512,
+      "train_error": 0.7813326721712628,
+      "validation_error": 0.8086439127497278,
+      "initial_errors": {
+        "training": 0.8212986418417861,
+        "validation": 0.8294095122222537
+      },
+      "GPU_training_seconds": 24.632232417,
+      "parameter_count": 282521,
+      "costs": {
+        "binding_checkpoint_snapshot_seconds": 1.5135244500000002,
+        "CUDA_feature_transfer_IO_seconds": 7.4799635989999995,
+        "CUDA_query_transfer_IO_seconds": 85.749700537,
+        "CPU_head_seconds": 0
+      }
+    },
+    {
+      "master": 941102,
+      "updates": 512,
+      "train_error": 0.7829194131827953,
+      "validation_error": 0.8077490614486399,
+      "initial_errors": {
+        "training": 0.8226047398699783,
+        "validation": 0.8282179027553208
+      },
+      "GPU_training_seconds": 24.907837216,
+      "parameter_count": 282521,
+      "costs": {
+        "binding_checkpoint_snapshot_seconds": 2.701003289,
+        "CUDA_feature_transfer_IO_seconds": 7.180500424,
+        "CUDA_query_transfer_IO_seconds": 83.15721075799999,
+        "CPU_head_seconds": 0
+      }
+    }
+  ],
+  "queries": {
+    "941101": {
+      "training": {
+        "candidate": 0.7813326721712628,
+        "reference": 0.7798467758300566,
+        "coverage": 1
+      },
+      "validation": {
+        "candidate": 0.8086439127497278,
+        "reference": 0.8016443297269444,
+        "coverage": 1
+      }
+    },
+    "941102": {
+      "training": {
+        "candidate": 0.7829194131827953,
+        "reference": 0.7836254928300904,
+        "coverage": 1
+      },
+      "validation": {
+        "candidate": 0.8077490614486399,
+        "reference": 0.8043910231848161,
+        "coverage": 1
+      }
+    }
+  },
+  "gate": {
+    "passed": true,
+    "conditions": [
+      {
+        "condition": "candidate_full/validation_intact/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_full/validation_deleted/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_full/validation_intact/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_full/validation_deleted/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_learned/validation_intact/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_learned/validation_deleted/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_learned/validation_intact/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "candidate_learned/validation_deleted/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "initial_learned/validation_intact/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "initial_learned/validation_deleted/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "initial_learned/validation_intact/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "initial_learned/validation_deleted/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_full/validation_intact/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_full/validation_deleted/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_full/validation_intact/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_full/validation_deleted/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_learned/validation_intact/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_learned/validation_deleted/coverage",
+        "master": 941101,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_learned/validation_intact/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "reference_learned/validation_deleted/coverage",
+        "master": 941102,
+        "value": 1.0,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_accuracy/validation_intact/ridge",
+        "master": null,
+        "value": 0.6328125,
+        "bound": 0.6,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_training_gain/validation_intact/ridge",
+        "master": null,
+        "value": 0.12890625,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_reference_gain/validation_intact/ridge",
+        "master": null,
+        "value": 0.134765625,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "complete_mean_loss/validation_intact/ridge",
+        "master": null,
+        "value": -0.0234375,
+        "bound": 0.02,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_intact/ridge",
+        "master": 941101,
+        "value": -0.02734375,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_intact/ridge",
+        "master": 941102,
+        "value": -0.01953125,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "learned_accuracy/validation_intact/tiny_secondary",
+        "master": null,
+        "value": 0.615234375,
+        "bound": 0.6,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_training_gain/validation_intact/tiny_secondary",
+        "master": null,
+        "value": 0.11848958333333337,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_reference_gain/validation_intact/tiny_secondary",
+        "master": null,
+        "value": 0.11263020833333326,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "complete_mean_loss/validation_intact/tiny_secondary",
+        "master": null,
+        "value": -0.01627604166666674,
+        "bound": 0.02,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_intact/tiny_secondary",
+        "master": 941101,
+        "value": -0.01822916666666663,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_intact/tiny_secondary",
+        "master": 941102,
+        "value": -0.01432291666666674,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "learned_accuracy/validation_deleted/ridge",
+        "master": null,
+        "value": 0.619140625,
+        "bound": 0.6,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_training_gain/validation_deleted/ridge",
+        "master": null,
+        "value": 0.11328125,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_reference_gain/validation_deleted/ridge",
+        "master": null,
+        "value": 0.12109375,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "complete_mean_loss/validation_deleted/ridge",
+        "master": null,
+        "value": -0.013671875,
+        "bound": 0.02,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_deleted/ridge",
+        "master": 941101,
+        "value": -0.01953125,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_deleted/ridge",
+        "master": 941102,
+        "value": -0.0078125,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "learned_accuracy/validation_deleted/tiny_secondary",
+        "master": null,
+        "value": 0.6217447916666667,
+        "bound": 0.6,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_training_gain/validation_deleted/tiny_secondary",
+        "master": null,
+        "value": 0.11588541666666674,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "learned_reference_gain/validation_deleted/tiny_secondary",
+        "master": null,
+        "value": 0.12304687500000006,
+        "bound": 0.1,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "complete_mean_loss/validation_deleted/tiny_secondary",
+        "master": null,
+        "value": -0.01822916666666674,
+        "bound": 0.02,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_deleted/tiny_secondary",
+        "master": 941101,
+        "value": -0.02734375,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "complete_cohort_loss/validation_deleted/tiny_secondary",
+        "master": 941102,
+        "value": -0.00911458333333337,
+        "bound": 0.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_coverage/training",
+        "master": 941101,
+        "value": 1,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "query_cohort_ratio/training",
+        "master": 941101,
+        "value": 1.0019053696024127,
+        "bound": 1.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_coverage/training",
+        "master": 941102,
+        "value": 1,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "query_cohort_ratio/training",
+        "master": 941102,
+        "value": 0.9990989577881839,
+        "bound": 1.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_mean_ratio/training",
+        "master": null,
+        "value": 1.0004987723220569,
+        "bound": 1.02,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_coverage/validation",
+        "master": 941101,
+        "value": 1,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "query_cohort_ratio/validation",
+        "master": 941101,
+        "value": 1.0087315318816856,
+        "bound": 1.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_coverage/validation",
+        "master": 941102,
+        "value": 1,
+        "bound": 1.0,
+        "rule": "at_least",
+        "passed": true
+      },
+      {
+        "condition": "query_cohort_ratio/validation",
+        "master": 941102,
+        "value": 1.0041746341854094,
+        "bound": 1.05,
+        "rule": "at_most",
+        "passed": true
+      },
+      {
+        "condition": "query_mean_ratio/validation",
+        "master": null,
+        "value": 1.0064491863568437,
+        "bound": 1.02,
+        "rule": "at_most",
+        "passed": true
+      }
+    ],
+    "failed_conditions": [],
+    "stage": "two-master-screen",
+    "masters": [
+      941101,
+      941102
+    ],
+    "units": "accuracy fractions; MAE ratios",
+    "promotion": false
+  },
+  "new_head_fit_pairs": 12,
+  "new_classifiers": 24,
+  "reused_fit_pairs_arithmetic_checked": 30,
+  "candidate_prediction_archives": 36,
+  "encoder_updates": 1024,
+  "encoder_trajectories": 2,
+  "CPU_encoder_calls": 0,
+  "publisher_encoder_calls": 0,
+  "publisher_head_fits": 0,
+  "initial_native_values_exact": 65536,
+  "fixed_values_exact": 49152,
+  "paired_comparisons": 48,
+  "checks": 12848243,
+  "consumed_files": 488,
+  "testing_accessed": false,
+  "stress_accessed": false,
+  "promotion": false
+}

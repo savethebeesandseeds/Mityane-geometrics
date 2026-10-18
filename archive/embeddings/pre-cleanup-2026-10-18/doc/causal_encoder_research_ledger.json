@@ -1,0 +1,601 @@
+{
+  "kind": "causal_encoder_research_ledger_v1",
+  "created_utc": "2026-10-15T10:07:37.2416684Z",
+  "scope": "Causal encoder research only; historical noncausal ledger and all old task leaders remain unchanged",
+  "preserved_baseline": {
+    "instance": "CPB-v1.market-01",
+    "checkpoint_sha256": "54c06e1c9af9215bd3477c343579feb63bce092c0f7dedf3c7355fc21d761895",
+    "application_selected": true,
+    "fixed_head_market": [
+      {
+        "task": "past_volatility",
+        "linear_floor": 0.954421680571244,
+        "neural_mean_floor": 0.6059305827863365,
+        "baseline_neural_repetitions": [
+          0.624805518073028,
+          0.6614974721031207,
+          0.5314887581828607
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_trend",
+        "linear_floor": 0.7968036456603806,
+        "neural_mean_floor": 0.24368774940638713,
+        "baseline_neural_repetitions": [
+          -0.33939984380671695,
+          0.657262428919963,
+          0.4132006631059153
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_activity",
+        "linear_floor": 0.8751252139115532,
+        "neural_mean_floor": 0.6866466216076083,
+        "baseline_neural_repetitions": [
+          0.6866727610844631,
+          0.6900023672032143,
+          0.6832647365351475
+        ],
+        "coverage_floor": 1.0
+      },
+      {
+        "task": "past_relation",
+        "linear_floor": 0.49370525358462336,
+        "neural_mean_floor": 0.38971630978947336,
+        "baseline_neural_repetitions": [
+          0.3546264613165948,
+          0.48288169743556975,
+          0.3316407706162555
+        ],
+        "coverage_floor": 1.0
+      }
+    ],
+    "tempo5": [
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "ridge",
+        "mean": 0.98828125
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "mean": 0.978732638888889
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "mean": 0.9270833333333334
+      },
+      {
+        "mode": "synthetic_train",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "mean": 0.9214409722222222
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "ridge",
+        "mean": 1
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_intact",
+        "head": "tiny_secondary",
+        "mean": 0.9934895833333334
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "ridge",
+        "mean": 0.9609375
+      },
+      {
+        "mode": "market_scaler",
+        "view": "validation_deleted",
+        "head": "tiny_secondary",
+        "mean": 0.9487847222222222
+      }
+    ],
+    "research_local_checkpoint": "output/baselines/CPB-v1.market-01/inference.pt",
+    "role": "pretrained_historical_reference_only_not_oracle_or_clean_quality_gate",
+    "clean_training_eligible": false
+  },
+  "candidates": [
+    {
+      "instance": "CPB-v2.market-01",
+      "stage": "complete_stopped_failed_frozen_gate",
+      "card": "doc/CAUSAL_FINETUNE_V2_CARD.json",
+      "card_sha256": "30aa70ce6f3999d9f6a991c1b298516db41caf3db276cacb75d91c9d3dcba222",
+      "result": {
+        "report": "doc/CAUSAL_FINETUNE_V2_RESULTS.md",
+        "tables": {
+          "path": "doc/results/causal_finetune_v2/table_rows.json",
+          "bytes": 882433,
+          "sha256": "f9e7cea1529511bf00e68d15e3e29ea191c4537879b7e05189af403f578d991e"
+        },
+        "instance": "code/encoders/causal_patch_bottleneck_mae/versions/instances/CPB-v2.market-01.json",
+        "final_checkpoint": {
+          "path": "output/runs/causal-finetune-v2/run-001/checkpoints/inference-2048.pt",
+          "bytes": 1292585,
+          "sha256": "4d343c2e54b7e84511cd01f8bd41ed493977277722d76098b6ab9a6dbca2c252"
+        },
+        "gate_counts": {
+          "original_market": {
+            "passed": 8,
+            "total": 9
+          },
+          "strict_native36_market": {
+            "passed": 7,
+            "total": 8
+          },
+          "causal_baseline_market": {
+            "passed": 2,
+            "total": 8
+          },
+          "individual_neural_trend": {
+            "passed": 2,
+            "total": 3
+          },
+          "synthetic_retention": {
+            "passed": 3,
+            "total": 8
+          }
+        },
+        "overall_gate_passed": false,
+        "full_coverage": true
+      },
+      "baseline_displaced": false
+    }
+  ],
+  "selection_policy": "Only completed causality/learning/resume/admission and fixed-gate evidence can qualify a research advancement; dev promotion requires separate user direction",
+  "checkpoint_deletion_allowed": false,
+  "scoped_causal_leaders": [
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "linear_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.8751252139115532,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.8751252139115532,
+          "neural_mean_r2": 0.6866466216076083
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.8699943031113067,
+          "neural_mean_r2": 0.6944814572937575
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_activity",
+      "recipe_id": "causal-finetune-v2",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "neural_mean_r2",
+      "instance": "CPB-v2.market-01",
+      "score": 0.6944814572937575,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.8699943031113067,
+          "neural_mean_r2": 0.6944814572937575
+        },
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.8751252139115532,
+          "neural_mean_r2": 0.6866466216076083
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "linear_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.49370525358462336,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.49370525358462336,
+          "neural_mean_r2": 0.38971630978947336
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.3989981375336701,
+          "neural_mean_r2": 0.16496864654832957
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_relation",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "neural_mean_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.38971630978947336,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.49370525358462336,
+          "neural_mean_r2": 0.38971630978947336
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.3989981375336701,
+          "neural_mean_r2": 0.16496864654832957
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "causal-finetune-v2",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "linear_r2",
+      "instance": "CPB-v2.market-01",
+      "score": 0.7970341369141087,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.7970341369141087,
+          "neural_mean_r2": 0.23900308395985534
+        },
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.7968036456603806,
+          "neural_mean_r2": 0.24368774940638713
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_trend",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "neural_mean_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.24368774940638713,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.7968036456603806,
+          "neural_mean_r2": 0.24368774940638713
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.7970341369141087,
+          "neural_mean_r2": 0.23900308395985534
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "linear_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.954421680571244,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.954421680571244,
+          "neural_mean_r2": 0.6059305827863365
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.9292476143211095,
+          "neural_mean_r2": 0.4622955116478094
+        }
+      ]
+    },
+    {
+      "dataset_id": "MKT-HIST-2",
+      "task": "past_volatility",
+      "recipe_id": "causal-patch-bottleneck-mae-v1",
+      "designed_complexity_level": 4,
+      "complexity_scale_max": 5,
+      "view": "intact chronological VALIDATION",
+      "metric": "neural_mean_r2",
+      "instance": "CPB-v1.market-01",
+      "score": 0.6059305827863365,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances under this matched fixed-head protocol",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_r2": 0.954421680571244,
+          "neural_mean_r2": 0.6059305827863365
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_r2": 0.9292476143211095,
+          "neural_mean_r2": 0.4622955116478094
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_intact",
+      "input_policy": "synthetic_train",
+      "metric": "linear_head_accuracy",
+      "instance": "CPB-v1.market-01",
+      "score": 0.98828125,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.98828125,
+          "neural_head_accuracy": 0.978732638888889
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9830729166666666,
+          "neural_head_accuracy": 0.974392361111111
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_intact",
+      "input_policy": "synthetic_train",
+      "metric": "neural_head_accuracy",
+      "instance": "CPB-v1.market-01",
+      "score": 0.978732638888889,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.98828125,
+          "neural_head_accuracy": 0.978732638888889
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9830729166666666,
+          "neural_head_accuracy": 0.974392361111111
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_deleted",
+      "input_policy": "synthetic_train",
+      "metric": "linear_head_accuracy",
+      "instance": "CPB-v2.market-01",
+      "score": 0.93359375,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.93359375,
+          "neural_head_accuracy": 0.9288194444444444
+        },
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.9270833333333334,
+          "neural_head_accuracy": 0.9214409722222222
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_deleted",
+      "input_policy": "synthetic_train",
+      "metric": "neural_head_accuracy",
+      "instance": "CPB-v2.market-01",
+      "score": 0.9288194444444444,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.93359375,
+          "neural_head_accuracy": 0.9288194444444444
+        },
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.9270833333333334,
+          "neural_head_accuracy": 0.9214409722222222
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_intact",
+      "input_policy": "market_scaler",
+      "metric": "linear_head_accuracy",
+      "instance": "CPB-v1.market-01",
+      "score": 1,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 1,
+          "neural_head_accuracy": 0.9934895833333334
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9934895833333334,
+          "neural_head_accuracy": 0.9904513888888888
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_intact",
+      "input_policy": "market_scaler",
+      "metric": "neural_head_accuracy",
+      "instance": "CPB-v1.market-01",
+      "score": 0.9934895833333334,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 1,
+          "neural_head_accuracy": 0.9934895833333334
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9934895833333334,
+          "neural_head_accuracy": 0.9904513888888888
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_deleted",
+      "input_policy": "market_scaler",
+      "metric": "linear_head_accuracy",
+      "instance": "CPB-v2.market-01",
+      "score": 0.9622395833333334,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9622395833333334,
+          "neural_head_accuracy": 0.935329861111111
+        },
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.9609375,
+          "neural_head_accuracy": 0.9487847222222222
+        }
+      ]
+    },
+    {
+      "dataset_id": "TEMPO-5",
+      "task": "lag_sign",
+      "recipe_id": "tempo-5-slow-fast-nine-feature-v1",
+      "designed_complexity_level": 5,
+      "complexity_scale_max": 5,
+      "view": "validation_deleted",
+      "input_policy": "market_scaler",
+      "metric": "neural_head_accuracy",
+      "instance": "CPB-v1.market-01",
+      "score": 0.9487847222222222,
+      "coverage": 1,
+      "native_width": 36,
+      "scope": "Only the saved CPB-v1/v2 instances; means across three frozen cohorts and fixed repetitions",
+      "preserved_comparisons": [
+        {
+          "method": "CPB-v1.market-01",
+          "linear_head_accuracy": 0.9609375,
+          "neural_head_accuracy": 0.9487847222222222
+        },
+        {
+          "method": "CPB-v2.market-01",
+          "linear_head_accuracy": 0.9622395833333334,
+          "neural_head_accuracy": 0.935329861111111
+        }
+      ]
+    }
+  ],
+  "next_direction": {
+    "status": "proposal_only_no_later_run",
+    "action": "Saved TRAIN-only diagnosis of cross-channel relation representation and variance objective before one separately declared controlled change",
+    "validation_in_diagnosis": false,
+    "head_tuning": false,
+    "pretrained_v1_parent_reuse": false
+  },
+  "provenance_correction": "doc/CAUSAL_TRAINING_PROVENANCE_CORRECTION_2026-10-15.md",
+  "clean_training_baseline": "CPB-v3.market-01",
+  "superseded_next_direction": {
+    "status": "proposal_only_not_declared_not_running",
+    "mechanism": "Freeze exact CPB-v1 parent32 and decoder; adapt only change4 projection, residual decoder and variance blocks",
+    "review": "doc/CAUSAL_FINETUNE_V2_REVIEW.md",
+    "stopped_recipe": "CPB-v2 end-to-end causal fine-tuning at the frozen settings"
+  },
+  "scoped_leader_eligibility": "Existing scoped_causal_leaders are runtime-causal inherited-weight historical measurements only; not clean-training leaders or advancement floors",
+  "clean_training_results_ledger": "doc/clean_causal_encoder_research_ledger.json"
+}

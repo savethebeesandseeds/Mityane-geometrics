@@ -1,0 +1,155 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "cpb_v6_saved_training_independent_audit_card_v1",
+  "declared_utc": "2026-10-15T22:56:42.6416478Z",
+  "stage": "declared_before_independent_saved_data_execution",
+  "execution_pending": true,
+  "model": "CPB-v6.market-01",
+  "clean_baseline": "CPB-v3.market-01",
+  "scoped_references": [
+    "CPB-v4.market-01",
+    "CPB-v5.market-01"
+  ],
+  "baseline_unchanged": true,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "objective_contract": {
+    "mean_huber_delta": 1,
+    "loss_coefficients": [
+      1,
+      1
+    ],
+    "variance_error_detached": true,
+    "reporting_nll_backpropagated": false,
+    "backward_tensor": "objective.total_loss",
+    "shared_global_clip": true,
+    "optimizer_independence_claimed": false
+  },
+  "frozen_training_card_sha256": "7cbda7aaa756bf775e09e3e8bc2a2e8cc7c3a34703171ad95cdd5e291bea847d",
+  "frozen_training_markdown_sha256": "1ec2a4a0e0d4d4ead2810ecccf3afcd20c8dc71fe87b54a7d978efadd1896ad0",
+  "frozen_input_manifest_sha256": "bdb9892e9a817ea470e8743b16a5075ea4127ab96bfea53b4c2d76e7ba7f3b7d",
+  "main_source_manifest_sha256": "ee145b968d430c7c63544539c173ea18b232f6fdba1238cf41fdcc15bacd4b9c",
+  "main_source_zip_sha256": "7ecf64630328ae00aa5dd4029bc595633cfebe2aa0c25ed516f44a150722a20e",
+  "main_source_files": 102,
+  "main_protocol_preflight": {
+    "path": "doc/causal_fresh_v6/protocol-preflight.json",
+    "bytes": 56456,
+    "sha256": "8aa185d67b7440767cee5d6b45677eaf4dab5d1b275bc42387a160ff34b7e2bb"
+  },
+  "outside_frozen_main_source": true,
+  "auditor_source": {
+    "path": "code/research/causal_fresh_v6_training_audit/audit_training.py",
+    "bytes": 78757,
+    "sha256": "e7350c1b75d5101735de7a9948077a201257c4974d2e41d7699609c227f68b82"
+  },
+  "auditor_support": [
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/README.md",
+      "bytes": 2983,
+      "sha256": "1e89e1c3fedec3cab8c81d4a887fafb9fb9c37d3e763e5d83d88901ee17df958"
+    },
+    {
+      "path": "code/research/causal_fresh_v6_training_audit/provenance.json",
+      "bytes": 2115,
+      "sha256": "71f985242ee253baa14d9f74e7c87ecfbf776e5b1b04314e1267c2b270ea224e"
+    }
+  ],
+  "preserved_parent_sources": [
+    {
+      "path": "code/research/causal_fresh_v5_training_audit/audit_training.py",
+      "container_path": "/opt/cuwacunu/research/causal-fresh-v5-training-audit/attempt-001/source/audit_training.py",
+      "bytes": 59873,
+      "sha256": "bb2ac0a6ca4f258f7e4132fbf36f2ed4d97cc9c22175ab4cf69ede159ace35f0"
+    }
+  ],
+  "expected_main_paths": {
+    "attempt": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001",
+    "run": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/run-001",
+    "source": "/opt/cuwacunu/research/causal-fresh-v6/attempt-001/source"
+  },
+  "execution": {
+    "container": "cuwacunu",
+    "immutable_id": "82d102f2ef3f559b38e99622d771dd6b6c1f10dedecce1c42c498afe9903440e",
+    "standard_library_only": true,
+    "new_containers": 0,
+    "Torch_imports": 0,
+    "host_project_execution": false
+  },
+  "model_calls": 0,
+  "decoder_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "forbidden": [
+    "Torch or NumPy import",
+    "Producer code import or reporter arithmetic reuse",
+    "Executable model/module deserialization",
+    "Encoder/decoder/neural-head forward",
+    "Training or optimizer replay",
+    "New fit or head tuning",
+    "Post-encoder PCA",
+    "Old checkpoint numeric reads",
+    "Synthetic or fixed-head quality arrays",
+    "Changing frozen main102 source/card/model/evaluation",
+    "Git mutation"
+  ],
+  "scope": [
+    "All2048 successful B8 updates, independent MT19937_64 row choices and exact943002/3/4 counter streams; TRAIN4096 anchor legality",
+    "77total tensors:76 learned294752 values and3888 literal prior; nine learned categories, actual tensor movement versus recorded CUDA gradient events",
+    "Fresh TRAIN-only input27/bank270 statistics independently recomputed from4096 fixed H128 rawCACHE88 windows; fresh version-aware metadata/tensor FNV identity",
+    "Five main checkpoints; typed0/2048 inference plus512/1024/2048 progress,76moment pairs/order/counters, explicit composite objective/delta1/unitweights/detached error/direct routes/report-onlyNLL, final inference/training equality",
+    "Actual512 resume evidence without replay, independent saved state/moment/progress inspection and source binding",
+    "All2048 CSV finite Huber/variance/total/reportingGaussian scalars, unit sum, nonnegative Huber, and sharedclip1 factor=min(1,1/(observed_norm+1e-6))",
+    "Full112TRAIN/32knownVALIDATION query row scalar summaries and firstB8 cells per initial/final split; unchangedGaussianNLL/MAE plus independently recomputed Huber1 and composite unit sum",
+    "Saved actual pre-step update1/2048 component witnesses: direct CSV/row/time/mask/context/eligible support association, F32 operand promotion toF64 before arithmetic, hierarchical scalar components and recorded clip values",
+    "Source102/ten compiler units/six binary exact bindings and dedicated nonvacuous actualCUDA composite-gradient/clip witness; no numerical model execution by auditor"
+  ],
+  "expected": {
+    "updates": 2048,
+    "batch_size": 8,
+    "native_width": 40,
+    "parameter_tensors": 77,
+    "learned_tensors": 76,
+    "learned_values": 294752,
+    "fixed_values": 3888,
+    "total_parameters": 298640,
+    "learned_groups": 9,
+    "optimizer_moment_tensors": 152,
+    "initialization_seed": 943001,
+    "row_seed": 943002,
+    "mask_seed": 943003,
+    "context_seed": 943004,
+    "input_scaler_identity": "rpb-scaler-v1-fnv1a64-9d33c2019209d321",
+    "bank_identity": "Recompute metadata-aware FNV from fresh V6 provenance and six saved TRAIN statistic tensors; never import old stats",
+    "training_component_witness_updates": [
+      1,
+      2048
+    ],
+    "additional_forward_calls": 0
+  },
+  "tolerances": {
+    "query_and_component_manual_F64": "absolute2e-12+relative2e-12; separately promote savedF32 mean/target/variance before subtraction/square/division/log; skip unsupported cells first",
+    "full_query_MAE_NLL_means": "absolute2e-15, unchanged neutral parent policy",
+    "clip_factor": "absolute2e-15 from observed scalar norm; no unsaved full gradient-norm reconstruction",
+    "input_stats": "Preserved neutral cross-backend policy: sums/means1e-12relative, scale2e-8relative with existing absolute floors",
+    "bank_stats": "Preserved neutral F32 reductions2e-6/3e-6relative and stated absolute floors",
+    "state": "Exact dtype/shape/tensor bits for prior/stats/final inference-training equality"
+  },
+  "allowed_numeric_arrays": [
+    "V6 five main checkpoints: parameters, moments and statistics only",
+    "V6 fresh calibration archives and firstB8 rawTRAIN/statistic witness",
+    "RawCACHE88 feature arithmetic only through last TRAIN endpoint1705881599999; whole-file hash and timestamp envelope metadata allowed",
+    "V6 initial/final full112TRAIN/32knownVALIDATION scalar query summaries; firstB8 distribution/mask/query arrays only, no fixed-head scores",
+    "V6 actual pre-step update1/2048 component witnesses from existing trajectory, no replay"
+  ],
+  "limits": [
+    "Independent arithmetic verifies saved forward values, not that detached-error gradient routing occurred; nonzeroCUDA fixture/type/source evidence binds routing",
+    "Full parameter-gradient arrays are not saved; global norm is source-bound observed evidence, clipping factor alone is reconstructed",
+    "All76 learned tensors must change and receive gradients; no claim that every scalar value moved",
+    "Per-batch context masks for all2048 steps are not saved; exact first/last context masks and typed/source stream schedule are checked",
+    "KnownVALIDATION query cells are used only to verify the predeclared unchanged reporting kernels, never for mechanism diagnosis or selection",
+    "Separate independent quality audit owns initial13 full40 numeric pairings and fixed-head22 criteria; this training audit alone cannot establish advancement",
+    "Host local checkpoint ignore/availability is verified separately; no encoder/head/optimizer replay is a format fallback"
+  ],
+  "failure_policy": "Exclusive new output file. Preserve source/card/failures. No automatic replay, rescue, promotion or publication.",
+  "CLI": "--run RUN --attempt ATTEMPT --source MAIN_SOURCE --data-root /cuwacunu --audit-card CARD --engineering-proof PROOF --gradient-proof PROOF --output NEW_JSON"
+}

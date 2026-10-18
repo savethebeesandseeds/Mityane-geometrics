@@ -1,0 +1,418 @@
+#!/usr/bin/env python3
+# Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.
+"""Independent stdlib saved-TRAIN arithmetic; no diagnosis-module/model import."""
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+import time
+from archive_reader import Archive, Tensor
+
+MAIN_CARD_SHA = '39d08ea87e28a5f7242128acde8f78ad434a7b6a973ba8da8be8ed36b549fa86'
+DIAGNOSIS_SHA = '01a6909b37776376f79e4c481703227a078e249eafb3d1453945dc0a4b42b644'
+TASKS = ('past_volatility','past_trend','past_activity','past_relation')
+REPS = (2701,2802,2903)
+BLOCKS = (('learned20',0,20),('fixed_spectral12',20,32),('change4',32,36))
+NAMES = ('mean_NLL','mean_MAE','mean_Huber_delta1','hypothetical_variance_native')
+QUANTILES = (0.,.01,.05,.25,.5,.75,.95,.99,1.)
+
+def load(path):
+    return json.loads(Path(path).read_text(encoding='utf-8-sig'),
+                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value)))
+
+def digest(path):
+    h=hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda:stream.read(1048576),b''):h.update(block)
+    return h.hexdigest()
+
+def pin(path):
+    p=Path(path);return {'path':str(p),'bytes':p.stat().st_size,'sha256':digest(p)}
+
+def average(x):return math.fsum(x)/len(x) if x else None
+def var(x):
+    m=average(x);return average([(a-m)**2 for a in x]) if x else None
+def norm(x):return math.sqrt(math.fsum(a*a for a in x))
+def pearson(x,y):
+    if len(x)<2:return None
+    xm,ym=average(x),average(y)
+    a=[v-xm for v in x];b=[v-ym for v in y]
+    denominator=norm(a)*norm(b)
+    return max(-1.,min(1.,math.fsum(p*q for p,q in zip(a,b))/denominator)) if denominator else None
+def quantile(x):
+    if not x:return None
+    x=sorted(x);out={}
+    for q in QUANTILES:
+        i=q*(len(x)-1);lo=int(math.floor(i));hi=int(math.ceil(i))
+        out[str(q)]=x[lo]+(i-lo)*(x[hi]-x[lo])
+    return out
+def vector(x,y):
+    nx,ny=norm(x),norm(y);dot=math.fsum(a*b for a,b in zip(x,y))
+    return {'left_l2':nx,'right_l2':ny,'dot_product':dot,'cosine':dot/(nx*ny) if nx and ny else None}
+def scores(p,y,ok):
+    pairs=[(x,t) for x,t,v in zip(p,y,ok) if v]
+    if not pairs:return {'total':len(ok),'valid':0,'coverage':0.,'r2':None,'mae':None,'rmse':None}
+    center=average([t for _,t in pairs]);errors=[x-t for x,t in pairs]
+    sse=math.fsum(e*e for e in errors);sst=math.fsum((t-center)**2 for _,t in pairs)
+    return {'total':len(ok),'valid':len(pairs),'coverage':len(pairs)/len(ok),
+            'r2':1-sse/sst if sst else None,'mae':average([abs(e) for e in errors]),'rmse':math.sqrt(sse/len(pairs))}
+def d36seed(rep):
+    mask=(1<<64)-1;x=(rep+0x9e3779b97f4a7c15*36)&mask
+    x=((x^(x>>30))*0xbf58476d1ce4e5b9)&mask;x=((x^(x>>27))*0x94d049bb133111eb)&mask
+    return x^(x>>31)
+
+class Audit:
+    def __init__(self,card):
+        self.card=card;self.checks=0;self.errors=[];self.numeric=[];self.archives={}
+        self.allowed={p['id']:p for p in card['allowed_inputs']};self.verified=[]
+        self.finite_checks=0;self.maximum_finite_error=0.
+        self.ck(len(self.allowed)==41,'41 unique allowed inputs')
+        for p in card['allowed_inputs']+card['preservation_pins']+[card['pre_execution_preservation']]:
+            actual=pin(p['container_path'])
+            self.ck(actual['bytes']==p['bytes'] and actual['sha256']==p['sha256'],'Input hash '+p.get('id',''))
+            self.verified.append(actual)
+        for p in card['allowed_inputs']:
+            self.ck('validation' not in p['container_path'].lower(),'No held-out tensor path')
+    def ck(self,ok,label):
+        self.checks+=1
+        if not ok and len(self.errors)<200:self.errors.append(label)
+    def close(self,actual,expected,label,absolute=1e-10,relative=1e-9):
+        if actual is None or expected is None:self.ck(actual is None and expected is None,label);return
+        self.ck(math.isfinite(actual) and math.isfinite(expected) and
+                abs(actual-expected)<=absolute+relative*abs(expected),label)
+    def tree(self,actual,expected,label):
+        if isinstance(expected,dict):
+            for k,v in expected.items():
+                self.ck(k in actual,label+' missing '+str(k))
+                if k in actual:self.tree(actual[k],v,label+'/'+str(k))
+        elif isinstance(expected,list):
+            self.ck(len(actual)==len(expected),label+' length')
+            for i,(x,y) in enumerate(zip(actual,expected)):self.tree(x,y,label+'/'+str(i))
+        elif isinstance(expected,(int,float)) and not isinstance(expected,bool):
+            self.close(actual,expected,label)
+        else:self.ck(actual==expected,label)
+    def array(self,identity,field,shape=None):
+        p=self.allowed[identity]
+        self.ck(p['role']=='TRAIN_archive' and field in p['allowed_tensor_fields'],'Field allowed '+identity+field)
+        if field not in p['allowed_tensor_fields']:raise ValueError('Unallowed field')
+        if identity not in self.archives:self.archives[identity]=Archive(p['container_path'])
+        value=self.archives[identity].field(*field.split('.'))
+        if not isinstance(value,Tensor):raise ValueError('Tensor required')
+        if shape is not None:self.ck(tuple(value.shape)==tuple(shape),'Shape '+identity+field)
+        data=value.values();self.numeric.append({'id':identity,'field':field,'values':len(data)})
+        return data
+    def summary(self,identity):
+        p=self.allowed[identity];self.ck(p['role']=='aggregate_JSON_TRAIN_key_only','TRAIN JSON role')
+        value=load(p['container_path'])['train']
+        self.numeric.append({'id':identity,'field':'train_only'})
+        return value
+    def finite(self,actual,expected,label):
+        self.finite_checks+=1
+        self.maximum_finite_error=max(self.maximum_finite_error,abs(actual-expected))
+        self.close(actual,expected,label,absolute=1e-6,relative=2e-4)
+    def close_archives(self):
+        for archive in self.archives.values():archive.close()
+
+def feature_audit(a,identity,report,ids,target,target_valid):
+    x=a.array(identity,'values',(112,36));valid=a.array(identity,'valid',(112,))
+    a.ck(a.array(identity,'row_ids',(112,))==ids,'Feature exact TRAIN association')
+    a.ck(all(valid) and all(math.isfinite(v) for v in x),'112 finite TRAIN native rows')
+    columns=[[x[r*36+d] for r in range(112)] for d in range(36)]
+    for d,col in enumerate(columns):
+        expected={'coordinate':d,'block':next(n for n,l,h in BLOCKS if l<=d<h),
+            'mean':average(col),'population_std':math.sqrt(var(col)),'minimum':min(col),'maximum':max(col),
+            'pearson_to_TRAIN_targets':{task:pearson([col[r] for r in range(112) if target_valid[r*4+t]],
+                [target[r*4+t] for r in range(112) if target_valid[r*4+t]]) for t,task in enumerate(TASKS)}}
+        a.tree(report['coordinates'][d],expected,'Coordinate '+identity+str(d))
+    for name,lo,hi in BLOCKS+(('complete36',0,36),):
+        selected=columns[lo:hi];center=[average(c) for c in selected]
+        covariance=[[math.fsum((u-center[i])*(v-center[j]) for u,v in zip(c,d))/112
+                     for j,d in enumerate(selected)] for i,c in enumerate(selected)]
+        trace=math.fsum(covariance[d][d] for d in range(hi-lo))
+        squared=math.fsum(v*v for row in covariance for v in row)
+        a.tree(report['blocks'][name],{'width':hi-lo,'valid_rows':112,'covariance_trace':trace,
+            'covariance_frobenius_squared':squared,'participation_ratio':trace*trace/squared if squared else None},'Block '+identity+name)
+    return x,valid,columns
+
+def head_audit(a,prefix,report,x,feature_valid,ids,groups,target,target_valid):
+    expected_reps=[]
+    for index,rep in enumerate(REPS):
+        hid=prefix+'_head_'+str(rep);fid=prefix+'_fit_'+str(rep)
+        p={k:a.array(hid,k,(112,4)) for k in ('targets','target_valid','valid','ridge_predictions','neural_predictions')}
+        a.ck(a.array(hid,'row_ids',(112,))==ids and a.array(hid,'group_ids',(112,))==groups,'Head row/group association')
+        a.ck(p['targets']==target and p['target_valid']==target_valid,'Exact original TRAIN targets')
+        a.ck(p['valid']==[bool(feature_valid[r] and target_valid[r*4+t]) for r in range(112) for t in range(4)],'Exact head eligibility')
+        f={k:a.array(fid,k,shape) for k,shape in
+           (('feature_mean',(36,)),('feature_scale',(36,)),('ridge_weights',(36,4)),('target_scale',(4,)),
+            ('target_mean',(4,)),('ridge_intercept',(4,)),('actual_seed',()))}
+        a.ck(f['actual_seed'][0]%(1<<64)==d36seed(rep),'Exact fixed D36 seed')
+        for d in range(36):
+            column=[x[r*36+d] for r in range(112) if feature_valid[r]]
+            a.close(f['feature_mean'][d],average(column),'Saved TRAIN feature mean')
+            a.close(f['feature_scale'][d],max(1e-8,math.sqrt(var(column))),'Saved TRAIN feature scale')
+        for t in range(4):
+            col=[target[r*4+t] for r in range(112) if target_valid[r*4+t]]
+            a.close(f['target_mean'][t],average(col),'Saved TRAIN target mean')
+            a.close(f['target_scale'][t],max(1e-8,math.sqrt(var(col))),'Saved TRAIN target scale')
+        reconstructed=[]
+        for r in range(112):
+            for t in range(4):
+                raw=math.fsum((x[r*36+d]-f['feature_mean'][d])/f['feature_scale'][d]*f['ridge_weights'][d*4+t] for d in range(36))
+                reconstructed.append(f['target_mean'][t]+f['target_scale'][t]*(raw+f['ridge_intercept'][t]))
+        for got,want,ok in zip(p['ridge_predictions'],reconstructed,p['valid']):
+            if ok:a.close(got,want,'Saved ridge reconstruction')
+        task_values={task:{head:scores(p[field][t::4],target[t::4],p['valid'][t::4])
+                     for head,field in (('linear','ridge_predictions'),('neural','neural_predictions'))} for t,task in enumerate(TASKS)}
+        halves={label:{task:{head:scores(p[field][lo*4+t:hi*4:4],target[lo*4+t:hi*4:4],p['valid'][lo*4+t:hi*4:4])
+                    for head,field in (('linear','ridge_predictions'),('neural','neural_predictions'))} for t,task in enumerate(TASKS)}
+                    for label,lo,hi in (('early56',0,56),('late56',56,112))}
+        saved=report['saved_TRAIN_head_scores'][index]
+        a.tree(saved,{'repetition':rep,'saved_seed_signed_int64':f['actual_seed'][0],'tasks':task_values,'chronological_TRAIN_halves':halves},'Saved head '+prefix+str(rep))
+        for t,task in enumerate(TASKS):
+            if task not in ('past_volatility','past_activity'):continue
+            component={}
+            indices=[r for r in range(112) if p['valid'][r*4+t]]
+            y=[target[r*4+t] for r in indices];residual=[p['ridge_predictions'][r*4+t]-target[r*4+t] for r in indices]
+            expected_blocks={}
+            for name,lo,hi in BLOCKS:
+                z=[f['target_scale'][t]*math.fsum((x[r*36+d]-f['feature_mean'][d])/f['feature_scale'][d]*f['ridge_weights'][d*4+t] for d in range(lo,hi)) for r in range(112)]
+                component[name]=z;chosen=[z[r] for r in indices]
+                expected_blocks[name]={'saved_standardized_weight_l2':norm([f['ridge_weights'][d*4+t] for d in range(lo,hi)]),
+                    'TRAIN_contribution_population_std_in_target_units':math.sqrt(var(chosen)),
+                    'TRAIN_contribution_pearson_to_target':pearson(chosen,y),'TRAIN_contribution_pearson_to_saved_residual':pearson(chosen,residual),
+                    'row_contributions_in_target_units':z}
+            pairs=[]
+            for i,(name,_,_) in enumerate(BLOCKS):
+                for other,_,_ in BLOCKS[i+1:]:
+                    u=[component[name][r] for r in indices];v=[component[other][r] for r in indices]
+                    pairs.append({'blocks':[name,other],'population_covariance':average([(p-average(u))*(q-average(v)) for p,q in zip(u,v)]),'pearson':pearson(u,v)})
+            total=[math.fsum(component[n][r] for n,_,_ in BLOCKS) for r in indices]
+            marginal=math.fsum(var([component[n][r] for r in indices]) for n,_,_ in BLOCKS)
+            a.tree(saved['saved_linear_readout_block_decomposition'][task],{'blocks':expected_blocks,'pairwise_component_covariance':pairs,
+                'sum_contribution_population_variance':var(total),'sum_of_block_population_variances':marginal,
+                'sum_to_marginal_variance_ratio':var(total)/marginal if marginal else None,
+                'constant_target_units':f['target_mean'][t]+f['target_scale'][t]*f['ridge_intercept'][t]},'Ridge components '+prefix+task)
+        expected_reps.append(task_values)
+    means={task:{head:{metric:average([r[task][head][metric] for r in expected_reps]) for metric in ('r2','mae','rmse','coverage')} for head in ('linear','neural')} for task in TASKS}
+    a.tree(report['per_task_mean_across_saved_repetitions'],means,'Three saved head repetition means '+prefix)
+    return means
+
+def query_audit(a,prefix,report,ids):
+    qid=prefix+'_query';shape=(8,3,128,9)
+    q={k:a.array(qid,k,shape) for k in ('target_mask','visible','observed','hidden','targets','mean','variance')}
+    q['native']=a.array(qid,'native',(8,36));q['row_ids']=a.array(qid,'row_ids',(8,))
+    timestamps=a.array(qid,'timestamps',(8,128))
+    a.ck(q['row_ids']==ids[:8],'First8 TRAIN query rows only')
+    for b,row in enumerate(q['row_ids']):a.ck(timestamps[b*128:(b+1)*128]==[row+(h-127)*60000 for h in range(128)],'Exact TRAIN query time grid')
+    for s,v,o,h in zip(q['target_mask'],q['visible'],q['observed'],q['hidden']):a.ck(s==(o and h) and v==(o and not h),'Exact masked support')
+    index=lambda b,c,h,f:((b*3+c)*128+h)*9+f
+    row_mae=[];row_nll=[];counts=[]
+    for b in range(8):
+        maes=[];nlls=[];cells=0
+        for c in range(3):
+            chosen=[index(b,c,h,f) for h in range(128) for f in range(9) if q['target_mask'][index(b,c,h,f)]]
+            cells+=len(chosen)
+            if chosen:
+                error=[q['mean'][i]-q['targets'][i] for i in chosen]
+                maes.append(average([abs(e) for e in error]))
+                nlls.append(average([.5*(e*e/q['variance'][i]+math.log(q['variance'][i])) for e,i in zip(error,chosen)]))
+        row_mae.append(average(maes));row_nll.append(average(nlls));counts.append(cells)
+    a.tree(a.array(qid,'row_mae',(8,)),row_mae,'Saved query MAE');a.tree(a.array(qid,'row_nll',(8,)),row_nll,'Saved query NLL')
+    summary=a.summary(prefix+'_query_summary')
+    for b in range(8):
+        a.close(summary['row_mae'][b],row_mae[b],'B8 summary MAE');a.close(summary['row_nll'][b],row_nll[b],'B8 summary NLL')
+        a.ck(summary['row_target_cells'][b]==counts[b],'B8 support count')
+    a.close(average(summary['row_mae']),summary['standardized_fixed_query_MAE'],'112 TRAIN query MAE')
+    a.close(average(summary['row_nll']),summary['Gaussian_NLL_F64'],'112 TRAIN query NLL')
+    a.ck(summary['valid_rows']==112 and sum(summary['row_target_cells'])==summary['target_cells'],'112 TRAIN query support')
+    cf_values=[]
+    for c in range(3):
+        for f in range(9):
+            chosen=[index(b,c,h,f) for b in range(8) for h in range(128) if q['target_mask'][index(b,c,h,f)]]
+            e=[q['mean'][i]-q['targets'][i] for i in chosen];v=[q['variance'][i] for i in chosen]
+            inv=[1/x for x in v];standard=[p/math.sqrt(x) for p,x in zip(e,v)];squared=[p*p/x for p,x in zip(e,v)]
+            expected={'channel_id':c,'feature':f,'target_cells':len(chosen),'mean_absolute_error':average([abs(x) for x in e]),
+                'mean_squared_error':average([x*x for x in e]),'mean_variance':average(v),'mean_inverse_variance':average(inv),
+                'inverse_variance_quantiles':quantile(inv),'abs_error_inverse_variance_pearson':pearson([abs(x) for x in e],inv),
+                'mean_abs_NLL_mean_derivative':average([abs(x)/y for x,y in zip(e,v)]),
+                'mean_abs_MAE_mean_derivative':average([float(x!=0) for x in e]),'mean_abs_Huber_delta1_mean_derivative':average([min(abs(x),1.) for x in e]),
+                'fraction_abs_error_at_least1':average([float(abs(x)>=1.) for x in e]),
+                'mean_half_squared_error_over_variance':average([.5*x for x in squared]),'mean_half_log_variance':average([.5*math.log(x) for x in v]),
+                'mean_Gaussian_NLL':average([.5*(x+math.log(y)) for x,y in zip(squared,v)]),
+                'variance_quantiles':quantile(v),'standardized_residual_mean':average(standard),
+                'standardized_residual_quantiles':quantile(standard),'squared_standardized_residual_quantiles':quantile(squared)}
+            cf_values.append(expected);a.tree(report['per_channel_feature'][c*9+f],expected,'Query CF '+prefix+str(c*9+f))
+    a.tree(report,{'detailed_population':8,'detailed_row_ids':ids[:8],'full_TRAIN_probe_population':112,
+        'B8_hierarchical_mean_MAE':average(row_mae),'B8_hierarchical_mean_NLL':average(row_nll),'B8_target_cells':sum(counts),
+        'all112_TRAIN':{'standardized_fixed_query_MAE':summary['standardized_fixed_query_MAE'],'Gaussian_NLL_F64':summary['Gaussian_NLL_F64'],
+            'target_cells':summary['target_cells'],'row_mae_quantiles':quantile(summary['row_mae']),'row_nll_quantiles':quantile(summary['row_nll']),
+            'row_target_cells':summary['row_target_cells']}},'Query population '+prefix)
+    return q,cf_values,summary
+
+def gradient_audit(a,prefix,saved,q):
+    cid=prefix+'_checkpoint'
+    decoder=a.array(cid,'payload.model.encoder.change_decoder',(3456,4))
+    projection=a.array(cid,'payload.model.variance_projection',(27,4));bias=a.array(cid,'payload.model.variance_bias',(27,))
+    eps,shift,coefficient=a.array(cid,'payload.link_constants_f32',(3,))
+    a.ck(a.array(cid,'payload.softplus_parameters_f64',(2,))==[1.,20.],'Scalar softplus contract')
+    a.ck(a.array(cid,'channel_ids',(3,))==[0,1,2],'Canonical coefficient channel order')
+    a.ck(a.array(cid,'source_updates')==[0] and a.array(cid,'causal_updates')==[0 if prefix.endswith('initial') else 2048] and a.array(cid,'initialization_seed')==[943001],'Saved typed provenance')
+    text=lambda k:bytes(a.array(cid,k)).decode('utf-8')
+    a.ck(text('pretrained_ancestor')=='none' and text('initialization_kind')=='fresh-seeded-constructor-no-import-v1','Fresh typed ancestry')
+    a.ck(text('artifact_kind')=='cpb_'+prefix[:2]+'_inference_checkpoint_v1' and text('model_tag')=='CPB-'+prefix[:2],'Exact typed family')
+    if prefix.startswith('v4'):a.ck(text('gradient_policy')=='variance_input_gradient_stop-v1','Applied V4 detached variance policy')
+    else:a.ck(text('training_policy').startswith('from-scratch-end-to-end-causal-location-scale-nll-v1;'),'Applied V3 joint policy')
+    softplus=lambda x:x if x>20 else math.log1p(math.exp(x))
+    sigmoid=lambda x:1. if x>20 else (1/(1+math.exp(-x)) if x>=0 else math.exp(x)/(1+math.exp(x)))
+    base=softplus(shift);at=lambda b,c,h,f:((b*3+c)*128+h)*9+f
+    flat={n:[] for n in NAMES};local_by_cf=[{n:[] for n in NAMES} for _ in range(27)]
+    cf_abs=[{n:[] for n in NAMES[:3]} for _ in range(27)]
+    cf_e=[[] for _ in range(27)];cf_inv=[[] for _ in range(27)]
+    projection_grad=[[] for _ in range(108)];bias_grad=[[] for _ in range(27)]
+    max_variance_error=0.;selected_cells=[]
+    for b in range(8):
+        counts=[sum(q['target_mask'][at(b,c,h,f)] for h in range(128) for f in range(9)) for c in range(3)]
+        nchannel=sum(x>0 for x in counts);z=q['native'][b*36+32:b*36+36]
+        row_grad={n:[[] for _ in range(4)] for n in NAMES}
+        for c in range(3):
+            if not counts[c]:continue
+            factor=1/(8*nchannel*counts[c])
+            for f in range(9):
+                cf=c*9+f;raw=math.fsum(z[d]*projection[cf*4+d] for d in range(4))+bias[cf]
+                rebuilt=eps+coefficient*softplus(raw+shift)/base
+                link=coefficient*sigmoid(raw+shift)/base
+                mean_local={n:[[] for _ in range(4)] for n in NAMES[:3]};var_derivatives=[]
+                for h in range(128):
+                    i=at(b,c,h,f);v=q['variance'][i];max_variance_error=max(max_variance_error,abs(rebuilt-v))
+                    if not q['target_mask'][i]:continue
+                    e=q['mean'][i]-q['targets'][i]
+                    derivatives={'mean_NLL':factor*e/v,'mean_MAE':factor*((e>0)-(e<0)),'mean_Huber_delta1':factor*max(-1.,min(1.,e))}
+                    for n,g in derivatives.items():
+                        cf_abs[cf][n].append(abs(g))
+                        for d in range(4):mean_local[n][d].append(g*decoder[((c*128+h)*9+f)*4+d])
+                    var_derivatives.append(factor*.5*(1/v-e*e/(v*v)))
+                    cf_e[cf].append(abs(e));cf_inv[cf].append(1/v)
+                    if len(selected_cells)<16:selected_cells.append((e,v))
+                raw_g=math.fsum(var_derivatives)*link
+                bias_grad[cf].append(raw_g)
+                for d in range(4):projection_grad[cf*4+d].append(raw_g*z[d])
+                for n in NAMES:
+                    g=[math.fsum(mean_local[n][d]) for d in range(4)] if n in mean_local else [raw_g*projection[cf*4+d] for d in range(4)]
+                    local_by_cf[cf][n].extend(g)
+                    for d in range(4):row_grad[n][d].append(g[d])
+        values={n:[math.fsum(v) for v in row_grad[n]] for n in NAMES}
+        for n in NAMES:flat[n].extend(values[n])
+        applied=values['hypothetical_variance_native'] if prefix.startswith('v3') else [0.]*4
+        pairs=((NAMES[0],NAMES[3]),(NAMES[0],NAMES[1]),(NAMES[0],NAMES[2]),(NAMES[1],NAMES[2]))
+        expected={'row_id':q['row_ids'][b],'native_gradients':values,'applied_variance_native_gradient':applied,
+            'applied_total_NLL_native_gradient':[u+v for u,v in zip(values['mean_NLL'],applied)],
+            'comparisons':{l+'_vs_'+r:vector(values[l],values[r]) for l,r in pairs}}
+        a.tree(saved['rows'][b],expected,'Local native gradient '+prefix+str(b))
+    pairs=((NAMES[0],NAMES[3]),(NAMES[0],NAMES[1]),(NAMES[0],NAMES[2]),(NAMES[1],NAMES[2]))
+    applied=flat['hypothetical_variance_native'] if prefix.startswith('v3') else [0.]*32
+    a.tree(saved,{'population':8,'flattened_native_gradient_l2':{n:norm(x) for n,x in flat.items()},
+        'applied_variance_native_l2':norm(applied),'stored_variance_consistency_max_abs_error':max_variance_error,
+        'flattened_comparisons':{l+'_vs_'+r:vector(flat[l],flat[r]) for l,r in pairs},
+        'variance_head_local_gradient_l2':{'projection':norm([math.fsum(x) for x in projection_grad]),'bias':norm([math.fsum(x) for x in bias_grad])}},'Flattened adjoints '+prefix)
+    for cf in range(27):
+        expected={'channel_id':cf//9,'feature':cf%9,'target_cells':len(cf_e[cf]),'mean_inverse_variance':average(cf_inv[cf]),
+            'mean_absolute_error':average(cf_e[cf]),'sum_abs_NLL_mean_derivative_hierarchical':math.fsum(cf_abs[cf]['mean_NLL']),
+            'sum_abs_MAE_mean_derivative_hierarchical':math.fsum(cf_abs[cf]['mean_MAE']),
+            'sum_abs_Huber_delta1_mean_derivative_hierarchical':math.fsum(cf_abs[cf]['mean_Huber_delta1']),
+            'flattened_native_gradient_l2':{n:norm(x) for n,x in local_by_cf[cf].items()}}
+        a.tree(saved['by_channel_feature'][cf],expected,'Gradient channel/feature '+prefix+str(cf))
+    # Prespecified first16 supported cells/stage; independent scalar likelihood contracts.
+    # Mean step never crosses a nonzero MAE kink. Variance step is relative and positive.
+    for index,(e,v) in enumerate(selected_cells):
+        h=min(1e-6*max(1.,abs(e)),.25*abs(e)) if e else 1e-6
+        likelihood=lambda error,variance:.5*(error*error/variance+math.log(variance))
+        huber=lambda error:.5*error*error if abs(error)<=1 else abs(error)-.5
+        a.finite((likelihood(e+h,v)-likelihood(e-h,v))/(2*h),e/v,'NLL mean finite difference '+prefix+str(index))
+        a.finite((abs(e+h)-abs(e-h))/(2*h),float((e>0)-(e<0)),'MAE finite difference '+prefix+str(index))
+        a.finite((huber(e+h)-huber(e-h))/(2*h),max(-1.,min(1.,e)),'Huber1 finite difference '+prefix+str(index))
+        hv=1e-5*v
+        a.finite((likelihood(e,v+hv)-likelihood(e,v-hv))/(2*hv),.5*(1/v-e*e/(v*v)),'NLL variance finite difference '+prefix+str(index))
+    return {'norms':{n:norm(x) for n,x in flat.items()},'applied_variance_l2':norm(applied)}
+
+def main():
+    p=argparse.ArgumentParser()
+    for n in ('card','diagnosis','audit-card','output'):p.add_argument('--'+n,type=Path,required=True)
+    args=p.parse_args()
+    if not Path('/.dockerenv').is_file():raise RuntimeError('Existing managed container required')
+    if args.output.exists():raise RuntimeError('Exclusive audit output required')
+    started=time.monotonic()
+    card=load(args.card);declaration=load(args.audit_card)
+    if digest(args.card)!=MAIN_CARD_SHA or digest(args.diagnosis)!=DIAGNOSIS_SHA:raise ValueError('Frozen main inputs changed')
+    for entry in declaration['auditor_sources']:
+        actual=pin(Path(__file__).parent/entry['file'])
+        if (actual['bytes'],actual['sha256'])!=(entry['bytes'],entry['sha256']):raise ValueError('Frozen independent source changed')
+    report=load(args.diagnosis);a=Audit(card)
+    try:
+        a.ck(report['status']=='passed' and report['baseline']=='CPB-v3.market-01' and report['comparison_reference']=='CPB-v4.market-01','Diagnosis identity')
+        a.ck(all(value==0 for value in report['counters'].values()),'No forbidden execution or held-out analysis')
+        a.tree(report['mixed_summary_JSON_policy'],{'whole_files_parsed':4,'selected_numeric_key':'train','VALIDATION_numeric_fields_used':0,'files_contain_both_splits':True},'Mixed JSON scope')
+        target=a.array('train_targets','targets',(112,4));valid=a.array('train_targets','valid',(112,4))
+        ids=a.array('train_targets','row_ids',(112,));groups=a.array('train_targets','group_ids',(112,))
+        a.ck(len(set(ids))==112 and ids==sorted(ids) and all(1704067259999<=x<=1705881599999 for x in ids),'Chronological TRAIN ids')
+        results={}
+        for version in ('v3','v4'):
+            for stage in ('initial','final'):
+                prefix=version+'_'+stage;saved=report['models'][version]['stages'][stage]
+                x,fv,columns=feature_audit(a,prefix+'_features',saved['native_features'],ids,target,valid)
+                means=head_audit(a,prefix,saved,x,fv,ids,groups,target,valid)
+                q,cf,summary=query_audit(a,prefix,saved['fixed_query_TRAIN_diagnosis'],ids)
+                g=gradient_audit(a,prefix,saved['analytic_change4_gradient_diagnosis'],q)
+                results[prefix]={'x':x,'valid':fv,'means':means,'q':q,'cf':cf,'summary':summary,'g':g}
+        a.ck(results['v3_initial']['x']==results['v4_initial']['x'],'Exact initial TRAIN native pairing')
+        for key in ('native','mean','variance'):a.ck(results['v3_initial']['q'][key]==results['v4_initial']['q'][key],'Exact initial masked pairing '+key)
+        for version in ('v3','v4'):
+            for key in ('target_mask','targets'):a.ck(results[version+'_initial']['q'][key]==results[version+'_final']['q'][key],'Fixed stage query support/targets')
+        for stage in ('initial','final'):
+            left,right=results['v3_'+stage],results['v4_'+stage]
+            for key in ('row_ids','target_mask','targets'):a.ck(left['q'][key]==right['q'][key],'Cross-model query exact '+stage+key)
+            block_rows=[r for r in report['comparison']['native_blocks'] if r['stage']==stage]
+            for name,lo,hi in BLOCKS+(('complete36',0,36),):
+                saved=next(r for r in block_rows if r['block']==name)
+                a.ck(saved['exact_same_block_values']==all(left['x'][r*36+d]==right['x'][r*36+d] for r in range(112) for d in range(lo,hi)),'Cross-model same native block')
+                a.close(saved['mean_absolute_coordinate_difference'],average([abs(left['x'][r*36+d]-right['x'][r*36+d]) for r in range(112) for d in range(lo,hi)]),'Cross-model native mean difference')
+                for metric in ('covariance_trace','covariance_frobenius_squared','participation_ratio'):
+                    l=report['models']['v3']['stages'][stage]['native_features']['blocks'][name][metric]
+                    r=report['models']['v4']['stages'][stage]['native_features']['blocks'][name][metric]
+                    a.close(saved[metric+'_v4_minus_v3'],r-l if l is not None and r is not None else None,'Cross-model covariance difference')
+            for row in (r for r in report['comparison']['saved_TRAIN_head_scores'] if r['stage']==stage):
+                l=left['means'][row['task']][row['head']];r=right['means'][row['task']][row['head']]
+                a.tree(row['v4_minus_v3'],{k:r[k]-l[k] if l[k] is not None and r[k] is not None else None for k in ('r2','mae','rmse','coverage')},'Cross-model TRAIN score difference')
+            row=next(r for r in report['comparison']['masked_reconstruction'] if r['stage']==stage)
+            a.close(row['all112_MAE_v4_minus_v3'],right['summary']['standardized_fixed_query_MAE']-left['summary']['standardized_fixed_query_MAE'],'Cross-model TRAIN MAE difference')
+            a.close(row['all112_NLL_v4_minus_v3'],right['summary']['Gaussian_NLL_F64']-left['summary']['Gaussian_NLL_F64'],'Cross-model TRAIN NLL difference')
+            for actual,l,r in zip(row['B8_channel_features'],left['cf'],right['cf']):
+                a.tree(actual['v4_minus_v3'],{k:r[k]-l[k] for k in ('mean_absolute_error','mean_squared_error','mean_variance','mean_inverse_variance','mean_half_squared_error_over_variance','mean_half_log_variance','mean_Gaussian_NLL')},'Cross-model B8 CF difference')
+        for accessed in report['numeric_fields_accessed']:
+            a.ck(accessed['id'] in a.allowed,'Producer only allowed input id')
+            fields=a.allowed[accessed['id']].get('allowed_tensor_fields',[])
+            a.ck(accessed['field']=='train_only' or accessed['field'] in fields,'Producer only allowed tensor field')
+        for binding in card['allowed_inputs']+card['preservation_pins']+[card['pre_execution_preservation']]:
+            a.ck(pin(binding['container_path'])['sha256']==binding['sha256'],'All inputs remain unchanged')
+        result={'kind':'cpb_v3_v4_TRAIN_diagnosis_independent_audit_v1','status':'passed' if not a.errors else 'failed',
+            'checks':a.checks,'mismatches':a.errors,'source':pin(__file__),'reader':pin(Path(__file__).with_name('archive_reader.py')),
+            'card':pin(args.card),'diagnosis':pin(args.diagnosis),'audit_card':pin(args.audit_card),
+            'finite_difference_checks':a.finite_checks,'finite_difference_max_absolute_error':a.maximum_finite_error,
+            'finite_difference_policy':'First16 supported cells in canonical b,c,f,h traversal per stage; NLL mean/variance, MAE,Huber1 scalar contracts; fixed positive step rules',
+            'verified_inputs':a.verified,'numeric_fields_accessed':a.numeric,
+            'four_model_stages':4,'TRAIN_rows_each':112,'detailed_query_rows_each':8,
+            'model_calls':0,'neural_forwards':0,'fits':0,'training_updates':0,'held_out_tensor_reads':0,
+            'scope':'Independent source implementation, saved data and F64 algebra only; never imports diagnosis code, Torch or numerical frameworks.',
+            'limits':['Scalar finite differences verify local likelihood kernels; full encoder/optimizer Jacobians are not replayed.',
+                      'Detailed query/gradient evidence remains first8 TRAIN rows per stage.',
+                      'Four JSON summary files are parsed whole but only train values accessed.',
+                      'Saved coefficient reconstruction and population moments are descriptive checks, not fitting.',
+                      'No candidate/objective/coefficient or validation gate is selected.'],
+            'elapsed_seconds':time.monotonic()-started}
+        with args.output.open('x',encoding='utf-8') as stream:json.dump(result,stream,indent=2,allow_nan=False);stream.write('\n')
+        print(json.dumps({'status':result['status'],'checks':a.checks,'mismatches':a.errors,'finite_difference_checks':a.finite_checks,'output':str(args.output)}))
+        return 0 if not a.errors else 1
+    finally:a.close_archives()
+
+if __name__=='__main__':raise SystemExit(main())
+

@@ -1,0 +1,65 @@
+{
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "kind": "causal_encoder_prospective_version_descriptor_v1",
+  "family": "causal_patch_bottleneck_mae",
+  "version": "CPB-v8",
+  "instance": "CPB-v8.market-01",
+  "created_utc": "2026-10-16T01:00:02.0076283Z",
+  "created_before_build_training_or_quality": true,
+  "created_after_measurement": false,
+  "stage": "DRAFT_prospective_unmeasured_card_not_frozen",
+  "immutable_prospective_semantics": false,
+  "declaration_provenance": "Frozen prospective descriptor after the machine card hash and before source admission/build/measurement; measured instance record may be added later without changing this declaration",
+  "card": {
+    "path": "doc/CAUSAL_FRESH_V8_CARD.json",
+    "status": "DRAFT_no_hash_until_frozen"
+  },
+  "physical_version_root": "versions/v8",
+  "public_entry": "versions/v8/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v8.h",
+  "architecture_copy_parent": "CPB-v6",
+  "learned_weight_ancestor": "none",
+  "source_updates": 0,
+  "fresh_statistics_required": true,
+  "checkpoint_import_for_initialization": false,
+  "native_width": 40,
+  "native_layout": [
+    "learned20",
+    "literal_spectral12",
+    "mean4",
+    "uncertainty4"
+  ],
+  "total_parameters": 298640,
+  "learned_values": 294752,
+  "learned_tensors": 76,
+  "fixed_prior_values": 3888,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;shared-global-clip1-v1",
+  "mean_huber_delta": 1.0,
+  "loss_coefficients": [
+    1.0,
+    1.0
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "mechanism": "Only temporal summary allocation changes from V6. For original patch positions0:16,four fixed4-position bins use masked within-bin softmax and disjoint8-row slices of the same export projection. No extra parameters,projection pooling coefficients,loss/rate/seed/clip/head rescue or V7 group-clipping carryover.",
+  "retention_protocol": {
+    "path": "doc/causal_fresh_v8/goal-protocol.json",
+    "bytes": 21175,
+    "sha256": "c0a46527388032ea4f43dd9780ceedef486e5db7b4502ce37165d6e8616368b7"
+  },
+  "baseline": "CPB-v3.market-01",
+  "baseline_changed": false,
+  "application_changed": false,
+  "measured_results_in_this_descriptor": false,
+  "metadata_only": true,
+  "temporal_pooling_policy": "original-position-four-bin-disjoint-export-rows-v1",
+  "temporal_pooling_partition": [
+    4,
+    16,
+    32,
+    4,
+    8
+  ],
+  "mandatory_identifiable_learned_tensors": 75,
+  "data_gradient_gauge_exemption": "core.encoder.level.base.backbone.pool_score.bias"
+}

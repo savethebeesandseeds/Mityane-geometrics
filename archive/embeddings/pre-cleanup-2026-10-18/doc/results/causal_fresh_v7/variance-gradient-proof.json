@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "model": "CPB-v7",
+  "gradient_policy": "huber1-mean-live;gaussian-variance-detached-error-live-uncertainty4;disjoint-mean-uncertainty-clip1-v1",
+  "actual_CUDA": true,
+  "objective_policy": "huber1-mean-plus-detached-error-gaussian-variance-v1",
+  "mean_huber_delta": 1,
+  "loss_coefficients": [
+    1,
+    1
+  ],
+  "variance_error_detached": true,
+  "reporting_nll_backpropagated": false,
+  "direct_NLL_mean_gradient_zero": true,
+  "huber_mean_gradient_live": true,
+  "direct_Huber_uncertainty_gradient_zero": true,
+  "disjoint_clip_isolation_witness": true,
+  "gradient_clip_policy": "disjoint-mean-uncertainty-norm2-clip1-v1",
+  "gradient_clip_max_norms": [
+    1,
+    1
+  ],
+  "gradient_clip_norm_type": 2,
+  "mean_clip_tensors": 73,
+  "mean_clip_values": 293537,
+  "uncertainty_clip_tensors": 3,
+  "uncertainty_clip_values": 1215,
+  "fixed_excluded_tensors": 1,
+  "fixed_excluded_values": 3888,
+  "shared_global_clip": false,
+  "combined_post_clip_norm_upper_bound": "sqrt2",
+  "optimizer_independence_claimed": false,
+  "direct_gradient_routes": "mean->parent32+mean4;variance->uncertainty4;no-direct-cross-paths;disjoint-mean-uncertainty-clip1",
+  "mean_native_variance_gradient_blocked": true,
+  "uncertainty_native_variance_gradient_live": true,
+  "uncertainty_projection_learning": true,
+  "mean_path_live": true,
+  "variance_head_learning": true,
+  "forward_variance_input_dependence": true,
+  "manual_composite_gradient_parity": true,
+  "nonvacuous_nonzero_fixture": true,
+  "binary": {
+    "path": "/opt/cuwacunu/build/causal-fresh-v7-attempt001/test_cpb_v7_variance_gradient",
+    "bytes": 595048,
+    "sha256": "19ed8f51e6ba5fc0e983049da4e2565c82713d118dd3bbbb583e9dabe8eff933"
+  },
+  "log": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/variance-gradient.log",
+    "bytes": 442,
+    "sha256": "f4bfa33512ae1ee2ef8efa64970d24749ba9e2e3dedf0e353e98e63301f280ce"
+  },
+  "execution": {
+    "path": "/opt/cuwacunu/research/causal-fresh-v7/attempt-001/variance-gradient-stage.json",
+    "bytes": 865,
+    "sha256": "c2aaea8ff04c551d4d6d6df15a0eb80f49889d71d2cf60a149960d193ff2001b"
+  }
+}

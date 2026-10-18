@@ -1,0 +1,122 @@
+{
+  "kind": "cpb_v6_v7_independent_TRAIN_diagnosis_audit_source_v1",
+  "copyright": "Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE.",
+  "status": "source_prepared_pending_main_card_diagnosis_and_independent_preflight",
+  "parents": [
+    {
+      "path": "code/research/causal_v5_v6_train_diagnosis_audit/audit.py",
+      "bytes": 55355,
+      "sha256": "399b290e60aacd8277443343b213e53ed88df9db7e76816f502b687b303361d3"
+    },
+    {
+      "path": "code/research/causal_v5_v6_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v5_v6_train_diagnosis_audit/component_math.py",
+      "bytes": 4732,
+      "sha256": "068a41990169a507526400f0017483ba7c4082c1bd1bc33e07536e0fbf7a3554"
+    },
+    {
+      "path": "code/research/causal_v5_v6_train_diagnosis_audit/README.md",
+      "bytes": 3795,
+      "sha256": "898d3a64e81db204681c0cfe3e62e5f624585cbde1b6936debaaf5065edc5cee"
+    },
+    {
+      "path": "code/research/causal_v5_v6_train_diagnosis_audit/provenance.json",
+      "bytes": 1853,
+      "sha256": "48326c196a3c6a44bc9f96fc54d29acabfdf8dc0233897a8f110bbb890329436"
+    }
+  ],
+  "current_owned": [
+    {
+      "path": "code/research/causal_v6_v7_train_diagnosis_audit/audit.py",
+      "bytes": 61806,
+      "sha256": "ba69ecbc748a19e98eafdef60d2642a70e5e142b9bd65fe5e888c0621d655cba"
+    },
+    {
+      "path": "code/research/causal_v6_v7_train_diagnosis_audit/archive_reader.py",
+      "bytes": 4035,
+      "sha256": "1bbf6efad4e1222a9fc53a0dad46d0ff2b0ccad63e269af714968ebb6e738db9"
+    },
+    {
+      "path": "code/research/causal_v6_v7_train_diagnosis_audit/component_math.py",
+      "bytes": 9620,
+      "sha256": "7a42b5524a41a987f3df1fc9c582b144dd59ccbfec810be29adf88ccb3f7f68f"
+    },
+    {
+      "path": "code/research/causal_v6_v7_train_diagnosis_audit/README.md",
+      "bytes": 5128,
+      "sha256": "c010f4bf35480b064158fd2cf73761a666d85239637ee2a95bb4b90e0c9561db"
+    }
+  ],
+  "operation": "Five complete physical neutral V5/V6 auditor copies followed by owned V6/V7 adaptation. Reader exact. Existing independent scalar/head/ridge/local-adjoint kernels retained; independently extended both-version components, actual-batch and clipping logs plus raw/support temporal bins. No producer/old-source/runtime import.",
+  "reader_exact_parent_copy": true,
+  "input_roles": 49,
+  "versions": [
+    "v6",
+    "v7"
+  ],
+  "native_dimensions": [
+    40,
+    40
+  ],
+  "TRAIN_rows_each": 112,
+  "detailed_query_rows_each": 8,
+  "actual_tensor_updates_each": [
+    1,
+    2048
+  ],
+  "CSV_successful_updates_each": 2048,
+  "CSV_numeric_columns": {
+    "v6": 7,
+    "v7": 9
+  },
+  "CSV_fixed_groups_each": 5,
+  "fixed_temporal_bins": [
+    [
+      0,
+      32
+    ],
+    [
+      32,
+      64
+    ],
+    [
+      64,
+      96
+    ],
+    [
+      96,
+      128
+    ]
+  ],
+  "finite_difference_plan": {
+    "checks": 256,
+    "selection": "First16 supported cells per model/stage in canonical b,c,f,h traversal",
+    "kernels": [
+      "Gaussian mean",
+      "Gaussian variance",
+      "MAE",
+      "Huber1"
+    ],
+    "step_rules_and_tolerances": "Inherited unchanged neutral kernel"
+  },
+  "future_audit_card": {
+    "kind": "cpb_v6_v7_TRAIN_diagnosis_independent_audit_card_v1",
+    "pins_required": [
+      "exact main card",
+      "saved diagnosis",
+      "all five owned sources"
+    ],
+    "status": "not_frozen_or_executed"
+  },
+  "numeric_execution_before_freeze": 0,
+  "AST_executions": 0,
+  "model_calls": 0,
+  "head_fits": 0,
+  "training_updates": 0,
+  "old_audit_replays": 0,
+  "self_destination_hash_excluded": true
+}

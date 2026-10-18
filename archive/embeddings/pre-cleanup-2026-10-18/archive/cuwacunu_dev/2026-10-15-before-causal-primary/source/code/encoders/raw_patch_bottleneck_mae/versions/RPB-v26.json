@@ -1,0 +1,191 @@
+{
+  "kind": "encoder_design_version_manifest_v1",
+  "family": "raw_patch_bottleneck_mae",
+  "number": 26,
+  "design_slot": "RPB-v26",
+  "canonical_registered_tag": "RPB-v26",
+  "registered_aliases": [],
+  "metadata_only": true,
+  "primary_selection_changed": false,
+  "historical_source_or_results_rewritten": false,
+  "semantics": "Historical window/global embedding; no new strict-causality or forecasting claim",
+  "description": "Frozen TRAIN mean/population-SD conditioning of unchanged bank; protected parent32 plus learned4/native36; waveform objective only",
+  "registered_design_parameters": {},
+  "current_definition_locator": {
+    "status": "file and declared symbols verified; locator does not replace historical capsules",
+    "entry_header": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h",
+      "sha256": "36d3beb1117582b77100ddaef5b55b77ff2b3759a63dd193a36e726cb16d7321",
+      "bytes": 5041,
+      "verified_available_at_indexing": true
+    },
+    "declared_symbols_present_in_file": [
+      "ConditionedChangeModel",
+      "ConditionedChangeModelImpl",
+      "Contract"
+    ],
+    "namespace": "embedding::encoders::raw_patch_bottleneck_mae",
+    "configuration_template": {
+      "repository": "embedding",
+      "path": "code/encoders/raw_patch_bottleneck_mae/config/conditioned_changes.conf",
+      "sha256": "00b3bbdcd7c37e921cbb30c573f62b8d7dd60002934a7acbd0a4639777ad7b91",
+      "bytes": 618,
+      "verified_available_at_indexing": true
+    },
+    "registered_configuration_path": "code/encoders/raw_patch_bottleneck_mae/config/conditioned_changes.conf"
+  },
+  "historical_definition_header_checks": [
+    {
+      "recorded_in_verified_completion": {
+        "repository": "integration",
+        "path": "doc/results/market_conditioned_changes_v1/completion.json",
+        "sha256": "884d119ad5bfdfd878434be782b7607c6f5486292ed63b0fba695cf05e5bea74",
+        "bytes": 37283
+      },
+      "recorded_source": {
+        "source": "code/encoders/rpb_conditioned/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h",
+        "sha256": "36d3beb1117582b77100ddaef5b55b77ff2b3759a63dd193a36e726cb16d7321",
+        "bytes": 5041
+      },
+      "current_definition_header_same_SHA256": true,
+      "claim_scope": "definition header parity only; no replay or complete historical compiler-closure revalidation"
+    }
+  ],
+  "source_registries": [
+    {
+      "repository": "embedding",
+      "path": "doc/conditioned_change_embedding_versions.json",
+      "sha256": "eefbff0e7405106266da214dc0fbb1e3f55284b0626a0d13cc6c67d56207d760",
+      "bytes": 3139,
+      "verified_available_at_indexing": true
+    }
+  ],
+  "declared_historical_instances": [
+    {
+      "registry_source": {
+        "repository": "embedding",
+        "path": "doc/conditioned_change_embedding_versions.json",
+        "sha256": "eefbff0e7405106266da214dc0fbb1e3f55284b0626a0d13cc6c67d56207d760",
+        "bytes": 3139,
+        "verified_available_at_indexing": true
+      },
+      "declaration": {
+        "instance": "RPB-v26.market-01",
+        "status": "measured stopped mechanism; original8/9, strict5/8; preserved neural-volatility leader",
+        "batch_size": 8,
+        "geometry": {
+          "C": 3,
+          "H": 128,
+          "F": 9,
+          "P": 8,
+          "W": 64,
+          "parent_width": 32,
+          "change_width": 4,
+          "native_width": 36
+        }
+      },
+      "historical_checkpoint_availability_rechecked": false
+    }
+  ],
+  "verified_matched_market_instances": [
+    {
+      "instance": "RPB-v26.market-01",
+      "description": "Frozen TRAIN mean/population-SD conditioning of unchanged bank; protected parent32 plus learned4/native36; waveform objective only",
+      "status": "stopped exact conditioned-bank mechanism; preserved task references",
+      "input_geometry": {
+        "C": 3,
+        "H": 128,
+        "F": 9,
+        "P": 8,
+        "W": 64,
+        "native_width": 36,
+        "output": "one native vector per window"
+      },
+      "input_scaler_identity": "rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969",
+      "card": {
+        "repository": "integration",
+        "path": "doc/MARKET_CONDITIONED_CHANGE_CARD.md",
+        "sha256": "66de5fbe159230c82c04bd45a0d48cdf0694e101a082319da2f8bf2bd8b10e84",
+        "bytes": 11990
+      },
+      "report": {
+        "repository": "integration",
+        "path": "doc/MARKET_CONDITIONED_CHANGE_RESULTS.md",
+        "sha256": "89e959113fb3b38958ebb01b17d134b3421a43246058986f0aed0f9f103edd54",
+        "bytes": 20003
+      },
+      "completion": {
+        "repository": "integration",
+        "path": "doc/results/market_conditioned_changes_v1/completion.json",
+        "sha256": "884d119ad5bfdfd878434be782b7607c6f5486292ed63b0fba695cf05e5bea74",
+        "bytes": 37283
+      },
+      "own_frozen_result_table": {
+        "repository": "integration",
+        "path": "doc/results/market_conditioned_changes_v1/table_rows.json",
+        "sha256": "56da31fe5256dca8c59ca3816bb9ff32e2a07a9075e353bc2d830cece11d678f",
+        "bytes": 178164
+      },
+      "checkpoints": [
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/inference-0.pt",
+          "sha256": "34ae05252ed1aa199e11f548f0646f4c81d9c1e1803e95697c2a585c4801f41a",
+          "bytes": 1278673,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/inference-2048.pt",
+          "sha256": "d34a56a6f4ccf8057c17f80b709f570359834173f1ec784dc48cbbc034d5013b",
+          "bytes": 1279445,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-1024.pt",
+          "sha256": "c71d9a2dc9fe83c6e661bead1d07ac60a286eef2e92eebd10b0696cd73d382db",
+          "bytes": 1420626,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-2048.pt",
+          "sha256": "e167433dceccefff2264c89c3ada3dfaa89004dcf286a778cb8ac0ad3e34eac1",
+          "bytes": 1420626,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        },
+        {
+          "path": "output/runs/market-conditioned-changes/run-RjTTZZ/checkpoints/training-512.pt",
+          "sha256": "42640eab23625949326f8723f53263469559d50a30a20ec464f997f708521e89",
+          "bytes": 1420359,
+          "local_only": true,
+          "git_ignored": true,
+          "deserialized_for_ledger": false
+        }
+      ],
+      "checkpoints_availability_size_SHA_and_ignore_rechecked": true,
+      "verification_receipt": {
+        "repository": "integration",
+        "path": "doc/results/causal_patch_bottleneck_mae_v1/preflight.json",
+        "sha256": "858f0b1896f764feb9c67cdef6b49e9e1a757ef4ac0243a3e2d2ba76bbfcb7e0",
+        "bytes": 126493,
+        "verified_available_at_indexing": true
+      }
+    }
+  ],
+  "variants": [],
+  "explicit_provenance_gaps": [
+    "Design summary is drawn from verified later instance registries/market ledger, not a newly invented extension of the earlier master registry."
+  ],
+  "licensing": "Existing inherited SPDX/notices remain authoritative; this new metadata is Copyright(c)2026 Waajacu, all rights reserved.",
+  "new_encoder_calls": 0,
+  "new_training_updates": 0,
+  "new_head_fits": 0,
+  "tensor_deserializations": 0
+}
