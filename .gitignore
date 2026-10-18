@@ -1,8 +1,13 @@
 # Toolchains, dependencies and build caches belong inside the container.
 /.build/
 /.external/
-/.venv/
+.venv/
 /build/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
 __pycache__/
 *.py[cod]
 *.o
@@ -20,7 +25,10 @@ __pycache__/
 /code/embeddings/.build/
 /code/embeddings/.external/
 *.pt
+*.pt.tmp-*
 *.pth
+*.ckpt
+*.safetensors
 *.onnx
 
 # Credentials and editor state.
