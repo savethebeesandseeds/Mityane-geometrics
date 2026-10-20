@@ -18,8 +18,12 @@ Run only inside the documented managed development container:
 bash code/embeddings/evaluation/protocols/spectral_confirmation_v1/admit.sh
 # Substitute the exact new admission path printed above, once:
 bash code/embeddings/evaluation/protocols/spectral_confirmation_v1/run_confirmation.sh /embedding/output/runs/rpb-spectral-confirmation/admission-XXXXXX
-python3 -B code/embeddings/evaluation/protocols/spectral_confirmation_v1/publish.py --admission /embedding/output/runs/rpb-spectral-confirmation/admission-XXXXXX
 ```
+
+The historical publication command is retired. `publish.mjs` refuses to change
+the frozen registry; its original Python source remains in the frozen archive.
+New publication requires a separately versioned protocol. Research execution
+remains paused until its protocol and permissions are explicitly bound.
 
 The encoder implementation, shared evaluation helpers, generic compiled objects,
 SDK and generator are reused. Historical protocol sources have hardcoded

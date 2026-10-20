@@ -6,8 +6,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export LD_LIBRARY_PATH="/opt/cuwacunu_embedding/libtorch/lib:/usr/local/cuda-12.4/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 binary="${EARLY_MIXER_CONFIRMATION_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-paired-pooling/embedding_early_mixer_confirmation}"
 [[ "$binary" = /* && -x "$binary" && -n "${EARLY_MIXER_CONFIRMATION_SOURCE_INPUTS:-}" ]] || { echo 'Use the source-bound Make target.' >&2; exit 1; }
-root="$PWD/output/runs/rpb-early-mixer-confirmation"
-helper='code/embeddings/scripts/prepare-early-mixer-confirmation.py'
+root="$PWD/.temp/embeddings/runs/rpb-early-mixer-confirmation"
+helper='code/embeddings/scripts/prepare-early-mixer-confirmation.mjs'
 card_sha='98ded5254e4b9bccb931fde491bf2657b7541f1561db3ff30fd1c4896f1433ea'
 build_dir="$(dirname -- "$binary")"
 [[ "$build_dir" = /opt/mityane-geometrics/embeddings/build/* ]]
@@ -27,7 +27,7 @@ printf 'Early mixer confirmation capsule: %s\n' "$capsule"
 source_id="$("$binary" --source-id)"
 read -r -a sources <<< "$EARLY_MIXER_CONFIRMATION_SOURCE_INPUTS"
 "$binary" --plan > "$capsule/recipe-plan.json"
-python3 -B "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
   --card-sha256 "$card_sha" --sources "${sources[@]}" --admission "$admission" \
   --compiled-source-id "$source_id" --binary "$binary" \
   --reader-source "${reader[0]}" --reader-fixtures "${reader[1]}" --reader-seal "${reader[2]}"
@@ -35,6 +35,6 @@ log_sha="$(sha256sum "$capsule/admission/build-and-tests.log" | cut -d ' ' -f 1)
 "$binary" --output "$capsule/results" --admission-log "$capsule/admission/build-and-tests.log" \
   --admission-sha256 "$log_sha" --card "$capsule/source/code/embeddings/evaluation/cards/early_mixer_confirmation_v1.md" \
   --card-sha256 "$card_sha" 2>&1 | tee "$capsule/command.log"
-python3 -B "$helper" finalize --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" finalize --repo-root "$PWD" --target "$capsule" \
   --card-sha256 "$card_sha" --compiled-source-id "$source_id"
 printf 'Early mixer confirmation measurement complete: %s\n' "$capsule"

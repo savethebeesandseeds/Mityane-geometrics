@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Context replication admission takes no overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-context-replication"
+root="$PWD/.temp/embeddings/runs/rpb-context-replication"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Context replication admission: %s\n' "$admission"
@@ -38,20 +38,6 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary differs from preserved production source.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-record = dict(protocol='context-replication-v1', status='passed', source_fingerprint=sys.argv[2],
-    source_preserved=True,
-    gates=['TRAIN/VALIDATION-only preparation and all-point isolation', 'default native and paired compatibility',
-           'fresh equal mode2 initialization/scaler/data/counter CUDA contract', 'unchanged context training policy',
-           'tagged ordinary resume rejection', 'fixed readout TEST-only corruption', 'actual CUDA/native32 serving gate'],
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    cuda_gate_log_sha256=hashlib.sha256((root/'cuda-gate.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission context-replication-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Context replication admission passed: %s\n' "$admission"

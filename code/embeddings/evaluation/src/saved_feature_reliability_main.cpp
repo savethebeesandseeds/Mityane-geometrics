@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 #include "embedding/shared/saved_feature_reliability.h"
 #include "frozen_role_guard.h"
+#include "../include/historical_parent_paths.h"
 #include <array>
 #include <charconv>
 #include <chrono>
@@ -70,9 +71,10 @@ std::string plan() {
       ",\"CPU_saved_tensor_arithmetic_only\":true,\"PCA_fits\":0,\"encoder_forwards\":0,\"selection\":false,\"promotion\":false}";
 }
 std::vector<ev::SavedFeatureReliabilityInput> expected_inputs(const fs::path &root) {
+  (void)root; // Repository location and historical payload location are separate.
   std::vector<ev::SavedFeatureReliabilityInput> out;
   for (auto master : masters) for (const std::string method : {"v4", "v7"}) {
-    const auto base = root / parent_relative / "results" / ("seed-" + std::to_string(master) + "-lag_sign");
+    const auto base = embedding::evaluation::historical_paths::physical(parent_relative) / "results" / ("seed-" + std::to_string(master) + "-lag_sign");
     const auto feature = base / "readouts" / ("native_" + method);
     ev::SavedFeatureReliabilityInput value;
     value.id = method + '-' + std::to_string(master);
@@ -124,8 +126,8 @@ int main(int argc, char **argv) try {
           "compiled source and frozen human card identities required");
   const auto root = absolute(options.at("--input-root")), output = absolute(options.at("--output"));
   require(fs::is_directory(root) && fs::canonical(root) == root && !fs::is_symlink(root), "direct existing input root");
-  const auto parent = root / parent_relative;
-  require(inside(output, root / "output/runs/rpb-saved-native-reliability") && !inside(output, parent) && !fs::exists(output),
+  const auto parent = embedding::evaluation::historical_paths::physical(parent_relative);
+  require(inside(output, root / ".temp/embeddings/runs/rpb-saved-native-reliability") && !inside(output, parent) && !fs::exists(output),
           "exclusive additive saved-TRAIN output root required");
   const auto tsv = absolute(options.at("--instances")), checksums = absolute(options.at("--checksums")), card = absolute(options.at("--card")), log = absolute(options.at("--admission-log"));
   for (const auto &path : {tsv, checksums, card, log}) metadata_path(path);
@@ -145,6 +147,7 @@ int main(int argc, char **argv) try {
   for (auto master : masters) run.comparisons.push_back({"v7-minus-v4-" + std::to_string(master), "v7-" + std::to_string(master), "v4-" + std::to_string(master)});
   const auto begin = std::chrono::steady_clock::now();
   ev::run_saved_feature_reliability(run);
+  embedding::evaluation::historical_paths::write_ledger(output / "historical-path-mapping.json");
   whole_matrix(roles, parent); guard.verify();
   require(frozen::bytes(card) == card_bytes && frozen::bytes(log) == log_bytes && frozen::bytes(tsv) == tsv_bytes && frozen::bytes(checksums) == checksum_bytes,
           "declared metadata changed during saved arithmetic");

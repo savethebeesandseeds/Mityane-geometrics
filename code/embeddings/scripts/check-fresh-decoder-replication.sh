@@ -2,9 +2,9 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv && $# -eq 0 ]] || { echo 'Run source-bound admission in the existing managed container.' >&2; exit 1; }
-root="$PWD/output/runs/rpb-fresh-decoder-replication"
+root="$PWD/.temp/embeddings/runs/rpb-fresh-decoder-replication"
 session='rpb-paired-pooling'
-helper='code/embeddings/scripts/prepare-fresh-decoder-replication.py'
+helper='code/embeddings/scripts/prepare-fresh-decoder-replication.mjs'
 # Root sets the reviewed final digest before source/admission freeze.
 card_sha='2236fb794d608c8f7b8bde81814f199abcc3e27c641cfba5902cdc3f4c4a25cf'
 [[ "$card_sha" =~ ^[0-9a-f]{64}$ ]] || { echo 'The prospective card is not frozen yet.' >&2; exit 1; }
@@ -13,8 +13,8 @@ admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Fresh decoder admission: %s\n' "$admission"
 mapfile -t sources < <(make -s print-fresh-decoder-replication-sources)
 [[ ${#sources[@]} -gt 0 ]]
-python3 "$helper" self-test
-python3 "$helper" freeze-admission --repo-root "$PWD" --target "$admission" \
+bash code/scripts/node.sh --test code/embeddings/tests/preparation-migration.test.mjs
+bash code/scripts/node.sh "$helper" freeze-admission --repo-root "$PWD" --target "$admission" \
   --card-sha256 "$card_sha" --sources "${sources[@]}"
 bash code/scripts/task.sh "$session" -j2 fresh-decoder-replication \
   test-rpb-frozen-decoder-calibration test-rpb-decoder-calibration test-fixed-feature-readouts \
@@ -25,7 +25,7 @@ binary="/opt/mityane-geometrics/embeddings/build/$session/embedding_fresh_decode
 exec 9>"/opt/mityane-geometrics/embeddings/build/$session/.task.lock"
 flock -n 9 || { echo 'Build session changed or became busy before admission seal.' >&2; exit 1; }
 source_id="$("$binary" --source-id)"
-python3 "$helper" admit --repo-root "$PWD" --target "$admission" \
+bash code/scripts/node.sh "$helper" admit --repo-root "$PWD" --target "$admission" \
   --card-sha256 "$card_sha" --compiled-source-id "$source_id" --binary "$binary"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Fresh decoder admission passed: %s\n' "$admission"

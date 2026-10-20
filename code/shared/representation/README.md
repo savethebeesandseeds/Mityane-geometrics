@@ -4,6 +4,12 @@ This folder contains reusable code that compiles without any encoder headers.
 Encoder adapters and operation consumers can reuse these components directly.
 Model implementations remain with their owning component.
 
+The [operation tool boundary](../../operations/TOOLS.md) also lives here under
+[`tools/v1/`](tools/v1/runtime.mjs). It shares request envelopes, explicit artifact
+verification, result publication and inspection without importing an encoder or
+operation's numerical implementation. Operation-owned adapters retain their
+input schemas, compatibility rules and execution semantics.
+
 The settings/parser implementation is owned by
 [`../settings/`](../settings/README.md). Observation archives, input validation
 and smoke-data helpers are owned by

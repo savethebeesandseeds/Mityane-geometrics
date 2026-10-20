@@ -5,8 +5,9 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 export PYTHONDONTWRITEBYTECODE=1
 binary="${FROZEN_AMPLITUDE_TRANSFER_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-paired-pooling/embedding_frozen_amplitude_transfer}"
 [[ "$binary" = /* && -x "$binary" && -n "${FROZEN_AMPLITUDE_TRANSFER_SOURCE_INPUTS:-}" ]] || { echo 'Use the source-bound Make target.' >&2; exit 1; }
-root="$PWD/output/runs/rpb-frozen-amplitude-transfer"
-helper='code/embeddings/scripts/prepare-frozen-amplitude-transfer.py'
+root="$PWD/.temp/embeddings/runs/rpb-frozen-amplitude-transfer"
+helper='code/embeddings/scripts/prepare-frozen-amplitude-transfer.mjs'
+historical_parent="${FROZEN_AMPLITUDE_TRANSFER_HISTORICAL_PARENT_CAPSULE:?Set FROZEN_AMPLITUDE_TRANSFER_HISTORICAL_PARENT_CAPSULE to the exact retained fresh-decoder parent capsule}"
 card_sha='901247488a9588e4b44dd0ae29169bb6c8d59c8af9e3f0b0a84d2568007ed52e'
 build_dir="$(dirname -- "$binary")"
 [[ "$build_dir" = /opt/mityane-geometrics/embeddings/build/* ]]
@@ -26,7 +27,7 @@ printf 'Frozen amplitude capsule: %s\n' "$capsule"
 source_id="$("$binary" --source-id)"
 read -r -a sources <<< "$FROZEN_AMPLITUDE_TRANSFER_SOURCE_INPUTS"
 "$binary" --plan > "$capsule/recipe-plan.json"
-python3 -B "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" freeze-run --repo-root "$PWD" --target "$capsule" --historical-parent-capsule "$historical_parent" \
   --card-sha256 "$card_sha" --sources "${sources[@]}" --admission "$admission" \
   --compiled-source-id "$source_id" --binary "$binary" \
   --reader-source "${reader[0]}" --reader-fixtures "${reader[1]}" --reader-seal "${reader[2]}"
@@ -36,6 +37,6 @@ log_sha="$(sha256sum "$capsule/admission/build-and-tests.log" | cut -d ' ' -f 1)
   --admission-log "$capsule/admission/build-and-tests.log" --admission-sha256 "$log_sha" \
   --card "$capsule/source/code/embeddings/evaluation/cards/frozen_amplitude_transfer_v1.md" --card-sha256 "$card_sha" \
   2>&1 | tee "$capsule/command.log"
-python3 -B "$helper" finalize --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" finalize --repo-root "$PWD" --target "$capsule" --historical-parent-capsule "$historical_parent" \
   --card-sha256 "$card_sha" --compiled-source-id "$source_id"
 printf 'Frozen amplitude complete: %s\n' "$capsule"

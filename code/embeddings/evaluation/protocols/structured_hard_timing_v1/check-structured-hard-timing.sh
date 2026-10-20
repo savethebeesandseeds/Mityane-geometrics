@@ -2,13 +2,13 @@
 # SOURCE admission and actual CUDA engineering gates in the existing container.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv && $# -eq 0 ]] || { echo 'Use the managed container.' >&2; exit 1; }
+[[ -f /.dockerenv && "$PWD" == /mityane && $# -eq 0 ]] || { echo 'Use the managed container.' >&2; exit 1; }
 export PYTHONDONTWRITEBYTECODE=1
 export LD_LIBRARY_PATH="/opt/cuwacunu_embedding/libtorch/lib:/usr/local/cuda-12.4/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-root="$PWD/output/runs/rpb-structured-hard-timing"
+root="$PWD/.temp/embeddings/runs/rpb-structured-hard-timing"
 session='rpb-structured-hard-timing'
 protocol_root='code/embeddings/evaluation/protocols/structured_hard_timing_v1'
-helper="$protocol_root/prepare_saved_run.py"
+helper="$protocol_root/prepare_saved_run.mjs"
 makefile="$protocol_root/Makefile"
 card_sha='35f7aa9987f293bafbe735506cc86cd2af02f2ab39bec42dd1dc2d2dedfa758c'
 [[ "$card_sha" =~ ^[0-9a-f]{64}$ ]] || { echo 'Freeze the prospective card first.' >&2; exit 1; }
@@ -21,8 +21,10 @@ admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Structured hard timing admission: %s\n' "$admission"
 mapfile -t sources < <(command make -s -f "$makefile" print-structured-hard-timing-sources)
 [[ ${#sources[@]} -gt 0 ]] || { echo 'Closed SOURCE matrix required.' >&2; exit 1; }
-python3 -B "$helper" self-test
-python3 -B "$helper" freeze-admission --repo-root "$PWD" --target "$admission" \
+bash code/scripts/node.sh "$helper" self-test
+bash code/scripts/node.sh --test code/embeddings/evaluation/protocols/node/v1/saved_run_support_test.mjs \
+  code/shared/artifacts/node/v1/tests/files.test.mjs
+bash code/scripts/node.sh "$helper" freeze-admission --repo-root "$PWD" --target "$admission" \
   --card-sha256 "$card_sha" --sources "${sources[@]}"
 # Force actual current object compile records inside task.sh's locked Make call.
 # Argument forwarding is literal; no timestamps, objects or prior runs are changed.
@@ -43,17 +45,17 @@ bash code/scripts/task.sh "$session" -j2 structured-hard-timing \
   test-rpb-structured-hard-timing-adapter test-rpb-early-mixer-model \
   test-rpb-early-mixer-adapter test-fixed-feature-readouts test-frozen-role-guard \
   2>&1 | tee "$admission/build-and-tests.log"
-binary="/opt/cuwacunu_embedding/build/$session/embedding_structured_hard_timing"
-exec 9>"/opt/cuwacunu_embedding/build/$session/.task.lock"
+binary="/opt/mityane-geometrics/embeddings/build/$session/embedding_structured_hard_timing"
+exec 9>"/opt/mityane-geometrics/embeddings/build/$session/.task.lock"
 flock -n 9 || { echo 'Build session busy.' >&2; exit 1; }
-python3 -B -c 'import json; from pathlib import Path; p=Path("/opt/cuwacunu_embedding/setup/libtorch-installed.json"); print("Container SDK proof: " + json.dumps(json.loads(p.read_text()), sort_keys=True))' | tee -a "$admission/build-and-tests.log"
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs sdk-proof | tee -a "$admission/build-and-tests.log"
 ldd "$binary" | tee -a "$admission/build-and-tests.log"
 if grep -q '/embedding/.external/libtorch\|not found' "$admission/build-and-tests.log"; then
   echo 'Internal LibTorch runtime resolution required; preserve this admission.' >&2
   exit 1
 fi
 source_id="$("$binary" --source-id)"
-python3 -B "$helper" admit --repo-root "$PWD" --target "$admission" \
+bash code/scripts/node.sh "$helper" admit --repo-root "$PWD" --target "$admission" \
   --binary "$binary" --compiled-source-id "$source_id" --information "$information"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Structured hard timing admission passed: %s\n' "$admission"

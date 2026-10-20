@@ -17,7 +17,7 @@ Use the existing managed container. From the repository's PowerShell launcher:
 .\container.ps1 -Action exec -Command @('bash', 'code/embeddings/evaluation/protocols/fixed_prior_fresh_confirmation_v1/admit.sh')
 ```
 
-Admission prints its exclusive capsule path. It captures62 source files and the
+Admission prints its exclusive capsule path. It captures the current source closure and the
 card/verified SDK proof, builds only the new producer/writer and authoritative
 generator object, reuses nine unchanged generic shared objects, and runs CPU
 data/CUDA engineering gates before generating the complete15-file fresh matrix.
@@ -36,8 +36,8 @@ The reader uses the pinned passed standard-library archive codec and arithmetic.
 It checks source/label/split association, legal TRAIN moments, prediction scores,
 query MAE and exact12 relation coordinates at0/512 without loading a model.
 
-`publish_confirmation.py` writes compact metadata and the standard result tables
-from passed saved checks. `record_confirmation.py` appends the fresh instance
-bundle while asserting all historical entries are semantically unchanged. It
-refuses to replace an existing bundle. Capture these metadata tools separately
-before publication; their source is outside the compiled62-file closure.
+`publish_confirmation.mjs` writes compact metadata and the standard result tables
+from passed saved checks. The retired `record_confirmation.mjs` entry refuses
+registry changes; original publisher source remains in the frozen archive.
+Capture these metadata tools separately before publication and retain their
+source identity alongside the compiled source closure.

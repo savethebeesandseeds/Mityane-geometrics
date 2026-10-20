@@ -1,5 +1,5 @@
 # Separate unchanged-v19 fresh-source confirmation; earlier producers stay frozen.
-BUILD_DIR ?= /opt/cuwacunu_embedding/build/rpb-spectral-confirmation
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/rpb-spectral-confirmation
 include Makefile
 .DEFAULT_GOAL := spectral-confirmation
 SC_ROOT := code/embeddings/evaluation/protocols/spectral_confirmation_v1
@@ -10,13 +10,15 @@ SC_WRITER := $(BUILD_DIR)/embedding_spectral_confirmation_quality_data
 SC_CARD := code/embeddings/evaluation/cards/spectral_confirmation_v1.md
 SC_RPB_HEADERS := $(addprefix $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/,config.h types.h encoder.h tokenization.h masking.h objectives.h model.h visible_difference.h preprocessing.h training_utils.h context_deletion.h temporal_relation_bank.h partitioned_temporal_relation.h fixed_prior_temporal_relation.h unit_temporal_relation.h spectral_relation_bank.h spectral_temporal_relation.h)
 SC_SHARED_NAMES := data evaluation feature_harness feature_evaluation feature_stress archive_readout native_curve paired_pooling fixed_feature_readouts
-SC_SHARED_SOURCES := $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(SC_SHARED_NAMES)))
-SC_INPUTS := $(sort Makefile $(SC_ROOT)/Makefile $(SC_ROOT)/producer_main.cpp $(SC_ROOT)/retained_input.h $(SC_ROOT)/write_quality_data.cpp $(SC_ROOT)/prepare_confirmation.py $(SC_ROOT)/check_saved_stdlib.py $(SC_ROOT)/admit.sh $(SC_ROOT)/run_confirmation.sh $(SC_ROOT)/publish.py code/scripts/task.sh code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile $(SC_CARD) code/embeddings/evaluation/cards/multiband_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(SC_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(SC_SHARED_SOURCES) $(RPB_ROOT)/tests/spectral_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(SC_DATA)/two_component.h $(SC_DATA)/two_component.cpp $(SC_DATA)/observed_information.h $(SC_DATA)/observed_information.cpp code/embeddings/evaluation/cards/two_component_information_v1.md .archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS))
+SC_SHARED_SOURCES := code/data/observations/src/data.cpp $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(filter-out data,$(SC_SHARED_NAMES))))
+SC_INPUTS := $(sort Makefile $(SC_ROOT)/Makefile $(SC_ROOT)/producer_main.cpp $(SC_ROOT)/retained_input.h $(SC_ROOT)/write_quality_data.cpp $(SC_ROOT)/prepare_confirmation.mjs $(SC_ROOT)/check_saved_stdlib.py $(SC_ROOT)/admit.sh $(SC_ROOT)/run_confirmation.sh $(SC_ROOT)/publish.mjs code/scripts/task.sh code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile $(SC_CARD) code/embeddings/evaluation/cards/multiband_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(SC_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(SC_SHARED_SOURCES) $(RPB_ROOT)/versions/v19/tests/spectral_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(SC_DATA)/two_component.h $(SC_DATA)/two_component.cpp $(SC_DATA)/observed_information.h $(SC_DATA)/observed_information.cpp code/embeddings/evaluation/cards/two_component_information_v1.md .archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS) $(wildcard $(SC_ROOT)/*.mjs) $(PROTOCOL_NODE_INPUTS))
+SC_INPUTS := $(sort $(SC_INPUTS) $(RPB_CORE_HEADERS) $(OBSERVATION_PROVENANCE_INPUTS))
 SC_SOURCE_ID := $(shell sha256sum $(SC_INPUTS) | sha256sum | cut -d ' ' -f 1)
 SC_CARD_SHA := $(shell sha256sum $(SC_CARD) | cut -d ' ' -f 1)
 SC_CPPFLAGS := $(COMMON_CPPFLAGS) -I$(RPB_ROOT)/include -I$(RPB_ROOT)/tests -I$(SC_DATA) -Icode/embeddings/evaluation/include -DSPECTRAL_CONFIRMATION_SOURCE_ID=\"$(SC_SOURCE_ID)\" -DSPECTRAL_CONFIRMATION_CARD_SHA256=\"$(SC_CARD_SHA)\" -DMULTIBAND_SCREEN_SOURCE_ID=\"$(SC_SOURCE_ID)\" -DRPB_SOURCE_ID=\"$(SC_SOURCE_ID)\"
 # These generic objects carry no encoder/protocol macros and use the pinned SDK.
 # Missing artifacts reject; this protocol never rebuilds or changes their producer.
+# Inherited read-only objects, not a new build directory; never rebuild or move them here.
 SC_SHARED_DIR := /opt/cuwacunu_embedding/build/rpb-architecture-screen/code/protocols/architecture_screen_v1/shared
 SC_SHARED_OBJECTS := $(addprefix $(SC_SHARED_DIR)/,$(addsuffix .o,$(SC_SHARED_NAMES)))
 
@@ -34,13 +36,18 @@ $(SC_OBJECT_DIR)/write_quality_data.o: $(SC_ROOT)/write_quality_data.cpp $(SC_IN
 $(SC_OBJECT_DIR)/two_component.o: $(SC_DATA)/two_component.cpp $(SC_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(SC_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-$(SC_SHARED_OBJECTS):
+SC_NEW_SHARED_REFUSALS := $(filter-out $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS),$(SC_SHARED_OBJECTS))
+ifneq ($(strip $(SC_NEW_SHARED_REFUSALS)),)
+$(SC_NEW_SHARED_REFUSALS):
 	@printf '%s\n' 'Required frozen generic shared object is absent: $@' >&2; exit 1
+endif
+MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS := $(sort $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS) $(SC_SHARED_OBJECTS))
+unexport MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS
 $(SC_BIN): $(SC_OBJECT_DIR)/producer_main.o $(SC_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
 $(SC_WRITER): $(SC_OBJECT_DIR)/write_quality_data.o $(SC_OBJECT_DIR)/two_component.o $(SC_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
-$(SC_OBJECT_DIR)/spectral_temporal_relation_test.o: $(RPB_ROOT)/tests/spectral_temporal_relation_test.cpp $(SC_INPUTS)
+$(SC_OBJECT_DIR)/spectral_temporal_relation_test.o: $(RPB_ROOT)/versions/v19/tests/spectral_temporal_relation_test.cpp $(SC_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(SC_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(SC_OBJECT_DIR)/spectral_temporal_relation_test: $(SC_OBJECT_DIR)/spectral_temporal_relation_test.o $(SC_SHARED_DIR)/data.o

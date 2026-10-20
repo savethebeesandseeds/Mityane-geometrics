@@ -2,11 +2,22 @@
 
 “Mityane” literally means “many things” in the Bora language.
 
-Research and engineering on operations over learned and externally supplied
-representations. The project asks which operations a representation supports,
-under what conditions, and with what evidence. Its core research unit is an
-operation, its input/output contract, required representation properties,
-additional dependencies and an explicit test.
+Building a composable foundation for machine intelligence in representation
+space: discovery, prediction, generation, planning and action across models
+and domains.
+
+Mityane geometrics develops representations and the operations that make them
+useful: discovering structure, comparing alternatives, transforming and
+connecting latent spaces, predicting how systems evolve, generating
+possibilities and choosing what to do or learn next. The ambition is to compose
+these capabilities into intelligent systems that work across data modalities
+and representation sources, from our own encoders to open models and external
+embedding services.
+
+The central research question is how the information and geometry in a
+representation enable these capabilities, where they fail, and whether their
+composition improves real tasks. Each operation has an explicit input/output
+contract and tests of its required representation properties and dependencies.
 
 The [Operations over Representations design specification](doc/operations_over_representations_design_spec_v0.1.0.md)
 is the project charter: `ORR-DESIGN-001`, version `0.1.0`. It defines thirteen
@@ -64,10 +75,29 @@ settings, tensor/evaluation utilities and artifact identities in
 [shared](code/shared/README.md). Existing C++ include names, namespaces and model
 version tags retain their identities.
 
+The family-owned [live CPB ranking](code/embeddings/encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
+owns current checkpoint standings, including the new audited January scoped
+records. The [current encoder research guide](doc/EMBEDDINGS.md) preserves
+CPB-v4's historical broad clean-causal breakthrough, RPB-v24 native36's
+historical balanced-leader role, V3's baseline role and later task-specific gains.
+Independent V14 metadata review and compatible application are complete; the
+guide links the actual records. V14 is the latest catalogued historical instance;
+the separate V15 study supplies newer measurements. The owner approved the
+[V15 objective comparison](code/embeddings/evaluation/protocols/cpb_v15_objective_v1/PROTOCOL.md)
+on 19 October: three fresh V4/V15 pairs at native36, with V15 reusing V4's source
+design and inheriting no trained weights. V5–V14 use native40. All six runs and
+twelve independent arithmetic audits are complete and valid. The
+[validated results](code/embeddings/evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
+report a **mixed** prospective screen: February linear activity R² and descriptive
+query MAE/NLL improve in all three pairs, while the volatility, trend-tolerance
+and all-candidate timing requirements are unmet. Fresh V4-control records remain
+distinct from V15 gains. This study does not support a broad encoder replacement
+or Mityane selection. The
+[compact study record](code/embeddings/evaluation/records/CPB-v15.objective-001.json)
+binds the closeout evidence.
+
 Inherited implementations and engineering fixtures do not establish every
-catalogue capability or scientific utility. Encoder research remains paused;
-[the current research guide](doc/EMBEDDINGS.md) points to the preserved handoff
-and evidence. The dashboard records 18 workstreams: thirteen
+catalogue capability. The dashboard records 18 workstreams: thirteen
 operation families, shared foundations and four encoder families. Proposed work
 and documented outcomes have separate milestone states; the capability catalogue
 does not establish implementation status.
@@ -98,7 +128,8 @@ in this directory:
 ```
 
 `setup.sh` verifies exact dependency versions and the complete inherited LibTorch
-SDK. A complete image needs no APT install or download. The managed container
+SDK, and verifies/reuses the existing cached Node runtime for maintenance tools.
+A complete image needs no APT install or download. The managed container
 reuses the pinned local research-environment snapshot; no Dockerfile or duplicate
 SDK installation is needed.
 
@@ -140,6 +171,28 @@ and `.external/`. The [initial migration record](doc/EMBEDDINGS_MIGRATION_2026-1
 describes the earlier import; its original layout is historical. Current
 instructions are this guide, [the environment guide](doc/ENVIRONMENT.md) and
 [the research guide](doc/EMBEDDINGS.md).
+
+Active maintenance uses pinned Node and a small C++ artwork helper. Run the
+focused checks through the same container and task entry:
+
+```powershell
+.\container.ps1 -Action exec -Command @('bash', 'code/scripts/task.sh', 'maintenance', 'test-maintenance', 'test-dashboard-branding', 'check-layout')
+```
+
+The [language migration implementation](doc/PYTHON_MIGRATION_IMPLEMENTATION_2026-10-18.md)
+records the complete source migration and the explicit scientific Python boundary.
+Maintenance, preparation and record keeping use Node/Bash; independent scientific
+checks retain Python where its established numerical behavior is valuable.
+The [working-copy removal record](doc/PYTHON_MIGRATION_REMOVAL_2026-10-18.md)
+records deletion of all 40 replaced Python files and the checks after cleanup;
+40 scientific Python files remain in maintained source.
+The [managed-container validation record](doc/PYTHON_MIGRATION_VERIFICATION_2026-10-18.md)
+records the executed checks and their limits. The root `test-language-migration`
+target checks the complete Node/source boundary, physical-path mapping and
+retained artificial scientific fixtures. The separate
+`test-migration-producer-compile` target compiles affected C++ translation units
+without executing a research run. Earlier maintenance results remain in their
+[dated record](doc/PYTHON_MIGRATION_2026-10-18.md).
 
 The [cleanup receipt](doc/EMBEDDINGS_CLEANUP_2026-10-18.json) links the original
 file hashes, maintained path map and verification results.

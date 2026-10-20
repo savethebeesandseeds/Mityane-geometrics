@@ -207,7 +207,7 @@ int embedding::evaluation::structured_timing::run(int argc,char **argv) { try {
       args.count("--card")&&args.count("--card-sha256"),"five fixed measurement options required");
   const fs::path output=args.at("--output");
   require(output.is_absolute()&&output.filename()=="results"&&
-      output.parent_path().parent_path()==fs::path("/embedding/output/runs/rpb-structured-hard-timing")&&
+      output.parent_path().parent_path()==fs::path("/mityane/.temp/embeddings/runs/rpb-structured-hard-timing")&&
       fs::canonical(output.parent_path())==output.parent_path()&&
       output.parent_path().filename().string().rfind("structured-hard-timing-",0)==0,"exclusive structured timing capsule bounds");
   require(fs::path(args.at("--admission-log"))==output.parent_path()/"admission/build-and-tests.log","captured admission-log path required");

@@ -1,5 +1,5 @@
 # Separate two-task multiband comparison; prior producers stay frozen.
-BUILD_DIR ?= /opt/cuwacunu_embedding/build/rpb-multiband-screen
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/rpb-multiband-screen
 include Makefile
 .DEFAULT_GOAL := multiband-screen
 MB_ROOT := code/embeddings/evaluation/protocols/multiband_screen_v1
@@ -10,13 +10,15 @@ MB_WRITER := $(BUILD_DIR)/embedding_multiband_quality_data
 MB_CARD := code/embeddings/evaluation/cards/multiband_screen_v1.md
 MB_RPB_HEADERS := $(addprefix $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/,config.h types.h encoder.h tokenization.h masking.h objectives.h model.h visible_difference.h preprocessing.h training_utils.h context_deletion.h temporal_relation_bank.h partitioned_temporal_relation.h fixed_prior_temporal_relation.h unit_temporal_relation.h spectral_relation_bank.h spectral_temporal_relation.h)
 MB_SHARED_NAMES := data evaluation feature_harness feature_evaluation feature_stress archive_readout native_curve paired_pooling fixed_feature_readouts
-MB_SHARED_SOURCES := $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(MB_SHARED_NAMES)))
-MB_INPUTS := $(sort Makefile $(MB_ROOT)/Makefile $(MB_ROOT)/producer_main.cpp $(MB_ROOT)/retained_input.h $(MB_ROOT)/write_quality_data.cpp $(MB_ROOT)/prepare_screen.py $(MB_ROOT)/check_saved_stdlib.py $(MB_ROOT)/admit.sh $(MB_ROOT)/run_screen.sh code/scripts/task.sh code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile $(MB_CARD) code/embeddings/evaluation/include/frozen_role_guard.h $(MB_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(MB_SHARED_SOURCES) $(RPB_ROOT)/tests/unit_temporal_relation_test.cpp $(RPB_ROOT)/tests/spectral_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(MB_DATA)/two_component.h $(MB_DATA)/two_component.cpp $(MB_DATA)/observed_information.h $(MB_DATA)/observed_information.cpp code/embeddings/evaluation/cards/two_component_information_v1.md .archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS))
+MB_SHARED_SOURCES := code/data/observations/src/data.cpp $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(filter-out data,$(MB_SHARED_NAMES))))
+MB_INPUTS := $(sort Makefile $(MB_ROOT)/Makefile $(MB_ROOT)/producer_main.cpp $(MB_ROOT)/retained_input.h $(MB_ROOT)/write_quality_data.cpp $(MB_ROOT)/prepare_screen.mjs $(MB_ROOT)/check_saved_stdlib.py $(MB_ROOT)/admit.sh $(MB_ROOT)/run_screen.sh code/scripts/task.sh code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile $(MB_CARD) code/embeddings/evaluation/include/frozen_role_guard.h $(MB_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(MB_SHARED_SOURCES) $(RPB_ROOT)/versions/v18/tests/unit_temporal_relation_test.cpp $(RPB_ROOT)/versions/v19/tests/spectral_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(MB_DATA)/two_component.h $(MB_DATA)/two_component.cpp $(MB_DATA)/observed_information.h $(MB_DATA)/observed_information.cpp code/embeddings/evaluation/cards/two_component_information_v1.md .archive/embeddings/pre-cleanup-2026-10-18/doc/results/two_component_information_v1.json code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS) $(wildcard $(MB_ROOT)/*.mjs) $(PROTOCOL_NODE_INPUTS))
+MB_INPUTS := $(sort $(MB_INPUTS) $(RPB_CORE_HEADERS) $(OBSERVATION_PROVENANCE_INPUTS))
 MB_SOURCE_ID := $(shell sha256sum $(MB_INPUTS) | sha256sum | cut -d ' ' -f 1)
 MB_CARD_SHA := $(shell sha256sum $(MB_CARD) | cut -d ' ' -f 1)
 MB_CPPFLAGS := $(COMMON_CPPFLAGS) -I$(RPB_ROOT)/include -I$(RPB_ROOT)/tests -I$(MB_DATA) -Icode/embeddings/evaluation/include -DMULTIBAND_SCREEN_SOURCE_ID=\"$(MB_SOURCE_ID)\" -DMULTIBAND_SCREEN_CARD_SHA256=\"$(MB_CARD_SHA)\" -DUNIT_RELATION_SCREEN_SOURCE_ID=\"$(MB_SOURCE_ID)\" -DARCHITECTURE_SCREEN_SOURCE_ID=\"$(MB_SOURCE_ID)\" -DRPB_SOURCE_ID=\"$(MB_SOURCE_ID)\"
 # Generic objects have no encoder/protocol macros and use the same pinned SDK.
 # Reuse their artifacts; absent objects reject instead of rebuilding old code.
+# Inherited read-only objects, not a new build directory; never rebuild or move them here.
 MB_SHARED_DIR := /opt/cuwacunu_embedding/build/rpb-architecture-screen/code/protocols/architecture_screen_v1/shared
 MB_SHARED_OBJECTS := $(addprefix $(MB_SHARED_DIR)/,$(addsuffix .o,$(MB_SHARED_NAMES)))
 
@@ -34,16 +36,21 @@ $(MB_OBJECT_DIR)/write_quality_data.o: $(MB_ROOT)/write_quality_data.cpp $(MB_IN
 $(MB_OBJECT_DIR)/two_component.o: $(MB_DATA)/two_component.cpp $(MB_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(MB_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-$(MB_SHARED_OBJECTS):
+MB_NEW_SHARED_REFUSALS := $(filter-out $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS),$(MB_SHARED_OBJECTS))
+ifneq ($(strip $(MB_NEW_SHARED_REFUSALS)),)
+$(MB_NEW_SHARED_REFUSALS):
 	@printf '%s\n' 'Required frozen generic shared object is absent: $@' >&2; exit 1
+endif
+MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS := $(sort $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS) $(MB_SHARED_OBJECTS))
+unexport MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS
 $(MB_BIN): $(MB_OBJECT_DIR)/producer_main.o $(MB_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
 $(MB_WRITER): $(MB_OBJECT_DIR)/write_quality_data.o $(MB_OBJECT_DIR)/two_component.o $(MB_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
-$(MB_OBJECT_DIR)/unit_temporal_relation_test.o: $(RPB_ROOT)/tests/unit_temporal_relation_test.cpp $(MB_INPUTS)
+$(MB_OBJECT_DIR)/unit_temporal_relation_test.o: $(RPB_ROOT)/versions/v18/tests/unit_temporal_relation_test.cpp $(MB_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(MB_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-$(MB_OBJECT_DIR)/spectral_temporal_relation_test.o: $(RPB_ROOT)/tests/spectral_temporal_relation_test.cpp $(MB_INPUTS)
+$(MB_OBJECT_DIR)/spectral_temporal_relation_test.o: $(RPB_ROOT)/versions/v19/tests/spectral_temporal_relation_test.cpp $(MB_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(MB_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(MB_OBJECT_DIR)/unit_temporal_relation_test: $(MB_OBJECT_DIR)/unit_temporal_relation_test.o $(MB_SHARED_DIR)/data.o

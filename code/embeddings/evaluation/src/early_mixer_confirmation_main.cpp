@@ -160,7 +160,7 @@ int main(int argc,char **argv) { try {
       args.count("--card")&&args.count("--card-sha256"),"five fixed measurement options required");
   const fs::path output=args.at("--output");
   require(output.is_absolute()&&output.filename()=="results"&&
-      output.parent_path().parent_path()==fs::path("/embedding/output/runs/rpb-early-mixer-confirmation")&&
+      output.parent_path().parent_path()==fs::path("/mityane/.temp/embeddings/runs/rpb-early-mixer-confirmation")&&
       fs::canonical(output.parent_path())==output.parent_path()&&
       output.parent_path().filename().string().rfind("early-mixer-confirmation-",0)==0,"exclusive confirmation capsule bounds");
   require(fs::path(args.at("--admission-log"))==output.parent_path()/"admission/build-and-tests.log","captured admission-log path required");

@@ -4,7 +4,7 @@
   "number": 6,
   "title": "OR-06 · Matched comparisons, sensitivity, and counterfactual analysis",
   "summary": "Compare cases or specified alternatives with an explicit distinction between observation, controlled model response and identified intervention effects.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-19",
   "goals": [
     {
       "id": "or-06-comparisons-contract",
@@ -14,13 +14,26 @@
         {
           "id": "or-06-comparisons-define-contract",
           "title": "Specify inputs, outputs and requirements",
-          "status": "proposed",
-          "description": "Declare the claim level, comparison population, matching assumptions, alternatives, outputs and identification limits. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "status": "done",
+          "description": "Authored and reviewed OR06-PCR and its linked Requirements-and-Evidence Record, revision 0.1.0, under code/operations/counterfactuals. The first profile explicitly selects paired controlled model response with source-parent pairing, declared alternatives, compatibility/timing requirements and typed refusal conditions. Observational and intervention claims require separate profiles. Reference implementation and admitted evaluation have separate milestones; contract authoring alone established no experimental or scientific result.",
+          "updatedAt": "2026-10-19",
+          "completedAt": "2026-10-19",
           "evidence": [
             {
               "label": "Capability charter and evidence standard",
               "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Authored paired controlled response contract v0.1.0",
+              "path": "code/operations/counterfactuals/CONTRACT.md"
+            },
+            {
+              "label": "Linked requirements and current evidence boundary",
+              "path": "code/operations/counterfactuals/EVIDENCE.md"
+            },
+            {
+              "label": "Contract milestone acceptance review and engineering verification",
+              "path": "code/operations/counterfactuals/reviews/contract-v0.1.0.md"
             }
           ],
           "acceptance": [
@@ -39,13 +52,22 @@
         {
           "id": "or-06-comparisons-reference-implementation",
           "title": "Implement the agreed operation interface",
-          "status": "proposed",
-          "description": "Provide the declared comparison or sensitivity procedure with overlap diagnostics, uncertainty and explicit refusal conditions. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "status": "done",
+          "description": "Implemented OR06-PCR-CPP 0.1.0 under code/operations/counterfactuals: a standard-library C++20 interface over recorded deterministic responses. It validates exact identities, pairing, scalar controls, supplied support/validity checks and temporal dependencies; computes finite paired contrasts; retains lineage and all failure/abstention/unresolved states. The managed-container source-bound run passed 47 engineering cases and independent review found no remaining correctness blockers. Upstream provenance attestations are caller-supplied. The separately admitted synthetic evaluation has its own milestone and verification; engineering fixtures alone establish no scientific or causal quality.",
+          "updatedAt": "2026-10-19",
+          "completedAt": "2026-10-19",
           "evidence": [
             {
               "label": "Capability charter and evidence standard",
               "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "C++ reference interface and supported behavior",
+              "path": "code/operations/counterfactuals/IMPLEMENTATION.md"
+            },
+            {
+              "label": "47 executed conformance cases and exact source identities",
+              "path": "code/operations/counterfactuals/reviews/reference-v0.1.0.md"
             }
           ],
           "acceptance": [
@@ -64,13 +86,30 @@
         {
           "id": "or-06-comparisons-evaluation-protocol",
           "title": "Define and execute the admitted evaluation",
-          "status": "proposed",
-          "description": "Use controlled or paired evidence where available; check confounding, overlap and validity before making intervention claims. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "status": "done",
+          "description": "Completed prospectively frozen OR06-SYNTH-RESP-001 v1.0.0: three TRAIN-only fitted synthetic model-response pipelines, 768 assessment source units, fixed representations and raw/zero baselines, all models sealed before assessment generation. Independent saved-record audit passed with zero errors. Mixed pooled source-unit MAE 0.000762435 matched the equivalent-capacity raw-polynomial baseline; lossy/zero error was 0.302927979. All 15,360 supported pairs succeeded and all 3,072 support-stress pairs abstained, with no failed or unresolved assessment rows. Conditional unit-bootstrap uncertainty, source/artifact identities, resources and all outcomes are retained. This closes only the declared static synthetic evaluation; no real-world causal, individual-effect or inherited-encoder claim follows.",
+          "updatedAt": "2026-10-19",
+          "completedAt": "2026-10-19",
           "evidence": [
             {
               "label": "Capability charter and evidence standard",
               "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Prospective frozen synthetic protocol",
+              "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/PROTOCOL.md"
+            },
+            {
+              "label": "Bound instance requirements and evidence",
+              "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RER.md"
+            },
+            {
+              "label": "Executed results, uncertainty, controls and immutable identities",
+              "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RESULTS.md"
+            },
+            {
+              "label": "Actual final disposition and audit join; ignored local artifact",
+              "path": ".temp/operations/counterfactuals/synthetic-response-v1/attempt-001/final.json"
             }
           ],
           "acceptance": [
@@ -78,6 +117,68 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Match validators and uncertainty estimates to the declared claim level; unsupported identification or overlap triggers refusal of the intervention claim, not relabeling an observational comparison as causal."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-06-comparisons-toolset",
+      "title": "Expose Hx06 capabilities as a reusable toolset",
+      "description": "Expose the operations, validation, workflow building blocks and results developed within this Hero through a coherent toolset that applications and other operations can reuse across embedding providers. Define a common way to discover, configure, compose and call Hx06 functionality through the CLI and library APIs while preserving each capability's contract, dependencies and claim limits. The existing recorded paired-response tool is the first completed increment; it does not complete the Hero-wide toolset. Linux/Docker execution, the C++ engine and the Windows launcher describe the implementation environment.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-callable-tool",
+          "title": "Deliver and verify the Docker-based paired-response tool",
+          "status": "done",
+          "updatedAt": "2026-10-19",
+          "completedAt": "2026-10-19",
+          "description": "Delivered a common CLI and reusable Node API with discovery, complete request schemas, byte-bound input inventories, explicit read-only checking, execution and saved-result inspection. The C++20 comparison engine compiles and runs inside the existing mityane-geometrics Linux Docker container; Node/Bash also run there, and tools.ps1 only forwards Windows commands through container.ps1. Hx06 is the first registered tool; its numerical implementation remains under counterfactuals. All 17 tool-boundary tests and 47 existing conformance cases passed, including distinct provider identities/widths, generic JavaScript non-pair runtime reuse, refusals, denominator preservation and tamper detection. The Windows workflow passed with relative and absolute paths. This completes the recorded-response tool scope; constructing alternatives and executing embedding/response models remain upstream responsibilities. The frozen synthetic study was preserved without replay and other Heroes were not migrated.",
+          "dependsOn": ["or-06-comparisons-reference-implementation"],
+          "acceptance": [
+            "One common command-line entry and reusable library expose discover/describe, check, run and inspect using versioned request and result envelopes; each operation retains its own payload and compatibility rules.",
+            "The C++20 engine builds and executes in the existing managed Linux Docker container. Supporting Node/Bash code also runs there; the PowerShell entry performs host orchestration only and the verified Windows workflow supports repository-relative and absolute Windows paths.",
+            "The same paired-response tool accepts two independent engineering provider identities and different representation widths, with manually verified contrasts and explicit incompatible-space, unsupported-claim and support-refusal outcomes.",
+            "Loaders verify actual referenced bytes and response-value bindings, reject malformed or incomplete records, retain the requested roster and all admitted states, and publish new inspectable bundles without overwriting existing output.",
+            "A separate non-pair JavaScript engineering adapter exercises the shared calling boundary; no extra operation capability or scientific result is inferred from that fixture."
+          ],
+          "evidence": [
+            {"label": "Common command-line and reusable API contract", "path": "code/operations/TOOLS.md"},
+            {"label": "Provider-neutral paired-response tool usage", "path": "code/operations/counterfactuals/TOOL.md"},
+            {"label": "Executed tool-boundary verification", "path": "code/operations/counterfactuals/reviews/tool-v1.md"}
+          ]
+        },
+        {
+          "id": "or-06-comparisons-toolset-surface",
+          "title": "Define the complete Hx06 toolset surface",
+          "status": "proposed",
+          "updatedAt": "2026-10-19",
+          "description": "Map the Hero's existing and planned construction to reusable public tools and library interfaces. Identify the comparison, validation, sensitivity, workflow and result-handling building blocks to expose, their inputs/outputs and composition points. Distinguish implemented functionality, gaps needing implementation and unsupported claim profiles. This defines the broader toolset coverage before its remaining delivery milestones are refined.",
+          "acceptance": [
+            "A versioned Hx06 toolset map links each intended public capability to its owning implementation or explicit implementation gap, operation contract, schema and supported claim level.",
+            "Document how callers prepare inputs, validate compatibility and prerequisites, run individual or composed Hx06 steps, and inspect or reuse results through consistent CLI and library conventions.",
+            "Keep embedding-provider execution and model-owned adapters with their owners; declare the interfaces Hx06 consumes. Unimplemented observational or intervention profiles remain explicitly unsupported until separately defined and evidenced."
+          ],
+          "evidence": [
+            {"label": "Hx06 capability scope and claim levels", "path": "doc/operations_over_representations_design_spec_v0.1.0.md#or-06--matched-comparisons-sensitivity-and-counterfactual-analysis"},
+            {"label": "Initial shared tool boundary", "path": "code/operations/TOOLS.md"},
+            {"label": "Current Hx06 implementation and boundaries", "path": "code/operations/counterfactuals/README.md"}
+          ]
+        },
+        {
+          "id": "or-06-comparisons-toolset-coverage",
+          "title": "Expose and verify the remaining Hx06 building blocks",
+          "status": "proposed",
+          "updatedAt": "2026-10-19",
+          "description": "Deliver the remaining public tools and reusable APIs identified by the Hx06 toolset map, extending the completed recorded-response entry into the agreed comparison workflows. Add discoverable commands, documented schemas and composable results for the selected building blocks, with provider-neutral integration examples. Refine the implementation breakdown once the coverage map establishes the actual gaps; no new experiment is started by this planning entry.",
+          "dependsOn": ["or-06-comparisons-toolset-surface", "or-06-comparisons-callable-tool"],
+          "acceptance": [
+            "The agreed toolset map has no unreported exposure gaps: selected implemented Hx06 building blocks are callable through documented public interfaces, and unavailable capabilities are identified explicitly.",
+            "End-to-end examples exercise the agreed Hx06 workflows and result reuse with distinct compatible provider configurations through the same public calling conventions, retaining artifact identity, lineage and all failure/abstention states.",
+            "Operation-owned behavior remains under counterfactuals, common mechanisms retain shared ownership, and model-specific behavior stays with its provider. Integration checks establish engineering usability; scientific claims require their own bound evaluation evidence."
+          ],
+          "evidence": [
+            {"label": "Shared toolset conventions to extend", "path": "code/operations/TOOLS.md"},
+            {"label": "Completed first tool and its current limits", "path": "code/operations/counterfactuals/TOOL.md"}
           ]
         }
       ]

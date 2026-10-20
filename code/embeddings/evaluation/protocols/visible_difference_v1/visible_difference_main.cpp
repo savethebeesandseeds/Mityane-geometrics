@@ -214,7 +214,7 @@ int main(int argc,char**argv){try{
   std::map<std::string,std::string> args;for(int i=1;i<argc;i+=2){require(i+1<argc&&args.emplace(argv[i],argv[i+1]).second,"unique options with values");}
   require(args.size()==5&&args.count("--output")&&args.count("--admission-log")&&args.count("--admission-sha256")&&args.count("--card")&&args.count("--card-sha256"),"five closed measured options");
   const fs::path output=args.at("--output"),capsule=output.parent_path();
-  require(output.is_absolute()&&output.filename()=="results"&&capsule.parent_path()==fs::path("/embedding/output/runs/rpb-visible-difference")&&fs::canonical(capsule)==capsule&&capsule.filename().string().rfind("visible-difference-",0)==0,"exclusive named capsule");
+  require(output.is_absolute()&&output.filename()=="results"&&capsule.parent_path()==fs::path("/mityane/.temp/embeddings/runs/rpb-visible-difference")&&fs::canonical(capsule)==capsule&&capsule.filename().string().rfind("visible-difference-",0)==0,"exclusive named capsule");
   require(fs::path(args.at("--card"))==capsule/"source"/card_relative&&fs::path(args.at("--admission-log"))==capsule/"admission/build-and-tests.log","captured card/log paths");
   std::map<std::string,fs::path> allowed;for(const auto&name:parent_roles())allowed.emplace(name,capsule/"retained-inputs"/name);
   std::vector<fs::path> inputs{args.at("--card"),args.at("--admission-log"),capsule/"retained-inputs.sha256",capsule/"parent-progress.tsv"};for(const auto&[_,p]:allowed)inputs.push_back(p);whole_admit(inputs);

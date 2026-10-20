@@ -161,7 +161,7 @@ int main(int argc,char **argv) {
     const auto id=args.at("--candidate");require(id=="v19","closed declared candidate");
     require(args.at("--masters")=="930905,930906,930907","all three prospective masters in fixed order");
     const std::vector<uint64_t> selected{930905,930906,930907};const fs::path parent=args.at("--input-root");output=args.at("--output");
-    direct_directory(parent);const fs::path bound("/embedding/output/runs/rpb-spectral-confirmation");
+    direct_directory(parent);const fs::path bound("/mityane/.temp/embeddings/runs/rpb-spectral-confirmation");
     const auto relative=parent.lexically_relative(bound);
     require(!relative.empty()&&!relative.is_absolute()&&*relative.begin()!=".."&&parent!=bound,"fresh data in spectral confirmation protocol root");
     std::map<std::string,fs::path> roles;

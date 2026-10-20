@@ -1,0 +1,18 @@
+{
+  "study_id": "OR06-SYNTH-RESP-001",
+  "version": "1.0.0",
+  "claim_level": "controlled_model_response",
+  "seeds": [1103, 2207, 3301],
+  "counts": {"training": 512, "development": 128, "assessment": 256},
+  "denominator": 4096,
+  "noise_denominator": 32,
+  "changes": [-1024, -512, 0, 512, 1024, 8192],
+  "arms": ["mixed", "raw_polynomial", "raw_linear", "lossy"],
+  "bootstrap": {"samples": 2000, "seed": 9001},
+  "thresholds": {"numeric": 1e-10, "mixed_mae": 0.02, "equivalence_mae": 1e-9, "zero_ratio": 0.2},
+  "budget": {"cpu_processes": 1, "native_timeout_ms": 60000, "expected_peak_mib": 1024},
+  "selection_policy": "No hyperparameter search, threshold tuning, best-seed selection or fitted encoder training.",
+  "response_formula": "1 + 2*a - b + 1.5*a*b + 0.5*a*a",
+  "fit_method": "TRAIN-only population standardization and ordinary least squares with intercept and partial pivoting; pivot floor 1e-12",
+  "synthetic_data_license": "Project-authored synthetic generator; repository MIT license; no external data or pretrained artifacts."
+}

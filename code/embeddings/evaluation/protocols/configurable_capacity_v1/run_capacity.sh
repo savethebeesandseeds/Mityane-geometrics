@@ -2,16 +2,16 @@
 # One frozen challenge matrix and all nine predetermined CUDA trajectories.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv && $# == 1 ]] || exit 1
+[[ -f /.dockerenv && "$PWD" == /mityane && $# == 1 ]] || exit 1
 capsule=$1
-[[ "$capsule" == /embedding/output/runs/rpb-v20-capacity/admission-* ]]
+[[ "$capsule" == /mityane/.temp/embeddings/runs/rpb-v20-capacity/admission-* ]]
 [[ $(realpath -e -- "$capsule") == "$capsule" && ! -L "$capsule" ]]
 [[ -f "$capsule/admission.json" && ! -e "$capsule/quality-data" && ! -e "$capsule/profiles" ]]
 protocol=code/embeddings/evaluation/protocols/configurable_capacity_v1
-build=/opt/cuwacunu_embedding/build/rpb-v20-capacity
+build=/opt/mityane-geometrics/embeddings/build/rpb-v20-capacity
 exec 9>"$build/.task.lock"
 flock -n 9 || { printf '%s\n' 'Capacity build session is busy.' >&2; exit 1; }
-python3 -B "$protocol/capsule.py" verify-admission "$capsule" >"$capsule/admission-before-quality.log"
+bash code/scripts/node.sh "$protocol/capsule.mjs" verify-admission "$capsule" >"$capsule/admission-before-quality.log"
 sha256sum -c "$capsule/freeze/sources.sha256" >"$capsule/source-before-quality.log"
 sha256sum -c "$capsule/freeze/binaries.sha256" >"$capsule/binary-before-quality.log"
 source_id=$(sha256sum "$capsule/freeze/sources.sha256" | cut -d ' ' -f1)
@@ -39,4 +39,4 @@ sha256sum -c "$capsule/freeze/sources.sha256" >"$capsule/source-after-quality.lo
 sha256sum -c "$capsule/freeze/binaries.sha256" >"$capsule/binary-after-quality.log"
 (cd -- "$capsule/quality-data"; sha256sum -c "$capsule/freeze/inputs.sha256") >"$capsule/inputs-after-quality.log"
 sha256sum -c "$capsule/freeze/information.sha256" >"$capsule/information-after-quality.log"
-python3 -B "$protocol/capsule.py" finish "$capsule"
+bash code/scripts/node.sh "$protocol/capsule.mjs" finish "$capsule"

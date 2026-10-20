@@ -2,6 +2,7 @@
 #include "embedding/encoders/raw_patch_bottleneck_mae/frozen_native_feature_adapter.h"
 #include "embedding/shared/fixed_feature_readouts.h"
 #include "frozen_role_guard.h"
+#include "../include/historical_parent_paths.h"
 #include <torch/cuda.h>
 #include <array>
 #include <cctype>
@@ -145,9 +146,10 @@ struct Instance {
   }
 };
 std::vector<Instance> expected_instances(const fs::path &root) {
+  (void)root; // Repository location and historical payload location are separate.
   std::vector<Instance> out;
   for (size_t i = 0; i < old_masters.size(); ++i) for (const std::string method : {"untrained_native", "native_v4", "native_v7"}) {
-    const auto base = root / parent_relative / "results" / ("seed-" + std::to_string(old_masters[i]) + "-lag_sign");
+    const auto base = embedding::evaluation::historical_paths::physical(parent_relative) / "results" / ("seed-" + std::to_string(old_masters[i]) + "-lag_sign");
     Instance v; v.id = method + '-' + std::to_string(old_masters[i]); v.method = method; v.old_master = old_masters[i]; v.new_master = new_masters[i];
     v.tag = method == "untrained_native" ? "Untrained encoder" : method == "native_v4" ? "RPB-v4.alt-01" : "RPB-v7.alt-01";
     v.policy = method == "native_v7" ? "coordinate15_v7" : "ordinary_v4"; v.updates = method == "untrained_native" ? 0 : 512;
@@ -296,9 +298,9 @@ int main(int argc, char **argv) try {
   require(argc == 17, "exact eight measurement options required");
   for (int i = 1; i < argc; i += 2) require(names.count(argv[i]) && options.emplace(argv[i], argv[i + 1]).second, "unknown/duplicate option");
   require(options.size() == names.size() && frozen::is_sha(EVALUATION_SOURCE_ID) && options.at("--card-sha256") == card_sha, "compiled source and frozen card binding");
-  const auto root = absolute(options.at("--input-root")), output = absolute(options.at("--output")); const auto parent = root / parent_relative;
+  const auto root = absolute(options.at("--input-root")), output = absolute(options.at("--output")); const auto parent = embedding::evaluation::historical_paths::physical(parent_relative);
   require(fs::is_directory(root) && fs::canonical(root) == root && !fs::is_symlink(root), "direct input root required");
-  require(inside(output, root / "output/runs/rpb-frozen-amplitude-transfer") && !inside(output, parent) && !fs::exists(output) &&
+  require(inside(output, root / ".temp/embeddings/runs/rpb-frozen-amplitude-transfer") && !inside(output, parent) && !fs::exists(output) &&
       fs::is_directory(output.parent_path()) && fs::canonical(output.parent_path()) == output.parent_path(), "exclusive additive output root required");
   const auto tsv = absolute(options.at("--instances")), checksums = absolute(options.at("--checksums")), card = absolute(options.at("--card")), log = absolute(options.at("--admission-log"));
   const auto inventory_path = parent / "artifact-integrity.json";
@@ -316,6 +318,7 @@ int main(int argc, char **argv) try {
   const auto parent_hash_start = Clock::now(); const frozen::Guard guard(checksums, roles); const auto parent_hash_seconds = seconds(parent_hash_start);
   require(torch::cuda::is_available(), "CUDA mandatory; no CPU encoder fallback"); torch::set_num_threads(1);
   require(fs::create_directory(output) && fs::create_directory(output / "role-parity"), "exclusive new output directories required");
+  embedding::evaluation::historical_paths::write_ledger(output / "historical-path-mapping.json");
   frozen::write_new(output / "recipe-plan.json", plan() + "\n"); frozen::write_new(output / "input-manifest.json", guard.json() + "\n");
   frozen::write_new(output / "admission-binding.json", "{\"source_fingerprint\":" + frozen::quote(EVALUATION_SOURCE_ID) + ",\"human_card_sha256\":" + frozen::quote(card_sha) +
       ",\"admission_log_sha256\":" + frozen::quote(options.at("--admission-sha256")) + ",\"instances_sha256\":" + frozen::quote(frozen::sha256(tsv_bytes)) +

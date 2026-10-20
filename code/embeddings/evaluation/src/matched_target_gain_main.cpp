@@ -165,7 +165,7 @@ int main(int argc,char **argv) { try {
       args.count("--card")&&args.count("--card-sha256"),"five fixed measurement options required");
   const fs::path output=args.at("--output");
   require(output.is_absolute()&&output.filename()=="results"&&fs::canonical(output.parent_path())==output.parent_path()&&
-      output.parent_path().parent_path()==fs::current_path()/"output/runs/rpb-matched-target-gain"&&
+      output.parent_path().parent_path()==fs::current_path()/".temp/embeddings/runs/rpb-matched-target-gain"&&
       output.parent_path().filename().string().rfind("matched-target-gain-",0)==0,"exclusive protocol output bounds");
   const fs::path captured_card=args.at("--card"),admission_log=args.at("--admission-log");
   require(captured_card==output.parent_path()/"source"/card_relative&&fs::canonical(captured_card)==captured_card&&

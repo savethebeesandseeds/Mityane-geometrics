@@ -15,7 +15,7 @@ namespace ev = embedding::evaluation;
 namespace fs = std::filesystem;
 using namespace ev::frozen_inputs;
 using Clock = std::chrono::steady_clock;
-constexpr const char *output_parent = "/embedding/output/runs/rpb-fixed-prior-fresh-confirmation";
+constexpr const char *output_parent = "/mityane/.temp/embeddings/runs/rpb-fixed-prior-fresh-confirmation";
 
 void direct_directory(const fs::path &path) {
   require(path.is_absolute()&&fs::is_directory(path)&&fs::canonical(path)==path,"canonical directory");

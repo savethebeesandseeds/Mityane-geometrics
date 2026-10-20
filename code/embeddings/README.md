@@ -30,6 +30,33 @@ distinguishes observation embeddings, learned latent states and forecast states.
 Source placement does not establish prediction skill or downstream utility.
 External/open models and API embeddings remain first-class representation sources.
 
+## Current research references
+
+The family-owned [live CPB ranking](encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
+owns current checkpoint standings and audited scoped records, including the new
+January observations. [The current research summary](../../doc/EMBEDDINGS.md)
+preserves search history, exact historical references and continuation.
+**CPB-v4** is the historical broad clean-causal breakthrough;
+**RPB-v24.market-01.alt-01 native36** is the historical balanced leader.
+**CPB-v3** is the stable clean research baseline. Independent V14 metadata review
+and compatible application are complete. V14 is the latest catalogued historical
+instance; it is no longer the latest measurement.
+
+The owner approved a fresh V4/V15 objective comparison on 19 October;
+its [prospective protocol](evaluation/protocols/cpb_v15_objective_v1/PROTOCOL.md)
+fixes three paired encoder seeds and a separate confirmation month. V15 branches
+from V4's native36 source design, with fresh weights, optimizer state and TRAIN
+statistics; V5–V14 use native40. All six runs and twelve independent arithmetic
+audits are complete and valid. The
+[validated results](evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
+record a **mixed** prospective screen: February linear activity R² and descriptive
+query MAE/NLL improve in all three pairs. Volatility, trend tolerance and the
+all-candidate timing requirement do not pass the declared promising rule. Fresh
+V4-control records remain distinct from V15 gains; the study does not establish
+a broad replacement or Mityane selection. The
+[compact study record](evaluation/records/CPB-v15.objective-001.json)
+binds the closeout evidence. The saved V14 TRAIN study remains an unexecuted draft.
+
 ## Development
 
 From the repository root in PowerShell:
@@ -53,9 +80,10 @@ new task results use `/mityane/.temp/embeddings/runs/<session>`. See the
 
 ## Research and preservation
 
-Research remains paused at the saved 18 October 2026 handoff. Start with the
-[current research guide](../../doc/EMBEDDINGS.md); archived next-step notes do
-not authorize experiments or unfinished metadata application.
+The saved 18 October handoff records the original pause boundary. Start with
+the [current research guide](../../doc/EMBEDDINGS.md) for the user's later
+reviewed V14 metadata application and the authorized V15 study. Archived next-step notes do not authorize
+new experiments or bypass the current scope and review requirements.
 
 The complete pre-cleanup source/documentation component is retained byte-for-byte under
 [`../../.archive/embeddings/pre-cleanup-2026-10-18/`](../../.archive/embeddings/pre-cleanup-2026-10-18/).

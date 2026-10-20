@@ -4,7 +4,7 @@
   "number": 4,
   "title": "OR-04 · Distribution shift monitoring",
   "summary": "Monitor changes between represented cohorts under compatible spaces and a declared monitoring policy.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-04-shift-contract",
@@ -78,6 +78,60 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Evaluate false-alert burden and detection delay across the declared monitoring sequence, including overlapping windows and reference updates; isolated pairwise tests do not substitute for the complete alert policy. Downstream harm remains a separately evaluated claim."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-04-shift-toolset",
+      "title": "Expose Hx04 capabilities as a reusable toolset",
+      "description": "Expose this Hero's developed components, validation, workflows and results through a consistent discover/configure/check/run/inspect command-line interface and reusable APIs across compatible representation providers. Cover cohort and monitoring-policy configuration, compatibility checks, shift measurement, alert handling and result inspection; preserve operation-specific contracts and evidence limits as capabilities are selected and developed.",
+      "milestones": [
+        {
+          "id": "or-04-shift-toolset-surface",
+          "title": "Define the public toolset surface and coverage",
+          "status": "proposed",
+          "description": "Map reference/current cohort admission, statistic and calibration configuration, sequence monitoring, reference update policy, alert accounting and result/evidence inspection into public components and workflows.",
+          "updatedAt": "2026-10-20",
+          "acceptance": [
+            "Inventory implemented and selected future public capabilities, their owning components, contracts, request/result schemas, reusable APIs, composition points, gaps and claim levels; distinguish available tools from proposed work.",
+            "The surface declares cohort/window identities, compatible spaces, cadence, calibration, repeated-monitoring error budget and reference update policy. Provider changes produce compatibility diagnostics rather than ordinary population-shift scores, and measured shift remains distinct from downstream harm.",
+            "Specify discover/configure/check/run/inspect behavior across compatible representation providers, declaring required roles, SpaceRefs, geometry and dependencies without assuming a universal vector shape or provider suitability."
+          ],
+          "evidence": [
+            {
+              "label": "Common tool calling contract and API boundary; design reference",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-04-shift-toolset-coverage",
+          "title": "Expose and verify the agreed tools and workflows",
+          "status": "proposed",
+          "description": "Expose the agreed building blocks and composed workflows through the common command-line and reusable API boundary, keeping operation logic with its owning component and retaining inspectable results.",
+          "updatedAt": "2026-10-20",
+          "dependsOn": [
+            "or-04-shift-toolset-surface"
+          ],
+          "acceptance": [
+            "Verify the agreed cohort-to-monitoring-result workflow and independently callable components, including incompatible provider/SpaceRef rejection, overlapping-window accounting, versioned reference updates and full alert-sequence inspection. Pairwise statistic checks do not substitute for the declared monitoring policy's validation.",
+            "CLI and reusable API examples and conformance checks cover compatible provider interchange and explicit incompatibility, malformed input, failure and abstention; retain source/parent lineage, configuration, fitted-artifact identities and complete outcome accounting.",
+            "Record implemented coverage, remaining gaps and evidence for each agreed public capability and composed workflow. Reusable engineering checks do not authorize paused research or establish operation quality; new experimental claims retain their own admitted contracts, protocols and permissions."
+          ],
+          "evidence": [
+            {
+              "label": "Common tool calling contract and API boundary; design reference",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
           ]
         }
       ]

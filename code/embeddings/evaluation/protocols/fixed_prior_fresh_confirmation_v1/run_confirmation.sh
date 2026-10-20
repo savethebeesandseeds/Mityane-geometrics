@@ -2,14 +2,14 @@
 # One CUDA quality trajectory per declared fresh cohort; saved-only CPU checks.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv && $# -eq 2 ]] || {
+[[ -f /.dockerenv && "$PWD" == /mityane && $# -eq 2 ]] || {
   printf '%s\n' 'Usage inside managed container: run_confirmation.sh ADMISSION NEW_OUTPUT' >&2
   exit 1
 }
 admission="$1"
 output="$2"
 freeze="$admission/freeze"
-build_root=/opt/cuwacunu_embedding/build/rpb-fixed-prior-fresh-confirmation
+build_root=/opt/mityane-geometrics/embeddings/build/rpb-fixed-prior-fresh-confirmation
 [[ ! -e "$output" && -d "$(dirname -- "$output")" && -s "$admission/engineering.log" ]] || exit 1
 exec 9>"$build_root/.task.lock"
 flock -n 9 || { printf '%s\n' 'The named session is busy.' >&2; exit 1; }

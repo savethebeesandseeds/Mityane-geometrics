@@ -8,7 +8,7 @@ CC_READER := $(BUILD_DIR)/embedding_configurable_capacity_readout
 CC_TEST := $(CC_DIR)/generator_test
 CC_CARD := code/embeddings/evaluation/cards/configurable_capacity_v1.md
 CC_CONFIG := code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf
-CC_INPUTS := $(sort Makefile $(CC_CARD) $(CC_CONFIG) $(wildcard $(CC_ROOT)/*.cpp $(CC_ROOT)/*.h $(CC_ROOT)/*.py $(CC_ROOT)/*.sh $(CC_ROOT)/*.mk $(CC_ROOT)/README.md $(CC_DATA)/*.cpp $(CC_DATA)/*.h) $(RPB_CORE_HEADERS) code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/configurable_spectral.mk $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h $(OBSERVATION_PROVENANCE_INPUTS) $(wildcard code/shared/representation/include/embedding/shared/*.h code/shared/representation/src/*.cpp) code/shared/settings/include/cuwacunu/config/document.h code/shared/settings/include/piaabo/parse/simple_kv_block.h code/embeddings/evaluation/include/frozen_role_guard.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/scripts/task.sh $(SDK_PROVENANCE_INPUTS))
+CC_INPUTS := $(sort Makefile $(CC_CARD) $(CC_CONFIG) $(wildcard $(CC_ROOT)/*.cpp $(CC_ROOT)/*.h $(CC_ROOT)/*.py $(CC_ROOT)/*.mjs $(CC_ROOT)/*.sh $(CC_ROOT)/*.mk $(CC_ROOT)/README.md $(CC_DATA)/*.cpp $(CC_DATA)/*.h) $(RPB_CORE_HEADERS) code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/configurable_spectral.mk $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/context_deletion.h $(OBSERVATION_PROVENANCE_INPUTS) $(wildcard code/shared/representation/include/embedding/shared/*.h code/shared/representation/src/*.cpp) code/shared/settings/include/cuwacunu/config/document.h code/shared/settings/include/piaabo/parse/simple_kv_block.h code/embeddings/evaluation/include/frozen_role_guard.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/scripts/task.sh $(SDK_PROVENANCE_INPUTS) $(PROTOCOL_NODE_INPUTS) $(SCIENTIFIC_REFERENCE_INPUTS))
 CC_SOURCE_ID := $(shell sha256sum $(CC_INPUTS) | sha256sum | cut -d ' ' -f1)
 CC_CARD_SHA := $(shell sha256sum $(CC_CARD) | cut -d ' ' -f1)
 CC_CPPFLAGS := $(COMMON_CPPFLAGS) -isystem /usr/local/cuda/include -I$(RPB_ROOT)/include -I$(CC_DATA) -Icode/embeddings/evaluation/include -DCONFIGURABLE_CAPACITY_SOURCE_ID=\"$(CC_SOURCE_ID)\" -DCONFIGURABLE_CAPACITY_CARD_SHA256=\"$(CC_CARD_SHA)\"
@@ -46,8 +46,7 @@ $(CC_TEST): $(CC_DIR)/generator_test.o $(CC_DIR)/configurable_capacity.o $(CC_DI
 test-configurable-capacity-data: $(CC_TEST)
 	$(CC_TEST)
 test-configurable-capacity-runtime:
-	python3 -B $(CC_ROOT)/capsule_runtime_test.py
-	python3 -B -O $(CC_ROOT)/capsule_runtime_test.py
+	bash code/scripts/node.sh --test $(CC_ROOT)/capsule_test.mjs code/embeddings/evaluation/protocols/node/v1/capsule_support_test.mjs
 test-configurable-capacity-audit:
 	python3 -B $(CC_ROOT)/evaluation_audit_test.py
 	python3 -B -O $(CC_ROOT)/evaluation_audit_test.py

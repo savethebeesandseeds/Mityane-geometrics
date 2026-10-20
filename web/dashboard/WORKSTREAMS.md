@@ -37,11 +37,13 @@ start an experiment.
 | --- | --- |
 | 14 · Shared foundations | Observation/space/run/evidence contracts, shared datasets, fair comparisons, pipeline semantics and reproducibility |
 | 15 · MTF-JEPA-MAE-VICReg | Retained MTF-v1 implementation; imported source and baseline engineering verification; operation contract work remains proposed |
-| 16 · RPB-MAE | Existing raw patch bottleneck family and versioned evidence; choose explicit instances without changing historical references |
-| 17 · Causal patch bottleneck MAE | CPB-v3 clean baseline and saved later candidates; V14 measurements are recorded, while its paused registry review remains unfinished |
+| 16 · RPB-MAE | Native36 historical balanced leader (8/9 market plus four primary transfer comparisons); V30 market success (9/9), with transfer pending; preserve original causal-eligibility limits |
+| 17 · Causal patch bottleneck MAE | V4 broad clean-causal breakthrough, V3 stable research baseline and later scoped gains; independent V14 metadata review and compatible application complete, TRAIN-only study drafted |
 | 18 · Google multimodal encoder | [Gemini Embedding 2 provider record](../../code/embeddings/encoders/google_multimodal_embedding/README.md); source registration complete, API adapter and operation evaluation proposed |
 
 The provider folders under `code/embeddings/encoders/` each have one Hero.
+The [current research summary](../../doc/EMBEDDINGS.md) distinguishes these
+leading successes, baseline roles, task-specific records and formal promotion.
 Versions and trained instances stay within the corresponding family Hero;
 they are not separate top-level Heroes.
 
@@ -50,13 +52,33 @@ Heroes own representation production and its provenance. Operation Heroes own
 their input/output semantics, controls and evidence of usefulness. Combining
 them does not transfer an encoder's historical scores into a new operation.
 
+## Exposing each Hero as a toolset
+
+On 20 October 2026 the owner requested a toolset-exposure goal for every Hero,
+following the broader Hx06 goal. Each goal maps the Hero's developed components
+and selected future public capabilities, then exposes and verifies the agreed
+building blocks through consistent command-line and reusable library interfaces.
+The [initial common tool boundary](../../code/operations/TOOLS.md) provides a
+starting convention; its first registered tool does not establish toolset
+completion for the other Heroes.
+
+Operation Heroes expose their own semantics across compatible representation
+providers. Encoder Heroes expose model-owned provider and representation
+workflows through common consumer interfaces. Shared foundations expose reusable
+contracts, validators, artifact/evidence handling and composition mechanisms.
+These goals retain component ownership, explicit compatibility and claim limits.
+Their scope, milestone states and acceptance criteria remain in the Hero JSONs;
+planning entries do not start experiments, live API calls or deferred work.
+
 ## Reading progress
 
 Completed milestones link existing evidence for their exact scope: charter
 adoption, verified preservation/environment, retained baseline tests, saved V14
 records and the new external-provider documentation. Small engineering training
 fixtures remain separate from research measurements. Existing research pause
-instructions, frozen recipes and pending registry proposals are preserved.
+instructions, frozen recipes and immutable original registry proposals are
+preserved. V14's reviewed metadata application has separate actual evidence;
+future scientific execution remains separately scoped.
 
 No owner or deadline is guessed. Only milestones store states. Proposed work
 does not imply a selected dataset, running implementation, live API access or

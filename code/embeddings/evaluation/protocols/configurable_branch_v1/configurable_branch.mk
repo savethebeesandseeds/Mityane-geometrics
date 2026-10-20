@@ -3,7 +3,7 @@ CB_ROOT := code/embeddings/evaluation/protocols/configurable_branch_v1
 CB_DIR := $(OBJECT_DIR)/protocols/configurable_branch_v1
 CB_READER := $(BUILD_DIR)/embedding_configurable_branch_readout
 CB_CARD := code/embeddings/evaluation/cards/configurable_branch_v1.md
-CB_INPUTS := $(sort Makefile $(CB_CARD) $(wildcard $(CB_ROOT)/*.cpp $(CB_ROOT)/*.h $(CB_ROOT)/*.py $(CB_ROOT)/*.sh $(CB_ROOT)/*.mk $(CB_ROOT)/README.md) $(OBSERVATION_PROVENANCE_INPUTS) $(wildcard code/shared/representation/include/embedding/shared/*.h code/shared/representation/src/*.cpp) code/embeddings/evaluation/include/frozen_role_guard.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/scripts/task.sh $(SDK_PROVENANCE_INPUTS))
+CB_INPUTS := $(sort Makefile $(CB_CARD) $(wildcard $(CB_ROOT)/*.cpp $(CB_ROOT)/*.h $(CB_ROOT)/*.py $(CB_ROOT)/*.mjs $(CB_ROOT)/*.sh $(CB_ROOT)/*.mk $(CB_ROOT)/README.md) $(OBSERVATION_PROVENANCE_INPUTS) $(wildcard code/shared/representation/include/embedding/shared/*.h code/shared/representation/src/*.cpp) code/embeddings/evaluation/include/frozen_role_guard.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/scripts/task.sh $(SDK_PROVENANCE_INPUTS) $(PROTOCOL_NODE_INPUTS) $(SCIENTIFIC_REFERENCE_INPUTS))
 CB_SOURCE_ID := $(shell sha256sum $(CB_INPUTS) | sha256sum | cut -d ' ' -f1)
 CB_CARD_SHA := $(shell sha256sum $(CB_CARD) | cut -d ' ' -f1)
 CB_CPPFLAGS := $(COMMON_CPPFLAGS) -Icode/embeddings/evaluation/include -DCONFIGURABLE_BRANCH_SOURCE_ID=\"$(CB_SOURCE_ID)\" -DCONFIGURABLE_BRANCH_CARD_SHA256=\"$(CB_CARD_SHA)\"

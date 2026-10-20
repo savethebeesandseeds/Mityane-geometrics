@@ -1,15 +1,55 @@
-> Current physical source navigation: [version index](versions/README.md) and [shared components](shared/README.md). Canonical implementations now live under versions/vN/ or shared/. Older source-layout descriptions below name preserved public include/config compatibility paths. The current folder move changes no encoder behavior, defaults, primary selection or historical evidence.
 # Raw Patch Bottleneck MAE (RPB-MAE)
 
 This folder owns the RPB model family, preprocessing, training/checkpoint
-adapters and the configurable spectral/content relation APIs. Read
-[current repository status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) before choosing a
-version or an experiment.
+adapters and the configurable spectral/content relation APIs.
+
+## Research references — 18 October 2026
+
+**RPB-v24.market-01.alt-01, native36, is the explicitly designated historical
+balanced leader.** It passed 8/9 market conditions and all four primary frozen
+TEMPO-5 transfer comparisons with full coverage. Its exact market-trained
+checkpoint retained parent32 plus learned4 and transferred to complexity5/5
+timing without synthetic encoder updates. The
+[saved milestone](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/MILESTONE_2026-10-14_NATIVE36_TRANSFER.md)
+records that leading decision and the remaining linear-volatility failure.
+
+**RPB-v30.market-01 subsequently passed the full 9/9 market gate and 8/8 strict
+native36 floors**, with all three neural-trend fits positive and full coverage.
+Its independent synthetic transfer remained pending, so the historical balanced
+reference stayed native36. Read the
+[saved V30 market record](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/LOCATION_SCALE_DECODER_V30.md).
+RPB-v22's primary application designation belongs to the predecessor application;
+it is not a new project-wide Mityane encoder selection.
+
+These are preserved successes under their original protocols. The later
+noncausal-training diagnosis changed RPB's eligibility for the clean causal
+search; it did not erase the measurements. In the separate
+[CPB family](../causal_patch_bottleneck_mae/README.md), V3 is the stable fresh
+causal baseline and V4 is the broad clean-causal breakthrough. Neither family
+has a universal winner across tasks, protocols and information horizons.
+
+Start with the [current research guide](../../../../doc/EMBEDDINGS.md) and
+[post-migration addendum](../../../../doc/EMBEDDINGS_HANDOFF_ADDENDUM_2026-10-18.md)
+for aims, reference roles and the current continuation scope. The
+[archived family guide](../../../../.archive/embeddings/pre-cleanup-2026-10-18/code/encoders/raw_patch_bottleneck_mae/README.md)
+and [historical version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md)
+retain the earlier chronology and evidence. Historical next-step notes do not
+resume research. No model/checkpoint selection changes here.
+
+## Current source navigation
+
+The [version index](versions/README.md) locates all 30 designs and existing
+version-specific implementations; [shared components](shared/README.md) owns
+the reusable core and adapters. Canonical files live under `versions/vN/` or
+`shared/`. Older public `include/` and `config/` paths remain compatibility
+surfaces. Current paths locate maintained code; historical source hashes bind
+archived bytes or frozen capsules.
 
 The additive [streaming TRAIN and resume support](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/STREAMING_TRAINING_SUPPORT.md)
 provides a bounded statistics accumulator and a separate v22 AdamW continuation
-archive. Focused CUDA engineering checks cover the portable headers/tests and
-change no historical model or inference format.
+archive. Its recorded engineering checks do not change historical model or
+inference formats. The API and CLI sections below describe interfaces and
+preserved development evidence, not a selected experiment.
 
 ## Content-only ordered relation API: RPB-v22
 
@@ -66,12 +106,12 @@ at the fixed budget. H256 encoder quality and market quality remain unmeasured.
 `test-rpb-v20` runs them. These targets do not build a v20 training/serving CLI.
 The [API guide](CONFIGURABLE_SPECTRAL.md) is the contract for this model.
 
-## Completed quality and preserved references
+## Earlier quality records and reference roles
 
-[Content-only relations](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md) is
-the latest completed quality record; follow the
-[13 October continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-13_AFTER_CONTENT_RELATION.md).
-The unchanged-v22 fresh synthetic confirmation is proposed, not launched.
+[Content-only relations](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md) and the
+[13 October continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-13_AFTER_CONTENT_RELATION.md)
+record the V22 stage before the later native36 and V30 work above. That stage's
+proposed unchanged-v22 synthetic confirmation is a historical proposal.
 The [RPB-v21.alt-01 screen](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_LEARNED_RELATION_V1.md)
 is stopped after its deletion gate fails; keep its recipe and evidence intact.
 [Configurable capacity](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md) and its
@@ -84,10 +124,10 @@ development measurements at the report's fixed geometry and budgets. Most streng
 comes from the fixed prior; the report retains initial controls and all cohorts.
 No new experiment is measured by this guide.
 
-**RPB-v4** remains the formal evaluated reference. The original **RPB-v7** instances,
+**RPB-v4** was the formal evaluated reference at this earlier CLI stage. The original **RPB-v7** instances,
 all historical checkpoints/scalers/readouts, and every frozen card remain protected.
 Use the [version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md) for stable design
-and instance tags. The harmonic decoder remains a prospective idea in the
+and instance tags. The harmonic decoder was a prospective idea in the
 [dated continuation](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CONTINUATION_2026-10-10_AFTER_SPECTRAL_CONFIRMATION.md).
 
 Historical records include the [v19 screen](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/MULTIBAND_SCREEN_V1.md),
@@ -105,7 +145,7 @@ The sections below describe the preserved `embedding_raw_patch_bottleneck_mae`
 CLI and its adapters. The configurable v20/v22 APIs above have their own entry points.
 Shared evaluation owns datasets, splits, fixed heads, populations and reports;
 model-specific training, inference and decoding stay in this folder.
-Use [current status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for active work and
+Use the [current research guide](../../../../doc/EMBEDDINGS.md) for the paused work boundary and
 [NEXT_ADVANCE.md](NEXT_ADVANCE.md) for the preserved development chronology.
 
 ## Preserved CLI model
@@ -167,31 +207,15 @@ include prefix `embedding/encoders/raw_patch_bottleneck_mae/`.
 
 ```text
 code/embeddings/encoders/raw_patch_bottleneck_mae/
-  include/embedding/encoders/raw_patch_bottleneck_mae/
-    config.h types.h preprocessing.h tokenization.h masking.h
-    encoder.h model.h objectives.h workflow.h training_utils.h
-    evaluation_adapter.h reconstruction_adapter.h learning_curve_adapter.h
-    configurable_spectral_config.h configurable_spectral_relation.h
-    configurable_spectral_model.h configurable_spectral_settings.h
-    configurable_spectral_checkpoint.h configurable_spectral_checkpoint_io.h
-    content_ordered_relation_config.h content_ordered_relation_bank.h
-    content_ordered_relation_model.h content_ordered_relation_settings.h
-    content_ordered_relation_checkpoint.h
-  src/
-    main.cpp workflow.cpp evaluation_adapter.cpp reconstruction_adapter.cpp
-    learning_curve_adapter.cpp
-  config/
-    smoke.conf evaluation.conf channel_mixer.conf mean_global.conf learned_global.conf
-    configurable_spectral.conf content_ordered_relation.conf
-  tests/
-    preprocessing_test.cpp numerics_test.cpp masking_test.cpp model_test.cpp
-    workflow_test.cpp evaluation_adapter_test.cpp reconstruction_adapter_test.cpp
-    learning_curve_adapter_test.cpp legacy_checkpoint_parity_test.cpp
-    cli_smoke.sh periodic_checkpoint.sh
-    configurable_spectral_test.cpp configurable_checkpoint_test.cpp checkpoint_integrity_test.cpp
-    content_ordered_relation_test.cpp
-  configurable_spectral.mk       # Separate v20 engineering targets
-  content_ordered_relation.mk    # Separate v22 engineering targets
+  versions/vN/                  # Existing version-specific components/configs
+  shared/
+    include/embedding/encoders/raw_patch_bottleneck_mae/
+    src/                        # Core CLI/workflow and shared adapters
+    config/                     # Existing shared configuration files
+    tests/                      # Core and shared-adapter checks
+  include/                      # Preserved public compatibility headers
+  config/                       # Preserved configuration compatibility paths
+  tests/                        # Preserved test compatibility entries
 ```
 
 The model and preprocessing core are header-only. Workflow code owns raw/scaler
@@ -224,7 +248,7 @@ directory `code/shared/representation/include` and include prefix `embedding/sha
 ## Container build and checks
 
 Use the existing managed development container and the
-[environment workflow](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md). From the project root on
+[environment workflow](../../../../doc/ENVIRONMENT.md). From the project root on
 Windows, build and run through the named `rpb-mae` session:
 
 ```powershell
@@ -233,7 +257,7 @@ Windows, build and run through the named `rpb-mae` session:
 .\container.ps1 -Action exec -Command @('bash', 'code/scripts/task.sh', 'rpb-mae', 'periodic-rpb-mae')
 ```
 
-The corresponding commands in a container shell at `/embedding` are:
+The corresponding commands in a container shell at `/mityane` are:
 
 ```bash
 bash code/scripts/task.sh rpb-mae -j2 rpb-mae evaluation feature-harness test-rpb-mae test-feature-harness
@@ -262,11 +286,11 @@ and settings identities, and preserved artifact bytes. CUDA continuation checks
 cover mixer-off/on and all three global modes.
 
 This session produces
-`/opt/cuwacunu_embedding/build/rpb-mae/embedding_raw_patch_bottleneck_mae`,
-`/opt/cuwacunu_embedding/build/rpb-mae/embedding_evaluate` and
-`/opt/cuwacunu_embedding/build/rpb-mae/feature_harness`. Objects and temporary
+`/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_raw_patch_bottleneck_mae`,
+`/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_evaluate` and
+`/opt/mityane-geometrics/embeddings/build/rpb-mae/feature_harness`. Objects and temporary
 files stay inside the container. Smoke/evaluation runs receive unique directories
-under `output/runs/rpb-mae/`. Use a separate session such as `baseline` for the
+under `.temp/embeddings/runs/rpb-mae/`. Use a separate session such as `baseline` for the
 existing encoder. Session locks protect runner operations; coordinate direct
 binary use, shared source edits and GPU capacity separately.
 
@@ -297,14 +321,14 @@ Per-timestep causal sequence outputs are outside the current API.
 
 ## CLI training and export
 
-After the build finishes, run the following in the container at `/embedding`.
+After the build finishes, run the following in the container at `/mityane`.
 The example allocates a new directory and keeps the original training archive:
 
 ```bash
-rpb_bin=/opt/cuwacunu_embedding/build/rpb-mae/embedding_raw_patch_bottleneck_mae
+rpb_bin=/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_raw_patch_bottleneck_mae
 rpb_config=code/embeddings/encoders/raw_patch_bottleneck_mae/config/smoke.conf
-mkdir -p output/runs/rpb-mae
-rpb_run="$(mktemp -d "$PWD/output/runs/rpb-mae/manual-XXXXXX")"
+mkdir -p .temp/embeddings/runs/rpb-mae
+rpb_run="$(mktemp -d "$PWD/.temp/embeddings/runs/rpb-mae/manual-XXXXXX")"
 "$rpb_bin" synthetic --config "$rpb_config" --output "$rpb_run/raw.pt" --samples 32
 "$rpb_bin" prepare --config "$rpb_config" --input "$rpb_run/raw.pt" --output "$rpb_run/scaler.pt"
 "$rpb_bin" train --config "$rpb_config" --input "$rpb_run/raw.pt" --scaler "$rpb_run/scaler.pt" \
@@ -348,7 +372,8 @@ missing channels retain zero/invalid local and contextual vectors.
 
 ## Shared feature evaluation
 
-The encoder-owned `evaluation_adapter.h/.cpp` maps exact RPB-MAE model/scaler
+The encoder-owned `evaluation_adapter.h` and `shared/src/evaluation_adapter.cpp`
+map exact RPB-MAE model/scaler
 state to the [shared provider contract](../../../shared/representation/include/embedding/shared/feature_evaluation.h).
 Its fit callback receives permitted training observations and declared metadata;
 it receives no labels, hidden clean signals or held-out observations. The
@@ -365,9 +390,9 @@ The `evaluation` target builds that executable with baseline and RPB adapters.
 
 ```bash
 bash code/scripts/task.sh rpb-mae evaluation feature-harness test-feature-harness
-eval_bin=/opt/cuwacunu_embedding/build/rpb-mae/embedding_evaluate
-mkdir -p output/runs/rpb-mae
-rpb_results="$(mktemp -d "$PWD/output/runs/rpb-mae/feature-XXXXXX")"
+eval_bin=/opt/mityane-geometrics/embeddings/build/rpb-mae/embedding_evaluate
+mkdir -p .temp/embeddings/runs/rpb-mae
+rpb_results="$(mktemp -d "$PWD/.temp/embeddings/runs/rpb-mae/feature-XXXXXX")"
 "$eval_bin" --output "$rpb_results/results" --encoders baseline,rpb --seeds 101 \
   --channels 3 --history 32 --features 3 --train-pairs 32 --validation-pairs 16 --test-pairs 32 \
   --baseline-steps 4 --rpb-config code/embeddings/encoders/raw_patch_bottleneck_mae/config/evaluation.conf \
@@ -438,8 +463,8 @@ Build and test through a separate named session inside the managed container:
 
 ```bash
 bash code/scripts/task.sh reconstruction -j2 evaluation test-reconstruction-evaluation test-rpb-reconstruction
-EVALUATION_BIN=/opt/cuwacunu_embedding/build/reconstruction/embedding_evaluate \
-  EMBEDDING_RUN_ROOT="$PWD/output/runs/reconstruction" \
+EVALUATION_BIN=/opt/mityane-geometrics/embeddings/build/reconstruction/embedding_evaluate \
+  EMBEDDING_RUN_ROOT="$PWD/.temp/embeddings/runs/reconstruction" \
   bash code/embeddings/scripts/reconstruct-rpb-mae.sh --seeds 101 --tasks reversal \
     --train-pairs 8 --validation-pairs 4 --test-pairs 8 \
     --rpb-steps 4 --metadata-steps 4 --batch-size 8

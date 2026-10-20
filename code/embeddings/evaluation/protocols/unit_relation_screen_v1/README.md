@@ -12,7 +12,7 @@ Use the existing managed container:
 .\container.ps1 -Action exec -Command @('bash', 'code/embeddings/evaluation/protocols/unit_relation_screen_v1/admit.sh')
 ```
 
-Admission captures59 source files, the card, six exact retained input files and
+Admission captures the current source closure, the card, six exact retained input files and
 the verified SDK proof. It compiles only the new producer/test, links nine
 unchanged generic objects, then runs the new CUDA primitive and typed runner
 engineering tests sequentially. It prints its exclusive capsule path.
@@ -29,13 +29,13 @@ no generator and no older model. Point0/512, scalers, checkpoints, optimizer/RNG
 full loss traces, three native views, fixed fits and original queries persist.
 The pinned standard-library checker replays saved CPU arithmetic only.
 
-`publish_screen.py` derives both the standard tables and every prospective gate
+`publish_screen.mjs` derives both the standard tables and every prospective gate
 condition from passed checks and the exact matched v17 summary. An intermediate
 publication can go into an exclusive ignored directory to decide continuation.
 Only a passed gate allows new freezes/runs for81888/82989/85191 with the same
 compiled source/card. Retain both source manifests and all quality outputs.
 
-After finishing, `capture_metadata.py` preserves the metadata tools and capsule
-inventory; final publication records those hashes. `record_screen.py` adds the
-new design while asserting every historical object is unchanged. No baseline
-tensor/head/model work is required for matched score reuse.
+After finishing, `capture_metadata.mjs` preserves the metadata tools and capsule
+inventory; final publication records those hashes. The retired `record_screen.mjs`
+entry refuses registry changes; original publisher source remains in the frozen
+archive. No baseline tensor/head/model work is required for matched score reuse.

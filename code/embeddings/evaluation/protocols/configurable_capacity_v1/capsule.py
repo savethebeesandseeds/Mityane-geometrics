@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Stdlib-only capsule receipts; no model, classifier, fitting or tensor runtime."""
+"""Independent saved-information tensor association audit.
+
+Maintained capsule metadata commands use capsule.mjs. This module retains the
+scientific bind mode and the original contract functions as reference source.
+"""
 import argparse
 import hashlib
 import importlib.util
@@ -8,6 +12,7 @@ import math
 import os
 from pathlib import Path
 import shutil
+import stat
 import subprocess
 import sys
 
@@ -104,9 +109,37 @@ def freeze(root, build):
     print(json.dumps(receipt))
 
 
+def _information_signature(path):
+    direct(path)
+    value = path.lstat()
+    require(stat.S_ISREG(value.st_mode) and value.st_nlink == 1,
+            f"Single-link regular information role required: {path}")
+    return (value.st_dev, value.st_ino, value.st_size, value.st_mode,
+            value.st_mtime_ns, value.st_ctime_ns)
+
+
+def _admit_information_files(data):
+    # Scientific input boundary: admit all nine observation/witness pairs before
+    # the first codec load. No payload is opened by this metadata-only preflight.
+    paths = [data / f"master-{master}/{view}{suffix}.pt"
+             for master in MASTERS
+             for view in ("training", "validation", "validation-deleted")
+             for suffix in ("", "-information")]
+    admitted, identities = {}, set()
+    for path in paths:
+        signature = _information_signature(path)
+        require(signature[:2] not in identities, "Information roles must not alias")
+        identities.add(signature[:2])
+        admitted[path] = signature
+    require(len(admitted) == 18, "Complete eighteen-role information matrix")
+    return admitted
+
+
 def bind(root):
     data = root / "quality-data"
-    information = document(data / "information-report.json")
+    information_path = data / "information-report.json"
+    information_signature = _information_signature(information_path)
+    information = document(information_path)
     require(information["passed"] is True and len(information["masters"]) == 3,
             "All three information cohorts must pass")
     require([m["master"] for m in information["masters"]] == list(MASTERS),
@@ -123,22 +156,25 @@ def bind(root):
     files = [f"master-{m}/{v}.pt" for m in MASTERS
              for v in ("training", "validation", "validation-deleted")]
     require(len(files) == 9, "Nine observation roles required")
-    for p in files:
-        direct(data / p)
-        require((data / p).is_file() and (data / p).stat().st_nlink == 1,
-                f"Single-link regular observation required: {p}")
-    codec_path = Path("/embedding/code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py")
+    admitted = _admit_information_files(data)
+    def unchanged(path):
+        require(_information_signature(path) == admitted[path],
+                f"Information role changed after admission: {path}")
+    codec_path = Path("/mityane/.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py")
     require(digest(codec_path) == "4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d",
             "Pinned saved archive codec differs")
     spec = importlib.util.spec_from_file_location("capacity_saved_codec", codec_path)
     codec = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = codec
     spec.loader.exec_module(codec)
-    evidence = [data / "information-report.json"]
+    evidence = [information_path]
     for p in files:
         witness = data / p.replace(".pt", "-information.pt")
-        direct(witness)
+        unchanged(data / p)
+        unchanged(witness)
         original, decisions = codec.load(data / p), codec.load(witness)
+        unchanged(data / p)
+        unchanged(witness)
         rows = 512 if p.endswith("/training.pt") else 256
         require(decisions["valid"]["dtype"] == "BoolStorage" and decisions["valid"]["shape"] == [rows],
                 "Information validity schema differs")
@@ -163,9 +199,21 @@ def bind(root):
                     and 0 <= residual <= .0025 and .12 <= abs(margin) <= .60,
                     "Information period/residual/phase gate differs")
         evidence.append(witness)
-    new(root / "freeze" / "inputs.sha256", "".join(f"{digest(data / p)}  {p}\n" for p in sorted(files)))
+    for path in admitted:
+        unchanged(path)
+    hashes = {}
+    for path in admitted:
+        unchanged(path)
+        hashes[path] = digest(path)
+        unchanged(path)
+    require(_information_signature(information_path) == information_signature,
+            "Information report changed during validation")
+    hashes[information_path] = digest(information_path)
+    require(_information_signature(information_path) == information_signature,
+            "Information report changed during manifest hashing")
+    new(root / "freeze" / "inputs.sha256", "".join(f"{hashes[data / p]}  {p}\n" for p in sorted(files)))
     new(root / "freeze" / "information.sha256",
-        "".join(f"{digest(p)}  {p}\n" for p in evidence))
+        "".join(f"{hashes[p]}  {p}\n" for p in evidence))
     print("All nine fixed role archives bound; observed-only information gate passed.")
 
 
@@ -215,19 +263,11 @@ def finish(root):
 def main():
     require(Path("/.dockerenv").exists(), "Run inside the managed development container.")
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("mode", choices=("freeze", "verify-admission", "bind", "finish"))
+    p.add_argument("mode", choices=("bind",), help="metadata commands migrated to capsule.mjs")
     p.add_argument("root", type=Path)
-    p.add_argument("--build", type=Path)
     a = p.parse_args()
     direct(a.root)
-    if a.mode == "freeze":
-        freeze(a.root, a.build)
-    elif a.mode == "verify-admission":
-        verify_admission(a.root)
-    elif a.mode == "bind":
-        bind(a.root)
-    else:
-        finish(a.root)
+    bind(a.root)
 
 
 if __name__ == "__main__":

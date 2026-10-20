@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+#include "../include/historical_parent_paths.h"
 #include "embedding/shared/paired_pooling.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/learning_curve_adapter.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/native_curve_gate.h"
@@ -69,7 +70,7 @@ std::map<std::string,std::string> retained_hashes(const std::string &path) {
     const auto relative=fs::path(line.substr(66));
     require(!relative.is_absolute() && relative.lexically_normal()==relative &&
         relative.generic_string().find("..") == std::string::npos,"retained path must stay inside the capsule");
-    const auto full=fs::absolute(fs::path(reference_capsule)/relative).lexically_normal().string();
+    const auto full=fs::absolute(embedding::evaluation::historical_paths::physical(reference_capsule)/relative).lexically_normal().string();
     require(result.emplace(full,line.substr(0,64)).second,"duplicate retained hash path");
   }
   require(input.eof() && !result.empty(),"cannot read retained hash manifest");
@@ -78,7 +79,7 @@ std::map<std::string,std::string> retained_hashes(const std::string &path) {
 ev::RetainedPoolingCohort cohort(uint64_t master,const std::map<std::string,std::string> &hashes) {
   ev::RetainedPoolingCohort result; result.master_seed=master;
   result.lineage="native-curve-v1/source-5a2c39d343e399c549b89f880c7e3a9e4b823d17b541775b7352c2de6ce8d643";
-  const auto base=fs::absolute(fs::path(reference_capsule)/"results"/("seed-"+std::to_string(master)+"-lag_sign"));
+  const auto base=fs::absolute(embedding::evaluation::historical_paths::physical(reference_capsule)/"results"/("seed-"+std::to_string(master)+"-lag_sign"));
   const auto bind=[&](const fs::path &path) {
     const auto full=path.lexically_normal().string();
     require(hashes.count(full),"declared retained input missing from frozen inventory: "+full);
@@ -112,10 +113,10 @@ ev::RetainedPoolingCohort cohort(uint64_t master,const std::map<std::string,std:
     result.pca_validation_predictions.push_back(bind(base/"controls/pca_only"/rep/"validation-predictions.pt"));
     result.mask_validation_predictions.push_back(bind(base/"controls/mask_metadata"/rep/"validation-predictions.pt"));
   }
-  const auto inventory=fs::absolute(fs::path(reference_capsule)/"artifact-integrity.json").string();
+  const auto inventory=fs::absolute(embedding::evaluation::historical_paths::physical(reference_capsule)/"artifact-integrity.json").string();
   result.expected_sha256.emplace(inventory,reference_inventory_sha);
-  bind(fs::absolute(fs::path(reference_capsule)/"results/native-curve-card.json"));
-  bind(fs::absolute(fs::path(reference_capsule)/"results/selection.json"));
+  bind(fs::absolute(embedding::evaluation::historical_paths::physical(reference_capsule)/"results/native-curve-card.json"));
+  bind(fs::absolute(embedding::evaluation::historical_paths::physical(reference_capsule)/"results/selection.json"));
   const std::map<uint64_t,std::string> checkpoints{{3101,"71db828e63884956024a20b8223ef89a3da1b3f031a7fe84d36cc6c1cdac351b"},
       {3202,"8cbce9f90c3c36146c2102955b279ab587b9569a0519f7815dfd0eec9e44ab73"},
       {3303,"8bdf10f69f7c927546707f9fcabf6269d4401fb63425fb1da5c4877c9b303904"}};
@@ -200,6 +201,7 @@ int main(int argc,char **argv) {
         << ",\"context_training_log_sha256\":" << quote(gate_only ? "engineering-only" : options.at("--context-training-log-sha256"))
         << ",\"gpu_gate_only\":" << (gate_only?"true":"false") << "}\n";
     durable_plan(run.recipe.output_directory+".launch-plan.json",plan.str());
+    if(!gate_only)embedding::evaluation::historical_paths::write_ledger(run.recipe.output_directory+".historical-path-mapping.json");
     std::cout << "Context deletion launch plan frozen.\n" << std::flush;
     torch::set_num_threads(run.recipe.card.threads);
     rpb::run_native_curve_cuda_gate(settings,gate_only?run.recipe.output_directory:run.recipe.output_directory+"-cuda-gate");

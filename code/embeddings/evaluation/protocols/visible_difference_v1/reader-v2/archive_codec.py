@@ -16,7 +16,7 @@ import zipfile
 from collections import OrderedDict
 from pathlib import Path
 
-ROOT = Path('/embedding')
+ROOT = Path('/mityane')
 MASK64 = (1 << 64) - 1
 CHECKS = 0
 
@@ -315,7 +315,7 @@ if __name__ == '__main__':
     parser.add_argument('--input-audit', required=True, type=Path)
     args = parser.parse_args()
     now = datetime.datetime.now(datetime.timezone.utc)
-    destination = ROOT / 'output/runs/archive-controls' / ('phase1-validation-' + now.strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
+    destination = ROOT / '.temp/embeddings/runs/archive-controls' / ('phase1-validation-' + now.strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
     destination.mkdir(parents=True, exist_ok=False)
     result = {'version': 1, 'created_utc': now.isoformat(), 'auditor': 'independent allowlisted Python stdlib tensor/artifact audit; no fits or Torch runtime',
               'auditor_script_sha256': sha(Path(__file__)), 'results_directory': str(args.results), 'input_audit': str(args.input_audit), 'plan_directory': str(args.plan)}

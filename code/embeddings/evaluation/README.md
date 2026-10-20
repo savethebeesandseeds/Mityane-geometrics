@@ -7,9 +7,12 @@ or registry changes are retired. Their original implementations remain archived;
 new publication needs its own versioned protocol and destination. Capsule-local
 publication arithmetic remains available to its owning protocols.
 
-Start with [the current research guide](../../../doc/EMBEDDINGS.md). Encoder
-research remains paused at the saved V14 handoff; this directory's historical
-recipes and continuation notes do not resume experiments or metadata work.
+Start with [the current research guide](../../../doc/EMBEDDINGS.md). Independent
+V14 metadata review and compatible application are complete under the
+[current protocol](protocols/cpb_v14_closeout_v1/README.md); integrity sealing has
+its own receipt. The [TRAIN-only study draft](protocols/cpb_v14_train_diagnosis_v1/PROPOSED_PROTOCOL.md)
+is reviewed preparation and remains unexecuted. Historical recipes
+and next-step notes do not authorize new experiments or bypass current review.
 The maintained layer composes encoder adapters with shared evaluation engines
 in [`code/shared/representation/`](../../shared/representation/README.md).
 Forecasting baselines and common-observable readouts are owned separately by

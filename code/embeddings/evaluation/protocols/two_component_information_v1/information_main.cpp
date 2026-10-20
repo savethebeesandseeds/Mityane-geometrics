@@ -31,7 +31,7 @@ void new_leaf(const fs::path &p) {
   require(p.is_absolute() && p.lexically_normal()==p && !p.filename().empty(),
           "absolute normalized output required");
   direct_directory(p.parent_path());
-  const fs::path bound("/embedding/output/runs/two-component-information-v1");
+  const fs::path bound("/mityane/.temp/embeddings/runs/two-component-information-v1");
   const auto rel=p.lexically_relative(bound);
   require(!rel.empty() && !rel.is_absolute() && *rel.begin()!=".." && p!=bound,
           "output stays in the named data-only run directory");

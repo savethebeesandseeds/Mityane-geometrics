@@ -5,8 +5,8 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 binary="${FRESH_DECODER_REPLICATION_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-paired-pooling/embedding_fresh_decoder_replication}"
 [[ "$binary" = /* && -x "$binary" ]] || { echo 'An absolute built binary is required.' >&2; exit 1; }
 [[ -n "${FRESH_DECODER_REPLICATION_SOURCE_INPUTS:-}" ]] || { echo 'Use the Make target to bind sources.' >&2; exit 1; }
-root="$PWD/output/runs/rpb-fresh-decoder-replication"
-helper='code/embeddings/scripts/prepare-fresh-decoder-replication.py'
+root="$PWD/.temp/embeddings/runs/rpb-fresh-decoder-replication"
+helper='code/embeddings/scripts/prepare-fresh-decoder-replication.mjs'
 card_sha='2236fb794d608c8f7b8bde81814f199abcc3e27c641cfba5902cdc3f4c4a25cf'
 [[ "$card_sha" =~ ^[0-9a-f]{64}$ ]] || { echo 'The prospective card is not frozen yet.' >&2; exit 1; }
 build_dir="$(dirname -- "$binary")"
@@ -29,12 +29,12 @@ source_id="$("$binary" --source-id)"
 read -r -a sources <<< "$FRESH_DECODER_REPLICATION_SOURCE_INPUTS"
 # --plan is a reviewed metadata-only mode: no model, generator or quality input.
 "$binary" --plan > "$capsule/recipe-plan.json"
-python3 "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
   --card-sha256 "$card_sha" --sources "${sources[@]}" --admission "$admission" \
   --compiled-source-id "$source_id" --binary "$binary"
 log_sha="$(sha256sum "$capsule/admission/build-and-tests.log" | cut -d ' ' -f 1)"
 "$binary" --output "$capsule/results" --admission-log "$capsule/admission/build-and-tests.log" \
   --admission-sha256 "$log_sha" 2>&1 | tee "$capsule/command.log"
-python3 "$helper" finalize --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" finalize --repo-root "$PWD" --target "$capsule" \
   --card-sha256 "$card_sha" --compiled-source-id "$source_id"
 printf 'Fresh decoder replication complete: %s\n' "$capsule"

@@ -77,7 +77,7 @@ void quality_admission(const fs::path &output, uint64_t master, const fs::path &
   require(output.is_absolute() && output.lexically_normal() == output && output.filename() == "master-" + std::to_string(master) &&
       output.parent_path().filename() == "candidates", "declared exclusive candidate output role");
   const auto capsule = output.parent_path().parent_path();
-  require(capsule.parent_path() == fs::path("/embedding/output/runs/rpb-v21-learned-relation") &&
+  require(capsule.parent_path() == fs::path("/mityane/.temp/embeddings/runs/rpb-v21-learned-relation") &&
       capsule.filename().string().rfind("admission-", 0) == 0 &&
       fs::canonical(capsule) == capsule && !fs::is_symlink(capsule) &&
       fs::canonical(output.parent_path()) == output.parent_path(), "direct admitted capsule outside all historical evidence");
@@ -94,7 +94,7 @@ void quality_admission(const fs::path &output, uint64_t master, const fs::path &
     const fs::path relative(role);
     require(!role.empty() && !relative.is_absolute() && relative.lexically_normal() == relative &&
         role.find("..") == std::string::npos && (previous.empty() || previous < role) &&
-        live_roles.emplace(role, fs::path("/embedding") / relative).second &&
+        live_roles.emplace(role, fs::path("/mityane") / relative).second &&
         captured_roles.emplace(role, capsule / "freeze/source" / relative).second, "closed sorted source roles");
     previous = role;
   }
@@ -731,7 +731,7 @@ int main(int argc, char **argv) {
     const auto master = std::stoull(master_text); const auto profile = args.at("--profile");
     const auto c = config(args.at("--config"), profile);
     const fs::path parent = args.at("--data-root");
-    require(args.at("--original-capsule") == "/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD" &&
+    require(args.at("--original-capsule") == "/mityane/code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD" &&
         parent == fs::path(args.at("--original-capsule")) / "quality-data", "exact original quality role root");
     require(parent.is_absolute() && fs::canonical(parent) == parent && !fs::is_symlink(parent), "direct data root");
     std::map<std::string, fs::path> roles;

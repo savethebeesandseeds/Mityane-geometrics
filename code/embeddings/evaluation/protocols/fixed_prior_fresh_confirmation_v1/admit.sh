@@ -2,18 +2,18 @@
 # Build/admit new infrastructure, then generate/freeze the complete fresh data.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv ]] || exit 1
+[[ -f /.dockerenv && "$PWD" == /mityane ]] || exit 1
 protocol_root=code/embeddings/evaluation/protocols/fixed_prior_fresh_confirmation_v1
 session=rpb-fixed-prior-fresh-confirmation
-run_root=/embedding/output/runs/$session
-build_root=/opt/cuwacunu_embedding/build/$session
+run_root=/mityane/.temp/embeddings/runs/$session
+build_root=/opt/mityane-geometrics/embeddings/build/$session
 mkdir -p "$run_root"
 admission=$(mktemp -d "$run_root/admission-XXXXXX")
 printf '%s\n' "$admission"
 bash code/scripts/task.sh "$session" -f "$protocol_root/Makefile" \
   print-fixed-prior-fresh-confirmation-sources >"$admission/source-list.log"
 sed -n '/^Makefile$/,$p' "$admission/source-list.log" >"$admission/source-list.txt"
-python3 -B "$protocol_root/prepare_confirmation.py" \
+bash code/scripts/node.sh "$protocol_root/prepare_confirmation.mjs" \
   --source-list "$admission/source-list.txt" --output "$admission/source-freeze" >"$admission/source-freeze.log"
 sha256sum -c "$admission/source-freeze/sources.sha256" >"$admission/source-check-before.log"
 bash code/scripts/task.sh "$session" -f "$protocol_root/Makefile" -j2 \
@@ -32,7 +32,7 @@ card_sha=$(sha256sum "$admission/source-freeze/card.md" | cut -d ' ' -f1)
   --card-sha256 "$card_sha" --masters 80787,81888,82989,84090,85191 \
   >"$admission/data-generation.log" 2>&1
 sha256sum -c "$admission/source-freeze/sources.sha256" >"$admission/source-check-after.log"
-python3 -B "$protocol_root/prepare_confirmation.py" \
+bash code/scripts/node.sh "$protocol_root/prepare_confirmation.mjs" \
   --source-list "$admission/source-list.txt" --input-root "$admission/fresh-data" \
   --output "$admission/freeze" >"$admission/freeze.log"
 cmp "$admission/source-freeze/sources.sha256" "$admission/freeze/sources.sha256"

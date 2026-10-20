@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 #include "embedding/shared/archive_readout.h"
+#include "../include/historical_parent_paths.h"
 #include "embedding/shared/paired_pooling.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/context_replication_adapter.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/learning_curve_adapter.h"
@@ -205,7 +206,7 @@ struct InputGuard {
       require(line.size()>66 && is_sha(line.substr(0,64)) && line.substr(64,2)=="  ","malformed retained SHA record");
       const auto relative=line.substr(66);
       require(allowed.count(relative),"retained role is not an explicitly permitted TRAIN/VALIDATION role: "+relative);
-      const auto path=fs::absolute(parent/fs::path(relative)).lexically_normal();
+      const auto path=(embedding::evaluation::historical_paths::physical(parent)/fs::path(relative)).lexically_normal();
       require(fs::is_regular_file(path) && fs::canonical(path)==path,"missing or redirected parent role: "+relative);
       require(expected.emplace(path.string(),line.substr(0,64)).second,"duplicate retained role");
       const auto content=bytes(path);require(sha256(content)==line.substr(0,64),"retained SHA mismatch: "+relative);
@@ -214,7 +215,7 @@ struct InputGuard {
     require(in.eof() && expected.size()==allowed.size(),"manifest must contain every explicit permitted role exactly once");
   }
   std::string bind(const std::string &relative) const {
-    const auto path=fs::absolute(parent/fs::path(relative)).lexically_normal().string();require(expected.count(path),"unbound retained role");return path;
+    const auto path=(embedding::evaluation::historical_paths::physical(parent)/fs::path(relative)).lexically_normal().string();require(expected.count(path),"unbound retained role");return path;
   }
   void verify() const {for(const auto &[path,value]:original)require(bytes(path)==value,"retained input bytes changed: "+path);}
   std::string json() const {
@@ -348,6 +349,7 @@ int main(int argc,char **argv) {
     }
     const auto admission_path=fs::absolute(options.at("--admission-log")).lexically_normal();require(is_sha(options.at("--admission-log-sha256")) && fs::is_regular_file(admission_path) && sha256(bytes(admission_path))==options.at("--admission-log-sha256"),"preserved admission log hash differs");
     InputGuard guard(options.at("--retained-hashes"));
+    write_new(output.string()+".historical-path-mapping.json",embedding::evaluation::historical_paths::ledger());
     std::ostringstream plan;plan << "{\"protocol\":" << quote(protocol) << ",\"policy_version\":\"1.2\",\"stage\":\"development\",\"model_tag\":\"RPB-v7\",\"phase\":\"measure\",\"masters\":[4404,5505,6606,7707,8808],\"milestones\":[0,512],\"source_pairs\":[128,64],\"batch_size\":8,\"parameters_each\":225805,\"native_size\":32,\"post_encoder_pca\":false,\"training_policy_id\":\"rpb-training-context-deletion-015-v1\",\"training_context_rate\":0.15,\"training_namespace\":" << quote(training_namespace)
         << ",\"validation_view\":{\"id\":" << quote(view_id) << ",\"rate\":0.30,\"stream\":" << validation_stream << ",\"rng_namespace\":" << quote(protocol) << ",\"seed_policy\":\"stream_seed(master,stream)\",\"pair_shared\":true,\"repair\":false},\"test_access\":false,\"stress_access\":false,\"selection\":false,\"promotion\":false,\"parent_capsule\":" << quote(fs::absolute(parent).string()) << ",\"parent_source_fingerprint\":" << quote(parent_source)
         << ",\"heads\":{\"ridge_penalty\":1,\"tiny_hidden\":16,\"tiny_steps\":100,\"tiny_learning_rate\":0.01,\"base_seeds\":[2701,2802,2903]},\"readout_policy\":\"new deterministic ordinary TRAIN refits; exact old/cache native fit and intact prediction parity; same TRAIN fits score added VALIDATION view\",\"source_fingerprint\":" << quote(EVALUATION_SOURCE_ID) << ",\"git_head\":" << quote(EVALUATION_GIT_HEAD) << ",\"git_dirty\":" << quote(EVALUATION_GIT_DIRTY) << ",\"base_settings\":" << quote(rpb::settings_text(settings)) << ",\"admission_log\":" << quote(admission_path.string()) << ",\"admission_log_sha256\":" << quote(options.at("--admission-log-sha256")) << ",\"retained_hash_manifest\":" << quote(fs::absolute(options.at("--retained-hashes")).string()) << "}\n";

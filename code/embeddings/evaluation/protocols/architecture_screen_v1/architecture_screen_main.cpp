@@ -144,7 +144,7 @@ int main(int argc,char**argv){fs::path output;try{
   for(const auto&k:required)require(args.count(k),"required CLI: "+k);
   for(const auto&[k,_]:args)require(required.count(k)||k=="--admission-log"||k=="--admission-sha256","closed CLI");
   const auto id=args.at("--candidate");require(id=="v14"||id=="v15","closed candidate");const auto selected=masters(args.at("--masters"));const fs::path parent=args.at("--input-root");output=args.at("--output");
-  require(parent==fs::path("/embedding/output/runs/rpb-structured-hard-timing/structured-hard-timing-xrZMAS")&&fs::canonical(parent)==parent,"literal retained TEMPO-3 root");
+  require(parent==fs::path("/mityane/code/embeddings/output/runs/rpb-structured-hard-timing/structured-hard-timing-xrZMAS")&&fs::canonical(parent)==parent,"literal retained TEMPO-3 root");
   require(output.is_absolute()&&fs::canonical(output.parent_path())==output.parent_path()&&!fs::exists(output),"new canonical output leaf");
   std::map<std::string,fs::path> roles;std::vector<fs::path> paths{args.at("--inputs-sha256"),args.at("--sources-sha256"),args.at("--card"),args.at("--sdk-proof")};
   for(const auto master:selected)for(const std::string view:{"training","validation","validation-deleted"}){const auto name="results/seed-"+std::to_string(master)+"-lag_sign/controlled-"+view+".pt";roles.emplace(name,parent/name);paths.push_back(parent/name);}

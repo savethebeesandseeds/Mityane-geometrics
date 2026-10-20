@@ -144,14 +144,14 @@ def source_binding(capsule, meta, before, report, card_sha):
     check('/embedding/.external/libtorch' not in log and 'not found' not in log and all(s in log for s in
           ('Visible difference model CUDA admission passed', 'Visible difference adapter CUDA admission passed',
            'Fixed feature readout tests passed', 'Frozen role guard checks passed', 'Container SDK proof:')), 'actual CUDA/shared/internal SDK admission')
-    binary = '/opt/cuwacunu_embedding/build/rpb-visible-difference/embedding_visible_difference'
-    old = 'code/embeddings/encoders/raw_patch_bottleneck_mae/src/'
-    od = '/opt/cuwacunu_embedding/build/rpb-visible-difference/code/embeddings/encoders/raw_patch_bottleneck_mae/'
-    nd = '/opt/cuwacunu_embedding/build/rpb-visible-difference/code/protocols/visible_difference_v1/'
+    binary = '/opt/mityane-geometrics/embeddings/build/rpb-visible-difference/embedding_visible_difference'
+    old = 'code/embeddings/encoders/raw_patch_bottleneck_mae/shared/src/'
+    od = '/opt/mityane-geometrics/embeddings/build/rpb-visible-difference/code/encoders/raw_patch_bottleneck_mae/'
+    nd = '/opt/mityane-geometrics/embeddings/build/rpb-visible-difference/code/protocols/visible_difference_v1/'
     requirements = [(old + 'workflow.cpp', od + 'workflow.o', 'RPB_SOURCE_ID', 'core_writer'),
                     (old + 'learning_curve_adapter.cpp', od + 'learning_curve_adapter.o', 'EVALUATION_SOURCE_ID', 'curve_training'),
                     (old + 'early_mixer_adapter.cpp', od + 'early_mixer_adapter.o', 'EARLY_MIXER_ADAPTER_SOURCE_ID', 'early_adapter'),
-                    (old + 'visible_difference_adapter.cpp', nd + 'visible_difference_adapter.o', 'VISIBLE_DIFFERENCE_ADAPTER_SOURCE_ID', 'visible_adapter'),
+                    ('code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/src/visible_difference_adapter.cpp', nd + 'visible_difference_adapter.o', 'VISIBLE_DIFFERENCE_ADAPTER_SOURCE_ID', 'visible_adapter'),
                     ('code/embeddings/evaluation/protocols/visible_difference_v1/visible_difference_main.cpp', nd + 'visible_difference_main.o', 'VISIBLE_DIFFERENCE_SOURCE_ID', 'visible_adapter')]
     commands = []
     for line in log.splitlines():
@@ -175,8 +175,14 @@ def source_binding(capsule, meta, before, report, card_sha):
 
 def modules():
     global M, R, L
-    root = Path(__file__).resolve().parent
+    # New maintained path revision: unchanged archived numerical modules are
+    # admitted explicitly. Sealed run readers use their captured sibling bytes.
+    runtime = Path(__file__).resolve()
+    maintained = Path('/mityane/code/embeddings/evaluation/protocols')
+    root = Path('/mityane/.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2') if maintained in runtime.parents else runtime.parent
     paths = [root / name for name in MODULE_PINS]
+    global MODULE_SOURCE_PATHS
+    MODULE_SOURCE_PATHS = dict(zip(MODULE_PINS, paths))
     admit(paths)
     for path, name in zip(paths, MODULE_PINS):
         check(sha(path) == MODULE_PINS[name], 'unchanged independent saved arithmetic module')
@@ -480,7 +486,7 @@ def run(args):
     started = time.monotonic()
     capsule = Path(args.capsule)
     output = Path(args.output)
-    check(capsule.is_absolute() and capsule.resolve(strict=True) == capsule and capsule.parent == Path('/embedding/output/runs/rpb-visible-difference') and capsule.name.startswith('visible-difference-'), 'closed completed capsule')
+    check(capsule.is_absolute() and capsule.resolve(strict=True) == capsule and capsule.parent == Path('/mityane/.temp/embeddings/runs/rpb-visible-difference') and capsule.name.startswith('visible-difference-'), 'closed completed capsule')
     check(output.is_absolute() and output.parent.resolve(strict=True) == output.parent and
           all(not p.is_symlink() for p in (output.parent, *output.parent.parents)) and
           not output.exists() and not output.is_symlink() and output.parent in (capsule.parent, capsule.parent / 'audit-tools'),
@@ -518,13 +524,33 @@ def run(args):
     before = {r['path']: sha(p) for p, r in zip(paths, records)}
     check(all(before[r['path']] == r['sha256'] for r in records), 'all completed capsule bytes')
     admitted = set(paths)
-    check(before['independent-reader/validate_visible_difference.py'] == ORIGINAL_READER_SHA, 'exact prequality captured validator SOURCE')
-# BEGIN query basename repair v2 capture
-    check(before['independent-reader/reader-seal.json'] == ORIGINAL_READER_SEAL_SHA, 'exact unchanged prequality reader seal')
-    repair = reader_repair_provenance((capsule / 'independent-reader/validate_visible_difference.py').read_bytes(),
-                                    Path(__file__).resolve().read_bytes(), capsule / 'independent-reader/validate_visible_difference.py',
-                                    Path(__file__).resolve(), args.source_sha256)
-# END query basename repair v2 capture
+    # New captures bind this path-adapted reader prospectively to its exact
+    # source hash. Historical basename-repair receipts keep their old proof;
+    # use the frozen historical reader when reproducing those old records.
+    if before['independent-reader/validate_visible_difference.py'] == args.source_sha256:
+        check(sha(Path(__file__).resolve()) == args.source_sha256, 'exact newly sealed current reader SOURCE')
+        seal = json.loads((capsule / 'independent-reader/reader-seal.json').read_text())
+        source_fixture = json.loads((capsule / 'independent-reader/source-fixtures.json').read_text())
+        expected_reader_names = sorted(set(MODULE_PINS) | {'validate_visible_difference.py', 'source-fixtures.json'})
+        check(seal['status'] == 'passed' and [row['path'] for row in seal['files']] == expected_reader_names,
+              'new exact prospective reader SOURCE matrix')
+        for row in seal['files']:
+            name = 'independent-reader/' + row['path']
+            check(before[name] == row['sha256'] and (capsule / name).stat().st_size == row['bytes'],
+                  'new prospective reader seal byte binding')
+        check(source_fixture['status'] == 'passed' and source_fixture['source_only'] is True and
+              source_fixture['validator_sha256'] == args.source_sha256 and
+              source_fixture['actual_archive_reads'] == source_fixture['actual_capsule_reads'] == 0 and
+              source_fixture['module_sha256'] == MODULE_PINS,
+              'new current SOURCE artificial-only fixture binding')
+        repair = {'kind': 'current-prequality-source-binding', 'reader_sha256': args.source_sha256,
+                  'historical_repair_certified': False}
+    else:
+        check(before['independent-reader/validate_visible_difference.py'] == ORIGINAL_READER_SHA, 'exact historical prequality reader SOURCE')
+        check(before['independent-reader/reader-seal.json'] == ORIGINAL_READER_SEAL_SHA, 'exact unchanged historical prequality reader seal')
+        repair = reader_repair_provenance((capsule / 'independent-reader/validate_visible_difference.py').read_bytes(),
+                                        Path(__file__).resolve().read_bytes(), capsule / 'independent-reader/validate_visible_difference.py',
+                                        Path(__file__).resolve(), args.source_sha256)
     for name, pin in MODULE_PINS.items():
         check(before['independent-reader/' + name] == pin, 'prequality captured unchanged arithmetic module')
     cache = {}
@@ -728,7 +754,7 @@ def run(args):
     check((capsule / 'parent-progress.tsv').read_text() == '\n'.join(tsv) + '\n', 'independently rederived parent counter TSV')
     check(all(sha(p) == before[r['path']] for p, r in zip(paths, records)), 'all saved capsule bytes preserved after arithmetic')
     check(sha(inventory_path) == inventory_sha, 'exact original inventory bytes preserved')
-    check(sha(Path(__file__).resolve()) == args.source_sha256 and all(sha(Path(__file__).resolve().parent / n) == pin for n, pin in MODULE_PINS.items()),
+    check(sha(Path(__file__).resolve()) == args.source_sha256 and all(sha(MODULE_SOURCE_PATHS[n]) == pin for n, pin in MODULE_PINS.items()),
           'all executing reader SOURCE bytes preserved')
     result = {'status': 'passed', 'protocol': PROTOCOL, 'source_sha256': args.source_sha256, 'card_sha256': args.card_sha256,
               'capsule': str(capsule), 'inventory_sha256': inventory_sha, 'checks': CHECKS + M.CHECKS + R.CHECKS + L.CHECKS,

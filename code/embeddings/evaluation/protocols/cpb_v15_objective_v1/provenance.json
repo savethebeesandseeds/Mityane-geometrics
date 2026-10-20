@@ -1,0 +1,200 @@
+{
+  "kind": "cpb_v15_objective_owned_protocol_source_derivation_v1",
+  "status": "draft_unexecuted_requires_independent_source_protocol_and_build_review",
+  "source_revision": {
+    "repository": "cuwacunu_embedding",
+    "version": "CPB-v4",
+    "frozen_capsule_manifest_path": "code/embeddings/output/engineering/causal-fresh-v4/attempt-001/source-manifest.json",
+    "bytes": 22692,
+    "sha256": "36004a1b93cac6f5c1bb5c9277a528e713b4d7a7ff20670aa561022edd8e4294"
+  },
+  "license": "MIT repository license; all original per-file copyright/license notices retained",
+  "line_encoding": "New derivative sources use LF; source identity is not substituted for frozen bytes.",
+  "adaptations": [
+    "Macro-bind common train/extract helpers to independently owned V4-control or V15-candidate model API; preserve frozen V4 design and source.",
+    "Parameterize exactly three fresh initialization seeds945101/945102/945103 and paired row+1000/mask+2000/context+3000 streams.",
+    "Backward uses model output.loss: original partial Gaussian NLL for control, unit Huber1 mean plus detached-error Gaussian variance for candidate.",
+    "Retain2048 B8 AdamW.001/weightdecay.0001/singleclip1/typed512 continuation, fresh TRAIN-only4096-window input/bank calibration and immutable query geometry.",
+    "Copy fixed market and TEMPO head arithmetic unchanged; change only protocol adapter metadata and explicit current physical inputs.",
+    "Add distinct source-reviewed target precision parity and blind February target preparation; add all-six-seal-gated confirmation extraction and reuse saved fitted arrays without fits."
+  ],
+  "copied_sources": [
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/train_main.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/train_main.cpp",
+      "bytes": 34476,
+      "sha256": "7410de6c5a9b0b0cb561c71b5da7ba4168eea4c85e89e70f8b2f8135a00a3d21",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/train_main.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/include/market_data.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/include/market_data.h",
+      "bytes": 5020,
+      "sha256": "cbbe6ff30637691f283f1e101c55718fadbfb356deec9989b231099badabc8b6",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/include/market_data.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/include/calibration.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/include/calibration.h",
+      "bytes": 6460,
+      "sha256": "3bf64806ec9028b6ece926f1bb2273bd7672cf5e222bf8b2489cbcd43a4c0890",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/include/calibration.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/include/context_deletion.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/include/context_deletion.h",
+      "bytes": 10829,
+      "sha256": "ec5f79f4448de818f89f2ffedfd0f5cd97a1882528c3858e8bf4fe2b5a13e141",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/include/context_deletion.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/include/training_utils.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/include/training_utils.h",
+      "bytes": 1571,
+      "sha256": "c5a911865141c706db500024789e53ad3de7bb9e67549781a62a4c3ec91ca1ed",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/include/training_utils.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/market_read_main.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/market_read_main.cpp",
+      "bytes": 2438,
+      "sha256": "95d4ffbf5d94593d85f00bc6f5aa540bbd14b43ee58ad32ec5154a6aaa7e5f96",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/market_read_main.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/synthetic_read_main.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/synthetic_read_main.cpp",
+      "bytes": 12339,
+      "sha256": "a7b0540d1bde7e05576cf309e9828359cb032890cabf1f11cc9e3e178b5cdf4b",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/synthetic_read_main.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/extract_main.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/extract_main.cpp",
+      "bytes": 19584,
+      "sha256": "b50e954bdf482bd173877d80899f392c2a272a1812f3944145b0c7f57d5f5e2f",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/extract_main.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/src/fixed_regression.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/src/fixed_regression.cpp",
+      "bytes": 22417,
+      "sha256": "821b027aa301bb060c621dd2ec5823495f3c3d76fbbe0637406ba3656b1d3da5",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/src/fixed_regression.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/src/fixed_feature_readouts.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/src/fixed_feature_readouts.cpp",
+      "bytes": 21926,
+      "sha256": "1de2800e99c52a3df6b2bc168cd7b4c900888162e0056d1c681c2e74c3396b2c",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/src/fixed_feature_readouts.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/src/feature_harness.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/src/feature_harness.cpp",
+      "bytes": 25946,
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/src/feature_harness.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/src/data.cpp",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/src/data.cpp",
+      "bytes": 6133,
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/src/data.cpp"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/evaluation/fixed_regression.h",
+      "bytes": 2922,
+      "sha256": "ebe92c07cf7066cf3339522a362ce7cc8eb4288bc4d2890655f2bdf67a986d10",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/cuwacunu/evaluation/fixed_regression.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/data/record_types.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/data/record_types.h",
+      "bytes": 6598,
+      "sha256": "b59be6243c1ea479f56f62edde563737c1e3c1863ed6618bf064ae2789d847d7",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/cuwacunu/data/record_types.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/data/support.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/cuwacunu/data/support.h",
+      "bytes": 329,
+      "sha256": "10f6212491faf4b71144624a1c5501b8485f1c60aa450a62df483fbdfe665682",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/cuwacunu/data/support.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/fixed_feature_readouts.h",
+      "bytes": 2428,
+      "sha256": "aea837bf3129044e2921695c4770082f07ae2f4ec7508b1ffeef535dfd52ce79",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/embedding/shared/fixed_feature_readouts.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/feature_harness.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/feature_harness.h",
+      "bytes": 5770,
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/embedding/shared/feature_harness.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/data.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/data.h",
+      "bytes": 1292,
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/embedding/shared/data.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/types.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/types.h",
+      "bytes": 1083,
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/embedding/shared/types.h"
+    },
+    {
+      "original_repository": "cuwacunu_embedding",
+      "original_path": "code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/evaluation.h",
+      "preserved_path": ".archive/embeddings/pre-cleanup-2026-10-18/code/research/causal_fresh_v4/evaluation/deps/include/embedding/shared/evaluation.h",
+      "bytes": 1311,
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270",
+      "destination": "code/embeddings/evaluation/protocols/cpb_v15_objective_v1/deps/include/embedding/shared/evaluation.h"
+    }
+  ],
+  "new_sources": [
+    "include/model_binding.h",
+    "target_prepare_main.cpp",
+    "confirmation_extract_main.cpp",
+    "confirmation_read_main.cpp",
+    "prepare.mjs",
+    "run.mjs",
+    "objective.mk"
+  ],
+  "execution": {
+    "project_code_executed_by_preparation_agent": false,
+    "tensor_payloads_read": false,
+    "builds": 0,
+    "training_updates": 0,
+    "head_fits": 0
+  },
+  "identity_policy": "This import is explicit frozen source ancestry. New maintained protocol files and binaries receive separately reviewed current path-bound identities."
+}

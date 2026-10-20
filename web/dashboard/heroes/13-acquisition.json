@@ -4,7 +4,7 @@
   "number": 13,
   "title": "OR-13 · Information acquisition and exploration",
   "summary": "Choose observations, labels, revisits or experiments under a budget and measure the value of the acquired evidence.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-13-acquisition-contract",
@@ -78,6 +78,60 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Compare complete budget-matched learning or decision curves against passive/random acquisition, including selection overhead and failed acquisitions. Evaluate realized information value rather than treating embedding coverage or prediction error alone as the outcome."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-13-acquisition-toolset",
+      "title": "Expose Hx13 capabilities as a reusable toolset",
+      "description": "Expose the candidate-pool handling, acquisition selection, budget checks, feedback boundaries and result handling developed within this Hero through common CLI and reusable library interfaces across compatible representation providers. Make functionality discoverable, configurable, checkable, callable and inspectable while preserving operation-owned behavior and explicit composition points. Provider-neutral interfaces do not establish universal compatibility, representation suitability or currently implemented capability.",
+      "milestones": [
+        {
+          "id": "or-13-acquisition-toolset-surface",
+          "title": "Define the Hx13 toolset surface",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Map the Hero's implemented and selected future building blocks to public tools and reusable APIs. Identify existing interfaces, implementation gaps, ownership, schemas, dependencies and claim limits before agreeing the delivery coverage.",
+          "acceptance": [
+            "A versioned toolset map links each intended public capability to its owning implementation or explicit implementation gap, contract, request/result schemas, prerequisites and supported claim scope.",
+            "Document common discover, configure, check, run and inspect workflows through CLI and reusable APIs, including how individual steps compose and how results can be reused. Keep model/provider behavior with its owner and declare the interfaces this Hero consumes.",
+            "Declare acquisition-pool and protected-assessment boundaries, selection costs and budget, availability of feedback, update and stopping rules, acquisition/model identities and required selection probabilities; novelty or uncertainty scores alone do not establish information value."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-13-acquisition-toolset-coverage",
+          "title": "Expose and verify the agreed Hx13 building blocks",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Deliver the public interfaces and composed workflows agreed in the toolset map, with discoverable commands, documented schemas, reusable results and provider-neutral examples. This planning entry does not admit a new experiment, training run, API call or other external execution.",
+          "dependsOn": [
+            "or-13-acquisition-toolset-surface"
+          ],
+          "acceptance": [
+            "The agreed toolset map has no unreported exposure gaps: selected implemented building blocks and workflows are callable through documented CLI and library interfaces, while unavailable capabilities and compatibility limits remain explicit.",
+            "End-to-end engineering examples use the same public calling conventions with distinct compatible provider configurations where applicable, preserve artifact identity and lineage, and retain all failure, abstention and unresolved outcomes. Scientific utility and transfer claims require separate bound evaluation evidence.",
+            "Examples retain complete selection histories, failed acquisition costs, feedback availability and model revisions while enforcing the declared budget and assessment boundary. Calls do not silently obtain external feedback or start fitting, and information-value claims require their own budget-matched evidence."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
           ]
         }
       ]

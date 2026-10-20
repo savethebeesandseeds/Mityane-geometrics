@@ -13,13 +13,12 @@ for argument in "$@"; do
     *) echo "Unknown option: $argument" >&2; exit 2 ;;
   esac
 done
-runtime=/opt/mityane-geometrics/web/tools/node-v22.23.3-linux-x64
-[[ -x $runtime/bin/node ]] || { echo 'Run web/dashboard/scripts/setup.sh inside the managed container first.' >&2; exit 1; }
-[[ $("$runtime/bin/node" --version) == v22.23.3 ]] || { echo 'Pinned Linux Node v22.23.3 is required.' >&2; exit 1; }
+node=(bash /mityane/code/scripts/node.sh)
 mkdir -p /opt/mityane-geometrics/web/tmp
 export TMPDIR=/opt/mityane-geometrics/web/tmp
 exec 9>/opt/mityane-geometrics/web/refresh.lock
 flock -n 9 || { echo 'Another dashboard refresh is running; retry after it completes.' >&2; exit 1; }
-python3 "$dashboard_root/scripts/prepare-branding.py" "${check[@]}"
-"$runtime/bin/node" --test "$dashboard_root/tests/"*.test.mjs
-"$runtime/bin/node" "$dashboard_root/scripts/validate.mjs" "${check[@]}"
+make --no-print-directory -C /mityane dashboard-branding-native
+"${node[@]}" "$dashboard_root/scripts/prepare-branding.mjs" "${check[@]}"
+"${node[@]}" --test "$dashboard_root/tests/"*.test.mjs
+"${node[@]}" "$dashboard_root/scripts/validate.mjs" "${check[@]}"

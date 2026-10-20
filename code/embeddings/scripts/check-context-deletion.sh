@@ -6,7 +6,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Context admission takes no recipe overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-context-deletion"
+root="$PWD/.temp/embeddings/runs/rpb-context-deletion"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Context admission evidence: %s\n' "$admission"
@@ -41,21 +41,7 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary and preserved production sources differ.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-record = dict(protocol='context-deletion-v1', status='passed',
-    source_fingerprint=sys.argv[2],
-    augmented_cuda_contract='context_deletion_adapter_test: inputs/loss/gradients/updates, default-path parity and frozen inference',
-    other_gates=['pure context masks/loss', 'training policy compatibility/resume rejection',
-                 'shared protocol defaults/custom namespaces', 'ordinary CPU modes/resume', 'legacy checkpoint exports'],
-    source_preserved=True,
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission context-deletion-v1 "$admission" "$source_id"
 # Advance only this evidence pointer after every declared check succeeded.
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Context admission passed: %s\n' "$admission"

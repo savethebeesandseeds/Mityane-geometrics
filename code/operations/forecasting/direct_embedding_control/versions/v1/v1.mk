@@ -13,7 +13,7 @@ DIRECT_CONTROL_V1_SOURCE_FILES := \
   code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/tensor_state.h \
   code/operations/forecasting/evaluation/versions/v1/include/cuwacunu/evaluation/latent_dynamics/v1/baselines.h \
   code/operations/forecasting/evaluation/versions/v1/src/baselines.cpp
-DIRECT_CONTROL_V1_SOURCE_SHA256 := $(shell python3 $(DIRECT_CONTROL_V1_ROOT)/source_identity.py --root .)
+DIRECT_CONTROL_V1_SOURCE_SHA256 := $(shell bash code/scripts/node.sh $(DIRECT_CONTROL_V1_ROOT)/source_identity.mjs --root .)
 ifeq ($(DIRECT_CONTROL_V1_SOURCE_SHA256),)
 $(error Cannot establish the compiled direct embedding control source identity)
 endif
@@ -30,10 +30,10 @@ test-direct-control-v1: $(DIRECT_CONTROL_V1_TEST)
 	$(DIRECT_CONTROL_V1_TEST) "$(BUILD_DIR)/tmp/direct-control-$$(date +%s%N)"
 test-direct-control-artifact: $(DIRECT_CONTROL_V1_ARTIFACT_TEST)
 	$(DIRECT_CONTROL_V1_ARTIFACT_TEST)
-$(BUILD_DIR)/direct_embedding_control_v1_test.o: $(DIRECT_CONTROL_V1_ROOT)/tests/control_test.cpp $(DIRECT_CONTROL_V1_SOURCE_FILES) $(DIRECT_CONTROL_V1_ROOT)/source_identity.py
+$(BUILD_DIR)/direct_embedding_control_v1_test.o: $(DIRECT_CONTROL_V1_ROOT)/tests/control_test.cpp $(DIRECT_CONTROL_V1_SOURCE_FILES) $(DIRECT_CONTROL_V1_ROOT)/source_identity.mjs code/scripts/node.sh
 	mkdir -p "$(@D)"
 	$(CXX) $(DIRECT_CONTROL_V1_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-$(BUILD_DIR)/direct_embedding_control_v1_artifact_test.o: $(DIRECT_CONTROL_V1_ROOT)/tests/artifact_test.cpp $(DIRECT_CONTROL_V1_SOURCE_FILES) $(DIRECT_CONTROL_V1_ROOT)/source_identity.py
+$(BUILD_DIR)/direct_embedding_control_v1_artifact_test.o: $(DIRECT_CONTROL_V1_ROOT)/tests/artifact_test.cpp $(DIRECT_CONTROL_V1_SOURCE_FILES) $(DIRECT_CONTROL_V1_ROOT)/source_identity.mjs code/scripts/node.sh
 	mkdir -p "$(@D)"
 	$(CXX) $(DIRECT_CONTROL_V1_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(DIRECT_CONTROL_V1_TEST): $(BUILD_DIR)/direct_embedding_control_v1_test.o $(LD_EVAL_V1_OBJECT)

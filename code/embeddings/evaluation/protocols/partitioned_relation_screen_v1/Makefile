@@ -1,5 +1,5 @@
 # Separate fixed v16 screen; frozen v14/v15 producer files are not modified.
-BUILD_DIR ?= /opt/cuwacunu_embedding/build/rpb-partitioned-relation-screen
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/rpb-partitioned-relation-screen
 include Makefile
 .DEFAULT_GOAL := partitioned-relation-screen
 PART_SCREEN_ROOT := code/embeddings/evaluation/protocols/partitioned_relation_screen_v1
@@ -7,13 +7,15 @@ PART_SCREEN_OBJECT_DIR := $(OBJECT_DIR)/protocols/partitioned_relation_screen_v1
 PART_SCREEN_BIN := $(BUILD_DIR)/embedding_partitioned_relation_screen
 PART_SCREEN_RPB_HEADERS := $(addprefix $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/,config.h types.h encoder.h tokenization.h masking.h objectives.h model.h visible_difference.h preprocessing.h training_utils.h context_deletion.h temporal_relation_bank.h partitioned_temporal_relation.h)
 PART_SCREEN_SHARED_NAMES := data evaluation feature_harness feature_evaluation feature_stress archive_readout native_curve paired_pooling fixed_feature_readouts
-PART_SCREEN_SHARED_SOURCES := $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(PART_SCREEN_SHARED_NAMES)))
-PART_SCREEN_INPUTS := $(sort Makefile $(PART_SCREEN_ROOT)/Makefile $(PART_SCREEN_ROOT)/partitioned_relation_screen_main.cpp $(PART_SCREEN_ROOT)/prepare_screen.py $(PART_SCREEN_ROOT)/check_saved_stdlib.py code/embeddings/evaluation/protocols/architecture_screen_v1/retained_input.h code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile code/embeddings/evaluation/cards/partitioned_relation_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(PART_SCREEN_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(PART_SCREEN_SHARED_SOURCES) $(RPB_ROOT)/tests/partitioned_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS))
+PART_SCREEN_SHARED_SOURCES := code/data/observations/src/data.cpp $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(filter-out data,$(PART_SCREEN_SHARED_NAMES))))
+PART_SCREEN_INPUTS := $(sort Makefile $(PART_SCREEN_ROOT)/Makefile $(PART_SCREEN_ROOT)/partitioned_relation_screen_main.cpp $(PART_SCREEN_ROOT)/prepare_screen.mjs $(PART_SCREEN_ROOT)/check_saved_stdlib.py code/embeddings/evaluation/protocols/architecture_screen_v1/retained_input.h code/embeddings/evaluation/protocols/architecture_screen_v1/Makefile code/embeddings/evaluation/cards/partitioned_relation_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(PART_SCREEN_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(PART_SCREEN_SHARED_SOURCES) $(RPB_ROOT)/versions/v16/tests/partitioned_temporal_relation_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/saved_cpu_math.py code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/legacy_implementation.py $(SDK_PROVENANCE_INPUTS) $(wildcard $(PART_SCREEN_ROOT)/*.mjs) $(PROTOCOL_NODE_INPUTS))
+PART_SCREEN_INPUTS := $(sort $(PART_SCREEN_INPUTS) $(RPB_CORE_HEADERS) $(OBSERVATION_PROVENANCE_INPUTS))
 PART_SCREEN_SOURCE_ID := $(shell sha256sum $(PART_SCREEN_INPUTS) | sha256sum | cut -d ' ' -f 1)
 PART_SCREEN_CPPFLAGS := $(COMMON_CPPFLAGS) -I$(RPB_ROOT)/include -I$(RPB_ROOT)/tests -Icode/embeddings/evaluation/include -DARCHITECTURE_SCREEN_SOURCE_ID=\"$(PART_SCREEN_SOURCE_ID)\" -DRPB_SOURCE_ID=\"$(PART_SCREEN_SOURCE_ID)\"
 # These nine objects were compiled with the same root COMMON_CPPFLAGS/CXXFLAGS,
 # without RPB/architecture macros. Their actual source and headers are above.
 # An absent artifact fails here; this protocol never rebuilds the old objects.
+# Inherited read-only objects, not a new build directory; never rebuild or move them here.
 PART_SCREEN_SHARED_DIR := /opt/cuwacunu_embedding/build/rpb-architecture-screen/code/protocols/architecture_screen_v1/shared
 PART_SCREEN_SHARED_OBJECTS := $(addprefix $(PART_SCREEN_SHARED_DIR)/,$(addsuffix .o,$(PART_SCREEN_SHARED_NAMES)))
 
@@ -24,11 +26,16 @@ print-partitioned-relation-screen-sources:
 $(PART_SCREEN_OBJECT_DIR)/partitioned_relation_screen_main.o: $(PART_SCREEN_ROOT)/partitioned_relation_screen_main.cpp $(PART_SCREEN_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(PART_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-$(PART_SCREEN_SHARED_OBJECTS):
+PART_SCREEN_NEW_SHARED_REFUSALS := $(filter-out $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS),$(PART_SCREEN_SHARED_OBJECTS))
+ifneq ($(strip $(PART_SCREEN_NEW_SHARED_REFUSALS)),)
+$(PART_SCREEN_NEW_SHARED_REFUSALS):
 	@printf '%s\n' 'Required frozen generic shared object is absent: $@' >&2; exit 1
+endif
+MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS := $(sort $(MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS) $(PART_SCREEN_SHARED_OBJECTS))
+unexport MITYANE_FROZEN_GENERIC_REFUSAL_OBJECTS
 $(PART_SCREEN_BIN): $(PART_SCREEN_OBJECT_DIR)/partitioned_relation_screen_main.o $(PART_SCREEN_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
-$(PART_SCREEN_OBJECT_DIR)/partitioned_temporal_relation_test.o: $(RPB_ROOT)/tests/partitioned_temporal_relation_test.cpp $(PART_SCREEN_INPUTS)
+$(PART_SCREEN_OBJECT_DIR)/partitioned_temporal_relation_test.o: $(RPB_ROOT)/versions/v16/tests/partitioned_temporal_relation_test.cpp $(PART_SCREEN_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(PART_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(PART_SCREEN_OBJECT_DIR)/partitioned_temporal_relation_test: $(PART_SCREEN_OBJECT_DIR)/partitioned_temporal_relation_test.o $(PART_SCREEN_SHARED_DIR)/data.o

@@ -4,8 +4,9 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv && $# -eq 0 ]] || { echo 'Run the closed diagnosis in the managed container.' >&2; exit 1; }
 binary="${SAVED_NATIVE_RELIABILITY_BIN:-/opt/mityane-geometrics/embeddings/build/rpb-paired-pooling/embedding_saved_feature_reliability}"
 [[ "$binary" = /* && -x "$binary" && -n "${SAVED_NATIVE_RELIABILITY_SOURCE_INPUTS:-}" ]] || { echo 'Use the source-bound Make target.' >&2; exit 1; }
-root="$PWD/output/runs/rpb-saved-native-reliability"
-helper='code/embeddings/scripts/prepare-saved-native-reliability.py'
+root="$PWD/.temp/embeddings/runs/rpb-saved-native-reliability"
+helper='code/embeddings/scripts/prepare-saved-native-reliability.mjs'
+historical_parent="${SAVED_NATIVE_RELIABILITY_HISTORICAL_PARENT_CAPSULE:?Set SAVED_NATIVE_RELIABILITY_HISTORICAL_PARENT_CAPSULE to the exact retained fresh-decoder parent capsule}"
 card_sha='f93898f6dd92869e319b251eabdb466fc9ac57da13e46c53685dcd25f7b38a91'
 build_dir="$(dirname -- "$binary")"
 [[ "$build_dir" = /opt/mityane-geometrics/embeddings/build/* ]]
@@ -25,7 +26,7 @@ printf 'Saved native reliability capsule: %s\n' "$capsule"
 source_id="$("$binary" --source-id)"
 read -r -a sources <<< "$SAVED_NATIVE_RELIABILITY_SOURCE_INPUTS"
 "$binary" --plan > "$capsule/recipe-plan.json"
-python3 "$helper" freeze-run --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" freeze-run --repo-root "$PWD" --target "$capsule" --historical-parent-capsule "$historical_parent" \
   --card-sha256 "$card_sha" --sources "${sources[@]}" --admission "$admission" \
   --compiled-source-id "$source_id" --binary "$binary" \
   --reader-source "${reader[0]}" --reader-fixtures "${reader[1]}" --reader-seal "${reader[2]}"
@@ -35,6 +36,6 @@ log_sha="$(sha256sum "$capsule/admission/build-and-tests.log" | cut -d ' ' -f 1)
   --admission-log "$capsule/admission/build-and-tests.log" --admission-sha256 "$log_sha" \
   --card "$capsule/source/code/embeddings/evaluation/cards/saved_native_reliability_v1.md" --card-sha256 "$card_sha" \
   2>&1 | tee "$capsule/command.log"
-python3 "$helper" finalize --repo-root "$PWD" --target "$capsule" \
+bash code/scripts/node.sh "$helper" finalize --repo-root "$PWD" --target "$capsule" --historical-parent-capsule "$historical_parent" \
   --card-sha256 "$card_sha" --compiled-source-id "$source_id"
 printf 'Saved native reliability complete: %s\n' "$capsule"

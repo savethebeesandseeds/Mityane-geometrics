@@ -84,6 +84,15 @@ These revisions identify the inspected repositories; the copied support files
 are recorded by SHA256 in `environment-image.json` because local source edits
 can exist independently of a Git revision.
 
+The [18 October Python maintenance migration](PYTHON_MIGRATION_2026-10-18.md)
+adds Node replacements for current SDK/layout verification and source identity,
+and a Node/C++ replacement for dashboard artwork preparation. These are new
+maintained implementations with their own source identities. The original
+Python support sources remain available only as archived evidence after the
+[working-copy removal](PYTHON_MIGRATION_REMOVAL_2026-10-18.json); replacements do not
+stand in for source bytes pinned by earlier research. SDK verification preserves
+the existing immutable proof/inventory without modifying the SDK or its profile.
+
 When importing another embedding, record its family/version, checkpoint hash,
 input layout, native output layout, masks, scaler and training provenance,
 evaluation protocol, source revision and license. Keep evidence from the

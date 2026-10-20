@@ -4,13 +4,8 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Native view agreement admission takes no overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-native-view-agreement-validation"
-python3 - <<'PY'
-import hashlib
-from pathlib import Path
-card = Path('code/embeddings/evaluation/cards/native_view_agreement_validation_v1.md')
-assert hashlib.sha256(card.read_bytes()).hexdigest() == '1f33eff0e6ca3e3241fd972fdc855900c535defa330f4eaec7effdf0c90d1c2e'
-PY
+root="$PWD/.temp/embeddings/runs/rpb-native-view-agreement-validation"
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs check-card native-view-agreement-validation-v1 "$PWD"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Native view agreement admission: %s\n' "$admission"
@@ -48,23 +43,6 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary differs from preserved production source.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-assert 'Native view agreement CUDA admission passed' in (root/'build-and-tests.log').read_text()
-record = dict(protocol='native-view-agreement-validation-v1', status='passed', source_fingerprint=sys.argv[2],
-    human_card_sha256='1f33eff0e6ca3e3241fd972fdc855900c535defa330f4eaec7effdf0c90d1c2e',
-    source_preserved=True,
-    gates=['actual CUDA native-view-agreement objective and native32 serving', 'strict objective/calibration policy and full initialization pairing',
-           'ordinary reconstruction anchor, detached target, fixed TRAIN calibration and skip abort', 'original query/loss support and repaired context',
-           'exact live continuation across saved snapshots and immutable calibration', 'legacy disabled/.30/.15/balanced defaults and v6-only replay',
-           'tagged ordinary resume rejection', 'development-only completion and shared fixed readouts'],
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    cuda_gate_log_sha256=hashlib.sha256((root/'cuda-gate.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission native-view-agreement-validation-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Native view agreement admission passed: %s\n' "$admission"

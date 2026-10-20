@@ -206,7 +206,7 @@ int main(int argc,char **argv) { try {
       args.count("--card")&&args.count("--card-sha256"),"five fixed measurement options required");
   const fs::path output=args.at("--output");
   require(output.is_absolute()&&output.filename()=="results"&&
-      output.parent_path().parent_path()==fs::path("/embedding/output/runs/rpb-early-mixer-learning-curve")&&
+      output.parent_path().parent_path()==fs::path("/mityane/.temp/embeddings/runs/rpb-early-mixer-learning-curve")&&
       fs::canonical(output.parent_path())==output.parent_path()&&
       output.parent_path().filename().string().rfind("early-mixer-learning-curve-",0)==0,"exclusive curve capsule bounds");
   require(fs::path(args.at("--card"))==output.parent_path()/"source"/card_relative&&args.at("--card-sha256")==card_sha&&

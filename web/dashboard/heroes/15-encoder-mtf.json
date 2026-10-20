@@ -4,7 +4,7 @@
   "number": 15,
   "title": "Encoder · MTF-JEPA-MAE-VICReg",
   "summary": "Preserve the retained MTF-v1 reference and its model-owned evidence; expose an explicitly versioned representation source for future operations.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "encoder-mtf-preservation",
@@ -81,6 +81,48 @@
             "Use foundations-record-validation and foundations-temporal-integrity. Record actual per-output support and availability, distinguishing a complete-window embedding from a prefix-valid representation; masks must have documented dependency semantics.",
             "Record-level fixtures cover shape, non-finite/missing data, mask behavior, source lineage, preprocessing changes and the temporal claim actually made. Provider replay and operation utility have separate receipts.",
             "Any diagnostic probe uses or-05-readouts-probe-protocol with an explicitly bound scope; no historical protocol or instance is silently replaced by a comparative default."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encoder-mtf-toolset",
+      "title": "Expose Hx15 capabilities as a reusable toolset",
+      "description": "Expose the agreed MTF loading, encoding, export, validation and selected workflow building blocks through documented CLI and reusable APIs compatible with common provider records and operation consumers. Model-specific behavior stays in the MTF component; a common interface does not imply common coordinates or geometry.",
+      "milestones": [
+        {
+          "id": "encoder-mtf-toolset-surface",
+          "title": "Define the MTF tool surfaces and usage contracts",
+          "status": "proposed",
+          "description": "Map existing MTF APIs, CLI and adapters plus selected future building blocks into the common usage conventions; retained baseline tests alone do not establish broad toolset coverage.",
+          "updatedAt": "2026-10-20",
+          "acceptance": [
+            "Inventory the agreed loading, encoding, export, validation and workflow surfaces, distinguishing implemented interfaces, reusable components and remaining gaps without selecting a new trained instance or resuming research.",
+            "Specify versioned CLI/API inputs and outputs, checkpoint/preprocessing and source identities, native output selection, masks, support/availability, compatibility requirements and explicit failure/abstention behavior.",
+            "Define bounded examples and completion criteria for common provider records and operation integration, preserving MTF-owned implementation and historical evidence; do not force universal shape or geometry."
+          ],
+          "evidence": [
+            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
+            {"label": "MTF family interfaces and ownership", "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"},
+            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+          ]
+        },
+        {
+          "id": "encoder-mtf-toolset-coverage",
+          "title": "Expose and verify the agreed MTF building blocks",
+          "status": "proposed",
+          "description": "Deliver the agreed callable MTF surfaces, examples and provider-to-operation integration checks without substituting historical research scores for tool verification.",
+          "updatedAt": "2026-10-20",
+          "dependsOn": ["encoder-mtf-toolset-surface"],
+          "acceptance": [
+            "Expose the agreed MTF building blocks through documented Linux CLI and reusable library interfaces in the managed container, using common provider contracts while keeping model loading, inference and export implementation with MTF.",
+            "Verify selected standalone tools and a bounded provider-to-operation workflow with explicit native shape, preprocessing, masks, lineage and temporal interpretation; exercise malformed input, incompatible consumer and missing-artifact failures or abstentions.",
+            "Retain actual engineering receipts and examples with explicit coverage and gaps. Keep checkpoints and restricted data private; research runs, fitting or new utility claims retain separate actual bindings, protocol and permissions."
+          ],
+          "evidence": [
+            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
+            {"label": "MTF family interfaces and ownership", "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"},
+            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
           ]
         }
       ]

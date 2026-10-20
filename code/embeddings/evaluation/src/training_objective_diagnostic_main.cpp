@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 #include "embedding/encoders/raw_patch_bottleneck_mae/training_objective_diagnostic.h"
+#include "../include/historical_parent_paths.h"
 #include <array>
 #include <algorithm>
 #include <filesystem>
@@ -96,11 +97,13 @@ const std::array<std::string,7> files{"controlled-training.pt","milestone-512/ch
 std::string input_id(uint64_t master,size_t tag) {
   return "seed-"+std::to_string(master)+"-"+tags.at(tag)+"-updates-512";
 }
-std::array<std::string,13> paths(const fs::path &repo,uint64_t master,size_t tag) {
+std::array<std::string,13> paths(const fs::path &repo,uint64_t master,size_t tag,bool resolve_physical=true) {
   std::array<std::string,13> result;
-  const auto base=repo/parents.at(tag)/("seed-"+std::to_string(master)+"-lag_sign");
+  const auto directory=resolve_physical?embedding::evaluation::historical_paths::physical(parents.at(tag)):repo/parents.at(tag);
+  const auto head_directory=resolve_physical?embedding::evaluation::historical_paths::physical(heads):repo/heads;
+  const auto base=directory/("seed-"+std::to_string(master)+"-lag_sign");
   for(size_t i=0;i<7;++i)result[i]=(base/files[i]).string();
-  for(size_t rep=0;rep<3;++rep){const auto p=repo/heads/input_id(master,tag)/("rep-"+std::to_string(rep+1));
+  for(size_t rep=0;rep<3;++rep){const auto p=head_directory/input_id(master,tag)/("rep-"+std::to_string(rep+1));
     result[7+rep*2]=(p/"native-fit.pt").string();
     result[8+rep*2]=(p/"native-training-predictions.pt").string();}
   return result;
@@ -158,7 +161,7 @@ int main(int argc,char **argv) {
     require(sha256("abc")=="ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad","SHA implementation self-check");
     if(argc==2 && std::string(argv[1])=="--source-id"){std::cout << EVALUATION_SOURCE_ID << '\n';return 0;}
     if(argc==2 && std::string(argv[1])=="--metadata-self-test"){
-      std::set<std::string> allowed;for(const auto master:masters)for(size_t tag=0;tag<3;++tag)for(const auto &path:paths("/embedding",master,tag))allowed.insert(path);
+      std::set<std::string> allowed;for(const auto master:masters)for(size_t tag=0;tag<3;++tag)for(const auto &path:paths("/embedding",master,tag,false))allowed.insert(path);
       require(allowed.size()==195 && split(tsv_header,'\t').size()==22,"metadata role schema");
       std::cout << "Metadata/SHA self-check passed; payloads read0.\n";return 0;
     }
@@ -167,9 +170,9 @@ int main(int argc,char **argv) {
     for(int i=1;i<argc;i+=2)require(args.emplace(argv[i],argv[i+1]).second,"duplicate argument");
     for(const auto *key:{"--repo-root","--output","--instances","--instances-sha256","--input-manifest","--input-manifest-sha256","--admission-log","--admission-log-sha256"})require(args.count(key),"missing required argument");
     require(is_sha(EVALUATION_SOURCE_ID) && is_sha(args.at("--admission-log-sha256")),"compiled source and admitted log binding required");
-    const auto repo=fs::canonical(args.at("--repo-root"));require(repo==fs::path("/embedding"),"managed repository mount required");
+    const auto repo=fs::canonical(args.at("--repo-root"));require(repo==fs::path("/mityane"),"managed repository mount required");
     const auto output=fs::absolute(args.at("--output")).lexically_normal();
-    require(output.string().rfind((repo/"output/runs/rpb-training-objective-diagnostic/").string(),0)==0 && !fs::exists(output),"new diagnostic output required");
+    require(output.string().rfind((repo/".temp/embeddings/runs/rpb-training-objective-diagnostic/").string(),0)==0 && !fs::exists(output),"new diagnostic output required");
     const auto admission=bytes(args.at("--admission-log"));
     require(sha256(admission)==args.at("--admission-log-sha256") && admission.find("TRAIN objective CUDA admission passed")!=std::string::npos,"actual CUDA admission log missing/mismatched");
     const auto tsv=bytes(args.at("--instances")),manifest=bytes(args.at("--input-manifest"));
@@ -177,6 +180,7 @@ int main(int argc,char **argv) {
     auto parsed=instances(tsv,repo);InputGuard guard(manifest,repo);
     rpb::TrainingObjectiveDiagnosticRun run{output.string(),EVALUATION_SOURCE_ID,std::move(parsed)};
     rpb::run_training_objective_diagnostic(run);
+    embedding::evaluation::historical_paths::write_ledger(output/"historical-path-mapping.json");
     guard.verify();
     require(bytes(args.at("--instances"))==tsv && bytes(args.at("--input-manifest"))==manifest,"input metadata changed");
     require(bytes(args.at("--admission-log"))==admission,"admission log changed");

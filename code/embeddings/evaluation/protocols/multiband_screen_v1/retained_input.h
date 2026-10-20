@@ -50,7 +50,7 @@ inline void admit_files(const std::vector<fs::path> &paths) {
 inline void new_leaf(const fs::path &path) {
   require(path.is_absolute() && path.lexically_normal() == path && !path.filename().empty(),
           "absolute normalized output leaf");
-  direct_directory(path.parent_path()); const fs::path bound("/embedding/output/runs/rpb-multiband-screen");
+  direct_directory(path.parent_path()); const fs::path bound("/mityane/.temp/embeddings/runs/rpb-multiband-screen");
   const auto relative = path.lexically_relative(bound);
   require(!relative.empty() && !relative.is_absolute() && *relative.begin() != ".." && path != bound,
           "output in multiband protocol root");

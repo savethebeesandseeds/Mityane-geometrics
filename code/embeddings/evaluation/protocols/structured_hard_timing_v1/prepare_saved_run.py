@@ -16,15 +16,15 @@ from datetime import datetime, timezone
 
 sys.dont_write_bytecode = True
 PROTOCOL = 'structured-hard-timing-comparison-v2'
-RUN_ROOT = 'output/runs/rpb-structured-hard-timing'
+RUN_ROOT = '.temp/embeddings/runs/rpb-structured-hard-timing'
 CARD = 'code/embeddings/evaluation/cards/structured_hard_timing_comparison_v2.md'
 CARD_SHA = '35f7aa9987f293bafbe735506cc86cd2af02f2ab39bec42dd1dc2d2dedfa758c'
 DATA_ROOT = 'code/embeddings/evaluation/benchmarks/structured_hard_timing'
-DATA_BINARY = Path('/opt/cuwacunu_embedding/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test')
+DATA_BINARY = Path('/opt/mityane-geometrics/embeddings/build/structured-hard-timing-data/code/benchmarks/structured_hard_timing/cross_feature_test')
 DATA_MARKER = 'Cross-feature timing data-only fixtures passed: 54 affine noiseless cases; no encoder/head fitting or quality evaluation'
 RULE = 'observed-cross-feature-determinant-v2'
 PRODUCER_ROOT = 'code/embeddings/evaluation/protocols/structured_hard_timing_v1'
-QUALITY_BINARY = Path('/opt/cuwacunu_embedding/build/rpb-structured-hard-timing/embedding_structured_hard_timing')
+QUALITY_BINARY = Path('/opt/mityane-geometrics/embeddings/build/rpb-structured-hard-timing/embedding_structured_hard_timing')
 QUALITY_MARKERS = ['Early mixer model CUDA admission passed', 'Early mixer CUDA adapter admission passed',
                    'Structured hard timing CUDA admission passed', 'Frozen role guard checks passed',
                    'Fixed feature readout tests passed']
@@ -106,7 +106,8 @@ def empty_target(repo, target, family):
 
 
 def information_sources(repo):
-    names = ['Makefile', 'dependencies.lock', 'setup.sh', 'code/scripts/install-libtorch.py', CARD,
+    names = ['Makefile', 'dependencies.lock', 'setup.sh', 'code/scripts/verify-libtorch.mjs',
+             'code/scripts/node.sh', 'code/scripts/node-runtime.sh', CARD,
              DATA_ROOT + '/Makefile', DATA_ROOT + '/structured_hard_timing.h',
              DATA_ROOT + '/structured_hard_timing.cpp', DATA_ROOT + '/cross_feature_test.cpp',
              DATA_ROOT + '/cross_feature_solvability.h', DATA_ROOT + '/cross_feature_solvability.cpp',
@@ -120,7 +121,8 @@ def capture(repo, target, names, card_sha):
     require(names and len(names) == len(set(names)), 'unique nonempty source closure')
     for name in names:
         safe_name(name)
-    require(CARD in names and {'setup.sh', 'code/scripts/install-libtorch.py', 'dependencies.lock', 'Makefile'} <= set(names),
+    require(CARD in names and {'setup.sh', 'code/scripts/verify-libtorch.mjs', 'code/scripts/node.sh',
+                              'code/scripts/node-runtime.sh', 'dependencies.lock', 'Makefile'} <= set(names),
             'card and internal SDK provenance required')
     source_records = records([repo / name for name in names])
     relative = [dict(item, path=name) for name, item in zip(names, source_records)]
@@ -495,7 +497,7 @@ def self_test(args):
             negatives += 1
         else:
             raise ValueError('hardlink fixture escaped')
-    source = canonical(Path('/embedding') / PRODUCER_ROOT / 'paired_timing_run.cpp').read_text()
+    source = canonical(Path('/mityane') / PRODUCER_ROOT / 'paired_timing_run.cpp').read_text()
     body = source.split('std::string plan() {', 1)[1].split('\n}', 1)[0]
     tokens = re.findall(r'"(?:\\.|[^"\\])*"|quote\(protocol\)|quote\(card_sha\)|quote\(EVALUATION_SOURCE_ID\)', body)
     values = {'quote(protocol)': json.dumps(PROTOCOL), 'quote(card_sha)': json.dumps(CARD_SHA),
@@ -550,8 +552,4 @@ def main():
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except Exception as error:
-        print(str(error), file=sys.stderr)
-        sys.exit(1)
+    raise SystemExit('Metadata CLI migrated to prepare_saved_run.mjs; this Python module remains only as the independent captured scientific contract API.')

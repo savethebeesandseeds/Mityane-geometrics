@@ -23,8 +23,12 @@ Within the already running documented container:
 bash code/embeddings/evaluation/protocols/multiband_screen_v1/admit.sh
 # Use the new admission path printed by that command, exactly once:
 bash code/embeddings/evaluation/protocols/multiband_screen_v1/run_screen.sh /embedding/output/runs/rpb-multiband-screen/admission-XXXXXX
-python3 -B code/embeddings/evaluation/protocols/multiband_screen_v1/publish.py --admission /embedding/output/runs/rpb-multiband-screen/admission-XXXXXX
 ```
+
+The historical publication command is retired. `publish.mjs` refuses to change
+the frozen registry; its original Python source remains in the frozen archive.
+New publication requires a separately versioned protocol. Research execution
+remains paused until its protocol and permissions are explicitly bound.
 
 Admission freezes SOURCE/card/SDK before engineering, builds in the named
 container session, and tests CUDA arithmetic, updates, serialization and the

@@ -6,9 +6,10 @@ ARCH_SCREEN_OBJECT_DIR := $(OBJECT_DIR)/protocols/architecture_screen_v1
 ARCH_SCREEN_BIN := $(BUILD_DIR)/embedding_architecture_screen
 ARCH_SCREEN_RPB_HEADERS := $(addprefix $(RPB_ROOT)/include/embedding/encoders/raw_patch_bottleneck_mae/,config.h types.h encoder.h tokenization.h masking.h objectives.h model.h visible_difference.h preprocessing.h training_utils.h context_deletion.h temporal_relation_bank.h temporal_dynamics_objective.h)
 ARCH_SCREEN_SHARED_NAMES := data evaluation feature_harness feature_evaluation feature_stress archive_readout native_curve paired_pooling fixed_feature_readouts
-ARCH_SCREEN_SHARED_SOURCES := $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(ARCH_SCREEN_SHARED_NAMES)))
+ARCH_SCREEN_SHARED_SOURCES := code/data/observations/src/data.cpp $(addprefix code/shared/representation/src/,$(addsuffix .cpp,$(filter-out data,$(ARCH_SCREEN_SHARED_NAMES))))
 ARCH_SCREEN_SHARED_HEADERS := $(wildcard code/shared/representation/include/embedding/shared/*.h)
-ARCH_SCREEN_INPUTS := $(sort Makefile $(ARCH_SCREEN_ROOT)/Makefile $(ARCH_SCREEN_ROOT)/architecture_screen_main.cpp $(ARCH_SCREEN_ROOT)/retained_input.h $(ARCH_SCREEN_ROOT)/prepare_screen.py $(ARCH_SCREEN_ROOT)/check_saved.py code/embeddings/evaluation/cards/architecture_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(ARCH_SCREEN_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(ARCH_SCREEN_SHARED_SOURCES) $(RPB_ROOT)/tests/temporal_relation_bank_test.cpp $(RPB_ROOT)/tests/temporal_dynamics_objective_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(SDK_PROVENANCE_INPUTS))
+ARCH_SCREEN_INPUTS := $(sort Makefile $(ARCH_SCREEN_ROOT)/Makefile $(ARCH_SCREEN_ROOT)/architecture_screen_main.cpp $(ARCH_SCREEN_ROOT)/retained_input.h $(ARCH_SCREEN_ROOT)/prepare_screen.mjs $(ARCH_SCREEN_ROOT)/check_saved.py code/embeddings/evaluation/cards/architecture_screen_v1.md code/embeddings/evaluation/include/frozen_role_guard.h $(ARCH_SCREEN_RPB_HEADERS) $(wildcard code/shared/representation/include/embedding/shared/*.h) $(ARCH_SCREEN_SHARED_SOURCES) $(RPB_ROOT)/versions/v14/tests/temporal_relation_bank_test.cpp $(RPB_ROOT)/versions/v15/tests/temporal_dynamics_objective_test.cpp $(RPB_ROOT)/tests/rpb_test_support.h code/shared/representation/tests/shared_test_support.h $(SDK_PROVENANCE_INPUTS) $(wildcard $(ARCH_SCREEN_ROOT)/*.mjs) $(PROTOCOL_NODE_INPUTS))
+ARCH_SCREEN_INPUTS := $(sort $(ARCH_SCREEN_INPUTS) $(RPB_CORE_HEADERS) $(OBSERVATION_PROVENANCE_INPUTS))
 ARCH_SCREEN_SOURCE_ID := $(shell sha256sum $(ARCH_SCREEN_INPUTS) | sha256sum | cut -d ' ' -f 1)
 ARCH_SCREEN_CPPFLAGS := $(COMMON_CPPFLAGS) -I$(RPB_ROOT)/include -I$(RPB_ROOT)/tests -Icode/embeddings/evaluation/include -DARCHITECTURE_SCREEN_SOURCE_ID=\"$(ARCH_SCREEN_SOURCE_ID)\" -DRPB_SOURCE_ID=\"$(ARCH_SCREEN_SOURCE_ID)\"
 ARCH_SCREEN_SHARED_OBJECTS := $(addprefix $(ARCH_SCREEN_OBJECT_DIR)/shared/,$(addsuffix .o,$(ARCH_SCREEN_SHARED_NAMES)))
@@ -23,16 +24,19 @@ $(ARCH_SCREEN_OBJECT_DIR)/architecture_screen_main.o: $(ARCH_SCREEN_ROOT)/archit
 $(ARCH_SCREEN_OBJECT_DIR)/shared/%.o: code/shared/representation/src/%.cpp $(ARCH_SCREEN_SHARED_HEADERS)
 	mkdir -p "$(@D)"
 	$(CXX) $(COMMON_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+$(ARCH_SCREEN_OBJECT_DIR)/shared/data.o: code/data/observations/src/data.cpp $(ARCH_SCREEN_SHARED_HEADERS) code/data/observations/include/embedding/shared/data.h
+	mkdir -p "$(@D)"
+	$(CXX) $(COMMON_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(ARCH_SCREEN_BIN): $(ARCH_SCREEN_OBJECT_DIR)/architecture_screen_main.o $(ARCH_SCREEN_SHARED_OBJECTS)
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
-$(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test.o: $(RPB_ROOT)/tests/temporal_relation_bank_test.cpp $(ARCH_SCREEN_INPUTS)
+$(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test.o: $(RPB_ROOT)/versions/v14/tests/temporal_relation_bank_test.cpp $(ARCH_SCREEN_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(ARCH_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test: $(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test.o $(ARCH_SCREEN_OBJECT_DIR)/shared/data.o
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
 test-architecture-screen-v14: $(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test
 	$(ARCH_SCREEN_OBJECT_DIR)/temporal_relation_bank_test
-$(ARCH_SCREEN_OBJECT_DIR)/temporal_dynamics_objective_test.o: $(RPB_ROOT)/tests/temporal_dynamics_objective_test.cpp $(ARCH_SCREEN_INPUTS)
+$(ARCH_SCREEN_OBJECT_DIR)/temporal_dynamics_objective_test.o: $(RPB_ROOT)/versions/v15/tests/temporal_dynamics_objective_test.cpp $(ARCH_SCREEN_INPUTS)
 	mkdir -p "$(@D)"
 	$(CXX) $(ARCH_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(ARCH_SCREEN_OBJECT_DIR)/temporal_dynamics_objective_test: $(ARCH_SCREEN_OBJECT_DIR)/temporal_dynamics_objective_test.o $(ARCH_SCREEN_OBJECT_DIR)/shared/data.o

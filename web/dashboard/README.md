@@ -1,9 +1,11 @@
 # Mityane geometrics project dashboard
 
-The [project design specification](../../doc/operations_over_representations_design_spec_v0.1.0.md)
-defines the research scope: operations over learned and externally supplied
-representations. Its capability catalogue guides research organization;
-owner-authored Heroes, Goals and Milestones record confirmed work separately.
+Mityane geometrics is building a composable foundation for machine intelligence
+in representation space: discovery, prediction, generation, planning and action
+across models and domains. The
+[project design specification](../../doc/operations_over_representations_design_spec_v0.1.0.md)
+maps the capabilities and defines how they are tested and combined. This
+dashboard tracks that work through Heroes, Goals and Milestones.
 
 ## Open the dashboard
 
@@ -68,9 +70,12 @@ is 384 × 384 and Hero images are 256 × 256. It regenerates
 dimensions and conversion settings in [provenance.json](assets/branding/provenance.json).
 The full-resolution PNGs and generation records stay in `web/branding/`.
 
-Preparation runs inside the managed container, using Python's standard library
-and the already locked GdkPixbuf and libwebp libraries. It installs nothing and
-keeps the existing 512 KiB combined artwork budget. The finished HTML embeds all
+Preparation runs inside the managed container, using Node's standard library
+and a small C++ helper with the already locked GdkPixbuf and libwebp libraries.
+Refresh builds the helper through the root Makefile into
+`/opt/mityane-geometrics/web/build/`; it installs nothing and preserves the exact
+bilinear resize, WebP quality and output bytes. It keeps the existing 512 KiB
+combined artwork budget. The finished HTML embeds all
 19 selected images and needs no adjacent image files or service. `-Check` checks
 the prepared copies and standalone HTML without rewriting them. Visual theme
 tokens remain at the top of `src/dashboard.css`.
@@ -81,7 +86,7 @@ Opening the finished HTML needs no development runtime. Refreshing uses Linux
 Node **22.23.3**, with no npm packages. The optional dependency-only helper is:
 
 ```powershell
-.\container.ps1 -Action exec -Command @('bash', 'web/dashboard/scripts/setup.sh')
+.\container.ps1 -Action exec -Command @('bash', 'code/scripts/setup-node.sh')
 ```
 
 It verifies and installs only the Node binary and full upstream license from the

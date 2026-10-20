@@ -9,8 +9,8 @@ from pathlib import Path
 import sys
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
-MODULE_ROOT = ROOT / 'code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2'
+ROOT = Path('/mityane')
+MODULE_ROOT = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2'
 PINS = {
     'archive_codec.py': '4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d',
     'saved_cpu_math.py': '1993af23915ba8200389727e2810caad175613fae7ead00d5ea0cb5250e303b9'}

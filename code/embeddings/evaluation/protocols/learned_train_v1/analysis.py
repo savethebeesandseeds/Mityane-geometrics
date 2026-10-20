@@ -15,13 +15,13 @@ import sys
 import zipfile
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
+ROOT = Path('/mityane')
 HERE = Path('code/embeddings/evaluation/protocols/learned_train_v1')
 CARD = Path('code/embeddings/evaluation/cards/learned_train_v1.md')
-CODEC = Path('code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py')
+CODEC = Path('.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py')
 CODEC_SHA = '4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d'
-ORIGINAL = ROOT / 'output/runs/rpb-v20-capacity/admission-0gN4uD'
-BRANCH = ROOT / 'output/runs/rpb-v20-branches/diagnostic-YA3Nws'
+ORIGINAL = ROOT / 'code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD'
+BRANCH = ROOT / 'code/embeddings/output/runs/rpb-v20-branches/diagnostic-YA3Nws'
 BRANCH_MANIFEST = 'cefa413c560bdf2ab1eee5be2e3f34feca6e2f723a99627f9eeae683c4c11d93'
 ORIGINAL_MANIFEST = '62f7e52a1d94815ec44ec90bae052c52ba2e89e9e809f851afdb11a15da0aa83'
 ORIGINAL_SOURCE = '8033ad0e20c8aa31cdda6befe340aed6001758233295fdaf78f14e3db2225fd1'

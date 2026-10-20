@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Lighter context admission takes no overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-context-lighter-validation"
+root="$PWD/.temp/embeddings/runs/rpb-context-lighter-validation"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Lighter context admission: %s\n' "$admission"
@@ -40,21 +40,6 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary differs from preserved production source.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-record = dict(protocol='context-lighter-validation-v1', status='passed', source_fingerprint=sys.argv[2],
-    source_preserved=True,
-    gates=['actual CUDA .15 training and native32 serving', 'strict declared policy and full initialization pairing',
-           'original query/loss support and deterministic repaired context', 'legacy disabled/.30 defaults and replay',
-           'tagged ordinary resume rejection', 'development-only completion and default paired protocols',
-           'fixed original-TRAIN heads reused across validation views'],
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    cuda_gate_log_sha256=hashlib.sha256((root/'cuda-gate.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission context-lighter-validation-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Lighter context admission passed: %s\n' "$admission"

@@ -199,8 +199,9 @@ int64_t fixed_exact(const NativeViews &initial, const NativeViews &trained) {
   }
   return cells;
 }
-constexpr const char *original_root = "/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD";
-constexpr const char *branch_root = "/embedding/output/runs/rpb-v20-branches/diagnostic-YA3Nws";
+// Physical retained locations; historical receipt identities stay unchanged.
+constexpr const char *original_root = "/mityane/code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD";
+constexpr const char *branch_root = "/mityane/code/embeddings/output/runs/rpb-v20-branches/diagnostic-YA3Nws";
 constexpr const char *branch_inventory = "cefa413c560bdf2ab1eee5be2e3f34feca6e2f723a99627f9eeae683c4c11d93";
 struct BoundBranch {
   fs::path root;

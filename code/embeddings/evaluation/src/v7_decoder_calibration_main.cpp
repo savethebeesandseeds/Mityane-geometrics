@@ -2,6 +2,7 @@
 #include "embedding/encoders/raw_patch_bottleneck_mae/decoder_calibration.h"
 #include "embedding/shared/paired_pooling.h"
 #include "frozen_role_guard.h"
+#include "../include/historical_parent_paths.h"
 #include <torch/cuda.h>
 #include <iostream>
 #include <cstring>
@@ -23,10 +24,12 @@ const std::map<std::string,fs::path> parents{
  {"v7","output/runs/rpb-context-lighter-validation/lighter-validation-duyRU2"}};
 std::string cohort(uint64_t seed){return "seed-"+std::to_string(seed)+"-lag_sign";}
 std::string prefix(const std::string &id){return id=="v4"?"reference":"results/candidate-development";}
-std::map<std::string,fs::path> roles() {
+std::map<std::string,fs::path> roles(bool resolve_physical=false) {
  std::map<std::string,fs::path> result;
  for(const std::string id:{"v4","v7"}) {
-   auto add=[&](const std::string &path){require(result.emplace(id+'/'+path,parents.at(id)/path).second,"duplicate role template");};
+   auto add=[&](const std::string &path){
+     const auto identity=parents.at(id)/path;
+     require(result.emplace(id+'/'+path,resolve_physical?embedding::evaluation::historical_paths::physical(identity):identity).second,"duplicate role template");};
    add(prefix(id)+"/native-development-card.json"); add(prefix(id)+"/validation-report.json");
    if(id=="v7")add(prefix(id)+"/development-complete.json");
    for(auto master:masters) {
@@ -76,7 +79,8 @@ int main(int argc,char **argv) {
   const auto log=bytes(args.at("--admission-log"));require(sha256(log)==args.at("--admission-sha256") && log.find("V7 decoder calibration CUDA admission passed")!=std::string::npos && log.find(EVALUATION_SOURCE_ID)!=std::string::npos,"actual source-bound decoder CUDA admission required");
   require(torch::cuda::is_available() && is_sha(EVALUATION_SOURCE_ID),"CUDA/source required");
   const fs::path output=args.at("--output");require(!fs::exists(output) && fs::create_directory(output),"exclusive output required");
-  Guard guard(args.at("--parent-input-manifest"),roles());write_new(output/"input-manifest.json",guard.json()+"\n");
+  Guard guard(args.at("--parent-input-manifest"),roles(true));write_new(output/"input-manifest.json",guard.json()+"\n");
+  embedding::evaluation::historical_paths::write_ledger(output/"historical-path-mapping.json");
   write_new(output/"card.json","{\"protocol\":"+quote(protocol)+",\"human_card_sha256\":"+quote(card_sha)+",\"source_fingerprint\":"+quote(EVALUATION_SOURCE_ID)+",\"encoder_updates\":512,\"decoder_updates\":128,\"head_fits\":0,\"CPU_encoder_training\":false,\"testing_accessed\":false,\"stress_accessed\":false,\"selection\":false,\"promotion\":false}\n");
   ev::NativeCurveRun recipe;recipe.card.shape={3,32,3,torch::kFloat64,torch::kCPU};recipe.card.channel_ids={0,1,2};recipe.card.feature_units="unitless,unitless,unitless";recipe.card.sampling_interval=1;
   recipe.card.train_pairs=128;recipe.card.validation_pairs=64;recipe.card.test_pairs=0;recipe.development_only=true;recipe.stress_sweep=false;

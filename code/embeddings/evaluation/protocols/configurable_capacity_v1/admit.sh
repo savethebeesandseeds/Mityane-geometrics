@@ -2,23 +2,23 @@
 # New output capsule for every attempt; never overwrite engineering or quality evidence.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv ]] || exit 1
+[[ -f /.dockerenv && "$PWD" == /mityane ]] || exit 1
 protocol=code/embeddings/evaluation/protocols/configurable_capacity_v1
-build=/opt/cuwacunu_embedding/build/rpb-v20-capacity
-run_root=/embedding/output/runs/rpb-v20-capacity
-config=code/embeddings/encoders/raw_patch_bottleneck_mae/config/configurable_spectral.conf
+build=/opt/mityane-geometrics/embeddings/build/rpb-v20-capacity
+run_root=/mityane/.temp/embeddings/runs/rpb-v20-capacity
+config=code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf
 mkdir -p -- "$run_root"
 capsule=$(mktemp -d "$run_root/admission-XXXXXX")
 printf 'CAPACITY_ADMISSION %s\n' "$capsule"
 bash code/scripts/task.sh rpb-v20-capacity -j2 configurable-capacity >"$capsule/build.log" 2>&1
 exec 9>"$build/.task.lock"
 flock -n 9 || { printf '%s\n' 'Capacity build session is busy.' >&2; exit 1; }
-python3 -B "$protocol/capsule.py" freeze "$capsule" --build "$build" >"$capsule/freeze.log"
-python3 -B "$protocol/capsule_runtime_test.py" >"$capsule/runtime-test.log" 2>&1
-python3 -B -O "$protocol/capsule_runtime_test.py" >"$capsule/runtime-test-optimized.log" 2>&1
+bash code/scripts/node.sh "$protocol/capsule.mjs" freeze "$capsule" --build "$build" >"$capsule/freeze.log"
+bash code/scripts/node.sh --test "$protocol/capsule_test.mjs" \
+  code/embeddings/evaluation/protocols/node/v1/capsule_support_test.mjs >"$capsule/runtime-test.log" 2>&1
 python3 -B "$protocol/evaluation_audit_test.py" >"$capsule/evaluation-audit-test.log" 2>&1
 python3 -B -O "$protocol/evaluation_audit_test.py" >"$capsule/evaluation-audit-test-optimized.log" 2>&1
-python3 -B code/scripts/install-libtorch.py --check >"$capsule/sdk-proof.json"
+bash code/scripts/node.sh code/scripts/verify-libtorch.mjs --check >"$capsule/sdk-proof.json"
 nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv,noheader >"$capsule/gpu-proof.csv"
 g++ --version >"$capsule/compiler-proof.txt"
 "$build/code/protocols/configurable_capacity_v1/generator_test" >"$capsule/generator-test.log" 2>&1

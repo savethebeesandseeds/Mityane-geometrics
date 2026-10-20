@@ -71,7 +71,7 @@ std::string stats(const ev::ControlledDataset &data,const embedding::Batch &batc
     <<",\"accuracy\":"<<accuracy<<",\"coverage\":"<<coverage<<",\"full_population_correctness\":"<<double(correct)/total<<",\"passed\":"<<(ok?"true":"false")<<'}';return out.str();
 }
 void information(const std::filesystem::path &path){
-  check(path.is_absolute()&&path.parent_path().parent_path()==std::filesystem::path("/embedding/output/runs/rpb-structured-hard-timing/information-admission")&&
+  check(path.is_absolute()&&path.parent_path().parent_path()==std::filesystem::path("/mityane/.temp/embeddings/runs/rpb-structured-hard-timing/information-admission")&&
     path.filename()=="information.json"&&!std::filesystem::exists(path)&&std::filesystem::canonical(path.parent_path())==path.parent_path(),"exclusive information output bounds");
   bool passed=true;std::ostringstream out;out<<"{\"protocol\":\"structured-hard-timing-information-v2\",\"rule_id\":\"observed-cross-feature-determinant-v2\",\"dataset_id\":\"TEMPO-3\",\"complexity\":4,\"complexity_maximum\":5,\"seeds\":[";
   bool first=true;for(uint64_t seed:{82585ULL,83686ULL}){

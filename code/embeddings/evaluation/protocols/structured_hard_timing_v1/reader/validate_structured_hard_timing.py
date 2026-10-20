@@ -25,7 +25,7 @@ EXTERNAL = PROTOCOL + '/lag_sign'
 RULE = 'observed-cross-feature-determinant-v2'
 CARD = 'code/embeddings/evaluation/cards/structured_hard_timing_comparison_v2.md'
 CARD_SHA = '35f7aa9987f293bafbe735506cc86cd2af02f2ab39bec42dd1dc2d2dedfa758c'
-ROOT = Path('/embedding/output/runs/rpb-structured-hard-timing')
+ROOT = Path('/mityane/.temp/embeddings/runs/rpb-structured-hard-timing')
 MASTERS = (75272,76373,77474,78575,79676)
 TAGS = ('RPB-v7.alt-05','RPB-v10.alt-05')
 MODULE_PINS = {'saved_cpu_math.py':'1993af23915ba8200389727e2810caad175613fae7ead00d5ea0cb5250e303b9',
@@ -91,7 +91,12 @@ def import_source(path, name):
 
 def initialize_modules():
     global M,L,R
-    directory = canonical(Path(__file__).parent,True)
+    # Current maintained source explicitly uses the unchanged archived module profile.
+    # A separately sealed run bundle uses its own captured siblings. No pin is changed.
+    maintained = Path('/mityane/code/embeddings/evaluation/protocols')
+    runtime = Path(__file__).resolve()
+    module_root = Path('/mityane/.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/structured_hard_timing_v1/reader') if maintained in runtime.parents else runtime.parent
+    directory = canonical(module_root,True)
     paths = whole_paths([directory/name for name in MODULE_PINS])
     for path in paths:
         check(sha(path) == MODULE_PINS[path.name], 'exact standalone SOURCE module '+path.name)
@@ -172,7 +177,8 @@ def source_binding(capsule,index):
     rows = manifest['files']; names = [relative_name(x['path']) for x in rows]
     check(names==sorted(set(names)) and all(n.startswith('code/') or n in ('Makefile','setup.sh','dependencies.lock','.archive/embeddings/pre-cleanup-2026-10-18/doc/dataset_registry.json') for n in names),
           'whole closed compiled SOURCE name matrix')
-    check({CARD,'setup.sh','code/scripts/install-libtorch.py'}<=set(names),'card and internal SDK SOURCE')
+    check({CARD,'setup.sh','code/scripts/verify-libtorch.mjs','code/scripts/node.sh','code/scripts/node-runtime.sh'}<=set(names),
+          'card and current internal SDK SOURCE')
     for row in rows:
         for prefix in ('source/','admission/source/'):
             check(prefix+row['path'] in index and all(index[prefix+row['path']][k]==row[k] for k in ('bytes','sha256')),'whole measured/admission SOURCE equality')
@@ -204,8 +210,8 @@ def source_binding(capsule,index):
           launch['binary']==passed['binary'],'binary/log/admission association')
     log = (capsule/'admission/build-and-tests.log').read_text()
     check(all(x in log for x in helper.QUALITY_MARKERS+['Container SDK proof:','TEMPO-3 observed-only information admission passed:']), 'actual CUDA/head/role/SDK/information gates')
-    binary = Path(passed['binary']['path']); old = binary.parent/'code/embeddings/encoders/raw_patch_bottleneck_mae'; new=binary.parent/'code/protocols/structured_hard_timing_v1'
-    old_source='code/embeddings/encoders/raw_patch_bottleneck_mae/src/'; new_source='code/embeddings/evaluation/protocols/structured_hard_timing_v1/'; data_source='code/embeddings/evaluation/benchmarks/structured_hard_timing/'
+    binary = Path(passed['binary']['path']); old = binary.parent/'code/encoders/raw_patch_bottleneck_mae'; new=binary.parent/'code/protocols/structured_hard_timing_v1'
+    old_source='code/embeddings/encoders/raw_patch_bottleneck_mae/shared/src/'; new_source='code/embeddings/evaluation/protocols/structured_hard_timing_v1/'; data_source='code/embeddings/evaluation/benchmarks/structured_hard_timing/'
     contracts=[(old_source+'workflow.cpp',old/'workflow.o','RPB_SOURCE_ID','core_writer'),
                (old_source+'learning_curve_adapter.cpp',old/'learning_curve_adapter.o','EVALUATION_SOURCE_ID','curve_training'),
                (old_source+'early_mixer_adapter.cpp',old/'early_mixer_adapter.o','EARLY_MIXER_ADAPTER_SOURCE_ID','early_adapter'),
@@ -608,10 +614,10 @@ def self_test():
              'code/embeddings/evaluation/benchmarks/structured_hard_timing/structured_hard_timing.cpp',
              'code/embeddings/evaluation/benchmarks/structured_hard_timing/cross_feature_solvability.cpp',
              'code/shared/representation/src/fixed_feature_readouts.cpp','code/shared/representation/src/paired_pooling.cpp',
-             'code/embeddings/encoders/raw_patch_bottleneck_mae/src/early_mixer_adapter.cpp',
-             'code/embeddings/encoders/raw_patch_bottleneck_mae/src/learning_curve_adapter.cpp']
-    paths=whole_paths([Path('/embedding')/n for n in writers]);bound=[{'path':n,'bytes':p.stat().st_size,'sha256':sha(p)} for n,p in zip(writers,paths)]
-    source=(Path('/embedding')/writers[0]).read_text();adapter=(Path('/embedding')/writers[2]).read_text()
+             'code/embeddings/encoders/raw_patch_bottleneck_mae/shared/src/early_mixer_adapter.cpp',
+             'code/embeddings/encoders/raw_patch_bottleneck_mae/shared/src/learning_curve_adapter.cpp']
+    paths=whole_paths([Path('/mityane')/n for n in writers]);bound=[{'path':n,'bytes':p.stat().st_size,'sha256':sha(p)} for n,p in zip(writers,paths)]
+    source=(Path('/mityane')/writers[0]).read_text();adapter=(Path('/mityane')/writers[2]).read_text()
     check('observations' in source and 'analytic-validation' in source and 'information_rule_id' in source and 'content_structured_timing' in adapter,'literal writer schema SOURCE fixtures')
     check(ARCHIVES==0,'no SOURCE fixture archive reads')
     return {'status':'passed','checks':CHECKS+M.CHECKS,'negative_fixtures':negatives,'archive_reads':0,'quality_reads':0,

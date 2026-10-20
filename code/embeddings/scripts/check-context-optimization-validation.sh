@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Context optimization admission takes no overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-context-optimization-validation"
+root="$PWD/.temp/embeddings/runs/rpb-context-optimization-validation"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Context optimization admission evidence: %s\n' "$admission"
@@ -37,21 +37,6 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary and frozen production sources differ.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-record = dict(protocol='context-optimization-validation-v1', status='passed',
-    source_fingerprint=sys.argv[2],
-    augmented_cuda_contract='fresh exact-parent replay gate; uninterrupted live AdamW continuation; hidden-value and snapshot isolation',
-    other_gates=['original enabled/default context CUDA contracts', 'tagged ordinary resume rejection',
-                 'optional validation views reuse ordinary TRAIN readouts', 'pure deletion stream compatibility',
-                 'legacy stress remains TEST-only', 'paired protocol defaults'],
-    source_preserved=True,
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission context-optimization-validation-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Context optimization admission passed: %s\n' "$admission"

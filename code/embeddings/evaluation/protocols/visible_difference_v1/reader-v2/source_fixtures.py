@@ -445,15 +445,19 @@ def fixtures(original_reader, actual_reader, actual_reader_sha):
     reject('query report absolute path is not basename', lambda: V.L.query_summary(declared, replay, asset, str(p)))
     wrong = dict(declared, artifact='validation-reconstruction.pt')
     reject('query report wrong basename', lambda: V.L.query_summary(wrong, replay, asset, p.name))
-    proof = V.reader_repair_provenance(original_reader, actual_reader, Path('/synthetic/captured-reader.py'),
-                                     Path('/synthetic/repaired-reader.py'), actual_reader_sha)
+    # The unchanged old basename-repair proof concerns the frozen historical
+    # source pair. The current path-adapted reader has its own prospective seal.
+    historical_repaired = Path('/mityane/.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/validate_visible_difference.py').read_bytes()
+    historical_sha = hashlib.sha256(historical_repaired).hexdigest()
+    proof = V.reader_repair_provenance(original_reader, historical_repaired, Path('/synthetic/captured-reader.py'),
+                                     Path('/synthetic/repaired-reader.py'), historical_sha)
     require(proof['exact_original_byte_derivation'] and proof['numeric_modules_unchanged'], 'full original SOURCE byte derivation')
-    changed = actual_reader.replace(b'head_pipelines <= 15', b'head_pipelines <= 16', 1)
-    require(changed != actual_reader, 'extra numeric edit fixture changes actual code')
+    changed = historical_repaired.replace(b'head_pipelines <= 15', b'head_pipelines <= 16', 1)
+    require(changed != historical_repaired, 'extra numeric edit fixture changes actual code')
     reject('unapproved extra numerical SOURCE change', lambda: V.reader_repair_provenance(
         original_reader, changed, p, p, hashlib.sha256(changed).hexdigest()))
     reject('changed captured original SOURCE', lambda: V.reader_repair_provenance(
-        original_reader[:-1] + b'X', actual_reader, p, p, actual_reader_sha))
+        original_reader[:-1] + b'X', historical_repaired, p, p, historical_sha))
     require(V.DECODES == 0, 'real validator archive decodes remain zero')
 
 
@@ -466,10 +470,12 @@ def main():
     require(Path('/.dockerenv').is_file(), 'existing managed container only')
     root = Path(__file__).resolve().parent
     validator = root / 'validate_visible_difference.py'
-    original_validator = root.parent / 'reader/validate_visible_difference.py'
-    card = Path('/embedding/code/embeddings/evaluation/cards/visible_difference_v1.md')
+    frozen = Path('/mityane/.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1')
+    original_validator = frozen / 'reader/validate_visible_difference.py'
+    historical_repaired = frozen / 'reader-v2/validate_visible_difference.py'
+    card = Path('/mityane/code/embeddings/evaluation/cards/visible_difference_v1.md')
     source_paths = [Path(__file__).resolve(), validator, card,
-                    *[root / p for p in ('saved_cpu_math.py', 'archive_codec.py', 'legacy_implementation.py')], original_validator]
+                    *[frozen / 'reader-v2' / p for p in ('saved_cpu_math.py', 'archive_codec.py', 'legacy_implementation.py')], original_validator, historical_repaired]
     seen = set()
     for path in source_paths:
         require(path.resolve(strict=True) == path and all(not q.is_symlink() for q in (path, *path.parents)), 'canonical SOURCE file')
@@ -492,6 +498,8 @@ def main():
     for path in source_paths:
         require(hashlib.sha256(path.read_bytes()).hexdigest() == hashes[str(path)], 'SOURCE input bytes preserved')
     result = {'status': 'passed', 'source_only': True, 'validator_sha256': hashes[str(validator)],
+              'current_path_revision_requires_new_seal': True, 'historical_repair_fixture_only': True,
+              'historical_repaired_validator_sha256': hashes[str(historical_repaired)],
               'original_validator_sha256': hashes[str(original_validator)],
               'fixture_script_sha256': hashes[str(Path(__file__).resolve())], 'card_sha256': CARD_SHA,
               'module_sha256': V.MODULE_PINS, 'checks': CHECKS + V.CHECKS + M.CHECKS + V.R.CHECKS + V.L.CHECKS,

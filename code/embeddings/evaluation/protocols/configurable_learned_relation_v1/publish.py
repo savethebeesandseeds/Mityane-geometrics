@@ -11,9 +11,9 @@ import sys
 import gate
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
-ORIGINAL = ROOT / 'output/runs/rpb-v20-capacity/admission-0gN4uD'
-BRANCH = ROOT / 'output/runs/rpb-v20-branches/diagnostic-YA3Nws'
+ROOT = Path('/mityane')
+ORIGINAL = ROOT / 'code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD'
+BRANCH = ROOT / 'code/embeddings/output/runs/rpb-v20-branches/diagnostic-YA3Nws'
 ORIGINAL_MANIFEST = '62f7e52a1d94815ec44ec90bae052c52ba2e89e9e809f851afdb11a15da0aa83'
 BRANCH_MANIFEST = 'cefa413c560bdf2ab1eee5be2e3f34feca6e2f723a99627f9eeae683c4c11d93'
 ORIGINAL_SOURCE = '8033ad0e20c8aa31cdda6befe340aed6001758233295fdaf78f14e3db2225fd1'
@@ -143,7 +143,7 @@ def validate_checkpoint_metadata(checkpoint, codec, arithmetic, point):
 def publish(capsule, readouts, destination):
     check(Path('/.dockerenv').exists() and Path.cwd() == ROOT, 'managed embedding container required')
     check(capsule.is_absolute() and capsule.resolve(strict=True) == capsule
-          and capsule.parent == ROOT / 'output/runs/rpb-v21-learned-relation'
+          and capsule.parent == ROOT / '.temp/embeddings/runs/rpb-v21-learned-relation'
           and readouts.parent.parent == capsule and readouts.parent.name in ('screen', 'third')
           and not capsule.is_relative_to(ORIGINAL)
           and not capsule.is_relative_to(BRANCH), 'separate direct candidate capsule')
@@ -172,8 +172,8 @@ def publish(capsule, readouts, destination):
         check(relative in captured, 'arithmetic helper included in frozen source closure')
         return module(ROOT / relative, name)
 
-    codec = imported('code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py', 'relation_codec')
-    check(captured['code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'] ==
+    codec = imported('.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py', 'relation_codec')
+    check(captured['.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'] ==
           '4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d', 'pinned independent codec')
     arithmetic = imported('code/embeddings/evaluation/protocols/configurable_branch_v1/publish.py', 'relation_math')
     query_math = imported('code/embeddings/evaluation/protocols/configurable_capacity_v1/publish.py', 'relation_query_math')
@@ -207,7 +207,7 @@ def publish(capsule, readouts, destination):
                               branch_artifact_manifest_sha=BRANCH_MANIFEST,
                               encoder_calls=0, encoder_updates=0, control_head_fits=0,
                               validation_fits=0, pca_fits=0, raw_fits=0,
-                              config_sha=captured['code/embeddings/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf'],
+                              config_sha=captured['code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/config/learned_ordered_relation.conf'],
                               head_fitted_pairs=6 * count, head_fits=12 * count).items():
         check(report[key] == expected, 'closed readout report binding: ' + key)
     check(done['status'] == 'complete' and done['protocol'] == PROTOCOL
@@ -292,7 +292,7 @@ def publish(capsule, readouts, destination):
                                   source_fingerprint=source, card_sha=card, input_manifest_sha=ORIGINAL_INPUTS).items():
             check(producer[key] == progress[key] == expected, 'CUDA producer binding: ' + key)
         check(producer['config_sha'] == progress['config_sha'] ==
-              captured['code/embeddings/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf'],
+              captured['code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/config/learned_ordered_relation.conf'],
               'producer and progress exact frozen candidate settings')
         check(progress['attempted'] == progress['completed'] == 512 and progress['skipped_attempts'] == 0
               and progress['CPU_encoder_calls'] == 0 and progress['training_device'] == 'cuda:0'

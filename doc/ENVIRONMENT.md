@@ -128,17 +128,45 @@ component directory. This checkout uses repository-local `core.longpaths=true`;
 set the same local Git option on another Windows checkout before adding these
 paths. No global Git setting or hosting identity is changed.
 
-## Optional dashboard runtime
+## Shared maintenance runtime
+
+The [language policy and implementation](PYTHON_MIGRATION_IMPLEMENTATION_2026-10-18.md)
+keep ordinary preparation/record keeping in the existing Node/Bash runtime.
+The existing managed image's Python is retained for independent scientific
+decoding, numerical audits and their fixtures; no package or image change is
+part of the migration. All 40 replaced Python working copies have been removed;
+their [removal record](PYTHON_MIGRATION_REMOVAL_2026-10-18.md) records archived
+source identities and validation after deletion. The owner restored managed-container execution on
+18 October; [the validation record](PYTHON_MIGRATION_VERIFICATION_2026-10-18.md)
+records the engineering checks, source identities and remaining research limits.
 
 The local dashboard opens directly as `web/dashboard/public/index.html`, without
 a service. Refreshes run through `container.ps1` inside this same container.
-The dashboard's dependency-only `web/dashboard/scripts/setup.sh` verifies and
-installs pinned Linux Node 22.23.3 from an existing exact archive under
-`/opt/mityane-geometrics/web/downloads/`. It performs no downloads or APT changes.
-The runtime, upstream license, refresh lock and temporary files stay under
-`/opt/mityane-geometrics/web/`. The base image and root dependency lock are
-unchanged. See [the dashboard guide](../web/dashboard/README.md) for the checksum,
-cache restoration details and refresh command.
+Root `setup.sh` now also delegates to dependency-only
+`code/scripts/setup-node.sh`. It verifies/reuses pinned Linux Node 22.23.3 from
+the existing exact archive under `/opt/mityane-geometrics/web/downloads/`.
+The original runtime location is retained to reuse the verified binary/cache;
+there is no additional runtime installation when it already matches. Both the
+binary and full upstream license must match that archive. The dashboard's
+`web/dashboard/scripts/setup.sh` delegates to this same shared setup.
+
+`code/scripts/node-runtime.sh` holds the exact version, paths and archive SHA256;
+`code/scripts/node.sh` is the container-only execution entry. SDK verification,
+layout checks, source fingerprints and dashboard assembly use this runtime.
+The artwork helper is C++ and opens the existing native image libraries at
+runtime; build it through the root `dashboard-branding-native` Make target,
+never through dependency setup.
+
+The Node archive is
+`/opt/mityane-geometrics/web/downloads/node-v22.23.3-linux-x64.tar.xz`, SHA256
+`df450af89261115ef9f9e3830c3eeb2cc9213b63c720b1af623cb5dcbe2e02de`.
+Restore that exact cache if absent; setup performs no downloads or APT changes
+for Node. The runtime, upstream license, artwork build, refresh lock and temporary
+files stay under `/opt/mityane-geometrics/web/`. The image and Debian dependency
+lock are unchanged, including their inherited Python packages. Removing Python
+from maintained entry points does not remove packages from the pinned image.
+See [the migration record](PYTHON_MIGRATION_2026-10-18.md) for scope/evidence and
+[the dashboard guide](../web/dashboard/README.md) for refresh commands.
 
 ## Restoring the local image
 

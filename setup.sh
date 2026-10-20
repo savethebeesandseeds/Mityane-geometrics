@@ -67,7 +67,8 @@ printf 'Pinned package verification: %s exact installed versions; %s cached pack
 
 # Reuse the copied SDK and its complete immutable proof/inventory. This never
 # reads the old sibling workspace, downloads a bundle or copies a second SDK.
-python3 -B code/scripts/install-libtorch.py --check
+bash code/scripts/setup-node.sh
+bash code/scripts/node.sh code/scripts/verify-libtorch.mjs --check
 source /etc/profile.d/embedding.sh
 [[ "${LANG:-}" == en_US.UTF-8 ]] || export LANG=en_US.UTF-8
 mkdir -p "$setup_state"

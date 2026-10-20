@@ -15,8 +15,8 @@ from pathlib import Path
 import sys
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
-CODEC = ROOT / 'code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'
+ROOT = Path('/mityane')
+CODEC = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'
 CODEC_SHA = '4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d'
 READS = {}
 
@@ -177,7 +177,7 @@ def main():
                         help='new saved-only C++ replay including paired intervals')
     args = parser.parse_args()
     check(args.capsule.is_absolute() and args.capsule.resolve(strict=True) == args.capsule
-          and args.capsule.is_relative_to(ROOT / 'output/runs/rpb-v20-capacity') and not args.capsule.is_symlink(), 'direct capacity capsule')
+          and args.capsule.is_relative_to(ROOT / '.temp/embeddings/runs/rpb-v20-capacity') and not args.capsule.is_symlink(), 'direct capacity capsule')
     args.readouts = args.capsule / 'readouts'
     args.producer_root = args.capsule
     destination = args.capsule

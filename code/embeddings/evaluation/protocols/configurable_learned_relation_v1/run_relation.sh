@@ -2,13 +2,13 @@
 # Additive candidate experiment in the existing managed container.
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../../.."
-[[ -f /.dockerenv ]] || exit 1
+[[ -f /.dockerenv && "$PWD" == /mityane ]] || exit 1
 protocol=code/embeddings/evaluation/protocols/configurable_learned_relation_v1
-config=code/embeddings/encoders/raw_patch_bottleneck_mae/config/learned_ordered_relation.conf
-build=/opt/cuwacunu_embedding/build/rpb-v21-learned-relation
-run_root=/embedding/output/runs/rpb-v21-learned-relation
-original=/embedding/output/runs/rpb-v20-capacity/admission-0gN4uD
-branch=/embedding/output/runs/rpb-v20-branches/diagnostic-YA3Nws
+config=code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/config/learned_ordered_relation.conf
+build=/opt/mityane-geometrics/embeddings/build/rpb-v21-learned-relation
+run_root=/mityane/.temp/embeddings/runs/rpb-v21-learned-relation
+original=/mityane/code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD
+branch=/mityane/code/embeddings/output/runs/rpb-v20-branches/diagnostic-YA3Nws
 [[ $# -ge 1 && $# -le 2 && ( "$1" == admit || "$1" == run ) ]] || {
   printf '%s\n' 'Usage: run_relation.sh admit | run ADMITTED_CAPSULE' >&2; exit 1;
 }
@@ -30,12 +30,12 @@ if [[ "$mode" == admit ]]; then
   printf 'LEARNED_RELATION_ADMISSION %s\n' "$capsule"
   bash code/scripts/task.sh rpb-v21-learned-relation -j2 configurable-learned-relation rpb-v21 >"$capsule/build.log" 2>&1
   lock_session
-  python3 -B "$protocol/capsule.py" freeze "$capsule" --build "$build" >"$capsule/freeze.log"
+  bash code/scripts/node.sh "$protocol/capsule.mjs" freeze "$capsule" --build "$build" --original "$original" --branch "$branch" >"$capsule/freeze.log"
   run_timed gate-test python3 -B "$protocol/gate_test.py"
   run_timed gate-test-optimized python3 -B -O "$protocol/gate_test.py"
   run_timed publisher-test python3 -B "$protocol/publish_test.py"
   run_timed publisher-test-optimized python3 -B -O "$protocol/publish_test.py"
-  python3 -B code/scripts/install-libtorch.py --check >"$capsule/sdk-proof.json"
+  bash code/scripts/node.sh code/scripts/verify-libtorch.mjs --check >"$capsule/sdk-proof.json"
   nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv,noheader >"$capsule/gpu-proof.csv"
   g++ --version >"$capsule/compiler-proof.txt"
   run_timed model-engineering "$build/code/tests/encoders/raw_patch_bottleneck_mae/learned_ordered_relation/learned_ordered_relation_test" "$config"
@@ -46,17 +46,17 @@ if [[ "$mode" == admit ]]; then
   source_sha=$(sha256sum "$capsule/freeze/sources.sha256" | cut -d ' ' -f1)
   card_sha=$(sha256sum "$capsule/freeze/card.md" | cut -d ' ' -f1)
   printf '{"protocol":"configurable-learned-relation-v1","status":"admitted","quality_encoder_runs":0,"source_fingerprint":"%s","card_sha256":"%s"}\n' "$source_sha" "$card_sha" >"$capsule/admission.json"
-  python3 -B "$protocol/capsule.py" bind-quality "$capsule" >"$capsule/quality-admission.log"
-  python3 -B "$protocol/capsule.py" verify-admission "$capsule" >"$capsule/admission-check.log"
+  bash code/scripts/node.sh "$protocol/capsule.mjs" bind-quality "$capsule" >"$capsule/quality-admission.log"
+  bash code/scripts/node.sh "$protocol/capsule.mjs" verify-admission "$capsule" >"$capsule/admission-check.log"
   printf 'LEARNED_RELATION_ADMITTED %s\n' "$capsule"
   exit 0
 fi
 [[ $# == 2 ]]
 capsule=$2
-[[ "$capsule" == /embedding/output/runs/rpb-v21-learned-relation/admission-* && $(realpath -e -- "$capsule") == "$capsule" && ! -L "$capsule" ]]
+[[ "$capsule" == /mityane/.temp/embeddings/runs/rpb-v21-learned-relation/admission-* && $(realpath -e -- "$capsule") == "$capsule" && ! -L "$capsule" ]]
 [[ -f "$capsule/admission.json" && ! -e "$capsule/candidates" && ! -e "$capsule/screen" && ! -e "$capsule/complete.json" ]]
 lock_session
-python3 -B "$protocol/capsule.py" verify-admission "$capsule" >"$capsule/admission-before-quality.log"
+bash code/scripts/node.sh "$protocol/capsule.mjs" verify-admission "$capsule" >"$capsule/admission-before-quality.log"
 sha256sum -c "$capsule/freeze/sources.sha256" >"$capsule/source-before-quality.log"
 sha256sum -c "$capsule/freeze/binaries.sha256" >"$capsule/binary-before-quality.log"
 (cd -- "$original"; sha256sum -c artifacts.sha256) >"$capsule/original-before-quality.log"
@@ -86,8 +86,8 @@ evaluate_stage() {
 train_master 941101
 train_master 941102
 evaluate_stage screen
-if python3 -B -c 'import json,sys; sys.exit(0 if json.load(open(sys.argv[1]))["gate"]["passed"] is True else 3)' "$capsule/screen/published/summary.json"; then
-  python3 -B "$protocol/capsule.py" admit-third "$capsule" >"$capsule/third-admission.log"
+if bash code/scripts/node.sh code/embeddings/evaluation/protocols/node/v1/gate_status.mjs "$capsule/screen/published/summary.json"; then
+  bash code/scripts/node.sh "$protocol/capsule.mjs" admit-third "$capsule" >"$capsule/third-admission.log"
   train_master 941103
   evaluate_stage third
 else
@@ -97,4 +97,4 @@ fi
 (cd -- "$branch"; sha256sum -c artifacts.sha256) >"$capsule/branch-after-quality.log"
 sha256sum -c "$capsule/freeze/sources.sha256" >"$capsule/source-after-quality.log"
 sha256sum -c "$capsule/freeze/binaries.sha256" >"$capsule/binary-after-quality.log"
-python3 -B "$protocol/capsule.py" finish "$capsule"
+bash code/scripts/node.sh "$protocol/capsule.mjs" finish "$capsule"

@@ -37,9 +37,12 @@ void dataset_checks(const ev::ControlledDataset &data) {
     check(data.source_ids[row]==data.source_ids[row+1]&&data.labels[row].item<int64_t>()!=data.labels[row+1].item<int64_t>(),"source-paired variants");
     check(torch::equal(data.observed.feature_mask[row],data.observed.feature_mask[row+1]),"label-independent paired mask");
     for(int64_t c:{0,2})check(torch::equal(data.observed.data[row][c],data.observed.data[row+1][c]),"paired nonlabel channels");
-    for(int64_t c=0;c<3;++c){bool gap=false;for(int64_t t=0;t<30;++t)
-      gap=gap||!data.observed.feature_mask[row][c].slice(0,t,t+3).any().item<bool>();
-      check(gap,"three-tick whole-feature channel gap");}
+    for(int64_t c=0;c<3;++c){
+      bool gap=false;
+      for(int64_t t=0;t<30;++t)
+        gap=gap||!data.observed.feature_mask[row][c].slice(0,t,t+3).any().item<bool>();
+      check(gap,"three-tick whole-feature channel gap");
+    }
   }
 }
 void fixtures(){
@@ -98,14 +101,15 @@ std::string stats(const ev::ControlledDataset &data,const embedding::Batch &obse
     <<",\"accuracy\":"<<accuracy<<",\"coverage\":"<<coverage<<",\"full_population_correctness\":"<<double(correct)/total<<",\"passed\":"<<(ok?"true":"false")<<'}';return out.str();
 }
 void information(const std::filesystem::path &path){
-  check(path.is_absolute()&&path.parent_path().parent_path()==std::filesystem::path("/embedding/output/runs/rpb-structured-hard-timing/information-admission")&&
+  check(path.is_absolute()&&path.parent_path().parent_path()==std::filesystem::path("/mityane/.temp/embeddings/runs/rpb-structured-hard-timing/information-admission")&&
     path.filename()=="information.json"&&!std::filesystem::exists(path)&&std::filesystem::canonical(path.parent_path())==path.parent_path(),"exclusive information output bounds");
   bool passed=true;std::ostringstream out;out<<"{\"protocol\":\"structured-hard-timing-information-v1\",\"dataset_id\":\"TEMPO-3\",\"complexity\":4,\"complexity_maximum\":5,\"seeds\":[";
   bool first=true;for(uint64_t seed:{80383ULL,81484ULL}){
     auto data=ev::make_structured_hard_timing_development(512,512,seed);
     auto view=ev::make_coordinate_deletion_view(data.validation.observed,data.validation.source_ids,ev::Task::lag_sign,
       ev::stream_seed(seed,ev::kStructuredHardTimingDeletionStream),.30,"structured-hard-timing-information-v1/lag_sign/deletion");
-    if(!first)out<<',';first=false;out<<"{\"seed\":"<<seed<<",\"training_source_pairs\":512,\"validation_source_pairs\":512,\"intact\":"
+    if(!first)out<<',';
+    first=false;out<<"{\"seed\":"<<seed<<",\"training_source_pairs\":512,\"validation_source_pairs\":512,\"intact\":"
       <<stats(data.validation,data.validation.observed,false,passed)<<",\"deleted\":"<<stats(data.validation,view.observations,true,passed)<<'}';
   }
   out<<"],\"passed\":"<<(passed?"true":"false")<<",\"encoder_or_head_fits\":0,\"TEST_generated\":false}\n";

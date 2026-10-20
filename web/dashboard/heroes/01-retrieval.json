@@ -4,7 +4,7 @@
   "number": 1,
   "title": "OR-01 · Retrieval and similarity matching",
   "summary": "Rank source observations for a query under a declared representation, geometry and relevance definition.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-01-retrieval-contract",
@@ -78,6 +78,60 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Measure relevance against independent labels or a declared external rule, not the embedding distance used to rank candidates. Assess approximate-neighbor fidelity separately from application relevance; preserve the same eligible corpus, input information and query population for baselines."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-01-retrieval-toolset",
+      "title": "Expose Hx01 capabilities as a reusable toolset",
+      "description": "Expose this Hero's developed components, validation, workflows and results through a consistent discover/configure/check/run/inspect command-line interface and reusable APIs across compatible representation providers. Cover retrieval configuration, query and corpus validation, search, ranking and result inspection; preserve operation-specific contracts and evidence limits as capabilities are selected and developed.",
+      "milestones": [
+        {
+          "id": "or-01-retrieval-toolset-surface",
+          "title": "Define the public toolset surface and coverage",
+          "status": "proposed",
+          "description": "Map query/corpus admission, index construction and compatibility checks, exact or selected approximate search, ranking, exclusions and result/evidence inspection into public components and workflows.",
+          "updatedAt": "2026-10-20",
+          "acceptance": [
+            "Inventory implemented and selected future public capabilities, their owning components, contracts, request/result schemas, reusable APIs, composition points, gaps and claim levels; distinguish available tools from proposed work.",
+            "The surface specifies query/document roles, frozen corpus and index identities, geometry, normalization, deterministic tie behavior, source IDs and self-match or overlap exclusions; empty results, abstention and execution failure remain distinct.",
+            "Specify discover/configure/check/run/inspect behavior across compatible representation providers, declaring required roles, SpaceRefs, geometry and dependencies without assuming a universal vector shape or provider suitability."
+          ],
+          "evidence": [
+            {
+              "label": "Common tool calling contract and API boundary; design reference",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-01-retrieval-toolset-coverage",
+          "title": "Expose and verify the agreed tools and workflows",
+          "status": "proposed",
+          "description": "Expose the agreed building blocks and composed workflows through the common command-line and reusable API boundary, keeping operation logic with its owning component and retaining inspectable results.",
+          "updatedAt": "2026-10-20",
+          "dependsOn": [
+            "or-01-retrieval-toolset-surface"
+          ],
+          "acceptance": [
+            "Verify the agreed query-to-ranked-source workflow and independently callable components, including stale or incompatible index rejection, exclusion rules and deterministic ranking behavior. Approximate-search fidelity and independently measured application relevance retain separate evidence claims.",
+            "CLI and reusable API examples and conformance checks cover compatible provider interchange and explicit incompatibility, malformed input, failure and abstention; retain source/parent lineage, configuration, fitted-artifact identities and complete outcome accounting.",
+            "Record implemented coverage, remaining gaps and evidence for each agreed public capability and composed workflow. Reusable engineering checks do not authorize paused research or establish operation quality; new experimental claims retain their own admitted contracts, protocols and permissions."
+          ],
+          "evidence": [
+            {
+              "label": "Common tool calling contract and API boundary; design reference",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard; design reference",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
           ]
         }
       ]

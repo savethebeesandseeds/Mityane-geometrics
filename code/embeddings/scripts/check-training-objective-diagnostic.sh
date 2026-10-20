@@ -3,7 +3,7 @@ set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv && $# -eq 0 ]] || { echo 'Run frozen admission inside the managed container.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-training-objective-diagnostic"
+root="$PWD/.temp/embeddings/runs/rpb-training-objective-diagnostic"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'TRAIN objective admission: %s\n' "$admission"
@@ -22,20 +22,6 @@ sha256sum -c "$admission/source-inputs.sha256" > "$admission/source-preserved-af
 source_id="$("$binary" --source-id)"
 [[ "$source_id" == "$(sha256sum "$admission/source-inputs.sha256" | cut -d ' ' -f 1)" ]] || exit 1
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-assert 'TRAIN objective CUDA admission passed' in (root/'build-and-tests.log').read_text()
-record = dict(protocol='training-objective-diagnostic-v1', status='passed', source_fingerprint=sys.argv[2],
-    source_preserved=True, payload_files_read=0, encoder_updates=0, head_fits=0,
-    gates=['actual CUDA parameters, input, loss and gradients', 'zero weight and buffer updates',
-           'original support and hierarchical pair-Huber math', 'both frozen Ridge affine maps and descent sign',
-           'real encoder gradients separate from frozen latent leaf', 'explicit195 TRAIN role metadata and SHA256'],
-    logs={name:hashlib.sha256((root/name).read_bytes()).hexdigest()
-          for name in ('build-and-tests.log','metadata-gate.log','source-inputs.sha256')})
-with (root/'passed.json').open('x', encoding='utf-8') as out:
-    json.dump(record,out,indent=2);out.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission training-objective-diagnostic-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'TRAIN objective admission passed: %s\n' "$admission"

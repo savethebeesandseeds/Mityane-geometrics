@@ -4,7 +4,7 @@
   "number": 12,
   "title": "OR-12 · Decision making, planning, and control",
   "summary": "Select feasible actions under declared objectives and constraints, with decision outcomes evaluated separately from model fit.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-12-decisions-contract",
@@ -78,6 +78,60 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Report decision outcomes, costs, violations, failures and fallback coverage for the entire admitted policy. Do not treat logged outcomes of unchosen actions as observed counterfactuals, or model accuracy as evidence of action value."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-12-decisions-toolset",
+      "title": "Expose Hx12 capabilities as a reusable toolset",
+      "description": "Expose the policy or planner calls, objective and constraint checks, fallback handling, workflow composition and result handling developed within this Hero through common CLI and reusable library interfaces across compatible representation providers. Make functionality discoverable, configurable, checkable, callable and inspectable while preserving operation-owned behavior and explicit composition points. Provider-neutral interfaces do not establish universal compatibility, representation suitability or currently implemented capability.",
+      "milestones": [
+        {
+          "id": "or-12-decisions-toolset-surface",
+          "title": "Define the Hx12 toolset surface",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Map the Hero's implemented and selected future building blocks to public tools and reusable APIs. Identify existing interfaces, implementation gaps, ownership, schemas, dependencies and claim limits before agreeing the delivery coverage.",
+          "acceptance": [
+            "A versioned toolset map links each intended public capability to its owning implementation or explicit implementation gap, contract, request/result schemas, prerequisites and supported claim scope.",
+            "Document common discover, configure, check, run and inspect workflows through CLI and reusable APIs, including how individual steps compose and how results can be reused. Keep model/provider behavior with its owner and declare the interfaces this Hero consumes.",
+            "Declare state and action contracts, objective and cost context, feasibility constraints, policy/model dependencies, fallback semantics and whether use is simulated, observational or live. Interface exposure does not authorize live actions."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-12-decisions-toolset-coverage",
+          "title": "Expose and verify the agreed Hx12 building blocks",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Deliver the public interfaces and composed workflows agreed in the toolset map, with discoverable commands, documented schemas, reusable results and provider-neutral examples. This planning entry does not admit a new experiment, training run, API call or other external execution.",
+          "dependsOn": [
+            "or-12-decisions-toolset-surface"
+          ],
+          "acceptance": [
+            "The agreed toolset map has no unreported exposure gaps: selected implemented building blocks and workflows are callable through documented CLI and library interfaces, while unavailable capabilities and compatibility limits remain explicit.",
+            "End-to-end engineering examples use the same public calling conventions with distinct compatible provider configurations where applicable, preserve artifact identity and lineage, and retain all failure, abstention and unresolved outcomes. Scientific utility and transfer claims require separate bound evaluation evidence.",
+            "Examples retain decision context, policy/model identities, constraints, feasibility outcomes and explicit fallbacks; upstream failure cannot silently become an ordinary action. Policy outcome claims remain separate from model accuracy and preserve simulator or identification limits."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
           ]
         }
       ]

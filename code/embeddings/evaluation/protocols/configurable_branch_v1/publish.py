@@ -9,10 +9,10 @@ from pathlib import Path
 import sys
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
-CODEC = ROOT / 'code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'
+ROOT = Path('/mityane')
+CODEC = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2/archive_codec.py'
 CODEC_SHA = '4eb501222fb1d9205ae13c5bc0bf1b5fc96ebd2faef3ed247dd7809fb86a453d'
-ORIGINAL = ROOT / 'output/runs/rpb-v20-capacity/admission-0gN4uD'
+ORIGINAL = ROOT / 'code/embeddings/output/runs/rpb-v20-capacity/admission-0gN4uD'
 ORIGINAL_SOURCE = '8033ad0e20c8aa31cdda6befe340aed6001758233295fdaf78f14e3db2225fd1'
 ORIGINAL_CARD = '562e685c6e1283a7bc22bad7ddcf9fb138c75221cb3dbbd8cd576f8edcfe144e'
 ORIGINAL_INPUT = '6121773c0b97e5490f191a9f8ff013e90f27a9a557376ac8256bdbb2d6af6091'

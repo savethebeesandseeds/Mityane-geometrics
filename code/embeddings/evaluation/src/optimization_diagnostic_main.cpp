@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+#include "../include/historical_parent_paths.h"
 #include "embedding/shared/paired_pooling.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/optimization_diagnostic_adapter.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/native_curve_gate.h"
@@ -65,7 +66,7 @@ std::map<std::string,std::string> hashes(const fs::path &path) {
     const fs::path relative(line.substr(66));
     require(!relative.is_absolute() && relative.lexically_normal()==relative && relative.generic_string().find("..") == std::string::npos,
         "retained path outside capsule");
-    require(out.emplace(fs::absolute(fs::path(retained)/relative).string(),line.substr(0,64)).second,"duplicate retained input");
+    require(out.emplace(fs::absolute(embedding::evaluation::historical_paths::physical(retained)/relative).string(),line.substr(0,64)).second,"duplicate retained input");
   }
   require(in.eof() && !out.empty(),"empty/unreadable frozen manifest");return out;
 }
@@ -127,12 +128,13 @@ int main(int argc,char **argv) {
       << ",\"base_design_config\":" << quote(rpb::settings_text(settings)) << ",\"actual_parent_settings\":\"pinned per-master checkpoint producer audit; restored and verified by continuation adapter\",\"parents\":[";
     bool first=true;
     for(const auto &[master,checksum]:parent_hashes) {
-      const auto cp=bind(fs::path(retained)/"results"/("seed-"+std::to_string(master)+"-lag_sign")/"candidate-milestone-512/checkpoint.pt");
+      const auto cp=bind(embedding::evaluation::historical_paths::physical(retained)/"results"/("seed-"+std::to_string(master)+"-lag_sign")/"candidate-milestone-512/checkpoint.pt");
       require(expected.at(cp)==checksum,"wrong exact512 parent");if(!first)plan << ',';first=false;
       plan << "{\"master_seed\":" << master << ",\"checkpoint\":" << quote(cp) << ",\"sha256\":" << quote(checksum) << '}';
     }
     plan << "]}\n";write_new(output.string()+".launch-plan.json",plan.str());
     require(fs::create_directory(output),"cannot claim exclusive output");
+    embedding::evaluation::historical_paths::write_ledger(output/"historical-path-mapping.json");
     torch::set_num_threads(1);rpb::run_native_curve_cuda_gate(settings,output.string()+"-cuda-gate");
     std::cout << "Actual CUDA gate passed; exact-parent validation-only continuation starts.\n" << std::flush;
     ev::ArchiveReadoutRun readouts;readouts.output_directory=(output/"readouts").string();
@@ -140,7 +142,7 @@ int main(int argc,char **argv) {
     std::ostringstream report;report << "{\"protocol\":\"optimization-validation-v1\",\"model_tag\":\"RPB-v5\",\"test_access\":false,\"selection\":false,\"points\":[";first=true;
     std::set<std::string> all_sources;
     for(const auto &[master,checksum]:parent_hashes) {
-      (void)checksum;const auto old=fs::path(retained)/"results"/("seed-"+std::to_string(master)+"-lag_sign");
+      (void)checksum;const auto old=embedding::evaluation::historical_paths::physical(retained)/"results"/("seed-"+std::to_string(master)+"-lag_sign");
       const auto directory=output/("seed-"+std::to_string(master)+"-lag_sign");require(fs::create_directory(directory),"cohort output exists");
       const auto train_path=bind(old/"controlled-training.pt"),val_path=bind(old/"controlled-validation.pt");
       const auto train=ev::load_native_development_observations(train_path),val=ev::load_native_development_observations(val_path);

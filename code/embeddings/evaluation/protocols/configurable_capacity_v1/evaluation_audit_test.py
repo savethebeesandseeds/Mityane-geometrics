@@ -5,7 +5,9 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.dont_write_bytecode = True
 
@@ -179,6 +181,54 @@ class CheckpointMetadataTests(unittest.TestCase):
         self.checkpoint['config_number_v1']['dtype'] = 'FloatStorage'
         with self.assertRaisesRegex(ValueError, 'saved tensor schema config_number_v1'):
             self.audit()
+
+
+class InformationAdmissionTests(unittest.TestCase):
+    """Opaque artificial files exercise the scientific pre-decoding boundary."""
+    def setUp(self):
+        self.audit = module('capacity_information_admission_tests', HERE / 'capsule.py')
+        base = Path('/opt/mityane-geometrics/migration/scientific-fixtures/capacity-information')
+        if not Path('/.dockerenv').is_file():
+            raise RuntimeError('Use the managed Linux container for scientific fixtures')
+        base.mkdir(parents=True, exist_ok=True)
+        self.directory = tempfile.TemporaryDirectory(prefix='case-', dir=base)
+        self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        self.paths = [self.root / f'master-{master}/{view}{suffix}.pt'
+                      for master in self.audit.MASTERS
+                      for view in ('training', 'validation', 'validation-deleted')
+                      for suffix in ('', '-information')]
+        for path in self.paths:
+            path.parent.mkdir(exist_ok=True)
+            path.write_bytes(b'opaque engineering fixture; never decoded')
+
+    def test_missing_last_role_is_rejected_without_payload_opens(self):
+        self.paths[-1].unlink()
+        with patch.object(Path, 'open', side_effect=AssertionError('payload opened')):
+            with self.assertRaises(FileNotFoundError):
+                self.audit._admit_information_files(self.root)
+
+    def test_redirect_and_alias_roles_are_rejected_before_decoding(self):
+        last = self.paths[-1]
+        last.unlink()
+        last.symlink_to(self.paths[0])
+        with self.assertRaisesRegex(ValueError, 'Direct absolute'):
+            self.audit._admit_information_files(self.root)
+        last.unlink()
+        last.hardlink_to(self.paths[0])
+        with self.assertRaisesRegex(ValueError, 'Single-link'):
+            self.audit._admit_information_files(self.root)
+
+    def test_full_matrix_is_metadata_only_and_detects_same_byte_replacement(self):
+        with patch.object(Path, 'open', side_effect=AssertionError('payload opened')):
+            rows = self.audit._admit_information_files(self.root)
+        self.assertEqual(set(rows), set(self.paths))
+        self.assertEqual(len(rows), 18)
+        selected = self.paths[0]
+        payload = selected.read_bytes()
+        selected.rename(self.root / 'prior-opaque-role')
+        selected.write_bytes(payload)
+        self.assertNotEqual(rows[selected], self.audit._information_signature(selected))
 
 
 if __name__ == '__main__':

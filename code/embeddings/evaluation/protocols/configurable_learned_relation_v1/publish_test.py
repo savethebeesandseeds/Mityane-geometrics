@@ -9,7 +9,7 @@ import types
 import unittest
 import publish as p
 
-ROOT=Path('/embedding')
+ROOT=Path('/mityane')
 spec=importlib.util.spec_from_file_location('relation_publication_arithmetic',
     ROOT/'code/embeddings/evaluation/protocols/configurable_branch_v1/publish.py')
 a=importlib.util.module_from_spec(spec)

@@ -18,9 +18,9 @@ import struct
 import sys
 
 sys.dont_write_bytecode = True
-ROOT = Path('/embedding')
-MODULE_ROOT = ROOT / 'code/embeddings/evaluation/protocols/visible_difference_v1/reader-v2'
-RUN_ROOT = ROOT / 'output/runs/rpb-spectral-confirmation'
+ROOT = Path('/mityane')
+MODULE_ROOT = ROOT / '.archive/embeddings/pre-cleanup-2026-10-18/code/evaluation/protocols/visible_difference_v1/reader-v2'
+RUN_ROOT = ROOT / '.temp/embeddings/runs/rpb-spectral-confirmation'
 MASTERS = [930905, 930906, 930907]
 TASKS = ['slow_lag_sign', 'component_balance']
 DATASETS = dict(zip(TASKS, ('TEMPO-4', 'AMP-2')))

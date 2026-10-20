@@ -4,7 +4,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 [[ -f /.dockerenv ]] || { echo 'Run inside the managed development container.' >&2; exit 1; }
 [[ $# -eq 0 ]] || { echo 'Balanced context admission takes no overrides.' >&2; exit 1; }
 session='rpb-paired-pooling'
-root="$PWD/output/runs/rpb-context-balanced-validation"
+root="$PWD/.temp/embeddings/runs/rpb-context-balanced-validation"
 mkdir -p -- "$root/admission"
 admission="$(mktemp -d "$root/admission/admission-XXXXXX")"
 printf 'Balanced context admission: %s\n' "$admission"
@@ -41,21 +41,6 @@ source_id="$("$binary" --source-id)"
     echo 'Admission binary differs from preserved production source.' >&2; exit 1;
 }
 printf '%s\n' "$source_id" > "$admission/source-fingerprint.txt"
-python3 - "$admission" "$source_id" <<'PY'
-import hashlib, json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-record = dict(protocol='context-balanced-validation-v1', status='passed', source_fingerprint=sys.argv[2],
-    source_preserved=True,
-    gates=['actual CUDA balanced policy and native32 serving', 'strict policy/schedule and full initialization pairing',
-           'absolute-attempt ordinary/deletion counts and skip abort', 'original query/loss support and repaired context',
-           'exact live continuation across saved snapshots', 'legacy disabled/.30/.15 defaults and v6-only replay',
-           'tagged ordinary resume rejection', 'development-only completion and shared fixed readouts'],
-    log_sha256=hashlib.sha256((root/'build-and-tests.log').read_bytes()).hexdigest(),
-    cuda_gate_log_sha256=hashlib.sha256((root/'cuda-gate.log').read_bytes()).hexdigest(),
-    admission_source_manifest_sha256=hashlib.sha256((root/'admission-source-inputs.sha256').read_bytes()).hexdigest())
-with (root/'passed.json').open('x', encoding='utf-8') as output:
-    json.dump(record, output, indent=2); output.write('\n')
-PY
+bash code/scripts/node.sh code/embeddings/scripts/runner-metadata.mjs pass-admission context-balanced-validation-v1 "$admission" "$source_id"
 printf '%s\n' "$admission" > "$root/admission-approved.path"
 printf 'Balanced context admission passed: %s\n' "$admission"

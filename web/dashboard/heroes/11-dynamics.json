@@ -4,7 +4,7 @@
   "number": 11,
   "title": "OR-11 · Latent dynamics and forecasting",
   "summary": "Predict future latent states, trajectories or transition distributions while preserving state, time and action semantics.",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-11-dynamics-contract",
@@ -78,6 +78,60 @@
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
             "Report one-step/teacher-forced and multi-step/free-running behavior separately against declared persistence and simple dynamics controls where appropriate. Evaluate collapsed or trivial predictions and representation changes explicitly; readout and decision benefits require their own evidence."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-11-dynamics-toolset",
+      "title": "Expose Hx11 capabilities as a reusable toolset",
+      "description": "Expose the state/history preparation, transition prediction, rollouts, temporal validation and result handling developed within this Hero through common CLI and reusable library interfaces across compatible representation providers. Make functionality discoverable, configurable, checkable, callable and inspectable while preserving operation-owned behavior and explicit composition points. Provider-neutral interfaces do not establish universal compatibility, representation suitability or currently implemented capability.",
+      "milestones": [
+        {
+          "id": "or-11-dynamics-toolset-surface",
+          "title": "Define the Hx11 toolset surface",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Map the Hero's implemented and selected future building blocks to public tools and reusable APIs. Identify existing interfaces, implementation gaps, ownership, schemas, dependencies and claim limits before agreeing the delivery coverage.",
+          "acceptance": [
+            "A versioned toolset map links each intended public capability to its owning implementation or explicit implementation gap, contract, request/result schemas, prerequisites and supported claim scope.",
+            "Document common discover, configure, check, run and inspect workflows through CLI and reusable APIs, including how individual steps compose and how results can be reused. Keep model/provider behavior with its owner and declare the interfaces this Hero consumes.",
+            "Declare observation-embedding versus task-state versus predicted-state kinds, history and forecast-origin rules, horizons, action conditioning, transition artifacts and teacher-forced versus free-running modes. Latent forecasting stays distinct from target readouts and decision policies."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-11-dynamics-toolset-coverage",
+          "title": "Expose and verify the agreed Hx11 building blocks",
+          "status": "proposed",
+          "updatedAt": "2026-10-20",
+          "description": "Deliver the public interfaces and composed workflows agreed in the toolset map, with discoverable commands, documented schemas, reusable results and provider-neutral examples. This planning entry does not admit a new experiment, training run, API call or other external execution.",
+          "dependsOn": [
+            "or-11-dynamics-toolset-surface"
+          ],
+          "acceptance": [
+            "The agreed toolset map has no unreported exposure gaps: selected implemented building blocks and workflows are callable through documented CLI and library interfaces, while unavailable capabilities and compatibility limits remain explicit.",
+            "End-to-end engineering examples use the same public calling conventions with distinct compatible provider configurations where applicable, preserve artifact identity and lineage, and retain all failure, abstention and unresolved outcomes. Scientific utility and transfer claims require separate bound evaluation evidence.",
+            "Examples exercise the agreed prediction or rollout compositions without advancing observation cutoffs when predictions are fed back. Results retain predicted-state kind, horizon and transition lineage; downstream readout or policy utility requires its own evidence."
+          ],
+          "evidence": [
+            {
+              "label": "Shared CLI and reusable API conventions",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Capability charter and evidence standard",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
           ]
         }
       ]

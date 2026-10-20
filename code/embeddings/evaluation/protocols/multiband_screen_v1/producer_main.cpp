@@ -170,7 +170,7 @@ int main(int argc,char **argv) {
     const auto id=args.at("--candidate");require(id=="v18"||id=="v19","closed declared candidate");
     require(args.at("--masters")=="920903,920904","both prospective masters in fixed order");
     const std::vector<uint64_t> selected{920903,920904};const fs::path parent=args.at("--input-root");output=args.at("--output");
-    direct_directory(parent);const fs::path bound("/embedding/output/runs/rpb-multiband-screen");
+    direct_directory(parent);const fs::path bound("/mityane/.temp/embeddings/runs/rpb-multiband-screen");
     const auto relative=parent.lexically_relative(bound);
     require(!relative.empty()&&!relative.is_absolute()&&*relative.begin()!=".."&&parent!=bound,"fresh data in multiband protocol root");
     std::map<std::string,fs::path> roles;

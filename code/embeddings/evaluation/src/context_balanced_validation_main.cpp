@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 #include "embedding/shared/archive_readout.h"
+#include "../include/historical_parent_paths.h"
 #include "embedding/shared/paired_pooling.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/context_replication_adapter.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/learning_curve_adapter.h"
@@ -152,7 +153,8 @@ void same_tensor(const torch::Tensor &left,const torch::Tensor &right,const std:
 }
 std::string cohort_name(uint64_t master){return "seed-"+std::to_string(master)+"-lag_sign";}
 fs::path parent_path(const std::string &id) {
-  require(id=="v4" || id=="v7","unknown fixed parent identity");return id=="v4"?parent:lighter_parent;
+  require(id=="v4" || id=="v7","unknown fixed parent identity");
+  return embedding::evaluation::historical_paths::physical(id=="v4"?parent:lighter_parent);
 }
 fs::path resolve_role(const std::string &key) {
   const auto slash=key.find('/');require(slash!=std::string::npos,"parent identity missing");
@@ -343,6 +345,7 @@ int main(int argc,char **argv) {
     }
     const auto admission_path=fs::absolute(options.at("--admission-log")).lexically_normal();require(is_sha(options.at("--admission-sha256")) && fs::is_regular_file(admission_path) && sha256(bytes(admission_path))==options.at("--admission-sha256"),"preserved admission log hash differs");
     InputGuard guard(options.at("--parent-input-manifest"));
+    write_new(output.string()+".historical-path-mapping.json",embedding::evaluation::historical_paths::ledger());
     std::ostringstream plan;plan << "{\"protocol\":" << quote(protocol) << ",\"policy_version\":\"1.2\",\"stage\":\"development\",\"model_tag\":\"RPB-v8\",\"phase\":\"measure\",\"masters\":[4404,5505,6606,7707,8808],\"milestones\":[0,512],\"source_pairs\":[128,64],\"batch_size\":8,\"parameters_each\":225805,\"native_size\":32,\"post_encoder_pca\":false,\"training_policy_id\":\"rpb-training-context-balanced-030-v1\",\"training_context_active_rate\":0.30,\"training_schedule\":\"absolute-attempt-even-ordinary-odd-coordinate30-v1\",\"ordinary_updates\":256,\"deletion_updates\":256,\"training_namespace\":" << quote(training_namespace)
         << ",\"validation_view\":{\"id\":" << quote(view_id) << ",\"rate\":0.30,\"stream\":" << validation_stream << ",\"rng_namespace\":" << quote(view_namespace) << ",\"seed_policy\":\"stream_seed(master,stream)\",\"pair_shared\":true,\"repair\":false,\"reuse_exact_v7_bytes\":true,\"new_draws\":false},\"test_access\":false,\"stress_access\":false,\"selection\":false,\"promotion\":false,\"parent_capsule\":" << quote(fs::absolute(parent).string()) << ",\"parent_source_fingerprint\":" << quote(parent_source)
         << ",\"lighter_parent_capsule\":" << quote(fs::absolute(lighter_parent).string()) << ",\"lighter_parent_source_fingerprint\":" << quote(lighter_source) << ",\"allowed_parent_roles\":326,\"hash_manifest_format\":\"SHA256 two spaces parent_id/relative_path\",\"joint_guard\":{\"quality_comparator\":\"RPB-v7\",\"reconstruction_comparator\":\"RPB-v4\",\"mean_and_worst_master_linear_both_views_no_lower\":true,\"equal_coverage\":true,\"mean_TRAIN_and_VALIDATION_MAE_no_worse\":true}"
