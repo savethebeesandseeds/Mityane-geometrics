@@ -75,26 +75,38 @@ settings, tensor/evaluation utilities and artifact identities in
 [shared](code/shared/README.md). Existing C++ include names, namespaces and model
 version tags retain their identities.
 
-The family-owned [live CPB ranking](code/embeddings/encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
-owns current checkpoint standings, including the new audited January scoped
-records. The [current encoder research guide](doc/EMBEDDINGS.md) preserves
-CPB-v4's historical broad clean-causal breakthrough, RPB-v24 native36's
-historical balanced-leader role, V3's baseline role and later task-specific gains.
-Independent V14 metadata review and compatible application are complete; the
-guide links the actual records. V14 is the latest catalogued historical instance;
-the separate V15 study supplies newer measurements. The owner approved the
-[V15 objective comparison](code/embeddings/evaluation/protocols/cpb_v15_objective_v1/PROTOCOL.md)
-on 19 October: three fresh V4/V15 pairs at native36, with V15 reusing V4's source
-design and inheriting no trained weights. V5–V14 use native40. All six runs and
-twelve independent arithmetic audits are complete and valid. The
-[validated results](code/embeddings/evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
-report a **mixed** prospective screen: February linear activity R² and descriptive
-query MAE/NLL improve in all three pairs, while the volatility, trend-tolerance
-and all-candidate timing requirements are unmet. Fresh V4-control records remain
-distinct from V15 gains. This study does not support a broad encoder replacement
-or Mityane selection. The
-[compact study record](code/embeddings/evaluation/records/CPB-v15.objective-001.json)
-binds the closeout evidence.
+The current research default is **V16 candidate seed 946103, final update 2048,
+native36**, chosen on 22 October 2026. The family-owned
+[research reference](code/embeddings/encoders/causal_patch_bottleneck_mae/research-reference.json)
+records this explicit post-study choice: it is the strongest saved trend
+checkpoint, and its March trend/activity results improve on its matched fresh V4
+control. Seed 946102 remains the January neural-activity specialist and seed 946101 the
+deleted-view, market-scaled TEMPO-5 linear timing specialist. The
+[live CPB ranking](code/embeddings/encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
+owns the individual standings; the [research guide](doc/EMBEDDINGS.md) preserves
+the search history. V4 remains the historical benchmark and known-validation
+reconstruction leader; V3 is the clean baseline. V14 is the latest catalogued
+historical instance, separate from this research-reference choice.
+
+The [V16 comparison](code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md)
+completed on 21 October with four January candidate record scopes. Both March
+primary targets pass: median paired linear R² gains are **+0.047276 for trend**
+(2/3 positive pairs) and **+0.193252 for activity** (3/3). Its declared screen is
+**mixed**: volatility declines by a median 0.033500 beyond the 0.01 tolerance,
+and no candidate retains all eight strongest timing conditions. The fresh
+controls also miss that complete timing gate. All six logical 2048-update
+trajectories, twelve arithmetic audits and twelve checkpoint causal proofs pass.
+This research choice does not establish application deployment or broader
+forecasting utility.
+
+V15/V16 reuse V4's native36 source design with fresh weights, optimizer state and
+TRAIN statistics; V5–V14 use native40. Candidate 946103 continued from its own
+saved 512 state after interruption, repeating discarded work. Full execution
+cost, exact physical repetition count and prefix parameter counters remain
+unknown; the [compact study record](code/embeddings/evaluation/records/CPB-v16.temporal-001.json)
+binds the scoped recovery evidence. The prior
+[V15 study](code/embeddings/evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
+retains five current leading scopes and its mixed February result.
 
 Inherited implementations and engineering fixtures do not establish every
 catalogue capability. The dashboard records 18 workstreams: thirteen

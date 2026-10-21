@@ -32,30 +32,49 @@ External/open models and API embeddings remain first-class representation source
 
 ## Current research references
 
-The family-owned [live CPB ranking](encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
-owns current checkpoint standings and audited scoped records, including the new
-January observations. [The current research summary](../../doc/EMBEDDINGS.md)
-preserves search history, exact historical references and continuation.
-**CPB-v4** is the historical broad clean-causal breakthrough;
-**RPB-v24.market-01.alt-01 native36** is the historical balanced leader.
-**CPB-v3** is the stable clean research baseline. Independent V14 metadata review
-and compatible application are complete. V14 is the latest catalogued historical
-instance; it is no longer the latest measurement.
+The current research default is **V16 candidate seed 946103, final update 2048,
+native36**, explicitly chosen on 22 October 2026 in the family-owned
+[research reference](encoders/causal_patch_bottleneck_mae/research-reference.json).
+It is the strongest saved trend checkpoint, with March trend/activity gains over
+its matched fresh V4 control. Seed 946102 is the neural-activity specialist;
+seed 946101 is the deleted-view, market-scaled TEMPO-5 linear timing specialist.
+The [live CPB ranking](encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
+owns these separately identified checkpoint standings, and the
+[research guide](../../doc/EMBEDDINGS.md) preserves the search history.
+V4 remains the historical benchmark and known-validation reconstruction leader;
+V3 is the clean baseline. RPB-v24.market-01.alt-01 native36 retains its historical
+balanced-leader role. V14 is the latest catalogued historical instance, separate
+from the new research-reference choice.
 
-The owner approved a fresh V4/V15 objective comparison on 19 October;
-its [prospective protocol](evaluation/protocols/cpb_v15_objective_v1/PROTOCOL.md)
-fixes three paired encoder seeds and a separate confirmation month. V15 branches
-from V4's native36 source design, with fresh weights, optimizer state and TRAIN
-statistics; V5–V14 use native40. All six runs and twelve independent arithmetic
-audits are complete and valid. The
-[validated results](evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
-record a **mixed** prospective screen: February linear activity R² and descriptive
-query MAE/NLL improve in all three pairs. Volatility, trend tolerance and the
-all-candidate timing requirement do not pass the declared promising rule. Fresh
-V4-control records remain distinct from V15 gains; the study does not establish
-a broad replacement or Mityane selection. The
-[compact study record](evaluation/records/CPB-v15.objective-001.json)
-binds the closeout evidence. The saved V14 TRAIN study remains an unexecuted draft.
+The [V16 study](evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md) completed on
+21 October 2026 under its [prospective protocol](evaluation/protocols/cpb_v16_temporal_v1/PROTOCOL.md).
+Four January candidate record scopes span linear/neural trend (946103), neural
+activity (946102), and deleted-view, market-scaled linear TEMPO-5 accuracy (946101).
+Fresh V4 controls 946101/946103 also exceed the historical neural-trend result;
+their gains remain separate from the candidate effects. Both March primary
+targets pass: trend median paired linear R² gain **+0.047276** (2/3 positive
+pairs), activity **+0.193252** (3/3). The declared screen is **mixed**:
+volatility median ΔR² **−0.033500** misses the −0.01 protection, and no candidate
+retains all eight strongest timing conditions. Candidate 946101 passes 1/8 and
+the others 0/8; all fresh controls also pass 0/8. All six logical 2048-update
+trajectories, twelve independent arithmetic audits and twelve checkpoint causal
+proofs pass. These quality floors and causal proofs are separate. The research
+choice establishes no application deployment or broader forecasting utility.
+
+V3–V16 start from fresh learned weights. V15/V16 branch from V4's native36 source
+design with fresh optimizer state and TRAIN statistics; V5–V14 use native40.
+Candidate 946103 continued from its own saved 512 typed state after interruption,
+with discarded-tail work repeated. Full execution cost, exact repetition count
+and cumulative prefix parameter evidence remain unknown; measured suffix
+evidence is separately scoped. The
+[recovery declaration](evaluation/protocols/cpb_v16_temporal_recovery_v1/RECOVERY.md)
+and [compact study record](evaluation/records/CPB-v16.temporal-001.json) bind that
+history.
+
+The [V15 objective study](evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
+remains complete with its mixed February screen. Five of its six earlier scoped
+records, from candidates and fresh controls, still lead; V16 now exceeds its
+neural-activity record. The saved V14 TRAIN study remains an unexecuted draft.
 
 ## Development
 
@@ -82,7 +101,7 @@ new task results use `/mityane/.temp/embeddings/runs/<session>`. See the
 
 The saved 18 October handoff records the original pause boundary. Start with
 the [current research guide](../../doc/EMBEDDINGS.md) for the user's later
-reviewed V14 metadata application and the authorized V15 study. Archived next-step notes do not authorize
+reviewed V14 metadata application and the completed V15/V16 studies. Archived next-step notes do not authorize
 new experiments or bypass the current scope and review requirements.
 
 The complete pre-cleanup source/documentation component is retained byte-for-byte under

@@ -6,8 +6,10 @@ inside the copied implementation.
 ## Active ranking and agent instructions
 
 Maintain the live [`causal_patch_bottleneck_mae.ranking.md`](causal_patch_bottleneck_mae.ranking.md) in this
-family directory. Read it before answering which encoder is best or choosing
-comparison references. It owns current quality standings; dated notes below
+family directory. Read it and the authoritative
+[`research-reference.json`](research-reference.json) before answering which
+encoder is best or choosing comparison references. The record names the current
+research default; the ranking owns scoped quality standings. Dated notes below
 retain their historical context. Hero JSON owns work states.
 
 1. **Update the ranking with new evidence.** After an admitted measurement and
@@ -20,10 +22,14 @@ retain their historical context. Hero JSON owns work states.
    receipt containing source, checkpoint SHA256, TRAIN fits, masks, data split,
    population/horizon, fixed heads, seeds, coverage and audit. A version name
    alone does not identify a trained encoder.
-3. **Keep the leading reference visible.** Preserve the current broad clean lead,
-   baseline and task leaders as distinct roles. Record scoped gains even when
-   advancement fails. Replace a broad lead only with an explicit evidence-based
-   assessment and a dated reason; retain the former lead and its achievements.
+3. **Use the explicit current research reference.** The default is V16 candidate
+   seed 946103, final logical update 2048/native36, selected on 22 October 2026.
+   Keep that choice, V3's baseline, V4's historical breakthrough and task leaders
+   as distinct roles. Record scoped gains even when a protection fails. Change
+   the reference through an explicit evidence-based assessment and dated record;
+   retain the former reference, its achievements and the reasons for the change.
+   A research default does not establish universal quality or promotion under
+   the frozen protocol.
 4. **Rank comparable scores separately.** Keep TRAIN, known validation, fresh
    confirmation, tasks, heads and TEMPO scaler/views separate. Sort R²/accuracy
    descending and MAE/NLL ascending. Use unrounded values, preserve ties
@@ -32,8 +38,10 @@ retain their historical context. Hero JSON owns work states.
    introduce no undeclared weighted overall score.
 5. **Retain the whole study.** Show every admitted encoder seed/arm, gains,
    regressions, support failures and unresolved outcomes. Head repetitions are
-   not independent encoder trials. A record-setting seed is not a selected
-   study winner. Keep initial checkpoints separate from final outcome ranks.
+   not independent encoder trials. A record-setting seed is not a prospectively
+   selected study winner. A later owner-directed reference choice must be dated
+   and described as retrospective, preserving the original study's flags and
+   verdict. Keep initial checkpoints separate from final outcome ranks.
 6. **Preserve ancestry and scope.** Keep pretrained/historically ineligible
    references separate from clean-causal comparisons. Record width/head-seed
    confounds. Reconstruction, readout, timing and forecasting utility remain
@@ -47,33 +55,87 @@ retain their historical context. Hero JSON owns work states.
    results; do not replay experiments to populate it. Never rewrite archived
    evidence, frozen version/source declarations or protocols as live status.
    Ranking maintenance alone authorizes no training, catalog application,
-   checkpoint adoption, publication or Mityane model selection.
+   runtime deployment, publication or Mityane model selection.
+
+## Current research reference — 22 October 2026
+
+**Use V16 candidate seed 946103, final logical update 2048/native36, as the
+reference for continued encoder research.** The
+[authoritative reference record](research-reference.json) binds its exact
+checkpoint, TRAIN input scaler and bank standardizer. It leads both January
+trend readouts and has positive March linear/neural trend and activity scores.
+This is the owner's explicit retrospective choice after the completed study;
+the study's original mixed verdict and selection flags remain unchanged.
+
+V16 seed 946102 retains the January neural-activity record, and seed 946101
+retains the market-scaled/deleted-view linear TEMPO record. Their scores belong
+to those separate checkpoints. V4 remains the historical broad clean-causal
+breakthrough and current known-validation reconstruction leader; retain it as
+a comparator for those strengths. V3 remains the clean baseline. The reference
+choice changes no runtime default, deployment or Mityane application selection.
+
+## Completed V16 temporal comparison — 21 October 2026
+
+V16 delivers **four new January candidate record scopes** across three seeds:
+seed946103 linear trend R² **0.925246** and neural trend mean **0.693462**,
+seed946102 neural activity mean **0.815612**, and seed946101 market-TRAIN-scaled,
+deleted-view linear TEMPO accuracy **97.526042%**. All are native36/final logical
+update2048. Fresh V4 controls946101/946103 also surpass historical V4's neural
+trend mean; candidate946103 subsequently leads that scope. The
+[live ranking](causal_patch_bottleneck_mae.ranking.md) preserves each checkpoint,
+former leader and dated success alongside all 24 measured checkpoints.
+
+**Both declared March primary targets pass:** linear trend median gain
+**+0.047276 R²**, improving2/3 pairs, and linear activity **+0.193252**, improving3/3.
+The full prospective verdict is **mixed**: linear volatility median **-0.033500**
+fails its -0.01 tolerance, and no candidate retains all eight strongest January
+timing conditions (1/8 for946101,0/8 for946102/946103; fresh controls also0/8).
+Several paired timing views improve without satisfying those absolute floors.
+Historical V4's original19/22 used earlier floors and is a distinct comparison.
+
+March neural trend/activity means improve2/3 pairs. Linear relation improves3/3
+but remains negative; neural relation worsens2/3. Neural activity means remain
+negative for946101/946102. January known-validation query MAE and NLL worsen3/3.
+March query MAE improves only946102, while NLL improves946101/946103; these are
+descriptive scores. The current reference retains these failures and tradeoffs.
+
+The [complete results](../../evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md)
+and [compact study record](../../evaluation/records/CPB-v16.temporal-001.json) bind
+six completed trajectories, all eighteen phase receipts, twelve independent
+arithmetic audits and twelve saved-checkpoint causal proofs. Full coverage passes.
+The [prospective protocol](../../evaluation/protocols/cpb_v16_temporal_v1/PROTOCOL.md)
+adds weight0.1 Huber differences at lags1/4/16 to V4 Gaussian NLL without changing
+native36 capacity, original hidden targets, heads or TRAIN-only preprocessing.
+The [development seal](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/development-seal.json)
+passed before March scoring. January remains development evidence; February and
+March are consumed evidence for later recipe choices. The original study made
+no checkpoint or Mityane application selection. The separate 22 October research
+reference choice is recorded above; current work states remain in Hx17.
+
+Candidate946103 restored its own typed512 state under the
+[recovery declaration](../../evaluation/protocols/cpb_v16_temporal_recovery_v1/RECOVERY.md)
+and [publication receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery001/publication.json).
+Exact available discarded-tail rows/fragments match; the distinct executable,
+two reconciled CSV identities and retained originals are explicit. The other five
+training trajectories remain unchanged. Total physical attempts/repeats, complete
+costs and prefix parameter counters remain unknown; measured recovery evidence
+covers only logical updates513–2048. The frozen V16 source declaration retains
+its preparation-stage wording because execution receipts bind those bytes.
 
 ## Completed V15 comparison — 19 October 2026
-
-The owner subsequently selected the [V16 temporal-reconstruction study](../../evaluation/protocols/cpb_v16_temporal_v1/PROTOCOL.md):
-V4 native36 with a small additional hidden-difference loss at minute lags1/4/16,
-three new fresh paired seeds and prospectively chosen March confirmation.
-As of 20 October, [CUDA engineering](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/engineering-review-005.json)
-and [January target parity](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/target-parity-001.json)
-have passed. The six fresh trajectories are being executed under the
-[frozen run card](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/run-inputs-001.json);
-the [execution log](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/study-execution-001.log)
-records progress. No V16 quality result is established yet; the standings below
-remain unchanged. Current work states remain in Hero17.
 
 The three-seed paired V4/V15 native36 study is complete and valid, with a
 **mixed** prospective verdict. V15 improves February linear/neural activity and
 descriptive query MAE/NLL in all three pairs. It sets two scoped January records;
 fresh V4 controls set four more. The [live ranking](causal_patch_bottleneck_mae.ranking.md)
 preserves all six runs and earlier leaders. Volatility, trend tolerance and
-timing retention fail the prospective promising rule, so **V4 remains the
-broad clean reference**. See the [complete results](../../evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
+timing retention fail the prospective promising rule; **V4 remained the
+broad clean reference at that 19 October closeout**. See the [complete results](../../evaluation/protocols/cpb_v15_objective_v1/RESULTS.md)
 and [bound study record](../../evaluation/records/CPB-v15.objective-001.json).
 
 ## Research references — 18 October 2026
 
-**CPB-v4.market-01 is the broad clean-causal breakthrough reference.** It passed
+**CPB-v4.market-01 established the broad clean-causal breakthrough.** It passed
 19/22 original conditions against V3, retained all eight hard-timing checks
 (seven improvements and one tie), substantially improved trend/relation, and
 achieved the best saved known-VALIDATION reconstruction MAE and Gaussian NLL.
@@ -91,7 +153,7 @@ and [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_F
 
 In this 18 October snapshot, V7 held the TRAIN reconstruction MAE/NLL records.
 The [live ranking](causal_patch_bottleneck_mae.ranking.md) records the later
-V15-study observations, including fresh-control gains. TRAIN reconstruction,
+V15/V16-study observations, including fresh-control gains. TRAIN reconstruction,
 known-VALIDATION reconstruction, fixed-readout quality and forecasting utility
 are separate measures. No single clean encoder has combined every protected
 strength or received overall promotion. Acceptance floors changed over time, so
@@ -116,11 +178,11 @@ development; these past-window measurements do not establish fresh-period or
 forecasting utility. The project-wide scope is defined by the
 [Operations over Representations charter](../../../../doc/operations_over_representations_design_spec_v0.1.0.md).
 
-V1 imports RPB-v30 weights; V2 adapts V1 and retains pretrained ancestry. V3–V15
+V1 imports RPB-v30 weights; V2 adapts V1 and retains pretrained ancestry. V3–V16
 start from fresh learned weights, optimizer state and TRAIN statistics. Later
 versions branch source designs; they do not accumulate earlier trained weights.
-V3/V4 native36 versus V5–V14 native40 remains a capacity/head confound. V15
-branches V4 source at native36, making its objective comparison independent of
+V3/V4 native36 versus V5–V14 native40 remains a capacity/head confound. V15/V16
+branch V4 source at native36, making their objective comparisons independent of
 the older Huber experiments' width change.
 
 The user resumed **V14 metadata review/application/preservation** on 18 October

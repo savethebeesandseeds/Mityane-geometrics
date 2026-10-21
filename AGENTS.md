@@ -91,8 +91,12 @@ its bytes or treat archived instructions as current lifecycle commands.
 Original paths and hashes remain evidence identities. A historical reproduction
 needs an explicit path mapping and the relevant frozen admission/protocol;
 maintenance does not resume paused experiments, metadata application or training.
-Imported encoder research and unfinished V14 metadata review/application remain
-paused. Relocated or edited source has a new path-bound source identity; never
+The imported 18 October pause is a historical boundary. Subsequent authorized
+V14 metadata application and V15/V16 studies are complete. Read `doc/EMBEDDINGS.md`
+and the family-owned `research-reference.json` for the current V16 research
+reference chosen on 22 October; preserve its mixed study verdict and limitations.
+Further experimental execution still needs its actual scope, bindings, protocol
+and permissions. Relocated or edited source has a new path-bound source identity; never
 substitute it for the source recorded by a historical receipt.
 
 # Project dashboard

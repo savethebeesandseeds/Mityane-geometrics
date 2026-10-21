@@ -1,30 +1,34 @@
 # Causal patch bottleneck MAE encoder ranking
 
-Last evidence review: **19 October 2026**. This is the maintained CPB leaderboard for measured checkpoint quality. Work states remain in [Hero 17](../../../../web/dashboard/heroes/17-encoder-cpb.json); [README](README.md#active-ranking-and-agent-instructions) defines how agents must maintain this file.
+Scientific evidence reviewed: **21 October 2026**. Current research reference chosen: **22 October 2026**.
 
-**Leading broad clean-causal reference: CPB-v4.market-01, native36.** Its original comparison delivered 19/22 conditions, all eight hard-timing checks, large trend/relation gains and the best saved known-validation reconstruction. Its remaining failures and lack of formal promotion do not erase that leading role. **CPB-v3.market-01 remains the clean baseline.**
+This is the maintained CPB leaderboard for measured checkpoint quality. Work states remain in [Hx17](../../../../web/dashboard/heroes/17-encoder-cpb.json); [README](README.md#active-ranking-and-agent-instructions) defines how agents must maintain this file.
 
-The January quantitative rankings below include 12 completed historical instances, V3–V14, plus all six fresh trajectories in the completed V4/V15 study, trained on January only. The separate February confirmation is complete with a **mixed prospective screen verdict**. Scoped records remain visible alongside their former leaders; they do not select a seed or replace the broad reference automatically.
+**Current research reference: [V16 candidate seed 946103][n946103], final logical update 2048/native36.** The owner's explicit 22 October choice is recorded in [research-reference.json](research-reference.json), including the exact checkpoint and TRAIN preprocessing identities. It leads both January trend readouts and has positive March linear/neural trend and activity scores. V4 remains the historical broad clean-causal breakthrough and current known-validation reconstruction leader; V3 remains the clean baseline.
+
+The January quantitative rankings below include24 completed checkpoints:12 historical instances V3–V14, six fresh V4/V15 trajectories and six fresh V4/V16 trajectories, all trained on January only. V16 establishes four candidate record scopes across three checkpoints: seed946103 linear/neural trend, seed946102 neural activity and seed946101 market-scaled/deleted-view linear TEMPO. Both March primary targets pass: median paired linear R² gains are +0.047276 for trend (2/3 improving pairs) and +0.193252 for activity (3/3). The full March verdict remains **mixed** because volatility and strongest timing protections fail. The separate February V15 verdict is also **mixed**. Both studies retain their original no-selection flags; the later research-reference choice is retrospective.
 
 ## Research standing
 
 | Standing | Encoder | Reason and limit |
 | --- | --- | --- |
-| Current broad clean lead | [CPB-v4.market-01][v4] | 19/22 original conditions, all eight original timing protections, trend/relation breakthrough and known-validation reconstruction leader. Linear volatility/activity and TRAIN MAE failed their original floors. |
-| Stable clean baseline | [CPB-v3.market-01][v3] | Fresh causal-training baseline; retains the highest observed linear volatility R². Baseline is not the broad quality ranking. |
-| Specialist references | [V6][v6], [V8][v8], [V11][v11], [V13][v13] | Retain relation, volatility, activity and timing strengths in the task rankings below. Earlier leaders remain recorded when a new observation exceeds them. |
+| Current research reference | [V16 candidate seed 946103][n946103], final2048/native36 | Explicit 22 October retrospective choice for continued research. Holds both January trend records; March linear/neural trend and activity are positive. Mixed full study, 5/22 strengthened conditions and 0/8 strongest timing conditions remain recorded. |
+| Historical broad breakthrough and reconstruction comparator | [CPB-v4.market-01][v4] | 19/22 original conditions, all eight original timing protections and major trend/relation gains. Still leads known-validation reconstruction. Linear volatility/activity and TRAIN MAE failed its original floors. |
+| Stable clean baseline | [CPB-v3.market-01][v3] | Fresh causal-training baseline; established the historical linear-volatility R² lead; current scoped positions are in the table. Baseline is not the broad quality ranking. |
+| Specialist references | [V16 seed 946102][n946102], [V16 seed 946101][n946101], [V6][v6], [V8][v8], [V11][v11], [V13][v13] | V16 seeds946102/946101 lead January neural activity and market-scaled/deleted linear TEMPO respectively. Other relation, volatility, activity and timing strengths and former leaders remain in the scoped rankings below. |
 | Latest catalogued closed instance | [CPB-v14.market-01][v14] | Full trust/coverage; 3/22 strengthened conditions and no new protected record in that historical run. Its catalog position is not a quality rank. |
 | Completed controlled study | V4 controls and V15, seeds 945101/945102/945103 | All six fresh native36 final2048 trajectories and twelve arithmetic audits passed. February's declared screen is mixed: activity and reconstruction gains coexist with volatility/trend losses and failed timing protections. |
+| Completed temporal study | Fresh V4 controls/V16, seeds946101/946102/946103 | Six final2048 trajectories and twelve arithmetic audits complete; both March primary targets pass and the saved full verdict is mixed. The study made no automatic promotion or checkpoint selection. |
 
-V4's broad-lead position is the retained scientific assessment supported by its [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_REVIEW.md), rather than an invented weighted score. Historical 19/22 and later 3/22 counts used different floors and must not be sorted as one metric. Ranking positions confer no Mityane application selection or automatic promotion.
+The current research default follows the explicit [22 October reference decision](research-reference.json) and completed readout evidence. V4's historical role remains supported by its [review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_FRESH_V4_REVIEW.md). Neither role is an invented weighted score or a universal quality claim. Historical 19/22 and later 3/22 counts used different floors and must not be sorted as one metric. The reference choice changes no frozen verdict, runtime default, deployment or Mityane application selection.
 
 ## How to read the quantitative ranks
 
-V3 through V14 abbreviate the exact `CPB-vN.market-01` instance, never every checkpoint of that version. `V4 control 945101` and similar labels identify new control-arm checkpoints in `cpb-v15-objective-001`; they are distinct from `CPB-v4.market-01`. `V15 seed 945102` identifies that study's candidate arm. Every new run is listed in the [identity register](#study-run-identities).
+V3 through V14 abbreviate the exact `CPB-vN.market-01` instance, never every checkpoint of that version. `V4 control 945101` and similar labels identify new control-arm checkpoints in `cpb-v15-objective-001`; they are distinct from `CPB-v4.market-01`. `V15 seed 945102` identifies that study's candidate arm. V4 control946101 and V16 seed946101 identify the separate V16 study. Every new run is listed in the [V15 identity register](#study-run-identities) or [V16 identity register](#v16-study-run-identities).
 
 Columns 1–3 are **distinct score groups**, using dense ranks: scores within absolute **1e-12** share a group, and every tied member is retained. This reporting convention avoids ordering floating-point averaging noise. It changes no frozen acceptance predicate. Values are displayed to six decimals; ranking uses unrounded values, and the linked JSON retains individual scores. Higher R²/accuracy is better; lower MAE/NLL is better.
 
-V3/V4 and the new study have native36; V5–V14 have native40. Width changes readout capacity and width-derived head seeds. These are observed checkpoint rankings, not controlled claims that one architecture causes a gain. Historical versions each have one encoder training trajectory; three head repetitions are not three encoder retrainings.
+V3/V4 and both fresh studies have native36; V5–V14 have native40. Width changes readout capacity and width-derived head seeds. These are observed checkpoint rankings, not controlled claims that one architecture causes a gain. Historical versions each have one encoder training trajectory; three head repetitions are not three encoder retrainings.
 
 ## Market readout ranking
 
@@ -34,27 +38,27 @@ Scope: **OR-05 past-window readout**, MKT-HIST-2, BTC/ETH/SOL January2024, TRAIN
 | --- | --- | --- | --- |
 | Volatility / linear | [V3][v3] · **0.964673** | [V5][v5] · **0.952211** | [V10][v10] · **0.935675** |
 | Volatility / neural mean | [V8][v8] · **0.735969** | [V7][v7] · **0.673305** | [V5][v5] · **0.648191** |
-| Trend / linear | [V4][v4] · **0.907213** | [V10][v10] · **0.897085** | [V5][v5] · **0.868645** |
-| Trend / neural mean | [V4][v4] · **0.569875** | [V10][v10] · **0.548230** | [V5][v5] · **0.523929** |
+| Trend / linear | [V16 seed 946103][n946103] · **0.925246** | [V4][v4] · **0.907213** | [V10][v10] · **0.897085** |
+| Trend / neural mean | [V16 seed 946103][n946103] · **0.693462** | [V4 control 946101][c946101] · **0.650729** | [V4 control 946103][c946103] · **0.621373** |
 | Activity / linear | [V11][v11] · **0.909439** | [V15 seed 945103][n945103] · **0.906534** | [V14][v14] · **0.887832** |
-| Activity / neural mean | [V4 control 945101][c945101] · **0.792420** | [V13][v13] · **0.762544** | [V4 control 945102][c945102] · **0.756138** |
+| Activity / neural mean | [V16 seed 946102][n946102] · **0.815612** | [V4 control 945101][c945101] · **0.792420** | [V13][v13] · **0.762544** |
 | Relation / linear | [V6][v6] · **0.622101** | [V7][v7] · **0.600801** | [V14][v14] · **0.589564** |
 | Relation / neural mean | [V13][v13] · **0.457197** | [V11][v11] · **0.448775** | [V14][v14] · **0.419915** |
 
-The new activity-neural high is **0.7924196342764943**, from fresh V4 control945101, against the prior closed-study V13 value **0.762543630810775**. Its three saved head values are 0.8569086791075013, 0.7904946597000803 and 0.7298555640219014. This is a new checkpoint observation from the V15 study's control arm, not a V15-candidate gain.
+The V15-study activity-neural record was **0.7924196342764943**, from fresh V4 control945101, against the prior closed-study V13 value **0.762543630810775**. Its three saved head values are 0.8569086791075013, 0.7904946597000803 and 0.7298555640219014. This is a new checkpoint observation from the V15 study's control arm, not a V15-candidate gain.
 
 ## Fixed query reconstruction ranking
 
-Scope: **OR-09 fixed-query decoding**, the unchanged saved masked MKT-HIST-2 query, final checkpoint2048. TRAIN contains112 windows and known validation32. The two splits are ranked separately. Gaussian NLL is a reported measurement; V15 trains a different composite objective. TRAIN NLL remains descriptive and adds no protection gate.
+Scope: **OR-09 fixed-query decoding**, the unchanged saved masked MKT-HIST-2 query, final checkpoint2048. TRAIN contains112 windows and known validation32. The two splits are ranked separately. Gaussian NLL is a reported measurement; V15 and V16 train different declared composite objectives. TRAIN NLL remains descriptive and adds no protection gate.
 
 | Population / metric | 1 | 2 | 3 |
 | --- | --- | --- | --- |
 | TRAIN / MAE | [V15 seed 945102][n945102] · **0.240037** | [V7][v7] · **0.241805** | [V9][v9] · **0.244540** |
-| TRAIN / Gaussian NLL | [V4 control 945101][c945101] · **-0.410369** | [V7][v7] · **-0.408827** | [V6][v6] · **-0.400207** |
+| TRAIN / Gaussian NLL | [V4 control 945101][c945101] · **-0.410369** | [V7][v7] · **-0.408827** | [V4 control 946103][c946103] · **-0.407006** |
 | Known validation / MAE | [V4][v4] · **0.308317** | [V12][v12] · **0.315911** | [V11][v11] · **0.320134** |
 | Known validation / Gaussian NLL | [V4][v4] · **-0.045381** | [V12][v12] · **0.297064** | [V11][v11] · **0.312349** |
 
-The new TRAIN MAE is **0.24003670546837294** for V15 seed945102, below V7's **0.24180533789857825**. Fresh V4 control945101 has TRAIN NLL **-0.41036896330440875**, below V7's **-0.40882727825899934**. These training-population records do not establish fresh-period superiority. V4 retains both known-validation reconstruction records.
+The V15-study TRAIN MAE record was **0.24003670546837294** for V15 seed945102, below V7's **0.24180533789857825**. Fresh V4 control945101 has TRAIN NLL **-0.41036896330440875**, below V7's **-0.40882727825899934**. These training-population records do not establish fresh-period superiority. Historical V4 established both known-validation reconstruction records; current scoped positions are in the table.
 
 ## TEMPO timing ranking
 
@@ -63,17 +67,17 @@ Scope: **OR-05 slow lead/lag readout**, TEMPO-5 complexity5/5, masters941101/941
 | Input scaler / validation view / head | 1 | 2 | 3 |
 | --- | --- | --- | --- |
 | Synthetic TRAIN / intact / linear | [V15 seed 945101][n945101] · **99.609375%** | [V15 seed 945103][n945103] · **99.348958%** | [V13][v13] · **98.958333%** |
-| Synthetic TRAIN / intact / neural | [V6][v6] · **98.480903%** | [V15 seed 945102][n945102], [V15 seed 945103][n945103], [V11][v11] · **98.263889%** | [V13][v13] · **98.220486%** |
-| Synthetic TRAIN / deleted / linear | [V13][v13] · **95.833333%** | [V9][v9], [V15 seed 945103][n945103] · **95.572917%** | [V6][v6] · **95.312500%** |
+| Synthetic TRAIN / intact / neural | [V6][v6] · **98.480903%** | [V16 seed 946101][n946101] · **98.350694%** | [V15 seed 945102][n945102], [V15 seed 945103][n945103], [V11][v11] · **98.263889%** |
+| Synthetic TRAIN / deleted / linear | [V13][v13] · **95.833333%** | [V9][v9], [V15 seed 945103][n945103] · **95.572917%** | [V6][v6], [V16 seed 946101][n946101] · **95.312500%** |
 | Synthetic TRAIN / deleted / neural | [V4 control 945101][c945101] · **94.835069%** | [V13][v13] · **94.574653%** | [V15 seed 945103][n945103] · **94.401042%** |
-| Market TRAIN / intact / linear | [V9][v9] · **99.869792%** | [V6][v6], [V11][v11], [V12][v12], [V14][v14], [V15 seed 945103][n945103] · **99.739583%** | [V8][v8], [V13][v13], [V15 seed 945101][n945101], [V4 control 945102][c945102] · **99.609375%** |
-| Market TRAIN / intact / neural | [V4 control 945102][c945102] · **99.305556%** | [V8][v8] · **99.262153%** | [V6][v6] · **99.218750%** |
-| Market TRAIN / deleted / linear | [V6][v6] · **97.265625%** | [V15 seed 945101][n945101] · **96.484375%** | [V15 seed 945103][n945103] · **96.354167%** |
+| Market TRAIN / intact / linear | [V9][v9] · **99.869792%** | [V6][v6], [V11][v11], [V12][v12], [V14][v14], [V15 seed 945103][n945103], [V16 seed 946101][n946101] · **99.739583%** | [V8][v8], [V13][v13], [V15 seed 945101][n945101], [V4 control 945102][c945102] · **99.609375%** |
+| Market TRAIN / intact / neural | [V4 control 945102][c945102] · **99.305556%** | [V8][v8] · **99.262153%** | [V6][v6], [V16 seed 946102][n946102] · **99.218750%** |
+| Market TRAIN / deleted / linear | [V16 seed 946101][n946101] · **97.526042%** | [V6][v6] · **97.265625%** | [V15 seed 945101][n945101] · **96.484375%** |
 | Market TRAIN / deleted / neural | [V4][v4] · **95.616319%** | [V15 seed 945103][n945103] · **95.486111%** | [V6][v6] · **95.312500%** |
 
-These new timing highs coexist with failures against other strongest timing protections. The completed study reports every run's eight original flags and the separate prospective February screen below.
+These V15-study timing highs coexist with failures against other strongest timing protections. The completed study reports every run's eight original flags and the separate prospective February screen below.
 
-## All six January study trajectories
+## All six January V15-study trajectories
 
 All runs use native36, 2048 successful updates and fresh weights, optimizer and TRAIN statistics. Each encoder-seed pair holds the architecture and declared initialization/data/mask/context seeds fixed while changing the objective. Pairing receipts record identical row/mask-seed and anchor CSV fields and matching initialization FNV summaries; those metadata checks do not independently compare every parameter bit or context-mask waveform. All six January results remain visible so a record-setting seed does not stand in for the entire study. Individual neural repetitions, masks, row IDs and audited support remain in the linked reports.
 
@@ -114,7 +118,7 @@ V15 lowers paired TRAIN/known-validation MAE and known-validation NLL in all thr
 
 ## February confirmation and broader replacement
 
-**Work is complete: six of six trajectories and all twelve independent arithmetic audits passed. The saved prospective screen verdict is `mixed`; `promising` is false.** Activity linear R² improves in all three candidate/control pairs, and descriptive fixed-query MAE and NLL fall in all three pairs. Volatility and trend linear R² improve in one pair each; the volatility median, trend tolerance and candidate timing protections fail the declared screen. These scoped gains and losses do not replace the broad historical V4 reference or select a seed.
+**Work is complete: six of six trajectories and all twelve independent arithmetic audits passed. The saved prospective screen verdict is `mixed`; `promising` is false.** Activity linear R² improves in all three candidate/control pairs, and descriptive fixed-query MAE and NLL fall in all three pairs. Volatility and trend linear R² improve in one pair each; the volatility median, trend tolerance and candidate timing protections fail the declared screen. At the 19 October closeout, those scoped gains and losses left V4 as the reference and selected no seed. The later 22 October research-reference decision is recorded separately above.
 
 Scope: a separate **32-probe calendar-selected February2024 population**, opened after the [six-run development seal](../../../../.temp/embeddings/runs/cpb-v15-objective-001/attempt-001/development-seal.json), with the original January TRAIN scalers and fitted heads reused. Every task/head has32/32 support in all six runs. Neural values below are means of the same three fixed head repetitions. No February fit, tuning or encoder update occurs. January and February remain separate populations; values below are within-study comparisons, not a cross-month family ranking.
 
@@ -213,13 +217,133 @@ The [immutable study card](../../../../.temp/embeddings/runs/cpb-v15-objective-0
 
 The broad historical V4 reference is separately identified by its [instance metadata][v4]: native36, initialization seed943001, final2048, 1291217bytes, SHA256 `ed1b2611f10f3cb0e14b5636e9fd07d6dbfbbce4ac9ed4769b8e98e792676fad`.
 
+## V16 temporal study: all six January trajectories
+
+All six newly initialized V4 controls/V16 candidates use native36 and final2048/B8. They are distinct from the V15 controls and historical CPB-v4.market-01. Control retains V4 Gaussian NLL; candidate adds0.1 times the fixed mean of hidden-endpoint difference Huber1 at raw-minute lags1/4/16, with sqrt2 scaling. One shared clip1/AdamW remains. These are saved audited observations, not an independently reconstructed optimizer trajectory.
+
+**V16 operational recovery.** The five previously completed trajectories remain unchanged. Candidate946103 restored its original typed checkpoint512 and completed logical updates513–2048 using a separately admitted recovery executable. Available discarded-tail complete CSV rows and torn fragment prefixes matched exactly before reconciliation. The physical repeated-update count, complete original execution cost and whole-trajectory per-parameter counters remain unknown; no uninterrupted or zero-recomputation claim is made. The [operational amendment](../../evaluation/protocols/cpb_v16_temporal_recovery_v1/RECOVERY.md), [exact recovered-report verification](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery-report-verification-001.json) and [actual publication record](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery001/publication.json) bind that extension. These execution limitations do not change the saved score definitions,24-checkpoint population, dense-rank grouping or original predicates.
+
+Recovery source review: [exact source extension](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery-source-review-001.json); [actual compiled build](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery-build-admission-001.json); [explicit operational admission](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery-admission-001.json); [actual suffix execution](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/recovery-suffix-execution-001.json). New recovery binary: `/opt/mityane-geometrics/embeddings/build/cpb-v16-temporal-001/cpb_v16_temporal_recovery_candidate_train`, 927984bytes, SHA256 `41cf522307e00185eee02001bb603d9a45f3012d0bfd22a3fa50961f630610ab`. Candidate946103 whole-trajectory costs are null; its recorded learning counters and suffix timing cover logical513–2048 only. See the human results for original-stage calibration and separately scoped suffix measurements. No cost-efficiency ranking is inferred.
+
+### January Linear R² — V16 study
+
+| Run | Volatility | Trend | Activity | Relation | Coverage |
+| --- | --- | --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 0.768341 | 0.854608 | 0.789226 | 0.429196 | full declared |
+| [V16 seed 946101][n946101] | 0.691376 | 0.762465 | 0.784860 | 0.422845 | full declared |
+| [V4 control 946102][c946102] | 0.790769 | 0.744868 | 0.836326 | 0.406025 | full declared |
+| [V16 seed 946102][n946102] | 0.688165 | 0.818543 | 0.842149 | 0.486499 | full declared |
+| [V4 control 946103][c946103] | 0.615560 | 0.841987 | 0.844730 | 0.291859 | full declared |
+| [V16 seed 946103][n946103] | 0.745787 | 0.925246 | 0.855231 | 0.249267 | full declared |
+
+### January Neural mean R² — V16 study
+
+| Run | Volatility | Trend | Activity | Relation | Coverage |
+| --- | --- | --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 0.302772 | 0.650729 | 0.742071 | 0.117352 | full declared |
+| [V16 seed 946101][n946101] | 0.398748 | 0.278750 | 0.650478 | 0.209820 | full declared |
+| [V4 control 946102][c946102] | 0.037965 | 0.450068 | 0.727045 | 0.183345 | full declared |
+| [V16 seed 946102][n946102] | -0.028552 | 0.498439 | 0.815612 | 0.197636 | full declared |
+| [V4 control 946103][c946103] | -0.019702 | 0.621373 | 0.672556 | 0.105447 | full declared |
+| [V16 seed 946103][n946103] | 0.037713 | 0.693462 | 0.673931 | 0.194984 | full declared |
+
+### January reconstruction — V16 study
+
+| Run | TRAIN MAE | TRAIN NLL | Known-VAL MAE | Known-VAL NLL |
+| --- | --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 0.267098 | -0.358751 | 0.390534 | 0.922563 |
+| [V16 seed 946101][n946101] | 0.258649 | -0.363471 | 0.419242 | 1.117587 |
+| [V4 control 946102][c946102] | 0.256308 | -0.393660 | 0.366233 | 0.432826 |
+| [V16 seed 946102][n946102] | 0.267641 | -0.384654 | 0.381787 | 0.529572 |
+| [V4 control 946103][c946103] | 0.250390 | -0.407006 | 0.402902 | 0.928599 |
+| [V16 seed 946103][n946103] | 0.253763 | -0.400952 | 0.430649 | 1.411167 |
+
+Candidate fixed-query lag16 remains unsupported/null because the unchanged query hides one eight-step patch. No target mask is expanded; Gaussian query scores remain distinct from the composite training loss. Full initial/final scores, individual head repetitions and all132 January criterion objects are retained in [human results](../../evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md) and [machine JSON](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/report.json).
+
+### January protection flags — V16 study
+
+| Run | Saved conditions | Eight timing flags | All eight retained |
+| --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 4/22 | F F F F F F F F | no |
+| [V16 seed 946101][n946101] | 3/22 | F F F F F F P F | no |
+| [V4 control 946102][c946102] | 3/22 | F F F F F F F F | no |
+| [V16 seed 946102][n946102] | 4/22 | F F F F F F F F | no |
+| [V4 control 946103][c946103] | 4/22 | F F F F F F F F | no |
+| [V16 seed 946103][n946103] | 5/22 | F F F F F F F F | no |
+
+## March confirmation — V16 study
+
+**Work is complete; saved prospective screen: mixed; promising: false.** Trend and activity are the primary targets (positive medians and at least2/3 improving pairs separately); volatility has median tolerance≥-0.01. Every candidate must retain all eight unchanged January timing protections. Relation and query reconstruction are descriptive. This rule differs from the V15 February screen; January, February and March are not mixed into one population ranking.
+
+| Encoder seed | Δ trend | Δ activity | Δ volatility | Δ relation (descriptive) |
+| --- | --- | --- | --- | --- |
+| 946101 | -0.073135 | +0.022193 | +0.018031 | +0.669197 |
+| 946102 | +0.096483 | +0.193252 | -0.033500 | +0.223590 |
+| 946103 | +0.047276 | +0.244398 | -0.041547 | +0.237152 |
+
+| Saved screen target | Median Δ | Range Δ | Improving pairs |
+| --- | --- | --- | --- |
+| past_trend | +0.047276 | [-0.073135, +0.096483] | 2/3 |
+| past_activity | +0.193252 | [+0.022193, +0.244398] | 3/3 |
+| past_volatility | -0.033500 | [-0.041547, +0.018031] | 1/3 |
+
+Saved screen reasons: `March linear volatility median difference is below -0.01 or undefined`; `at least one candidate fails a frozen hard timing condition`. No verdict, difference, median, interval or metric is recalculated by this ranking helper.
+
+### March absolute linear R²
+
+| Run | Volatility | Trend | Activity | Relation |
+| --- | --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 0.827999 | 0.868563 | 0.068591 | -0.904167 |
+| [V16 seed 946101][n946101] | 0.846030 | 0.795428 | 0.090784 | -0.234971 |
+| [V4 control 946102][c946102] | 0.890406 | 0.707554 | 0.159191 | -0.765573 |
+| [V16 seed 946102][n946102] | 0.856907 | 0.804037 | 0.352443 | -0.541983 |
+| [V4 control 946103][c946103] | 0.806104 | 0.871328 | 0.002308 | -0.754805 |
+| [V16 seed 946103][n946103] | 0.764557 | 0.918605 | 0.246707 | -0.517653 |
+
+### March absolute neural mean R²
+
+| Run | Volatility | Trend | Activity | Relation |
+| --- | --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 0.500988 | 0.506033 | -0.140147 | -0.022026 |
+| [V16 seed 946101][n946101] | 0.577511 | 0.662105 | -0.242164 | 0.035381 |
+| [V4 control 946102][c946102] | 0.456415 | 0.529338 | -0.167314 | -0.100474 |
+| [V16 seed 946102][n946102] | 0.342331 | 0.490709 | -0.148026 | -0.529505 |
+| [V4 control 946103][c946103] | 0.415820 | 0.659982 | -0.102542 | -0.127128 |
+| [V16 seed 946103][n946103] | 0.470166 | 0.698410 | 0.125801 | -0.290792 |
+
+### March descriptive fixed query
+
+| Run | MAE | Gaussian NLL | Passed confirmation evidence |
+| --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 4.902232 | 125.819852 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/confirmation-audit.json) |
+| [V16 seed 946101][n946101] | 4.984493 | 119.781735 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/confirmation-audit.json) |
+| [V4 control 946102][c946102] | 4.989452 | 182.473701 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/confirmation-audit.json) |
+| [V16 seed 946102][n946102] | 4.970938 | 182.892624 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/confirmation-audit.json) |
+| [V4 control 946103][c946103] | 4.857849 | 213.362216 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/confirmation-audit.json) |
+| [V16 seed 946103][n946103] | 4.892664 | 193.686043 | [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/confirmation-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/confirmation-audit.json) |
+
+March is now consumed evidence for later recipe choices; February was already consumed by V15. Three paired encoders on one additional month are a screen, not general superiority. Head repetitions are not encoder or population replications; no forecasting or intervention claim follows. At the 21 October study closeout, V4 remained the broad reference and V3 the baseline, without automatic promotion, best-seed/checkpoint selection, catalog application or Mityane selection. The separately dated 22 October choice now makes V16 candidate946103 the research reference while preserving those original results and flags.
+
+## V16 study run identities
+
+| Run | Final2048 checkpoint bytes / SHA256 | Saved outcomes | Passed evidence |
+| --- | --- | --- | --- |
+| [V4 control 946101][c946101] | 1291409 / `7e5c3b613cdc9ed56da0f043e0df812bde09f01cb320f44fa00dca3fdf888d68` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/control/independent-audit.json) |
+| [V16 seed 946101][n946101] | 1295473 / `65a47a5fa27617b2c514af376c457223ec3ec67a6b8f5933abf54117daff1695` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946101/candidate/independent-audit.json) |
+| [V4 control 946102][c946102] | 1291409 / `65ce122e2b79c7fbfbb2325d48f174cd2ad7c2bb9f5cf9a2841f18ed725f6bc6` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/control/independent-audit.json) |
+| [V16 seed 946102][n946102] | 1295473 / `69ebd13213e953b8bc86fefa73035eacb3e10ab483d2fb09e08acd7c9240868b` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946102/candidate/independent-audit.json) |
+| [V4 control 946103][c946103] | 1291409 / `6541439e55a9da59d38000cea31faef2fbb945a46064f7531b89004d86432887` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/control/independent-audit.json) |
+| [V16 seed 946103][n946103] | 1295473 / `b6f3cbe711235307f362bf2f999571d65d00c85825f8a4a5c2fbc4fa4242e51e` | [market](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/heads-final/market/report.json), [query](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/training-summary.json), [TEMPO 941101](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/heads-final/synthetic/master-941101/report.json), [TEMPO 941102](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/heads-final/synthetic/master-941102/report.json), [TEMPO 941103](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/heads-final/synthetic/master-941103/report.json) | [training](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/train-receipt.json), [development](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/development-receipt.json), [arithmetic audit](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/independent-audit.json) |
+
+Actual [complete report](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/report.json) (2496656bytes; SHA256 `263a8a4debbcd34ea6fe1364dc314a73a9804311fd77d30d0fbda57ae11c40f3`), [report card with eighteen phase receipts/twelve audits](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/report-inputs-001.json), [study card](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/run-inputs-001.json), [development seal](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/development-seal.json), [human results](../../evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md), [compact record](../../evaluation/records/CPB-v16.temporal-001.json) and [final peer review](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/final-study-review-001.json) retain exact bindings. V16 uses its authoritative report.mjs/report.json derivation.
+
 ## Historical ancestry and cross-family context
 
-V3–V14 and all six new trajectories are fresh-weight clean-causal research; source branching is not trained-weight inheritance. CPB V1/V2 retain pretrained ancestry and stay outside these clean score tables. Across the earlier RPB family, **RPB-v24.market-01.alt-01 native36** remains the historical balanced leader:8/9 market conditions plus all four primary TEMPO-5 transfer comparisons. RPB-v30 later passed9/9 market and8/8 strict native36 conditions with transfer pending. Their later causal-eligibility diagnosis is preserved, so their historical achievements are not folded into the clean CPB ranking. See the [reviewed handoff addendum](../../../../doc/EMBEDDINGS_HANDOFF_ADDENDUM_2026-10-18.md).
+V3–V14 and all twelve fresh study trajectories are fresh-weight clean-causal research; source branching is not trained-weight inheritance. CPB V1/V2 retain pretrained ancestry and stay outside these clean score tables. Across the earlier RPB family, **RPB-v24.market-01.alt-01 native36** remains the historical balanced leader:8/9 market conditions plus all four primary TEMPO-5 transfer comparisons. RPB-v30 later passed9/9 market and8/8 strict native36 conditions with transfer pending. Their later causal-eligibility diagnosis is preserved, so their historical achievements are not folded into the clean CPB ranking. See the [reviewed handoff addendum](../../../../doc/EMBEDDINGS_HANDOFF_ADDENDUM_2026-10-18.md).
 
 ## Ranking changes
 
-**19 October2026 — initial active ranking.** V4's broad-lead role and V3 baseline remain. The following six January score leaders were first registered after the development measurements passed, while the full study was still incomplete. They remain recorded after study completion, alongside each displaced leader and its original evidence.
+**19 October2026 — initial active ranking.** V4's broad-lead role and V3 baseline were retained at that stage. The following six January score leaders were first registered after the development measurements passed, while the full study was still incomplete. They remain recorded after study completion, alongside each displaced leader and its original evidence.
 
 | Scope | Previous closed-study leader | Latest observed leader |
 | --- | --- | --- |
@@ -232,7 +356,26 @@ V3–V14 and all six new trajectories are fresh-weight clean-causal research; so
 
 **19 October2026 — completed-study finalization.** The authoritative final-unique report closes all six trajectories and twelve arithmetic audits with the prospective verdict **mixed**, while retaining all six January highs above. The separate February section now records every pair, all six absolute readout/query results and every timing flag. February is consumed; V4's historical broad-reference role and V3's baseline role remain, with no seed/checkpoint selection, automatic promotion, catalog application or Mityane selection.
 
-Future entries must record date, former/new leader, exact comparison scope, evidence links and the reason for the change. Retractions and invalidated eligibility need an explicit entry rather than silently deleting a result. Frozen historical protection floors, measured-instance catalogs and Mityane selection are independent records.
+**21 October 2026 — audited ongoing V16 first pair; full study pending.** Candidate946101 sets market-scaler/deleted TEMPO linear accuracy 0.9752604166666666 above V6 0.97265625. Its fresh V4 control946101 sets January neural trend mean R² 0.650729417976703 above historical V4 0.5698752307038314. All first-pair gains and regressions remain in the [retained pending section](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-section-001.md) and [hash-bound provisional receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-001.json). The old18 tables remain the completed-study snapshot; remaining pairs/March are outside this entry. No overall verdict, seed selection or protection-floor pass is inferred.
+
+**21 October 2026 — all-six audited January V16 update; March verdict pending.** Candidate946103 now leads linear/neural trend, candidate946102 leads neural activity, and candidate946101 retains the market-scaler/deleted linear TEMPO record. Both control946101/control946103 neural-trend observations above historical V4 remain visible; candidate946103 supersedes the first-pair control leader. The [all-six retained section](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-section-002.md) and [receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-002.json) preserve these current observations and the full old evidence chain. Original18 tables remain the completed-study snapshot until final24 closeout. No March result, protection-floor pass or overall verdict is inferred.
+
+**21 October 2026 — completed V16 temporal study.** All six fresh controls/candidates and twelve arithmetic audits are retained; March saved screen **mixed**. January tables now include all24 checkpoints with unrounded1e-12 dense tie groups. V15 February evidence/history and all former leaders remain. At that closeout, V4 broad reference/V3 baseline were retained, without seed selection, automatic promotion, catalog application or Mityane selection.
+
+| January scope | Former score group1 | Current score group1 |
+| --- | --- | --- |
+| past_trend:linear_r2 | [V4][v4] · **0.907213** | [V16 seed 946103][n946103] · **0.925246** |
+| past_trend:neural_mean_r2 | [V4][v4] · **0.569875** | [V16 seed 946103][n946103] · **0.693462** |
+| past_activity:neural_mean_r2 | [V4 control 945101][c945101] · **0.792420** | [V16 seed 946102][n946102] · **0.815612** |
+| market_scaler:validation_deleted:linear_head_accuracy | [V6][v6] · **97.265625%** | [V16 seed 946101][n946101] · **97.526042%** |
+
+[Audited V16 report](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/report.json); [human results](../../evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md); [complete compact record](../../evaluation/records/CPB-v16.temporal-001.json).
+
+The audited first-pair observations remain traceable in the [first-pair section](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-section-001.md) and [first-pair receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-001.json); the later [all-six January section](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-section-002.md) and [second provisional receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-provisional-002.json) preserve the superseding candidate trend/activity leaders and both fresh-control achievements. The [Hx17 naming receipt](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-hx17-naming-001.json), [named first-pair ranking](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-before-provisional-002.md) and [prior completed18 ranking](../../../../.temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/ranking-before-provisional-001.md) retain the exact earlier identities. Full24 results now replace only the live all-six pending block; both dated stages of history and former leaders remain.
+
+**22 October 2026 — current research reference changed from historical V4 to [V16 candidate seed 946103][n946103], final2048/native36.** The owner requested that the best current encoder become the research reference. The [explicit decision and artifact identities](research-reference.json) select this checkpoint for continued research because it holds both January trend records and has positive March linear/neural trend and activity scores, improving its matched control on both linear primary tasks. V16 seeds946102/946101 retain their separate activity/timing records. V4 remains the historical breakthrough and known-validation reconstruction comparator; V3 remains the baseline. This is a retrospective reference choice after observing the completed study. The frozen mixed verdict, failed volatility/timing protections, all earlier no-selection flags and unknown recovery cost/repetition limits remain unchanged. No runtime default, deployment or Mityane application selection changes.
+
+Future entries must record date, former/new leader or research reference, exact comparison scope, evidence links and the reason for the change. Retractions and invalidated eligibility need an explicit entry rather than silently deleting a result. Frozen historical protection floors, measured-instance catalogs and Mityane selection are independent records.
 
 ## Historical evidence and precision
 
@@ -260,3 +403,10 @@ No rank here establishes forecasting, identified intervention effects or downstr
 [n945102]: #study-run-identities
 [c945103]: #study-run-identities
 [n945103]: #study-run-identities
+
+[c946101]: #v16-study-run-identities
+[n946101]: #v16-study-run-identities
+[c946102]: #v16-study-run-identities
+[n946102]: #v16-study-run-identities
+[c946103]: #v16-study-run-identities
+[n946103]: #v16-study-run-identities

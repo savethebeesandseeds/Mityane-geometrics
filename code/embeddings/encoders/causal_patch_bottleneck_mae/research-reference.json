@@ -1,0 +1,96 @@
+{
+  "kind": "cpb_current_research_reference_v1",
+  "revision": 1,
+  "date": "2026-10-22",
+  "status": "current",
+  "decision": "Use V16 candidate seed 946103, final logical update 2048, as the default reference for continued encoder research.",
+  "authority": "Explicit owner instruction on 22 October 2026 to document the best current encoder as the reference, followed by an evidence-based checkpoint choice.",
+  "selection_mode": "retrospective research-reference choice after the completed study",
+  "reference": {
+    "version": "CPB-v16",
+    "study_id": "cpb-v16-temporal-001",
+    "arm": "candidate",
+    "encoder_seed": 946103,
+    "logical_checkpoint_update": 2048,
+    "native_width": 36,
+    "native_layout": ["learned20", "literal_spectral12", "mean_change4"],
+    "checkpoint": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/checkpoints/inference-2048.pt",
+      "bytes": 1295473,
+      "sha256": "b6f3cbe711235307f362bf2f999571d65d00c85825f8a4a5c2fbc4fa4242e51e"
+    },
+    "TRAIN_input_scaler": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "7d975f95d4b7ea051d51de523be812df613f1adcfce9382414a20846a70b5926"
+    },
+    "TRAIN_bank_standardizer": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/calibration/bank-standardizer.pt",
+      "bytes": 54079,
+      "sha256": "7999fddcada718d2c10ea20a61269cb4aa807959eb081bb0d9b1370ed0822150"
+    }
+  },
+  "rationale": [
+    "This checkpoint holds both current January trend records across the 24 measured clean-causal checkpoints: linear R2 0.9252456611897139 and neural-mean R2 0.6934616212783601.",
+    "Its March linear trend R2 is 0.9186045852896133 and activity R2 is 0.24670666786033746; both improve its matched fresh V4 control, by 0.04727628106997395 and 0.24439840768091314 respectively.",
+    "The complete three-pair study passes both March primary targets. This supports advancing the current research reference while preserving the study's mixed verdict and every regression."
+  ],
+  "other_V16_specialists": [
+    {"encoder_seed": 946102, "arm": "candidate", "logical_checkpoint_update": 2048, "scope": "January neural activity", "neural_mean_r2": 0.8156121912494054},
+    {"encoder_seed": 946101, "arm": "candidate", "logical_checkpoint_update": 2048, "scope": "TEMPO-5 market-TRAIN scaler, deleted validation view, linear readout", "accuracy": 0.9752604166666666}
+  ],
+  "scope": {
+    "operations": ["OR-05 past-window readouts", "OR-09 fixed-query reconstruction evidence"],
+    "training_population": "BTC/ETH/SOL January 2024, TRAIN days 1-21; fitted preprocessing remains TRAIN-only",
+    "development_population": "MKT-HIST-2 known validation days 22-28; repeatedly used January development evidence",
+    "confirmation_population": "calendar-selected March 2024, 32 probes, sealed January-fitted models and heads",
+    "geometry": "saved H256 probes with recent128 encoder history, native36; masks, head recipes, seeds and support are bound by the study record",
+    "fresh_confirmation_required_for_later_choices": true
+  },
+  "retained_comparators": {
+    "clean_baseline": "CPB-v3.market-01",
+    "previous_default_and_historical_breakthrough": "CPB-v4.market-01",
+    "V4_role": "Historical benchmark and current known-validation reconstruction leader; retain its original 19/22 result and eight timing checks under their original floors.",
+    "specialist_leaders": "All task-specific leaders remain in the live ranking; the reference choice does not replace their measurements."
+  },
+  "limitations": [
+    "The prospective V16 study verdict remains mixed: March linear volatility median delta -0.03349967451837166 misses the -0.01 tolerance, and no candidate retains all eight strongest timing conditions. Fresh V4 controls also fail that complete timing guard.",
+    "The selected checkpoint passes 5/22 strengthened January conditions and 0/8 strongest timing conditions. Its January known-validation query MAE/NLL worsen against the matched control; March relation linear and neural-mean R2 remain negative.",
+    "The four V16 record scopes belong to three different checkpoints; the default does not combine their scores.",
+    "This choice uses already observed January and March evidence. Those populations are consumed for subsequent selection; this is not a new prospective validation or a universal best-encoder claim.",
+    "Candidate 946103 resumed its own typed update512 state and repeated discarded work. Exact physical repetitions, complete execution cost and prefix parameter counters remain unknown.",
+    "Forecasting, decision utility and composed operation performance remain unestablished."
+  ],
+  "evidence": {
+    "study_record": {
+      "path": "code/embeddings/evaluation/records/CPB-v16.temporal-001.json",
+      "bytes": 384621,
+      "sha256": "929a5da05b978dd2a2bbf52738d12b5a6759af8fa29427396fec8b3dae479d28"
+    },
+    "results": {
+      "path": "code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md",
+      "bytes": 379345,
+      "sha256": "453a3f7acbd83a9595e28cb4b4fd70fa12dd4062dd4d5e95d30ab5259a097b0f"
+    },
+    "protocol": {
+      "path": "code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/PROTOCOL.md",
+      "bytes": 10912,
+      "sha256": "48757fcf08b4bcc3cfbf645b33630e0b6275afc27f1e4fad12731c79bc78a4c1"
+    },
+    "study_card": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/run-inputs-001.json",
+      "bytes": 31243,
+      "sha256": "f69d1477519d0de61df36b1861722e66bb454734e2721afca71348f0918626d7"
+    }
+  },
+  "historical_records_rewritten": false,
+  "prospective_study_verdict": "mixed",
+  "frozen_protocol_promoted": false,
+  "prospective_screen_changed": false,
+  "automatic_promotion": false,
+  "measured_instance_catalog_changed": false,
+  "runtime_default_changed": false,
+  "Mityane_application_selection": null,
+  "new_training_or_evaluation_authorized": false,
+  "checkpoint_payload_published": false
+}
