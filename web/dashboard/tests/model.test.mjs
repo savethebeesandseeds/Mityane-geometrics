@@ -223,6 +223,11 @@ test('matching a Hero or Goal title exposes that scope and the status filter sti
   assert.equal(flattenMilestones(filterHeroes([value], { query: 'Sensor hardening' })).length, 2);
   assert.equal(flattenMilestones(filterHeroes([value], { query: 'Evidence quality' })).length, 2);
   assert.deepEqual(flattenMilestones(filterHeroes([value], { query: 'Evidence quality', status: 'ready' })).map(({ milestone: entry }) => entry.id), ['sensors-gps']);
+  // A Hero reference must find its whole scope even without Hx text in its records.
+  assert.equal(flattenMilestones(filterHeroes([value], { query: ' Hx01 ' })).length, 2);
+  assert.deepEqual(flattenMilestones(filterHeroes([value], { query: 'hx01', status: 'ready' })).map(({ milestone: entry }) => entry.id), ['sensors-gps']);
+  assert.deepEqual(filterHeroes([value], { query: 'Hx10' }), []);
+  assert.equal(filterHeroes([hero([], { number: 18 })], { query: 'Hx18' }).length, 1);
 });
 
 test('selected local JSON files sort by Hero number and synthesize a consistent manifest', async () => {

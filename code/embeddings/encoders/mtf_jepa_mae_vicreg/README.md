@@ -4,20 +4,43 @@ This folder owns the existing MTF-JEPA-MAE-VICReg implementation. Its model
 behavior, parameter registration names, configuration defaults and version 1
 checkpoint format are preserved.
 
+## Agent instructions: reusable encoder components
+
+Follow the shared [encoder Hero instructions](../AGENTS.md). Hx15 develops
+reusable MTF architecture and training tools that applications can configure,
+train and compose. Keep the family definition, supported configuration,
+training recipe and trained instance separate. A retained checkpoint or
+benchmark configuration supplies scoped evidence; it does not define the only
+supported input geometry, latent width or model capacity.
+
+Derive dimensions and parameter counts from configuration and validate actual
+architectural constraints. Document the implemented fresh-construction,
+TRAIN preprocessing, training, export and checkpoint/resume paths, their
+dependencies and missing coverage. Verify supported alternative configurations
+with focused engineering fixtures before claiming portability. This guidance
+does not assert that every retained MTF interface already meets that standard.
+Cuwacunu and other applications own substantial application training and final
+docking. Preserve historical source, checkpoint formats and research records;
+these instructions do not start another experiment or training run.
+
 Its stable design tag is **MTF-v1 — Multiscale JEPA and reconstruction** in the
 [version registry](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_VERSIONS.md). It remains a retained
 reference; active RPB development does not routinely retrain this encoder.
 
-See [current repository status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md) for RPB-v20's
-separate API and the latest completed quality record. This folder's CLI and
-checkpoint format remain MTF-v1.
+The [archived predecessor status](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/CURRENT_STATUS.md)
+describes RPB-v20's separate API and completed quality records at that stage.
+Use the [current research guide](../../../../doc/EMBEDDINGS.md) for current
+references and continuation scope. This folder's CLI and checkpoint format
+remain MTF-v1.
 
-The [embedding evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
-defines shared evidence, protocol, reporting, and acceptance rules. The retained
-baseline evaluator and historical reports keep their original protocol and
-limitations. The separate shared evaluator produces protocol v2 development
-evidence; its [implementation review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
-records policy requirements that remain incomplete.
+The [archived embedding evaluation policy](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EMBEDDING_EVALUATION_POLICY.md)
+records the evidence, protocol, reporting and acceptance rules for its historical
+experiments. The retained baseline evaluator and historical reports keep their
+original protocol and limitations. Current work follows the shared encoder
+instructions and [project charter](../../../../doc/operations_over_representations_design_spec_v0.1.0.md).
+The separate shared evaluator produces protocol v2 development evidence; its
+[archived implementation review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
+records implementation limits at that stage.
 
 | Folder | Contents |
 | --- | --- |
@@ -71,5 +94,7 @@ flat forwarding headers and root-level encoder aliases have been removed; source
 callers use the canonical includes and namespace. CLI commands, checkpoint keys
 and parameter registration names retain their existing behavior.
 
-See [environment coordination](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md) for named build
-sessions and persisted output locations.
+Use the [current environment guide](../../../../doc/ENVIRONMENT.md) for named
+build sessions and persisted output locations. The
+[archived environment notes](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/ENVIRONMENT.md)
+retain predecessor context and commands.

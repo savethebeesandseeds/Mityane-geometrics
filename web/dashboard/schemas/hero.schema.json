@@ -1,42 +1,109 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "The builder also checks global IDs, real dates, dependency cycles, ready/done prerequisites, direct advancement gates and regular repository evidence files.",
   "title": "Mityane geometrics Hero with Goals and Milestones version 2",
-  "type": "object", "additionalProperties": false,
+  "type": "object",
+  "additionalProperties": false,
   "required": ["schemaVersion", "id", "number", "title", "summary", "updatedAt", "goals"],
   "properties": {
     "schemaVersion": {"const": 2},
     "id": {"$ref": "#/$defs/id"},
     "number": {"type": "integer", "minimum": 1, "maximum": 100},
-    "title": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"}, "updatedAt": {"$ref": "#/$defs/date"},
+    "title": {"$ref": "#/$defs/text"},
+    "summary": {"$ref": "#/$defs/text"},
+    "purpose": {"$ref": "#/$defs/text"},
+    "boundary": {"$ref": "#/$defs/text"},
+    "updatedAt": {"$ref": "#/$defs/date"},
     "goals": {"type": "array", "maxItems": 200, "items": {"$ref": "#/$defs/goal"}}
   },
   "$defs": {
     "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
     "text": {"type": "string", "pattern": "\\S"},
-    "date": {"type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-    "goal": {
-      "type": "object", "additionalProperties": false, "required": ["id", "title", "milestones"],
+    "date": {"type": "string", "format": "date", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "outcome": {"enum": ["supported", "negative", "inconclusive", "no_eligible_candidate", "favorable", "eligible", "rejected"]},
+    "repositoryPath": {
+      "type": "string", "maxLength": 500,
+      "pattern": "^(?!.*(?:^|/)\\.{1,2}(?:/|$))[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*$"
+    },
+    "verification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "scope", "reason"],
       "properties": {
-        "id": {"$ref": "#/$defs/id"}, "title": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"},
+        "status": {"enum": ["current", "historical", "unverified"]},
+        "scope": {"$ref": "#/$defs/text"},
+        "reason": {"$ref": "#/$defs/text"},
+        "receipt": {"$ref": "#/$defs/repositoryPath"},
+        "receiptSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "allOf": [{"if": {"properties": {"status": {"const": "current"}}}, "then": {"required": ["receipt", "receiptSha256"]}}]
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "milestones"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "title": {"$ref": "#/$defs/text"},
+        "type": {"type": "string", "enum": ["outcome", "ongoing", "conditional"], "default": "outcome"},
+        "description": {"$ref": "#/$defs/text"},
         "milestones": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/milestone"}}
       }
     },
     "milestone": {
-      "type": "object", "additionalProperties": false, "required": ["id", "title", "status"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status"],
       "properties": {
-        "id": {"$ref": "#/$defs/id"}, "title": {"$ref": "#/$defs/text"},
+        "id": {"$ref": "#/$defs/id"},
+        "title": {"$ref": "#/$defs/text"},
         "status": {"enum": ["proposed", "ready", "in_progress", "blocked", "done"]},
         "description": {"$ref": "#/$defs/text"},
         "owner": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/text"}]},
         "updatedAt": {"$ref": "#/$defs/date"},
         "completedAt": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/date"}]},
+        "verification": {"$ref": "#/$defs/verification"},
+        "outcome": {"$ref": "#/$defs/outcome"},
+        "requiresCurrentEvidence": {"type": "array", "maxItems": 2000, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "requiresOutcomes": {
+          "type": "array", "maxItems": 2000,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["milestone", "outcomes"],
+            "properties": {
+              "milestone": {"$ref": "#/$defs/id"},
+              "outcomes": {"type": "array", "minItems": 1, "maxItems": 7, "uniqueItems": true, "items": {"$ref": "#/$defs/outcome"}}
+            }
+          }
+        },
         "acceptance": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/text"}},
-        "evidence": {"type": "array", "maxItems": 2000, "items": {"type": "object", "additionalProperties": false, "required": ["label", "path"], "properties": {"label": {"$ref": "#/$defs/text"}, "path": {"type": "string", "maxLength": 500, "pattern": "^(?!.*(?:^|/)\\.\\.?(?:/|#|$))[a-zA-Z0-9_.-]+(?:/[a-zA-Z0-9_.-]+)*(?:#[a-zA-Z0-9_-]+)?$"}}}},
+        "evidence": {
+          "type": "array", "maxItems": 2000,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["label", "path"],
+            "properties": {
+              "label": {"$ref": "#/$defs/text"},
+              "path": {
+                "type": "string", "maxLength": 500,
+                "pattern": "^(?!.*(?:^|/)\\.{1,2}(?:/|#|$))[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*(?:#[A-Za-z0-9_-]+)?$"
+              }
+            }
+          }
+        },
         "dependsOn": {"type": "array", "maxItems": 2000, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
       },
       "allOf": [
-        {"if": {"properties": {"status": {"const": "done"}}}, "then": {"required": ["acceptance", "evidence"], "properties": {"acceptance": {"minItems": 1}, "evidence": {"minItems": 1}}}, "else": {"properties": {"completedAt": {"type": "null"}}}},
-        {"if": {"properties": {"status": {"const": "blocked"}}}, "then": {"required": ["description"]}}
+        {"if": {"required": ["outcome"]}, "then": {"properties": {"status": {"const": "done"}}}},
+        {
+          "if": {"properties": {"status": {"const": "done"}}},
+          "then": {
+            "required": ["acceptance", "evidence"],
+            "properties": {"acceptance": {"minItems": 1}, "evidence": {"minItems": 1}}
+          },
+          "else": {"properties": {"completedAt": {"type": "null"}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "blocked"}}},
+          "then": {"required": ["description"]}
+        }
       ]
     }
   }

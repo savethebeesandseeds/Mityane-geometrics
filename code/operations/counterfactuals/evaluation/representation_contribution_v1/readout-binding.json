@@ -1,0 +1,52 @@
+{
+  "schema": "mityane.hx06.readout-binding/v1",
+  "binding_id": "OR06-OLS-REFERENCE",
+  "version": "1.0.0",
+  "decision_id": "OR06-READOUT-DECISION-001",
+  "decision_version": "1.0.0",
+  "decision": "revise_binding_policy_keep_ols_reference_method",
+  "date": "2026-10-20",
+  "method": "TRAIN-only population-standardized OLS with intercept, normal equations with partial pivot floor 1e-12; no regularization or selection",
+  "native_input_shape": [4],
+  "native_output_shape": [1],
+  "output_semantics": "Axis-specific scalar synthetic response; paired delta is alternative minus baseline in the same axis units.",
+  "support": {"a": [-1, 1], "b": [-1, 1], "horizon": "static_non_temporal"},
+  "accepted_reference_scope": {
+    "study_id": "OR06-REP-CONTRIB-001",
+    "study_version": "1.0.0",
+    "seeds": [12037, 23039, 34057],
+    "training_rows_per_seed": 384,
+    "axis_family_bindings": [
+      {"axis": "polynomial", "family": "raw_polynomial"},
+      {"axis": "periodic", "family": "fourier"},
+      {"axis": "hinge", "family": "hinge"}
+    ],
+    "source_sha256": "f0a174ff2dd0abff78cdd390c010495779ff523ba17294e625f2cd1734a5eb74",
+    "configuration_sha256": "cf4fdeb39c4186e7ef36ffb6278a7b396eb025c5948efa60b9680b41eea664fc",
+    "freeze_sha256": "c5cadff0e6ab687a2857daddd7c03786d743a6adba7650c94a506b5f86e6af5a",
+    "seal_sha256": "cecac2731ab2574c61319059bf45b6a661fc1757155f4c66b1a4e96e3e84c105",
+    "audit_sha256": "7197bca45a746b68136ca57f979e17c10dfe2c3fff81d6abd66e643682be0b81",
+    "models": [
+      {"seed": 12037, "path": ".temp/operations/counterfactuals/representation-contribution-v1/attempt-001/seed-12037/model.tsv", "bytes": 5698, "sha256": "d325eab8c438ad7191db0ef55e3cfea9d72da152dfaddfe511ae9d3488d95fd4"},
+      {"seed": 23039, "path": ".temp/operations/counterfactuals/representation-contribution-v1/attempt-001/seed-23039/model.tsv", "bytes": 5688, "sha256": "f9fb6efc086e3ce7552da4bcecccc187fe5692a2ef0c9cf54e2cbf0bd926e7d2"},
+      {"seed": 34057, "path": ".temp/operations/counterfactuals/representation-contribution-v1/attempt-001/seed-34057/model.tsv", "bytes": 5696, "sha256": "58602b039dd77cf8fe4a805dc9784367f64b7ebeed829006e0f961b01b982b0b"}
+    ],
+    "model_row_selection": "Each pinned file retains all 15 diagnostic heads. Only the three predeclared task-aligned axis/family combinations above are accepted as response-recovery references; other rows remain controls, not selected replacements."
+  },
+  "fit_and_selection_policy": {
+    "preprocessing": "Means and population standard deviations fitted on the identified TRAIN rows only; stored with coefficients, never refitted on development or assessment.",
+    "readout": "One fit per predeclared axis/family/seed using identical TRAIN labels and five parameters; no model/hyperparameter/seed selection.",
+    "future_bindings": "New population, representation, target, dimension, support or temporal horizon requires a new instance identity, own contract/RER, prospectively frozen TRAIN-only fitting and selection rules, and independent assessment. This reference is not a universal default."
+  },
+  "old_binding": {
+    "study_id": "OR06-SYNTH-RESP-001",
+    "version": "1.0.0",
+    "disposition": "Preserved unchanged as historical synthetic evidence; no retirement or replacement of its fitted artifacts."
+  },
+  "dependent_profiles": [
+    {"profile": "OR06-MOC", "version": "0.1.0", "instance": "OR06-MOC-NSW-REF-001", "synthetic_ols_dependency": false},
+    {"profile": "OR06-IIE", "version": "0.1.0", "instance": "OR06-IIE-NSW-REF-001", "synthetic_ols_dependency": false}
+  ],
+  "dependency_gate": "Before any new profile or instance relies on either historical OLS or this reference, link this decision and its limits in that profile contract/RER and instance dependencies, and supply its own validated readout binding. No such dependency is admitted by this record alone.",
+  "limitations": ["Fixed synthetic features, not learned encoder evidence", "Matched head parameter count does not match nonlinear function classes", "Conditional source-bootstrap sensitivity only", "Raw polynomial misses periodic/hinge targets; other families miss the polynomial target", "Lossy cannot recover changed-a responses", "No observational or intervention-effect identification", "Normal equations can fail on singular or ill-conditioned designs; no robustness guarantee beyond the tested scope"]
+}

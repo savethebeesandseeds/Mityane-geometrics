@@ -16,11 +16,25 @@ server, container, network connection or file picker.
 This is the Non-verba dashboard backbone: the same cream/sage/sand styling,
 overview → one Hero → one Goal navigation, milestone details, status filters,
 search, progress rings, evidence cards and dependency jumps. The manifest contains
-**18 Heroes**, defined from the owner's requested work segmentation: the thirteen
-OR capability families, shared foundations, three existing encoder families and
-Google's external multimodal encoder. See [the work map](WORKSTREAMS.md) for their
+**18 Heroes**, referenced consistently as **Hx01–Hx18**: Hx01–Hx13 own the operation
+families, Hx14 owns shared foundations, Hx15–Hx17 own the existing encoder families,
+and Hx18 owns Google's external multimodal encoder. See [the work map](WORKSTREAMS.md) for their
 boundaries. No Non-verba progress or artwork is included, and synthetic test
 records never enter the maintained page.
+
+The Hx reference is derived from the Hero's `number` and appears in overview
+tiles, navigation and details. Searching for `Hx06`, for example, finds that
+Hero's complete tracked scope. Titles contain descriptive names; the
+[naming convention](SCHEMA.md#hero-references) distinguishes Hero references from
+the charter's stable OR capability IDs and existing machine IDs.
+
+For Hx15–Hx18, read the shared [encoder component instructions](../../code/embeddings/encoders/AGENTS.md)
+before planning or changing work. These Heroes develop reusable encoder family
+and provider tools for applications to configure and compose. Checkpoints and
+benchmarks supply evidence for particular instances; application projects such
+as Cuwacunu own substantial application training and final docking. The
+[work map](WORKSTREAMS.md#encoder-hero-instructions) explains this boundary,
+including the different capabilities of trainable families and external APIs.
 
 ## Maintain Hero records
 
@@ -33,9 +47,10 @@ Empty Heroes and Goals are supported. Record only confirmed scope and evidence.
 The Hero JSON files hold the current task details, acceptance criteria and
 states; the refreshed dashboard calculates their counts. Keep those details in
 the Heroes rather than duplicate them in guides. Counts describe recorded scope,
-not effort or overall project readiness. The causal encoder's research pause and
-pending registry review are preserved; the Google provider record does not imply
-a working API adapter.
+not effort or overall project readiness. Historical pause and registry records
+remain preserved alongside subsequent authorized work; the Google provider
+record does not imply a working API adapter. Guidance and proposed toolset
+criteria do not establish implementation or authorize new execution.
 
 After changing JSON, interface code or branding, refresh from the repository root:
 

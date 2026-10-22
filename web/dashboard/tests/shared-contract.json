@@ -1,0 +1,125 @@
+{
+  "project": {
+    "manifest": {
+      "schemaVersion": 2,
+      "title": "Shared contract fixture",
+      "description": "Synthetic bounded work for dashboard conformance checks.",
+      "focusMilestones": ["shared-next"],
+      "heroes": [{"id": "shared", "file": "heroes/01-shared.json"}]
+    },
+    "heroes": [{
+      "schemaVersion": 2,
+      "id": "shared",
+      "number": 1,
+      "title": "Shared responsibility",
+      "summary": "An explicitly scoped synthetic result and a proposed follow-up.",
+      "purpose": "Maintain an enduring responsibility across bounded changes.",
+      "boundary": "Own the synthetic result without claiming broader project completion.",
+      "updatedAt": "2026-10-20",
+      "goals": [{
+        "id": "shared-improvement",
+        "title": "Improve the component",
+        "type": "ongoing",
+        "milestones": [{
+          "id": "shared-decision",
+          "title": "Record the bounded decision",
+          "status": "done",
+          "acceptance": ["The bounded synthetic decision is recorded."],
+          "evidence": [{"label": "Synthetic evidence", "path": "docs/shared-evidence.md"}],
+          "outcome": "supported",
+          "verification": {
+            "status": "current",
+            "scope": "The synthetic source record only.",
+            "reason": "The receipt pins the synthetic evidence bytes.",
+            "receipt": "docs/shared-receipt.json",
+            "receiptSha256": "12c6dc91e1f2b2ab43a0f7db33f3c4c2326f6f982619e11b32982638b4d8c58f"
+          }
+        }, {
+          "id": "shared-next",
+          "title": "Consider the bounded follow-up",
+          "status": "proposed",
+          "dependsOn": ["shared-decision"],
+          "requiresOutcomes": [{"milestone": "shared-decision", "outcomes": ["supported"]}],
+          "requiresCurrentEvidence": ["shared-decision"]
+        }]
+      }, {
+        "id": "shared-optional",
+        "title": "Consider an optional direction",
+        "type": "conditional",
+        "milestones": []
+      }]
+    }]
+  },
+  "files": {
+    "docs/shared-evidence.md": "Synthetic shared evidence.\n",
+    "docs/shared-receipt.json": "{\"sourceFiles\":[{\"path\":\"docs/shared-evidence.md\",\"sha256\":\"568bfb92dab5b4b5b36b92c6c79e95037d622dad0f447a757f1f8a78e4da0517\"}]}\n"
+  },
+  "verificationAssessments": {
+    "shared-decision": {
+      "status": "current",
+      "scope": "The synthetic source record only.",
+      "reason": "The synthetic receipt and source bytes match their pins."
+    }
+  },
+  "validationCases": [{
+    "name": "common optional fields preserve the version-2 contract",
+    "valid": true,
+    "patches": []
+  }, {
+    "name": "ready work accepts a completed direct prerequisite",
+    "valid": true,
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "status"], "value": "ready"}
+    ]
+  }, {
+    "name": "done work accepts a completed direct prerequisite",
+    "valid": true,
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "status"], "value": "done"},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "acceptance"], "value": ["The synthetic follow-up is recorded."]},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "evidence"], "value": [{"label": "Synthetic evidence", "path": "docs/shared-evidence.md"}]}
+    ]
+  }, {
+    "name": "ready work rejects an unfinished direct prerequisite",
+    "valid": false,
+    "error": "Ready Milestone shared-next depends on unfinished Milestone shared-decision",
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 0, "status"], "value": "proposed"},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 0, "outcome"], "remove": true},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "status"], "value": "ready"}
+    ]
+  }, {
+    "name": "done work rejects an unfinished direct prerequisite",
+    "valid": false,
+    "error": "Done Milestone shared-next depends on unfinished Milestone shared-decision",
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 0, "status"], "value": "proposed"},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 0, "outcome"], "remove": true},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "status"], "value": "done"},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "acceptance"], "value": ["The synthetic follow-up is recorded."]},
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "evidence"], "value": [{"label": "Synthetic evidence", "path": "docs/shared-evidence.md"}]}
+    ]
+  }, {
+    "name": "current evidence gates must name direct dependencies",
+    "valid": false,
+    "error": "Current evidence requirement must be a direct dependency",
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "requiresCurrentEvidence"], "value": ["shared-unrelated"]}
+    ]
+  }, {
+    "name": "outcome gates must name direct dependencies",
+    "valid": false,
+    "error": "Outcome requirement must identify a distinct direct dependency",
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 1, "requiresOutcomes"], "value": [{"milestone": "shared-unrelated", "outcomes": ["supported"]}]}
+    ]
+  }, {
+    "name": "current verification requires a pinned receipt",
+    "valid": false,
+    "error": "Current verification requires receipt and receiptSha256",
+    "patches": [
+      {"path": ["heroes", 0, "goals", 0, "milestones", 0, "verification", "receipt"], "remove": true}
+    ]
+  }],
+  "searchQueries": ["Hx01", "Hₓ01"]
+}

@@ -1,12 +1,17 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 import {
   validateProject,
+  validateReadyMilestones,
   flattenMilestones,
   summarize,
   summarizeGoal,
   deriveHeroStatus,
   deriveGoalStatus,
   filterHeroes,
+  heroLabel,
+  milestoneReadiness,
+  verificationAssessment,
+  OUTCOME_LABELS,
   STATUS_LABELS,
 } from "./model.js";
 
@@ -24,6 +29,7 @@ const ui = Object.fromEntries([
 
 const state = {
   heroes: [], milestoneIndex: new Map(), heroId: null, goalId: null, query: "", status: "all",
+  verificationAssessments: {},
   openMilestones: new Set(),
   collapsedGoals: new Set(),
 };
@@ -34,6 +40,14 @@ function node(tag, className, text) {
   if (className) element.className = className;
   if (text !== undefined) element.textContent = text;
   return element;
+}
+
+function heroReference(hero, className = "", tag = "span") {
+  const reference = node(tag, className);
+  const symbol = node("span", "hero-reference", "H");
+  symbol.append(node("sub", "", "x"), document.createTextNode(String(hero.number).padStart(2, "0")));
+  reference.append(symbol);
+  return reference;
 }
 
 function icon(name) {
@@ -212,6 +226,14 @@ function rollupBadge(status, counts, level) {
   return element;
 }
 
+function goalBadge(goal, counts) {
+  if (goal.type === 'conditional') return badge('proposed', 'Conditional direction');
+  if (goal.type !== 'ongoing') return rollupBadge(deriveGoalStatus(goal), counts, 'Goal');
+  const element = badge('partial', 'Continuing improvement');
+  element.title = 'An ongoing responsibility; counts and rings describe only its recorded Milestones.';
+  return element;
+}
+
 function repositoryLink(path) {
   if (typeof path !== "string") return null;
   const [file, ...fragment] = path.split("#");
@@ -263,9 +285,9 @@ function renderHeroMap(filtered) {
     tile.dataset.heroId = hero.id;
     tile.setAttribute("aria-controls", "hero-list");
     tile.setAttribute("aria-pressed", "false");
-    tile.setAttribute("aria-label", `Explore Hero ${hero.number}: ${hero.title}. ${counts.done} of ${counts.total} milestones done.`);
+    tile.setAttribute("aria-label", `Explore ${heroLabel(hero)}: ${hero.title}. ${counts.done} of ${counts.total} milestones done.`);
     const top = node("span", "hero-tile-top");
-    top.append(node("span", "hero-tile-number", String(hero.number).padStart(2, "0")), heroAvatar(hero, "hero-tile-avatar"));
+    top.append(heroReference(hero, "hero-tile-number"), heroAvatar(hero, "hero-tile-avatar"));
     const title = node("span", "hero-tile-title", hero.title);
     const metadata = node("span", "hero-tile-meta");
     const count = node("span", "hero-tile-count", `${counts.done}/${counts.total}`);
@@ -273,7 +295,7 @@ function renderHeroMap(filtered) {
     metadata.append(node("span", "", `${hero.goals.length} Goals`), count);
     const status = rollupBadge(deriveHeroStatus(hero), counts, "Hero");
     status.classList.add("hero-tile-status");
-    tile.append(top, title, metadata, progressMeter(counts, "hero-tile-progress", hero.title), status);
+    tile.append(top, title, metadata, progressMeter(counts, "hero-tile-progress", `${heroLabel(hero)} · ${hero.title}`), status);
     if (filtering) tile.append(node("span", "hero-tile-match", `${summarize([match]).total} matching milestones`));
     tile.addEventListener("click", () => selectHero(hero.id));
     return tile;
@@ -292,7 +314,7 @@ function renderHeroMap(filtered) {
   ui["project-reset"].hidden = state.heroes.length === 0;
 }
 
-function renderFocus() {
+function renderFocus(expanded = false) {
   const current = flattenMilestones(state.heroes)
     .filter(({milestone}) => milestone.status === "blocked" || milestone.status === "in_progress")
     .sort((left, right) => Number(right.milestone.status === "blocked") - Number(left.milestone.status === "blocked"));
@@ -302,24 +324,65 @@ function renderFocus() {
     ui["focus-list"].replaceChildren(empty);
     return;
   }
-  const cards = current.slice(0, 4).map(({milestone, hero, goal}) => {
+  const cards = current.slice(0, expanded ? current.length : 4).map(({milestone, hero, goal}) => {
     const card = node("button", `focus-card focus-${milestone.status}`);
     card.type = "button";
     card.dataset.milestoneId = milestone.id;
     card.setAttribute("aria-controls", "hero-list");
     const label = node("span", "focus-label");
     label.append(badge(milestone.status));
-    card.append(label, node("span", "focus-title", milestone.title), node("span", "focus-context", `Hero ${String(hero.number).padStart(2, "0")} · ${hero.title} / ${goal.title}`));
+    const context = heroReference(hero, "focus-context");
+    context.append(document.createTextNode(` · ${hero.title} / ${goal.title}`));
+    card.append(label, node("span", "focus-title", milestone.title), context);
     card.addEventListener("click", () => revealMilestone(milestone.id));
     return card;
   });
   if (current.length > 4) {
-    const more = node("button", "text-button focus-more", `Explore the Heroes · ${current.length} active or blocked`);
+    const more = node("button", "text-button focus-more", expanded ? "Show fewer milestones" : `Show all ${current.length} active or blocked`);
     more.type = "button";
-    more.addEventListener("click", showOverview);
+    more.setAttribute("aria-controls", "focus-list");
+    more.setAttribute("aria-expanded", String(expanded));
+    more.addEventListener("click", () => {
+      renderFocus(!expanded);
+      ui["focus-list"].querySelector(".focus-more")?.focus({ preventScroll: true });
+    });
     cards.push(more);
   }
   ui["focus-list"].replaceChildren(...cards);
+}
+
+const VERIFICATION_LABELS = Object.freeze({current: 'Current for recorded scope', stale: 'Source or receipt changed',
+  historical: 'Historical scope', unverified: 'Not assessed for current system'});
+
+function hasMilestoneAssessment(milestone) {
+  return Boolean(milestone.verification || milestone.outcome || milestone.requiresOutcomes?.length || milestone.requiresCurrentEvidence?.length);
+}
+
+function verificationFor(milestone) {
+  return verificationAssessment(milestone, state.verificationAssessments);
+}
+
+function renderMilestoneAssessment(milestone) {
+  const verification = verificationFor(milestone);
+  const readiness = milestoneReadiness(milestone, state.heroes, state.verificationAssessments);
+  const assessment = field('Completion, evidence and scientific outcome', 'field-dependencies', 3);
+  const values = [
+    ['Work', STATUS_LABELS[milestone.status]],
+    ['Evidence applicability', VERIFICATION_LABELS[verification.status] || VERIFICATION_LABELS.unverified],
+    ['Scientific outcome', OUTCOME_LABELS[milestone.outcome] || 'No outcome recorded'],
+  ];
+  for (const [label, value] of values) {
+    const line = node('p');
+    line.append(node('strong', '', `${label}: `), document.createTextNode(value));
+    assessment.append(line);
+  }
+  assessment.append(node('p', 'field-empty', `${verification.scope}. ${verification.reason}`));
+  if (readiness.blockers.length) {
+    const list = node('ul');
+    readiness.blockers.forEach(blocker => list.append(node('li', '', blocker.reason)));
+    assessment.append(node('p', '', 'Outstanding prerequisites or advancement gates'), list);
+  } else if (milestone.status !== 'done') assessment.append(node('p', 'field-empty', 'Prerequisites satisfied; this milestone still requires its own acceptance.'));
+  return assessment;
 }
 
 function renderNavigation() {
@@ -340,7 +403,7 @@ function renderNavigation() {
     count.setAttribute("aria-label", `${hero.counts.done} of ${hero.counts.total} milestones done`);
     const title = node("span", "nav-title");
     if (hero.id !== "all") {
-      const index = node("span", "nav-index", `Hero ${String(hero.number).padStart(2, "0")}`);
+      const index = heroReference(hero, "nav-index");
       const dot = rollupBadge(deriveHeroStatus(hero), hero.counts, "Hero");
       dot.classList.replace("status-badge", "nav-status-dot");
       dot.textContent = "";
@@ -425,6 +488,10 @@ function renderMilestone(milestone, originalGoal) {
   if (milestone.evidence?.length) quick.push(`${milestone.evidence.length} evidence ${milestone.evidence.length === 1 ? "link" : "links"}`);
   if (milestone.dependsOn?.length) quick.push(`${milestone.dependsOn.length} ${milestone.dependsOn.length === 1 ? "dependency" : "dependencies"}`);
   if (quick.length) main.append(node("span", "milestone-quick-meta", quick.join(" · ")));
+  if (hasMilestoneAssessment(milestone)) {
+    const verification = verificationFor(milestone);
+    main.append(node('span', 'milestone-quick-meta', `Evidence: ${VERIFICATION_LABELS[verification.status] || VERIFICATION_LABELS.unverified} · Scientific outcome: ${OUTCOME_LABELS[milestone.outcome] || 'Not recorded'}`));
+  }
   const arrow = node("span", "disclosure");
   arrow.append(icon("chevron"));
   arrow.setAttribute("aria-hidden", "true");
@@ -433,6 +500,7 @@ function renderMilestone(milestone, originalGoal) {
 
   const body = node("div", "milestone-body");
   const fields = node("div", "milestone-fields");
+  if (hasMilestoneAssessment(milestone)) fields.append(renderMilestoneAssessment(milestone));
   const acceptance = field("Acceptance criteria", "field-acceptance", milestone.acceptance?.length || 0);
   if (milestone.acceptance?.length) {
     const list = node("ol", "criteria-list");
@@ -534,7 +602,7 @@ function renderGoal(goal, originalHero) {
   titleWrap.append(title);
   headingMain.append(titleWrap);
   const actions = node("div", "goal-heading-actions");
-  actions.append(rollupBadge(deriveGoalStatus(original), counts, "Goal"));
+  actions.append(goalBadge(original, counts));
   const expanded = !state.collapsedGoals.has(goal.id) || Boolean(state.query.trim()) || state.status !== "all";
   if (counts.total) {
     const toggle = node("button", "goal-toggle");
@@ -591,7 +659,7 @@ function renderGoalTile(goal, originalHero) {
   tile.setAttribute("aria-pressed", String(state.goalId === goal.id));
   tile.setAttribute("aria-label", `Explore Goal ${ordinal}: ${original.title}. ${counts.done} of ${counts.total} milestones done.`);
   const top = node("span", "goal-tile-top");
-  top.append(node("span", "goal-tile-number", `Goal ${String(ordinal).padStart(2, "0")}`), rollupBadge(deriveGoalStatus(original), counts, "Goal"));
+  top.append(node("span", "goal-tile-number", `Goal ${String(ordinal).padStart(2, "0")}`), goalBadge(original, counts));
   const body = node("span", "goal-tile-body");
   const copy = node("span", "goal-tile-copy");
   copy.append(node("span", "goal-tile-title", original.title));
@@ -685,12 +753,15 @@ function renderHero(hero, matchingGoals) {
   const heading = node("div", "hero-heading");
   const number = heroAvatar(hero, "hero-avatar");
   const titleWrap = node("div");
-  titleWrap.append(node("p", "hero-eyebrow", `Hero ${String(hero.number).padStart(2, "0")}`));
+  titleWrap.append(heroReference(hero, "hero-eyebrow", "p"));
   const title = node("h3", "", hero.title);
   title.id = `hero-title-${hero.id}`;
   titleWrap.append(title);
   heading.append(number, titleWrap, rollupBadge(deriveHeroStatus(hero), counts, "Hero"));
-  header.append(heading, node("p", "hero-summary", hero.summary));
+  header.append(heading);
+  if (hero.purpose) header.append(node('p', 'hero-summary', hero.purpose));
+  header.append(node("p", "hero-summary", hero.summary));
+  if (hero.boundary) header.append(node('p', 'hero-summary', `Boundary: ${hero.boundary}`));
   const metadata = node("div", "hero-meta");
   metadata.append(node("span", "completion-count", `${counts.done} of ${counts.total} milestones done`));
   metadata.append(node("span", "", `${hero.goals.length} Goals`));
@@ -699,7 +770,7 @@ function renderHero(hero, matchingGoals) {
   const separator = node("span", "meta-separator", "/");
   separator.setAttribute("aria-hidden", "true");
   metadata.append(separator, node("span", "", `Updated ${dateLabel(hero.updatedAt)}`));
-  header.append(metadata, progressMeter(counts, "hero-progress", hero.title));
+  header.append(metadata, progressMeter(counts, "hero-progress", `${heroLabel(hero)} · ${hero.title}`));
   const selector = node("section", "goal-selector");
   selector.setAttribute("aria-labelledby", "goal-selector-title");
   const selectorHeading = node("div", "goal-selector-heading");
@@ -710,7 +781,7 @@ function renderHero(hero, matchingGoals) {
   const grid = node("div", "goal-grid");
   grid.tabIndex = hero.goals.length ? 0 : -1;
   grid.setAttribute("role", "group");
-  grid.setAttribute("aria-label", `Goal choices in ${hero.title}`);
+  grid.setAttribute("aria-label", `Goal choices in ${heroLabel(hero)} · ${hero.title}`);
   grid.append(...goals.map((goal) => renderGoalTile(goal, hero)));
   const announcement = node("p", "sr-only goal-selection-status");
   announcement.id = "goal-selection-status";
@@ -748,8 +819,8 @@ function renderHeroes() {
   skipLink.href = selected ? "#heroes" : "#hero-map-title";
   skipLink.textContent = selected ? "Skip to Hero details" : "Skip to Heroes overview";
   ui["search-label"].textContent = selected ? "Search this Hero’s Goals and milestones" : "Search Heroes, Goals and milestones";
-  ui.search.placeholder = selected ? "Goal, milestone, evidence, owner…" : "Hero, Goal, milestone, evidence…";
-  ui["heroes-title"].textContent = selected ? selected.title : "Hero details";
+  ui.search.placeholder = selected ? "Goal, milestone, evidence, owner…" : "Hx06, Goal, milestone, evidence…";
+  ui["heroes-title"].replaceChildren(...(selected ? [heroReference(selected), document.createTextNode(` · ${selected.title}`)] : ["Hero details"]));
   const visibleMilestones = summarize(filtered).total;
   const filtering = Boolean(state.query.trim()) || state.status !== "all";
   ui["visible-count"].textContent = selected ? `${filtering ? `${matchingGoals.length} of ${selected.goals.length} Goals match` : `${selected.goals.length} Goals`} · ${visibleMilestones} ${filtering ? "matching " : ""}milestones` : "";
@@ -783,6 +854,8 @@ function loadIncludedRecord() {
     if (!record || typeof record !== "object") throw new Error("The included project record is missing.");
     validateProject(record.manifest, record.heroes);
     state.heroes = record.heroes;
+    state.verificationAssessments = record.verificationAssessments || {};
+    validateReadyMilestones(state.heroes, state.verificationAssessments);
     state.milestoneIndex = new Map(flattenMilestones(state.heroes).map((entry) => [entry.milestone.id, entry]));
     renderOverview();
     renderFocus();

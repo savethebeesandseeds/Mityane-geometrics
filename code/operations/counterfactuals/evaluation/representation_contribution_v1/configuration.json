@@ -1,0 +1,22 @@
+{
+  "study_id": "OR06-REP-CONTRIB-001",
+  "version": "1.0.0",
+  "claim_level": "controlled_model_response",
+  "seeds": [12037, 23039, 34057],
+  "counts": {"training": 384, "development": 96, "assessment": 256},
+  "denominator": 4096,
+  "noise_denominator": 32,
+  "changes": [-1024, -512, 0, 512, 1024, 8192],
+  "arms": ["raw_polynomial", "raw_additive", "fourier", "hinge", "lossy"],
+  "axes": ["polynomial", "periodic", "hinge"],
+  "bootstrap": {"samples": 1000, "seed": 90037},
+  "thresholds": {"numeric": 1e-9, "aligned_mae": 0.02},
+  "groups": ["all", "a_negative", "a_nonnegative", "b_negative", "b_nonnegative", "magnitude_zero", "magnitude_small", "magnitude_large", "magnitude_stress", "direction_negative", "direction_zero", "direction_positive"],
+  "budget": {"cpu_processes": 1, "native_timeout_ms": 60000, "audit_timeout_ms": 300000, "expected_peak_mib": 1024},
+  "selection_policy": "No family, head, hyperparameter, seed, group or threshold selection after fitting or assessment. Development is descriptive only.",
+  "fit_method": "TRAIN-only population standardization and ordinary least squares with intercept; partial pivot floor 1e-12; five parameters per axis/family; no regularization or search.",
+  "prior_exposure": {"study_id": "OR06-SYNTH-RESP-001", "seeds": [1103, 2207, 3301], "counts": {"training": 512, "development": 128, "assessment": 256}, "policy": "Exclude every b numerator in all original splits, independently regenerated from the frozen recipe; reserve b globally across all new seeds/splits. Original formulas/results are already known."},
+  "preflight_exposure": {"seeds": [12011, 23003, 34019], "counts": {"training": 512, "development": 128, "assessment": 384}, "reason": "An engineering overlap test generated these candidate raw coordinates before sealing; no heads were fitted and no scores observed. Exclude all their b numerators. New seeds and equal per-arm counts were chosen before scientific admission solely to fit the remaining coordinate reservation capacity."},
+  "engineering_exposure": {"seed": 40031, "counts": {"training": 64, "development": 16, "assessment": 24}, "reservation_bases": ["original_only", "original_and_exposed_candidates"], "native_selftest": "b_num=(i*79+17)%8193-4096 for i=0..95, plus 0 and 1", "policy": "Scientific admission additionally excludes all b values from both engineering recipes and native selftest. Engineering always uses the fixed original-and-candidate exclusions, so repeated preflights cannot shift the reservation boundary."},
+  "synthetic_data_license": "Project-authored fixed synthetic maps and generator; repository MIT license; no imported dataset, trained encoder or external service."
+}

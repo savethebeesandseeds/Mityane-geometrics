@@ -3,6 +3,25 @@
 This folder owns the RPB model family, preprocessing, training/checkpoint
 adapters and the configurable spectral/content relation APIs.
 
+## Agent instructions: reusable encoder components
+
+Follow the shared [encoder Hero instructions](../AGENTS.md). Hx16 develops
+reusable RPB architecture and training tools. Keep the family definition,
+supported configuration, training recipe and trained instance separate.
+Historical leaders and benchmark geometries provide evidence for particular
+instances; they do not define a single product shape for every consumer.
+
+Supported changes to input geometry, latent width or capacity belong in
+configuration, with derived dimensions/counts and actual architectural
+constraints. Preserve the exact saved configuration when loading existing
+weights. Expose fresh construction, TRAIN preprocessing fitting, training,
+export and checkpoint/resume through portable interfaces where implemented;
+document version-specific limits and missing paths explicitly. Use focused
+alternative-configuration checks to establish engineering coverage. Cuwacunu
+and other applications own substantial application training and final docking.
+Preserve frozen research source, protocols and results; this guidance does not
+resume an experiment or turn historical engineering checks into new evidence.
+
 ## Research references — 18 October 2026
 
 **RPB-v24.market-01.alt-01, native36, is the explicitly designated historical
@@ -379,8 +398,9 @@ Its fit callback receives permitted training observations and declared metadata;
 it receives no labels, hidden clean signals or held-out observations. The
 [shared engine and integration guide](../../evaluation/README.md) owns cards,
 splits, normalization/PCA/probes, paired populations, scores and reports. See
-[the policy review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md) for remaining
-scope. The ordinary RPB executable owns synthetic/prepare/train/embed and does
+[the archived policy review](../../../../.archive/embeddings/pre-cleanup-2026-10-18/doc/EVALUATION_IMPLEMENTATION_REVIEW.md)
+for implementation limits recorded at that historical stage. The ordinary RPB
+executable owns synthetic/prepare/train/embed and does
 not link the evaluator or baseline; it has no evaluation command. Run comparisons
 through `embedding_evaluate`.
 

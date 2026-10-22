@@ -2,6 +2,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {isDeepStrictEqual} from 'node:util';
+import {requestEnvelopeSchema, preparationSpecSchema, preparedSchema, filesSchema,
+  checkSchema, resultSchema, loadedSchema, validateSchema} from './schemas.mjs';
+export {requestEnvelopeSchema} from './schemas.mjs';
 import {
   admitFiles, readAdmitted, parseJSON, jsonBytes, sha256, writeNew,
   createExclusiveDirectory, requireCondition as require, inside, safeRelative,
@@ -10,22 +14,6 @@ import {
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
 export const REQUEST_VERSION = 'mityane.operation.request/v1';
 export const RESULT_VERSION = 'mityane.operation.result/v1';
-export const requestEnvelopeSchema = {
-  $schema: 'https://json-schema.org/draft/2020-12/schema',
-  type: 'object', additionalProperties: false,
-  required: ['schema_version', 'operation', 'input', 'artifacts'],
-  properties: {
-    schema_version: {const: REQUEST_VERSION},
-    operation: {type: 'object', additionalProperties: false, required: ['id', 'revision'],
-      properties: {id: {type: 'string'}, revision: {type: 'string'}}},
-    input: {type: 'object', description: 'Operation-owned input_schema from describe'},
-    artifacts: {type: 'array', maxItems: 100000, items: {
-      type: 'object', additionalProperties: false, required: ['id', 'sha256', 'path'],
-      properties: {id: {type: 'string', minLength: 1}, sha256: {type: 'string', pattern: '^[0-9a-f]{64}$'},
-        path: {type: 'string', description: 'Exact relative file path inside the request directory; no redirects or parent traversal'}},
-    }},
-  },
-};
 const HASH = /^[0-9a-f]{64}$/;
 const MAX_REQUEST = 64 * 1024 * 1024;
 const MAX_ARTIFACTS = 256 * 1024 * 1024;
@@ -52,16 +40,44 @@ export function listTools(registry) {
 }
 export function describeTool(registry, id) {
   const descriptor = definition(registry, id).descriptor;
-  return {...descriptor, request_schema: {...requestEnvelopeSchema, properties: {
-    ...requestEnvelopeSchema.properties,
-    operation: {const: {id: descriptor.id, revision: descriptor.revision}}, input: descriptor.input_schema,
-  }}};
+  const native = descriptor.native_result_schema ?? {};
+  const specialize = schema => ({...schema, properties: {...schema.properties,
+    operation: {const: {id: descriptor.id, revision: descriptor.revision}}}});
+  const loaded = loadedSchema(native, descriptor.input_schema ?? {type: 'object'});
+  loaded.properties = {...loaded.properties, record: specialize(loaded.properties.record),
+    request: specialize(loaded.properties.request)};
+  return {...descriptor,
+    request_schema: {...specialize(requestEnvelopeSchema), properties: {
+      ...specialize(requestEnvelopeSchema).properties, input: descriptor.input_schema ?? {type: 'object'}}},
+    preparation_schema: {...specialize(preparationSpecSchema), properties: {
+      ...specialize(preparationSpecSchema).properties, input: descriptor.input_schema ?? {type: 'object'}}},
+    prepared_schema: specialize(preparedSchema), check_schema: specialize(checkSchema(native)),
+    result_schema: specialize(resultSchema(native)), files_schema: filesSchema,
+    loaded_schema: loaded,
+  };
 }
 export function createToolset(registry) {
+  const extension = async (method, id, options) => {
+    require(options && typeof options === 'object' && !Array.isArray(options), 'explicit operation options required');
+    const tool = definition(registry, id);
+    require(typeof tool[method] === 'function', `operation supplies no ${method} implementation: ${id}`);
+    const schema = tool.descriptor[`${method.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`)}_options_schema`];
+    if (schema) validateSchema(schema, options, {label: `${method} options`});
+    return tool[method]({...options, operations: createToolset(registry), output: outputPath(tool, options.output)});
+  };
   return Object.freeze({
     list: () => listTools(registry), describe: id => describeTool(registry, id),
     check: request => checkTool(registry, request), run: (request, output) => runTool(registry, request, output),
-    inspect: result => inspectResult(result),
+    prepare: (spec, output) => prepareTool(registry, spec, output),
+    read: result => readResult(result, registry), inspect: result => inspectResult(result, registry),
+    workflow: async (id, options) => {
+      const tool = definition(registry, id);
+      require(typeof tool.workflow === 'function', `operation supplies no workflow: ${id}`);
+      return tool.workflow({...options, operations: createToolset(registry), output: outputPath(tool, options?.output)});
+    },
+    sweep: (id, options) => extension('sweep', id, options),
+    diff: (id, options) => extension('diff', id, options),
+    verifyStudy: (id, options) => extension('verifyStudy', id, options),
   });
 }
 
@@ -117,6 +133,36 @@ async function prepare(registry, requestFile) {
   tool.verify(envelope.input, new Map(inventory.map(row => [row.id, row.bytes])));
   return {tool, envelope, requestBytes: bytes, requestFile: absolute, inventory, wire};
 }
+
+// Packaging is structural and byte-bound only. It deliberately never calls an
+// adapter's check/execute hooks or infers scientific metadata.
+export async function prepareTool(registry, specFile, output) {
+  const absolute = path.resolve(ROOT, specFile);
+  const {bytes, value: spec} = readBoundJSON(absolute);
+  validateSchema(preparationSpecSchema, spec, {label: 'preparation specification'});
+  const tool = definition(registry, spec.operation.id);
+  require(spec.operation.revision === tool.descriptor.revision, 'unsupported operation revision');
+  tool.encode(spec.input);
+  const inventory = admitInventory(spec, absolute, tool.references(spec.input));
+  tool.verify(spec.input, new Map(inventory.map(row => [row.id, row.bytes])));
+  const target = outputPath(tool, output);
+  const request = {schema_version: REQUEST_VERSION, operation: spec.operation, input: spec.input,
+    artifacts: inventory.map(row => ({id: row.id, sha256: row.sha256, path: row.retained_path}))};
+  const requestBytes = jsonBytes(request);
+  require(requestBytes.length <= MAX_REQUEST, 'prepared request exceeds byte limit');
+  createExclusiveDirectory(target, {root: ROOT});
+  try {
+    fs.mkdirSync(path.join(target, 'artifacts'));
+    for (const row of inventory) writeNew(path.join(target, row.retained_path), row.bytes);
+    writeNew(path.join(target, 'preparation.json'), bytes);
+    writeNew(path.join(target, 'request.json'), requestBytes);
+  } catch (error) {
+    try { writeNew(path.join(target, 'failure.json'), jsonBytes({status: 'publication_failed', message: error.message})); } catch {}
+    throw error;
+  }
+  return validateSchema(preparedSchema, {schema_version: 'mityane.operation.prepared/v1',
+    operation: request.operation, request_file: path.join(target, 'request.json'), artifact_count: inventory.length});
+}
 function inventoryRecords(inventory) {
   return inventory.map(({id, sha256: hash, path: source_path, retained_path, bytes}) =>
     ({id, sha256: hash, bytes: bytes.length, source_path, retained_path}));
@@ -162,12 +208,12 @@ async function execute(prepared, checking = false) {
 export async function checkTool(registry, requestFile) {
   const prepared = await prepare(registry, requestFile);
   const executed = await execute(prepared, true);
-  return {
+  return validateSchema(checkSchema(prepared.tool.descriptor.native_result_schema ?? {}), {
     schema_version: 'mityane.operation.check/v1', operation: prepared.envelope.operation,
     valid: executed.status === 'completed', status: executed.status,
     summary: executed.summary, result: executed.result,
     verified_artifacts: inventoryRecords(prepared.inventory),
-  };
+  });
 }
 export function formatSummary(record) {
   const s = record.summary;
@@ -189,6 +235,7 @@ export async function runTool(registry, requestFile, output) {
     result: executed.result, verified_artifacts: inventoryRecords(prepared.inventory),
     execution: executed.execution, warnings: prepared.tool.descriptor.limitations,
   };
+  validateSchema(resultSchema(prepared.tool.descriptor.native_result_schema ?? {}), record);
   createExclusiveDirectory(target, {root: ROOT});
   try {
     fs.mkdirSync(path.join(target, 'artifacts'));
@@ -211,10 +258,11 @@ export async function runTool(registry, requestFile, output) {
   return {result_file: path.join(target, 'result.json'), summary_file: path.join(target, 'summary.txt'),
     status: record.status, summary: record.summary};
 }
-export function inspectResult(resultFile) {
+export function readResult(resultFile, registry = undefined) {
   const filename = path.resolve(ROOT, resultFile), directory = path.dirname(filename);
-  require(path.basename(filename) === 'result.json', 'inspect expects result.json');
+  require(path.basename(filename) === 'result.json', 'result loading expects result.json');
   const manifest = readBoundJSON(path.join(directory, 'manifest.json')).value;
+  validateSchema(filesSchema, manifest, {label: 'saved file manifest'});
   keys(manifest, ['schema_version', 'files'], 'file manifest');
   require(manifest.schema_version === 'mityane.operation.files/v1' && Array.isArray(manifest.files), 'unsupported file manifest');
   require(manifest.files.length <= 100003, 'file manifest exceeds entry limit');
@@ -237,18 +285,59 @@ export function inspectResult(resultFile) {
     require(sha256(bytes) === entry.sha256, `saved file hash mismatch: ${entry.path}`);
     if (['request.json', 'result.json', 'summary.txt'].includes(entry.path)) {
       require(bytes.length <= MAX_REQUEST, `saved record exceeds byte limit: ${entry.path}`);
-      retained.set(entry.path, bytes);
     }
+    retained.set(entry.path, bytes);
   });
   const record = parseJSON(retained.get('result.json'), {duplicates: 'reject', integers: 'number', allowBOM: false});
-  require(record.schema_version === RESULT_VERSION, 'unsupported result schema_version');
+  validateSchema(resultSchema(), record, {label: 'saved result'});
+  validateOutcome(record);
   const requestBytes = retained.get('request.json');
   require(sha256(requestBytes) === record.input.sha256, 'saved request identity mismatch');
-  for (const artifact of record.verified_artifacts) {
+  require(record.input.request_file === 'request.json', 'saved request path mismatch');
+  const request = parseJSON(requestBytes, {duplicates: 'reject', integers: 'number', allowBOM: false});
+  validateSchema(requestEnvelopeSchema, request, {label: 'retained request'});
+  require(isDeepStrictEqual(request.operation, record.operation), 'saved operation/revision mismatch');
+  require(request.artifacts.length === record.verified_artifacts.length, 'saved inventory length mismatch');
+  require(manifest.files.length === record.verified_artifacts.length + 3, 'saved manifest contains extra or missing files');
+  const seenIds = new Set(), seenRetained = new Set(), artifactBytes = new Map();
+  for (const [index, artifact] of record.verified_artifacts.entries()) {
+    const supplied = request.artifacts[index];
+    require(!seenIds.has(artifact.id) && !seenRetained.has(artifact.retained_path), 'duplicate retained artifact identity or path');
+    require(artifact.retained_path.startsWith('artifacts/') && safeRelative(artifact.retained_path) === artifact.retained_path,
+      'invalid retained artifact path');
+    require(supplied.id === artifact.id && supplied.sha256 === artifact.sha256 && supplied.path === artifact.source_path,
+      `saved request artifact mismatch: ${artifact.id}`);
+    seenIds.add(artifact.id); seenRetained.add(artifact.retained_path);
     const row = manifest.files.find(entry => entry.path === artifact.retained_path);
     require(row && row.sha256 === artifact.sha256 && row.bytes === artifact.bytes, `retained artifact identity mismatch: ${artifact.id}`);
+    artifactBytes.set(artifact.id, retained.get(artifact.retained_path));
+  }
+  if (registry) {
+    const tool = definition(registry, record.operation.id);
+    require(tool.descriptor.revision === record.operation.revision, 'unsupported saved operation revision');
+    validateSchema(resultSchema(tool.descriptor.native_result_schema ?? {}), record, {label: 'saved operation result'});
+    tool.encode(request.input);
+    const refs = tool.references(request.input), expected = new Map();
+    for (const ref of refs) {
+      require(!expected.has(ref.id) || expected.get(ref.id) === ref.sha256, 'conflicting saved artifact reference');
+      expected.set(ref.id, ref.sha256);
+    }
+    require(expected.size === seenIds.size && record.verified_artifacts.every(row => expected.get(row.id) === row.sha256),
+      'retained inventory does not cover operation references');
+    tool.verify(request.input, artifactBytes);
+    const context = tool.context(request.input), outcome = tool.outcome(record.result, request.input);
+    validateOutcome(outcome);
+    require(context.operation_run_id === record.input.operation_run_id && context.claim_level === record.claim_level,
+      'saved claim or run identity mismatch');
+    for (const key of ['status', 'summary', 'details']) require(isDeepStrictEqual(outcome[key], record[key]), `saved ${key} disagrees with operation outcomes`);
+    require(isDeepStrictEqual(record.warnings, tool.descriptor.limitations), 'saved operation limitations mismatch');
   }
   const summary = formatSummary(record);
   require(retained.get('summary.txt').equals(Buffer.from(summary)), 'saved summary does not describe result');
-  return summary;
+  return validateSchema(loadedSchema(), {schema_version: 'mityane.operation.loaded/v1', result_file: filename,
+    record, request, manifest, artifacts: record.verified_artifacts.map(row => ({id: row.id, sha256: row.sha256,
+      bytes: row.bytes, path: path.join(directory, row.retained_path)}))});
+}
+export function inspectResult(resultFile, registry = undefined) {
+  return formatSummary(readResult(resultFile, registry).record);
 }

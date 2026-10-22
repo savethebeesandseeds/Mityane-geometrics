@@ -2,9 +2,9 @@
   "schemaVersion": 2,
   "id": "or-06-comparisons",
   "number": 6,
-  "title": "OR-06 · Matched comparisons, sensitivity, and counterfactual analysis",
+  "title": "Matched comparisons, sensitivity, and counterfactual analysis",
   "summary": "Compare cases or specified alternatives with an explicit distinction between observation, controlled model response and identified intervention effects.",
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-20",
   "goals": [
     {
       "id": "or-06-comparisons-contract",
@@ -73,7 +73,7 @@
           "acceptance": [
             "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
             "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
-            "Preserve which attributes were observed, changed in a model input, simulated, or intervened upon. Diagnostics of balance, overlap and sensitivity remain diagnostics rather than automatic certification of causal identification."
+            "Preserve which attributes were observed, changed in a model input, simulated, or intervened upon. Diagnostics of balance, overlap and sensitivity remain diagnostics rather than causal-identification certificates."
           ]
         }
       ]
@@ -87,7 +87,7 @@
           "id": "or-06-comparisons-evaluation-protocol",
           "title": "Define and execute the admitted evaluation",
           "status": "done",
-          "description": "Completed prospectively frozen OR06-SYNTH-RESP-001 v1.0.0: three TRAIN-only fitted synthetic model-response pipelines, 768 assessment source units, fixed representations and raw/zero baselines, all models sealed before assessment generation. Independent saved-record audit passed with zero errors. Mixed pooled source-unit MAE 0.000762435 matched the equivalent-capacity raw-polynomial baseline; lossy/zero error was 0.302927979. All 15,360 supported pairs succeeded and all 3,072 support-stress pairs abstained, with no failed or unresolved assessment rows. Conditional unit-bootstrap uncertainty, source/artifact identities, resources and all outcomes are retained. This closes only the declared static synthetic evaluation; no real-world causal, individual-effect or inherited-encoder claim follows.",
+          "description": "Completed prospectively frozen OR06-SYNTH-RESP-001 v1.0.0: three seeds with twelve TRAIN-only fitted synthetic response readouts, 768 assessment source units, fixed representations and raw/zero baselines, all models sealed before assessment generation. Independent saved-record audit passed with zero errors. Mixed pooled source-unit MAE 0.000762435 matched the equivalent-capacity raw-polynomial baseline; lossy/zero error was 0.302927979. All 15,360 supported pairs succeeded and all 3,072 support-stress pairs abstained, with no failed or unresolved assessment rows. Conditional unit-bootstrap uncertainty, source/artifact identities, resources and all outcomes are retained. This closes only the declared static synthetic evaluation; no real-world causal, individual-effect or inherited-encoder claim follows.",
           "updatedAt": "2026-10-19",
           "completedAt": "2026-10-19",
           "evidence": [
@@ -124,7 +124,7 @@
     {
       "id": "or-06-comparisons-toolset",
       "title": "Expose Hx06 capabilities as a reusable toolset",
-      "description": "Expose the operations, validation, workflow building blocks and results developed within this Hero through a coherent toolset that applications and other operations can reuse across embedding providers. Define a common way to discover, configure, compose and call Hx06 functionality through the CLI and library APIs while preserving each capability's contract, dependencies and claim limits. The existing recorded paired-response tool is the first completed increment; it does not complete the Hero-wide toolset. Linux/Docker execution, the C++ engine and the Windows launcher describe the implementation environment.",
+      "description": "Expose the operations, validation, workflow building blocks and results developed within this Hero through a coherent toolset that applications and other operations can reuse across embedding providers. The delivered HX06-TOOLSET 0.2.0 surface provides common discovery, explicit input packaging, checking, recorded comparison, composition and verified result reuse through CLI and library APIs, preserving contracts, dependencies and claim limits. The current goal completes the selected engineering coverage; future observational/intervention profiles and representation-contribution studies retain their separate goals and will extend this boundary when implemented. Linux/Docker execution, the C++ engine and the Windows launcher describe the implementation environment.",
       "milestones": [
         {
           "id": "or-06-comparisons-callable-tool",
@@ -150,15 +150,18 @@
         {
           "id": "or-06-comparisons-toolset-surface",
           "title": "Define the complete Hx06 toolset surface",
-          "status": "proposed",
-          "updatedAt": "2026-10-19",
-          "description": "Map the Hero's existing and planned construction to reusable public tools and library interfaces. Identify the comparison, validation, sensitivity, workflow and result-handling building blocks to expose, their inputs/outputs and composition points. Distinguish implemented functionality, gaps needing implementation and unsupported claim profiles. This defines the broader toolset coverage before its remaining delivery milestones are refined.",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "completedAt": "2026-10-20",
+          "description": "Authored and independently reviewed HX06-TOOLSET 0.1.0 under code/operations/counterfactuals. The map links public CLI/Node/C++ interfaces, input/output schemas or explicit gaps, contract/RER, ownership and composition rules. Live managed-container list/describe inspection confirmed the registered OR06-PCR boundary. The next engineering increment is explicit request preparation, a recorded-alternative workflow, verified structured result reuse and complete output schemas. These gaps remain undelivered; observational/intervention profiles and scientific studies retain their separate milestones and permissions.",
           "acceptance": [
             "A versioned Hx06 toolset map links each intended public capability to its owning implementation or explicit implementation gap, operation contract, schema and supported claim level.",
             "Document how callers prepare inputs, validate compatibility and prerequisites, run individual or composed Hx06 steps, and inspect or reuse results through consistent CLI and library conventions.",
             "Keep embedding-provider execution and model-owned adapters with their owners; declare the interfaces Hx06 consumes. Unimplemented observational or intervention profiles remain explicitly unsupported until separately defined and evidenced."
           ],
           "evidence": [
+            {"label": "Original versioned Hx06 public surface, gaps and composition map", "path": "code/operations/counterfactuals/archive/TOOLSET-v0.1.0.md"},
+            {"label": "Independent acceptance review and executed interface inspection", "path": "code/operations/counterfactuals/reviews/toolset-surface-v0.1.0.md"},
             {"label": "Hx06 capability scope and claim levels", "path": "doc/operations_over_representations_design_spec_v0.1.0.md#or-06--matched-comparisons-sensitivity-and-counterfactual-analysis"},
             {"label": "Initial shared tool boundary", "path": "code/operations/TOOLS.md"},
             {"label": "Current Hx06 implementation and boundaries", "path": "code/operations/counterfactuals/README.md"}
@@ -167,18 +170,221 @@
         {
           "id": "or-06-comparisons-toolset-coverage",
           "title": "Expose and verify the remaining Hx06 building blocks",
-          "status": "proposed",
-          "updatedAt": "2026-10-19",
-          "description": "Deliver the remaining public tools and reusable APIs identified by the Hx06 toolset map, extending the completed recorded-response entry into the agreed comparison workflows. Add discoverable commands, documented schemas and composable results for the selected building blocks, with provider-neutral integration examples. Refine the implementation breakdown once the coverage map establishes the actual gaps; no new experiment is started by this planning entry.",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "completedAt": "2026-10-20",
+          "description": "Delivered and independently reviewed HX06-TOOLSET 0.2.0: explicit byte-bound request preparation, reusable recorded-alternative composition, verified structured result loading and discoverable complete output schemas through the common CLI/library. The managed-container run passed all 28 tool-boundary tests and 47 C++ conformance cases. API/CLI workflows used distinct provider identities and widths, each preserving five shared-baseline alternatives with three successes, one support abstention and one incompatible-space failure. Windows preparation and structured-read path forwarding passed. Operation-owned logic remains under counterfactuals, common file/schema handling stays shared, and OR06-PCR 0.1.0 numerical semantics are unchanged. This closes the current toolset goal; new scientific profiles and studies remain separate and no frozen evaluation was replayed.",
           "dependsOn": ["or-06-comparisons-toolset-surface", "or-06-comparisons-callable-tool"],
           "acceptance": [
+            "Expose request preparation from fully supplied typed input and artifact files without guessing scientific metadata; publish complete versioned output schemas, provide verified structured result reuse, and document a multi-alternative recorded-response workflow through the same CLI/library boundary.",
             "The agreed toolset map has no unreported exposure gaps: selected implemented Hx06 building blocks are callable through documented public interfaces, and unavailable capabilities are identified explicitly.",
             "End-to-end examples exercise the agreed Hx06 workflows and result reuse with distinct compatible provider configurations through the same public calling conventions, retaining artifact identity, lineage and all failure/abstention states.",
             "Operation-owned behavior remains under counterfactuals, common mechanisms retain shared ownership, and model-specific behavior stays with its provider. Integration checks establish engineering usability; scientific claims require their own bound evaluation evidence."
           ],
           "evidence": [
+            {"label": "Completed toolset coverage and source-bound engineering verification", "path": "code/operations/counterfactuals/reviews/toolset-coverage-v1.md"},
+            {"label": "Executed new public-interface and composition checks", "path": "code/operations/counterfactuals/tool/coverage.test.mjs"},
+            {"label": "Selected delivery blocks and explicit deferred capabilities", "path": "code/operations/counterfactuals/TOOL.md#public-calling-surface"},
             {"label": "Shared toolset conventions to extend", "path": "code/operations/TOOLS.md"},
             {"label": "Completed first tool and its current limits", "path": "code/operations/counterfactuals/TOOL.md"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-06-comparisons-profile-expansion",
+      "title": "Expand operation profiles",
+      "description": "Author separately versioned profiles for the two remaining OR-06 claim levels: matched observational contrast and identified intervention effect. Each needs its own Operation Contract, Requirements-and-Evidence Record and typed refusal conditions, per ORR-DESIGN-001 sections 4, OR-06, 6 and 7. Preserve OR06-PCR 0.1.0 as the controlled-model-response profile with its existing evidence and claim limits.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-observational-profile",
+          "title": "Draft the matched observational-contrast profile",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "description": "Authored and peer-reviewed OR06-MOC / OR06-MOC-RER 0.1.0 as a separate observed-association profile. It defines permitted matching information, fixed matching/weighting semantics, source-variable balance/overlap and confounding checks, compatibility/timing/fit restrictions, dependence-aware uncertainty or explicit limits, and typed full-roster failures/abstentions. Proximity and diagnostics do not establish causal identification. The separately bound NSW archival instance supplies actual non-synthetic artifacts; no matcher, callable adapter or scientific result is claimed by this authoring milestone.",
+          "acceptance": [
+            "Author a distinct versioned Operation Contract and linked Requirements-and-Evidence Record covering the comparison population and units, matching or weighting procedure, permissible covariates, representation/geometry dependencies, outcomes, timing, uncertainty and source lineage.",
+            "Specify matching balance, overlap/common-support diagnostics and measured-confounding checks, with explicit limitations for omitted or unmeasured confounding. Diagnostics remain diagnostics rather than causal-identification certificates.",
+            "Define typed failure or abstention for malformed or incompatible records, prohibited or unavailable matching information and inadequate support; retain the complete requested population and refusal accounting without promoting association to an identified intervention effect."
+          ],
+          "evidence": [
+            {
+              "label": "Authored observed-contrast contract and typed refusals",
+              "path": "code/operations/counterfactuals/profiles/observational_contrast/v0.1.0/CONTRACT.md"
+            },
+            {
+              "label": "Linked observed-contrast requirements and evidence boundary",
+              "path": "code/operations/counterfactuals/profiles/observational_contrast/v0.1.0/EVIDENCE.md"
+            },
+            {
+              "label": "Profile and actual-instance acceptance review",
+              "path": "code/operations/counterfactuals/reviews/profiles-v0.1.0.md"
+            },
+            {
+              "label": "Design requirements: sections 4, OR-06, 6 and 7",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Existing controlled-response profile and separate-claim boundary",
+              "path": "code/operations/counterfactuals/CONTRACT.md"
+            }
+          ],
+          "completedAt": "2026-10-20"
+        },
+        {
+          "id": "or-06-comparisons-intervention-profile",
+          "title": "Draft the identified intervention-effect profile",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "description": "Authored and peer-reviewed OR06-IIE / OR06-IIE-RER 0.1.0. The separate profile requires an explicit estimand and identification argument, untestable assumptions, assignment/treatment/outcome and availability timing, support requirements and prohibited adjustment/matching variables including hidden representation inputs. Proximity is not an identification argument; unsupported causal claims receive typed refusal with complete accounting. A separately bound NSW assignment-effect instance records actual-source assumptions and missing design/uncertainty details. No estimator, scientific execution or identified empirical effect is claimed.",
+          "acceptance": [
+            "Author a distinct versioned Operation Contract and linked Requirements-and-Evidence Record specifying the estimand, population, treatment, outcome, identification argument and explicitly untestable assumptions required by the selected design.",
+            "State treatment/outcome and information-availability timing, overlap/support requirements, permissible adjustment information and prohibited matching variables, including information hidden in embeddings that would violate the design. Proximity, balance and controlled model sensitivity are not identification arguments.",
+            "Define typed refusal of the causal claim when identification, timing, support or required assumptions are unsupported. Preserve claim-specific lineage, uncertainty, failure and abstention accounting; do not relabel an observational or model-response contrast as an identified effect."
+          ],
+          "evidence": [
+            {
+              "label": "Authored intervention-effect contract and causal refusals",
+              "path": "code/operations/counterfactuals/profiles/intervention_effect/v0.1.0/CONTRACT.md"
+            },
+            {
+              "label": "Linked intervention-effect requirements and evidence boundary",
+              "path": "code/operations/counterfactuals/profiles/intervention_effect/v0.1.0/EVIDENCE.md"
+            },
+            {
+              "label": "Profile and actual-instance acceptance review",
+              "path": "code/operations/counterfactuals/reviews/profiles-v0.1.0.md"
+            },
+            {
+              "label": "Design requirements: sections 4, OR-06, 6 and 7",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Existing profile excludes intervention-effect claims",
+              "path": "code/operations/counterfactuals/CONTRACT.md"
+            }
+          ],
+          "completedAt": "2026-10-20"
+        },
+        {
+          "id": "or-06-comparisons-non-synthetic-profile-bindings",
+          "title": "Bind a non-synthetic instance for each new profile",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "description": "Bound two distinct actual non-synthetic instances, OR06-MOC-NSW-REF-001 and OR06-IIE-NSW-REF-001 revision 1.0.0, to the documented NSW jtrain2 archival benchmark. Exact publisher revision, GPL-3 provenance, 445 rows (185 assigned/260 controls), source/roster/provider/SpaceRef/representation hashes, permissions, separate protocols, targets, support/refusal rules and limitations are retained. Nine managed-container tests passed; the actual binding check verified 27 pinned files. Both use an unfitted re74-only raw descriptor and no synthetic OLS. These are completed source/protocol bindings, not fresh protected assessment, callable estimators or scientific results. Causal execution remains unadmitted until its implementation and applicable identification/design/uncertainty requirements are satisfied.",
+          "dependsOn": [
+            "or-06-comparisons-observational-profile",
+            "or-06-comparisons-intervention-profile"
+          ],
+          "acceptance": [
+            "Retain a separately identified instance record for each new profile with an actual non-synthetic dataset/population, license/access and permissions, units and partitions, provider/representation and fitted-artifact identities, geometry, horizon/timing, matching information, support criteria and typed refusal policy.",
+            "Bind each instance's hypothesis or estimand, controls, baselines, uncertainty, metrics, acceptance/failure criteria, execution permissions and prospective protocol before scientific use. Intervention instances additionally bind their identification argument and explicitly untestable assumptions; scientific claims require actual admitted execution and supporting evidence.",
+            "If a new profile or instance relies on the existing TRAIN-only OLS readout, first record the keep/revise/replace decision from Resolve representation contribution and bind the selected readout revision and limits. Record non-applicability when that readout is not used; profile authoring and unrelated bindings need not wait for it."
+          ],
+          "evidence": [
+            {
+              "label": "Exact two-instance source/profile/protocol/representation bindings",
+              "path": "code/operations/counterfactuals/profiles/instances/nsw_reference_v1/bindings.json"
+            },
+            {
+              "label": "Actual observed-contrast instance RER and frozen reference protocol",
+              "path": "code/operations/counterfactuals/profiles/instances/nsw_reference_v1/OBSERVATIONAL.md"
+            },
+            {
+              "label": "Actual assignment-effect instance RER and identification limitations",
+              "path": "code/operations/counterfactuals/profiles/instances/nsw_reference_v1/INTERVENTION.md"
+            },
+            {
+              "label": "Executed actual binding integrity receipt; local ignored artifact",
+              "path": ".temp/operations/counterfactuals/profile-expansion-v1/review-001/binding-check.json"
+            },
+            {
+              "label": "Goal-level authoring and binding acceptance",
+              "path": "code/operations/counterfactuals/reviews/profiles-v0.1.0.md"
+            },
+            {
+              "label": "Instance binding and evidence requirements",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Existing reusable requirements and instance boundaries",
+              "path": "code/operations/counterfactuals/EVIDENCE.md"
+            }
+          ],
+          "completedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "or-06-comparisons-representation-contribution",
+      "title": "Resolve representation contribution",
+      "description": "The original frozen synthetic study tied fitted-readout MAE with an equivalent-capacity raw-polynomial control at 0.000762435. The completed separately admitted follow-up varies nonlinear representation families at equal input information and five-parameter TRAIN-only head budgets, reports every axis/population/seed/change group, and shows task-dependent feature/readout compatibility rather than universal encoder value. The binding policy is revised: OLS remains a scoped reference, with validation and a decision link required before any dependent profile uses it.",
+      "milestones": [
+        {
+          "id": "or-06-comparisons-representation-family-controls",
+          "title": "Re-run the comparison with capacity-matched representation families",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "completedAt": "2026-10-20",
+          "description": "Completed OR06-REP-CONTRIB-001 1.0.0: five fixed feature families, three response axes, three fresh protected populations and 45 sealed TRAIN-only readouts. Four families retain identical raw information and equal five-parameter head/fitting budgets; the lossy family is an explicit adverse control. Distinct nonlinear spans are not claimed to have equal total function classes. Exposure corrections and engineering failures are retained; 69,120 assessment requests reconcile to 57,600 successes and 11,520 stress abstentions, with zero failures/unresolved pairs and zero audit errors. The original study and its eight maintained file hashes remain unchanged.",
+          "dependsOn": ["or-06-comparisons-evaluation-protocol"],
+          "acceptance": [
+            "Predeclare genuinely different representation families and raw/simple-descriptor controls with matched accessible information, readout expressive capacity, fitting/selection budgets and evaluation populations. Distinguish changes in information content, geometry and downstream model capacity rather than attributing all differences to the encoder.",
+            "Freeze a new identified protocol and bound instance record, actual data/provider/model identities, splits, seeds, change definitions, metrics, coverage and failure criteria before assessment. Use fresh protected assessment populations, retain prior-exposure records, and preserve the original protocol, artifacts and source capsule unchanged.",
+            "Record actual admission, execution and all seeds, failures, abstentions and valid negative or inconclusive outcomes. Reusing the original score alone or changing polynomial degree alone cannot complete this comparison."
+          ],
+          "evidence": [
+            {"label": "Prospective family controls and protection policy", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/PROTOCOL.md"},
+            {"label": "Bound requirements and evidence record", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/RER.md"},
+            {"label": "Executed comparison, actual receipts and results", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/RESULTS.md"},
+            {"label": "Assigned-goal acceptance review", "path": "code/operations/counterfactuals/reviews/representation-contribution-v1.md"},
+            {"label": "Frozen tied synthetic result and its limits", "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RESULTS.md"},
+            {"label": "Original control definitions and exposure policy", "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/PROTOCOL.md"},
+            {"label": "Representation suitability and evaluation principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+          ]
+        },
+        {
+          "id": "or-06-comparisons-representation-breakdowns",
+          "title": "Report per-axis and per-population representation contribution",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "completedAt": "2026-10-20",
+          "description": "Reported all 864 assessment metric cells across three seeds plus pooled, three axes, twelve source/change groups and six families/baselines, alongside complete coverage and 864 descriptive development cells. Every non-stress assessment cell has 1,000 finite paired source-block bootstrap resamples; stress-only MAE/intervals are null. Raw polynomial suffices on the polynomial task, Fourier/hinge features help their aligned tasks, and negative/inconclusive comparisons and population/direction reversals remain visible. The evidence concerns fixed synthetic feature/readout compatibility, not a learned encoder or a distance-geometry advantage.",
+          "dependsOn": ["or-06-comparisons-representation-family-controls"],
+          "acceptance": [
+            "Predeclare response-axis definitions, population/group strata and perturbation magnitude/direction breakdowns before protected assessment, or clearly label later analyses exploratory. Attach representation/encoder, readout, source population and horizon identities to every reported comparison.",
+            "Report paired baseline differences, per-axis and per-population errors, dependence-aware uncertainty and complete success/failure/abstention coverage for every selected family and seed; retain negative and inconclusive outcomes without selecting only favorable axes or populations.",
+            "Separate evidence of added predictive signal from mere invertible feature reparameterization or readout-capacity differences. State where the representation is redundant with a simple descriptor and where any contribution is supported only within the measured population."
+          ],
+          "evidence": [
+            {"label": "Complete breakdown report, paired intervals and interpretation", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/RESULTS.md"},
+            {"label": "Frozen independent numerical audit implementation", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/audit.py"},
+            {"label": "Coverage and all-cell closeout review", "path": "code/operations/counterfactuals/reviews/representation-contribution-v1.md"},
+            {"label": "Current aggregate, seed-level results and uncertainty limits", "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RESULTS.md"},
+            {"label": "Requirements for scoped claims and robustness", "path": "code/operations/counterfactuals/EVIDENCE.md"}
+          ]
+        },
+        {
+          "id": "or-06-comparisons-readout-binding-decision",
+          "title": "Decide whether to keep, revise or replace the TRAIN-only OLS readout binding",
+          "status": "done",
+          "updatedAt": "2026-10-20",
+          "completedAt": "2026-10-20",
+          "description": "Decision OR06-READOUT-DECISION-001 1.0.0 revises the binding policy while retaining TRAIN-only OLS as a scoped reference. New identity OR06-OLS-REFERENCE 1.0.0 binds actual scalers/models, native semantics, accepted task-aligned references, fit/selection rules, failure cases, uncertainty and scope. Historical OLS artifacts remain intact. Every future dependent profile must link this decision and validate its own binding; both existing NSW reference instances explicitly have no OLS dependency.",
+          "dependsOn": ["or-06-comparisons-representation-family-controls", "or-06-comparisons-representation-breakdowns"],
+          "acceptance": [
+            "Record the keep/revise/replace decision, rationale, tested representation/population scope, baseline comparisons, uncertainty, known failure cases and consequences for any new profile that would consume the readout.",
+            "Bind the accepted readout and preprocessing revisions, native input/output semantics and allowed fit/selection populations. Keep fitted preprocessing and readout training TRAIN-only; any revision or replacement receives new identities and prospective selection/evaluation rules without overwriting the original OLS artifacts or evidence.",
+            "No new profile or instance relies on the old or revised OLS binding until the decision and its limits are linked in that profile's contract/RER and instance dependencies. Contract drafting and profiles with no such dependency remain independently authorable."
+          ],
+          "evidence": [
+            {"label": "Evidence-backed revise/keep decision and dependency limits", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/READOUT_DECISION.md"},
+            {"label": "New readout/preprocessing binding identity and actual model pins", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/readout-binding.json"},
+            {"label": "Comparison results and uncertainty", "path": "code/operations/counterfactuals/evaluation/representation_contribution_v1/RESULTS.md"},
+            {"label": "Existing profile instances declare no OLS dependency", "path": "code/operations/counterfactuals/profiles/instances/nsw_reference_v1/bindings.json"},
+            {"label": "Original TRAIN-only OLS binding", "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RER.md"},
+            {"label": "Original result motivating the readout decision", "path": "code/operations/counterfactuals/evaluation/synthetic_response_v1/RESULTS.md"},
+            {"label": "Reusable evidence and fit-population requirements", "path": "code/operations/counterfactuals/EVIDENCE.md"}
           ]
         }
       ]

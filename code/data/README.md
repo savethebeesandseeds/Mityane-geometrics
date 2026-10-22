@@ -8,6 +8,8 @@ boundaries, event times and information-availability times when relevant.
 | Path | Responsibility |
 | --- | --- |
 | `observations/` | Tensor observation archives, validation, smoke-data construction and related data tests |
+| [Observation-window datasets](observations/OBSERVATION_WINDOWS.md) | Encoder-independent typed raw F64 windows, masks, semantic IDs, timestamps, explicit cutoffs and declared split/source identity |
+| [NSW archival reference adapter](observations/open_benchmarks/nsw_wooldridge_v1/README.md) | Explicitly imported non-synthetic job-training benchmark, provenance/license checks and unfitted baseline-only descriptors for separate Hx06 profile bindings |
 | `market/versions/v1/` | Market timelines, chronological associations/arrays, risk-target definitions and ledger I/O |
 
 The existing `embedding/shared/data.h` and `cuwacunu/latent_market/` include

@@ -1,0 +1,22 @@
+{
+  "kind": "mityane_nsw_baseline_representation_definition_v1",
+  "version": "1.0.0",
+  "provider_id": "nsw-re74-identity/v1",
+  "representation_kind": "observation_embedding",
+  "surface": "dense_vector",
+  "native_shape": [1],
+  "input_field": "re74",
+  "input_units": "thousands of real dollars",
+  "transform": "Parse the original finite re74 source cell as binary64 and return exactly [re74]; no scaling, fitting, selection or use of any other field.",
+  "geometry": {"id": "absolute_distance/v1", "definition": "abs(left[0] - right[0])", "units": "thousands of real dollars"},
+  "normalization": "none",
+  "masks": "none; one observed finite re74 coordinate required",
+  "fitted_preprocessing": "none",
+  "adapters": "none",
+  "readout": "none",
+  "selection": "none",
+  "timing": {"source_measurement_period": "1974", "baseline_role": "Retrospective pre-intervention covariate per primary NSW subset documentation", "available_at": null, "as_of_availability_claim": false},
+  "prohibited_representation_fields": ["train", "age", "educ", "black", "hisp", "married", "nodegree", "mosinex", "re75", "re78", "unem74", "unem75", "unem78", "lre74", "lre75", "lre78", "agesq", "mostrn"],
+  "unit_identity": "Source row ordinal under the exact dataset snapshot namespace; no claim of a cross-dataset subject identifier. Row ordinal is lineage only and must not be a matching feature.",
+  "claim_limit": "A transparent raw descriptor, not a trained encoder or evidence of representation utility. No matching or effect estimate is produced."
+}

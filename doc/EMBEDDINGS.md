@@ -15,6 +15,58 @@ fixed readouts independently measure retained information. The
 [project charter](operations_over_representations_design_spec_v0.1.0.md) keeps the
 broader project domain-agnostic and makes operation utility a separate claim.
 
+## Family deliverable and application training — 22 October 2026
+
+The [shared encoder Hero instructions](../code/embeddings/encoders/AGENTS.md)
+apply across **Hx15–Hx18**, including external provider tools under their actual
+upstream capabilities. All four workstreams deliver reusable encoder/provider
+components; the CPB family path below is one implemented example, rather than
+the definition of the other families' coverage.
+
+Mityane discovers and compares **configurable encoder families**. Cuwacunu owns
+substantial application training and final docking. A research checkpoint is
+evidence for one trained instance; it does not define the family's supported
+input geometry, latent width or model capacity. The V16 checkpoint reference
+below remains a comparison reference, not a requirement to import its weights
+when constructing a fresh application model.
+
+Keep four objects separate: the family definition and its actual architectural
+constraints; the configuration choosing supported geometry and capacity; the
+experimental recipe specifying initialization, TRAIN preprocessing, objective,
+optimizer and progress; and each trained instance binding those choices to its
+own state. Derive dimensions and parameter counts from configuration. Loading
+existing weights still requires their exact saved configuration; changing a
+supported shape does not imply reshaping those weights or creating another
+source version merely to bypass an experimental assertion.
+
+The [configurable family and training handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md)
+is the maintained destination for supported constraints, portable construction,
+preprocessing fitting, training, checkpoint/resume and their focused engineering
+evidence. It must distinguish implemented portability from missing application
+work. Preserve the frozen V16 source, study recipe, checkpoint identities and
+mixed verdict. This direction does not start another costly research study.
+
+The [trained-reference compatibility record](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/evidence/compatibility-2026-10-22.json)
+now verifies the corrected interface against the selected trained V16 state,
+including losses/gradients and matched short training/resume. The
+[runnable fresh-training example](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/examples/TRAINING.md)
+adds configured input, fitting, periodic saves and byte-bound resume. These are
+component engineering results; the checkpoint rankings and mixed study verdict
+retain their original scope.
+
+The [source migration package](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/README.md)
+exports the training method with the network: complete numerical dependencies,
+fitting/masking/objective/optimizer/resume code, runnable example, method notes,
+research rationale, dependencies/licenses and a verifiable source manifest.
+Its Cuwacunu mapping respects the existing application training pipeline;
+example, historical study and consumer recipes remain distinct.
+
+The [component ownership contract](../code/embeddings/encoders/COMPONENT_DELIVERY.md)
+incorporates a direct Cuwacunu consumer review: Mityane delivers reusable learning
+semantics and evidence; applications bind their data, complete recipes,
+execution and trusted artifacts. The review found no missing numerical delivery
+mechanism blocking Cuwacunu's existing pipeline.
+
 ## Leading encoders and their roles
 
 **Current research reference: V16 candidate seed 946103, final checkpoint 2048,

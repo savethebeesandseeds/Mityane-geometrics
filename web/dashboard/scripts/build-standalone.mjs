@@ -4,7 +4,7 @@ import {readFile, writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {dirname, resolve} from 'node:path';
 import {createHash} from 'node:crypto';
-import {validateProject} from '../src/model.js';
+import {validateProject, validateReadyMilestones} from '../src/model.js';
 import {readProject, sourceFingerprint} from './project.mjs';
 import {readBranding, brandingScript} from './branding.mjs';
 import {assertManagedContainer} from './environment.mjs';
@@ -13,6 +13,7 @@ const directory = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = async file => (await readFile(resolve(directory, file), 'utf8')).replace(/\r\n/g, '\n');
 export async function renderStandalone(record) {
   validateProject(record.manifest, record.heroes);
+  validateReadyMilestones(record.heroes, record.verificationAssessments || {});
   const [template, model, ui, css, branding] = await Promise.all([
     ...['src/template.html', 'src/model.js', 'src/dashboard.js', 'src/dashboard.css'].map(read),
     readBranding(),

@@ -18,24 +18,19 @@ forecast skill, market utility or every catalogue capability.
 ## Adding an operation
 
 The [operation toolset](TOOLS.md) supplies a common command-line and reusable
-library boundary: discover, describe, check, run and inspect. Hx06's recorded
-paired-response comparator is its first registered tool. Each tool retains its
-own payload and representation requirements; model-owned encoding stays with
-the provider. Other existing interfaces remain available independently.
-
-The [operation toolset](TOOLS.md) supplies a common command-line and reusable
-library boundary: discover, describe, check, run and inspect. Hx06's recorded
-paired-response comparator is its first registered tool. Each tool retains its
+library boundary for discovery, preparation, execution and verified result reuse.
+Hx06's recorded paired-response comparator is its first registered tool. Each tool retains its
 own payload and representation requirements; model-owned encoding stays with
 the provider. Other existing interfaces remain available independently.
 
 The [counterfactuals component](counterfactuals/README.md) owns Hx06 / OR-06
-comparison work. Its first [Operation Contract](counterfactuals/CONTRACT.md) and
-linked [Requirements-and-Evidence Record](counterfactuals/EVIDENCE.md) define
-paired controlled model response. Its [C++ reference](counterfactuals/IMPLEMENTATION.md)
-has engineering conformance evidence, and a [frozen synthetic evaluation](counterfactuals/evaluation/synthetic_response_v1/RESULTS.md)
-has independently audited response-fidelity and refusal results in its stated
-toy population. Broader counterfactual/causal claims remain separate.
+comparison work. Its entry guide links the callable paired-response tool,
+contracts, synthetic evaluations, readout decision and separately authored
+observational/intervention profiles. The [tool guide](counterfactuals/TOOL.md)
+and its [advanced commands](counterfactuals/TOOL.md#sweep-a-scenario-space) cover recorded-response
+workflows, sweeps, result differences and retained-study verification. The sole
+callable claim remains `controlled_model_response`; broader profiles need their
+own implementations and scientific evidence.
 
 Begin with an Operation Contract and a linked Requirements-and-Evidence Record
 from section 4 of the specification. State the question, inputs, outputs,

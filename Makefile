@@ -4,6 +4,17 @@ ifndef MITYANE_ROOT_RULES_INCLUDED
 MITYANE_ROOT_RULES_INCLUDED := 1
 unexport MITYANE_ROOT_RULES_INCLUDED
 
+# This independent family fixture needs Torch, but no historical study closure.
+# Keep its build settings here with the project's authoritative native settings.
+MITYANE_CPB_FAMILY_GOALS := build-cpb-family test-cpb-family \
+  build-cpb-family-equivalence test-cpb-family-equivalence \
+  build-cpb-family-trainer build-observation-window-fixture test-cpb-family-training-example
+ifneq ($(strip $(MAKECMDGOALS)),)
+ifeq ($(strip $(filter-out $(MITYANE_CPB_FAMILY_GOALS),$(MAKECMDGOALS))),)
+MITYANE_CPB_FAMILY_ONLY := 1
+endif
+endif
+
 # Maintenance-only invocations do not need research source closures or Git scans.
 # Mixed/model invocations retain the full build and provenance rules below.
 MITYANE_MAINTENANCE_GOALS := test-maintenance check-layout dashboard-branding-native test-dashboard-branding \
@@ -11,13 +22,24 @@ MITYANE_MAINTENANCE_GOALS := test-maintenance check-layout dashboard-branding-na
   test-migration-source-syntax test-migration-protocol-cli test-migration-source-closures test-migration-reader-source \
   build-saved-tensor-v1 check-saved-tensor-v1 build-independent-cpu-v1 check-independent-cpu-v1 \
   test-cpb-v14-closeout test-counterfactuals build-counterfactuals-evaluation evaluate-counterfactuals \
-  build-counterfactuals-tool build-operation-tools test-operation-tools
+  build-counterfactuals-tool build-operation-tools test-operation-tools test-counterfactual-profiles \
+  build-counterfactual-contribution test-counterfactual-contribution evaluate-counterfactual-contribution \
+  test-operation-ergonomics
 ifneq ($(strip $(MAKECMDGOALS)),)
 ifeq ($(strip $(filter-out $(MITYANE_MAINTENANCE_GOALS),$(MAKECMDGOALS))),)
 MITYANE_MAINTENANCE_ONLY := 1
 endif
 endif
-ifeq ($(MITYANE_MAINTENANCE_ONLY),1)
+ifeq ($(MITYANE_CPB_FAMILY_ONLY),1)
+CXX := g++
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/baseline
+RUN_ROOT ?= $(CURDIR)/.temp/embeddings/runs/baseline
+LIBTORCH ?= /opt/cuwacunu_embedding/libtorch
+CXXFLAGS := -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP
+LDFLAGS := -L$(LIBTORCH)/lib -Wl,-rpath,'$(abspath $(LIBTORCH))/lib' -Wl,-rpath-link,$(LIBTORCH)/lib
+LDLIBS := -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread
+include code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk
+else ifeq ($(MITYANE_MAINTENANCE_ONLY),1)
 CXX := g++
 include code/scripts/maintenance.mk
 else
@@ -1390,6 +1412,7 @@ include code/embeddings/evaluation/protocols/cpb_v15_objective_v1/objective.mk
 include code/embeddings/evaluation/protocols/cpb_v15_objective_v1/audit.mk
 include code/data/market/experiments/cpb_v15_objective_v1/converter.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/v16.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/objective.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/audit.mk
 include code/data/market/experiments/cpb_v16_temporal_v1/converter.mk

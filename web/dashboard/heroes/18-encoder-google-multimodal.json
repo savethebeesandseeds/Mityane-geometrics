@@ -3,8 +3,10 @@
   "id": "encoder-google-multimodal",
   "number": 18,
   "title": "Encoder · Google multimodal embeddings",
-  "summary": "Use Google Gemini Embedding 2 as a documented external representation source for text, image, video, audio and PDF; an API adapter and local operation evidence remain proposed.",
-  "updatedAt": "2026-10-20",
+  "purpose": "Develop reusable hosted-provider configuration, adapter, validation and provenance tools that operations and application projects can compose.",
+  "boundary": "Own the external provider interface and its documented upstream constraints. Cuwacunu and other applications own final integration and application use. Local training, weight access and arbitrary output shapes are not implied; supported configuration follows exposed provider capabilities. Follow the shared encoder component instructions and retain historical provider records and claim limits.",
+  "summary": "Develop reusable Google multimodal provider tools. The documented Gemini Embedding 2 source has a local provider record; an API adapter and local operation evidence remain proposed. Hosted service capabilities and configuration limits belong to the provider contract, not a finished application.",
+  "updatedAt": "2026-10-22",
   "goals": [
     {
       "id": "encoder-google-multimodal-provider",
@@ -92,41 +94,71 @@
     {
       "id": "encoder-google-multimodal-toolset",
       "title": "Expose Hx18 capabilities as a reusable toolset",
-      "description": "Expose the agreed hosted-provider configuration, encoding, saved-response export/replay, validation and selected workflow building blocks through documented CLI and reusable APIs compatible with common provider records and operation consumers. Preserve provider revision uncertainty and keep service-specific behavior in its owning component.",
+      "description": "Develop reusable hosted-provider configuration, encoding, saved-response export/replay and validation tools with documented CLI/library interfaces for operations and applications. Separate provider capability/configuration, request recipe and each execution/result artifact. Preserve service-specific limits and revision uncertainty; Cuwacunu and other applications own final docking. Implemented coverage and remaining gaps must be explicit.",
       "milestones": [
         {
           "id": "encoder-google-multimodal-toolset-surface",
           "title": "Define the hosted-provider tool surfaces and usage contracts",
           "status": "proposed",
-          "description": "Map the documented provider, future adapter and selected workflow building blocks into common usage conventions; provider documentation alone establishes no callable implementation or live service verification.",
-          "updatedAt": "2026-10-20",
+          "description": "Map the documented provider, future adapter and selected workflow building blocks into common usage conventions; provider documentation alone establishes no callable implementation or live service verification. The component-tool mission and shared encoder instructions govern this surface definition; a checkpoint or application-specific benchmark is an evidence instance.",
+          "updatedAt": "2026-10-22",
           "acceptance": [
             "Inventory the agreed configuration/loading, encoding, saved-response export/replay, validation and workflow surfaces, distinguishing current documentation, implemented interfaces and remaining gaps.",
             "Specify versioned CLI/API inputs and outputs, modality/grouping/task roles, dimensions/normalization, source and request/response identities, actual returned revision metadata or its absence, compatibility requirements and failure/abstention behavior.",
-            "Define bounded offline examples, live-call boundaries and completion criteria without assuming immutable hosted weights or universal geometry. Record credential, permitted-content, request-budget and retention requirements before any live execution."
+            "Define bounded offline examples, live-call boundaries and completion criteria without assuming immutable hosted weights or universal geometry. Record credential, permitted-content, request-budget and retention requirements before any live execution.",
+            "Document which upstream-supported model, modality, dimension, normalization and request options the reusable adapter exposes, their constraints and actual verification coverage. A recorded example response or proposed default does not define every supported configuration; do not promise local weights, fresh model training or shapes the service does not expose."
           ],
           "evidence": [
-            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
-            {"label": "Hosted provider scope and integration limits", "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"},
-            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+            {
+              "label": "Common tool usage and ownership",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Hosted provider scope and integration limits",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Provider contracts and interoperability principles",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Shared encoder component instructions",
+              "path": "code/embeddings/encoders/AGENTS.md"
+            }
           ]
         },
         {
           "id": "encoder-google-multimodal-toolset-coverage",
           "title": "Expose and verify the agreed hosted-provider building blocks",
           "status": "proposed",
-          "description": "Deliver the agreed provider tools, reusable interfaces and bounded integration examples, reporting saved-response replay separately from any explicitly admitted live requests.",
-          "updatedAt": "2026-10-20",
-          "dependsOn": ["encoder-google-multimodal-toolset-surface"],
+          "description": "Deliver the agreed provider tools, reusable interfaces and bounded integration examples, reporting saved-response replay separately from any explicitly admitted live requests. Coverage must demonstrate the agreed reusable component contract and state configuration/training or provider limitations explicitly.",
+          "updatedAt": "2026-10-22",
+          "dependsOn": [
+            "encoder-google-multimodal-toolset-surface"
+          ],
           "acceptance": [
             "Expose the agreed hosted-provider building blocks through documented Linux CLI and reusable library interfaces in the managed container, using common provider records while keeping service-specific configuration, request handling and export in the provider component.",
             "Verify selected standalone tools and a bounded provider-to-operation workflow, including grouping/order, native shape, provenance, unsupported content, partial failures, retries/cache identity and incompatible consumer cases; retain replay limits and unknown provider revisions explicitly.",
-            "Retain actual engineering receipts and examples with explicit offline/live coverage and gaps. Keep credentials and restricted content private; live API requests and utility evaluations require their actual permitted inputs, budget, protocol and permissions."
+            "Retain actual engineering receipts and examples with explicit offline/live coverage and gaps. Keep credentials and restricted content private; live API requests and utility evaluations require their actual permitted inputs, budget, protocol and permissions.",
+            "Verify representative supported provider configurations through reusable adapter/validation interfaces and bounded offline fixtures or separately admitted live calls. Record unavailable capabilities and configuration limits explicitly; the deliverable is a composable provider tool, while application docking and end-to-end utility remain separate."
           ],
           "evidence": [
-            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
-            {"label": "Hosted provider scope and integration limits", "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"},
-            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+            {
+              "label": "Common tool usage and ownership",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Hosted provider scope and integration limits",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Provider contracts and interoperability principles",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Shared encoder component instructions",
+              "path": "code/embeddings/encoders/AGENTS.md"
+            }
           ]
         }
       ]

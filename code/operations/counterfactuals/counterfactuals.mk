@@ -14,14 +14,39 @@ COUNTERFACTUALS_EVALUATION_BIN := $(COUNTERFACTUALS_BUILD_DIR)/synthetic_respons
 COUNTERFACTUALS_ARTIFACT_HEADER := code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/sidecar.h
 COUNTERFACTUALS_TOOL_OBJECT := $(COUNTERFACTUALS_BUILD_DIR)/paired_response_tool.o
 COUNTERFACTUALS_TOOL_BIN := $(COUNTERFACTUALS_BUILD_DIR)/paired_response_tool
+COUNTERFACTUALS_CONTRIBUTION_ROOT := $(COUNTERFACTUALS_ROOT)/evaluation/representation_contribution_v1
+COUNTERFACTUALS_CONTRIBUTION_BIN := $(COUNTERFACTUALS_BUILD_DIR)/representation_contribution
 
-.PHONY: test-counterfactuals counterfactuals-container-check build-counterfactuals-evaluation evaluate-counterfactuals build-counterfactuals-tool build-operation-tools test-operation-tools
+.PHONY: build-counterfactual-contribution test-counterfactual-contribution evaluate-counterfactual-contribution
+build-counterfactual-contribution: $(COUNTERFACTUALS_CONTRIBUTION_BIN) | counterfactuals-container-check
+
+test-counterfactual-contribution: $(COUNTERFACTUALS_CONTRIBUTION_BIN) | counterfactuals-container-check
+	$(COUNTERFACTUALS_CONTRIBUTION_BIN) selftest
+	MITYANE_CONTRIBUTION_BINARY="$(abspath $(COUNTERFACTUALS_CONTRIBUTION_BIN))" bash code/scripts/node.sh --test $(COUNTERFACTUALS_CONTRIBUTION_ROOT)/run.test.mjs
+
+evaluate-counterfactual-contribution: $(COUNTERFACTUALS_CONTRIBUTION_BIN) | counterfactuals-container-check
+	@test -n "$(strip $(EVALUATION_ATTEMPT))" || { echo 'Set EVALUATION_ATTEMPT to an exclusive absolute attempt path.' >&2; exit 1; }
+	bash code/scripts/node.sh $(COUNTERFACTUALS_CONTRIBUTION_ROOT)/run.mjs --binary "$(abspath $(COUNTERFACTUALS_CONTRIBUTION_BIN))" --attempt "$(EVALUATION_ATTEMPT)"
+
+$(COUNTERFACTUALS_CONTRIBUTION_BIN): $(COUNTERFACTUALS_CONTRIBUTION_ROOT)/contribution.cpp $(COUNTERFACTUALS_ROOT)/counterfactuals.mk | counterfactuals-container-check
+	mkdir -p "$(@D)"
+	$(CXX) -std=c++20 -O1 -g0 -Wall -Wextra -Wpedantic $< -o $@
+
+.PHONY: test-counterfactuals counterfactuals-container-check build-counterfactuals-evaluation evaluate-counterfactuals build-counterfactuals-tool build-operation-tools test-operation-tools test-operation-ergonomics
 build-operation-tools: build-counterfactuals-tool
+
+.PHONY: test-counterfactual-profiles
+test-counterfactual-profiles: | counterfactuals-container-check
+	bash code/scripts/node.sh --test code/data/observations/open_benchmarks/nsw_wooldridge_v1/import.test.mjs $(COUNTERFACTUALS_ROOT)/profiles/instances/nsw_reference_v1/check.test.mjs
+	bash code/scripts/node.sh $(COUNTERFACTUALS_ROOT)/profiles/instances/nsw_reference_v1/check.mjs
 
 build-counterfactuals-tool: $(COUNTERFACTUALS_TOOL_BIN) | counterfactuals-container-check
 
 test-operation-tools: $(COUNTERFACTUALS_TOOL_BIN) | counterfactuals-container-check
-	MITYANE_COUNTERFACTUALS_TOOL_BINARY="$(abspath $(COUNTERFACTUALS_TOOL_BIN))" bash code/scripts/node.sh --test $(COUNTERFACTUALS_ROOT)/tool/tool.test.mjs
+	MITYANE_COUNTERFACTUALS_TOOL_BINARY="$(abspath $(COUNTERFACTUALS_TOOL_BIN))" bash code/scripts/node.sh --test $(COUNTERFACTUALS_ROOT)/tool/tool.test.mjs $(COUNTERFACTUALS_ROOT)/tool/coverage.test.mjs $(COUNTERFACTUALS_ROOT)/tool/sweep.test.mjs $(COUNTERFACTUALS_ROOT)/tool/diff.test.mjs $(COUNTERFACTUALS_ROOT)/tool/verify-study.test.mjs $(COUNTERFACTUALS_ROOT)/tool/ergonomics.test.mjs
+
+test-operation-ergonomics: $(COUNTERFACTUALS_TOOL_BIN) | counterfactuals-container-check
+	MITYANE_COUNTERFACTUALS_TOOL_BINARY="$(abspath $(COUNTERFACTUALS_TOOL_BIN))" bash code/scripts/node.sh --test $(COUNTERFACTUALS_ROOT)/tool/sweep.test.mjs $(COUNTERFACTUALS_ROOT)/tool/diff.test.mjs $(COUNTERFACTUALS_ROOT)/tool/verify-study.test.mjs $(COUNTERFACTUALS_ROOT)/tool/ergonomics.test.mjs
 test-counterfactuals: $(COUNTERFACTUALS_TEST)
 	$(COUNTERFACTUALS_TEST)
 

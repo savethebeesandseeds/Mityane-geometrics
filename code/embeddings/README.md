@@ -30,6 +30,19 @@ distinguishes observation embeddings, learned latent states and forecast states.
 Source placement does not establish prediction skill or downstream utility.
 External/open models and API embeddings remain first-class representation sources.
 
+## Encoder Hero development direction
+
+**Hx15–Hx18 develop reusable encoder families and provider tools.** Read the
+[shared encoder instructions](encoders/AGENTS.md) and the assigned Hero record.
+The deliverable includes supported configuration, callable interfaces, portable
+workflows and explicit constraints/coverage; a selected checkpoint is evidence
+for an instance. Separate family/provider, configuration, recipe and instance.
+Locally trainable components expose fresh construction, TRAIN fitting, training,
+export and resume where implemented, with missing pieces stated. External
+providers expose their actual upstream capabilities. Cuwacunu and other
+applications own substantial application training and final docking; bounded
+architecture research and tool verification remain here.
+
 ## Current research references
 
 The current research default is **V16 candidate seed 946103, final update 2048,

@@ -14,6 +14,24 @@ identifier is not an immutable checkpoint hash; a future adapter must retain
 the returned revision when available, request configuration, execution date
 and response artifact identity.
 
+## Agent instructions: reusable provider tools
+
+Follow the shared [encoder Hero instructions](../AGENTS.md). Hx18 develops a
+reusable provider adapter, configuration and validation surface that operations
+and applications can compose. Keep the provider/model identity, supported
+request configuration, evaluation recipe and each recorded response distinct.
+A selected model or output width supplies one integration binding; it does not
+define a finished application or establish downstream usefulness.
+
+Expose only capabilities and configuration ranges the upstream service actually
+supports. Preserve modality, dimensions, space identity and provenance across
+the public interfaces, and document implementation gaps and service limits.
+This external-provider workstream does not imply access to weights, local
+fresh training or arbitrary changes to the provider architecture. Applications
+such as Cuwacunu own final docking and application-specific work. Preserve
+historical provider/evaluation records; this guidance authorizes no live API
+request, upload or new experiment.
+
 ## Current state
 
 The provider is registered here for planning and source provenance. Its API

@@ -6,7 +6,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.."
   echo 'Use code/operations/tools.ps1 in the managed mityane-geometrics container.' >&2; exit 2;
 }
 case "${1:-}" in
-  check|run)
+  check|run|workflow|sweep|verify-study)
     bash code/scripts/task.sh operation-tools-v1 build-operation-tools >&2
     ;;
 esac

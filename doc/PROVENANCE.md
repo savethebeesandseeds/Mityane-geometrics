@@ -138,3 +138,27 @@ A hosted service model ID does not identify immutable model weights. Future
 requests must retain configuration, returned revision when available, execution
 date, source identity and response artifact identity. Service terms and dataset
 transmission permissions remain separate from the repository's source license.
+
+## NSW archival reference data
+
+On 20 October 2026, the owner authorized selection of a documented open randomized
+dataset for Hx06's two new profile bindings. The
+[NSW data adapter](../code/data/observations/open_benchmarks/nsw_wooldridge_v1/README.md)
+retains `wooldridge::jtrain2`, package 1.4-7, source revision
+`427d117f3888cd3a630ee22a1aedc8f036d128ff`, with the publisher's GPL-3 declaration,
+full license text and attribution to Justin M. Shea, LaLonde and Dehejia/Wahba.
+Seven original publisher/documentation artifacts and all data-only preparation
+receipts are retained under ignored `.temp/data/hx06-nsw-reference-v1/`.
+The exact served CSV is 37,008 bytes, SHA256
+`3dab3d903e07549343ae3aa51ce6530afc490c5861f6ebec76360e48fed9f9df`.
+It is a separately identified R-universe serialization; no independent numerical
+equivalence with the retained RData binary was asserted.
+
+The [two profile instances](../code/operations/counterfactuals/profiles/instances/nsw_reference_v1/README.md)
+bind the actual 445-row roster and unfitted `[re74]` raw descriptor, source and
+representation hashes, permissions, distinct protocols and limitations. Data
+import/schema checks and baseline-only materialization do not execute matching,
+causal estimation, model fitting or scientific evaluation. The archival benchmark
+is publicly exposed, has unknown original information-availability/design details
+and establishes no fresh protected assessment or causal result. Raw/derived
+individual records were not added to Git or sent to an embedding provider.

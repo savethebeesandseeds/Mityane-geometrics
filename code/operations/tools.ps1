@@ -13,7 +13,7 @@ foreach ($argument in $ToolArguments) {
         }
         $forwarded += '/mityane/' + $relative.Replace('\', '/')
     } else { $forwarded += $argument }
-    $isPath = $argument -in @('--request', '--output', '--result')
+    $isPath = $argument -in @('--request', '--spec', '--output', '--result', '--space', '--catalog', '--left', '--right', '--attempt')
 }
 if ($isPath) { throw 'A file or directory path is missing.' }
 try {

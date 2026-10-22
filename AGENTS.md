@@ -6,6 +6,12 @@ representations. Read `doc/operations_over_representations_design_spec_v0.1.0.md
 or evaluation policy. The research unit is an operation, its input/output
 contract, required representation properties, dependencies and explicit test.
 
+Refer to Heroes consistently as Hx01 through Hx18 (Hx plus the zero-padded
+Hero number) in the dashboard and maintained prose. Keep Hero titles descriptive;
+derive the Hx reference from `number`. Preserve existing JSON IDs, file paths,
+dependencies and historical evidence identities. The mapping in
+`web/dashboard/WORKSTREAMS.md` distinguishes Heroes from capability families.
+
 Keep the OR-01 through OR-13 capability IDs stable. The families are composable
 research categories, not a claim of implementation, a sequential roadmap or
 authorization to start an experiment. Custom/frozen encoders and external/open
@@ -23,6 +29,16 @@ their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
 Keep model-specific runners in `code/embeddings/scripts/`.
 Keep tests and versioned non-secret configurations with their owning component.
 Credentials belong in ignored environment files or external secret storage.
+All encoder Heroes Hx15–Hx18 develop reusable encoder/provider components and
+tools. Follow `code/embeddings/encoders/AGENTS.md`: separate the family/provider,
+supported configuration, training/request recipe and each trained instance or
+provider result. Research checkpoints and benchmark shapes are scoped evidence,
+not the family's complete supported interface. Locally trainable families need
+portable construction, TRAIN fitting, training and checkpoint/resume surfaces
+with explicit coverage/gaps; external providers retain their actual upstream
+capabilities. Application projects such as Cuwacunu own substantial application
+training and final docking. Mityane retains bounded architecture research and
+tool verification; this direction does not start an experimental execution.
 Each serious operation needs an Operation Contract and a linked
 Requirements-and-Evidence Record as defined by the charter. Record which
 operation, population, horizon, representation version and geometry a result

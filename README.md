@@ -67,6 +67,14 @@ Tests and configuration files live with their owning component.
 
 ## Current implementation
 
+Encoder Heroes **Hx15–Hx18** develop reusable families and provider tools with
+supported configuration, callable interfaces and explicit workflow coverage.
+The [shared encoder instructions](code/embeddings/encoders/AGENTS.md) separate
+architecture/provider, configuration, recipe and each trained instance or
+service result. Checkpoints and benchmarks provide scoped evidence. Application
+projects such as Cuwacunu own substantial application training and final docking;
+Mityane owns architecture research and portable component development.
+
 The imported `cuwacunu_embedding` implementation is organized by responsibility:
 encoders and state representation models in [embeddings](code/embeddings/README.md),
 latent forecasting and its evaluation in [operations](code/operations/README.md),
@@ -121,6 +129,10 @@ Its [work map](web/dashboard/WORKSTREAMS.md) separates operation contracts,
 implementations and evaluation from shared data/evidence and encoder work.
 Each Hero has its own editable JSON file. The external Google multimodal
 provider is documented; its API adapter and local evaluation remain proposed.
+Refer to the Heroes as **Hx01–Hx18**: Hx01–Hx13 own the corresponding operation
+families, Hx14 owns shared foundations and Hx15–Hx18 own encoders/providers.
+The [naming convention](web/dashboard/SCHEMA.md#hero-references) derives these
+references from Hero numbers; OR-01–OR-13 remain the charter's capability IDs.
 Hero records hold current priorities, dependencies and acceptance criteria;
 documentation describes shared principles and component boundaries. Example
 sequences in the charter do not add prerequisites to the current work plan.

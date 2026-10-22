@@ -3,6 +3,59 @@
 Copyright (c) 2026 Waajacu. All rights reserved. Preserve the inherited notices
 inside the copied implementation.
 
+## Family deliverable and training ownership — 22 October 2026
+
+Read the [shared encoder Hero instructions](../AGENTS.md), which apply to
+Hx15–Hx18. This family's portable APIs implement part of that common tool
+direction; its measured checkpoint reference has a separate evidence role.
+
+This research lane discovers and compares a **configurable encoder family**.
+Cuwacunu owns substantial application training and final docking. Deliver the
+family's constructible architecture, supported configuration and portable
+training/checkpoint path; a pretrained checkpoint supplies research evidence
+for one instance and must not determine the only supported shape.
+
+Separate the family definition, geometry/capacity configuration, experimental
+recipe and trained instance. Supported changes in input geometry, latent width
+or capacity should use configuration and derived dimensions/counts. Validate
+actual architectural constraints rather than copying a benchmark's geometry
+or exact parameter totals into the family's fresh factory. Existing checkpoints
+remain bound to their saved configurations; this does not authorize automatic
+weight reshaping.
+
+The [configurable family and training handoff](family/README.md) is the maintained
+destination for portable initialization, TRAIN preprocessing fitting, training
+objective, optimizer, checkpoint/resume, dependencies, constraints and focused
+alternative-shape evidence. Record what is implemented and what application
+docking still needs. Preserve frozen V16 source and research records unchanged;
+the research reference below remains a measured comparison instance, not the
+architecture's supported-shape contract. This clarification authorizes no new
+expensive study or publication.
+
+The maintained [family handoff](family/README.md#trained-reference-compatibility-and-runnable-example)
+now includes trained-reference equivalence and a runnable fresh/resume CLI.
+It preserves V16's numerical behavior at the reference configuration while
+keeping fresh configured instances separate from the saved research checkpoint.
+Application data docking, scale and utility remain separate work.
+
+The [source migration package](family/migration/README.md) carries the network
+and its training method together: complete numerical dependencies, fresh/resume
+example, preprocessing/objective rules, research context, licenses and a
+verifiable file manifest. Its Cuwacunu mapping preserves that application's
+own training recipe and artifact publication.
+
+The [22 October delivery record](family/migration/delivery-2026-10-22.json)
+retains the independently verified 76-file bundle manifest pin, passed 20-test
+export checks, and the read-only Cuwacunu source comparison. No training or
+checkpoint ranking changed during packaging.
+
+The subsequent [Cuwacunu consumer review](family/migration/CONSUMER_REVIEW_2026-10-22.md)
+confirmed sufficient numerical delivery and clarified producer/application
+ownership. The [reviewed delivery record](family/migration/delivery-2026-10-22-consumer-review.json)
+pins the current 78-file source bundle containing that review and the
+[shared component contract](../COMPONENT_DELIVERY.md). The original 76-file
+bundle and all numerical evidence remain preserved.
+
 ## Active ranking and agent instructions
 
 Maintain the live [`causal_patch_bottleneck_mae.ranking.md`](causal_patch_bottleneck_mae.ranking.md) in this

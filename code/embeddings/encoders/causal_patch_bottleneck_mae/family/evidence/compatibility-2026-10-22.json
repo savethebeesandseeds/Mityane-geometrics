@@ -1,0 +1,630 @@
+{
+  "kind": "cpb_family_reference_compatibility_and_training_cli_receipt_v1",
+  "date": "2026-10-22",
+  "observedUtc": "2026-10-22T07:59:36.2633409Z",
+  "status": "passed",
+  "passed": true,
+  "scope": "Selected trained V16 reference versus configurable interface, matched short fresh training/resume, and runnable fresh/resume native CLI on a synthetic native15 dataset. Engineering only.",
+  "authority": "Owner approved the proposed trained-reference equivalence, short matched continuation and runnable fresh-training example.",
+  "execution": {
+    "container": "mityane-geometrics",
+    "containerId": "381c6b78f4fdb301cd132050ffd8095587c0794829a7a73a547fdbc0484630e1",
+    "imageId": "sha256:ed0d8a5141f073d5c961b95e65e9b3528a66e122bda4971ec8f47d925d717de7",
+    "gpu": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "device": "cuda:0",
+    "libtorch": "2.6.0+cu124",
+    "cxx11Abi": 1,
+    "finalNativeBuildExitCode": 0,
+    "referenceTestExitCode": 0,
+    "finalCliSmokeExitCode": 0,
+    "pythonUsed": false
+  },
+  "referenceCheckpoint": {
+    "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/checkpoints/inference-2048.pt",
+    "sha256": "b6f3cbe711235307f362bf2f999571d65d00c85825f8a4a5c2fbc4fa4242e51e",
+    "bytes": 1295473
+  },
+  "referenceResult": {
+    "kind": "cpb_family_trained_reference_equivalence_v1",
+    "status": "passed",
+    "checkpoint": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/checkpoints/inference-2048.pt",
+    "checkpoint_sha256": "b6f3cbe711235307f362bf2f999571d65d00c85825f8a4a5c2fbc4fa4242e51e",
+    "selected_reference_seed": 946103,
+    "selected_reference_logical_update": 2048,
+    "native_width": 36,
+    "trained_reference_native_loss_gradient_parity": true,
+    "trained_reference_future_poison_invariance": true,
+    "trained_reference_weights_and_statistics_unchanged": true,
+    "borrowed_reference_adapter_evaluation_only": true,
+    "borrowed_weight_artifacts_written": 0,
+    "borrowed_weight_optimizer_updates": 0,
+    "preprocessing_fits": 0,
+    "fresh_constructor_matches_recorded_initial_state": true,
+    "matched_training_logical_updates": 3,
+    "fresh_trajectory_count": 4,
+    "resume_save_update": 1,
+    "matched_resumed_continuation_updates": 2,
+    "physical_synthetic_optimizer_updates": 10,
+    "gradient_tensors_compared": 75,
+    "checks": 5193,
+    "same_frozen_TRAIN_statistics_used": true,
+    "fresh_fixture_calibration_policy": "reference statistics reused only to isolate API equivalence; not an application training recipe",
+    "new_fitter_compared_to_historical_fitter": false,
+    "market_datasets_read": 0,
+    "quality_evaluated": false,
+    "trained_reference_synthetic_objective_witness": {
+      "gaussian_nll": 5.785375601421865,
+      "temporal_loss": 0.014018507197779634,
+      "total_loss": 5.786777452141643
+    }
+  },
+  "cliResult": {
+    "kind": "cpb_family_runnable_training_example_v1",
+    "status": "passed",
+    "synthetic_only": true,
+    "quality_evaluated": false,
+    "native_width": 15,
+    "commands": 15,
+    "assertions": 36,
+    "refusals": 9,
+    "physical_training_updates": 8,
+    "preprocessing_fits": 2,
+    "resumed_preprocessing_fits": 0,
+    "exact_resumed_vs_uninterrupted_state_and_optimizer": true,
+    "source_checkpoint_preserved": true,
+    "dataset_sha256": "23c3288a1c1a1af5b725ad4d968774c6bdcb42861cb9456bc71a906f24312793",
+    "trainer_sha256": "f43ed50469cd16fb8fecc09f7303dfb358a8ee650544c74ceaa5eecc7877f2a0",
+    "records": [
+      {
+        "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/fresh-2/run.json",
+        "sha256": "35429e642fb13a9425a687aca4eaa12ff1eea7958bf3276a9d3091178a146f5f"
+      },
+      {
+        "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/resumed-4/run.json",
+        "sha256": "a57ddc4e9c5d787761f5f41e904609480d5129f53977f97815d82f3e95817de0"
+      },
+      {
+        "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/uninterrupted-4/run.json",
+        "sha256": "b0b8bb93b7bb73764e754888b20dfa9b9d89e49747482bd3b60d87a3b4db00df"
+      }
+    ]
+  },
+  "testedBinaries": [
+    {
+      "path": "/opt/mityane-geometrics/embeddings/build/cpb-family-integration-2026-10-22/test_cpb_family_reference_equivalence",
+      "bytes": 854136,
+      "sha256": "7b5be2bd6eeda5721769dd43236f941e69edecfe8711496333e71acd7abff2b2"
+    },
+    {
+      "path": "/opt/mityane-geometrics/embeddings/build/cpb-family-integration-2026-10-22/cpb_family_train",
+      "bytes": 839048,
+      "sha256": "f43ed50469cd16fb8fecc09f7303dfb358a8ee650544c74ceaa5eecc7877f2a0"
+    },
+    {
+      "path": "/opt/mityane-geometrics/embeddings/build/cpb-family-integration-2026-10-22/observation_windows_fixture",
+      "bytes": 124240,
+      "sha256": "6d24f1c804e74551001e2be3375b37a274779532a08597d978e75aa8cbfa5694"
+    }
+  ],
+  "numericalInvariants": {
+    "all49FrozenV16FilesUnchanged": true,
+    "familyNumericalHeadersUnchanged": true,
+    "borrowedTrainedReferenceEvaluationOnly": true,
+    "borrowedWeightArtifactsWritten": 0,
+    "borrowedWeightOptimizerUpdates": 0,
+    "newFitterIsolatedFromHistoricalEquivalence": true,
+    "scientificReferenceSelectionAndMixedVerdictUnchanged": true
+  },
+  "cliBindings": [
+    "Dataset/settings/executable SHA256 bytes",
+    "Declared source/split/role",
+    "Batch and deterministic row-selection policy",
+    "Initialization and row/mask/context seeds",
+    "Optimizer learning rate, weight decay and global clip norm"
+  ],
+  "cliObservedCoverage": [
+    "Fresh2 and uninterrupted4",
+    "Resume2-to-total4 with zero preprocessing refits",
+    "Matching final model/optimizer/scaler/bank identities and counters",
+    "Periodic typed checkpoints and final inference reload",
+    "Handled exit1 without signal for all9 refusals: changed dataset, each stream seed, learning rate, clip norm, settings; inference-as-resume; existing output",
+    "Original resume state and dataset preserved"
+  ],
+  "history": {
+    "initialNativeCompileExitCode": 2,
+    "initialCompileOnlyNoTrainingUpdates": true,
+    "correction": "Dependent-template qualifier in new equivalence test corrected before native execution.",
+    "firstCliSmokePassed": true,
+    "firstCliResult": {
+      "kind": "cpb_family_runnable_training_example_v1",
+      "status": "passed",
+      "synthetic_only": true,
+      "quality_evaluated": false,
+      "native_width": 15,
+      "commands": 15,
+      "assertions": 36,
+      "refusals": 9,
+      "physical_training_updates": 8,
+      "preprocessing_fits": 2,
+      "resumed_preprocessing_fits": 0,
+      "exact_resumed_vs_uninterrupted_state_and_optimizer": true,
+      "source_checkpoint_preserved": true,
+      "dataset_sha256": "23c3288a1c1a1af5b725ad4d968774c6bdcb42861cb9456bc71a906f24312793",
+      "trainer_sha256": "f43ed50469cd16fb8fecc09f7303dfb358a8ee650544c74ceaa5eecc7877f2a0",
+      "records": [
+        {
+          "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-001/fresh-2/run.json",
+          "sha256": "962694a4ed182a5c7e206804f8f8a1459ca747341178a7d328fe16d3454be9ba"
+        },
+        {
+          "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-001/resumed-4/run.json",
+          "sha256": "b37b0c76a3eaed2e04560173bbaa9bed2aeb8ab4f07a241e1948e64f4418dbed"
+        },
+        {
+          "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-001/uninterrupted-4/run.json",
+          "sha256": "019adce8ae6cc3cb8a977854a5940939f4999d8ab19e3e37db55761252a5a6d9"
+        }
+      ]
+    },
+    "finalCliRerunReason": "Require normal handled exit1 and no signal for refusals, excluding false passes from native crashes.",
+    "referencePhysicalSyntheticUpdates": 10,
+    "firstCliPhysicalSyntheticUpdates": 8,
+    "finalCliPhysicalSyntheticUpdates": 8,
+    "totalPhysicalSyntheticOptimizerUpdates": 26,
+    "totalPairedInputAndBankFitSessions": 4,
+    "referenceFits": 0,
+    "resumeFits": 0
+  },
+  "earlierPortabilityEvidence": {
+    "receipt": {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/evidence/portability-2026-10-22.json",
+      "sha256": "2ee9c86a57c88ee5a971ec3115fc1ddce99a612c6482f33749df9e413c9a5245",
+      "bytes": 22235
+    },
+    "receiptUnchanged": true,
+    "earlierAssertions": 899,
+    "sourceSnapshotChangedOnlyAt": [
+      "code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk",
+      "code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md",
+      "Makefile"
+    ],
+    "qualification": "Original result preserved as historical source snapshot; current build wrapper and guide expanded. Numerical family headers, tests/configs and all49 frozen V16 bytes match original pins."
+  },
+  "limitations": [
+    "No new scientific score, quality ranking, application training or deployment result.",
+    "Compatibility training deliberately reuses identical reference TRAIN statistics; the new Chan fitter is not claimed bit-identical to historical calibration.",
+    "CLI loads a full typed archive in memory; real data adapter, actual split admission, streaming/sharding and production run orchestration remain application-owned.",
+    "Only the recorded single-device/dropout0/counter-stream environment is exercised; no scheduler, accumulation or distributed training.",
+    "Attempt-budget exhaustion and malformed-data schema branches are implemented/reviewed but not exercised by this CLI smoke run.",
+    "The CLI comparison observes exact state/optimizer/statistic identities; the native equivalence fixture directly compares named tensors and AdamW moments."
+  ],
+  "artifacts": [
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/binaries.tsv",
+      "sha256": "38ddea30ebb74d5e2bce3d2bc9a0a794fdf726270b7b679a4cecd5d151a4d6d4",
+      "bytes": 299
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/equivalence-001/summary.json",
+      "sha256": "d647b6e6a78b52802915f9b17aad00f7173d88b0b987a2c7777d6f20f3847003",
+      "bytes": 1399
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/logs/native-build-002.log",
+      "sha256": "b43b9dee99f2db0c3e1aee3177b755ab419dc63aecdb24ccc9ddff3a9e54c149",
+      "bytes": 3455
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/logs/reference-build-test.log",
+      "sha256": "490b52676e1b723223b18daf28495d4ecf409c2bfb9ac643ce01667f6f1b784d",
+      "bytes": 3778
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/logs/reference-test-002.log",
+      "sha256": "d1cd49ab582a784f72932ff3d686c2a06314d16464ebceccde519fe3661571f8",
+      "bytes": 2024
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/logs/training-example-test-001.log",
+      "sha256": "cce9a336057f67279234b0a096ad03b54d526f0940f5134d0a00450ee7c07d96",
+      "bytes": 1805
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/logs/training-example-test-002.log",
+      "sha256": "942b4fb3e36446de41f8843336a4b760e23a694c2b02fc36a044f5a0a5e1bb2c",
+      "bytes": 1805
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-001/summary.json",
+      "sha256": "1524bd612a19978ae960465c7ba5ea03b2e193f5ee88f4020af63adcbc4b896d",
+      "bytes": 1234
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/fresh-2/run.json",
+      "sha256": "35429e642fb13a9425a687aca4eaa12ff1eea7958bf3276a9d3091178a146f5f",
+      "bytes": 3404
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/resumed-4/run.json",
+      "sha256": "a57ddc4e9c5d787761f5f41e904609480d5129f53977f97815d82f3e95817de0",
+      "bytes": 3180
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/summary.json",
+      "sha256": "ca0aa3b6843b8b443f192f7fbd51da97f159bb379964acdbb76b907ba041f0b2",
+      "bytes": 1234
+    },
+    {
+      "path": ".temp/embeddings/runs/cpb-family-integration-2026-10-22/training-example-002/uninterrupted-4/run.json",
+      "sha256": "b0b8bb93b7bb73764e754888b20dfa9b9d89e49747482bd3b60d87a3b4db00df",
+      "bytes": 3444
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "code/data/observations/include/embedding/data/observation_windows.h",
+      "sha256": "afca0a5edde75daf62f1098392a1bc036ed6b25f9821dd97950097105f2ddc53",
+      "bytes": 8029
+    },
+    {
+      "path": "code/data/observations/OBSERVATION_WINDOWS.md",
+      "sha256": "de39beb031f74b732d04353a89638ba4b35c3342ec8e0b728fffb21ecee8cb9e",
+      "bytes": 5972
+    },
+    {
+      "path": "code/data/observations/tests/observation_windows_fixture.cpp",
+      "sha256": "7c9add779fa3b089ff18e4f15b3067a95f2c730dd0091cc441fab8fcc3f5c1dc",
+      "bytes": 3014
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/config/multi.conf",
+      "sha256": "472ab8ecb7f81de75693f9418654ca568264c62bd11e4dd7d476c85b7194ab6f",
+      "bytes": 429
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/config/paired.conf",
+      "sha256": "f87c2d85706ae249be156b092ebba70a9fde8adbf71d1df60b9c4895de519834",
+      "bytes": 427
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/config/single.conf",
+      "sha256": "48779e39b1a8118c0127fda5c09ff04bb99ea46459469a93bab92effd09b0e25",
+      "bytes": 430
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/examples/TRAINING.md",
+      "sha256": "a5eac37eeda8f48de15213acb1d499216ac504c0ddf90ac44e17231ab37345e6",
+      "bytes": 7729
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk",
+      "sha256": "c5d0eb85d4bb66ed3ca17443f26fa89b273b8e04fbd75b7e45ee5e4394553800",
+      "bytes": 3534
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/include/embedding/encoders/causal_patch_bottleneck_mae/family.h",
+      "sha256": "449397336ce8c56a0658ae009231d1b5f8da7e938a672c9159bc6d99d825a9f4",
+      "bytes": 40855
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/include/embedding/encoders/causal_patch_bottleneck_mae/family/shape.h",
+      "sha256": "d2dd1b244610e4f58a7dac136f83f12a0090e25e0891483b864bd5294fea7c1d",
+      "bytes": 4623
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h",
+      "sha256": "891b56de181c56e75ab1da9b1f1833c16fe38bab1d96a00effaaca7c334f6c00",
+      "bytes": 11781
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md",
+      "sha256": "7d3f3a620106319f2d108a6151b260d029207c595c03478ad4989110d80853ae",
+      "bytes": 13985
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/tests/family_test.cpp",
+      "sha256": "2d371766e5edf9dcfb9c413e832117873b065882f1baf6936524647dabbaa320",
+      "bytes": 16619
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/tests/reference_equivalence_test.cpp",
+      "sha256": "fb7d242495d5dcbc41fb3352bcf287f7068c75ded2665b80928485a5f4a3a896",
+      "bytes": 23896
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/tests/training_example.mjs",
+      "sha256": "b10250693e7b765705782407c0e48be07721a33a50fee0feb22c9130dd0d92ed",
+      "bytes": 6753
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/research-reference.json",
+      "sha256": "8c96a51e34f71f8f566ab178f3e0fa6076164c35a53d0890cae6fb2131c9039b",
+      "bytes": 6159
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/config/v16.conf",
+      "sha256": "4fab27253d08726777ed9934364eca84121c9e7d64377e12c399baaadf610fff",
+      "bytes": 647
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/conditioned_change_bank.h",
+      "sha256": "355a7973e5bdb164bd0f0a3bcbae45d8282f624702b54bed3f8ff85dbd3c3537",
+      "bytes": 1691
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/conditioned_change_config.h",
+      "sha256": "7a15e8a90d58bf16468757a67cc2750ec2b1d5a07dc47f6763dca60b9f265ebf",
+      "bytes": 1519
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/conditioned_change_normalizer.h",
+      "sha256": "f75090206d2953e769ab3241a9ad13198b5218dd4a26b704bfd3faab57343520",
+      "bytes": 11433
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/config.h",
+      "sha256": "8111292ed5ef4591624a6c3066898fa78e12490a2cd961aab0f28c28ff425c7e",
+      "bytes": 5998
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/configurable_spectral_checkpoint_io.h",
+      "sha256": "80d9c7b73c7cfca2ad9a169f8de3c6fb27c2dfa0ac4c08108ee65195f5578141",
+      "bytes": 3141
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/configurable_spectral_checkpoint.h",
+      "sha256": "5d881a007c6ec11974e42533fcfa811cf640c57f286a44629e0002034299dda0",
+      "bytes": 7393
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/configurable_spectral_config.h",
+      "sha256": "095713fd1aaa0c8da8049718ac1e3be0f65dde1a3ea6bd4e0a25a0ddfe998699",
+      "bytes": 4875
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/configurable_spectral_model.h",
+      "sha256": "2a0a823902d99a4435622e1e1f931c3a41115d45e0ccea2c125d96963cd5ac64",
+      "bytes": 13793
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/configurable_spectral_relation.h",
+      "sha256": "1f4e3882c8a96834ead84c9e09f4e4a2398c3d8b6aeee287ab351218f146b706",
+      "bytes": 8221
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/consecutive_change_bank.h",
+      "sha256": "9480ec8a381a66c9eb01b79085a9a60cfc0976823a2f4c8b34a690f7f39c5357",
+      "bytes": 3619
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/consecutive_change_checkpoint.h",
+      "sha256": "b2acb118a527dbd9df7b3b139c0d8ec19b618516c95360377f5b02431b13b1ed",
+      "bytes": 5224
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/consecutive_change_config.h",
+      "sha256": "b445a48c3e90c37f5450eb72127a93c7e25b6ca4c00b5f77a5596bcfda008df1",
+      "bytes": 1743
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/consecutive_change_model.h",
+      "sha256": "a28791c89681696a55d5f23a18827f6198c3703085899187d5d7da6eac497495",
+      "bytes": 4056
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/consecutive_change_training_state.h",
+      "sha256": "61b39d947cc9811edc0326a67fedc46e3865c04a0020c92117f3a84ef062b9b5",
+      "bytes": 14227
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/content_ordered_relation_bank.h",
+      "sha256": "afbd3b2b0319257900b8bb5283d47c85faadf6a2de547405d0d6ce24ea578840",
+      "bytes": 5923
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/content_ordered_relation_checkpoint.h",
+      "sha256": "35f388b41a1bb9bf7c828ad380fa93a0f6f2e365d0261bf8c5501165d4a1cb01",
+      "bytes": 5561
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/content_ordered_relation_config.h",
+      "sha256": "3d82cec0616bfaca8c28753210c486f8e8cd52a98da30bf35f9e606ab868fbb0",
+      "bytes": 2745
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/content_ordered_relation_model.h",
+      "sha256": "69de37712faca8437f43cb3cce1c5d1ced3037432f433a6cd71df9a687c20cf8",
+      "bytes": 6509
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/document.h",
+      "sha256": "9443b8766c2d526938d3aed684d58d6ea7efa45953a14b3572ad360eae7ed9b6",
+      "bytes": 8143
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/encoder.h",
+      "sha256": "572c8bb1afdc5bcac4953e5aa79f31e3635c0815483dcaa66e55c6dbc9865b09",
+      "bytes": 3818
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_checkpoint.h",
+      "sha256": "0b60fe0bd5fc1345eb4df1ec87cffd5fae668cbe974a81d0ae05cfa68b9a570e",
+      "bytes": 11057
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_config.h",
+      "sha256": "ca806c470be35ef9ee3594e1a64feb67f8d6b247bf75ec698a56cd84d18a7d4f",
+      "bytes": 3082
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_model.h",
+      "sha256": "55a324c47cca3bd18a53f2ff4d2a4c0aa05cdb578cb89ecc5720e27c0b387a98",
+      "bytes": 18043
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_settings.h",
+      "sha256": "59f7662124eb1b32658fef2566ab5da6ce80b366f5f91b903695aa957bea1b5b",
+      "bytes": 3210
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_training_state.h",
+      "sha256": "f5ddf224e0575944078e7bca5971673d7e2ec0ba31d37a35e6f24377ee79fb3e",
+      "bytes": 378
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/masking.h",
+      "sha256": "91d0f2b55af103d04558afac447dd1866e1227cdb7d901a438300473175fa55b",
+      "bytes": 3917
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/model.h",
+      "sha256": "bf8d7c8ff17d949b37dda29adb6fdec69340b313467a12a60cb7ede8b6728c27",
+      "bytes": 20939
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/objectives.h",
+      "sha256": "d828eed0ed5f342266243b6c499d22195671950370bfd737e580a5d46dab6041",
+      "bytes": 3199
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/preprocessing.h",
+      "sha256": "b600faafd420f46ce3db46e21e71383fbbc1c175b10cf1672f0aac4a10ba0eec",
+      "bytes": 10386
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/relative_change_bank.h",
+      "sha256": "249a05d8d71c203419b162ad361eff4a2f595a0d142f53330d1cc0e4bacd1fcb",
+      "bytes": 4825
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/relative_change_config.h",
+      "sha256": "c4c42d2b2d76df34ff45e53f1432abf886e6e5500ffea4d867d7a005f0d7c214",
+      "bytes": 1966
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/relative_change_normalizer.h",
+      "sha256": "f589ec4f559ae346645807abc6531123b9c2b004c33d7fa2f7ec85f07ac7a64d",
+      "bytes": 3087
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/separated_change_checkpoint.h",
+      "sha256": "902922552e9f7f85eda00589af388fb99b1e10132f5413da646ee26d41d35685",
+      "bytes": 5419
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/separated_change_config.h",
+      "sha256": "2a09d2cb71f330354c0c237d6ef4d442ce684d007d2fe5b3a4971f14a647b61e",
+      "bytes": 1668
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/separated_change_frozen_level.h",
+      "sha256": "cffe954489fd879f9da0085262e286e91bd2fc0c58db6f3b748d6062e8c7656e",
+      "bytes": 4574
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/separated_change_model.h",
+      "sha256": "ae4fb2482babbae66e5bbf221bdb5fd654320ed5ddaf81587d2d055de9fd13ee",
+      "bytes": 5847
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/separated_change_training_state.h",
+      "sha256": "b4efad4796859f8942d545b7b456e0f639c5f773d15eec2250dd6fa4322a6b64",
+      "bytes": 7382
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/simple_kv_block.h",
+      "sha256": "2b08e140686ebdd296441aa53a6ec42c6226db788857b01d4fadec9f0b6c59a4",
+      "bytes": 8445
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/tokenization.h",
+      "sha256": "828d03fe57acfe519db6720170001707e7f5b1f763502928571fd66d9242e190",
+      "bytes": 3495
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/types.h",
+      "sha256": "5b0b51f5bd31bce89ebcd556a2f7221951796fb69f06fe2b66d580ad037748fe",
+      "bytes": 5750
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/detail/v16/visible_difference.h",
+      "sha256": "5e17bdb24243e4d89abd3265771abffd9f5de198678712bd0fac4e62f16a6fbd",
+      "bytes": 4854
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/include/embedding/encoders/causal_patch_bottleneck_mae/versions/v16.h",
+      "sha256": "8f853c1e927b07d154bc99a26e3f45d0e3c74a3a3aa2028eafb7a4c5dfda3315",
+      "bytes": 33541
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/provenance.json",
+      "sha256": "91a1a077373d315a1394f52f3cb374aeb502ff66829706e1b75ad2f145afba4a",
+      "bytes": 38040
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/README.md",
+      "sha256": "c89d943b5a6402f93b6ad66345553ff3fdda71e053441245162c961e1df14ca6",
+      "bytes": 4488
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/tests/v16_temporal_objective_test.cpp",
+      "sha256": "021ef69bc569552bf07ff10db092f3fb2d2f93704732a16841f9ef1f72fa11a1",
+      "bytes": 20134
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/tests/v16_test.cpp",
+      "sha256": "21c23a90eac2e605966233a611afa879f859a261ac5f4f4185ea767282e5b726",
+      "bytes": 55711
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/tests/v16_variance_gradient_test.cpp",
+      "sha256": "6c96053dbedf592a1585160320d7d9dbedfec61edbe30dbc4867864b02ab6457",
+      "bytes": 15479
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/v16.mk",
+      "sha256": "049009911a36d4fc46dd652ffa31d6e8951a7b070b00ffc9bc95d47219026151",
+      "bytes": 2917
+    },
+    {
+      "path": "code/embeddings/scripts/cpb_family_train.cpp",
+      "sha256": "ff8a4c2fe2e213b39c5a26e7033703e9ff2736dac7668e4d78f9ca3bdba1a8ad",
+      "bytes": 15820
+    },
+    {
+      "path": "code/scripts/node-runtime.sh",
+      "sha256": "712cbab6b27a0da0f45c1b1f66bc3359b615e4bd6146cf09b400359794681ac1",
+      "bytes": 497
+    },
+    {
+      "path": "code/scripts/node.sh",
+      "sha256": "6d4104fc8fdd630d42f03f7bbc0e059c752e09a33a182112b986fda9a79ffe62",
+      "bytes": 775
+    },
+    {
+      "path": "code/scripts/task.sh",
+      "sha256": "c43a8bbd94dfd26ee3bf525b97776b2edc796d2ab9485fdc40b08bea8ac8e5b1",
+      "bytes": 1216
+    },
+    {
+      "path": "container.ps1",
+      "sha256": "1673fb4f62fa2aa4d880ea86538573b4775bed0f08046c643170b7c30c8ec8e2",
+      "bytes": 7112
+    },
+    {
+      "path": "dependencies.lock",
+      "sha256": "b8f946448de4c2a6b0b2d94794a096266644dece00fd8fd27ef5a0a61e8684d3",
+      "bytes": 8396
+    },
+    {
+      "path": "environment-image.json",
+      "sha256": "2885a9708b2e2a0c1f6a83991b6df58bc061c689bb09f7242b805d29e5c52a07",
+      "bytes": 1506
+    },
+    {
+      "path": "Makefile",
+      "sha256": "6c52f6916fdcf69aa83ebd19abe9153ef785d0071dabcc29d82252d13d014e6f",
+      "bytes": 114377
+    }
+  ]
+}

@@ -3,8 +3,10 @@
   "id": "encoder-mtf",
   "number": 15,
   "title": "Encoder · MTF-JEPA-MAE-VICReg",
-  "summary": "Preserve the retained MTF-v1 reference and its model-owned evidence; expose an explicitly versioned representation source for future operations.",
-  "updatedAt": "2026-10-20",
+  "purpose": "Discover and develop reusable MTF-JEPA-MAE-VICReg architecture components and encoder tools that operations and application projects can configure, train and compose.",
+  "boundary": "Own the family definition, supported configuration, portable initialization/preprocessing/training/export/resume surfaces and their scoped evidence, with unimplemented coverage stated explicitly. Cuwacunu and other applications own substantial application training and final docking. Keep architecture, configuration, recipe and trained instance separate; checkpoint scores do not restrict a family to one benchmark shape. Follow the shared encoder component instructions and preserve frozen source and research records.",
+  "summary": "Develop reusable MTF encoder components and tools; preserve the retained MTF-v1 reference and its model-owned evidence. Configurable construction and portable training coverage must be stated explicitly; provider integration remains proposed.",
+  "updatedAt": "2026-10-22",
   "goals": [
     {
       "id": "encoder-mtf-preservation",
@@ -88,41 +90,71 @@
     {
       "id": "encoder-mtf-toolset",
       "title": "Expose Hx15 capabilities as a reusable toolset",
-      "description": "Expose the agreed MTF loading, encoding, export, validation and selected workflow building blocks through documented CLI and reusable APIs compatible with common provider records and operation consumers. Model-specific behavior stays in the MTF component; a common interface does not imply common coordinates or geometry.",
+      "description": "Develop reusable MTF-JEPA-MAE-VICReg components with supported configuration and portable fresh initialization, TRAIN preprocessing, training, inference, export, resume and validation surfaces through documented CLI/library APIs. Derive dimensions and parameter counts from actual architecture constraints; distinguish implemented capabilities from gaps. Keep family, configuration, recipe and trained-instance identities separate. Cuwacunu and other applications own substantial training and final docking; common provider interfaces do not imply shared coordinates or application quality.",
       "milestones": [
         {
           "id": "encoder-mtf-toolset-surface",
           "title": "Define the MTF tool surfaces and usage contracts",
           "status": "proposed",
-          "description": "Map existing MTF APIs, CLI and adapters plus selected future building blocks into the common usage conventions; retained baseline tests alone do not establish broad toolset coverage.",
-          "updatedAt": "2026-10-20",
+          "description": "Map existing MTF APIs, CLI and adapters plus selected future building blocks into the common usage conventions; retained baseline tests alone do not establish broad toolset coverage. The component-tool mission and shared encoder instructions govern this surface definition; a checkpoint or application-specific benchmark is an evidence instance.",
+          "updatedAt": "2026-10-22",
           "acceptance": [
             "Inventory the agreed loading, encoding, export, validation and workflow surfaces, distinguishing implemented interfaces, reusable components and remaining gaps without selecting a new trained instance or resuming research.",
             "Specify versioned CLI/API inputs and outputs, checkpoint/preprocessing and source identities, native output selection, masks, support/availability, compatibility requirements and explicit failure/abstention behavior.",
-            "Define bounded examples and completion criteria for common provider records and operation integration, preserving MTF-owned implementation and historical evidence; do not force universal shape or geometry."
+            "Define bounded examples and completion criteria for common provider records and operation integration, preserving MTF-owned implementation and historical evidence; do not force universal shape or geometry.",
+            "Separate family definition, supported geometry/capacity configuration, experimental or training recipe and each trained instance. Inventory portable fresh initialization, TRAIN-only preprocessing fitting, objective/optimizer, training, export and checkpoint/resume APIs or explicit implementation gaps. Derive dimensions/counts and declare actual architectural constraints; a benchmark checkpoint must not impose the only constructible shape."
           ],
           "evidence": [
-            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
-            {"label": "MTF family interfaces and ownership", "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"},
-            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+            {
+              "label": "Common tool usage and ownership",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "MTF family interfaces and ownership",
+              "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"
+            },
+            {
+              "label": "Provider contracts and interoperability principles",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Shared encoder component instructions",
+              "path": "code/embeddings/encoders/AGENTS.md"
+            }
           ]
         },
         {
           "id": "encoder-mtf-toolset-coverage",
           "title": "Expose and verify the agreed MTF building blocks",
           "status": "proposed",
-          "description": "Deliver the agreed callable MTF surfaces, examples and provider-to-operation integration checks without substituting historical research scores for tool verification.",
-          "updatedAt": "2026-10-20",
-          "dependsOn": ["encoder-mtf-toolset-surface"],
+          "description": "Deliver the agreed callable MTF surfaces, examples and provider-to-operation integration checks without substituting historical research scores for tool verification. Coverage must demonstrate the agreed reusable component contract and state configuration/training or provider limitations explicitly.",
+          "updatedAt": "2026-10-22",
+          "dependsOn": [
+            "encoder-mtf-toolset-surface"
+          ],
           "acceptance": [
             "Expose the agreed MTF building blocks through documented Linux CLI and reusable library interfaces in the managed container, using common provider contracts while keeping model loading, inference and export implementation with MTF.",
             "Verify selected standalone tools and a bounded provider-to-operation workflow with explicit native shape, preprocessing, masks, lineage and temporal interpretation; exercise malformed input, incompatible consumer and missing-artifact failures or abstentions.",
-            "Retain actual engineering receipts and examples with explicit coverage and gaps. Keep checkpoints and restricted data private; research runs, fitting or new utility claims retain separate actual bindings, protocol and permissions."
+            "Retain actual engineering receipts and examples with explicit coverage and gaps. Keep checkpoints and restricted data private; research runs, fitting or new utility claims retain separate actual bindings, protocol and permissions.",
+            "For the selected trainable family surfaces, verify representative supported alternative geometries, latent widths and capacities through fresh construction, forward execution, a real gradient update, export and checkpoint/resume. Bind preprocessing and recipe identities, retain incompatible-configuration refusals and record missing coverage. These engineering checks establish reusable components, while substantial application training and docking remain application-owned."
           ],
           "evidence": [
-            {"label": "Common tool usage and ownership", "path": "code/operations/TOOLS.md"},
-            {"label": "MTF family interfaces and ownership", "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"},
-            {"label": "Provider contracts and interoperability principles", "path": "doc/operations_over_representations_design_spec_v0.1.0.md"}
+            {
+              "label": "Common tool usage and ownership",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "MTF family interfaces and ownership",
+              "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md"
+            },
+            {
+              "label": "Provider contracts and interoperability principles",
+              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            },
+            {
+              "label": "Shared encoder component instructions",
+              "path": "code/embeddings/encoders/AGENTS.md"
+            }
           ]
         }
       ]
