@@ -1,0 +1,829 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "mtf_family_portable_engineering_summary_v1",
+  "recordedOn": "2026-10-22",
+  "timezone": "Asia/Dubai",
+  "hero": "Hx15",
+  "status": "passed",
+  "phase": "complete",
+  "scope": "Bounded artificial CPU/F32 component training, exact update-boundary continuation, inference/CLI proof and isolated exported-source compilation/execution. One intra-op thread with bound inherited inter-op12; no scientific quality or application finding.",
+  "protocol": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/verification/PROTOCOL_2026-10-22.md",
+  "sourceIdentity": {
+    "sourceRoot": "/mityane",
+    "sourceSha256": "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3",
+    "algorithm": "SHA256(JSON.stringify(sorted relative path/SHA256 records)); source root is a separate path-bound identity",
+    "gitAncestryOnly": "1b3e2163e067ce0485f9505d963e6e07f74ab756"
+  },
+  "sourceFiles": [
+    {
+      "path": "code/data/observations/include/embedding/shared/data.h",
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "path": "code/data/observations/src/data.cpp",
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config/alternative.conf",
+      "sha256": "dde8ec11d7c783f7ec2c75f83d5b37f3a1585f3f568e0f930513b4737f354056"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config/small.conf",
+      "sha256": "ffd8155be84a1c9b4530e5557aba9fc722b0dc940716541bdee2d3a20dd5b520"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/family.mk",
+      "sha256": "3b6b28d387e53bdbb5e4bdaa5dc2755cc2b3c95497cbb965a418d5c0550dd2b0"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/include/embedding/encoders/mtf_jepa_mae_vicreg/family.h",
+      "sha256": "e37194d47141e7b7373e26592c6e222e3e8668347f35b0f0ad617cd772a7e0eb"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/src/family.cpp",
+      "sha256": "e9c0476c22f68a6096dff3d7641799b80964e529125e8f498148ef06f62c0cb9"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/tests/cli_example.mjs",
+      "sha256": "d23c7e655e8952abfa62bae36ab0a6ec4f6ea79a1534a04b51392bb455781042"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/tests/family_test.cpp",
+      "sha256": "d968e0d627d1153b6c3e7a807f6dd7621fa67cd9e87e53301755f0d4fdf1b53e"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/verification/PROTOCOL_2026-10-22.md",
+      "sha256": "791c839ab0f806b7e4ee7d4b11c4196facb92d397f784d96e79d6bf7bad9ac1c"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/config.h",
+      "sha256": "2d602af285b2399b6c1c5587d977a08814019eecbba97c6d66fe938a62f11743"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/encoder.h",
+      "sha256": "fb538180711dd6b3d35bd20b01508c6bc294955c3e0b822117f899a239596782"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation.h",
+      "sha256": "7021ef85e4882bd9f67b1d11757b29dd41378f51d1dc6c4ab2307e24ab72f29f"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/masking.h",
+      "sha256": "133f7275f680db56fb4702acd353358ebc9e0cddee75f98e2f8e3a42376e36bf"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/model.h",
+      "sha256": "eebea3257865afc632b53329736741c5aae88ea6a2480629b6d07015c9512768"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/objectives.h",
+      "sha256": "1906c9a151726776d2adaf2bb77d2015f5bf7746ddb8038a025541180de0d3bf"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tensor_ops.h",
+      "sha256": "7efc6dc292abbb67026490b5e8595d82d86eeff8e6bbf14ddb5d3ba4b9e07765"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tokenization.h",
+      "sha256": "8f5791c198d75459610c6aebb18b83fe2a85f3123ba6087908ce4d55cb339917"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/types.h",
+      "sha256": "f1b4f2c1f991252ba908d4aab42dba69a4ffb10a32e94189e0fd320a607f1d25"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/workflow.h",
+      "sha256": "73d3b2708248a43404e5474c5e33c4a9d10c2357c125c92ff53f8be5d3fe7980"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation.cpp",
+      "sha256": "50afe3161bcc4c3f733e44a8fbcf87f87865e7b3ec37492b9ad96a74d2d85889"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/workflow.cpp",
+      "sha256": "145bde5c6db5e1e846e1efe39d6861439a65a2888d8dfc4fcdad06f6d43d5cce"
+    },
+    {
+      "path": "code/embeddings/scripts/export-mtf-family.mjs",
+      "sha256": "0cc204b3256cae304968578b1c20cb14424117f26add1f3dd6989fe305a8da72"
+    },
+    {
+      "path": "code/embeddings/scripts/mtf_family_train.cpp",
+      "sha256": "fd76b9caf1fa9e4c248cff1ff212e3e5f213fc99bdc1a738cc77df47c9e288af"
+    },
+    {
+      "path": "code/embeddings/scripts/tests/export-mtf-family.test.mjs",
+      "sha256": "f808a8d22a4f5770998cc86ddea8ba14da79231c523cb2d6fbf263fb9f1140dd"
+    },
+    {
+      "path": "code/embeddings/scripts/verify-mtf-family-delivery.mjs",
+      "sha256": "63effca24d2b09e605c61515d23385fa3d3aa2e6e21579e04e37f531396c86f7"
+    },
+    {
+      "path": "code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/sidecar.h",
+      "sha256": "e3b981c3380c72574fd7d1f1d00652182f6ce2fa8172f5d1083fe117befb1af4"
+    },
+    {
+      "path": "code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/tensor_state.h",
+      "sha256": "7f97fe82240bfd03965d889027417c423b510a5c4e67eca9d77acf24dc87bff9"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/evaluation.h",
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/objectives.h",
+      "sha256": "fe5c5be84989b87e2bca9eca4e6a8817a9a937a27ed40a547224028d27161c26"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/tensor_ops.h",
+      "sha256": "6be3236676fbf32c10c94a43120258a023c63770de7eb92c0fe2f058da9e090b"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/types.h",
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "path": "code/shared/representation/src/evaluation.cpp",
+      "sha256": "caa992c684d318002cfc3f7a1a1b4ec9e41c2fa68e4da0a3d1db9db278b9bca8"
+    }
+  ],
+  "runtime": "mtf-portable-cpu-f32-v1;torch=2.6.0;compiler=12.2.0;cxx=202002;abi=1;little_endian=1;threads=1;interop=12;deterministic=0;deterministic_warn_only=0;mkldnn=1;executable_sha256=f0398f3a9671f0ae205888a39e31d39a65f5d385b7a197aea56f9b978160facd",
+  "environment": {
+    "container": "mityane-geometrics",
+    "immutableContainerId": "381c6b78f4fdb301cd132050ffd8095587c0794829a7a73a547fdbc0484630e1",
+    "imageRecord": "environment-image.json",
+    "imageRecordSha256": "2885a9708b2e2a0c1f6a83991b6df58bc061c689bb09f7242b805d29e5c52a07",
+    "libtorch": "2.6.0+cu124",
+    "sdk": "/opt/cuwacunu_embedding/libtorch",
+    "intraOpThreads": 1,
+    "recordedInterOpThreads": 12,
+    "gpuExecution": false,
+    "packagesInstalled": 0
+  },
+  "runs": [
+    {
+      "kind": "primary",
+      "outputRoot": ".temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001",
+      "summarySha256": "42ad646d876f2d4ce9b1248607053888785dc0b1d5c5280e6b90e324ff8b6006",
+      "preRunSha256": "36f913e4ae7e9e33403fa27983d49fdda92fe0f5f006ea4aa07ea8c31a94774d",
+      "binaries": [
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-build-001/test_mtf_family",
+          "sha256": "f0398f3a9671f0ae205888a39e31d39a65f5d385b7a197aea56f9b978160facd"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-build-001/mtf_family_train",
+          "sha256": "cef7d06e14c7d8f590aba7d7c87ed7530615153fd93fdd8863724d087761c31a"
+        }
+      ],
+      "commands": [
+        {
+          "name": "exporter-integrity",
+          "executable": "/opt/mityane-geometrics/web/tools/node-v22.23.3-linux-x64/bin/node",
+          "arguments": [
+            "--test",
+            "/mityane/code/embeddings/scripts/tests/export-mtf-family.test.mjs"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "261605a0692dc6700086c422f219f2f2d175dd56ba336e751ad29d8fcd6c82e3",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "native-proof",
+          "executable": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-build-001/test_mtf_family",
+          "arguments": [
+            "--config-directory",
+            "/mityane/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config",
+            "--output",
+            "/mityane/.temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001/native",
+            "--source-sha256",
+            "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "9be1232f5895e0eb730d2c58eaee3fc648579ec6e3e4c09333129187de68898c",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "cli-example",
+          "executable": "/opt/mityane-geometrics/web/tools/node-v22.23.3-linux-x64/bin/node",
+          "arguments": [
+            "/mityane/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/tests/cli_example.mjs",
+            "--trainer",
+            "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-build-001/mtf_family_train",
+            "--config",
+            "/mityane/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config/alternative.conf",
+            "--output",
+            "/mityane/.temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001/cli",
+            "--source-sha256",
+            "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "455d46c03e735359340a2c7f056194b91c1228ff5f3ab1d7b4c7666669ec5058",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "nativeReportSha256": "9be1232f5895e0eb730d2c58eaee3fc648579ec6e3e4c09333129187de68898c",
+      "cliReportSha256": "8fc7df592aa4c40b999f95dd674cf32a57e654f8639c3c260afd8ce8718005b1",
+      "physicalUpdates": 30
+    },
+    {
+      "kind": "isolated-exported-source",
+      "outputRoot": ".temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001/isolated-001",
+      "summarySha256": "10f27fd99af48525b26c21c61e45186167ca431bbd65051aaf4167c5b2e60725",
+      "preRunSha256": "e7ca22c2c235ce763868db2812176cd4a228f2cc0481a83bb578f6411865e60d",
+      "sourceRoot": "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources",
+      "sourceSha256": "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3",
+      "binaries": [
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/test_mtf_family",
+          "sha256": "619562cfde3d5a76d8c1ebb128cfc69d9d7d563f24a493c9c885d342b182ca75"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf_family_train",
+          "sha256": "fbff57898eb28d2233304ace18e3f0a715d639169a1ec6e1534b83cda7172411"
+        }
+      ],
+      "commands": [
+        {
+          "name": "exporter-integrity",
+          "executable": "/opt/mityane-geometrics/web/tools/node-v22.23.3-linux-x64/bin/node",
+          "arguments": [
+            "--test",
+            "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources/code/embeddings/scripts/tests/export-mtf-family.test.mjs"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "9b431293774cf9ad8ab26b6f97bff0905a33becb8f0bebcaa2b3cf14fe54be7c",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "native-proof",
+          "executable": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/test_mtf_family",
+          "arguments": [
+            "--config-directory",
+            "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config",
+            "--output",
+            "/mityane/.temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001/isolated-001/native",
+            "--source-sha256",
+            "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "8cd7d6975a1d53991d1897f8f59848c9e93e13bcf6ee38d14e9e94167fd323fc",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "cli-example",
+          "executable": "/opt/mityane-geometrics/web/tools/node-v22.23.3-linux-x64/bin/node",
+          "arguments": [
+            "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/tests/cli_example.mjs",
+            "--trainer",
+            "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf_family_train",
+            "--config",
+            "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/config/alternative.conf",
+            "--output",
+            "/mityane/.temp/embeddings/runs/hx15-mtf-delivery-20261022/attempt-001/isolated-001/cli",
+            "--source-sha256",
+            "9ea1be5138580203bb111aa3a957cc865787b91053d78f1f1c4f4fd560e97ee3"
+          ],
+          "exitStatus": 0,
+          "signal": null,
+          "stdoutSha256": "6c45f9ada6b6b04974c2710f8421e6f3db8716c88327933f9c4bfaca2fecc6a0",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "runtime": "mtf-portable-cpu-f32-v1;torch=2.6.0;compiler=12.2.0;cxx=202002;abi=1;little_endian=1;threads=1;interop=12;deterministic=0;deterministic_warn_only=0;mkldnn=1;executable_sha256=619562cfde3d5a76d8c1ebb128cfc69d9d7d563f24a493c9c885d342b182ca75",
+      "nativeReportSha256": "8cd7d6975a1d53991d1897f8f59848c9e93e13bcf6ee38d14e9e94167fd323fc",
+      "cliReportSha256": "06541110895e6c4ba691e34a8fe440feeaaa6082ee83e03da4ada8937d866ba7",
+      "physicalUpdates": 30
+    }
+  ],
+  "primary": {
+    "nativeChecks": 3627,
+    "nativePhysicalUpdates": 24,
+    "refusedNativeUpdateAttempts": 5,
+    "cliPhysicalUpdates": 6,
+    "assertionCoverage": [
+      "real-gradients-and-updates",
+      "all-five-enabled-online-gradient-groups",
+      "dynamic-parameter-and-output-dimensions",
+      "teacher-freeze-and-post-optimizer-EMA",
+      "two-configurations-two-recipes",
+      "nonzero-channel-mask-and-feature-deletion-RNG",
+      "exact-model-and-AdamW-resume",
+      "inference-roundtrip",
+      "input-and-binding-refusals",
+      "specific-full-window-frequency-suffix-response",
+      "contextual-channel-semantics",
+      "strict-no-target-refusal"
+    ],
+    "scenarios": [
+      {
+        "configuration": "small",
+        "sampling": "replacement-step-seeded-v1",
+        "configuration_file_sha256": "ffd8155be84a1c9b4530e5557aba9fc722b0dc940716541bdee2d3a20dd5b520",
+        "recipe_sha256": "d140e76037edcea903daf8b8937dcdb9aa05721a1b338ba0c7e8b872bf6bbf98",
+        "dataset_sha256": "ed4cd5f417f528ecf98e4eaae8b3dc55f0c386c4cbe9c9d528ccb363e7379716",
+        "preparation": "identity-cpu-f32-observed-v1",
+        "seed": 731,
+        "initial_state_sha256": "732be053850cf63ffa55737bb28b25fe814a4e9ca29912fed67cfbf298b062a0",
+        "model_state_sha256": "0a25bd307730a9914d29dfc5d518d10a626f875363af844b939cfea4fad87da4",
+        "optimizer_sha256": "36bf71293f7a72759490ee249b635ac1c85c31a2233721fb37b6068e0f921e0f",
+        "parameter_inventory": {
+          "total": 4034,
+          "trainable": 3066,
+          "frozen": 968,
+          "named_tensors": 82
+        },
+        "native_output_dimensions": {
+          "global": [
+            5,
+            8
+          ],
+          "channel": [
+            5,
+            2,
+            8
+          ],
+          "tokens": [
+            5,
+            28,
+            8
+          ]
+        },
+        "gradient_groups": [
+          "tokenizer",
+          "encoder",
+          "predictor",
+          "mae_decoder",
+          "vicreg_stability_head"
+        ],
+        "mask_ratios": {
+          "time": 0.4,
+          "frequency": 0.3,
+          "channel": 0.1
+        },
+        "full_window_frequency_check": false,
+        "physical_updates": 6,
+        "logical_updates": 3,
+        "exact_resume": true,
+        "inference_roundtrip": true
+      },
+      {
+        "configuration": "small",
+        "sampling": "full-partition-step-seeded-v1",
+        "configuration_file_sha256": "ffd8155be84a1c9b4530e5557aba9fc722b0dc940716541bdee2d3a20dd5b520",
+        "recipe_sha256": "0f34ed0fd6292bf52520e1b27c9ce8027c8e3a8c96ff59df8a94f1051c961265",
+        "dataset_sha256": "ed4cd5f417f528ecf98e4eaae8b3dc55f0c386c4cbe9c9d528ccb363e7379716",
+        "preparation": "identity-cpu-f32-observed-v1",
+        "seed": 731,
+        "initial_state_sha256": "732be053850cf63ffa55737bb28b25fe814a4e9ca29912fed67cfbf298b062a0",
+        "model_state_sha256": "d147a819028ec8cd4af0b93d2061b41522c532e8a9a18205645ddcf64c735ffb",
+        "optimizer_sha256": "fd2cc356ab429a172789e7786a6853a00e8a8bde970413938d7ab7a006ea7d7c",
+        "parameter_inventory": {
+          "total": 4034,
+          "trainable": 3066,
+          "frozen": 968,
+          "named_tensors": 82
+        },
+        "native_output_dimensions": {
+          "global": [
+            5,
+            8
+          ],
+          "channel": [
+            5,
+            2,
+            8
+          ],
+          "tokens": [
+            5,
+            28,
+            8
+          ]
+        },
+        "gradient_groups": [
+          "tokenizer",
+          "encoder",
+          "predictor",
+          "mae_decoder",
+          "vicreg_stability_head"
+        ],
+        "mask_ratios": {
+          "time": 0.4,
+          "frequency": 0.3,
+          "channel": 0.1
+        },
+        "full_window_frequency_check": false,
+        "physical_updates": 6,
+        "logical_updates": 3,
+        "exact_resume": true,
+        "inference_roundtrip": true
+      },
+      {
+        "configuration": "alternative",
+        "sampling": "replacement-step-seeded-v1",
+        "configuration_file_sha256": "dde8ec11d7c783f7ec2c75f83d5b37f3a1585f3f568e0f930513b4737f354056",
+        "recipe_sha256": "0b303186f6e16d3c6e93609bedb4c27a0770180f57591b22727b20305f787ca0",
+        "dataset_sha256": "41634c1e9862e5fe3a5c392a93c17ad6507dc49e6e7d34a3c7a75624b509f409",
+        "preparation": "identity-cpu-f32-observed-v1",
+        "seed": 731,
+        "initial_state_sha256": "62c8e88378e161c046e7eeb93645cc850d11385886ac110bd2d1515ac7da0557",
+        "model_state_sha256": "858e1fba5b6cdb3e7e313dd3177c829ee36162a2f5bdd284614886bb6e67207b",
+        "optimizer_sha256": "196849ce521c7dc0fc71207a746921fb96fddfa755412b5f208b0a3f17f197ca",
+        "parameter_inventory": {
+          "total": 13129,
+          "trainable": 9497,
+          "frozen": 3632,
+          "named_tensors": 96
+        },
+        "native_output_dimensions": {
+          "global": [
+            5,
+            12
+          ],
+          "channel": [
+            5,
+            1,
+            12
+          ],
+          "tokens": [
+            5,
+            34,
+            12
+          ]
+        },
+        "gradient_groups": [
+          "tokenizer",
+          "encoder",
+          "predictor",
+          "mae_decoder",
+          "vicreg_stability_head"
+        ],
+        "mask_ratios": {
+          "time": 0.4,
+          "frequency": 0.3,
+          "channel": 0
+        },
+        "full_window_frequency_check": true,
+        "physical_updates": 6,
+        "logical_updates": 3,
+        "exact_resume": true,
+        "inference_roundtrip": true
+      },
+      {
+        "configuration": "alternative",
+        "sampling": "full-partition-step-seeded-v1",
+        "configuration_file_sha256": "dde8ec11d7c783f7ec2c75f83d5b37f3a1585f3f568e0f930513b4737f354056",
+        "recipe_sha256": "9ec92a8e295bfd2d71d3c36f6aaa6ef36b5a696dc69a5c2b453fe97439f4e7f3",
+        "dataset_sha256": "41634c1e9862e5fe3a5c392a93c17ad6507dc49e6e7d34a3c7a75624b509f409",
+        "preparation": "identity-cpu-f32-observed-v1",
+        "seed": 731,
+        "initial_state_sha256": "62c8e88378e161c046e7eeb93645cc850d11385886ac110bd2d1515ac7da0557",
+        "model_state_sha256": "236ed901bc5809f619221baf534097462693de56e0dab1e8849707c23ecfc0ce",
+        "optimizer_sha256": "e9862e65862d99946558768ccc9267ac4372b032fe7b95180e716ef4dcbe3df3",
+        "parameter_inventory": {
+          "total": 13129,
+          "trainable": 9497,
+          "frozen": 3632,
+          "named_tensors": 96
+        },
+        "native_output_dimensions": {
+          "global": [
+            5,
+            12
+          ],
+          "channel": [
+            5,
+            1,
+            12
+          ],
+          "tokens": [
+            5,
+            34,
+            12
+          ]
+        },
+        "gradient_groups": [
+          "tokenizer",
+          "encoder",
+          "predictor",
+          "mae_decoder",
+          "vicreg_stability_head"
+        ],
+        "mask_ratios": {
+          "time": 0.4,
+          "frequency": 0.3,
+          "channel": 0
+        },
+        "full_window_frequency_check": true,
+        "physical_updates": 6,
+        "logical_updates": 3,
+        "exact_resume": true,
+        "inference_roundtrip": true
+      }
+    ],
+    "cliAssertionCoverage": [
+      "arbitrary-F-artificial-input",
+      "identity-prepare",
+      "fresh-update",
+      "save-resume",
+      "fixed-budget",
+      "exact-uninterrupted-resumed-model-and-AdamW",
+      "inference-export-load-encode"
+    ]
+  },
+  "exporterIntegrity": {
+    "tests": 21,
+    "passed": 21,
+    "failed": 0,
+    "stdoutSha256": "261605a0692dc6700086c422f219f2f2d175dd56ba336e751ad29d8fcd6c82e3"
+  },
+  "isolation": {
+    "status": "passed",
+    "bundle": "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001",
+    "manifestSha256": "a3cc64dc41b944db2e495a7bd27eb8540f37b4359cba575dd9cb12e410a64975",
+    "bundleFiles": 57,
+    "quotedIncludesChecked": 45,
+    "sourceRoot": "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources",
+    "nativeChecks": 3627,
+    "nativePhysicalUpdates": 24,
+    "refusedNativeUpdateAttempts": 5,
+    "cliPhysicalUpdates": 6,
+    "exporterIntegrityTests": 21,
+    "exporterIntegrityPassed": 21,
+    "dependencyProof": {
+      "schema": "mtf-family-isolated-dependency-proof-v1",
+      "status": "passed",
+      "sourceRoot": "/mityane/.temp/embeddings/exports/mtf-family-2026-10-22-001/sources/",
+      "manifestSha256": "a3cc64dc41b944db2e495a7bd27eb8540f37b4359cba575dd9cb12e410a64975",
+      "dependencyFiles": [
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/data.d",
+          "sha256": "ac3703e54970cad2d5347a34ed662262c8bd78c16ae29708b36726ee6e5cc32b"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/evaluation.d",
+          "sha256": "e90718eaa04d8556909913ae838f2bd97b11ad06a0a53406e0e32ae66195098b"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/family.d",
+          "sha256": "4797f00219881a0e1dfa6591d8d1b963f7ecaa8a88d0501e357496fee77d6cd5"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/family_test.d",
+          "sha256": "1f920a22ed5abf10fa92c3350bafbdd74e884d10542f741c0a311c09c39e3354"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/shared_evaluation.d",
+          "sha256": "8ee3c00205e02278bddd559c930fb8ed151825e008c6ca89b725f67a55f5a2f8"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/trainer.d",
+          "sha256": "d15c71c25309a1a7a919eb0671e4b120b676ac600ddeddbd50e39c25eb41ea52"
+        },
+        {
+          "path": "/opt/mityane-geometrics/embeddings/build/hx15-mtf-delivery-isolated-001/mtf-family/workflow.d",
+          "sha256": "d1e1d6834ca1434bd87b7967e4c6c0f0ed502997fdabded40031d23a943bdb46"
+        }
+      ],
+      "projectDependencies": [
+        {
+          "path": "code/data/observations/include/embedding/shared/data.h",
+          "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+        },
+        {
+          "path": "code/data/observations/src/data.cpp",
+          "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/include/embedding/encoders/mtf_jepa_mae_vicreg/family.h",
+          "sha256": "e37194d47141e7b7373e26592c6e222e3e8668347f35b0f0ad617cd772a7e0eb"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/src/family.cpp",
+          "sha256": "e9c0476c22f68a6096dff3d7641799b80964e529125e8f498148ef06f62c0cb9"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/family/tests/family_test.cpp",
+          "sha256": "d968e0d627d1153b6c3e7a807f6dd7621fa67cd9e87e53301755f0d4fdf1b53e"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/config.h",
+          "sha256": "2d602af285b2399b6c1c5587d977a08814019eecbba97c6d66fe938a62f11743"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/encoder.h",
+          "sha256": "fb538180711dd6b3d35bd20b01508c6bc294955c3e0b822117f899a239596782"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation.h",
+          "sha256": "7021ef85e4882bd9f67b1d11757b29dd41378f51d1dc6c4ab2307e24ab72f29f"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/masking.h",
+          "sha256": "133f7275f680db56fb4702acd353358ebc9e0cddee75f98e2f8e3a42376e36bf"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/model.h",
+          "sha256": "eebea3257865afc632b53329736741c5aae88ea6a2480629b6d07015c9512768"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/objectives.h",
+          "sha256": "1906c9a151726776d2adaf2bb77d2015f5bf7746ddb8038a025541180de0d3bf"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tensor_ops.h",
+          "sha256": "7efc6dc292abbb67026490b5e8595d82d86eeff8e6bbf14ddb5d3ba4b9e07765"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tokenization.h",
+          "sha256": "8f5791c198d75459610c6aebb18b83fe2a85f3123ba6087908ce4d55cb339917"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/types.h",
+          "sha256": "f1b4f2c1f991252ba908d4aab42dba69a4ffb10a32e94189e0fd320a607f1d25"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/workflow.h",
+          "sha256": "73d3b2708248a43404e5474c5e33c4a9d10c2357c125c92ff53f8be5d3fe7980"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation.cpp",
+          "sha256": "50afe3161bcc4c3f733e44a8fbcf87f87865e7b3ec37492b9ad96a74d2d85889"
+        },
+        {
+          "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/workflow.cpp",
+          "sha256": "145bde5c6db5e1e846e1efe39d6861439a65a2888d8dfc4fcdad06f6d43d5cce"
+        },
+        {
+          "path": "code/embeddings/scripts/mtf_family_train.cpp",
+          "sha256": "fd76b9caf1fa9e4c248cff1ff212e3e5f213fc99bdc1a738cc77df47c9e288af"
+        },
+        {
+          "path": "code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/sidecar.h",
+          "sha256": "e3b981c3380c72574fd7d1f1d00652182f6ce2fa8172f5d1083fe117befb1af4"
+        },
+        {
+          "path": "code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/tensor_state.h",
+          "sha256": "7f97fe82240bfd03965d889027417c423b510a5c4e67eca9d77acf24dc87bff9"
+        },
+        {
+          "path": "code/shared/representation/include/embedding/shared/evaluation.h",
+          "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+        },
+        {
+          "path": "code/shared/representation/include/embedding/shared/objectives.h",
+          "sha256": "fe5c5be84989b87e2bca9eca4e6a8817a9a937a27ed40a547224028d27161c26"
+        },
+        {
+          "path": "code/shared/representation/include/embedding/shared/tensor_ops.h",
+          "sha256": "6be3236676fbf32c10c94a43120258a023c63770de7eb92c0fe2f058da9e090b"
+        },
+        {
+          "path": "code/shared/representation/include/embedding/shared/types.h",
+          "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+        },
+        {
+          "path": "code/shared/representation/src/evaluation.cpp",
+          "sha256": "caa992c684d318002cfc3f7a1a1b4ec9e41c2fa68e4da0a3d1db9db278b9bca8"
+        }
+      ],
+      "originalCheckoutDependencies": [],
+      "numericalSourceClosure": "Every compiler-reported project dependency resolves inside verified staged sources; only existing system/SDK dependencies are external. Root build orchestration is separate."
+    },
+    "dependencyProofSha256": "0eb7a1270044b184d7fb7c88012461ec4167a8e822367ab6a432afcc886b1a08",
+    "admittedSourceFilesEqual": true,
+    "crossPathFinalModelAndAdamWStateEqual": true,
+    "originalProjectDependencies": 0,
+    "pathIdentity": "Staged export root and executables retain their own identities; later documentation-only bundle does not relabel this numerical proof."
+  },
+  "totalPhysicalUpdates": 60,
+  "originalMtfPreservation": {
+    "files": [
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/default.conf",
+        "sha256": "0d18e4c2c68a4a28f7e2fb7ee921dab399ff9cf6b1b2f11fac3933ea29543da7"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/evaluation.conf",
+        "sha256": "34d0c8f78518e5ce3726d0405e154f6a9c4fe03da117a1c8bbe13cc1efd9f594"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/config.h",
+        "sha256": "2d602af285b2399b6c1c5587d977a08814019eecbba97c6d66fe938a62f11743"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/encoder.h",
+        "sha256": "fb538180711dd6b3d35bd20b01508c6bc294955c3e0b822117f899a239596782"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation_adapter.h",
+        "sha256": "d467a6f5b132a1f583a6d9c7c0b136f68d421723e57351ecec4b633ba7987ddd"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation.h",
+        "sha256": "7021ef85e4882bd9f67b1d11757b29dd41378f51d1dc6c4ab2307e24ab72f29f"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/masking.h",
+        "sha256": "133f7275f680db56fb4702acd353358ebc9e0cddee75f98e2f8e3a42376e36bf"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/model.h",
+        "sha256": "eebea3257865afc632b53329736741c5aae88ea6a2480629b6d07015c9512768"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/objectives.h",
+        "sha256": "1906c9a151726776d2adaf2bb77d2015f5bf7746ddb8038a025541180de0d3bf"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tensor_ops.h",
+        "sha256": "7efc6dc292abbb67026490b5e8595d82d86eeff8e6bbf14ddb5d3ba4b9e07765"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tokenization.h",
+        "sha256": "8f5791c198d75459610c6aebb18b83fe2a85f3123ba6087908ce4d55cb339917"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/types.h",
+        "sha256": "f1b4f2c1f991252ba908d4aab42dba69a4ffb10a32e94189e0fd320a607f1d25"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/workflow.h",
+        "sha256": "73d3b2708248a43404e5474c5e33c4a9d10c2357c125c92ff53f8be5d3fe7980"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/scripts/evaluate.sh",
+        "sha256": "9a9f0611d3999a26005233e3ec85cff70abeadab80cb44a38c2757a61a6a06db"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation_adapter.cpp",
+        "sha256": "80593fead72180a8fc04dce94145164c31f48299bedf56d038a4ec7e0223b3fb"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation.cpp",
+        "sha256": "50afe3161bcc4c3f733e44a8fbcf87f87865e7b3ec37492b9ad96a74d2d85889"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/main.cpp",
+        "sha256": "9d83e005e65b53070a728730bd1965b74afa336ad2ccb4a72a7f721bd82c06a9"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/workflow.cpp",
+        "sha256": "145bde5c6db5e1e846e1efe39d6861439a65a2888d8dfc4fcdad06f6d43d5cce"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/baseline_test.cpp",
+        "sha256": "0a9c2ec0e74baff3a786cbeb0a226e94021fcfd643161da9409d5f872219d13e"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/cli_smoke.sh",
+        "sha256": "b953fd47e5f71db8c0fb9fa31e08d95df22541cd57ef654d88f27025b3bbd6fe"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/evaluation_test.cpp",
+        "sha256": "4de87d30b7347f4cd4b9542164e30e29e5ff6c5745b6e90a3f098c11b3402726"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/masking_test.cpp",
+        "sha256": "2eb2d523a3513b8c74d99509d5a80c0a75117e51d6f256a1fc37647cb5f23b18"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/model_test.cpp",
+        "sha256": "112b69b3876442fa3bf0ad9fda430395a78b4525cc560aaed0e439a1be1aa477"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/numerics_test.cpp",
+        "sha256": "da7b89a7ac0f54f7830a9efdf3c4f6141cf47370faa2b9d36ce4dad7da4f01c1"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/periodic_checkpoint.sh",
+        "sha256": "3c6cf9255caccf9fee09cece90ff45f4bce48addbd006e0f65b486bd3256a7c5"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/test_support.h",
+        "sha256": "9f0afcaeac714372d1a4cb6fc62a69ef34d13961a33138108467c424ff5bf880"
+      },
+      {
+        "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/workflow_test.cpp",
+        "sha256": "6008126ee5815c1ba8270acf67774c9e7aaff2682c5420c100b64bfe603ed43c"
+      }
+    ],
+    "matchedCount": 27,
+    "changedCount": 0,
+    "scope": "Retained original include/src/config/tests/scripts files; new portable layer is separately identified"
+  },
+  "limitations": [
+    "Two artificial configurations and two portable sampling recipes only",
+    "One intra-op thread; actual inter-op setting12 is recorded/bound",
+    "Same executable/SDK/CPU/backend assumptions for exact update-boundary continuation; no cross-runtime bitwise guarantee",
+    "Identity preparation; no fitted statistics",
+    "No rollback/journal or warm-start rebinding API",
+    "No scientific quality, application acceptance, historical score replay or trained checkpoint promotion"
+  ]
+}

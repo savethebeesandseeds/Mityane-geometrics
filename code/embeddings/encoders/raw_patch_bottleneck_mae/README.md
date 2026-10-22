@@ -3,6 +3,17 @@
 This folder owns the RPB model family, preprocessing, training/checkpoint
 adapters and the configurable spectral/content relation APIs.
 
+The maintained [configurable family and training surface](family/README.md)
+delivers fresh v22 over the existing v20 backbone, streaming TRAIN fitting,
+masked waveform updates, typed AdamW continuation and inference/embedding export.
+The [producer receipt](family/evidence/portability-2026-10-22.json) records actual
+bounded CUDA proof at two configurations. The [source delivery](family/migration/README.md)
+carries the complete method, runnable C++ example, dependency/license closure
+and byte-bound export/import evidence. The
+[22 October audit](family/audit/COMPONENT_TRAINING_AUDIT_2026-10-22.md) retains its
+original source snapshot, later trained-parent distinctions and engineering plan.
+This delivery selects no checkpoint and adds no scientific quality result.
+
 ## Agent instructions: reusable encoder components
 
 Follow the shared [encoder Hero instructions](../AGENTS.md). Hx16 develops

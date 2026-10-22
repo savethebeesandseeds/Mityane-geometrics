@@ -6,6 +6,15 @@ The training method travels with a locally trainable encoder: the network,
 learning rules and implementation together make the reusable tool. A particular
 checkpoint is a separately identified instance and research reference.
 
+Discovering better encoders remains an ongoing Mityane responsibility. It
+includes proposing, training and comparing new architecture and learning-method
+versions under explicit research protocols. Generalizing an existing version
+for configuration or export is an engineering activity within that program;
+it does not conclude the search. Later research candidates can reuse the
+portable interfaces while retaining their own source, recipe and result
+identities. Application ownership of substantial application training does not
+transfer this research responsibility away from Mityane.
+
 These boundaries apply to Hx15–Hx18 within each provider's actual capabilities.
 Hosted providers retain upstream limits on weights, training and configuration.
 Hero JSONs hold current priorities and work states. Recipe, import and artifact

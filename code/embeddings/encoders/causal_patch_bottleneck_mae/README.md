@@ -3,6 +3,67 @@
 Copyright (c) 2026 Waajacu. All rights reserved. Preserve the inherited notices
 inside the copied implementation.
 
+## Continue versioned CPB research
+
+The CPB workstream continues to propose and compare new encoder versions in
+search of better representations. V16 seed946103/final2048/native36 is the
+current research reference. Generalizing V16 for configurable construction,
+training and export supplies a reusable foundation for that continuing search.
+
+The latest candidate, [V19](versions/v19/README.md), added a training-only
+predictor and EMA teacher on learned coordinates, keeping served architecture,
+scattered masks, base objective and evaluation unchanged. Its
+[audited comparison](../../evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
+completed three new 1,024-update candidates against preserved controls.
+Volatility improved in 3/3 pairs (median ΔR² +0.053184) and relation in 2/3 (+0.109583).
+Trend/activity medians fell −0.029321/−0.053271, each improving in only 1/3, so all
+four primary conditions failed while volatility protection passed. These
+scoped gains establish no new linear record, top-three group or better balanced
+encoder. **V16 remains the research reference.** The
+[record](../../evaluation/records/CPB-v19.teacher-001.json) counts 3,072 new and
+3,072 reused control updates separately. Complete teacher/predictor training,
+optimizer and typed resume are part of the portable method; inference exports
+only the unchanged-size student. The
+[verified delivery receipt](versions/v19/migration/delivery-2026-10-23.json)
+pins its 106-file source bundle, including complete training-method code,
+results and independent review; verification through the delivered copy passed.
+
+The preceding candidate, [V18](versions/v18/README.md), compared contiguous training
+gaps with scattered masks in three matched pairs at 1,024 updates. Its
+[audited result](../../evaluation/protocols/cpb_v18_span_v1/RESULTS.md) is negative:
+median candidate-minus-control R² changes were trend −0.221846, activity
+−0.090620, volatility −0.057857 and relation +0.015733. Trend worsened in all
+three pairs and every continuation condition failed. All six readouts/audits
+passed; no scoped linear record or top-three group changed. **V16 remains the
+research reference.** Controls reused their own completed 256-update prefixes;
+5,376 new updates plus 768 preserved updates give 6,144 logical updates. The
+[record](../../evaluation/records/CPB-v18.span-001.json) preserves this ancestry,
+all mask witnesses and the known-development/1,024-budget limitations.
+The [V18 migration guide](versions/v18/migration/README.md) and
+[verified delivery receipt](versions/v18/migration/delivery-2026-10-22.json)
+carry its complete training method and negative evidence in a 106-file source
+package; verification through the delivered copy passed.
+
+The first candidate on this foundation, [V17](versions/v17/README.md), compared
+temporal weights0.03 and0.1 in three fresh matched256-update pairs. Its
+[completed screen](../../evaluation/protocols/cpb_v17_balance_v1/RESULTS.md)
+failed continuation: median trend/activity R2 changes were-0.003029/-0.008995,
+with activity worse3/3. Volatility stayed within its tolerance and relation
+improved2/3. All six trajectories and arithmetic audits passed; this is a valid
+negative research result. V16 remains the reference, and no earlier record is
+displaced. The V17 training/resume/export machinery remains reusable.
+
+The [93-file delivery receipt](versions/v17/migration/delivery-2026-10-22.json)
+pins the complete training-method source package, negative study evidence and
+passed verification through the delivered copy.
+
+Later candidates can investigate meaningful architecture or
+learning-method changes under explicit protocols. The portable `CPB-family` interface is
+an engineering identity; it neither replaces the numbered research sequence
+nor establishes a new quality winner. Every research result keeps its actual
+configuration, recipe, ancestry, trained instance and limitations. The export
+work creates no new measured CPB candidate by itself.
+
 ## Family deliverable and training ownership — 22 October 2026
 
 Read the [shared encoder Hero instructions](../AGENTS.md), which apply to

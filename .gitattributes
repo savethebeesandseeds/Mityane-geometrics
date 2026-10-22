@@ -22,3 +22,29 @@ dependencies.lock text eol=lf
 /environment-image.json -text -whitespace
 /code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/provenance.json -text -whitespace
 /code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/*.json -text -whitespace
+
+# V17 execution/source-delivery identities retain their admitted raw bytes.
+/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/** -text -whitespace
+/code/embeddings/evaluation/protocols/cpb_v17_balance_v1/** -text -whitespace
+/code/data/market/experiments/cpb_v17_balance_v1/** -text -whitespace
+/code/embeddings/scripts/cpb_v17_train.cpp -text -whitespace
+/code/embeddings/scripts/export-cpb-v17.mjs -text -whitespace
+/code/embeddings/scripts/tests/export-cpb-v17.test.mjs -text -whitespace
+
+# V18 method and study admission pins retain their exact source bytes.
+/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/** -text -whitespace
+/code/embeddings/evaluation/protocols/cpb_v18_span_v1/** -text -whitespace
+/code/embeddings/scripts/cpb_v18_train.cpp -text -whitespace
+/code/embeddings/scripts/export-cpb-v18.mjs -text -whitespace
+
+# V19 teacher method and separately admitted study preserve their raw bytes.
+/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/** -text -whitespace
+/code/embeddings/evaluation/protocols/cpb_v19_teacher_v1/** -text -whitespace
+/code/embeddings/scripts/cpb_v19_train.cpp -text -whitespace
+/code/embeddings/scripts/export-cpb-v19.mjs -text -whitespace
+
+# These hash-bound MTF/RPB receipts retain their admitted CRLF bytes in Git.
+/code/embeddings/encoders/mtf_jepa_mae_vicreg/delivery/component-training-audit-2026-10-22.json -text -whitespace
+/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/migration/DELIVERY_2026-10-22.json -text -whitespace
+/code/embeddings/encoders/mtf_jepa_mae_vicreg/family/verification/engineering-proof-2026-10-22.json -text -whitespace
+/code/embeddings/encoders/raw_patch_bottleneck_mae/family/audit/source-inventory-2026-10-22.json -text -whitespace

@@ -43,8 +43,8 @@ start an experiment.
 | Hero | Ownership and evidence boundary |
 | --- | --- |
 | Hx14 · Shared foundations | Observation/space/run/evidence contracts, shared datasets, fair comparisons, pipeline semantics and reproducibility |
-| Hx15 · MTF-JEPA-MAE-VICReg | Reusable MTF family components and provider tools; retain the MTF-v1 source and baseline engineering evidence with their original scope |
-| Hx16 · RPB-MAE | Reusable RPB family components and provider tools; preserve version-specific geometry, historical leaders and causal-eligibility limits |
+| Hx15 · MTF-JEPA-MAE-VICReg | [Portable MTF family and learning method](../../code/embeddings/encoders/mtf_jepa_mae_vicreg/family/README.md) with scoped CPU/F32 engineering and source-delivery evidence; retained reference with no current downstream application use. Preserve MTF-v1 history; the Hero record owns provider/toolset integration scope |
+| Hx16 · RPB-MAE | [Configurable RPB family and complete training method](../../code/embeddings/encoders/raw_patch_bottleneck_mae/family/README.md), with bounded CUDA/F32 engineering and source-delivery evidence; preserve version-specific geometry, historical leaders and causal-eligibility limits. The Hero record owns provider/toolset integration scope |
 | Hx17 · Causal patch bottleneck MAE | [Configurable causal family and portable training APIs](../../code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md); the [Hero record](heroes/17-encoder-cpb.json) owns current engineering coverage and the V16 mixed research reference alongside V4/V3 history |
 | Hx18 · Google multimodal encoder | Reusable external-provider adapter, configuration and validation tools within the capabilities recorded in the [provider guide](../../code/embeddings/encoders/google_multimodal_embedding/README.md); local adapter availability remains explicitly scoped |
 

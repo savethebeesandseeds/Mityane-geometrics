@@ -72,7 +72,7 @@ Include `content_ordered_relation_model.h` and construct
 Use `read_content_ordered_relation_settings(path)` with
 `config/content_ordered_relation.conf`; its strict reader accepts only
 `MODEL_TAG=RPB-v22`. The reusable `Config` settings remain independent of
-the experiment's proposed RPB-v22.alt-01 run recipe.
+the historical RPB-v22.alt-01 study recipe.
 
 `save_content_ordered_relation_checkpoint` and
 `load_content_ordered_relation_checkpoint` bind tag, architecture/layout,
@@ -80,8 +80,14 @@ original lags, support/energy rules, full resolved geometry, semantic IDs,
 scaler and completed updates. The loaded object has `.config`, `.model`,
 `.scaler` and `.training_updates`. It rejects malformed/nonfinite state and
 uses the existing atomic no-overwrite publisher. V20, v21 and v22 typed
-loaders reject one another's archives. This is inference serialization;
-optimizer/RNG resume remains outside the API.
+loaders reject one another's archives. This is inference serialization.
+The separate typed `training_state.h` API adds fixed single-group AdamW and
+counter-stream continuation; it does not save arbitrary process RNG or iterator
+state. The [maintained family surface](family/README.md) and
+[runnable training example](family/examples/TRAINING.md) provide the complete
+recipe/state boundary and verified fresh/fit/train/save/resume/export workflow.
+The [component audit](family/audit/COMPONENT_TRAINING_AUDIT_2026-10-22.md)
+retains the source snapshot and gaps recorded before that delivery.
 
 Architecture ID:
 `configurable-fixed-spectral-plus-zero-start-content-ordered-lag-v1`.

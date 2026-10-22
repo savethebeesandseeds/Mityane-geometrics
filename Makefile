@@ -8,10 +8,33 @@ unexport MITYANE_ROOT_RULES_INCLUDED
 # Keep its build settings here with the project's authoritative native settings.
 MITYANE_CPB_FAMILY_GOALS := build-cpb-family test-cpb-family \
   build-cpb-family-equivalence test-cpb-family-equivalence \
-  build-cpb-family-trainer build-observation-window-fixture test-cpb-family-training-example
+  build-cpb-family-trainer build-observation-window-fixture test-cpb-family-training-example \
+  build-cpb-v17 test-cpb-v17 build-cpb-v17-diagnostic build-cpb-v17-trainer \
+  build-cpb-v17-windows build-cpb-v17-readout build-cpb-v17-audit \
+  build-cpb-v18 test-cpb-v18 build-cpb-v18-trainer build-cpb-v18-readout \
+  build-cpb-v19 test-cpb-v19 build-cpb-v19-trainer build-cpb-v19-readout
 ifneq ($(strip $(MAKECMDGOALS)),)
 ifeq ($(strip $(filter-out $(MITYANE_CPB_FAMILY_GOALS),$(MAKECMDGOALS))),)
 MITYANE_CPB_FAMILY_ONLY := 1
+endif
+endif
+
+# Portable MTF builds use only their explicit source closure and the root SDK
+# settings. MTF_FAMILY_SOURCE_ROOT can select a verified exported source tree.
+MITYANE_MTF_FAMILY_GOALS := build-mtf-family build-mtf-family-trainer test-mtf-family \
+  test-mtf-family-cli test-mtf-family-exporter test-mtf-family-delivery
+ifneq ($(strip $(MAKECMDGOALS)),)
+ifeq ($(strip $(filter-out $(MITYANE_MTF_FAMILY_GOALS),$(MAKECMDGOALS))),)
+MITYANE_MTF_FAMILY_ONLY := 1
+endif
+endif
+
+# Portable RPB targets avoid unrelated historical provenance scans.
+MITYANE_RPB_FAMILY_GOALS := build-rpb-family build-rpb-family-trainer build-rpb-family-fixtures \
+  test-rpb-family test-rpb-family-training-example test-rpb-family-exporter
+ifneq ($(strip $(MAKECMDGOALS)),)
+ifeq ($(strip $(filter-out $(MITYANE_RPB_FAMILY_GOALS),$(MAKECMDGOALS))),)
+MITYANE_RPB_FAMILY_ONLY := 1
 endif
 endif
 
@@ -39,6 +62,27 @@ CXXFLAGS := -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP
 LDFLAGS := -L$(LIBTORCH)/lib -Wl,-rpath,'$(abspath $(LIBTORCH))/lib' -Wl,-rpath-link,$(LIBTORCH)/lib
 LDLIBS := -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread
 include code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/v17.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/v18.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/v19.mk
+else ifeq ($(MITYANE_MTF_FAMILY_ONLY),1)
+CXX := g++
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/baseline
+RUN_ROOT ?= $(CURDIR)/.temp/embeddings/runs/baseline
+LIBTORCH ?= /opt/cuwacunu_embedding/libtorch
+CXXFLAGS := -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP
+LDFLAGS := -L$(LIBTORCH)/lib -Wl,-rpath,'$(abspath $(LIBTORCH))/lib' -Wl,-rpath-link,$(LIBTORCH)/lib
+LDLIBS := -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread
+include code/embeddings/encoders/mtf_jepa_mae_vicreg/family/family.mk
+else ifeq ($(MITYANE_RPB_FAMILY_ONLY),1)
+CXX := g++
+BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/baseline
+RUN_ROOT ?= $(CURDIR)/.temp/embeddings/runs/baseline
+LIBTORCH ?= /opt/cuwacunu_embedding/libtorch
+CXXFLAGS := -std=c++20 -O1 -g0 -Wall -Wextra -MMD -MP
+LDFLAGS := -L$(LIBTORCH)/lib -Wl,-rpath,'$(abspath $(LIBTORCH))/lib' -Wl,-rpath-link,$(LIBTORCH)/lib
+LDLIBS := -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -Wl,--as-needed -pthread
+include code/embeddings/encoders/raw_patch_bottleneck_mae/family/family.mk
 else ifeq ($(MITYANE_MAINTENANCE_ONLY),1)
 CXX := g++
 include code/scripts/maintenance.mk
@@ -1413,7 +1457,12 @@ include code/embeddings/evaluation/protocols/cpb_v15_objective_v1/audit.mk
 include code/data/market/experiments/cpb_v15_objective_v1/converter.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/v16.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/v17.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/v18.mk
+include code/embeddings/encoders/mtf_jepa_mae_vicreg/family/family.mk
+include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/v19.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/objective.mk
+include code/embeddings/encoders/raw_patch_bottleneck_mae/family/family.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/audit.mk
 include code/data/market/experiments/cpb_v16_temporal_v1/converter.mk
 

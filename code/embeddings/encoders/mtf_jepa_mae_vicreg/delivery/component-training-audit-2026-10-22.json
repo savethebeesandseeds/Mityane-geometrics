@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "mtf_component_training_source_audit_v1",
+  "recordedOn": "2026-10-22",
+  "timezone": "Asia/Dubai",
+  "hero": "Hx15",
+  "milestone": "encoder-mtf-training-delivery-audit",
+  "scope": "Source/contract audit of retained MTF-v1 construction, preparation, method, continuation, dependencies and portable-delivery gaps. No numerical execution, source export or application acceptance.",
+  "gitHeadAncestryOnly": "1b3e2163e067ce0485f9505d963e6e07f74ab756",
+  "sourceIdentity": "Current working-tree SHA256 pins; Git ancestry does not assert committed or historically equivalent source.",
+  "numericalExecution": false,
+  "modelImplementationChanged": false,
+  "sourcePackageExported": false,
+  "independentConsumerBuildVerified": false,
+  "tierSemantics": "Additive implementation tiers; fixtures and context are separately listed. Harness is baseline-only with EMBEDDING_WITH_RPB=0. SDK/STL/pthread are external requirements.",
+  "tiers": {
+    "core": [
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/config.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/types.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tensor_ops.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tokenization.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/masking.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/encoder.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/objectives.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/model.h",
+      "code/shared/representation/include/embedding/shared/types.h",
+      "code/shared/representation/include/embedding/shared/tensor_ops.h",
+      "code/shared/representation/include/embedding/shared/objectives.h"
+    ],
+    "cliAndHistoricalEvaluator": [
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/workflow.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/main.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/workflow.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation.cpp",
+      "code/data/observations/include/embedding/shared/data.h",
+      "code/data/observations/src/data.cpp",
+      "code/shared/representation/include/embedding/shared/evaluation.h",
+      "code/shared/representation/src/evaluation.cpp"
+    ],
+    "adapterLibrary": [
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation_adapter.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation_adapter.cpp",
+      "code/shared/representation/include/embedding/shared/feature_evaluation.h",
+      "code/shared/representation/include/embedding/shared/feature_harness.h",
+      "code/shared/representation/src/feature_harness.cpp"
+    ],
+    "baselineOnlyFeatureHarness": [
+      "code/shared/representation/include/embedding/shared/feature_stress.h",
+      "code/shared/representation/src/feature_stress.cpp",
+      "code/shared/representation/src/feature_evaluation.cpp",
+      "code/embeddings/evaluation/src/main.cpp",
+      "code/embeddings/evaluation/src/reconstruction_main.cpp",
+      "code/embeddings/evaluation/include/reconstruction_cli.h"
+    ],
+    "fixtures": [
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/baseline_test.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/cli_smoke.sh",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/evaluation_test.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/masking_test.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/model_test.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/numerics_test.cpp",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/periodic_checkpoint.sh",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/test_support.h",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/workflow_test.cpp",
+      "code/shared/representation/tests/shared_test_support.h",
+      "code/shared/representation/tests/objectives_test.cpp",
+      "code/shared/representation/tests/evaluation_test.cpp",
+      "code/data/observations/tests/data_test.cpp"
+    ],
+    "referenceConfigurationsAndRunner": [
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/default.conf",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/evaluation.conf",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/scripts/evaluate.sh"
+    ],
+    "buildEnvironmentContext": [
+      "Makefile",
+      "code/scripts/task.sh",
+      "container.ps1",
+      "setup.sh",
+      "dependencies.lock",
+      "environment-image.json"
+    ],
+    "ownershipProvenanceAndAudit": [
+      "AGENTS.md",
+      "README.md",
+      "doc/ENVIRONMENT.md",
+      "doc/operations_over_representations_design_spec_v0.1.0.md",
+      "web/dashboard/SCHEMA.md",
+      "code/embeddings/encoders/AGENTS.md",
+      "code/embeddings/encoders/COMPONENT_DELIVERY.md",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "doc/PROVENANCE.md",
+      "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md",
+      "code/embeddings/encoders/mtf_jepa_mae_vicreg/delivery/COMPONENT_TRAINING_AUDIT_2026-10-22.md"
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "63471e62b707fce8c75544f9800f5662dcda3b5362e37cc16ad292362c83b7b9"
+    },
+    {
+      "path": "code/data/observations/include/embedding/shared/data.h",
+      "sha256": "b9a7b80f1df93f541d05453ebc6e6abde5de1a2144f8d5e03ad5f32a068cb92e"
+    },
+    {
+      "path": "code/data/observations/src/data.cpp",
+      "sha256": "2a5b1b19baa0f67fac9020d91cd2883a35f7448a3e2fedb3d430b5928800043c"
+    },
+    {
+      "path": "code/data/observations/tests/data_test.cpp",
+      "sha256": "e701ba3605a49bc242eb0fb342ae8a7c2afaf5dad5adba49c0e6053dd92a9c9c"
+    },
+    {
+      "path": "code/embeddings/encoders/AGENTS.md",
+      "sha256": "802033e8794242c1f50cae72528457abdec547414a34dd9b4403f9ff1a7c6488"
+    },
+    {
+      "path": "code/embeddings/encoders/COMPONENT_DELIVERY.md",
+      "sha256": "ef8edbf151b80f7218117e228770b52c3799bc98ba3bab938e7c996afb1ddafc"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/default.conf",
+      "sha256": "0d18e4c2c68a4a28f7e2fb7ee921dab399ff9cf6b1b2f11fac3933ea29543da7"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/config/evaluation.conf",
+      "sha256": "34d0c8f78518e5ce3726d0405e154f6a9c4fe03da117a1c8bbe13cc1efd9f594"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/delivery/COMPONENT_TRAINING_AUDIT_2026-10-22.md",
+      "sha256": "162a486bbb34fba636bc34061cfa05f424df82e8ba2889814af9562aec93b8d6"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/config.h",
+      "sha256": "2d602af285b2399b6c1c5587d977a08814019eecbba97c6d66fe938a62f11743"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/encoder.h",
+      "sha256": "fb538180711dd6b3d35bd20b01508c6bc294955c3e0b822117f899a239596782"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation_adapter.h",
+      "sha256": "d467a6f5b132a1f583a6d9c7c0b136f68d421723e57351ecec4b633ba7987ddd"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/evaluation.h",
+      "sha256": "7021ef85e4882bd9f67b1d11757b29dd41378f51d1dc6c4ab2307e24ab72f29f"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/masking.h",
+      "sha256": "133f7275f680db56fb4702acd353358ebc9e0cddee75f98e2f8e3a42376e36bf"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/model.h",
+      "sha256": "eebea3257865afc632b53329736741c5aae88ea6a2480629b6d07015c9512768"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/objectives.h",
+      "sha256": "1906c9a151726776d2adaf2bb77d2015f5bf7746ddb8038a025541180de0d3bf"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tensor_ops.h",
+      "sha256": "7efc6dc292abbb67026490b5e8595d82d86eeff8e6bbf14ddb5d3ba4b9e07765"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/tokenization.h",
+      "sha256": "8f5791c198d75459610c6aebb18b83fe2a85f3123ba6087908ce4d55cb339917"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/types.h",
+      "sha256": "f1b4f2c1f991252ba908d4aab42dba69a4ffb10a32e94189e0fd320a607f1d25"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/include/embedding/encoders/mtf_jepa_mae_vicreg/workflow.h",
+      "sha256": "73d3b2708248a43404e5474c5e33c4a9d10c2357c125c92ff53f8be5d3fe7980"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/README.md",
+      "sha256": "6ade51d9495c601d39414b691987b3643d3069d65593e5bdc62aef267f796d27"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/scripts/evaluate.sh",
+      "sha256": "9a9f0611d3999a26005233e3ec85cff70abeadab80cb44a38c2757a61a6a06db"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation_adapter.cpp",
+      "sha256": "80593fead72180a8fc04dce94145164c31f48299bedf56d038a4ec7e0223b3fb"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/evaluation.cpp",
+      "sha256": "50afe3161bcc4c3f733e44a8fbcf87f87865e7b3ec37492b9ad96a74d2d85889"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/main.cpp",
+      "sha256": "9d83e005e65b53070a728730bd1965b74afa336ad2ccb4a72a7f721bd82c06a9"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/src/workflow.cpp",
+      "sha256": "145bde5c6db5e1e846e1efe39d6861439a65a2888d8dfc4fcdad06f6d43d5cce"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/baseline_test.cpp",
+      "sha256": "0a9c2ec0e74baff3a786cbeb0a226e94021fcfd643161da9409d5f872219d13e"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/cli_smoke.sh",
+      "sha256": "b953fd47e5f71db8c0fb9fa31e08d95df22541cd57ef654d88f27025b3bbd6fe"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/evaluation_test.cpp",
+      "sha256": "4de87d30b7347f4cd4b9542164e30e29e5ff6c5745b6e90a3f098c11b3402726"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/masking_test.cpp",
+      "sha256": "2eb2d523a3513b8c74d99509d5a80c0a75117e51d6f256a1fc37647cb5f23b18"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/model_test.cpp",
+      "sha256": "112b69b3876442fa3bf0ad9fda430395a78b4525cc560aaed0e439a1be1aa477"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/numerics_test.cpp",
+      "sha256": "da7b89a7ac0f54f7830a9efdf3c4f6141cf47370faa2b9d36ce4dad7da4f01c1"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/periodic_checkpoint.sh",
+      "sha256": "3c6cf9255caccf9fee09cece90ff45f4bce48addbd006e0f65b486bd3256a7c5"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/test_support.h",
+      "sha256": "9f0afcaeac714372d1a4cb6fc62a69ef34d13961a33138108467c424ff5bf880"
+    },
+    {
+      "path": "code/embeddings/encoders/mtf_jepa_mae_vicreg/tests/workflow_test.cpp",
+      "sha256": "6008126ee5815c1ba8270acf67774c9e7aaff2682c5420c100b64bfe603ed43c"
+    },
+    {
+      "path": "code/embeddings/evaluation/include/reconstruction_cli.h",
+      "sha256": "b47c54c674aefd9055ffb1af7fc6ff8e8942f92b7237ade899162f027c76a4ff"
+    },
+    {
+      "path": "code/embeddings/evaluation/src/main.cpp",
+      "sha256": "291ab8e702890568b5e41c98ec95437463232fff17a967b718379a59a1e50541"
+    },
+    {
+      "path": "code/embeddings/evaluation/src/reconstruction_main.cpp",
+      "sha256": "6bf0da5b369c171b307265badf8aabed66cb57ebd8ef9313acfb185f4f2a9ef6"
+    },
+    {
+      "path": "code/scripts/task.sh",
+      "sha256": "c43a8bbd94dfd26ee3bf525b97776b2edc796d2ab9485fdc40b08bea8ac8e5b1"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/evaluation.h",
+      "sha256": "63b7064fec06d3e33ccca7e32b20ed604c7e97550a79117ff9bbf6b93283a270"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/feature_evaluation.h",
+      "sha256": "90d5ee0d34795c689d985fc38f3bebd9839858bc1ad4e8ae391f8f1cb678b0f7"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/feature_harness.h",
+      "sha256": "0823c7a8e72c55e9907a4d89b076393d6356cb495122c23c78a3086ba9062657"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/feature_stress.h",
+      "sha256": "5ec66d02086e3f59a5f15de0971acabebad48bb8e327b7c73894cb3c451e694f"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/objectives.h",
+      "sha256": "fe5c5be84989b87e2bca9eca4e6a8817a9a937a27ed40a547224028d27161c26"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/tensor_ops.h",
+      "sha256": "6be3236676fbf32c10c94a43120258a023c63770de7eb92c0fe2f058da9e090b"
+    },
+    {
+      "path": "code/shared/representation/include/embedding/shared/types.h",
+      "sha256": "3c7987b9df5d936e009da619474af7ec08630083721281efb5523492200e2371"
+    },
+    {
+      "path": "code/shared/representation/src/evaluation.cpp",
+      "sha256": "caa992c684d318002cfc3f7a1a1b4ec9e41c2fa68e4da0a3d1db9db278b9bca8"
+    },
+    {
+      "path": "code/shared/representation/src/feature_evaluation.cpp",
+      "sha256": "c8d0b5ed74637983dd70e94ec297c955c85ec42ec8171b8c5ce086e96bd0c3e2"
+    },
+    {
+      "path": "code/shared/representation/src/feature_harness.cpp",
+      "sha256": "8cb2aaa6c2b0d6582441fe51fe04445479e15824a44003cf59b97a8f8a67abbc"
+    },
+    {
+      "path": "code/shared/representation/src/feature_stress.cpp",
+      "sha256": "ef0add628838a961a83c32f026092d69cb393593dab69db53e3ec9a45ba4dec2"
+    },
+    {
+      "path": "code/shared/representation/tests/evaluation_test.cpp",
+      "sha256": "b7eb432e1997d9cec3dcc877be1dee4a39f9c8998469ab6de5f09e8ca59ef9ac"
+    },
+    {
+      "path": "code/shared/representation/tests/objectives_test.cpp",
+      "sha256": "affbb09968149a6780362a2ad412896336ce4009e93f8add4c03357128accc3b"
+    },
+    {
+      "path": "code/shared/representation/tests/shared_test_support.h",
+      "sha256": "3e48dec2b1d8c2955f8ed2f0b91313ed7703be2bb09220932f71cf6a37c93451"
+    },
+    {
+      "path": "container.ps1",
+      "sha256": "1673fb4f62fa2aa4d880ea86538573b4775bed0f08046c643170b7c30c8ec8e2"
+    },
+    {
+      "path": "dependencies.lock",
+      "sha256": "b8f946448de4c2a6b0b2d94794a096266644dece00fd8fd27ef5a0a61e8684d3"
+    },
+    {
+      "path": "doc/EMBEDDINGS_MIGRATION_VERIFICATION_2026-10-18.json",
+      "sha256": "a6e73d9d13aecbf1ec8fa33bdb299ba4f1d3fa8a78a8d28ab7fd0d5ef5feb6da"
+    },
+    {
+      "path": "doc/ENVIRONMENT.md",
+      "sha256": "9f2f6d0fb80f05913e6c31f3ab156cdeae129a12cecd1482954fb2f4de525c29"
+    },
+    {
+      "path": "doc/operations_over_representations_design_spec_v0.1.0.md",
+      "sha256": "0a1afcab70d6ce97517026235203dced3fde7687a37f0d70cdba9130c8b95983"
+    },
+    {
+      "path": "doc/PROVENANCE.md",
+      "sha256": "f4595a3f2430e05876e5cdb67f84be793457f8d54cbf79d41efd437237a96899"
+    },
+    {
+      "path": "environment-image.json",
+      "sha256": "2885a9708b2e2a0c1f6a83991b6df58bc061c689bb09f7242b805d29e5c52a07"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1e172347c1eeedb54928c97d79dd7b19bba447f8414f6467d722ead8dffcd5d8"
+    },
+    {
+      "path": "Makefile",
+      "sha256": "6c52f6916fdcf69aa83ebd19abe9153ef785d0071dabcc29d82252d13d014e6f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2838053b99615ffeab7c566cb0ae598da0311593b9aa813af4f1dfc5ad7f0622"
+    },
+    {
+      "path": "setup.sh",
+      "sha256": "6663d2819b35f5a0fb55ca74357098c59245f335c9414849a77679ca656c4b26"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "73a3e66428fcff6a2087184ed4c9b3aae70063e5511e212d49ecc7f55d10b972"
+    },
+    {
+      "path": "web/dashboard/SCHEMA.md",
+      "sha256": "cfe19030f3108f1c9d685f6b2166b9e73dc73a40513c3acf54281703d8730e95"
+    }
+  ],
+  "externalRequirements": [
+    {
+      "kind": "numerical",
+      "requirement": "LibTorch 2.6.0+cu124, C++11 ABI1; Torch headers; torch/torch_cpu/torch_cuda/c10_cuda/c10 and pthread; C++20 compiler/STL",
+      "identityRecord": "environment-image.json",
+      "installedSdk": "/opt/cuwacunu_embedding/libtorch",
+      "redistributed": false
+    },
+    {
+      "kind": "environment",
+      "requirement": "Pinned managed Linux container and exact packages; root dependencies.lock is full environment, not minimal source closure",
+      "identityRecord": "dependencies.lock",
+      "redistributed": false
+    },
+    {
+      "kind": "optionalOrchestration",
+      "requirement": "Bash/coreutils for shell fixtures; existing Node runtime for dashboard/metadata. No Python or Node numerical dependency",
+      "redistributed": false
+    }
+  ],
+  "externalLocalFixtures": [
+    {
+      "path": "code/embeddings/.build/reference/reference_model.h",
+      "sha256": "d52356ba3f1eb8205402e801950f6ca7b3fb0060d5344201434b91f9b2c7cc4b",
+      "role": "Ignored historical baseline parity fixture required only by baseline_test.cpp/Makefile baseline target",
+      "portableSourceTierIncluded": false,
+      "disposition": "Preserve in place. Future export must explicitly inventory/map it or exclude historical parity coverage; no fresh-use dependency."
+    }
+  ],
+  "licenseClosure": {
+    "projectSource": "MIT; retain LICENSE, THIRD_PARTY_NOTICES.md and source provenance/attribution",
+    "thirdPartyBinaries": "Excluded; LibTorch/CUDA/cuDNN and compiler/runtime terms remain upstream. Full binary-license text inspection was outside this source audit.",
+    "dashboard": "Separate AGPL-3.0-only code is outside the planned MTF source bundle; notices preserved"
+  },
+  "evidenceDisposition": "Existing fixture assertions and dated migration receipts were inspected; none was rerun as numerical proof. Future runtime/proof/export/provider milestones remain unexecuted."
+}

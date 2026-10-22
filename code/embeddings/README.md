@@ -43,6 +43,24 @@ providers expose their actual upstream capabilities. Cuwacunu and other
 applications own substantial application training and final docking; bounded
 architecture research and tool verification remain here.
 
+**Hx15 MTF is retained for reference and is not currently used in downstream
+applications.** Its [portable family guide](encoders/mtf_jepa_mae_vicreg/family/README.md)
+and [completed engineering record](encoders/mtf_jepa_mae_vicreg/family/verification/RESULTS_2026-10-22.md)
+cover configurable CPU/F32 construction, explicit identity preparation,
+training/resume, inference and independently verified source delivery. This
+coverage establishes component behavior within the recorded fixtures, without
+an encoder-quality or application-utility result.
+
+**Hx16 RPB now supplies a configurable fresh-v22 family and its complete training
+method.** The [family guide](encoders/raw_patch_bottleneck_mae/family/README.md)
+covers TRAIN fitting, masked updates, checkpoint/resume and inference/embedding
+export in the declared Linux CUDA/F32 runtime. The
+[delivery receipt](encoders/raw_patch_bottleneck_mae/family/migration/delivery-2026-10-22.json)
+binds the 117-file source package and isolated acceptance, including the final
+documentation-only amendment. Two configurations passed bounded engineering
+checks; historical research results, temporal limits and application training
+retain their separate scope.
+
 ## Current research references
 
 The current research default is **V16 candidate seed 946103, final update 2048,
@@ -58,6 +76,29 @@ V4 remains the historical benchmark and known-validation reconstruction leader;
 V3 is the clean baseline. RPB-v24.market-01.alt-01 native36 retains its historical
 balanced-leader role. V14 is the latest catalogued historical instance, separate
 from the new research-reference choice.
+
+The latest [V19 EMA-teacher study](evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
+completed three new 1,024-update candidates against the three preserved
+scattered controls from the V18 study, with unchanged linear evaluation and three passing new
+arithmetic audits. Volatility improved in 3/3 pairs (median ΔR² +0.053184) and
+relation in 2/3 (+0.109583), while trend and activity each improved in 1/3 and had negative medians
+(−0.029321/−0.053271). Four primary conditions failed; volatility protection
+passed. No scoped linear record or reference changed. The
+[record](evaluation/records/CPB-v19.teacher-001.json) distinguishes 3,072 new
+updates from 3,072 reused control updates. The complete teacher/predictor training
+method, configurable construction and typed resume travel with the
+[component](encoders/causal_patch_bottleneck_mae/versions/v19/README.md);
+inference remains the original-size student.
+
+The preceding [V18 contiguous-mask study](evaluation/protocols/cpb_v18_span_v1/RESULTS.md)
+completed three matched 1,024-update pairs with the established linear evaluation
+and six passing arithmetic audits. It failed every continuation condition:
+median R² changes were trend −0.221846, activity −0.090620 and volatility
+−0.057857; relation improved +0.015733. No new scoped linear record or reference
+was established. The [record](evaluation/records/CPB-v18.span-001.json) separates
+5,376 new updates from 768 reused control-prefix updates. Configurable
+construction, complete training and typed resume/export remain part of the
+delivered component.
 
 The [V16 study](evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md) completed on
 21 October 2026 under its [prospective protocol](evaluation/protocols/cpb_v16_temporal_v1/PROTOCOL.md).
@@ -90,6 +131,9 @@ records, from candidates and fresh controls, still lead; V16 now exceeds its
 neural-activity record. The saved V14 TRAIN study remains an unexecuted draft.
 
 ## Development
+
+The commands below build and inspect the retained baseline CLI. For the portable
+MTF API and `mtf_family_train`, use its [family guide](encoders/mtf_jepa_mae_vicreg/family/README.md).
 
 From the repository root in PowerShell:
 

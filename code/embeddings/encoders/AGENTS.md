@@ -17,8 +17,16 @@ configuration, explicit contracts and evidence that another researcher or
 application can construct or call them. A finished application model or a
 particular trained checkpoint does not define this workstream's deliverable.
 
-Mityane may train bounded research and engineering instances to investigate
-architectures and verify the tools. Application projects such as Cuwacunu own
+Mityane actively researches and compares encoder architectures and training
+methods, developing new versions to seek better representations. Configurable
+construction, training and export support that continuing discovery and make
+its results reusable. Generalizing a version for delivery does not end the
+versioned research search or establish a new quality winner. Meaningful
+architecture or learning-method candidates retain explicit version identities;
+configuration choices, seeds and checkpoints retain their separate identities.
+
+Mityane owns research training and comparative evaluation for that discovery,
+alongside bounded engineering verification. Application projects such as Cuwacunu own
 substantial application training, final docking and end-to-end application
 evaluation. Keep the portable training machinery with its encoder component;
 application data, budgets and orchestration belong to the consumer.

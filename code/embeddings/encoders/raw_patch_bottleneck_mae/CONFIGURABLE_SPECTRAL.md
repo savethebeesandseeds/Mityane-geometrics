@@ -61,7 +61,11 @@ auto native = loaded.model->encode(scaled).z_contextual_global;
 Edit [config/configurable_spectral.conf](config/configurable_spectral.conf).
 Actual CUDA float32 execution is required. Use the configurable scaler helper
 for nondivisible H, since preserved direct scaler methods validate the older
-patch divisibility rule. Fit only on TRAIN; streaming fitting remains future work.
+patch divisibility rule. Fit only on TRAIN. The implemented shared
+`StreamingScaler` also produces the existing frozen scaler from declared TRAIN
+batches; its accumulator has no persistence format. See the
+[component audit](family/audit/COMPONENT_TRAINING_AUDIT_2026-10-22.md)
+for fitting arithmetic, caller responsibilities and coverage limits.
 Training masks hide full patches, including a partial final patch. Channels with
 fewer than three observed patches are ineligible; skip batches with no eligible
 examples. The inference archive saves every configuration field, stable channel
@@ -72,11 +76,10 @@ and saving reject nonfinite weights and tensor shapes/dtypes/devices that do
 not match the declared architecture. These checks preserve model arithmetic
 and archive schema; they do not promise power-loss durability.
 
-Inside the existing managed `cuwacunu_embedding` container:
+From the project root, use the existing managed `mityane-geometrics` container:
 
-```bash
-source /etc/profile.d/embedding.sh
-bash code/scripts/task.sh rpb-v20 -j2 test-rpb-v20
+```powershell
+.\container.ps1 -Action exec -Command @('bash', 'code/scripts/task.sh', 'rpb-v20', '-j2', 'test-rpb-v20')
 ```
 
 The four checks cover core config syntax, CUDA model/old-shape parity,

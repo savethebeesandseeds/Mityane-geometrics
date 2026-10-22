@@ -1,0 +1,2268 @@
+{
+  "kind": "cpb_v18_span_study_closeout_v1",
+  "study_id": "cpb-v18-span-001",
+  "created_utc": "2026-10-22T18:53:31.989Z",
+  "work_status": "complete",
+  "study_valid_and_complete": true,
+  "question": "Does replacing scattered hidden patches with one contiguous four-patch span at fixed1024 updates improve the declared linear readout balance under the same encoder/objective and evaluation?",
+  "decision": {
+    "predeclared_continuation_criterion_passed": false,
+    "predeclared_conditions": {
+      "trend_median_nonnegative": false,
+      "trend_at_least_two_nonnegative_pairs": false,
+      "activity_median_nonnegative": false,
+      "activity_at_least_two_nonnegative_pairs": false,
+      "volatility_median_floor": false
+    },
+    "observed_gain": true,
+    "strict_trend_or_activity_gain_observed": true,
+    "automatic_promotion": false,
+    "new_best_encoder_established": false,
+    "research_reference_replaced": false,
+    "application_selection_changed": false,
+    "interpretation": "The fixed1024 development continuation criterion failed; this declared mask-policy comparison does not support advancement."
+  },
+  "comparison": {
+    "control": "Original scattered-mask coefficient0.1 recipe, resumed from its own exact completed256 state.",
+    "candidate": "Fresh contiguous-span-mask coefficient0.1 recipe, with exact typed512-to1024 resume.",
+    "intended_change": "Training mask arrangement only; no architecture, parameter count, latent layout, Gaussian/temporal objective, target reduction, preprocessing or fixed evaluation change.",
+    "configuration": {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/config/research.conf",
+      "bytes": 622,
+      "sha256": "f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b"
+    },
+    "geometry": "C3/H128/F9/P8/native36; IDs0,1,2; original16 patch positions, four adjacent hidden patches for dense candidate channels",
+    "shared_recipe": {
+      "coefficient": 0.1,
+      "configuration": {
+        "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/config/research.conf",
+        "bytes": 622,
+        "sha256": "f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b"
+      },
+      "encoder_seeds": [
+        947101,
+        947102,
+        947103
+      ],
+      "row_seed_offset": 1000,
+      "mask_seed_offset": 2000,
+      "context_seed_offset": 3000,
+      "TRAIN_fit_windows": 1024,
+      "TRAIN_fit_policy": "all-TRAIN-source-order-batch-chunks-Chan-v1;batch=8",
+      "batch_size": 8,
+      "context": "none",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "clip_norm": 1,
+      "primary_updates": 1024,
+      "max_total_attempts": 2048,
+      "save_every": 128
+    },
+    "paired_state_identity_limit": "Shared initialization/scaler/bank FNV tensor-byte identities and realized row/attempt checks are engineering witnesses, not cryptographic tensor equality proofs.",
+    "evaluation": "Unchanged112 TRAIN/32 known January VALIDATION H256 anchors retaining128; legacy F32-to-F64 targets; TRAIN-standardized ridge1; original independent scalar audit and tolerance.",
+    "evaluation_source_equivalence": {
+      "status": "passed",
+      "basis": "Exact source-region equality after EOL and diagnostic-message version-prefix normalization only; typed loaders, update1024 admission and metadata differ outside these regions.",
+      "source_files": [
+        {
+          "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/preserved-source-at-closeout/code/embeddings/evaluation/protocols/cpb_v17_balance_v1/readout.cpp",
+          "bytes": 11183,
+          "sha256": "b5ac24d5e0e9aac69fb0fd2166794ee294833492d72d0b20b5729081067bd99c"
+        },
+        {
+          "path": "code/embeddings/evaluation/protocols/cpb_v18_span_v1/readout.cpp",
+          "bytes": 12395,
+          "sha256": "b4dd7b26a5b866f06caec864d5fcd74dfd28c9d813c3f8ba42a25f8e1fe7ff07"
+        }
+      ],
+      "regions": [
+        {
+          "name": "feature_and_target_functions",
+          "normalized_source_sha256": "54c6653404aa71afbe1870aaabc2b6befc74c62d1a99d7f98cef6c9eaa8864c7"
+        },
+        {
+          "name": "TRAIN_normalization_ridge_prediction_scoring",
+          "normalized_source_sha256": "e33e73bb5f9fbd1b955ff79ffcb6f566cb4315cc1db489d3eb2de7f52d3cd767"
+        }
+      ],
+      "original_audit_phase": {
+        "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/readout.admission.json",
+        "bytes": 4036,
+        "sha256": "f4c65d56ead2faa092be45a6d899ab56b806ddb7a42fccd7307b89a71add207d"
+      },
+      "unchanged_audit_executable": {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_audit",
+        "bytes": 104176,
+        "sha256": "defbb1b714c1900192b84483206a17f4f35301dc8887c34bc348d67d3b5fd662"
+      },
+      "witness_codec": "cpb_v17_ridge_witness_v1",
+      "witness_codec_meaning": "generic ridge tensor structure, not encoder identity"
+    },
+    "historical_control_limit": "Controls retain original portable recipe and actual256 prefix ancestry; they are not historical selected V16 trajectory reproductions."
+  },
+  "paired_candidate_minus_control_r2": [
+    {
+      "seed": 947101,
+      "past_volatility": 0.010075213743628186,
+      "past_trend": -0.22184588859150822,
+      "past_activity": -0.1039316800427863,
+      "past_relation": 0.015733336683406707
+    },
+    {
+      "seed": 947102,
+      "past_volatility": -0.081093927557088,
+      "past_trend": -0.26636723531776185,
+      "past_activity": -0.09061982373884936,
+      "past_relation": -0.0018954940880400173
+    },
+    {
+      "seed": 947103,
+      "past_volatility": -0.05785742068700628,
+      "past_trend": -0.09292290608782316,
+      "past_activity": 0.014212271778777263,
+      "past_relation": 0.1672056860346819
+    }
+  ],
+  "aggregate": {
+    "past_volatility": {
+      "median": -0.05785742068700628,
+      "minimum": -0.081093927557088,
+      "maximum": 0.010075213743628186,
+      "nonnegative_pairs": 1,
+      "positive_pairs": 1
+    },
+    "past_trend": {
+      "median": -0.22184588859150822,
+      "minimum": -0.26636723531776185,
+      "maximum": -0.09292290608782316,
+      "nonnegative_pairs": 0,
+      "positive_pairs": 0
+    },
+    "past_activity": {
+      "median": -0.09061982373884936,
+      "minimum": -0.1039316800427863,
+      "maximum": 0.014212271778777263,
+      "nonnegative_pairs": 1,
+      "positive_pairs": 1
+    },
+    "past_relation": {
+      "median": 0.015733336683406707,
+      "minimum": -0.0018954940880400173,
+      "maximum": 0.1672056860346819,
+      "nonnegative_pairs": 2,
+      "positive_pairs": 2
+    }
+  },
+  "trajectories": [
+    {
+      "seed": 947101,
+      "arm": "control",
+      "id": "seed-947101-control",
+      "mask_mode": "scattered",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 256,
+      "new_physical_updates": 768,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "76dcb4436651101d02188c0fd5ed3331ad1b39747049a1f1b7de3fffd54d999b"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "159dad4c0741a7c48f1328927e436d34433720b5d0be5417fd2ad7c0ce7931f4"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/inference-final.pt",
+        "bytes": 1300204,
+        "sha256": "e762a08e4f1419bbcda802fc7db359a2601ca296c6d0b79846c320463adb941c"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/training-final.pt",
+        "bytes": 3767751,
+        "sha256": "7a1fce5c185167197c07623734573c170b1f7f8d0e483c49011b88f374e9430b"
+      },
+      "candidate_mask_counters": null,
+      "training": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "76dcb4436651101d02188c0fd5ed3331ad1b39747049a1f1b7de3fffd54d999b"
+          },
+          "completed_updates": 640,
+          "attempted_batches": 640,
+          "starting_updates": 256,
+          "starting_attempts": 256,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948101;mask-seed=949101;context-seed=950101;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+          "final_state_identity": "cpb-family-state-fnv1a64-6291ca0129bf2f91",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-800f0142226120f9",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "ecdfd7244594836434615884042ae0369e030c8143dcdc8356cf85cc2409a0f7"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/continue-640/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "621ae1d1a5afc7f9946b45995b6157cc11c7eb9039b9a94d53f9486c51fb3997"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/resume-256/training-final.pt",
+            "bytes": 3767751,
+            "sha256": "460f8b4fb4e76c8c68b8d83a261841b2ede20595609e8dd3341237c6af8242f9"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "159dad4c0741a7c48f1328927e436d34433720b5d0be5417fd2ad7c0ce7931f4"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 640,
+          "starting_attempts": 640,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948101;mask-seed=949101;context-seed=950101;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+          "final_state_identity": "cpb-family-state-fnv1a64-149982f0a0d5c962",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-62d4501762c8061d",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/training-final.pt",
+            "bytes": 3767751,
+            "sha256": "7a1fce5c185167197c07623734573c170b1f7f8d0e483c49011b88f374e9430b"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/resume-1024/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "e762a08e4f1419bbcda802fc7db359a2601ca296c6d0b79846c320463adb941c"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "ecdfd7244594836434615884042ae0369e030c8143dcdc8356cf85cc2409a0f7"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.7755806300330191,
+          "mae": 0.00012404416809128164,
+          "rmse": 0.000160046206894167,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.7272070923655198,
+          "mae": 0.00003000184044100936,
+          "rmse": 0.00003497484999445434,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.8605212107168004,
+          "mae": 0.16315789127019334,
+          "rmse": 0.21462711356875439,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.5153403849888674,
+          "mae": 0.05032733499085252,
+          "rmse": 0.06000320374110473,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947101-control/summary.json",
+        "bytes": 3323,
+        "sha256": "120b069a561bafb745f9f52612b955d3e1e711552dc07120d8d5812c6669bc65"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947101-control/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "e4c265f9a885cf239747d25b3d0701ce882453c2d014ff53e1f57e9f0bdc1e96"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947101-control/summary.json",
+        "bytes": 3530,
+        "sha256": "d614ea2fa9a5b8088e859736302a4c0a4e23f409bc423bdaf33289a38a7c8f9f"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.7755806300330188,
+          "mae": 0.00012404416809128166,
+          "rmse": 0.00016004620689416711,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.7272070923655196,
+          "mae": 0.000030001840441009334,
+          "rmse": 0.00003497484999445435,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.8605212107168012,
+          "mae": 0.16315789127019295,
+          "rmse": 0.2146271135687538,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.5153403849888651,
+          "mae": 0.050327334990852624,
+          "rmse": 0.06000320374110487,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": {
+        "available": false,
+        "reason": "The preserved original control CLI did not log temporal pair counts, selected starts or span quotas."
+      }
+    },
+    {
+      "seed": 947101,
+      "arm": "candidate",
+      "id": "seed-947101-candidate",
+      "mask_mode": "contiguous",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 0,
+      "new_physical_updates": 1024,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "09cfa39d6088a0352e97a97200b6473141e93010c801ac0e959990f8afda7330"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "0e7e0396fa3f59ec2d2aa60a6f8ea5637fc20b79f1f7616110b66b7123521ef5"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/inference-final.pt",
+        "bytes": 1300725,
+        "sha256": "f9afb6ca845451b13a4dacc524e8239d0c478d86125265066e175ed19b48aa2d"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/training-final.pt",
+        "bytes": 3769359,
+        "sha256": "8666e40643730c71ac555ee8c1a602a8b7272e1796ef63050f00d3e99a25a0a4"
+      },
+      "candidate_mask_counters": {
+        "events": 1024,
+        "temporal_pair_counts": {
+          "lags": [
+            1,
+            4,
+            16
+          ],
+          "total": [
+            6856704,
+            6193152,
+            3538944
+          ],
+          "minimum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ],
+          "maximum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ]
+        },
+        "totals": {
+          "selected_patch_count": 98304,
+          "unsupported_channels": 0,
+          "no_legal_span_channels": 0,
+          "insufficient_support_channels": 0,
+          "target_cells": 7077888
+        },
+        "mask_witness": {
+          "flattened_channel_draws": 24576,
+          "start_positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "start_histogram": [
+            1874,
+            1957,
+            1822,
+            1919,
+            1896,
+            1839,
+            1902,
+            1856,
+            1906,
+            1879,
+            1933,
+            1937,
+            1856
+          ],
+          "all_legal_span_counts_13": true,
+          "all_quotas_4": true,
+          "exact_decimal_counter_seeds_saved": true
+        },
+        "limits": "Actual returned candidate mask/support witnesses only; no second mask replay. Old control logs did not record detailed mask/lag fields."
+      },
+      "training": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "09cfa39d6088a0352e97a97200b6473141e93010c801ac0e959990f8afda7330"
+          },
+          "completed_updates": 512,
+          "attempted_batches": 512,
+          "starting_updates": 0,
+          "starting_attempts": 0,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": true,
+          "preprocessing_fit_windows": 1024,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948101;mask-seed=949101;context-seed=950101;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+          "final_state_identity": "cpb-family-state-fnv1a64-6cfa6b08f5fc7072",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-8486196c3c7659df",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/fresh-512/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "857970a9145d84004fbb9a7096ccdec75870bb9a0c1b8ebd952c7c78de28402e"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/fresh-512/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "f9229ba306dca4a7018c4119bd939872c460af217c2ff61bc6aedea5920438be"
+          },
+          "resume_input": null
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "0e7e0396fa3f59ec2d2aa60a6f8ea5637fc20b79f1f7616110b66b7123521ef5"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 512,
+          "starting_attempts": 512,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948101;mask-seed=949101;context-seed=950101;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+          "final_state_identity": "cpb-family-state-fnv1a64-dba9cce65c95f6e3",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-b0eae6d3789a5a67",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "8666e40643730c71ac555ee8c1a602a8b7272e1796ef63050f00d3e99a25a0a4"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/resume-1024/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "f9afb6ca845451b13a4dacc524e8239d0c478d86125265066e175ed19b48aa2d"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947101-candidate/fresh-512/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "857970a9145d84004fbb9a7096ccdec75870bb9a0c1b8ebd952c7c78de28402e"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.7856558437766473,
+          "mae": 0.00012569969861442055,
+          "rmse": 0.0001564123496815033,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.5053612037740116,
+          "mae": 0.000037794780980139064,
+          "rmse": 0.000047095933692339965,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.7565895306740141,
+          "mae": 0.24464098131432593,
+          "rmse": 0.28353072433004944,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.5310737216722741,
+          "mae": 0.04995422541335664,
+          "rmse": 0.05902123710562849,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947101-candidate/summary.json",
+        "bytes": 3327,
+        "sha256": "5f077aa6805e8ebccc4d8caa3ce76850a134a27be8b8c5c450491fc3700ec94d"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947101-candidate/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "52186233c6c3cae7460914e0ab01b1e4d1df9914bbdb46f1875da79f9029eb5e"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947101-candidate/summary.json",
+        "bytes": 3531,
+        "sha256": "dedd333537e7b881e04654b42bebea776e7cac65d3074c8bbf776bccab11123b"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.7856558437766501,
+          "mae": 0.0001256996986144198,
+          "rmse": 0.00015641234968150227,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.505361203774013,
+          "mae": 0.00003779478098013904,
+          "rmse": 0.0000470959336923399,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.756589530674015,
+          "mae": 0.2446409813143254,
+          "rmse": 0.28353072433004894,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.5310737216722727,
+          "mae": 0.049954225413356736,
+          "rmse": 0.05902123710562857,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": null
+    },
+    {
+      "seed": 947102,
+      "arm": "candidate",
+      "id": "seed-947102-candidate",
+      "mask_mode": "contiguous",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 0,
+      "new_physical_updates": 1024,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "36f9ab85d2ffd64b8738b3b348c7efbcaa2c234ddf98ec724b5b4c1ce9b34b65"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "d3a7ea8d2a2bb66306a60d75981642401b1295d55c615ce1b70c52c5d4704631"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/inference-final.pt",
+        "bytes": 1300725,
+        "sha256": "a6b2b3253022a516ca92b9443d359ebd9120e23117d588a232f691848fbe9c4e"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/training-final.pt",
+        "bytes": 3769359,
+        "sha256": "7e51211cf5c1eb9cdd41fefb429d7b3ec78dd296496d8d2d2b9c52afe50c7628"
+      },
+      "candidate_mask_counters": {
+        "events": 1024,
+        "temporal_pair_counts": {
+          "lags": [
+            1,
+            4,
+            16
+          ],
+          "total": [
+            6856704,
+            6193152,
+            3538944
+          ],
+          "minimum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ],
+          "maximum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ]
+        },
+        "totals": {
+          "selected_patch_count": 98304,
+          "unsupported_channels": 0,
+          "no_legal_span_channels": 0,
+          "insufficient_support_channels": 0,
+          "target_cells": 7077888
+        },
+        "mask_witness": {
+          "flattened_channel_draws": 24576,
+          "start_positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "start_histogram": [
+            1894,
+            1916,
+            1918,
+            1890,
+            1886,
+            1906,
+            1882,
+            1885,
+            1897,
+            1849,
+            1899,
+            1835,
+            1919
+          ],
+          "all_legal_span_counts_13": true,
+          "all_quotas_4": true,
+          "exact_decimal_counter_seeds_saved": true
+        },
+        "limits": "Actual returned candidate mask/support witnesses only; no second mask replay. Old control logs did not record detailed mask/lag fields."
+      },
+      "training": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "36f9ab85d2ffd64b8738b3b348c7efbcaa2c234ddf98ec724b5b4c1ce9b34b65"
+          },
+          "completed_updates": 512,
+          "attempted_batches": 512,
+          "starting_updates": 0,
+          "starting_attempts": 0,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": true,
+          "preprocessing_fit_windows": 1024,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948102;mask-seed=949102;context-seed=950102;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+          "final_state_identity": "cpb-family-state-fnv1a64-ebf214da8759e039",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-dd737146e53fb288",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/fresh-512/training-final.pt",
+            "bytes": 3769231,
+            "sha256": "e46d3e24b80365a04d6717c0aaa8094725fe269e636d52798f7ca2d4c0bfad0d"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/fresh-512/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "6e67832e9a7d9811f3afc1ba7144e7dfb6361422e0a0930213323b569c52a72a"
+          },
+          "resume_input": null
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "d3a7ea8d2a2bb66306a60d75981642401b1295d55c615ce1b70c52c5d4704631"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 512,
+          "starting_attempts": 512,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948102;mask-seed=949102;context-seed=950102;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+          "final_state_identity": "cpb-family-state-fnv1a64-1c874b8c2c07987e",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-bdc504906d1a3ccc",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "7e51211cf5c1eb9cdd41fefb429d7b3ec78dd296496d8d2d2b9c52afe50c7628"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/resume-1024/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "a6b2b3253022a516ca92b9443d359ebd9120e23117d588a232f691848fbe9c4e"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-candidate/fresh-512/training-final.pt",
+            "bytes": 3769231,
+            "sha256": "e46d3e24b80365a04d6717c0aaa8094725fe269e636d52798f7ca2d4c0bfad0d"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.7286836522039881,
+          "mae": 0.0001389669872679284,
+          "rmse": 0.00017597590104149392,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.5245264875645665,
+          "mae": 0.00003572390768975251,
+          "rmse": 0.00004617453039326672,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.6855718026352293,
+          "mae": 0.2690075959796835,
+          "rmse": 0.32224875151138876,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.44874055856842177,
+          "mae": 0.052127008228612645,
+          "rmse": 0.0639932317290483,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947102-candidate/summary.json",
+        "bytes": 3327,
+        "sha256": "82ee6f1befbef80ec51f07d8c1b1369ed4f1447346cfd917bdf45ddd495bf4a5"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947102-candidate/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "397b04e7ccd60bbd7698b6aea28890da322ee45fd3afb0ffea2cd88d85646dc8"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947102-candidate/summary.json",
+        "bytes": 3530,
+        "sha256": "b3f0a1eb251773f3ccf22568dc79d48d2c65dabb0319be96f325c24082c34716"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.728683652203988,
+          "mae": 0.00013896698726792862,
+          "rmse": 0.00017597590104149395,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.5245264875645675,
+          "mae": 0.00003572390768975251,
+          "rmse": 0.000046174530393266676,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.6855718026352317,
+          "mae": 0.2690075959796826,
+          "rmse": 0.3222487515113876,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.44874055856842304,
+          "mae": 0.05212700822861262,
+          "rmse": 0.06399323172904824,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": null
+    },
+    {
+      "seed": 947102,
+      "arm": "control",
+      "id": "seed-947102-control",
+      "mask_mode": "scattered",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 256,
+      "new_physical_updates": 768,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "b9eb87417a6c4882b52fdac04efa879d2db6f1aa60ce2f2c0eec62675a4ebb42"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "d047d0fc2d8cfa84d784016300281cbfef9cca33b8150c8afbea878034836a04"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/inference-final.pt",
+        "bytes": 1300204,
+        "sha256": "c95b901c4e86beb34907d5d96ec771d0b983c7c49d1c8465cf6330272ecfb95d"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/training-final.pt",
+        "bytes": 3767751,
+        "sha256": "b062921a72a78b44455c84ec2bb83edd6f746c200aa9f99c2947a7925aa90fc7"
+      },
+      "candidate_mask_counters": null,
+      "training": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "b9eb87417a6c4882b52fdac04efa879d2db6f1aa60ce2f2c0eec62675a4ebb42"
+          },
+          "completed_updates": 640,
+          "attempted_batches": 640,
+          "starting_updates": 256,
+          "starting_attempts": 256,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948102;mask-seed=949102;context-seed=950102;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+          "final_state_identity": "cpb-family-state-fnv1a64-8c39ea028217e37b",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-bd325b4f619181bd",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "f3c8f9eb19f9b1583e6d9c3d9ae73ad34e1d594cec46e86b810dcc1b93a7e28d"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/continue-640/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "97c1bda8b46aa5489d719378671aba2ae2f8200d551637d262777cfc9dd611d3"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/resume-256/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "46ca742f1fcfd3a438e9f1c47e04e4bae2ac2c2d18bd1a136944a991a2a10f88"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "d047d0fc2d8cfa84d784016300281cbfef9cca33b8150c8afbea878034836a04"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 640,
+          "starting_attempts": 640,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948102;mask-seed=949102;context-seed=950102;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+          "final_state_identity": "cpb-family-state-fnv1a64-8f9c0e420b7c2cf2",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-1befff17c5c1b37e",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/training-final.pt",
+            "bytes": 3767751,
+            "sha256": "b062921a72a78b44455c84ec2bb83edd6f746c200aa9f99c2947a7925aa90fc7"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/resume-1024/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "c95b901c4e86beb34907d5d96ec771d0b983c7c49d1c8465cf6330272ecfb95d"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947102-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "f3c8f9eb19f9b1583e6d9c3d9ae73ad34e1d594cec46e86b810dcc1b93a7e28d"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.8097775797610761,
+          "mae": 0.00010812078305838657,
+          "rmse": 0.00014734861833376746,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.7908937228823284,
+          "mae": 0.000023849097245825262,
+          "rmse": 0.00003062124597160495,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.7761916263740787,
+          "mae": 0.23537401849669384,
+          "rmse": 0.2718746192938556,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.4506360526564618,
+          "mae": 0.053839742750161,
+          "rmse": 0.06388311729491164,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947102-control/summary.json",
+        "bytes": 3321,
+        "sha256": "90d77ed734fed71f0350956d13fe7a1a0f1ea84da8fda6d86692594e55c1414a"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947102-control/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "8a78df72b24e2963800abcb8b7f48e59e4e5901c30729121a52ace594727f854"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947102-control/summary.json",
+        "bytes": 3529,
+        "sha256": "044c8e99203375ddfc099d1f703f742951f0e7d17f049b07efa9e7a3dcd22028"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.8097775797610764,
+          "mae": 0.00010812078305838646,
+          "rmse": 0.00014734861833376735,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.790893722882328,
+          "mae": 0.000023849097245825262,
+          "rmse": 0.00003062124597160498,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.7761916263740808,
+          "mae": 0.23537401849669262,
+          "rmse": 0.27187461929385426,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.45063605265646123,
+          "mae": 0.053839742750160964,
+          "rmse": 0.06388311729491167,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": {
+        "available": false,
+        "reason": "The preserved original control CLI did not log temporal pair counts, selected starts or span quotas."
+      }
+    },
+    {
+      "seed": 947103,
+      "arm": "control",
+      "id": "seed-947103-control",
+      "mask_mode": "scattered",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 256,
+      "new_physical_updates": 768,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "b1cd3730636cca2aedcd8381b90d52cae9d833795933ddb2b33df56be293c243"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "88ef249238861f277a2302119cf050a1804e6b3b9fa2e6ee40c09f8bf67eef18"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/inference-final.pt",
+        "bytes": 1300204,
+        "sha256": "4e637264da7b3a4c364c75b0ee618f95241a8de72ac4ad8defc64658d34eeb5c"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/training-final.pt",
+        "bytes": 3767879,
+        "sha256": "28eb022d6bddef19458a3ac9566bd873d391e5ebc795a6c4d1c351f72e8c41e3"
+      },
+      "candidate_mask_counters": null,
+      "training": [
+        {
+          "stage": "continue-640",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/continue-640/run.json",
+            "bytes": 3777,
+            "sha256": "b1cd3730636cca2aedcd8381b90d52cae9d833795933ddb2b33df56be293c243"
+          },
+          "completed_updates": 640,
+          "attempted_batches": 640,
+          "starting_updates": 256,
+          "starting_attempts": 256,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948103;mask-seed=949103;context-seed=950103;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+          "final_state_identity": "cpb-family-state-fnv1a64-e7a5f8367e7bc2df",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-71057dcb0ee6513c",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "c9f2bf8f3eeeadf6f9b6922136755b13dea18f51aee4ae898cabc8467bd6934b"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/continue-640/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "6de78af6ea30e650902ff09bf4c8b48eb5b12343e9556154ab8bfb6f46dea360"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/resume-256/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "1cbcdc87a57ed8e55939f071ec97159d2051ddafea8e3d85aee487c8f435260f"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/run.json",
+            "bytes": 3776,
+            "sha256": "88ef249238861f277a2302119cf050a1804e6b3b9fa2e6ee40c09f8bf67eef18"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 640,
+          "starting_attempts": 640,
+          "new_physical_updates": 384,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948103;mask-seed=949103;context-seed=950103;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+          "final_state_identity": "cpb-family-state-fnv1a64-0d1f90d72cac8a7f",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-aaeb795a59393cfc",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "28eb022d6bddef19458a3ac9566bd873d391e5ebc795a6c4d1c351f72e8c41e3"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/resume-1024/inference-final.pt",
+            "bytes": 1300204,
+            "sha256": "4e637264da7b3a4c364c75b0ee618f95241a8de72ac4ad8defc64658d34eeb5c"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-control/continue-640/training-final.pt",
+            "bytes": 3767879,
+            "sha256": "c9f2bf8f3eeeadf6f9b6922136755b13dea18f51aee4ae898cabc8467bd6934b"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.6434076404289041,
+          "mae": 0.0001603268175263999,
+          "rmse": 0.0002017442814310382,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.772619211990602,
+          "mae": 0.000026262217660176965,
+          "rmse": 0.000031931271076144905,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.8351431781790428,
+          "mae": 0.1936961494005536,
+          "rmse": 0.23333718921533536,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.24188028523139327,
+          "mae": 0.06238113800965605,
+          "rmse": 0.07504554535946631,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947103-control/summary.json",
+        "bytes": 3321,
+        "sha256": "7a20ae4cf08f5097a1c7b27950b1f2604dceb118527019104eccc73d0705a48d"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947103-control/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "592c584dba989822771d64c1df1a0cf024609b08692bcd61678a53f7e19ffd10"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947103-control/summary.json",
+        "bytes": 3530,
+        "sha256": "51f237a5eaa6eb978a3d47f1b4c0a96a70698b3d41d2ccbc60ec074aa401597d"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.6434076404289027,
+          "mae": 0.00016032681752640014,
+          "rmse": 0.00020174428143103853,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.7726192119906015,
+          "mae": 0.000026262217660177,
+          "rmse": 0.000031931271076144946,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.835143178179042,
+          "mae": 0.1936961494005536,
+          "rmse": 0.23333718921533597,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.24188028523140392,
+          "mae": 0.062381138009655515,
+          "rmse": 0.07504554535946578,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": {
+        "available": false,
+        "reason": "The preserved original control CLI did not log temporal pair counts, selected starts or span quotas."
+      }
+    },
+    {
+      "seed": 947103,
+      "arm": "candidate",
+      "id": "seed-947103-candidate",
+      "mask_mode": "contiguous",
+      "temporal_weight": 0.1,
+      "reused_prefix_updates": 0,
+      "new_physical_updates": 1024,
+      "completed_updates": 1024,
+      "attempted_batches": 1024,
+      "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+      "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+      "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+      "training_reports": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "05f8ae3b149d95de5d5022bdb9428970fda7aa5c906b61a5c04d6794b0d22f71"
+          }
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "e4c71f6e0d6b066a8110ae9876d66c03beabe799f08b65ec4c0753ab68ddd4d3"
+          }
+        }
+      ],
+      "final_inference": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/inference-final.pt",
+        "bytes": 1300725,
+        "sha256": "b90219d742b91c312373be65be2fc9b499f91fda331ed672a1588d5e1025439e"
+      },
+      "final_training_state": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/training-final.pt",
+        "bytes": 3769231,
+        "sha256": "e0e5239eaf4e6244b42602abab6ec1f609818284ccb15ffdd6f9a39527bc54de"
+      },
+      "candidate_mask_counters": {
+        "events": 1024,
+        "temporal_pair_counts": {
+          "lags": [
+            1,
+            4,
+            16
+          ],
+          "total": [
+            6856704,
+            6193152,
+            3538944
+          ],
+          "minimum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ],
+          "maximum_per_attempt": [
+            6696,
+            6048,
+            3456
+          ]
+        },
+        "totals": {
+          "selected_patch_count": 98304,
+          "unsupported_channels": 0,
+          "no_legal_span_channels": 0,
+          "insufficient_support_channels": 0,
+          "target_cells": 7077888
+        },
+        "mask_witness": {
+          "flattened_channel_draws": 24576,
+          "start_positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "start_histogram": [
+            1970,
+            1898,
+            1850,
+            1844,
+            1942,
+            1886,
+            1859,
+            1861,
+            1928,
+            1889,
+            1867,
+            1923,
+            1859
+          ],
+          "all_legal_span_counts_13": true,
+          "all_quotas_4": true,
+          "exact_decimal_counter_seeds_saved": true
+        },
+        "limits": "Actual returned candidate mask/support witnesses only; no second mask replay. Old control logs did not record detailed mask/lag fields."
+      },
+      "training": [
+        {
+          "stage": "fresh-512",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/fresh-512/run.json",
+            "bytes": 4307,
+            "sha256": "05f8ae3b149d95de5d5022bdb9428970fda7aa5c906b61a5c04d6794b0d22f71"
+          },
+          "completed_updates": 512,
+          "attempted_batches": 512,
+          "starting_updates": 0,
+          "starting_attempts": 0,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": true,
+          "preprocessing_fit_windows": 1024,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948103;mask-seed=949103;context-seed=950103;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+          "final_state_identity": "cpb-family-state-fnv1a64-7835e744c5aaf26d",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-3bbb9d220eea9ee6",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/fresh-512/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "30e24b7dcc8f10fb0c7ac2b5baed442302510b3a342591182c9273fffa586654"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/fresh-512/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "0320657e798a3ae9dd47636e293ed6a94b1d6c088bb7bd830fdd9b7b9bee93e5"
+          },
+          "resume_input": null
+        },
+        {
+          "stage": "resume-1024",
+          "report": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/run.json",
+            "bytes": 4076,
+            "sha256": "e4c71f6e0d6b066a8110ae9876d66c03beabe799f08b65ec4c0753ab68ddd4d3"
+          },
+          "completed_updates": 1024,
+          "attempted_batches": 1024,
+          "starting_updates": 512,
+          "starting_attempts": 512,
+          "new_physical_updates": 512,
+          "skipped_attempts": 0,
+          "preprocessing_fitted": false,
+          "preprocessing_fit_windows": 0,
+          "recipe_identity": "cpb-v18-portable-train-v1;executable=ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948103;mask-seed=949103;context-seed=950103;learning-recipe=CPB-v18;cpb-original-grid-contiguous-query-mask-v1;mask=contiguous;GaussianNLL=1;temporal=0.1;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;quota=clamp-floor-ratio-times-observed-patches-plus-half-to-1-Mminus2;contiguous=all-q-patches-observed-original-grid;nonwrapping;no-span-abstain;crop-before-mask;partial-final-patch;span-start=uniform-legal-starts-mt19937_64-rejection-low-threshold;per-attempt-counter-seed;row-order=B*C;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+          "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+          "final_state_identity": "cpb-family-state-fnv1a64-8df46e8007f80663",
+          "optimizer_identity": "cpb-family-optimizer-fnv1a64-8c3565b810fda62a",
+          "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+          "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+          "training_state": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/training-final.pt",
+            "bytes": 3769231,
+            "sha256": "e0e5239eaf4e6244b42602abab6ec1f609818284ccb15ffdd6f9a39527bc54de"
+          },
+          "inference": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/resume-1024/inference-final.pt",
+            "bytes": 1300725,
+            "sha256": "b90219d742b91c312373be65be2fc9b499f91fda331ed672a1588d5e1025439e"
+          },
+          "resume_input": {
+            "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/trajectories/seed-947103-candidate/fresh-512/training-final.pt",
+            "bytes": 3769359,
+            "sha256": "30e24b7dcc8f10fb0c7ac2b5baed442302510b3a342591182c9273fffa586654"
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.5855502197418978,
+          "mae": 0.00018560345493004815,
+          "rmse": 0.0002174959494470021,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.6796963059027789,
+          "mae": 0.00003132031922840123,
+          "rmse": 0.000037898349521285506,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.8493554499578201,
+          "mae": 0.1792059688605071,
+          "rmse": 0.22305256037540852,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.40908597126607515,
+          "mae": 0.05335404811751584,
+          "rmse": 0.06625492596258484,
+          "coverage": 1,
+          "valid": 32,
+          "target_eligible": 32,
+          "total": 32
+        }
+      ],
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947103-candidate/summary.json",
+        "bytes": 3326,
+        "sha256": "6fedbfa250d88eb170a7f9ae95d13f75d01c9d0b199954d631a47c1d78c36498"
+      },
+      "witness": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readouts/seed-947103-candidate/ridge-witness.pt",
+        "bytes": 64636,
+        "sha256": "93eb2ca193fe8c147c6d7d10bb89ab7c02864b032df23191527628ff0c477c4f"
+      },
+      "audit": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/audits/seed-947103-candidate/summary.json",
+        "bytes": 3531,
+        "sha256": "17d4ebbf8e36859094f1a21698986efbbd52d2c0615b1c5963291157af4ffe22"
+      },
+      "independent_metrics": [
+        {
+          "task": "past_volatility",
+          "r2": 0.5855502197418971,
+          "mae": 0.00018560345493004828,
+          "rmse": 0.00021749594944700225,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_trend",
+          "r2": 0.6796963059027759,
+          "mae": 0.000031320319228401375,
+          "rmse": 0.00003789834952128568,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_activity",
+          "r2": 0.8493554499578199,
+          "mae": 0.17920596886050694,
+          "rmse": 0.22305256037540866,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        },
+        {
+          "task": "past_relation",
+          "r2": 0.4090859712660714,
+          "mae": 0.05335404811751598,
+          "rmse": 0.06625492596258505,
+          "coverage": 1,
+          "valid": 32,
+          "total": 32
+        }
+      ],
+      "detailed_control_mask_witness": null
+    }
+  ],
+  "work_counts": {
+    "scientific": {
+      "logical_optimizer_updates": 6144,
+      "new_physical_optimizer_updates": 5376,
+      "previously_executed_control_prefix_updates": 768,
+      "new_attempted_batches": 5376,
+      "previous_control_prefix_attempts": 768,
+      "total_logical_attempts": 6144,
+      "new_native_training_processes": 12,
+      "new_candidate_fresh_processes": 3,
+      "new_control_continuation_processes": 6,
+      "new_candidate_resume_processes": 3,
+      "new_TRAIN_preprocessing_fits": 3,
+      "reused_control_TRAIN_preprocessing_fits": 3,
+      "TRAIN_windows_per_fit": 1024,
+      "head_fits": 24,
+      "independent_scalar_audits": 6,
+      "independent_scalar_target_refits": 24,
+      "preparation_reexecutions": 0,
+      "old_control_training_prefix_replays": 0,
+      "new_gradient_diagnostic_executions": 0
+    },
+    "engineering": {
+      "summary": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/engineering-001/summary.json",
+        "bytes": 210,
+        "sha256": "9ca9cf120f257984573a1db2f5cbc2192e2e28220684c14bbe6a568a60b65d9c"
+      },
+      "details": {
+        "kind": "cpb_v18_recipe_engineering_v1",
+        "status": "passed",
+        "assertions": 1045,
+        "named_gradient_tensors_compared": 126,
+        "physical_synthetic_updates": 16,
+        "preprocessing_fits": 2,
+        "refusals": 27,
+        "quality_evaluated": false
+      },
+      "quality_evaluated": false
+    },
+    "distinction": "6144 is logical training across six1024 histories; only5376 optimizer updates are new work in this study. The old768 control-prefix updates are preserved and never rerun."
+  },
+  "current_reference": {
+    "version": "CPB-v16",
+    "seed": 946103,
+    "logical_update": 2048,
+    "unchanged": true,
+    "declaration": {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/research-reference.json",
+      "bytes": 6159,
+      "sha256": "8c96a51e34f71f8f566ab178f3e0fa6076164c35a53d0890cae6fb2131c9039b"
+    },
+    "checkpoint": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/checkpoints/inference-2048.pt",
+      "bytes": 1295473,
+      "sha256": "b6f3cbe711235307f362bf2f999571d65d00c85825f8a4a5c2fbc4fa4242e51e"
+    },
+    "TRAIN_input_scaler": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/calibration/input-scaler.pt",
+      "bytes": 39988,
+      "sha256": "7d975f95d4b7ea051d51de523be812df613f1adcfce9382414a20846a70b5926"
+    },
+    "TRAIN_bank_standardizer": {
+      "path": ".temp/embeddings/runs/cpb-v16-temporal-001/attempt-001/subruns/seed-946103/candidate/training/calibration/bank-standardizer.pt",
+      "bytes": 54079,
+      "sha256": "7999fddcada718d2c10ea20a61269cb4aa807959eb081bb0d9b1370ed0822150"
+    }
+  },
+  "measured": {
+    "final1024_January_linear_readouts": true,
+    "legacy_target_ID_group_support_parity": true,
+    "independent_scalar_ridge_arithmetic": true,
+    "actual_candidate_span_and_lag_witnesses": true,
+    "control_actual_detailed_mask_witnesses": false,
+    "actual_control256_to640_to1024_continuation": true,
+    "actual_candidate0_to512_to1024_fresh_resume": true,
+    "typed_final_inference_reload": true,
+    "fixed_query_reconstruction": false,
+    "TEMPO_timing": false,
+    "neural_readouts": false,
+    "fresh_population_confirmation": false,
+    "full2048_budget_superiority": false,
+    "forecasting": false,
+    "application_utility": false
+  },
+  "limits": [
+    "January development is exposed; January/February/March2024 are consumed evidence for later selection.",
+    "Three seed pairs and a fixed1024 budget do not establish universal or full2048-budget encoder superiority.",
+    "Contiguous masking changes training difficulty/support arrangement; no evaluation masks, target definitions or head recipe were changed.",
+    "Actual detailed mask/lag witnesses are available for candidate runs only; unavailable control fields are not reconstructed or invented.",
+    "The original V17 structural ridge witness kind is reused strictly as a tensor codec; actual encoder kind, mask policy, checkpoint hash and full update count remain separately bound.",
+    "No intermediate adaptive score gate, rescue seed, budget extension, neural/timing/fresh confirmation or automatic application update is performed."
+  ],
+  "evidence": {
+    "study_admission": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/admission.json",
+      "bytes": 151803,
+      "sha256": "e5c66b924d44d8599a4a2e110f7403aa5dbceb24edf9f8598e2ee5b1eda6b5db"
+    },
+    "protocol_copy": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/protocol-admitted.md",
+      "bytes": 20778,
+      "sha256": "927054aa15b9fb50b900b409d2876870abc4ce8925edbe336f0dabe693780743"
+    },
+    "operation_contract": {
+      "path": "code/embeddings/evaluation/protocols/cpb_v18_span_v1/CONTRACT.md",
+      "bytes": 9569,
+      "sha256": "560572059a7f5c757af6314ab0bef743cad6c81405f40787aa9e6d131bd1a73f"
+    },
+    "phase_admissions": {
+      "train": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/train.admission.json",
+        "bytes": 1140,
+        "sha256": "19f73fa5dc5a993ba9ed548649ba813b5c4496097d9fdb50779377610500b750"
+      },
+      "readout": {
+        "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/readout.admission.json",
+        "bytes": 4209,
+        "sha256": "5e72690be25b053e2ffd09bd72c42e7f179f46c5baeb88e298cc0fdbcc34b904"
+      }
+    },
+    "training_seal": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/training-seal.json",
+      "bytes": 17313,
+      "sha256": "27e8375013479770d632faf2ac00ed335fd69c727dde381801508f84202cd18a"
+    },
+    "screen_summary": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/screen-summary.json",
+      "bytes": 28554,
+      "sha256": "e776e14f7e558e1797c127243f3f11d92b475d79bc7c8dd40319423e03dce24f"
+    },
+    "engineering_execution": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/engineering-execution.json",
+      "bytes": 778,
+      "sha256": "d967e49cd2078af295dc3e68996df058e587a4b1aabaf6d775a3cf7e83792619"
+    },
+    "engineering_admission": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/engineering-admission.json",
+      "bytes": 19013,
+      "sha256": "2c56d041bb93e840efa3c3843dc5b148ca65796638ce79aa29d7f694993344e8"
+    },
+    "engineering_summary": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/engineering-001/summary.json",
+      "bytes": 210,
+      "sha256": "9ca9cf120f257984573a1db2f5cbc2192e2e28220684c14bbe6a568a60b65d9c"
+    },
+    "original_control_source_capsule": {
+      "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/preserved-source-at-closeout/capture-receipt.json",
+      "bytes": 27166,
+      "sha256": "720c3f0f04787f350b9e8f072e4c76d2fa7fd453ac12d588fc2054014d43b128"
+    },
+    "original_control_source_capsule_files": 108,
+    "reused_control_prefixes": [
+      {
+        "seed": 947101,
+        "reports": [
+          {
+            "stage": "fresh-128",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/fresh-128/run.json",
+              "bytes": 4014,
+              "sha256": "a721945f33cd5ef306e71ddb43bec288ddae5285de8f73af6df16b0903c8e309"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 1024
+          },
+          {
+            "stage": "resume-256",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/resume-256/run.json",
+              "bytes": 3776,
+              "sha256": "ec264b4d9b8ef726ba3facd87199c51e993347cdcdf9e6b4d64f88901ec2fe48"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 0
+          }
+        ],
+        "initial_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/fresh-128/inference-0.pt",
+          "bytes": 1298632,
+          "sha256": "8fb17978f59062df0b9b61dc8790c0f46d3f32875f23879fc8514173f824fd62"
+        },
+        "training_state": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/resume-256/training-final.pt",
+          "bytes": 3767751,
+          "sha256": "460f8b4fb4e76c8c68b8d83a261841b2ede20595609e8dd3341237c6af8242f9"
+        },
+        "final_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947101-control/resume-256/inference-final.pt",
+          "bytes": 1300204,
+          "sha256": "9294e5a96af3d0e8c30b9ba78029e7191ecb63724c527ea4aa571ffc223df90d"
+        },
+        "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948101;mask-seed=949101;context-seed=950101;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+        "initial_state_identity": "cpb-family-state-fnv1a64-17426e39fea5d2fd",
+        "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+        "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+        "settings": {
+          "path": "/mityane/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/config/research.conf",
+          "bytes": 622,
+          "sha256": "f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b"
+        },
+        "dataset": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-train/calibration-TRAIN.pt",
+          "bytes": 32920080,
+          "sha256": "7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa"
+        },
+        "executable": {
+          "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_train",
+          "bytes": 848288,
+          "sha256": "767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4"
+        },
+        "completed_updates": 256,
+        "attempted_batches": 256,
+        "reused_physical_updates": 256
+      },
+      {
+        "seed": 947102,
+        "reports": [
+          {
+            "stage": "fresh-128",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/fresh-128/run.json",
+              "bytes": 4014,
+              "sha256": "12c33201960411997707873add67155edbef70663f5ac553a79c45dd4175bcbd"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 1024
+          },
+          {
+            "stage": "resume-256",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/resume-256/run.json",
+              "bytes": 3776,
+              "sha256": "50faf02804c0c86cf9270cdb2b7d7366e6ca6561a247558405e52eefb4dc6f4f"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 0
+          }
+        ],
+        "initial_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/fresh-128/inference-0.pt",
+          "bytes": 1298632,
+          "sha256": "344a167f12b4bfb2ac4b68e3fc4af091b76b199159ecf832946bd5317aabeb08"
+        },
+        "training_state": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/resume-256/training-final.pt",
+          "bytes": 3767879,
+          "sha256": "46ca742f1fcfd3a438e9f1c47e04e4bae2ac2c2d18bd1a136944a991a2a10f88"
+        },
+        "final_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947102-control/resume-256/inference-final.pt",
+          "bytes": 1300204,
+          "sha256": "673017b6ea784296a1dac320a72a2efc4c62b783b13d6391fe1c4f7cccc9ba97"
+        },
+        "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948102;mask-seed=949102;context-seed=950102;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+        "initial_state_identity": "cpb-family-state-fnv1a64-09bd37d81f312f52",
+        "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+        "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+        "settings": {
+          "path": "/mityane/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/config/research.conf",
+          "bytes": 622,
+          "sha256": "f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b"
+        },
+        "dataset": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-train/calibration-TRAIN.pt",
+          "bytes": 32920080,
+          "sha256": "7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa"
+        },
+        "executable": {
+          "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_train",
+          "bytes": 848288,
+          "sha256": "767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4"
+        },
+        "completed_updates": 256,
+        "attempted_batches": 256,
+        "reused_physical_updates": 256
+      },
+      {
+        "seed": 947103,
+        "reports": [
+          {
+            "stage": "fresh-128",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/fresh-128/run.json",
+              "bytes": 4014,
+              "sha256": "fa8240843e7f999da919202464364e14f43dad1b77f496ddc7cc08fcda48604c"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 1024
+          },
+          {
+            "stage": "resume-256",
+            "report": {
+              "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/resume-256/run.json",
+              "bytes": 3776,
+              "sha256": "eacae8e3c66224d102888f1fbd8086f0daf09ff5d219c285227526153ed20e43"
+            },
+            "physical_optimizer_updates": 128,
+            "attempts": 128,
+            "preprocessing_fit_windows": 0
+          }
+        ],
+        "initial_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/fresh-128/inference-0.pt",
+          "bytes": 1298632,
+          "sha256": "b84135c22f0af13157901952bf82ab6a1bd34d61b9425f26772dce273e3a383f"
+        },
+        "training_state": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/resume-256/training-final.pt",
+          "bytes": 3767879,
+          "sha256": "1cbcdc87a57ed8e55939f071ec97159d2051ddafea8e3d85aee487c8f435260f"
+        },
+        "final_inference": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/trajectories/seed-947103-control/resume-256/inference-final.pt",
+          "bytes": 1300204,
+          "sha256": "4edb00190a6d080c442fbac0e348dafb4d65a264a4e555b009720313b432bf41"
+        },
+        "recipe_identity": "cpb-v17-portable-train-v1;executable=767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4;settings=f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b;dataset=7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa;batch=8;rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1;row-seed=948103;mask-seed=949103;context-seed=950103;learning-recipe=CPB-v17;cpb-fixed-weight-hidden-temporal-recipe-v1;GaussianNLL=1;temporal=0.10000000000000001;lags=1,4,16;fixed-mean3;scale=sqrt2;Huber=1;originalQ-both-endpoints;variance-input-gradient-stop;dropout0;AdamW-lr=0.001;wd=0.0001;global-clip=1",
+        "initial_state_identity": "cpb-family-state-fnv1a64-dd3614ec72f6bfa5",
+        "scaler_identity": "rpb-scaler-v1-fnv1a64-d6fb768d6fa7ac09",
+        "bank_identity": "rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-687aaa9aed358ed5",
+        "settings": {
+          "path": "/mityane/code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/config/research.conf",
+          "bytes": 622,
+          "sha256": "f48767f0a49261033fc0e291e51327bbcde07c5d9e0769e4cb03a973085c5a4b"
+        },
+        "dataset": {
+          "path": "/mityane/.temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-train/calibration-TRAIN.pt",
+          "bytes": 32920080,
+          "sha256": "7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa"
+        },
+        "executable": {
+          "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_train",
+          "bytes": 848288,
+          "sha256": "767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4"
+        },
+        "completed_updates": 256,
+        "attempted_batches": 256,
+        "reused_physical_updates": 256
+      }
+    ],
+    "reused_data": {
+      "training": {
+        "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-train/calibration-TRAIN.pt",
+        "bytes": 32920080,
+        "sha256": "7020ebf1d6c2b793893a9c0ccb8ae524e76c478c6389e31204c3e92dd88efcaa"
+      },
+      "probes": [
+        {
+          "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-probes/probe-TRAIN.pt",
+          "bytes": 3604752,
+          "sha256": "a9b6531ee0457c0411386300565279a558651df47a0b231b3f118088b8bc8778"
+        },
+        {
+          "path": ".temp/embeddings/runs/cpb-v17-balance-001/attempt-001/data-probes/probe-VALIDATION.pt",
+          "bytes": 1033232,
+          "sha256": "4dc66210cc76793b6223bb8af9faad259679d45a1e2faf316a23e57642fa664c"
+        }
+      ],
+      "preparation_reexecuted": false,
+      "legacy_paths_are_dataset_identities_not_encoder_ancestry": true
+    },
+    "native_command_receipts": [
+      {
+        "label": "seed-947101-candidate-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-candidate-audit.json",
+          "bytes": 1978,
+          "sha256": "01603b18b685f3acc9bbc5a42e7891bfbea04b0fccf0ab0d3ab515d8129fadec"
+        }
+      },
+      {
+        "label": "seed-947101-candidate-fresh-512",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-candidate-fresh-512.json",
+          "bytes": 3876,
+          "sha256": "2d8bc48cfd5835186616478bffafb95257e9d29393c76206e922eb2ec599959f"
+        }
+      },
+      {
+        "label": "seed-947101-candidate-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-candidate-readout.json",
+          "bytes": 2903,
+          "sha256": "a597cdf0ab3a3e1592116bfc36a0ddd741ef15057a8c4b712b713b4bc0355599"
+        }
+      },
+      {
+        "label": "seed-947101-candidate-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-candidate-resume-1024.json",
+          "bytes": 3656,
+          "sha256": "9a6059e939f56193dd572349ab3f565272821ad38ce59d94332de085eb5dd3f1"
+        }
+      },
+      {
+        "label": "seed-947101-control-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-control-audit.json",
+          "bytes": 1966,
+          "sha256": "63405830ab07eb52d0008132795b9bae9e2d6634f6326a31a24430c07ca76cdf"
+        }
+      },
+      {
+        "label": "seed-947101-control-continue-640",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-control-continue-640.json",
+          "bytes": 3404,
+          "sha256": "0c23bd3c7a86578e300a762990d79ee43a153ed11ac04d7de1eafe6fd6fe60b1"
+        }
+      },
+      {
+        "label": "seed-947101-control-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-control-readout.json",
+          "bytes": 2889,
+          "sha256": "ab97bbc608c3c5117828f833000761dd6f9b25cf72b3067e764acd8f5cd1a9cc"
+        }
+      },
+      {
+        "label": "seed-947101-control-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947101-control-resume-1024.json",
+          "bytes": 3384,
+          "sha256": "a5c7e784c59fa5d2860a373690d61033378af46c5685ff6cadb9032c2280ba5e"
+        }
+      },
+      {
+        "label": "seed-947102-candidate-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-candidate-audit.json",
+          "bytes": 1978,
+          "sha256": "78d5e347b29d6ce4e8c7758481f96f483426c4cd023dcd54d484d9d50056f8ff"
+        }
+      },
+      {
+        "label": "seed-947102-candidate-fresh-512",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-candidate-fresh-512.json",
+          "bytes": 3876,
+          "sha256": "842240ac84286e1d9b277c37d251b658c7a463f7bfc8329863d3184e43973978"
+        }
+      },
+      {
+        "label": "seed-947102-candidate-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-candidate-readout.json",
+          "bytes": 2903,
+          "sha256": "0d56c031ba70ca035216e21802bc593c346c503f1985cebf799ae653a063b2a6"
+        }
+      },
+      {
+        "label": "seed-947102-candidate-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-candidate-resume-1024.json",
+          "bytes": 3656,
+          "sha256": "e161bbc0d95aaa542552b027a30313ec9be25025cc32be120902ebe4badceed0"
+        }
+      },
+      {
+        "label": "seed-947102-control-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-control-audit.json",
+          "bytes": 1966,
+          "sha256": "dc1bac27e038eae1a91333859ed845e7b06b5c7ca0465e3111cadf5c18be1e23"
+        }
+      },
+      {
+        "label": "seed-947102-control-continue-640",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-control-continue-640.json",
+          "bytes": 3404,
+          "sha256": "bbf8dc96fcae90f2e848e7ef7bd53b64965487685a3a71d1345547b4d69d6cc6"
+        }
+      },
+      {
+        "label": "seed-947102-control-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-control-readout.json",
+          "bytes": 2889,
+          "sha256": "8e2d5f8f9265a5fc1798c3bacf931e5bd3d250d50ce358b67416045ba6042d4d"
+        }
+      },
+      {
+        "label": "seed-947102-control-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947102-control-resume-1024.json",
+          "bytes": 3384,
+          "sha256": "1dcdfa8f3d16700068bc7d3f56acc6f0051653dd0eeb034d7769c3967bde3a2b"
+        }
+      },
+      {
+        "label": "seed-947103-candidate-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-candidate-audit.json",
+          "bytes": 1978,
+          "sha256": "1b7d4c1863f61bab20a2ee67865d21fc2707296a1f4b2cbf30ab4c7de291467b"
+        }
+      },
+      {
+        "label": "seed-947103-candidate-fresh-512",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-candidate-fresh-512.json",
+          "bytes": 3876,
+          "sha256": "8d48d96975293752874f2b3940a3147b4b28b7a1d5d393ea54e2c778412d2fbb"
+        }
+      },
+      {
+        "label": "seed-947103-candidate-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-candidate-readout.json",
+          "bytes": 2903,
+          "sha256": "1a25c59401ec8e9305e185a139daec5162f2c258e8814f414511aaf0de498dd5"
+        }
+      },
+      {
+        "label": "seed-947103-candidate-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-candidate-resume-1024.json",
+          "bytes": 3656,
+          "sha256": "f9696e2c90e0e814e0878e29a1cc78d061f6f55e71b121939d31c01d77252d4a"
+        }
+      },
+      {
+        "label": "seed-947103-control-audit",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-control-audit.json",
+          "bytes": 1966,
+          "sha256": "5a9f44372d90bc28342dd75a70216213abc94f10453728b6c75f1d7c84595fab"
+        }
+      },
+      {
+        "label": "seed-947103-control-continue-640",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-control-continue-640.json",
+          "bytes": 3404,
+          "sha256": "e6189674c4c77a1f2c953740d63aa57751e61a922d625d8dc942b64ae2139709"
+        }
+      },
+      {
+        "label": "seed-947103-control-readout",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-control-readout.json",
+          "bytes": 2889,
+          "sha256": "4c31c6319d91ab177b1a3cdc3d27d8ea743fd9e250a0a7911c0c421fbd31f13f"
+        }
+      },
+      {
+        "label": "seed-947103-control-resume-1024",
+        "receipt": {
+          "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/receipts/seed-947103-control-resume-1024.json",
+          "bytes": 3384,
+          "sha256": "ed6274574b70ea67bb67ebd3afc122cf18c61b2b991ca760bedb634302707ecf"
+        }
+      }
+    ],
+    "verified_input_manifest": {
+      "path": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/closeout-input-manifest.json",
+      "bytes": 142170,
+      "sha256": "ed825deee26147489d27beb1eb2afaaf8e82a343766f05fb1a84feb4a2f52425"
+    },
+    "current_source_closure": {
+      "unique_files": 107,
+      "canonical_sorted_pin_array_sha256": "0bb268a90a89dd0cfcf0223a9b0f3fe8d6a183bbc47011466f48e1a82e92dedd",
+      "complete_pins_in": ".temp/embeddings/runs/cpb-v18-span-001/attempt-001/closeout-input-manifest.json"
+    },
+    "executables": [
+      {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_audit",
+        "bytes": 104176,
+        "sha256": "defbb1b714c1900192b84483206a17f4f35301dc8887c34bc348d67d3b5fd662"
+      },
+      {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v17-balance-001/cpb_v17_train",
+        "bytes": 848288,
+        "sha256": "767c94e29f0687f881522a2045cd23ebcd1290db7e74a7d97fcc59e55d8c71a4"
+      },
+      {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v18-span-001/cpb_v18_readout",
+        "bytes": 793664,
+        "sha256": "536d2ad23f89666e84193adeb3834ca1faf84f2f0bdb9cbb3450997c8fad2cea"
+      },
+      {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v18-span-001/cpb_v18_train",
+        "bytes": 861296,
+        "sha256": "ce6524fda087513e076e1f622dd6162384a892e659c78fb36512ee82211e221e"
+      },
+      {
+        "path": "/opt/mityane-geometrics/embeddings/build/cpb-v18-span-001/test_cpb_v18",
+        "bytes": 862128,
+        "sha256": "cc9c4cb75575ebcac44621eab76fdab58b61ec13056d56b3f3518e0cf9dbe3fc"
+      }
+    ],
+    "executable_set_sha256": "207a14859ea836caa5d733f54262b01085b8943112d4ca0f8a267254192af958",
+    "frozen_V16_files_unchanged": 49,
+    "frozen_family_headers_unchanged": 3,
+    "results": {
+      "path": "code/embeddings/evaluation/protocols/cpb_v18_span_v1/RESULTS.md",
+      "bytes": 6180,
+      "sha256": "0ca69746d5a4c2503dddbfa22668d91366dbfdffda19ef92ed46b11949799c5d"
+    }
+  },
+  "reproduction": {
+    "generator": {
+      "path": "code/embeddings/evaluation/protocols/cpb_v18_span_v1/closeout-study.mjs",
+      "bytes": 25668,
+      "sha256": "06e48484154c70e9fafa52b526ecaa3eb339301e9b80f1c9b92958af2b673752"
+    },
+    "model_calls": 0,
+    "external_processes_invoked": 0,
+    "tensor_archives_decoded": 0,
+    "original_control_build_preservation": "The108 exact V17 source files preserve the old root build and attributes separately from the newly admitted V18 root build; origin and preserved paths retain explicit mapping.",
+    "publication_payload": "Compact records and source only. Data, checkpoints, optimizer states, full receipts and source capsules remain ignored local artifacts."
+  }
+}

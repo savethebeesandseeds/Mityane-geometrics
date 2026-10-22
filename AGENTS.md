@@ -69,6 +69,13 @@ container `mityane-geometrics`, through `container.ps1`. Do not install or run
 Windows toolchains, Java, Python environments or project services on the host.
 Host PowerShell is limited to orchestration, file inspection and OS integration.
 
+Prefer C++ for new implementations and avoid Python whenever practical.
+Use the existing Node/Bash stack for maintenance and dashboard tooling.
+Python remains appropriate when it offers a clear advantage, particularly
+independent scientific verification. Preserve frozen numerical behavior and
+research evidence; this recommendation does not require rewriting existing
+Python solely to change language.
+
 Use `setup.sh` only for dependency verification, cached exact dependency
 installation and environment configuration. It must not manage containers,
 build, test, train or start services. Keep lifecycle operations in

@@ -15,7 +15,116 @@ fixed readouts independently measure retained information. The
 [project charter](operations_over_representations_design_spec_v0.1.0.md) keeps the
 broader project domain-agnostic and makes operation utility a separate claim.
 
+## Latest comparison: V19 EMA teacher — 23 October 2026
+
+The [V19 comparison](../code/embeddings/evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
+is complete and **did not produce a better balanced encoder**. A training-only
+predictor and moving-average teacher supplied a direct target for the learned
+bottleneck. The served architecture/output shape, scattered masks, base objective and established
+linear evaluation stayed unchanged. Three fresh candidates trained to 1,024
+updates; the three completed scattered controls and their audited heads were
+reused. All three new readouts and independent arithmetic audits passed.
+
+The method has real scoped gains: volatility improved in **3/3 pairs**, with
+median candidate-minus-control R² **+0.053184**; relation improved in **2/3**,
+median **+0.109583**. Trend and activity each improved in only **1/3**, with
+medians **−0.029321** and **−0.053271**. All four trend/activity continuation
+conditions failed; volatility protection passed. No scoped linear record or
+top-three group changed. **V16 seed946103/final2048 remains the reference.**
+
+The [record](../code/embeddings/evaluation/records/CPB-v19.teacher-001.json)
+separates **3,072 new updates** from **3,072 reused control updates** within
+6,144 logical comparison updates. It also records the new teacher/predictor
+work, three TRAIN fits, six training processes, twelve new target heads and
+three new audits. Every new endpoint and admitted control identity was sealed
+before new candidate heads; the reused control heads already existed.
+
+The [V19 component](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/README.md)
+keeps the complete teacher/predictor/objective/optimizer/resume method portable
+and exports the student alone for inference. CUDA engineering passed 1,734
+assertions across native36 and native15. Nonzero batch dispersion and norms
+remain descriptive diagnostics, not proof against population collapse. This
+known January development comparison measures no neural, timing,
+reconstruction, fresh-population, full 2,048-update or application result.
+The [delivery receipt](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/migration/delivery-2026-10-23.json)
+pins the verified 106-file source package, including the full training method,
+completed results and independent review; all 94 quoted includes resolve.
+The [pre-commit preservation record](ENCODER_COMMIT_PRESERVATION_2026-10-23.json)
+maps the exact V19 execution-source capsule before later Git byte-protection
+rules and distinguishes the retained MTF/RPB bundles from subsequent shared
+guidance edits. Original numerical receipts and bundles remain unchanged.
+
+## Previous comparison: V18 contiguous training gaps — 22 October 2026
+
+The [V18 comparison](../code/embeddings/evaluation/protocols/cpb_v18_span_v1/RESULTS.md)
+is complete and **did not produce a better encoder**. Three matched seed pairs
+compared contiguous gaps with scattered training masks at 1,024 updates per arm.
+Architecture, objective, optimizer and the established January linear readouts
+remained shared. All six readouts and independent arithmetic audits passed.
+
+Candidate-minus-control median R² changes were trend **−0.221846**, activity
+**−0.090620**, volatility **−0.057857** and relation **+0.015733**. Trend worsened
+in all three pairs; activity improved in one and relation in two. Every
+predeclared continuation condition failed, including the volatility protection.
+No new scoped linear record or top-three group was established. **V16
+seed946103/final2048 remains the research reference.**
+
+The study reused the three original scattered-control 256-update states and
+continued them without refitting; V18 candidates started fresh with matching
+initialization and TRAIN statistics. It executed **5,376 new updates**, with
+768 preserved control-prefix updates giving 6,144 logical updates. All six
+final states were sealed before any readout. The
+[compact record](../code/embeddings/evaluation/records/CPB-v18.span-001.json)
+retains every arm, actual mask/support witnesses, work counts and limitations.
+This is known January development evidence at a 1,024-update budget; it measures
+no neural, timing, reconstruction, fresh-population or application result.
+
+The [V18 component](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/README.md)
+retains configurable construction, TRAIN fitting, the complete training method
+and typed checkpoint/resume. This mask recipe is not the next research default;
+the negative result remains useful evidence for the continuing search.
+The [delivery receipt](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/migration/delivery-2026-10-22.json)
+pins the verified 106-file source package, including the complete training
+method, results and independent review; all 95 quoted includes resolve.
+
+## Previous comparison: V17 temporal strength — 22 October 2026
+
+The [V17 bounded study](../code/embeddings/evaluation/protocols/cpb_v17_balance_v1/RESULTS.md)
+is complete and **failed its continuation criterion**. Three fresh native36
+seed pairs compared temporal weights0.03 and0.1 through the corrected
+configurable component at256 updates per arm. All1536 updates, twelve actual
+fresh/resume processes, exact legacy target checks and six independent linear
+readout audits passed. Candidate-minus-control median January R2 changes were
+trend **-0.003029**, activity **-0.008995**, volatility **-0.002419** and relation
+**+0.003186**. Activity worsened3/3; trend improved only1/3. Volatility stayed
+within its -0.01 median tolerance, and relation improved2/3. These gains and
+regressions remain visible in the [complete record](../code/embeddings/evaluation/records/CPB-v17.balance-001.json).
+
+**V16 seed946103/final2048 remains the current research reference.** No new
+scoped linear record or better overall encoder was established. This was an
+early256-update comparison on consumed January development data; neural heads,
+timing, fixed-query reconstruction and fresh confirmation were not measured. Its fresh0.1
+controls share the new fitter/calibration/sampling recipe and do not reproduce
+historical V16 trajectories. The TRAIN-only diagnostic found small temporal
+raw gradients and positive global alignment, with localized backbone conflict;
+it does not identify the cause of earlier regressions or AdamW update effects.
+
+The [V17 component](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/README.md)
+retains configurable construction, complete TRAIN fitting/training code,
+weight-bound typed resume/export and a portable source package. This negative
+research result does not undo the corrected component and application boundary.
+The [source-delivery receipt](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/migration/delivery-2026-10-22.json)
+records the verified93-file package and its independent manifest pin.
+
 ## Family deliverable and application training — 22 October 2026
+
+Versioned encoder discovery continues alongside portable component development.
+Mityane owns proposing, training and comparing architecture and learning-method
+candidates to seek better representations. The generalized V16 interface makes
+its method configurable and exportable; it does not conclude CPB research or
+replace later numbered candidates. Numbered research versions retain their
+scoped protocols and measured results; an export revision alone establishes
+no new quality winner.
 
 The [shared encoder Hero instructions](../code/embeddings/encoders/AGENTS.md)
 apply across **Hx15–Hx18**, including external provider tools under their actual
@@ -39,7 +148,7 @@ existing weights still requires their exact saved configuration; changing a
 supported shape does not imply reshaping those weights or creating another
 source version merely to bypass an experimental assertion.
 
-The [configurable family and training handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md)
+The [CPB configurable family and training handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md)
 is the maintained destination for supported constraints, portable construction,
 preprocessing fitting, training, checkpoint/resume and their focused engineering
 evidence. It must distinguish implemented portability from missing application
@@ -62,10 +171,32 @@ Its Cuwacunu mapping respects the existing application training pipeline;
 example, historical study and consumer recipes remain distinct.
 
 The [component ownership contract](../code/embeddings/encoders/COMPONENT_DELIVERY.md)
-incorporates a direct Cuwacunu consumer review: Mityane delivers reusable learning
-semantics and evidence; applications bind their data, complete recipes,
-execution and trusted artifacts. The review found no missing numerical delivery
-mechanism blocking Cuwacunu's existing pipeline.
+incorporates a direct Cuwacunu review of the CPB delivery: Mityane delivers
+reusable learning semantics and evidence; applications bind their data, complete
+recipes, execution and trusted artifacts. That review found no missing numerical
+delivery mechanism blocking use through Cuwacunu's existing training pipeline.
+
+**Hx15 MTF remains a retained reference, with no current downstream application
+use.** Its [portable family layer](../code/embeddings/encoders/mtf_jepa_mae_vicreg/family/README.md)
+and [22 October engineering record](../code/embeddings/encoders/mtf_jepa_mae_vicreg/family/verification/RESULTS_2026-10-22.md)
+now cover configurable construction, identity preparation without a fitted
+scaler, training/resume, inference and source delivery. Two configurations and
+two sampling recipes passed primary and isolated CPU/F32 engineering checks.
+These checks establish the recorded component behavior; they add no scientific
+quality ranking or downstream utility claim. Historical MTF-v1 checkpoints and
+their unknown preparation associations retain their original scope.
+
+**Hx16 RPB's portable training delivery is complete.** Its
+[maintained family guide](../code/embeddings/encoders/raw_patch_bottleneck_mae/family/README.md)
+and [runnable C++ example](../code/embeddings/encoders/raw_patch_bottleneck_mae/family/examples/TRAINING.md)
+cover configurable fresh-v22 construction, streamed TRAIN fitting, masked
+updates, typed continuation and inference/embedding export. Two configurations
+passed actual CUDA/F32 engineering checks with exact continuation in the named
+runtime. The [source-delivery receipt](../code/embeddings/encoders/raw_patch_bottleneck_mae/family/migration/delivery-2026-10-22.json)
+binds the 117-file package, isolated recipient acceptance and documentation-only
+final amendment. These checks establish component behavior; the historical
+native36/V30 results and causal-eligibility limits below remain unchanged.
+Applications own substantial training and final docking.
 
 ## Leading encoders and their roles
 

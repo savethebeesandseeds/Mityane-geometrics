@@ -1,0 +1,2142 @@
+{
+  "schema": "rpb-component-source-audit-v1",
+  "date": "2026-10-22",
+  "hero": "Hx16",
+  "milestone": "encoder-rpb-training-delivery-audit",
+  "scope": "Source inspection only; no compilation, model execution, new portability proof or finished export.",
+  "gitHead": "1b3e2163e067ce0485f9505d963e6e07f74ab756",
+  "identityPolicy": "Working-tree per-file hashes identify inspected bytes. Git HEAD records ancestry only. Historical receipts retain original paths and hashes.",
+  "selectedSurface": "Fresh configurable RPB-v22 over v20; shared streaming TRAIN scaler; distinct v22 inference and typed fixed-AdamW training state.",
+  "closureMethod": "Recursively resolve literal quoted includes relative to each source and then declared include roots. Include conditional branches textually; no compiler preprocessing. Angle includes are external dependencies. Read-only file inspection.",
+  "includeRoots": [
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include",
+    "code/shared/settings/include"
+  ],
+  "rootFiles": [
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp",
+    "code/shared/settings/tests/config_document_test.cpp"
+  ],
+  "selectedClosureFileCount": 73,
+  "selectedClosureFiles": [
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+    "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp",
+    "code/shared/settings/include/cuwacunu/config/document.h",
+    "code/shared/settings/include/piaabo/parse/simple_kv_block.h",
+    "code/shared/settings/tests/config_document_test.cpp"
+  ],
+  "unresolvedQuotedIncludes": [],
+  "includeEdges": [
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "include": "../../../../versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "include": "../../../../versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "include": "../../../../versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "include": "../../../../versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "include": "../../../../versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "include": "../../../../versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "include": "../../../../versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "include": "../../../../versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "include": "../../../../versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "include": "../../../../versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "include": "../../../../versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "include": "cuwacunu/config/document.h",
+      "target": "code/shared/settings/include/cuwacunu/config/document.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "include": "../../../../versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "source": "code/shared/settings/include/cuwacunu/config/document.h",
+      "include": "piaabo/parse/simple_kv_block.h",
+      "target": "code/shared/settings/include/piaabo/parse/simple_kv_block.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "include": "../../../../versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "include": "../../../../shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h"
+    },
+    {
+      "source": "code/shared/settings/tests/config_document_test.cpp",
+      "include": "cuwacunu/config/document.h",
+      "target": "code/shared/settings/include/cuwacunu/config/document.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "include": "cuwacunu/config/document.h",
+      "target": "code/shared/settings/include/cuwacunu/config/document.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "source": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "include": "embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "target": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    }
+  ],
+  "externalIncludes": [
+    "algorithm",
+    "array",
+    "cctype",
+    "cerrno",
+    "chrono",
+    "cmath",
+    "cstdint",
+    "cstdlib",
+    "cstring",
+    "fcntl.h",
+    "filesystem",
+    "fstream",
+    "initializer_list",
+    "iomanip",
+    "iostream",
+    "iterator",
+    "limits",
+    "linux/fs.h",
+    "memory",
+    "numeric",
+    "random",
+    "set",
+    "sstream",
+    "stdexcept",
+    "string",
+    "string_view",
+    "sys/syscall.h",
+    "torch/cuda.h",
+    "torch/torch.h",
+    "unistd.h",
+    "unordered_map",
+    "unordered_set",
+    "utility",
+    "vector"
+  ],
+  "externalRequirements": [
+    "Linux/POSIX atomic no-replace filesystem publication",
+    "C++20 stdlib, ABI1, pthread",
+    "LibTorch 2.6.0+cu124 with CUDA 12.4; actual CUDA F32 model and F64 relation arithmetic",
+    "Inherited SDK remains /opt/cuwacunu_embedding/libtorch; binaries and their upstream licenses are separate from source"
+  ],
+  "deliveryPlan": {
+    "status": "Proposed; this inventory is not a release manifest",
+    "mapping": "Preserve selected closure/config/license origin bytes at sources/<repository-relative-path>; proposedPackageDestination is null for audit-only context. A release adds new runner/API/recipe/tests and curated documentation with its own exact manifest and destination hashes.",
+    "excluded": [
+      "datasets",
+      "trained weights",
+      "optimizer archives",
+      "SDK binaries",
+      "images",
+      "generated runs",
+      "credentials",
+      "unrelated evaluation/application source"
+    ],
+    "consumer": "Import through consumer managed build; record exact source and destination hashes and adaptations. No runtime sibling checkout. Raw numerical artifacts are separate from authenticated ModelRef, publication, selection, capture and downstream-parent admission."
+  },
+  "sourceFiles": [
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/CAUSAL_TRAINING_PROVENANCE_CORRECTION_2026-10-15.md",
+      "sha256": "626457ac3604d1710266003facd7574658bd9d51cf0ef661f7a323414e4ed5dc",
+      "bytes": 2973,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CAPACITY_V1.md",
+      "sha256": "994f9fb202cba974bfdebeadac00e78ba98feab63fe6caa3177db17459aa47cd",
+      "bytes": 8827,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/CONFIGURABLE_CONTENT_RELATION_V1.md",
+      "sha256": "0d82e90ed2119b6cbf941fdf273a905c0b5efb2625521eeb2bdef8e431566356",
+      "bytes": 13839,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/ENCODER_SEARCH_LEDGER.md",
+      "sha256": "31ca6e15a0c657e81d79befcd9fe45aa006e1c8f8dc8d516713a9fa01c7b7192",
+      "bytes": 13194,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/LOCATION_SCALE_DECODER_V30.md",
+      "sha256": "afd828ee2188ec4223beedcec8ee525506dbaa6d8445329182ac9a4d8312a0cc",
+      "bytes": 15620,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/MILESTONE_2026-10-14_NATIVE36_TRANSFER.md",
+      "sha256": "ce6e82257197539fcf49c9f0f6abf49b71a2927c91ab592e271b287dfbb7cc5f",
+      "bytes": 2945,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/RPB_V22_ENCODER_GUIDE.md",
+      "sha256": "7a4c24ed68337cf571060e2aeb93ccd173c36324810f1da24c571004d6155c82",
+      "bytes": 19812,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/pre-cleanup-2026-10-18/doc/STREAMING_TRAINING_SUPPORT.md",
+      "sha256": "983539303c929296cafdb3bec6f9335a11409255857f0468cda4a42d797450a9",
+      "bytes": 12692,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": ".archive/embeddings/README.md",
+      "sha256": "c91c14f9adb71f9e4d08a1f45771383ae426aec5a7c6c7523cf7c20ee6ea2a70",
+      "bytes": 4303,
+      "role": "frozen-historical-context",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "63471e62b707fce8c75544f9800f5662dcda3b5362e37cc16ad292362c83b7b9",
+      "bytes": 9478,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/AGENTS.md",
+      "sha256": "802033e8794242c1f50cae72528457abdec547414a34dd9b4403f9ff1a7c6488",
+      "bytes": 5940,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/CONSUMER_REVIEW_2026-10-22.md",
+      "sha256": "ed5808856a01e5c0ed3996b920f61c2d4afec7f83c7a4d089e69f25b6b2eb277",
+      "bytes": 3664,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/README.md",
+      "sha256": "b016746d4c090d1cd74cd46ccf066393997630530e884ce3906691db9a76722c",
+      "bytes": 6752,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/COMPONENT_DELIVERY.md",
+      "sha256": "ef8edbf151b80f7218117e228770b52c3799bc98ba3bab938e7c996afb1ddafc",
+      "bytes": 7779,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/CONFIGURABLE_SPECTRAL.md",
+      "sha256": "bc80083bf17c393b4f941af80cc3775eaf269ea85e8dfb4daa6fea5a3dea91e0",
+      "bytes": 6011,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/CONTENT_ORDERED_RELATION.md",
+      "sha256": "1666b620d6d045a9b3fa910c5fb1ebfbc7b0ba163e50c09ac99087e5968c7b0d",
+      "bytes": 6739,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/family/audit/COMPONENT_TRAINING_AUDIT_2026-10-22.md",
+      "sha256": "85ef69d7779a54e26f20c98be0c08838728c53e971622bf5dbd15df1a5c13246",
+      "bytes": 33480,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "sha256": "beee2c0b719cab1673ffe3e49199228579762417860022f72a329d34e22ca988",
+      "bytes": 279,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "sha256": "1b05322bb0576cb752fe6da2163224d0e03a4644938762b856cf5964fdba4561",
+      "bytes": 314,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "sha256": "854e668f1f7029ca4c66da0f91ae80dcbcd3eb408ad584986dad70e416156659",
+      "bytes": 311,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "sha256": "4a44fa457ce65b9ec425808de952c2118275983bb7955fe1912b567a1850fd8e",
+      "bytes": 307,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "sha256": "05993979ca91f16dc62d2794658f2420b015d8ec54a905b9c2a8e8c657e3ca6e",
+      "bytes": 306,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "sha256": "5c288aa66775fef295c1fa213d269aa12d7e9c4ac4052be300ed03e29f91a193",
+      "bytes": 309,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "sha256": "1a34e3db3c158d1028ff20a4514e394c4dd47eef7aedaea4a191f73ece107876",
+      "bytes": 309,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "sha256": "9eeddf558e492dd4dcc9b2b9563793adb2d307b4783a084771e7dba9e1dc2573",
+      "bytes": 308,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "sha256": "c1ffe21dce75f1c592dcdd7289fe6b4769ac84f0ab25f8f720f0c6c2cf206002",
+      "bytes": 314,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "sha256": "c608319aabd3038a9c856317a1ae4291f7e814b6dbaf0c8f5c6d411148836c03",
+      "bytes": 310,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "sha256": "e42fce55b12e4111e6569647848294ffab5641a13faa3a904c2554d982ba67b6",
+      "bytes": 309,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "sha256": "ba6d0cabf801a9718da5335d2fd32de546a0f308b220fc303ea0d61c75a3a1a5",
+      "bytes": 312,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "sha256": "4aafe54d9a328fe7cdbc59c3d3700fbae186aee71765143183a63941071e1271",
+      "bytes": 280,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "sha256": "22817d7b853ee02686b21f50234f379c7cd9bdb82c25e92a056111cd112783fe",
+      "bytes": 308,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "sha256": "ee563ede9b09d68d4b52403d360139dca75db16b6370dacdb1c1bd0f8d865eb4",
+      "bytes": 308,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "sha256": "422b8ddab08db23518a6e484e12857586100e5f0b007a85ddf02b89e22ecf69c",
+      "bytes": 314,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "sha256": "ac597a857943a6892940f813ca83fd7b432eb5f633269b58b3ac415afe0b6617",
+      "bytes": 310,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "sha256": "690cade37001fb945bcf668edfbc9613f84370923e235c46e19f7c886d3ed94d",
+      "bytes": 309,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "sha256": "4a6783b28f6c62707e860ef5e12e0437a3468cb6c3e20c70f5634c2f761ea7f7",
+      "bytes": 280,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "b46f08c8e3b0bd51e46e45b8f57626e6f22d2fbb91830d84f7c250dc1529f29f",
+      "bytes": 278,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "sha256": "988bb9a5f0d5b0039f41bb8d9f18526c0b4157a2baced369359c2e4f4a05cbd8",
+      "bytes": 283,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "sha256": "74adfd523ddedd32ce5c8990224594c8857e0475fe460c307b85bd721cd12f47",
+      "bytes": 308,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "sha256": "a45e41be54231285c00f3f4b2c5cccb1ecd721e39e092324ef11de503eb70498",
+      "bytes": 286,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "sha256": "e6768201a2d5c72f24ae1cb6268148534b47b3a6cb601b102fc1900e515a00dd",
+      "bytes": 301,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "sha256": "aa5846c18178b8c2d7ba9c7c80b99c248d8da2f9a1ee220254b591c172c524c8",
+      "bytes": 305,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "sha256": "e4f534f9fe9ebfe6267819367b8cf6fafa1955fc75a37fbfa545aebff920ba77",
+      "bytes": 289,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "sha256": "9afacfe19a1fbd1793a29381fadddd4c56843c8f805bd0a84301899b6104d8dd",
+      "bytes": 301,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "sha256": "c4b4e6884b3a24fab89746a8702b5f178cc3e53e178959ff9bbaeb91216d7b52",
+      "bytes": 285,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "sha256": "5c12c7f7a4d445a8a1db40679e7d6ce82493e9e61b5f51969f3340cbeee1cd42",
+      "bytes": 293,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "sha256": "f2ff9d75165f278503de1a3a1de70b9d44aa377a9b96e385c20a1ce7bcf935e9",
+      "bytes": 278,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "sha256": "c5c1f4686647a05deaacdd2d1e85381938aa580e813c8f161d8588b25c28a777",
+      "bytes": 301,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "sha256": "dd673ed5257f51e246f33e464dc07041e1263427a8a4f6ea77573531ef26596b",
+      "bytes": 297,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/README.md",
+      "sha256": "797ead749ee7f1c85b4d152c29494bdd63dd47aed8942ad07c1e05623e33c1fb",
+      "bytes": 34451,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h",
+      "sha256": "f8fee8cfbdef1d7202c416382e550e2127814c81773bd3f2d3b5e3c9706e1c97",
+      "bytes": 5816,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h",
+      "sha256": "a29222ca3533abada58ffd5816fe15c8ef1f11c2ce052036923c84a75aabc33d",
+      "bytes": 2145,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/encoder.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h",
+      "sha256": "a0819d4093d2f47458305cf433791a7b1e9d7833783e7d168cda822a8358e0f3",
+      "bytes": 3721,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/masking.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h",
+      "sha256": "a76dc9fb9e767b56a5a3e7eeeb7de7742bdb2399cd9afb21b075fcb9a3ea3d01",
+      "bytes": 19785,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h",
+      "sha256": "49b324d8415901f16e56ce19ce65fed5f11b9a153c4ad3b327a72273ee217905",
+      "bytes": 3003,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/objectives.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h",
+      "sha256": "82b85cf92e38953d882ba4fca225916a02a8d8ea5aad0eca9481b650899208a3",
+      "bytes": 10190,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/preprocessing.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h",
+      "sha256": "9759f106c99c186c7c6fed5b5fce93c6846978f7481fd63122f17dd55bf6c0bf",
+      "bytes": 6678,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/streaming_scaler.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h",
+      "sha256": "d35a4069c3639220b699e8f5bc5d26846d98374d9c42bcea5b6a844f199c9556",
+      "bytes": 2728,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/tokenization.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/training_utils.h",
+      "sha256": "ccff61ffbd98d414d4d650e45673489ae398e5a8c90b714b4ca07c9ae41d13a9",
+      "bytes": 1528,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h",
+      "sha256": "8a32ba76020336aef0d54e27ff84e15d658bc34b957f51f8f4bfc96e0c7a3074",
+      "bytes": 5554,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/types.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/include/embedding/encoders/raw_patch_bottleneck_mae/workflow.h",
+      "sha256": "f15cc0476c2d7436e2bd4d550c2d77ce7870eb429d8706d89aa2d0dad1ef3877",
+      "bytes": 10005,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/README.md",
+      "sha256": "704f24d129e7e3a9e89176cc850748c4c91f8973a4a35fe22bca000de697deec",
+      "bytes": 2519,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/src/workflow.cpp",
+      "sha256": "2f0e5cabcdc6c1f44987330e4a620bf50c7e0c2e72cf73f0383db45e1e75c7fb",
+      "bytes": 45393,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/streaming_scaler.mk",
+      "sha256": "21b2683d5af0d7f400ea1dbb5f2d80ee338e4ab36eab9ff9c403ae8b682f30cd",
+      "bytes": 934,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp",
+      "sha256": "39b6ac020710b97de31be8533f4275cc48fc89998910cc46794247336696f7b1",
+      "bytes": 12584,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/shared/tests/streaming_scaler_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/README.md",
+      "sha256": "c0b667b12844d8913cad7e76aeaa42e61055f832bb575f6307a2b286a2a35206",
+      "bytes": 8178,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v23.json",
+      "sha256": "4a39f59e95af042ec2b40b69de535dc18dddd9a831f50945f786cc32552a1f6b",
+      "bytes": 11184,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v24.json",
+      "sha256": "306df9fd820f41b84f2c60ab189d073a71844b1c2c505c4deedf76111cc57ea5",
+      "bytes": 13978,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v25.json",
+      "sha256": "784f5b2c1119894200e023ba27295bfd51ec34a13fe24310926ea5c5390eadf2",
+      "bytes": 10403,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v26.json",
+      "sha256": "a45768b57273882ef0c8bc32e39e5deacbd9ac38ad209ecdb4cd4c0ebebe2b2b",
+      "bytes": 7761,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v27.json",
+      "sha256": "d841f783cd9f88bffcfb992a53b793cea348ad25e2191b67e1a3df7e6be1d2d5",
+      "bytes": 7934,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v28.json",
+      "sha256": "cf1092f4182e97154bcb1393baecb968d17f588a38acefe15e1c1ef57772cc46",
+      "bytes": 7785,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v29.json",
+      "sha256": "71551f05e9a0ae58d0f8fafa019215c983a61979acf6cb3c491c9ca76d5f4323",
+      "bytes": 8032,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/RPB-v30.json",
+      "sha256": "49845e331c01ba190827c70f442c55024cff9865da97926236f322a869246391",
+      "bytes": 7893,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h",
+      "sha256": "7431b8f74b3ea3d97ec3ffe8c5f80067dbc85ebee53a5a4f3a517bb41b040b65",
+      "bytes": 4658,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v13/include/embedding/encoders/raw_patch_bottleneck_mae/visible_difference.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h",
+      "sha256": "5be51ed4e0b34cbf058c8e0824503312cdcf748ee4d71a75d19d043e40087286",
+      "bytes": 10472,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v14/include/embedding/encoders/raw_patch_bottleneck_mae/temporal_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h",
+      "sha256": "fcb642765a12128afdc94e4e2a69a0c0e0a574fc168bf8ed5697e173b1edbd1b",
+      "bytes": 5996,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v16/include/embedding/encoders/raw_patch_bottleneck_mae/partitioned_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h",
+      "sha256": "d13f35bdb228ee8c84cbc7be421c6f13eb7a55a5e42209b9e2d6db95124fd9bf",
+      "bytes": 2974,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v17/include/embedding/encoders/raw_patch_bottleneck_mae/fixed_prior_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h",
+      "sha256": "e7461311768c67208f0c915ec5777495c3c246b378d4e9a38ef012fc9589ef8c",
+      "bytes": 4189,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v18/include/embedding/encoders/raw_patch_bottleneck_mae/unit_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h",
+      "sha256": "f5790bd8c0f689ca3092dc9045dac01e095f893a585b823b5458ff3f1bc0a86a",
+      "bytes": 9176,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h",
+      "sha256": "32d6b5b0446f663aa2a36826120d64588c3cfe7653f7471cb77708fe21fadf14",
+      "bytes": 3742,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v19/include/embedding/encoders/raw_patch_bottleneck_mae/spectral_temporal_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf",
+      "sha256": "c136f42f4cf89e50d00b17f6d9ad13bbbe39c2f59ba71dc180eb1c63ef077c8b",
+      "bytes": 577,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/config/configurable_spectral.conf"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/configurable_spectral.mk",
+      "sha256": "2f0f871a0d5ac57fe62b58364128f45a63275af3dc5c5d35aece80f39ba23d60",
+      "bytes": 2149,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h",
+      "sha256": "5a89c147769f9df252e423c1a7ac32c64038a27d616e3a955967acbf8f6e9a0c",
+      "bytes": 2959,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint_io.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h",
+      "sha256": "fe699579d57311bbf71c8ac1ee260c28a57aeba161f3fb01b54f3e977981cd7e",
+      "bytes": 7183,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h",
+      "sha256": "3e3b543e25dd18ab9392f93367ea3172b09513d4194fbb1e823ff2f4aae02f1b",
+      "bytes": 4679,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h",
+      "sha256": "957c72d1fa2eaa3880446575da078488b26292fea9f48b62c9dff67e79b67e3f",
+      "bytes": 13390,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h",
+      "sha256": "9758403ee75cfaf9420c5dad0bc2faa491d6c0774e62014d744887601433cbcd",
+      "bytes": 8011,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_relation.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h",
+      "sha256": "08bdaf90f27aa3b643f52c76010c21d1839ee5e15109865deaa77c8bbfff117a",
+      "bytes": 2698,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/include/embedding/encoders/raw_patch_bottleneck_mae/configurable_spectral_settings.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/README.md",
+      "sha256": "9fabdce7bc5ff4c28ba1daa7eaa8688aee543d461209daeb0b329fda90bd74b1",
+      "bytes": 2135,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp",
+      "sha256": "53f34abecff9060bd1794b9e482245e38e389bd21044267e336680c18f6283e8",
+      "bytes": 5696,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/checkpoint_integrity_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp",
+      "sha256": "430a6b8949d0b47aa695d228886470cd7c18f1decf90c3dc18b5a12195d4d9f9",
+      "bytes": 6805,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_checkpoint_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp",
+      "sha256": "2750880b08ac2ebc94f793b510b75b2db08a74187c2a1f30c3d49c22a39f1fba",
+      "bytes": 14207,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v20/tests/configurable_spectral_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h",
+      "sha256": "eb37e2306e372558ceb75082321e0017104a08de04ac22bc3dfe9465b569be00",
+      "bytes": 5644,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h",
+      "sha256": "1695b4edf2f7ae1d1cd7538f481d37aa07c190572eef583631f1ae25f7605967",
+      "bytes": 5351,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h",
+      "sha256": "28783bd080583af4397560bc3e85a65d35778f1660146bbdc176a3ec355c5a5b",
+      "bytes": 2531,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h",
+      "sha256": "8fa00e78314f8fc59d85f487dd167af6357b36857d755c1510bc5ffca3d1d9f3",
+      "bytes": 6123,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v21/include/embedding/encoders/raw_patch_bottleneck_mae/learned_ordered_relation_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/config/content_ordered_relation.conf",
+      "sha256": "7fa6acc6c85e0d16262bdcab22657b70e1751545d002a3084cb4cc369bbb87fc",
+      "bytes": 645,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/config/content_ordered_relation.conf"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/content_ordered_relation.mk",
+      "sha256": "cc914de73996581619e93dbb48df851522d6bbc642b327d0f93a4eff2cd34005",
+      "bytes": 919,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h",
+      "sha256": "a9f0c8ac46332d85f4b1d6e949c9a2e76fc411992fb2ed29d380624023d958b7",
+      "bytes": 5585,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_bank.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h",
+      "sha256": "3ab9f57a0928f2d7a93fb22876a37914b56cd148a0361cac8cc6acd5aaa07557",
+      "bytes": 5351,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h",
+      "sha256": "0b77d51105c7aa9e50aa525573f1dba101330563013f5074a9f891668a56c131",
+      "bytes": 2549,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_config.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h",
+      "sha256": "7358647e99d2ffaa8d5739416f9562c12b400db62e5b1559c7f47bec4b48819f",
+      "bytes": 6123,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_model.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h",
+      "sha256": "b3624509bd2b61e64eb348344d81cf219d30d5141833d75b2bf4f363ae593d1f",
+      "bytes": 2637,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h",
+      "sha256": "51626d31682df5008d57df9da9d0b962bf97e180c0e7a0dee181c5d198046ba4",
+      "bytes": 17593,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/include/embedding/encoders/raw_patch_bottleneck_mae/training_state.h"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/README.md",
+      "sha256": "932109ad848a44a989e8823f6fbc3976e9921449f207cc65fce89c0ada5a0f03",
+      "bytes": 2153,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp",
+      "sha256": "395b5538ef738f851d28bc724ffd9bc69f21bdee9fc831e891cd244228e118ee",
+      "bytes": 29071,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/content_ordered_relation_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp",
+      "sha256": "126ae141bc7b7db3e2422829c19690d1b6c5a0264aff02209878d68248d14f40",
+      "bytes": 15350,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/tests/training_state_test.cpp"
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v22/training_state.mk",
+      "sha256": "8ffa1356e74abf1b69bb359c0e21f88931839cd949bc46731ebd8e198b9ce817",
+      "bytes": 898,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/config/consecutive_changes.conf",
+      "sha256": "1056fee4898c5462a1dbacc9fbfdec9ff1cffc7468654c4bfd64f3057703389e",
+      "bytes": 585,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/consecutive_change.mk",
+      "sha256": "36296bb5a3a1cd37c3729611f3857edf495c998dbad01b5fe45e6a954f978a0d",
+      "bytes": 635,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/frozen_level.mk",
+      "sha256": "b246edf028d1177f3af7846d56bb6905cb1a292b48bae73462984c153a84b8e2",
+      "bytes": 581,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_bank.h",
+      "sha256": "4aac7a010f1c99e1b3be4fab7275a305011959d5533e7aaeaa1073cd2c4a986d",
+      "bytes": 3553,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_checkpoint.h",
+      "sha256": "37824c9f9ab1898c76a4113c754671a625afecabe6bf5358f3738888baa2f5ed",
+      "bytes": 5158,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_config.h",
+      "sha256": "22c66d3b6832407a1d91e3b96824bf71480516dd51f60f20e268f5ee4c921885",
+      "bytes": 1691,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_frozen_level.h",
+      "sha256": "8054d0d88e73089a7ac7290019a0beefac4f5fc022f4765528d667e15bc11299",
+      "bytes": 4506,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_model.h",
+      "sha256": "05b33e16d3376c8cb021833dd1faca735167f3f80c758bb5fe6ea00dd6ae371e",
+      "bytes": 3990,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_settings.h",
+      "sha256": "78cc824ec09bbb49c62326ded0125bdd7b12f9b2bae29354ef20cf612bfe3189",
+      "bytes": 2740,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/include/embedding/encoders/raw_patch_bottleneck_mae/consecutive_change_training_state.h",
+      "sha256": "218f72997fad879e163192bf0a01d75ec509b821c6566488876c2d38abfdae59",
+      "bytes": 14175,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/README.md",
+      "sha256": "9f452312246b64e0f930dfa87e1e4f6aa994336e38dca8345f02a5afb5e3e690",
+      "bytes": 2045,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/tests/consecutive_change_test.cpp",
+      "sha256": "c3af5b3e30e805961524b17ad8dd3db853c472d5b2d8c4bfda876041f2f24a43",
+      "bytes": 9841,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v23/tests/frozen_level_test.cpp",
+      "sha256": "95597dea0df12a869de3c081514eddd923ddc3e46eabf50dd1db2aa248308f5b",
+      "bytes": 6091,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes_native36.conf",
+      "sha256": "c38b0688b4c9fd5e8389bc44d1b2fe3de984395e4d582e6ca2ef57c56b291ca7",
+      "bytes": 630,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/config/separated_changes.conf",
+      "sha256": "f71b5efbac24c68da2c0414816e67102aeee196d7e22a6d62321da99cd6fcab6",
+      "bytes": 614,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_checkpoint.h",
+      "sha256": "e7239f99e84349ae65c70c14c7aa93ab3307ce3c9c229a0c0f5924f4df490e54",
+      "bytes": 5353,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_config.h",
+      "sha256": "f3740c40d925cc8bd5b15828740b1aef35f0f1516b1693200c0d68187b15f528",
+      "bytes": 1616,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_frozen_level.h",
+      "sha256": "e867ca9c2ff0eabf8b43a384bf36b4d8909bcab5392b33014b0ee871046785ad",
+      "bytes": 4508,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_model.h",
+      "sha256": "f92eb83084948e87c08e3c497b9d02944edabd345a57b89abea73ec5f86d5729",
+      "bytes": 5767,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_settings.h",
+      "sha256": "94f5808d39a4000d4ad33633725d8a41a215dc2d8e94a7886c47eb482282d61d",
+      "bytes": 3226,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/include/embedding/encoders/raw_patch_bottleneck_mae/separated_change_training_state.h",
+      "sha256": "3cbae7495cbc06b2dae1b71b97fa27cb58a374deebe9eb9a6faa030df9bdd780",
+      "bytes": 7316,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/README.md",
+      "sha256": "19c4b882b63c60e47aebb84060fb0db92031bd6c7cdd812b0cd6276919331f3e",
+      "bytes": 2446,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/separated_change_native36.mk",
+      "sha256": "c766c9d4996c9b2becc0e238f6e5fcbac34dad62052dc5580e7dd48166a1c204",
+      "bytes": 808,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/separated_change.mk",
+      "sha256": "f391c3f33512ea136478501826ca93434e6ceb6dfb7b84d1f338e873a3784d48",
+      "bytes": 622,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_native36_test.cpp",
+      "sha256": "970826346e58bc372dfd967a4c11d45956bf2d58401dbec2a8c0351769846dd7",
+      "bytes": 17143,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v24/tests/separated_change_test.cpp",
+      "sha256": "4785eb749992ab1e5936665bb5e67276cbe7adcc976fafebbfef0f6381fb13d0",
+      "bytes": 11005,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/config/energy_changes.conf",
+      "sha256": "16db8ea66be1116a410c2d7672ad01caa8dc236a50f150f55b0bfff9544cbfa7",
+      "bytes": 623,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/energy_change.mk",
+      "sha256": "a32897f80610ac052ddfeaf2fb25ed45550a5acad8c3f91d57e4485ce6fb3e5f",
+      "bytes": 694,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/cuwacunu/encoder/energy_encoder.h",
+      "sha256": "80fbed424d56b53cae7dd9f9b008be6efbcb3e929f7dfb8f3e09c4326b480e02",
+      "bytes": 1676,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_checkpoint.h",
+      "sha256": "d5ad0f0185480ac4f01580009579ceff491e93b4cc3f0cc68d675abe43dc3a3f",
+      "bytes": 6709,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_config.h",
+      "sha256": "2088a26f03eedeade5d43c25965cf9adcaffb8abf5662eefefc37e0c91d7a254",
+      "bytes": 1504,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_model.h",
+      "sha256": "acc1191a791480ad7ccc9e81500bd089437027d82ff67e9c627bbf9c953029ae",
+      "bytes": 3329,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_moments.h",
+      "sha256": "eb521cf0bade09defea2ab3ab6ec8286ac49e086e07b0ba5f228c1f8c374aa01",
+      "bytes": 11953,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_settings.h",
+      "sha256": "91be85224b27060b7ab0715af5ed0ef568db9c91fc654a147ea04858d01e11d5",
+      "bytes": 2939,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/include/embedding/encoders/raw_patch_bottleneck_mae/energy_change_training_state.h",
+      "sha256": "215bc189f2004ae3f61a02d7291c7b3208f056676ea2b2827c5796240dd56dc2",
+      "bytes": 9579,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/README.md",
+      "sha256": "d83c4e280c70b9949ff99fd5c4d99ed4ad41415521d0c9a221c6db141eedfc1c",
+      "bytes": 2015,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v25/tests/energy_change_test.cpp",
+      "sha256": "263a63455f9139a5bd683ddb24aed9a1cd3447804a86b0a8d35268cab1029a2e",
+      "bytes": 30965,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/conditioned_change.mk",
+      "sha256": "08b4508c9dd118a799f233165e121ec4bd53ffe0f49deedc6c8267be895d2c88",
+      "bytes": 717,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/config/conditioned_changes.conf",
+      "sha256": "fef6ce89934cc5e4eaadee573ff19ab42ba8a85793016a013ea972bdafc29231",
+      "bytes": 639,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/cuwacunu/encoder/conditioned_encoder.h",
+      "sha256": "6482b36fcd0997eaafed1a278cf85aa7fe606a10486512b213522beee8f83acf",
+      "bytes": 1792,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_bank.h",
+      "sha256": "f88d52999abc6d2bd590537a0843d2ade832f8900d14433298b342d52db21cc7",
+      "bytes": 1625,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_checkpoint.h",
+      "sha256": "774f3b018fd647c27520b92e88426c46de1305ad6a417abb6d587160280867de",
+      "bytes": 7716,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_config.h",
+      "sha256": "bb446bbed02ebb1d0336f432c18cb7c340745b5f5af48d5faacd3361af939fd8",
+      "bytes": 1467,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_model.h",
+      "sha256": "5f78b7b06d3a063948e30765866a2789dcd455af6baa711a76ab27ba7d7672c0",
+      "bytes": 5071,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_normalizer.h",
+      "sha256": "de7817f19aaba9132b7190d54ac22d839677df6a51d835c5c87317ef8dc7c356",
+      "bytes": 11367,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_settings.h",
+      "sha256": "53f9dd87d0918d9dbfade90434bf8003c440e4f990525142eb898b727aff4ba2",
+      "bytes": 2984,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/include/embedding/encoders/raw_patch_bottleneck_mae/conditioned_change_training_state.h",
+      "sha256": "4f840ac6fd09e4be4c35c1b56811aa9c3793fe7c51f17e20c692d9d79c1ba6a9",
+      "bytes": 9587,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/README.md",
+      "sha256": "ed20cb8ec4c802a6fc5e5d6629777392cbfe1e262988668001ed53525dc5fccd",
+      "bytes": 2079,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v26/tests/conditioned_change_test.cpp",
+      "sha256": "80bdaf0e9668a5f81ed6e0e1efe26880b9b6bdf89609f84f691326317316662a",
+      "bytes": 26367,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/config/parent_conditional_changes.conf",
+      "sha256": "1736b65cc3b2fdef8d599e998bfe2ebb724becdcd6ed77dbac22e7b4ed555180",
+      "bytes": 639,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/cuwacunu/encoder/parent_conditional_encoder.h",
+      "sha256": "aef5c5b8cc97035b14ccf7fe001f3b140e1dadb55a548b120d5c49c9df6bf006",
+      "bytes": 1911,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_checkpoint.h",
+      "sha256": "6be53f5b1bae2ec51c74df6f9914959f26efbee54f52752bccfe4ce79c00cc77",
+      "bytes": 9313,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_config.h",
+      "sha256": "29d9e5ce6730aa53dd29a73c4922c60c55826315c71cfa51e157182c98762e9a",
+      "bytes": 1557,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_map.h",
+      "sha256": "33f0755f35d7cde889f9915660b89a10ada8131a39fe0a93fb1c6f33d12aa434",
+      "bytes": 15904,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_model.h",
+      "sha256": "bac07e6d3086037cdb5e07ea533e024b11c80b0a9b315961052bfe3e204fcfb9",
+      "bytes": 5849,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_settings.h",
+      "sha256": "70c1cabd20932c3df33d869087c092481e49714776bf62f477c8b41231b4d528",
+      "bytes": 3043,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/include/embedding/encoders/raw_patch_bottleneck_mae/parent_conditional_change_training_state.h",
+      "sha256": "473dc9958341aecc66856df7914fb5e254d1c536d889993c84971eab096edd04",
+      "bytes": 9827,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/parent_conditional_change.mk",
+      "sha256": "dc72d6746da656259541c65a55041910a40d035a0a29962b4461460dadfbfdb8",
+      "bytes": 765,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/README.md",
+      "sha256": "c1265e8da049df404a2c3fcb730cda6f5f4917ca53e7100dacca93d2002b3b15",
+      "bytes": 2119,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v27/tests/parent_conditional_change_test.cpp",
+      "sha256": "ae640b9efb53491ddef2fc4bd1b86a9a316c3337167613a692c0630aa8fb85e5",
+      "bytes": 32605,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/config/relative_changes.conf",
+      "sha256": "3e6fd8283606ab1fd4ec93060d36ee6dad067418b0e224613b13bdc3861d7115",
+      "bytes": 639,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/cuwacunu/encoder/relative_encoder.h",
+      "sha256": "a3458ca22aab8193c70b8a404f38f342ef078761f74a3e9f9eede44097acd1dc",
+      "bytes": 1764,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_bank.h",
+      "sha256": "49636c6ba2405a77802d975d6e74b0bb3279a62d318f7c81b5c88aac30c0ef43",
+      "bytes": 4745,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_checkpoint.h",
+      "sha256": "37d3a3946f960801af6d7fee233e8cb3f8de6676a070e5fac92a13c265fa5f52",
+      "bytes": 8042,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_config.h",
+      "sha256": "8421ab4c4028a4f5f09cd393adb560a28e8d9b4d3f9a4ed5a80b49b9eb5c632c",
+      "bytes": 1914,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_model.h",
+      "sha256": "4d4ebc089d675f643916e197d1be3c5172e0c0378b63d8f933c22892a6a4c10a",
+      "bytes": 5177,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_normalizer.h",
+      "sha256": "0e6a561091e33acf3d04525a84cf5a89791c095b7a9d28bd2b79a60cae2a279f",
+      "bytes": 3021,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_settings.h",
+      "sha256": "88f3eabfec272f52dbe164202193fc1329e1db2747d6f8ac1952ec9f7e7b1329",
+      "bytes": 2957,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/include/embedding/encoders/raw_patch_bottleneck_mae/relative_change_training_state.h",
+      "sha256": "ca2674375eeb1782d9012bdadcfbd649c067a4a95be68a5b60167b3831ed61ec",
+      "bytes": 9536,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/README.md",
+      "sha256": "8f641afbef6b0ea967ac6a7a4b32a424d1e593a64a8ea61c6f98dacb469ef6da",
+      "bytes": 2076,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/relative_change.mk",
+      "sha256": "15b1fc03b78d22c072e773924d7eca1c7dfc31e13921857904101cd68d6f9f53",
+      "bytes": 700,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v28/tests/relative_change_test.cpp",
+      "sha256": "f01504d5953fa05835d7f724b2f8dff418078abc5cfbb4aaa52f9eea31aa114e",
+      "bytes": 31913,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/config/parent_modulated_decoder.conf",
+      "sha256": "e14aa52ce02dd7b4761532636696a002cf5c0baa03856d1a9e10f7d5513bb894",
+      "bytes": 656,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/cuwacunu/encoder/parent_modulated_encoder.h",
+      "sha256": "3361e8d4808adb4d75a9a8bd4815f66e6da7da54923ecda6c177995068bca385",
+      "bytes": 1841,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_checkpoint.h",
+      "sha256": "30f9161a52b6cc3d753777b925089769a52e018d46ec4979e559045d0b4ed025",
+      "bytes": 9097,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_config.h",
+      "sha256": "838908e8bddaaa41b0b95274dcd4a504e64ff736233df0c777543a1ce7043fb0",
+      "bytes": 1230,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_model.h",
+      "sha256": "42e71246c779004642e5bd201e9ec47a30f05e8a430a3fba5e5508bf6db34aa3",
+      "bytes": 7307,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_settings.h",
+      "sha256": "61b58bafd69cf1ee163a0e335bc6c9c1355a7a530f72e5d90cc64efaafd4e9e7",
+      "bytes": 3034,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/include/embedding/encoders/raw_patch_bottleneck_mae/parent_modulated_decoder_training_state.h",
+      "sha256": "f561d037f31a918963c27a715495015d84f31c84b2f88070e6fd51cce4d55d48",
+      "bytes": 10135,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/parent_modulated_decoder.mk",
+      "sha256": "77237bb78aac5b8d9d73f17664d55251ff99c0fe045f7a2380002c9e1d559f9e",
+      "bytes": 753,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/README.md",
+      "sha256": "094b5502e94e9211b582663751d5a6fef1db99f250c2c7cecb1921e02ce3a444",
+      "bytes": 2115,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v29/tests/parent_modulated_decoder_test.cpp",
+      "sha256": "09cc01d35f43fd100ea73fbee09547be98f0ed9a5bf1f66e41b6a30cb738e94e",
+      "bytes": 41636,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/config/location_scale_decoder.conf",
+      "sha256": "806d41467b5a1dfb0ff085d7e457f43e6a94157855b1f2425b9d095f482d134a",
+      "bytes": 654,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/cuwacunu/encoder/location_scale_encoder.h",
+      "sha256": "443544b557c35670efb1f81ae6ef3e55e5a3c9212cae8596d89a1faf7a97af7e",
+      "bytes": 1823,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_checkpoint.h",
+      "sha256": "d391a314de35d32be95888f25a7b38993a7641600dee1cb5d24af022a266f05c",
+      "bytes": 9517,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_config.h",
+      "sha256": "6427ed8e97546bb176cba85345f80febb8ed2519d5e0fba7f2a36b52bf701d0f",
+      "bytes": 1969,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_model.h",
+      "sha256": "cc81ccd2be7e0903e1e14f6e199da673101a75922e63c6ecc5f2060bfb61d429",
+      "bytes": 12849,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_settings.h",
+      "sha256": "f38ebd0e000e11ae752eee072b973c96c219ee044e95a4d74b5d948081a03ab7",
+      "bytes": 3016,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/include/embedding/encoders/raw_patch_bottleneck_mae/location_scale_decoder_training_state.h",
+      "sha256": "f7bafd64d450ca0717ce565e69370deb81af33b19e81ae343bb485e2e41f4980",
+      "bytes": 10101,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/location_scale_decoder.mk",
+      "sha256": "77b7942d5bd1665ce3ce3bd6f3791d77b66136d4f71066db3d8834cb33711f6d",
+      "bytes": 741,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/README.md",
+      "sha256": "132f7d80a02c10687afeb21b670542edb97a34e7479c860ac2308e9c910045e8",
+      "bytes": 2095,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/embeddings/encoders/raw_patch_bottleneck_mae/versions/v30/tests/location_scale_decoder_test.cpp",
+      "sha256": "a7d42c5a3c7f4ea04e5878ca45c7db7cb5bc7dbb4a59055329201e1c341b2e74",
+      "bytes": 47509,
+      "role": "version-configuration-or-ancestry-inspection",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/scripts/task.sh",
+      "sha256": "c43a8bbd94dfd26ee3bf525b97776b2edc796d2ab9485fdc40b08bea8ac8e5b1",
+      "bytes": 1216,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "code/shared/settings/include/cuwacunu/config/document.h",
+      "sha256": "193c74a3e69e9a61aa3bd7dd272972b688bb327772cae8cd7f47ef82e73db3ce",
+      "bytes": 7118,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/shared/settings/include/cuwacunu/config/document.h"
+    },
+    {
+      "path": "code/shared/settings/include/piaabo/parse/simple_kv_block.h",
+      "sha256": "4db53391d4429c3b39c511ca6a1eb2ede4c67166f9a11c865fff0cc9468a55d8",
+      "bytes": 8235,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/shared/settings/include/piaabo/parse/simple_kv_block.h"
+    },
+    {
+      "path": "code/shared/settings/tests/config_document_test.cpp",
+      "sha256": "8b1a00367c21ce22249c91d87fe863dfcb83cbe76fa6319183f8c5ad4c90e48a",
+      "bytes": 5612,
+      "role": "selected-numerical-and-fixture-closure",
+      "proposedPackageDestination": "sources/code/shared/settings/tests/config_document_test.cpp"
+    },
+    {
+      "path": "dependencies.lock",
+      "sha256": "b8f946448de4c2a6b0b2d94794a096266644dece00fd8fd27ef5a0a61e8684d3",
+      "bytes": 8396,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "doc/EMBEDDINGS.md",
+      "sha256": "b7785d96194e8082b9acba8ca5a1a30f79f4f415d656ffef655d3276aaf6827d",
+      "bytes": 30163,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "doc/ENVIRONMENT.md",
+      "sha256": "9f2f6d0fb80f05913e6c31f3ab156cdeae129a12cecd1482954fb2f4de525c29",
+      "bytes": 10088,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "doc/operations_over_representations_design_spec_v0.1.0.md",
+      "sha256": "0a1afcab70d6ce97517026235203dced3fde7687a37f0d70cdba9130c8b95983",
+      "bytes": 66298,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "doc/PROVENANCE.md",
+      "sha256": "f4595a3f2430e05876e5cdb67f84be793457f8d54cbf79d41efd437237a96899",
+      "bytes": 9823,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": "sources/doc/PROVENANCE.md"
+    },
+    {
+      "path": "environment-image.json",
+      "sha256": "2885a9708b2e2a0c1f6a83991b6df58bc061c689bb09f7242b805d29e5c52a07",
+      "bytes": 1506,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1e172347c1eeedb54928c97d79dd7b19bba447f8414f6467d722ead8dffcd5d8",
+      "bytes": 1085,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": "sources/LICENSE"
+    },
+    {
+      "path": "Makefile",
+      "sha256": "6c52f6916fdcf69aa83ebd19abe9153ef785d0071dabcc29d82252d13d014e6f",
+      "bytes": 114377,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "README.md",
+      "sha256": "2838053b99615ffeab7c566cb0ae598da0311593b9aa813af4f1dfc5ad7f0622",
+      "bytes": 12989,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "73a3e66428fcff6a2087184ed4c9b3aae70063e5511e212d49ecc7f55d10b972",
+      "bytes": 2119,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": "sources/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "path": "web/dashboard/SCHEMA.md",
+      "sha256": "cfe19030f3108f1c9d685f6b2166b9e73dc73a40513c3acf54281703d8730e95",
+      "bytes": 12955,
+      "role": "supporting-contract-build-license-or-source",
+      "proposedPackageDestination": null
+    }
+  ]
+}

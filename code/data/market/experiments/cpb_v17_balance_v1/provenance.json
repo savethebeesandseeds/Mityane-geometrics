@@ -1,0 +1,38 @@
+{
+  "kind": "cpb_v17_balance_model_independent_window_reader_derivation_v1",
+  "date": "2026-10-22",
+  "status": "source_prepared_not_built_or_executed",
+  "license": "MIT; preserve root LICENSE and inherited copyright notices",
+  "source_revision": "1b3e2163e067ce0485f9505d963e6e07f74ab756",
+  "source_revision_is_complete_worktree_identity": false,
+  "sources": [
+    {
+      "path": "code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/include/market_data.h",
+      "bytes": 5010,
+      "sha256": "2a7d3e92a9d6af1fe9a3a354f534fb75bcdd4f64c1759dbf03c1ac5f7bcd7a6f"
+    },
+    {
+      "path": "code/data/observations/include/embedding/data/observation_windows.h",
+      "bytes": 8029,
+      "sha256": "afca0a5edde75daf62f1098392a1bc036ed6b25f9821dd97950097105f2ddc53"
+    },
+    {
+      "path": "code/shared/artifacts/versions/v1/include/cuwacunu/artifacts/v1/sidecar.h",
+      "bytes": 22252,
+      "sha256": "e3b981c3380c72574fd7d1f1d00652182f6ce2fa8172f5d1083fe117befb1af4"
+    }
+  ],
+  "operation": "New model-independent reader and timestamp selection derived from the preserved V16 CACHE88 adapter layout/feature ordering/anchor arithmetic; uses existing generic CPU observation archives and shared SHA256 only.",
+  "destination": "code/data/market/experiments/cpb_v17_balance_v1/windows.cpp",
+  "destination_sha256": "885499c3cf93c339b49a7aaa883575f894a6eac9ceae0d796d061c5e275eca17",
+  "adaptations": [
+    "Remove historical model_binding, encoder and calibration dependencies.",
+    "Explicit diagnostic64/train1024/probe112+32 modes; model geometry remains outside data ownership.",
+    "Strict original January cache identity/order and buffer/file hash verification; observation decode limited to retained role windows.",
+    "Generic typed archive source/split/role bindings and exact tensor reload checks; no scaler, model, labels or optimizer calls.",
+    "Exclusive named output leaves, complete preparation receipt and preservation of failed/partial output."
+  ],
+  "historical_sources_modified": false,
+  "datasets_imported_or_rewritten": false,
+  "research_executed": false
+}
