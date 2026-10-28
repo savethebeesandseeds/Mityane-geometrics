@@ -12,7 +12,8 @@ MITYANE_CPB_FAMILY_GOALS := build-cpb-family test-cpb-family \
   build-cpb-v17 test-cpb-v17 build-cpb-v17-diagnostic build-cpb-v17-trainer \
   build-cpb-v17-windows build-cpb-v17-readout build-cpb-v17-audit \
   build-cpb-v18 test-cpb-v18 build-cpb-v18-trainer build-cpb-v18-readout \
-  build-cpb-v19 test-cpb-v19 build-cpb-v19-trainer build-cpb-v19-readout
+  build-cpb-v19 test-cpb-v19 build-cpb-v19-trainer build-cpb-v19-readout \
+  build-cpb-family-screen test-cpb-family-screen
 ifneq ($(strip $(MAKECMDGOALS)),)
 ifeq ($(strip $(filter-out $(MITYANE_CPB_FAMILY_GOALS),$(MAKECMDGOALS))),)
 MITYANE_CPB_FAMILY_ONLY := 1
@@ -65,6 +66,7 @@ include code/embeddings/encoders/causal_patch_bottleneck_mae/family/family.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/v17.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/v18.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/v19.mk
+include code/embeddings/evaluation/protocols/cpb_family_screen_v1/screen.mk
 else ifeq ($(MITYANE_MTF_FAMILY_ONLY),1)
 CXX := g++
 BUILD_DIR ?= /opt/mityane-geometrics/embeddings/build/baseline
@@ -1461,6 +1463,7 @@ include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v17/v17.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v18/v18.mk
 include code/embeddings/encoders/mtf_jepa_mae_vicreg/family/family.mk
 include code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v19/v19.mk
+include code/embeddings/evaluation/protocols/cpb_family_screen_v1/screen.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/objective.mk
 include code/embeddings/encoders/raw_patch_bottleneck_mae/family/family.mk
 include code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/audit.mk

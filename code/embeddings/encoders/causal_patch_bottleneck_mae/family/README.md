@@ -3,8 +3,13 @@
 The deliverable is a constructible, trainable encoder family. Mityane discovers
 and compares architectures; Cuwacunu owns substantial application training and
 final docking. The V16 seed946103 checkpoint remains a research comparison
-instance, with its mixed verdict. Fresh application training does not require
-that checkpoint or its C3/H128/F9/native36 geometry.
+instance, with its mixed verdict: final logical update 2048, native36, selected
+on 22 October 2026. Fresh application training does not require that checkpoint
+or its C3/H128/F9/native36 geometry. A later reference change uses the
+[family screen](../../../evaluation/protocols/cpb_family_screen_v1/POLICY.md):
+development cannot promote, and January, February and March 2024 are consumed.
+[`current.json`](../versions/current.json) and [`index.json`](../versions/index.json)
+are frozen catalogs. [Version roles](../versions/ROLES.md) name the one live pointer.
 
 This maintained C++ surface separates four identities:
 

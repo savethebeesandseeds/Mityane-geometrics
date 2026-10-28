@@ -5,8 +5,8 @@
   "title": "Encoder · Causal patch bottleneck MAE",
   "purpose": "Discover and develop reusable causal patch bottleneck architecture components and encoder tools that operations and application projects can configure, train and compose.",
   "boundary": "Own the family definition, supported configuration, portable initialization/preprocessing/training/export/resume surfaces and their scoped evidence, with unimplemented coverage stated explicitly. Cuwacunu and other applications own substantial application training and final docking. Keep architecture, configuration, recipe and trained instance separate; checkpoint scores do not restrict a family to one benchmark shape. Follow the shared encoder component instructions and preserve frozen source and research records.",
-  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
-  "updatedAt": "2026-10-23",
+  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. The family screen cpb_family_screen_v1 is the rule for a later reference change: development cannot promote, and January, February and March 2024 are consumed. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
+  "updatedAt": "2026-10-27",
   "goals": [
     {
       "id": "encoder-cpb-v19-teacher",
@@ -584,6 +584,50 @@
             "reason": "Actual native CUDA execution, strict CLI tests and independent read-only review, with pinned source, binaries and original reference; application utility and scale remain outside this evidence.",
             "receipt": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/evidence/compatibility-2026-10-22.json",
             "receiptSha256": "02c5871bf982a87435839d1b53151f19bdbc236b92077d3336826267e13082cb"
+          }
+        },
+        {
+          "id": "encoder-cpb-family-screen",
+          "title": "Decide later family candidates with a sealed confirmation",
+          "status": "done",
+          "updatedAt": "2026-10-27",
+          "completedAt": "2026-10-27",
+          "description": "Added cpb_family_screen_v1. Development cannot promote. January development training may proceed while confirmation stays unbound. A promotion needs a sealed later population, a training-state recipe_identity beginning cpb-family-train-example-v1;, at least 2048 completed updates, trend and activity medians at least +0.01 R2, and a volatility median at or above -0.01. The short token cpb-family cannot promote. Volatility or relation median at least +0.01 can buy a full-budget extension without erasing a trend or activity failure. Confirmation starts unbound. January 2024 MKT-HIST-2 days 22-28, February 2024 and March 2024 stay consumed. Published V17 pairs are inconclusive under this rule; V18 and V19 extend. Their old predicates and records are unchanged. The readout copies recipe_identity from the matching family training state, takes native width and causal update count from the inference checkpoint, and fails closed unless F=9 and H>=9. It cannot rescore the historical V16 inference file. The audit refits scalar ridge at the witness width, and its self-test checks one torch linalg_solve against that fit. The four past-window probes are the whole gate. versions/current.json and versions/index.json stay frozen. V16 seed946103/final2048/native36 remains the research reference. No market training ran.",
+          "dependsOn": [
+            "encoder-cpb-reference-equivalence-training-cli"
+          ],
+          "acceptance": [
+            "Keep development, including a strong January screen, from promoting a research reference.",
+            "Promote only a sealed unconsumed later population whose training-state recipe_identity begins with cpb-family-train-example-v1; at the 2048-update budget when trend, activity and the volatility floor pass.",
+            "Let a volatility or relation median of at least +0.01 buy a full-budget extension while recording a trend or activity failure, and leave medians inside +/-0.01 inconclusive.",
+            "Read native width and update count from the family checkpoint, keep the four past-window targets on the market 9-feature layout, and audit the ridge at the witness width without a copied 112 by 36 harness."
+          ],
+          "evidence": [
+            {
+              "label": "Family screen decision rule",
+              "path": "code/embeddings/evaluation/protocols/cpb_family_screen_v1/POLICY.md"
+            },
+            {
+              "label": "Decision fixtures for V17, V18, V19 and the promotion gates",
+              "path": "code/embeddings/evaluation/protocols/cpb_family_screen_v1/decision.test.mjs"
+            },
+            {
+              "label": "Checkpoint-width family readout",
+              "path": "code/embeddings/evaluation/protocols/cpb_family_screen_v1/readout.cpp"
+            },
+            {
+              "label": "Dimension-generic scalar ridge audit",
+              "path": "code/embeddings/evaluation/protocols/cpb_family_screen_v1/audit.cpp"
+            },
+            {
+              "label": "Frozen catalog and research-default roles",
+              "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/versions/ROLES.md"
+            }
+          ],
+          "verification": {
+            "status": "historical",
+            "scope": "Family-screen decision fixtures, readout and audit build, and the audit self-test including torch ridge agreement. No market window, training run, or research-reference edit.",
+            "reason": "In mityane-geometrics, test-cpb-family-screen passed 11 decision tests and the scalar audit self-test at 8 training rows, 4 validation rows, width 3 and 7 causal updates, including torch linalg_solve agreement. The readout linked. It was not executed on market data."
           }
         }
       ]

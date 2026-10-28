@@ -143,7 +143,14 @@ retain their historical context. Hero JSON owns work states.
    the reference through an explicit evidence-based assessment and dated record;
    retain the former reference, its achievements and the reasons for the change.
    A research default does not establish universal quality or promotion under
-   the frozen protocol.
+   the frozen protocol. The next reference change uses
+   [`cpb_family_screen_v1`](../../evaluation/protocols/cpb_family_screen_v1/POLICY.md):
+   a development population cannot promote, January, February and March 2024 are
+   consumed, and only a sealed later window whose training-state `recipe_identity`
+   begins `cpb-family-train-example-v1;` at the 2048-update budget can promote. [`versions/current.json`](versions/current.json)
+   and [`versions/index.json`](versions/index.json) are frozen. The research
+   default remains [`research-reference.json`](research-reference.json). See
+   [version roles](versions/ROLES.md).
 4. **Rank comparable scores separately.** Keep TRAIN, known validation, fresh
    confirmation, tasks, heads and TEMPO scaler/views separate. Sort R²/accuracy
    descending and MAE/NLL ascending. Use unrounded values, preserve ties

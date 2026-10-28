@@ -383,6 +383,13 @@ records the owner's retrospective choice without rewriting the mixed study or
 its original selection flags. Current work states and acceptance criteria remain
 in [Hx17](../web/dashboard/heroes/17-encoder-cpb.json).
 
+The next reference change uses the [family screen](../code/embeddings/evaluation/protocols/cpb_family_screen_v1/POLICY.md).
+Development cannot promote. January, February and March 2024 are consumed.
+[`current.json`](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/current.json)
+and [`index.json`](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/index.json)
+stay frozen. [Version roles](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/ROLES.md)
+name the one live pointer.
+
 The user resumed embedding continuation on 18 October 2026, beginning with
 **V14 metadata review, compatible application and preservation closeout**.
 The [closeout protocol](../code/embeddings/evaluation/protocols/cpb_v14_closeout_v1/README.md)

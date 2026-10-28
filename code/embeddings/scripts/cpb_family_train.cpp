@@ -3,6 +3,7 @@
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/training.h"
 #include "embedding/data/observation_windows.h"
 #include <torch/cuda.h>
+#include <cstdint>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -11,6 +12,7 @@
 #include <random>
 #include <set>
 #include <sstream>
+#include <vector>
 
 namespace cp=embedding::encoders::causal_patch_bottleneck_mae::family;
 namespace tr=cp::training;
@@ -33,24 +35,151 @@ std::string artifact(const fs::path &path){
     <<",\"sha256\":"<<quote(cp::boundary::sha256_file(path))<<'}';return out.str();
 }
 cp::RawHistory raw(const ow::Dataset &dataset){return{dataset.values,dataset.observed,dataset.channel_ids,dataset.timestamps,dataset.sampling_interval};}
+// Historical coordinate15_v1 draw. Ratio, stream, canonical-rank ordinal and
+// two-group repair match the V16 study sampler. This is not the family row RNG.
+uint64_t context_mixed(uint64_t x){
+  x+=0x9e3779b97f4a7c15ULL;
+  x=(x^(x>>30))*0xbf58476d1ce4e5b9ULL;
+  x=(x^(x>>27))*0x94d049bb133111ebULL;
+  return x^(x>>31);
+}
+uint64_t context_counter_seed(int64_t seed,int64_t attempt,uint64_t stream){
+  return context_mixed(static_cast<uint64_t>(seed)^context_mixed(static_cast<uint64_t>(attempt))^stream);
+}
+torch::Tensor coordinate15_deleted(const tr::MaskBatch &masks,const torch::Tensor &ids,
+    const cp::implementation::Config &config,int64_t seed,int64_t attempt){
+  constexpr double ratio=.15;
+  constexpr uint64_t stream=0x6374782d64726f70ULL;
+  TORCH_CHECK(seed>=0&&attempt>=0,"[CPB family train] context15 nonnegative absolute counters required");
+  TORCH_CHECK(masks.visible.defined()&&masks.visible.scalar_type()==torch::kBool&&masks.visible.dim()==4,
+      "[CPB family train] context15 blocked: visible must be logical B,C,H,F bool");
+  const auto B=masks.visible.size(0);
+  const auto C=config.channel_count,H=config.history_length,F=config.input_width,P=config.patch_length;
+  TORCH_CHECK(P>0&&H>0&&H%P==0&&F>0&&C>0,"[CPB family train] context15 blocked: history must be a positive multiple of patch length");
+  TORCH_CHECK(masks.visible.size(1)==C&&masks.visible.size(2)==H&&masks.visible.size(3)==F,
+      "[CPB family train] context15 blocked: visible must be logical B,C,H,F bool");
+  TORCH_CHECK(masks.eligible_channels.defined()&&masks.eligible_channels.scalar_type()==torch::kBool&&
+      masks.eligible_channels.dim()==2&&masks.eligible_channels.size(0)==B&&masks.eligible_channels.size(1)==C,
+      "[CPB family train] context15 blocked: eligible channels must be bool B,C");
+  const auto K=H/P,PF=P*F;
+  (void)cp::implementation::channel_indices(ids,config,B,torch::kCPU);
+  const auto rows=(ids.dim()==1?ids.unsqueeze(0).expand({B,C}):ids).to(torch::kCPU);
+  const auto order=rows.argsort(int64_t{1}).contiguous();
+  const auto canonical=order.accessor<int64_t,2>();
+  auto visible=masks.visible.to(torch::kCPU).reshape({B,C,K,PF}).contiguous();
+  auto requested=torch::zeros_like(visible);
+  auto support=visible.accessor<bool,4>();
+  auto requests=requested.accessor<bool,4>();
+  auto eligible=masks.eligible_channels.to(torch::kCPU).contiguous();
+  auto original_eligible=eligible.accessor<bool,2>();
+  const auto base=context_counter_seed(seed,attempt,stream);
+  for(int64_t b=0;b<B;++b){
+    for(int64_t rank=0;rank<C;++rank){
+      const auto c=canonical[b][rank];
+      for(int64_t k=0;k<K;++k){
+        for(int64_t j=0;j<PF;++j){
+          const auto ordinal=static_cast<uint64_t>((b*C+rank)*H*F+k*PF+j);
+          const double uniform=static_cast<double>(context_mixed(base+ordinal)>>11)*0x1.0p-53;
+          requests[b][c][k][j]=support[b][c][k][j]&&uniform<ratio;
+        }
+      }
+    }
+  }
+  auto deleted=requested.clone();auto erasures=deleted.accessor<bool,4>();
+  for(int64_t b=0;b<B;++b){
+    for(int64_t rank=0;rank<C;++rank){
+      const auto c=canonical[b][rank];
+      if(!original_eligible[b][c])continue;
+      int64_t retained_groups=0;
+      for(int64_t k=0;k<K;++k){
+        bool retained=false;
+        for(int64_t j=0;j<PF;++j)retained|=support[b][c][k][j]&&!erasures[b][c][k][j];
+        retained_groups+=retained;
+      }
+      for(int64_t k=0;k<K&&retained_groups<2;++k){
+        bool retained=false;int64_t first=-1;
+        for(int64_t j=0;j<PF;++j){
+          if(support[b][c][k][j]&&first<0)first=j;
+          retained|=support[b][c][k][j]&&!erasures[b][c][k][j];
+        }
+        if(!retained&&first>=0){
+          TORCH_CHECK(erasures[b][c][k][first],"[CPB family train] context15 repair cannot invent support");
+          erasures[b][c][k][first]=false;++retained_groups;
+        }
+      }
+      TORCH_CHECK(retained_groups>=2,"[CPB family train] context15 original eligible support cannot be repaired");
+    }
+  }
+  return deleted.reshape({B,C,H,F}).to(masks.visible.device());
+}
+uint64_t context15_fnv(const torch::Tensor &deleted){
+  const auto cpu=deleted.to(torch::kCPU).contiguous();
+  const auto *bytes=cpu.data_ptr<bool>();
+  uint64_t hash=14695981039346656037ULL;
+  for(int64_t i=0;i<cpu.numel();++i){hash^=bytes[i]?1ULL:0ULL;hash*=1099511628211ULL;}
+  return hash;
+}
+void context15_self_check(const cp::implementation::Config &loaded){
+  TORCH_CHECK(loaded.channel_count==3&&loaded.history_length==128&&loaded.input_width==9&&loaded.patch_length==8&&
+      loaded.mask_ratio==0.25&&loaded.channel_ids==std::vector<int64_t>({0,1,2}),
+      "[CPB family train] context15 self-check requires the reference C3/H128/F9/P8 mask-0.25 geometry");
+  auto level=cp::implementation::default_configurable_spectral_config();
+  level.channel_ids={0,1,2};
+  constexpr int64_t batch=2,mask_seed=11011;
+  auto observed=torch::ones({batch,level.channel_count,level.history_length,level.input_width},torch::kBool);
+  const auto masks=cp::implementation::configurable_spectral_make_training_mask(observed,level,mask_seed);
+  const struct {const char *order;std::vector<int64_t> ids;} orders[]{{"fwd",{0,1,2}},{"rev",{2,1,0}}};
+  const int64_t seeds[]{951101,42},attempts[]{0,1,16,2047};
+  uint64_t first_fwd=0,first_rev=0;bool have_fwd=false,have_rev=false;
+  for(const auto &order:orders){
+    auto ids=torch::tensor(order.ids,torch::kInt64);
+    for(const auto seed:seeds)for(const auto attempt:attempts){
+      const auto deleted=coordinate15_deleted(masks,ids,level,seed,attempt);
+      const auto again=coordinate15_deleted(masks,ids,level,seed,attempt);
+      TORCH_CHECK(torch::equal(deleted,again),"[CPB family train] context15 self-check is not repeatable");
+      TORCH_CHECK(deleted.scalar_type()==torch::kBool&&deleted.sizes()==masks.visible.sizes(),
+          "[CPB family train] context15 self-check changed the visible shape");
+      TORCH_CHECK(!deleted.logical_and(masks.visible.logical_not()).any().item<bool>(),
+          "[CPB family train] context15 self-check left the visible support");
+      const auto hash=context15_fnv(deleted);
+      if(!have_fwd&&std::string(order.order)=="fwd"&&seed==951101&&attempt==0){first_fwd=hash;have_fwd=true;}
+      if(!have_rev&&std::string(order.order)=="rev"&&seed==951101&&attempt==0){first_rev=hash;have_rev=true;}
+      std::ostringstream line;line<<"CONTEXT15_DIGEST order="<<order.order<<" seed="<<seed<<" attempt="<<attempt
+        <<" fnv="<<std::hex<<std::setw(16)<<std::setfill('0')<<hash<<std::dec;
+      std::cout<<line.str()<<'\n';
+    }
+  }
+  TORCH_CHECK(have_fwd&&have_rev&&first_fwd!=first_rev,"[CPB family train] context15 self-check did not observe canonical channel rank");
+  std::cout<<"CONTEXT15_SELF_CHECK passed\n";
+}
 void help(){
   std::cout<<"cpb_family_train --settings FILE --dataset FILE --output NEWLEAF --steps TOTAL --max-attempts TOTAL --batch-size N\n"
     <<"  --row-seed I --mask-seed I --context-seed I (--seed I | --resume TRAINING_STATE)\n"
-    <<"  [--learning-rate .001] [--weight-decay .0001] [--clip-norm 1] [--save-every 0]\n"
+    <<"  [--learning-rate .001] [--weight-decay .0001] [--clip-norm 1] [--save-every 0] [--context-deletion coordinate15]\n"
     <<"Single-device configurable-family example; DATASET must be a typed observation_window_dataset_v1 archive declaring role TRAIN.\n"
     <<"--steps is the TOTAL completed-update target, not additional steps. --max-attempts is a TOTAL attempt ceiling.\n"
     <<"Resume requires identical data/settings/executable bytes, batching, options and stream seeds. Stop budgets may increase.\n"
     <<"Fresh fitting uses all declared TRAIN rows once in source order, in --batch-size chunks; no fit on resume.\n"
-    <<"Rows use mt19937_64(counter_seed(row_seed,attempt)) modulo row count, with replacement. Context deletion is none.\n"
+    <<"Rows use mt19937_64(counter_seed(row_seed,attempt)) modulo row count, with replacement. Context deletion defaults to none.\n"
+    <<"--context-deletion coordinate15 uses the historical 0.15 canonical-rank rule. No other rate is accepted.\n"
     <<"The dataset declaration does not independently prove real TRAIN membership. No scheduler/accumulation/distributed training.\n";
 }
 int execute(int argc,char **argv){
   if(argc==2&&std::string(argv[1])=="--help"){help();return 0;}
   TORCH_CHECK(argc>1&&(argc-1)%2==0,"[CPB family train] use --help; options require values");
   const std::set<std::string> allowed{"--settings","--dataset","--output","--steps","--max-attempts","--batch-size","--seed","--resume",
-    "--row-seed","--mask-seed","--context-seed","--learning-rate","--weight-decay","--clip-norm","--save-every"};
+    "--row-seed","--mask-seed","--context-seed","--learning-rate","--weight-decay","--clip-norm","--save-every",
+    "--context-deletion","--context-deletion-self-check"};
   std::map<std::string,std::string> options;
   for(int i=1;i<argc;i+=2)TORCH_CHECK(allowed.count(argv[i])&&options.emplace(argv[i],argv[i+1]).second,"[CPB family train] unknown or duplicate option");
+  const bool use_context15=options.count("--context-deletion");
+  if(use_context15)TORCH_CHECK(options.at("--context-deletion")=="coordinate15","[CPB family train] --context-deletion accepts only coordinate15");
+  const std::string context_label=use_context15?"coordinate15-v1-ratio-0.15-stream-6374782d64726f70":"none";
+  if(options.count("--context-deletion-self-check")){
+    TORCH_CHECK(options.at("--context-deletion-self-check")=="1"&&use_context15&&options.count("--settings"),
+        "[CPB family train] context15 self-check requires --settings and --context-deletion coordinate15");
+    context15_self_check(cp::read_settings(options.at("--settings")).level);return 0;
+  }
   for(const auto key:{"--settings","--dataset","--output","--steps","--max-attempts","--batch-size","--row-seed","--mask-seed","--context-seed"})
     TORCH_CHECK(options.count(key),"[CPB family train] required option: ",key);
   TORCH_CHECK(bool(options.count("--seed"))!=bool(options.count("--resume")),"[CPB family train] choose fresh --seed OR typed --resume");
@@ -83,7 +212,8 @@ int execute(int argc,char **argv){
   const auto source_binding=dataset.source_identity+";archive-sha256="+dataset_sha;
   std::ostringstream recipe_stream;recipe_stream<<std::setprecision(17)
       <<"cpb-family-train-example-v1;executable="<<executable_sha<<";settings="<<settings_sha<<";dataset="<<dataset_sha
-      <<";batch="<<batch_size<<";rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context=none;calibration=all-TRAIN-source-order-batch-chunks-Chan-v1"
+      <<";batch="<<batch_size<<";rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context="<<context_label
+      <<";calibration=all-TRAIN-source-order-batch-chunks-Chan-v1"
       <<";row-seed="<<row_seed<<";mask-seed="<<mask_seed<<";context-seed="<<context_seed
       <<";AdamW-lr="<<optimizer_options.learning_rate<<";wd="<<optimizer_options.weight_decay<<";global-clip="<<optimizer_options.clip_norm;
   const tr::TrainingIdentity identity{source_binding,dataset.split_identity,recipe_stream.str()};
@@ -120,7 +250,17 @@ int execute(int argc,char **argv){
   while(progress.completed_updates<target&&progress.attempted_batches<maximum_attempts){
     std::mt19937_64 generator(tr::training_counter_seed(progress.row_seed,progress.attempted_batches));std::vector<int64_t> rows;
     for(int64_t b=0;b<batch_size;++b)rows.push_back(static_cast<int64_t>(generator()%static_cast<uint64_t>(dataset.rows())));
-    const auto batch=ow::subset(dataset,rows);const auto result=tr::train_step(live.model,live.scaler,*optimizer,progress,raw(batch),batch.cutoffs,optimizer_options);
+    const auto batch=ow::subset(dataset,rows);
+    const auto history=raw(batch);
+    torch::Tensor context_deleted;
+    if(use_context15){
+      const auto masks=tr::make_mask(history,batch.cutoffs,live.model->config(),progress.mask_seed,progress.attempted_batches);
+      const auto retained=cp::boundary::retain(history,batch.cutoffs,live.model->config());
+      context_deleted=coordinate15_deleted(masks,retained.raw.channel_ids,live.model->config().level,progress.context_seed,progress.attempted_batches);
+    }
+    const auto result=use_context15
+        ?tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options,context_deleted)
+        :tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options);
     if(!result.updated)++skipped;
     events<<"{\"attempt\":"<<result.attempt_index<<",\"updated\":"<<(result.updated?"true":"false")<<",\"completed_updates\":"<<progress.completed_updates
       <<",\"loss\":"<<result.total_loss<<",\"gaussian_nll\":"<<result.gaussian_nll<<",\"temporal_loss\":"<<result.temporal_loss<<",\"gradient_norm\":"<<result.gradient_norm<<",\"source_row_ids\":[";
@@ -148,7 +288,7 @@ int execute(int argc,char **argv){
       <<",\"declared_role\":\"TRAIN\",\"split_membership_independently_verified\":false,\"recipe_identity\":"<<quote(identity.recipe_identity)
       <<",\"target_total_updates\":"<<target<<",\"maximum_total_attempts\":"<<maximum_attempts<<",\"batch_size\":"<<batch_size<<",\"save_every_updates\":"<<save_every
       <<",\"initialization_seed\":"<<live.model->initialization_seed()<<",\"row_seed\":"<<progress.row_seed<<",\"mask_seed\":"<<progress.mask_seed<<",\"context_seed\":"<<progress.context_seed
-      <<",\"context_deletion\":\"none\",\"learning_rate\":"<<optimizer_options.learning_rate<<",\"weight_decay\":"<<optimizer_options.weight_decay<<",\"clip_norm\":"<<optimizer_options.clip_norm
+      <<",\"context_deletion\":"<<quote(context_label)<<",\"learning_rate\":"<<optimizer_options.learning_rate<<",\"weight_decay\":"<<optimizer_options.weight_decay<<",\"clip_norm\":"<<optimizer_options.clip_norm
       <<",\"completed_updates\":"<<progress.completed_updates<<",\"attempted_batches\":"<<progress.attempted_batches
       <<",\"starting_completed_updates\":"<<starting_updates<<",\"starting_attempted_batches\":"<<starting_attempts
       <<",\"physical_training_updates_this_invocation\":"<<progress.completed_updates-starting_updates<<",\"skipped_attempts_this_invocation\":"<<skipped

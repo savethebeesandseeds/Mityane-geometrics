@@ -1,3 +1,5 @@
+> Live roles: [`index.json`](index.json) is the frozen v1-only declaration snapshot (`metadata_only`, 2026-10-15, `quality_measured` false) and is not a status page. [`current.json`](current.json) is the V14 historical catalog (2026-10-18, `active_application` null, clean baseline CPB-v3.market-01) and is not the research default. The only research default is [`research-reference.json`](../research-reference.json): V16 seed 946103, final logical update 2048, native36, selected on 22 October 2026. The next reference change uses [`cpb_family_screen_v1`](../../../evaluation/protocols/cpb_family_screen_v1/POLICY.md). Development cannot promote. January, February and March 2024 are consumed. See [ROLES.md](ROLES.md).
+
 # Causal patch bottleneck MAE: version index
 
 Copyright(c)2026 Waajacu. All rights reserved. Inherited copied notices remain authoritative.
