@@ -3,6 +3,16 @@
 This folder owns the RPB model family, preprocessing, training/checkpoint
 adapters and the configurable spectral/content relation APIs.
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument.
+Each channel is one time resolution of that instrument. The channel id is the
+torch kline-interval ordinal. Different instruments are different rows. The
+contract is
+[timeframe_channel.h](../include/embedding/encoders/timeframe_channel.h).
+Historical checkpoints that stored `{0,1,2}` keep that withdrawn instrument
+binding, and their scores stay scores of that binding.
+
 The maintained [configurable family and training surface](family/README.md)
 delivers fresh v22 over the existing v20 backbone, streaming TRAIN fitting,
 masked waveform updates, typed AdamW continuation and inference/embedding export.

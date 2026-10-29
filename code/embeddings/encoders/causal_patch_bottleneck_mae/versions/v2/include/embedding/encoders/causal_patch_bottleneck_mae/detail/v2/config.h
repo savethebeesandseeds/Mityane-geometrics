@@ -34,6 +34,10 @@ struct Config {
   std::vector<int64_t> channel_ids{};
 };
 
+// Empty channel_ids falls back to 0..channel_count-1. That fallback is not a
+// timeframe assignment. Ordinals 0, 1 and 2 are torch utility series, and the
+// set {0,1,2} is the withdrawn instrument binding. The channel contract is
+// embedding/encoders/timeframe_channel.h.
 inline std::vector<int64_t> resolved_channel_ids(const Config &config) {
   if (!config.channel_ids.empty()) return config.channel_ids;
   std::vector<int64_t> ids;

@@ -10,7 +10,13 @@ namespace embedding::encoders::causal_patch_bottleneck_mae::detail::v6 {
 struct Input {
   torch::Tensor data;        // [B,C,H,F]; raw float32/64 or normalized float32
   torch::Tensor observed;    // same shape, bool
-  torch::Tensor channel_ids; // [C] or [B,C], int64; storage order is not identity
+  // [C] or [B,C], int64. Storage order is not identity.
+  // One window is one instrument. Each channel is one cuwacunu_torch kline
+  // interval (minutes, hours, weeks, and the other keys). The id is that
+  // interval's ordinal. Different instruments are different batch rows.
+  // {0,1,2} is the withdrawn instrument binding, not this axis.
+  // Contract: embedding/encoders/timeframe_channel.h.
+  torch::Tensor channel_ids;
   torch::Tensor endpoints;   // optional for direct model calls; workflow archives require finite [B]
   double sampling_interval{1.0};
 };

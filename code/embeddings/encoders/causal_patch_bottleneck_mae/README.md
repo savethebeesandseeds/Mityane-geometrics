@@ -3,6 +3,16 @@
 Copyright (c) 2026 Waajacu. All rights reserved. Preserve the inherited notices
 inside the copied implementation.
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument.
+Each channel is one time resolution of that instrument. The channel id is the
+torch kline-interval ordinal. Different instruments are different rows. The
+contract is
+[timeframe_channel.h](../include/embedding/encoders/timeframe_channel.h).
+Historical checkpoints that stored `{0,1,2}` keep that withdrawn instrument
+binding, and their scores stay scores of that binding.
+
 ## Continue versioned CPB research
 
 The CPB workstream continues to propose and compare new encoder versions in

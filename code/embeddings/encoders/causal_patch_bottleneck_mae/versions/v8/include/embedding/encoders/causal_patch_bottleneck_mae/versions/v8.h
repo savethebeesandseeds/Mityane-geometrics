@@ -24,6 +24,7 @@ inline constexpr const char *kCausalPolicy=
     "crop-before-validation;rolling-last-H;masked-left-pad;original-patch-end-causal-attention;prefix-only-banks-pooling-v1";
 inline constexpr const char *kInitializationKind="fresh-seeded-constructor-no-import-v1";
 
+// Channel axis: one window is one instrument. Each channel is a cuwacunu_torch kline interval (timeframe_channel.h). {0,1,2} is the withdrawn instrument binding.
 struct RawHistory {
   torch::Tensor data,observed,channel_ids,timestamps;
   double sampling_interval{60000.};

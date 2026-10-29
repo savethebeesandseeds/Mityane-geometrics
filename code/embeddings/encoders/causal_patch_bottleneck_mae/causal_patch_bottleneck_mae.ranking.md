@@ -225,7 +225,7 @@ V3/V4 and the V15–V19 studies have native36; V5–V14 have native40. Width cha
 
 ## Market readout ranking
 
-Scope: **OR-05 past-window readout**, MKT-HIST-2, BTC/ETH/SOL January2024, TRAIN days1–21 and known validation days22–28. Encoders use recent128 history from the saved H256 probe geometry. Heads use 112 TRAIN and 32 validation probes, TRAIN-fitted preprocessing, ridge1 or four-output tanh16/Adam0.01/100 steps. All ranked rows have 32/32 coverage. Neural R² is the arithmetic mean of the three fixed head R² values, not pooled predictions. January is repeatedly used development evidence.
+Scope: **OR-05 past-window readout**, MKT-HIST-2, BTC/ETH/SOL January2024, TRAIN days1–21 and known validation days22–28. Those three symbols occupied the channel axis. That is the withdrawn instrument binding, not the timeframe contract, and the scores below measure that binding. Encoders use recent128 history from the saved H256 probe geometry. Heads use 112 TRAIN and 32 validation probes, TRAIN-fitted preprocessing, ridge1 or four-output tanh16/Adam0.01/100 steps. All ranked rows have 32/32 coverage. Neural R² is the arithmetic mean of the three fixed head R² values, not pooled predictions. January is repeatedly used development evidence.
 
 | Task / head | 1 | 2 | 3 |
 | --- | --- | --- | --- |

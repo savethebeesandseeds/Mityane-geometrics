@@ -42,7 +42,7 @@ inline void validate(const Dataset &data){
       data.observed.sizes()==x.sizes(),"[observation windows] matching CPU bool mask required");
   TORCH_CHECK(data.channel_ids.defined()&&data.channel_ids.device().is_cpu()&&data.channel_ids.scalar_type()==torch::kInt64&&
       ((data.channel_ids.dim()==1&&data.channel_ids.size(0)==C)||(data.channel_ids.dim()==2&&data.channel_ids.sizes()==torch::IntArrayRef({B,C}))),
-      "[observation windows] CPU I64 semantic IDs C or B,C required");
+      "[observation windows] CPU I64 timeframe channel IDs C or B,C required");
   const auto ids=(data.channel_ids.dim()==1?data.channel_ids.unsqueeze(0):data.channel_ids).contiguous();
   for(int64_t b=0;b<ids.size(0);++b){const auto row=ids[b].contiguous();const auto *p=row.const_data_ptr<int64_t>();
     TORCH_CHECK(std::set<int64_t>(p,p+C).size()==size_t(C),"[observation windows] channel IDs must be unique within each row");}

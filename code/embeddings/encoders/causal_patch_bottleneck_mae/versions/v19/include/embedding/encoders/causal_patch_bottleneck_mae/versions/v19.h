@@ -1,5 +1,6 @@
 // Copyright (c) 2026 Waajacu. MIT; see LICENSE at repository root.
 // CPB-v19 adds a training-only EMA teacher and learned-coordinate predictor.
+// Channel axis: one window is one instrument. Each channel is a cuwacunu_torch kline interval (timeframe_channel.h). {0,1,2} is the withdrawn instrument binding.
 #pragma once
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/training.h"
 #include <cmath>
@@ -16,7 +17,9 @@ using BankStandardizer=family::BankStandardizer;using RawHistory=family::RawHist
 using TrainingIdentity=base_training::TrainingIdentity;using TrainingProgress=base_training::TrainingProgress;
 using OptimizerConfig=base_training::OptimizerConfig;using PreprocessingIdentity=base_training::PreprocessingIdentity;
 using PreprocessingFitter=base_training::PreprocessingFitter;using FittedPreprocessing=base_training::FittedPreprocessing;
-using family::read_settings;using family::dimensions;using family::parameter_counts;using family::validate_config;
+using family::dimensions;using family::parameter_counts;using family::validate_config;
+// research.conf is the recorded binding. Engineering tests also load timeframe ids.
+inline Config read_settings(const std::filesystem::path &path){return family::read_admitted_settings(path);}
 using base_training::make_mask;using base_training::training_counter_seed;
 inline constexpr const char *kModelTag="CPB-v19";
 inline constexpr const char *kInferenceKind="cpb_v19_teacher_student_inference_v1";

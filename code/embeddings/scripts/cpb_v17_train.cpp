@@ -77,7 +77,7 @@ int execute(int argc,char **argv){
   const auto settings_sha=cp::boundary::sha256_file(settings),dataset_sha=cp::boundary::sha256_file(dataset_path);
   const auto executable_path=fs::canonical("/proc/self/exe");
   const auto executable_sha=cp::boundary::sha256_file(executable_path);
-  const auto config=cp::read_settings(settings);const auto dataset=ow::read(dataset_path);
+  const auto config=v17::read_settings(settings);const auto dataset=ow::read(dataset_path);
   TORCH_CHECK(dataset.role=="TRAIN","[CPB v17 train] only a caller-declared TRAIN dataset may train/fit");
   TORCH_CHECK(batch_size<=std::numeric_limits<int64_t>::max()/dataset.values[0].numel(),"[CPB v17 train] batch cell count overflow");
   TORCH_CHECK(cp::boundary::sha256_file(settings)==settings_sha&&cp::boundary::sha256_file(dataset_path)==dataset_sha,"[CPB v17 train] input changed while reading");

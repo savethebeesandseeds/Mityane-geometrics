@@ -1,5 +1,9 @@
 # CPB-v5: independent mean and uncertainty coordinates
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Copyright (c) 2026 Waajacu. All rights reserved. See ../../../../../../LICENSE.
 Inherited notices remain in the complete copied files and LICENSES/NOTICE.
 
@@ -47,7 +51,7 @@ construction. The bank identity binds the fresh scaler. Training accepts only
 those frozen statistics; separately declared frozen-inference scaler policies
 can retain the unchanged market bank. No old fitted statistic is imported.
 
-Raw observations use genuine CPU F64 values, boolean masks, semantic channel IDs,
+Raw observations use genuine CPU F64 values, boolean masks, timeframe channel IDs,
 actual uniform timestamps and explicit cutoffs. Cropping precedes validation,
 casting, scaling, bank extraction and masking. Original patch-order temporal
 attention is causal. Context deletion cannot create reconstruction targets.

@@ -5,6 +5,7 @@
 #include "embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_settings.h"
 #include "embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_training_state.h"
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/shape.h"
+#include "embedding/encoders/timeframe_channel.h"
 #include <array>
 #include <cstring>
 #include <iterator>
@@ -21,6 +22,8 @@ inline constexpr const char *kCausalPolicy=
     "crop-before-validation;rolling-last-H;masked-left-pad;original-patch-end-causal-attention;prefix-only-banks-pooling-v1";
 inline constexpr const char *kInitializationKind="fresh-seeded-constructor-no-import-v1";
 
+// One window is one instrument. channel_ids are cuwacunu_torch kline intervals.
+// sampling_interval is the shared anchor grid, not the identity of each channel.
 struct RawHistory {
   torch::Tensor data,observed,channel_ids,timestamps;
   double sampling_interval{60000.};
@@ -32,7 +35,11 @@ struct CausalTrace : implementation::TemporalExecutionTrace {
 };
 // Settings parsing inherited under MIT; see LICENSES/NOTICE. The family owns
 // its tag and validation rather than rewriting the historical V16 parser.
-inline Config settings(const implementation::configuration::Document &document){
+// timeframe: new family settings. withdrawn_instrument: only {0,1,2}.
+// admitted: a timeframe list or that recorded binding. v17-v19 load both.
+enum class ChannelAdmission { timeframe, withdrawn_instrument, admitted };
+inline Config settings(const implementation::configuration::Document &document,
+                       ChannelAdmission admission=ChannelAdmission::timeframe){
   document.reject_unknown_blocks({"ENCODER"});const auto &b=document.block("ENCODER");
   b.reject_unknown_keys({"MODEL_TAG","CHANNEL_COUNT","HISTORY_LENGTH","INPUT_WIDTH","PATCH_LENGTH","EMBEDDING_SIZE",
       "LEVEL_EMBEDDING_SIZE","ENCODER_WIDTH","NUM_LAYERS","NUM_HEADS","FEEDFORWARD_WIDTH","DECODER_HIDDEN_WIDTH",
@@ -51,6 +58,16 @@ inline Config settings(const implementation::configuration::Document &document){
   c.mask_ratio=b.number_or("MASK_RATIO",c.mask_ratio);c.huber_delta=b.number_or("HUBER_DELTA",c.huber_delta);
   c.scale_floor=b.number_or("SCALE_FLOOR",c.scale_floor);c.sampling_interval=b.number_or("SAMPLING_INTERVAL",c.sampling_interval);
   c.channel_ids=b.integers_or("CHANNEL_IDS",{});
+  std::string channel_error;
+  if(admission==ChannelAdmission::timeframe){
+    if(!timeframe_channel::timeframe_ids_ok(c.channel_ids,&channel_error))
+      TORCH_CHECK(false,"[cpb-family settings] ",channel_error);
+  }else if(admission==ChannelAdmission::withdrawn_instrument){
+    if(!timeframe_channel::is_withdrawn_instrument_binding(c.channel_ids.data(),c.channel_ids.size()))
+      TORCH_CHECK(false,"[cpb-family settings] withdrawn loader accepts only the recorded instrument ids {0,1,2}");
+  }else if(!timeframe_channel::admit_configured_ids(c.channel_ids,&channel_error)){
+    TORCH_CHECK(false,"[cpb-family settings] ",channel_error);
+  }
   const auto fallback=shape_detail::add({c.export_width,4});
   const auto native=b.integer_or("EMBEDDING_SIZE",fallback);
   TORCH_CHECK(native>c.export_width && c.export_width>0,"[cpb-family settings] native width must exceed positive level width");
@@ -58,6 +75,14 @@ inline Config settings(const implementation::configuration::Document &document){
   result.level.channel_ids=implementation::resolved_channel_ids(result.level);return result;
 }
 inline Config read_settings(const std::filesystem::path &path){return settings(implementation::configuration::Document::read(path));}
+// The coordinate15 digest lock is the caller. These ids are not timeframes.
+inline Config read_withdrawn_instrument_settings(const std::filesystem::path &path){
+  return settings(implementation::configuration::Document::read(path),ChannelAdmission::withdrawn_instrument);
+}
+// v17-v19 research.conf stores {0,1,2}. Their tests also load timeframe fixtures.
+inline Config read_admitted_settings(const std::filesystem::path &path){
+  return settings(implementation::configuration::Document::read(path),ChannelAdmission::admitted);
+}
 inline auto input_config(const Config &c){return implementation::configurable_spectral_input_config(c.level);}
 
 namespace boundary {
@@ -71,7 +96,10 @@ inline Window retain(const RawHistory &history,const torch::Tensor &requested,co
       history.observed.scalar_type()==torch::kBool && history.observed.sizes()==history.data.sizes(),"[cpb-family] matching CPU bool history mask required");
   const auto B=history.data.size(0),N=history.data.size(2),H=c.history_length;
   TORCH_CHECK(history.channel_ids.defined() && history.channel_ids.device().is_cpu() &&
-      history.channel_ids.scalar_type()==torch::kInt64,"[cpb-family] CPU semantic channel IDs required");
+      history.channel_ids.scalar_type()==torch::kInt64,"[cpb-family] CPU timeframe channel IDs required");
+  std::string channel_error;
+  if(!timeframe_channel::admit_configured_ids(implementation::resolved_channel_ids(c),&channel_error))
+    TORCH_CHECK(false,"[cpb-family] ",channel_error);
   (void)implementation::channel_indices(history.channel_ids,c,B,torch::kCPU);
   TORCH_CHECK(std::isfinite(history.sampling_interval) && history.sampling_interval==c.sampling_interval,
       "[cpb-family] declared sampling grid must match config");

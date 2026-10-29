@@ -1,5 +1,9 @@
 # Raw patch bottleneck MAE: version index
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard in every version below. One window is one instrument. Each channel is one time resolution of that instrument, and the channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding. Scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Copyright(c)2026 Waajacu. All rights reserved. Existing implementation notices are unchanged.
 
 This is the single navigation index for the current source layout and the preserved historical design records. The physical cleanup changes paths only. Public APIs, namespaces, model tags, configurations, defaults, computations, initialization order, registered names and checkpoint formats stay unchanged. RPB-v22 stays primary; RPB-v24.market-01.alt-01 stays the balanced native36 reference. The separate causal_patch_bottleneck_mae family is unchanged.

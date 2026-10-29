@@ -1,5 +1,9 @@
 # CPB-v1
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Copyright (c) 2026 Waajacu. All rights reserved. See ../../../../../../LICENSE.
 
 This version owns its complete implementation and parser closure. Its only
@@ -8,7 +12,7 @@ external code dependencies are Torch and the C++ standard library. Include
 `include/` directory on the include path. The public namespace is
 `embedding::encoders::causal_patch_bottleneck_mae::v1`.
 
-`RawHistory` holds CPU float64 observations, boolean masks, semantic channel
+`RawHistory` holds CPU float64 observations, boolean masks, timeframe channel
 IDs, a uniform float64 timestamp grid and its sampling interval. `encode_at`
 and `trace_at` require explicit per-example float64 cutoff timestamps. They
 first select at most H observations through each cutoff, left-pad unavailable

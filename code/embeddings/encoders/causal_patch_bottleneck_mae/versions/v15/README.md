@@ -1,5 +1,9 @@
 # CPB-v15: matched V4 native36 objective study
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Source preparation only. No successful build, engineering result, training,
 quality result, application selection or encoder superiority is established by
 these files. The actual two-arm, three-paired-seed study and chronological

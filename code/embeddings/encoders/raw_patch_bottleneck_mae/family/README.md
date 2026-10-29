@@ -1,5 +1,10 @@
 # Configurable RPB family and portable training
 
+One window is one instrument. `CHANNEL_IDS` are cuwacunu_torch kline-interval
+ordinals (`embedding/encoders/timeframe_channel.h`). `read_settings` refuses
+the withdrawn instrument binding `{0,1,2}`. A recorded checkpoint that already
+carries that binding can still be encoded.
+
 This maintained C++ surface constructs and trains **fresh RPB-v22** over the
 existing v20 backbone. The network, TRAIN fitter, original patch-mask/Huber
 learning method, fixed AdamW update, checkpoint continuation and inference

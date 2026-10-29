@@ -2,6 +2,10 @@
 
 # Causal patch bottleneck MAE: version index
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard in every version below. One window is one instrument. Each channel is one time resolution of that instrument, and the channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding. Scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Copyright(c)2026 Waajacu. All rights reserved. Inherited copied notices remain authoritative.
 
 [CPB-v1](CPB-v1.json) is prospectively declared under the exact card pinned by the [index](index.json). Implementation, CUDA causality admission and fixed-head quality are pending. No quality score or trained checkpoint is invented here.

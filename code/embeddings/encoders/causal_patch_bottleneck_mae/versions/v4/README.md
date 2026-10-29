@@ -1,5 +1,9 @@
 > Source implemented, pending admission: complete owned CPB-v4 copy of CPB-v3 with only variance_input_gradient_stop selected. Forward distribution values and numerical Gaussian NLL are unchanged; the encoder receives the partial gradient through live mean/residual paths. The prospective card, input manifest and execution admission are pending; no build, calibration, learning, proof or quality run has occurred.
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 # CPB-v4: causal encoder trained from scratch
 
 Copyright (c) 2026 Waajacu. All rights reserved. See ../../../../../../LICENSE.
@@ -35,7 +39,7 @@ scaler's actual identity. Training requires exactly these frozen statistics;
 frozen inference can use a separately declared external TRAIN scaler without
 changing the checkpoint's market bank. No historical statistics are imported.
 
-Raw observations are genuine CPU F64 with boolean masks, semantic channel IDs,
+Raw observations are genuine CPU F64 with boolean masks, timeframe channel IDs,
 actual uniform timestamps and explicit cutoffs. The boundary crops values,
 masks and target sources before validation, casting, scaling, banks or masking.
 Temporal attention is causal in original patch order; channel mixing occurs

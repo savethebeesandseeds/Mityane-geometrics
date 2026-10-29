@@ -31,6 +31,17 @@ substantial application training, final docking and end-to-end application
 evaluation. Keep the portable training machinery with its encoder component;
 application data, budgets and orchestration belong to the consumer.
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard for the causal and raw patch
+bottleneck encoders, in every version. One window is one instrument. The
+channel axis holds that instrument's time resolutions, and each channel id is
+the torch ordinal of a kline interval. Different instruments are different
+batch rows. The contract is `include/embedding/encoders/timeframe_channel.h`.
+A historical checkpoint that stored channel ids `{0,1,2}` keeps that withdrawn
+instrument binding. Do not relabel its scores as timeframe measurements, and
+do not accept that binding in a new family settings file.
+
 ## Keep four objects separate
 
 - **Family/provider definition:** architecture or upstream service, public

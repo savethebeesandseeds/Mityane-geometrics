@@ -68,7 +68,7 @@ void fixture(const fs::path &configs,const fs::path &output,const std::string &n
   const auto permutation=torch::arange(c.channel_count-1,-1,-1,torch::kInt64);
   const cp::RawHistory permuted{raw.data.index_select(1,permutation),raw.observed.index_select(1,permutation),raw.channel_ids.index_select(0,permutation),raw.timestamps,raw.sampling_interval};
   cp::training::PreprocessingFitter permutation_fit(config,fit_identity);permutation_fit.add(permuted,cutoffs);const auto reordered_stats=permutation_fit.freeze();
-  check(stats.scaler.identity()==reordered_stats.scaler.identity()&&stats.bank.identity()==reordered_stats.bank.identity(),"semantic channel mapping preserves preprocessing");
+  check(stats.scaler.identity()==reordered_stats.scaler.identity()&&stats.bank.identity()==reordered_stats.bank.identity(),"timeframe channel mapping preserves preprocessing");
   auto fresh=cp::fresh(config,stats.scaler,stats.bank,221000+c.channel_count);
   auto repeated=cp::fresh(config,stats.scaler,stats.bank,221000+c.channel_count);same_model(fresh.model,repeated.model);
   check(fresh.source_updates==0&&fresh.causal_updates==0,"fresh means no pretrained ancestry or updates");
@@ -84,7 +84,7 @@ void fixture(const fs::path &configs,const fs::path &output,const std::string &n
   check(bits(trace.encoding.native,encoding.native),"partial-last-patch diagnostic trace works");
   if(trace.patch_valid.any().item<bool>())check(trace.token_end_times.masked_select(trace.patch_valid).le(cutoffs[0].item<double>()).all().item<bool>(),"partial patch endpoint does not exceed cutoff");
   const auto permuted_encoding=fresh.model->encode_at(permuted,cutoffs,stats.scaler);
-  check(torch::allclose(encoding.native,permuted_encoding.native,1e-6,1e-6),"semantic channel permutation respects canonical output");
+  check(torch::allclose(encoding.native,permuted_encoding.native,1e-6,1e-6),"timeframe channel permutation respects canonical output");
   const auto dir=output/name;check(fs::create_directory(dir),"exclusive shape output");
   const auto inference=dir/"inference-0.pt",training=dir/"training-1.pt";
   cp::save_checkpoint(inference.string(),fresh.model,stats.scaler,0);
@@ -158,6 +158,7 @@ void high_offset_preprocessing(const fs::path &configs){
   // Centered F64 moments must retain its genuine nonzero variation.
   const int64_t B=1024,H=c.history_length;const double base=std::ldexp(1.,60),ulp=std::ldexp(1.,37);
   auto values=torch::full({B,1,H,1},base,torch::kFloat64);values[0][0][0][0]=base+ulp;
+  // 11 is the torch ordinal of 4h, matching single.conf.
   const cp::RawHistory raw{values,torch::ones(values.sizes(),torch::kBool),torch::tensor({11},torch::kInt64),torch::arange(H,torch::kFloat64)*c.sampling_interval,c.sampling_interval};
   const auto cutoffs=torch::full({B},(H-1)*c.sampling_interval,torch::kFloat64);
   tr::PreprocessingFitter fitter(config,{"synthetic-high-offset-one-ulp","TRAIN-only-fixture","centered-window-moments-v1"});

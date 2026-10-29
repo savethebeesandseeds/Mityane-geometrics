@@ -1,5 +1,9 @@
 # CPB-v6: Huber mean and detached-error variance supervision
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 Copyright (c) 2026 Waajacu. All rights reserved. See ../../../../../../LICENSE.
 Inherited notices remain in all complete copied files and LICENSES/NOTICE.
 
@@ -51,7 +55,7 @@ fresh(Config,FrozenScaler,BankStandardizer,seed) constructs all learned values
 directly under the declared seed with source_updates0 and no pretrained
 ancestor. Newly fitted TRAIN-only statistics bind their actual identities.
 No old checkpoint/scaler/normalizer importer exists. Actual CPU rawF64 values,
-boolean masks, semantic channel IDs, timestamps and explicit cutoffs retain
+boolean masks, timeframe channel IDs, timestamps and explicit cutoffs retain
 the crop-before-validation boundary, causal attention and backward-only banks.
 
 Own inference/payload/training kinds bind objective_policy, deltaF64, unit

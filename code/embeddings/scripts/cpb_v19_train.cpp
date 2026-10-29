@@ -85,7 +85,7 @@ int execute(int argc,char **argv){
   const auto executable_path=fs::canonical("/proc/self/exe");
   const auto executable_sha=cp::boundary::sha256_file(executable_path);
   torch::set_num_threads(1);torch::set_num_interop_threads(1);
-  const auto config=cp::read_settings(settings);const auto dataset=ow::read(dataset_path);
+  const auto config=v19::read_settings(settings);const auto dataset=ow::read(dataset_path);
   TORCH_CHECK(dataset.role=="TRAIN","only caller-declared TRAIN data may fit/train");
   TORCH_CHECK(batch_size<=std::numeric_limits<int64_t>::max()/dataset.values[0].numel(),"batch cell count overflow");
   TORCH_CHECK(cp::boundary::sha256_file(settings)==settings_sha&&cp::boundary::sha256_file(dataset_path)==dataset_sha,"input changed while reading");

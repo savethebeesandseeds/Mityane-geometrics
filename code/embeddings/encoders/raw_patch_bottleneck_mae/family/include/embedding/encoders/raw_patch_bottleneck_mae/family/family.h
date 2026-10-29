@@ -4,6 +4,7 @@
 
 #include "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_settings.h"
 #include "embedding/encoders/raw_patch_bottleneck_mae/content_ordered_relation_checkpoint.h"
+#include "embedding/encoders/timeframe_channel.h"
 #include "cuwacunu/artifacts/v1/sidecar.h"
 
 namespace embedding::encoders::raw_patch_bottleneck_mae::family {
@@ -16,7 +17,11 @@ inline constexpr const char *kFamilyApi = "rpb-family-v1";
 
 inline void validate_config(const Config &c) { validate_content_ordered_relation_config(c); }
 inline Config read_settings(const std::filesystem::path &path) {
-  return read_content_ordered_relation_settings(path);
+  auto config = read_content_ordered_relation_settings(path);
+  std::string channel_error;
+  if (!timeframe_channel::timeframe_ids_ok(config.channel_ids, &channel_error))
+    TORCH_CHECK(false, "[rpb-family settings] ", channel_error);
+  return config;
 }
 
 struct Dimensions {
@@ -72,6 +77,9 @@ inline EncodeOutput encode(Model &model, const FrozenScaler &scaler, const Input
   const bool previous_mode = model->is_training();
   struct RestoreMode { Model &model; bool mode; ~RestoreMode() { model->train(mode); } } restore{model,previous_mode};
   model->eval();
+  std::string channel_error;
+  if (!timeframe_channel::admit_configured_ids(model->config().channel_ids, &channel_error))
+    TORCH_CHECK(false, "[rpb family] ", channel_error);
   return model->encode(transform_configurable_spectral_input(scaler, raw, model->config()));
 }
 inline void save_inference(const std::string &path, const Model &model,

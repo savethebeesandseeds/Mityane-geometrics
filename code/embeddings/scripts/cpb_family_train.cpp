@@ -120,9 +120,11 @@ uint64_t context15_fnv(const torch::Tensor &deleted){
   return hash;
 }
 void context15_self_check(const cp::implementation::Config &loaded){
+  // Ids {0,1,2} are the withdrawn instrument binding this historical rule was measured on.
+  // They are not timeframe channels. The digest lock stays on that recorded geometry.
   TORCH_CHECK(loaded.channel_count==3&&loaded.history_length==128&&loaded.input_width==9&&loaded.patch_length==8&&
       loaded.mask_ratio==0.25&&loaded.channel_ids==std::vector<int64_t>({0,1,2}),
-      "[CPB family train] context15 self-check requires the reference C3/H128/F9/P8 mask-0.25 geometry");
+      "[CPB family train] context15 self-check requires the withdrawn C3/H128/F9/P8 instrument binding");
   auto level=cp::implementation::default_configurable_spectral_config();
   level.channel_ids={0,1,2};
   constexpr int64_t batch=2,mask_seed=11011;
@@ -178,7 +180,7 @@ int execute(int argc,char **argv){
   if(options.count("--context-deletion-self-check")){
     TORCH_CHECK(options.at("--context-deletion-self-check")=="1"&&use_context15&&options.count("--settings"),
         "[CPB family train] context15 self-check requires --settings and --context-deletion coordinate15");
-    context15_self_check(cp::read_settings(options.at("--settings")).level);return 0;
+    context15_self_check(cp::read_withdrawn_instrument_settings(options.at("--settings")).level);return 0;
   }
   for(const auto key:{"--settings","--dataset","--output","--steps","--max-attempts","--batch-size","--row-seed","--mask-seed","--context-seed"})
     TORCH_CHECK(options.count(key),"[CPB family train] required option: ",key);

@@ -22,6 +22,7 @@ inline constexpr const char *kSourceConfigSha256="8946440d0e9834465d7d8e7fcc973b
 inline constexpr const char *kInputScalerIdentity="rpb-scaler-v1-fnv1a64-a4b0f9ff085ab969";
 inline constexpr const char *kBankIdentity="rpb-relative-bank-v1:rpb-bank-standardizer-v1-fnv1a64-a79ac4a6bfe8d476";
 
+// Channel axis: one window is one instrument. Each channel is a cuwacunu_torch kline interval (timeframe_channel.h). {0,1,2} is the withdrawn instrument binding.
 struct RawHistory {
   torch::Tensor data,observed,channel_ids,timestamps;
   double sampling_interval{60000.};

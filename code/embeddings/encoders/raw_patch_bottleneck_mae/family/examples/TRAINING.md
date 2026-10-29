@@ -35,10 +35,12 @@ Linux container; PowerShell performs orchestration and receipt inspection.
 )
 ```
 
-The fixture creates six artificial rows with semantic channel ID11 and 72 raw
-ticks. [single.conf](../config/single.conf) retains the last H65 ticks, P8,
+The fixture creates six artificial rows. Each row is one instrument. The single
+configuration uses timeframe channel `11` (`4h`) and 72 raw ticks.
+[single.conf](../config/single.conf) retains the last H65 ticks, P8,
 native D8 and W16. [multi.conf](../config/multi.conf) instead uses
-C3/H129/F9/P8/D32/W32, IDs11/18/25, and a learned20+fixed12 native layout.
+C3/H129/F9/P8/D32/W32, torch ordinals `11`/`18`/`4` (`4h`, `1M`, `1m`), and a
+learned20+fixed12 native layout.
 Generate an appropriately shaped archive for each configuration. These are
 small engineering cohorts, not proposed useful trained instances.
 

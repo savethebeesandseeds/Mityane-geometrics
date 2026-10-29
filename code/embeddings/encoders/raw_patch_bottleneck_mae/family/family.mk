@@ -4,6 +4,7 @@ RPB_FAMILY_SOURCE_ROOT ?= $(CURDIR)
 RPB_FAMILY_ROOT := $(RPB_FAMILY_SOURCE_ROOT)/code/embeddings/encoders/raw_patch_bottleneck_mae/family
 RPB_FAMILY_CORE := $(RPB_FAMILY_SOURCE_ROOT)/code/embeddings/encoders/raw_patch_bottleneck_mae
 RPB_FAMILY_CPPFLAGS := -I$(RPB_FAMILY_ROOT)/include -I$(RPB_FAMILY_CORE)/include \
+  -I$(RPB_FAMILY_SOURCE_ROOT)/code/embeddings/encoders/include \
   -I$(RPB_FAMILY_SOURCE_ROOT)/code/shared/settings/include \
   -I$(RPB_FAMILY_SOURCE_ROOT)/code/data/observations/include \
   -I$(RPB_FAMILY_SOURCE_ROOT)/code/shared/artifacts/versions/v1/include \

@@ -3,7 +3,7 @@
 # The opt-in reference equivalence check requires an explicit artifact/hash.
 CPB_FAMILY_ROOT := code/embeddings/encoders/causal_patch_bottleneck_mae/family
 CPB_FAMILY_CORE := code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16
-CPB_FAMILY_CPPFLAGS := -I$(CPB_FAMILY_ROOT)/include -I$(CPB_FAMILY_CORE)/include -Icode/data/observations/include -isystem $(LIBTORCH)/include -isystem $(LIBTORCH)/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1
+CPB_FAMILY_CPPFLAGS := -I$(CPB_FAMILY_ROOT)/include -I$(CPB_FAMILY_CORE)/include -Icode/embeddings/encoders/include -Icode/data/observations/include -isystem $(LIBTORCH)/include -isystem $(LIBTORCH)/include/torch/csrc/api/include -D_GLIBCXX_USE_CXX11_ABI=1
 CPB_FAMILY_TEST := $(BUILD_DIR)/test_cpb_family
 CPB_FAMILY_OUTPUT ?= $(RUN_ROOT)/attempt-001
 .PHONY: build-cpb-family test-cpb-family

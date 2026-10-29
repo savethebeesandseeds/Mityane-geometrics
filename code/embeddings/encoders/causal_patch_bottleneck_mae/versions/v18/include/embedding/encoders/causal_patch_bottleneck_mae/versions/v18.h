@@ -1,5 +1,6 @@
 // Copyright (c) 2026 Waajacu. MIT; see LICENSE at repository root.
 // CPB-v18 changes training-mask geometry over the configurable CPB family.
+// Channel axis: one window is one instrument. Each channel is a cuwacunu_torch kline interval (timeframe_channel.h). {0,1,2} is the withdrawn instrument binding.
 #pragma once
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/training.h"
 #include <cmath>
@@ -28,7 +29,8 @@ using OptimizerConfig=base_training::OptimizerConfig;
 using PreprocessingIdentity=base_training::PreprocessingIdentity;
 using PreprocessingFitter=base_training::PreprocessingFitter;
 using FittedPreprocessing=base_training::FittedPreprocessing;
-using family::read_settings;
+// research.conf is the recorded binding. Engineering tests also load timeframe ids.
+inline Config read_settings(const std::filesystem::path &path){return family::read_admitted_settings(path);}
 using family::validate_config;
 using family::dimensions;
 using family::parameter_counts;

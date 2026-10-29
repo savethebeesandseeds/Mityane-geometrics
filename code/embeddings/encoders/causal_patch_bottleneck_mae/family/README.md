@@ -1,5 +1,14 @@
 # Configurable causal patch bottleneck family
 
+One window is one instrument. `CHANNEL_IDS` are cuwacunu_torch kline-interval
+ordinals (`embedding/encoders/timeframe_channel.h`). `read_settings` refuses
+the withdrawn instrument binding `{0,1,2}`. `read_withdrawn_instrument_settings`
+opens only that recorded binding for the historical coordinate15 digest lock.
+`read_admitted_settings` opens either a timeframe list or that binding. CPB
+v17, v18, and v19 use it, because their `research.conf` files still store
+`{0,1,2}` and their tests also load timeframe fixtures. A checkpoint that
+already carries those ids can still be encoded.
+
 The deliverable is a constructible, trainable encoder family. Mityane discovers
 and compares architectures; Cuwacunu owns substantial application training and
 final docking. The V16 seed946103 checkpoint remains a research comparison
@@ -16,7 +25,7 @@ This maintained C++ surface separates four identities:
 | Object | Binding |
 | --- | --- |
 | Family | `CPB-family`, the architecture and causal boundary in `family.h` |
-| Configuration | Input geometry, semantic IDs, latent widths and capacity in `Config` / an `ENCODER` settings file |
+| Configuration | Input geometry, timeframe channel IDs, latent widths and capacity in `Config` / an `ENCODER` settings file |
 | Training recipe | Named Gaussian/temporal objective, optimizer options, preprocessing recipe, sampling/mask/context rules and counter seeds |
 | Trained instance | Configuration, initialization seed, source/split/recipe IDs, fitted preprocessing, weights, update count and typed artifacts |
 
@@ -40,7 +49,7 @@ training budgets or measured quality winners.
 | Level width | D greater than `4*C*(C-1)/2`, leaving a positive learned part |
 | Native width | D + U; learned part `D - 4*choose(C,2)`, analytic spectral part `4*choose(C,2)`, change part U |
 | Partial final patch | Allowed: learned backbone pads to `ceil(H/P)*P`; harmonic/time coordinates keep original H |
-| Execution | Explicit CUDA device, F32 model; genuine CPU F64 observations, Boolean masks, semantic IDs and explicit aligned cutoffs |
+| Execution | Explicit CUDA device, F32 model; genuine CPU F64 observations, Boolean masks, timeframe channel IDs and explicit aligned cutoffs |
 | Architecture choices | One early channel mixer, global mode2/source0, raw patch projection and dropout0 |
 
 Those last choices define this family variant. They are not user-facing capacity
@@ -98,7 +107,7 @@ auto resumed = tr::load_training_state(new_state_path, config, identity, options
 ```
 
 Preprocessing crops at each explicit cutoff before reading values or masks.
-It canonicalizes semantic channels, rounds parent values F64→F32→F64, then
+It canonicalizes timeframe channels, rounds parent values F64→F32→F64, then
 accumulates window-weighted population count/mean/centered-M2 statistics using
 Chan batch combination. This stable fitter is a new recipe; it is not a
 replacement for historical study calibration. The relative-change bank keeps
@@ -151,7 +160,9 @@ registration/source closure/ModelRef; it is not an old V16 descendant by width.
 The frozen research market runner remains under
 `evaluation/protocols/cpb_v16_temporal_v1/`; its BTC/ETH/SOL cache schema,
 4096 calibration rows, batch8 and 2048-update budget are not the portable
-application launcher. No new market study, campaign capture or application
+application launcher. That runner placed three instruments on the channel axis.
+Those ids `{0,1,2}` are the withdrawn instrument binding, not the channel
+contract. No new market study, campaign capture or application
 training is started by this handoff.
 
 ## Dependencies and preservation

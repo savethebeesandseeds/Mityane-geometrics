@@ -3,7 +3,10 @@
 [observation_windows.h](include/embedding/data/observation_windows.h) defines
 an encoder-independent C++/LibTorch dataset boundary in
 `embedding::data::observation_windows`. It carries genuine raw observations,
-support, semantic channels and explicit per-row temporal cutoffs. No encoder
+support, timeframe channels and explicit per-row temporal cutoffs. One window
+is one instrument. Each channel is one time resolution of that instrument, and
+its id is a cuwacunu_torch kline-interval ordinal
+(`embedding/encoders/timeframe_channel.h`). No encoder
 weights, fitted preprocessing, targets or market-specific schema are embedded.
 
 The archive kind is **`observation_window_dataset_v1`**. Use the C++ `Dataset`,
@@ -26,15 +29,17 @@ All four dimensions must be positive.
 | `role` | U8 text | `TRAIN`, `VALIDATION` or `TEST` |
 | `values` | F64 `[B,C,N,F]` | Genuine raw observation values, before parent/model F32 rounding |
 | `observed` | Boolean `[B,C,N,F]` | Cellwise support mask |
-| `channel_ids` | I64 `[C]` or `[B,C]` | Shared or row-specific semantic channel IDs, unique within each row |
+| `channel_ids` | I64 `[C]` or `[B,C]` | Timeframe channel IDs, unique within each row. One window is one instrument |
 | `timestamps` | F64 `[N]` or `[B,N]` | Shared or row-specific finite timestamp grid |
 | `cutoffs` | F64 `[B]` | Explicit finite cutoff per source row |
 | `row_ids` | I64 `[B]` | Unique stable IDs within this source dataset |
 | `sampling_interval` | F64 scalar | Finite positive interval, in the same units as timestamps/cutoffs |
 
 Source/split/role strings must be nonempty, NUL-free and at most 1024 bytes.
-IDs are identifiers, not array positions or class labels. Consumers map semantic
-channels against their own configuration. N is the supplied history length;
+IDs are torch kline-interval ordinals, not array positions, class labels or
+instrument ordinals. Consumers map timeframe channels against their own
+configuration. The timestamp grid is one shared anchor. It does not mean every
+channel is that interval. N is the supplied history length;
 it need not equal an encoder's retained history H. The consumer may retain a
 causally cropped window, including masked padding when its contract allows it.
 
@@ -99,7 +104,7 @@ Build and run inside the existing managed container, through the root launcher:
 ```
 
 Use an unused output filename when repeating this command. The fixture supplies
-semantic IDs 11 and 18, row IDs 0–7, a shared grid ending at 39000 and corresponding
+timeframe channel IDs 11 and 18 (`4h` and `1M`), row IDs 0–7, a shared grid ending at 39000 and corresponding
 per-row cutoffs. It generates only artificial TRAIN observations and does not
 read real application data or establish quality. Generation is bounded to ten
 million cells; it is not a production ingestion or sharding tool.

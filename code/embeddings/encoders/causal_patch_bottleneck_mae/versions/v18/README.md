@@ -1,5 +1,9 @@
 # CPB-v18: contiguous training query spans
 
+## Channel axis
+
+cuwacunu_torch `interval_type_e` is the standard. One window is one instrument. Each channel is one time resolution of that instrument: minutes, hours, weeks, and the other kline intervals. The channel id is that interval's torch ordinal. Different instruments are different rows. A stored id set `{0,1,2}` is the withdrawn instrument binding from historical checkpoints. It is not this axis, and scores measured on it stay scores of that binding. The contract is `code/embeddings/encoders/include/embedding/encoders/timeframe_channel.h`.
+
 V18 tests a different training form on the corrected configurable CPB
 component: hide one physical span of observed patches rather than scatter
 the same patch quota through the retained history. The encoder architecture,
