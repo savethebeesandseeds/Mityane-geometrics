@@ -92,9 +92,9 @@ measurements of this tree.
 
 | Hero | Ownership and evidence boundary |
 | --- | --- |
-| Hx21 · State fusion models | The family directory is [code/fusion/state_fusion](../../code/fusion/state_fusion/README.md). Goals and milestones are not recorded yet. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
+| Hx21 · State fusion models | The family directory is [code/fusion/state_fusion](../../code/fusion/state_fusion/README.md). The encoder is a Set Transformer (ISAB and PMA) on CUDA. The GPU invariance test and the synthetic masked-reconstruction run are recorded on the set-encoder milestone. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
 
-Further instructions are still to come. This record does not select an architecture, a dataset, or an experiment, and it does not close Hx11 or Hx20.
+The synthetic panels validate the pipeline. They are not a market result. This record does not close Hx11 or Hx20.
 
 ## Dataloaders
 

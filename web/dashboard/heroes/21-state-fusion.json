@@ -4,8 +4,64 @@
   "number": 21,
   "title": "State fusion models",
   "purpose": "Develop state fusion models. The owner identified this family as of great importance.",
-  "boundary": "This Hero owns state fusion models in code/fusion/state_fusion. Hx11 owns latent-dynamics operations. Hx20 owns the Temporal Fusion Transformer in code/fusion. The State Representation Network maps one observation embedding to a predictive state and is not this family. No architecture, dataset, or experiment is selected by this record.",
-  "summary": "Added on 29 October 2026 and placed in code/fusion/state_fusion the same day. The owner named the family and marked it of great importance. Goals and milestones wait for the instructions that follow. No implementation is recorded yet.",
+  "boundary": "This Hero owns the state fusion model in code/fusion/state_fusion. The model is a Set Transformer with induced set attention and pooling by multihead attention. It encodes an unordered set of records into a fixed market state. Hx11 owns latent-dynamics operations. Hx20 owns the Temporal Fusion Transformer in code/fusion. The State Representation Network maps one observation embedding to a predictive state and is not this family. This family has no temporal feature. A result here does not close Hx11 or Hx20.",
+  "summary": "On 29 October 2026 the family was placed in code/fusion/state_fusion and given a CUDA Set Transformer. Induced set attention and one-seed pooling encode an unordered set. A GPU test checked permutation invariance and hole gating. Masked reconstruction on synthetic panels printed a finite error. The panels are pipeline validation. No pretrained weights are used.",
   "updatedAt": "2026-10-29",
-  "goals": []
+  "goals": [
+    {
+      "id": "state-fusion-market-state",
+      "title": "Encode an unordered set into a market state",
+      "description": "Fuse records with explicit holes into one fixed state tensor. The recorded scope is the CUDA encoder and the synthetic pipeline check.",
+      "milestones": [
+        {
+          "id": "state-fusion-set-encoder",
+          "title": "Run the Set Transformer on CUDA",
+          "status": "done",
+          "description": "On 29 October 2026, inside the managed container, make test compiled the package with g++ against /opt/cuwacunu_embedding/libtorch 2.6.0 and CUDA toolkit 12.4 on an NVIDIA RTX A2000. state_fusion_invariance passed on cuda:0: permutation_max_abs=3.57628e-07, hole_max_abs=0, nan_hole_max_abs=0, unobserved_record_max_abs=0, observed_zero_gap=0.0210351. state_fusion_train then ran 400 Adam steps on synthetic panels and printed initial_masked_mse=1.32445 and final_masked_mse=0.289911. That error is pipeline validation, not a market result. Products are under /opt/mityane-geometrics/fusion/build/state-fusion. The image has no cmake binary. CMakeLists.txt is the build description, and the Makefile is the entry that ran.",
+          "updatedAt": "2026-10-29",
+          "completedAt": "2026-10-29",
+          "acceptance": [
+            "The package builds against the LibTorch 2.6.0 CUDA build, and the attention and training path run on CUDA.",
+            "A GPU test passes permutation invariance, shows that editing a hole leaves the state unchanged, and shows that an observed zero is distinct from a hole.",
+            "The training executable prints a finite masked-reconstruction metric on synthetic panels.",
+            "The weights are initialized here. The package does not load pretrained weights and does not depend on Nonverba."
+          ],
+          "evidence": [
+            {
+              "label": "Family guide",
+              "path": "code/fusion/state_fusion/README.md"
+            },
+            {
+              "label": "Attention blocks",
+              "path": "code/fusion/state_fusion/include/state_fusion/blocks.h"
+            },
+            {
+              "label": "Model contract",
+              "path": "code/fusion/state_fusion/include/state_fusion/model.h"
+            },
+            {
+              "label": "Record tokens",
+              "path": "code/fusion/state_fusion/include/state_fusion/embeddings.h"
+            },
+            {
+              "label": "Synthetic panels",
+              "path": "code/fusion/state_fusion/include/state_fusion/synthetic.h"
+            },
+            {
+              "label": "Invariance test",
+              "path": "code/fusion/state_fusion/tests/test_invariance.cpp"
+            },
+            {
+              "label": "Training executable",
+              "path": "code/fusion/state_fusion/src/train.cpp"
+            },
+            {
+              "label": "Container build entry",
+              "path": "code/fusion/state_fusion/Makefile"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
