@@ -73,7 +73,12 @@ make -C /mityane/code/fusion/state_fusion test
 make -C /mityane/code/fusion/state_fusion train
 ```
 
-`test` runs the GPU invariance and hole checks, then the training binary.
+`test` runs the GPU invariance and hole checks, the fidelity checks, and then
+the training binary. The fidelity binary replays the paper wiring on the
+package blocks: inducing points are the first ISAB queries, PMA seeds are the
+pooling queries, and each residual is applied before LayerNorm. It also
+requires a non-zero finite gradient on the inducing points, the seeds, and
+both absent tokens, and it rejects quadratic growth from set size 16 to 256.
 `train` runs masked reconstruction on one fixed synthetic panel and prints
 `device=cuda:0`, the LibTorch version, `initial_masked_mse`, and
 `final_masked_mse`. It stops if the final error is not finite and below half
@@ -100,5 +105,9 @@ unobserved-record gaps of 0, `padding_max_abs=4.76837e-07`,
 `two_seed_permutation_max_abs=7.15256e-07`, and
 `observed_zero_gap=0.0210351`. The training binary then ran 400 Adam steps on
 one fixed synthetic panel and printed `initial_masked_mse=1.25887` and
-`final_masked_mse=1.85048e-06`. CMake was not executed. That change is
-pipeline validation on synthetic panels.
+`final_masked_mse=1.85048e-06`. The fidelity binary then passed on the same
+GPU: the block wiring matched exactly, absent-token and inducing gradients
+were non-zero, and encoder time from set size 16 to 256 was 3.16 ms, 2.84 ms,
+and 4.68 ms per call. The per-record ratio was 0.092, against about 16 for
+quadratic growth. Fixed CUDA launch cost still dominates that range. CMake
+was not executed. These checks are pipeline validation on synthetic panels.

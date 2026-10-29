@@ -39,6 +39,8 @@ endfunction()
 
 state_fusion_executable(state_fusion_train src/train.cpp)
 state_fusion_executable(state_fusion_invariance tests/test_invariance.cpp)
+state_fusion_executable(state_fusion_fidelity tests/test_fidelity.cpp)
 
 enable_testing()
 add_test(NAME invariance COMMAND state_fusion_invariance)
+add_test(NAME fidelity COMMAND state_fusion_fidelity)

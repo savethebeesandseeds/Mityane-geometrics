@@ -15,14 +15,16 @@ LDLIBS := -Wl,--no-as-needed -ltorch -ltorch_cpu -ltorch_cuda -lc10_cuda -lc10 -
 LIB_SRCS := src/blocks.cpp src/embeddings.cpp src/model.cpp src/synthetic.cpp
 LIB_OBJS := $(addprefix $(BUILD_DIR)/,$(notdir $(LIB_SRCS:.cpp=.o)))
 INVARIANCE := $(BUILD_DIR)/state_fusion_invariance
+FIDELITY := $(BUILD_DIR)/state_fusion_fidelity
 TRAIN := $(BUILD_DIR)/state_fusion_train
 
 .PHONY: build test train
 
-build: $(INVARIANCE) $(TRAIN)
+build: $(INVARIANCE) $(FIDELITY) $(TRAIN)
 
 test: build
 	$(INVARIANCE)
+	$(FIDELITY)
 	$(TRAIN)
 
 train: $(TRAIN)
@@ -35,6 +37,9 @@ $(BUILD_DIR)/%.o: src/%.cpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 $(INVARIANCE): tests/test_invariance.cpp $(LIB_OBJS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
+
+$(FIDELITY): tests/test_fidelity.cpp $(LIB_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(TRAIN): src/train.cpp $(LIB_OBJS)
