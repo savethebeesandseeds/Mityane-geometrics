@@ -103,7 +103,11 @@ deleted-view, market-scaled TEMPO-5 linear timing specialist. The
 owns the individual standings; the [research guide](doc/EMBEDDINGS.md) preserves
 the search history. V4 remains the historical benchmark and known-validation
 reconstruction leader; V3 is the clean baseline. V14 is the latest catalogued
-historical instance, separate from this research-reference choice.
+historical instance, separate from this research-reference choice. The
+[29 October handoff](code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
+names the timeframe development instance for Cuwacunu: CPB-family width 128,
+seed 949102, 2048 updates, channels 1m/1h/1d. That note does not replace the
+research reference above.
 
 The [V16 comparison](code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md)
 completed on 21 October with four January candidate record scopes. Both March

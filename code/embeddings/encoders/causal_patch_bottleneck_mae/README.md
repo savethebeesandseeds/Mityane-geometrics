@@ -13,6 +13,13 @@ contract is
 Historical checkpoints that stored `{0,1,2}` keep that withdrawn instrument
 binding, and their scores stay scores of that binding.
 
+The first fresh comparison on that contract is the
+[29 October handoff](family/migration/HANDOFF_2026-10-29.md). Width 128,
+seed 949102, 2048 updates, is the instance to bring into Cuwacunu. Width 64,
+seed 949101, is its matched control. V16 seed 946103 remains the research
+reference. The new scores are same-window timeframe probes and are not a
+ranking against that seed.
+
 ## Continue versioned CPB research
 
 The CPB workstream continues to propose and compare new encoder versions in

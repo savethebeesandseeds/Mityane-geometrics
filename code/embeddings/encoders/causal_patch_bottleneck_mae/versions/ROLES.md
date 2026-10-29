@@ -4,7 +4,7 @@ One file is the research default. The other two catalogs stay frozen.
 
 | File | Role |
 | --- | --- |
-| [`../research-reference.json`](../research-reference.json) | The only research default. V16 seed 946103, final logical update 2048, native36, selected on 22 October 2026. The study verdict stays mixed. |
+| [`../research-reference.json`](../research-reference.json) | The only research default. V16 seed 946103, final logical update 2048, native36, selected on 22 October 2026. The study verdict stays mixed. The 29 October timeframe comparison does not change this pointer. Its development instance for Cuwacunu is [the handoff](../family/migration/HANDOFF_2026-10-29.md). |
 | [`current.json`](current.json) | V14 historical catalog, dated 2026-10-18. `active_application` is null. The clean baseline named there is CPB-v3.market-01. Do not edit it and do not read it as the live research choice. |
 | [`index.json`](index.json) | Frozen v1-only declaration snapshot: `metadata_only`, dated 2026-10-15, `quality_measured` false. Do not rewrite it as a status page. |
 

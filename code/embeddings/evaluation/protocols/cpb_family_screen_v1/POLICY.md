@@ -54,6 +54,8 @@ The paired anchor value is the anchor return at the bar's change tick. Held repe
 
 These names are not inputs to `decision.mjs`. They are not a ranking against V16 seed 946103. A comparison to that seed needs a control trained and scored on this same target contract. This readout does not select a population, bind confirmation, or edit the research reference. Keep native width 36 when comparing encoder width to existing native36 records. A different native width is a legal configuration experiment.
 
+The first measured pair on this contract is recorded in the [29 October handoff](../../../encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md). Width 128, seed 949102, leads width 64, seed 949101, on anchor volatility and anchor trend after 2048 updates. Anchor activity is saturated. Cross resolution abstains for a 128-minute history. That note offers the width-128 instance to Cuwacunu and leaves this policy unchanged.
+
 The frozen `past_window_targets` in `cpb_v16_temporal_v1/deps` is unchanged. Historical three-instrument scores stay scores of that function, including the 2026-10-29 log-return screen, which applied that raw-price target function to an already logged window. V17, V18 and V19 readouts are unchanged.
 
 The readout checks that TRAIN and validation row ids are disjoint. Observation windows have no group ids; stored group ids repeat the row ids and are labeled `group_identity: row-id`. A confirmation population must be a disjoint later period. That separation is a protocol obligation. The tool cannot see it from row ids alone.

@@ -102,6 +102,12 @@ copying a receipt does not certify an import. Review refreshes against current
 consumer source/provenance before replacement. This export does not change the
 live application pipeline or start training.
 
+The [29 October handoff](HANDOFF_2026-10-29.md) is the later note for
+Cuwacunu. The 22 October bundle predates the timeframe channel contract.
+The instance to import is CPB-family width 128, seed 949102, with its
+settings and local inference archive named in that note. The research
+reference remains V16 seed 946103.
+
 ## Historical boundary
 
 Frozen study protocol/results travel as context. Its market runner, data,

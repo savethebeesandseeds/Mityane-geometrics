@@ -77,7 +77,11 @@ owns these separately identified checkpoint standings, and the
 V4 remains the historical benchmark and known-validation reconstruction leader;
 V3 is the clean baseline. RPB-v24.market-01.alt-01 native36 retains its historical
 balanced-leader role. V14 is the latest catalogued historical instance, separate
-from the new research-reference choice.
+from the new research-reference choice. The
+[29 October handoff](encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
+records the timeframe development instance offered to Cuwacunu: width 128,
+seed 949102, native36, 2048 updates, published 1m/1h/1d bars, log-return view.
+It leaves the research reference unchanged.
 
 The latest [V19 EMA-teacher study](evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
 completed three new 1,024-update candidates against the three preserved

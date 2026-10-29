@@ -19,7 +19,10 @@ or its C3/H128/F9/native36 geometry. A later reference change uses the
 development cannot promote, and January, February and March 2024 are consumed.
 The live readout scores the anchor resolution and cross-resolution agreement.
 Those four names are not the published three-instrument probes, and they do
-not enter the promotion rule.
+not enter the promotion rule. The
+[29 October handoff](migration/HANDOFF_2026-10-29.md) names the development
+instance to bring into Cuwacunu: width 128, seed 949102, 2048 updates, channels
+4, 9, and 15. That handoff leaves this research reference in place.
 [`current.json`](../versions/current.json) and [`index.json`](../versions/index.json)
 are frozen catalogs. [Version roles](../versions/ROLES.md) name the one live pointer.
 

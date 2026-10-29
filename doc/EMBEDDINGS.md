@@ -17,7 +17,35 @@ fixed readouts independently measure retained information. The
 [project charter](operations_over_representations_design_spec_v0.1.0.md) keeps the
 broader project domain-agnostic and makes operation utility a separate claim.
 
-## Latest comparison: V19 EMA teacher — 23 October 2026
+## Latest comparison: timeframe channels — 29 October 2026
+
+The first fresh comparison on the timeframe contract is complete. One window
+is one instrument. Channels are published 1-minute, 1-hour, and 1-day bars,
+torch ordinals 4, 9, and 15. Both arms are CPB-family, three layers, four
+heads, feed-forward 256, native36, mask 0.25, log-return view, 2048 updates,
+context deletion none. Width 64 is seed 949101. Width 128 is seed 949102.
+January 2024 development only: TRAIN days 1–21, validation days 22–28, 3072
+and 96 rows. The hour and day series are the publisher's own bars.
+
+Validation R², same-window linear probes:
+
+| Task | Width 64 | Width 128 |
+| --- | ---: | ---: |
+| Anchor volatility | 0.7123727934288147 | 0.7682422126010569 |
+| Anchor trend | 0.18541166081492155 | 0.22475307149870904 |
+| Anchor activity | 0.9954692473567033 | 0.9955882717924301 |
+| Cross resolution | abstained, coverage 0 | abstained, coverage 0 |
+
+Width 128 is ahead on volatility and trend. Activity is saturated because the
+window already contains log volume. Trend remains the weak readout. Cross
+resolution needs eight distinct coarser bars, and 128 minutes do not contain
+them. The [29 October handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
+binds both artifacts and is the note for bringing the width-128 instance into
+Cuwacunu. **V16 seed 946103/final2048 remains the research reference.** This
+comparison does not rank against that seed, does not enter `decision.mjs`,
+and leaves `Mityane_application_selection` null.
+
+## Previous comparison: V19 EMA teacher — 23 October 2026
 
 The [V19 comparison](../code/embeddings/evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
 is complete and **did not produce a better balanced encoder**. A training-only
@@ -223,6 +251,7 @@ V3 remains the clean baseline. Runtime/application adoption is a separate decisi
 | Role | Encoder | Recorded achievement and remaining limit |
 | --- | --- | --- |
 | Current research reference | **V16 candidate 946103, final2048/native36** | Both January trend records; positive matched March trend/activity gains. Chosen on 22 October for continued research. The study remains mixed; this checkpoint passes 0/8 strongest timing conditions and is not the leader in every task. |
+| Timeframe development instance | **CPB-family width 128, seed 949102, 2048 updates, native36** | Stronger of the two fresh 1m/1h/1d log-return arms on 29 October. Same-window volatility R² 0.7682422126010569 and trend R² 0.22475307149870904, activity saturated, cross resolution unmeasured. One seed. Offered to Cuwacunu for docking. It does not replace the research reference. |
 | Historical clean-causal breakthrough and comparator | **CPB-v4.market-01** | **19/22 original conditions**, all eight TEMPO-5 retention checks, major trend/relation gains and the best saved known-validation reconstruction. Linear volatility, linear activity and TRAIN query MAE failed their floors, withholding formal promotion. |
 | Historical balanced research leader | **RPB-v24.market-01.alt-01, native36** | **8/9 market conditions plus all four primary frozen TEMPO-5 transfer comparisons**, at full coverage using the same market-trained checkpoint. Later diagnosis limits its clean causal eligibility; its measured success and historical leading designation remain preserved. |
 | Stable clean research baseline | **CPB-v3.market-01** | First genuinely fresh causal-training reference; still leads linear volatility. Baseline status is not an overall quality ranking or a project-wide Mityane selection. |
@@ -385,6 +414,12 @@ records the owner's retrospective choice without rewriting the mixed study or
 its original selection flags. Current work states and acceptance criteria remain
 in [Hx17](../web/dashboard/heroes/17-encoder-cpb.json).
 
+**29 October 2026 — timeframe development instance.** Width 128, seed 949102,
+is the encoder to bring into Cuwacunu. The
+[handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
+binds its settings, inference archive, training state, preprocessing, and the
+matched width-64 control. The research reference above is unchanged.
+
 The next reference change uses the [family screen](../code/embeddings/evaluation/protocols/cpb_family_screen_v1/POLICY.md).
 Development cannot promote. January, February and March 2024 are consumed.
 [`current.json`](../code/embeddings/encoders/causal_patch_bottleneck_mae/versions/current.json)
@@ -529,8 +564,11 @@ Keep scientific aims, research roles and study conclusions in this guide. The
 family-owned [reference record](../code/embeddings/encoders/causal_patch_bottleneck_mae/research-reference.json)
 owns the exact current research default and its dated decision basis. The
 family-owned [live ranking](../code/embeddings/encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
-owns current checkpoint standings and their dated changes. Update it from bound
-results and align the short family/dashboard summaries in the same change.
+owns current checkpoint standings and their dated changes. The
+[29 October handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
+owns the timeframe development instance offered to Cuwacunu. Update the ranking
+from bound results and align the short family/dashboard summaries in the same
+change.
 Preserve earlier leaders, ties and original protocol scopes; retain the tables
 above as V3–V14 historical comparators. Keep migration details in the handoff
 addendum and detailed evidence in its owning records. Work states and priorities
