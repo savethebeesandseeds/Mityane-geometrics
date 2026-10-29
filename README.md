@@ -53,7 +53,8 @@ evaluation.
 | --- | --- |
 | `code/embeddings/` | Encoders, state representation models and model-owned evaluation |
 | `code/operations/` | Operation implementations, contracts and evidence, organized by the capability map |
-| `code/data/` | Data readers, validation and preprocessing code |
+| `code/data/` | Observation and market readers, validation and preprocessing code |
+| `code/dataloaders/` | Loaders for each admitted data form. Numeric series is the first form |
 | `code/shared/` | Utilities shared by multiple components |
 | `code/scripts/` | Environment checks and project task entry points |
 | `doc/` | Environment guide, design and research notes |
@@ -61,14 +62,18 @@ evaluation.
 | `web/dashboard/` | Standalone project dashboard; Hero records and branding are owner-defined |
 | `.temp/` | Local datasets, generated runs, checkpoints, embeddings and recovery records; excluded from Git |
 
-`code/data/` owns readers, validation and preprocessing source. Store local
-dataset files under ignored `.temp/` directories only when needed.
+`code/data/` owns observation and market readers, validation and preprocessing
+source. `code/dataloaders/` owns source loaders. Each form has its own directory
+and build. Store local dataset files under ignored `.temp/` directories only
+when needed.
 Tests and configuration files live with their owning component.
 
 ## Current implementation
 
 Encoder Heroes **Hx15–Hx18** develop reusable families and provider tools with
 supported configuration, callable interfaces and explicit workflow coverage.
+Hx20 owns the Temporal Fusion Transformer forecasting family in the same
+encoder directory. It is not one of those observation-embedding families.
 The [shared encoder instructions](code/embeddings/encoders/AGENTS.md) separate
 architecture/provider, configuration, recipe and each trained instance or
 service result. Checkpoints and benchmarks provide scoped evidence. Application
@@ -117,8 +122,9 @@ binds the scoped recovery evidence. The prior
 retains five current leading scopes and its mixed February result.
 
 Inherited implementations and engineering fixtures do not establish every
-catalogue capability. The dashboard records 18 workstreams: thirteen
-operation families, shared foundations and four encoder families. Proposed work
+catalogue capability. The dashboard records 20 workstreams: thirteen
+operation families, shared foundations, four encoder families, dataloaders and
+the Temporal Fusion Transformer. Proposed work
 and documented outcomes have separate milestone states; the capability catalogue
 does not establish implementation status.
 
@@ -129,8 +135,9 @@ Its [work map](web/dashboard/WORKSTREAMS.md) separates operation contracts,
 implementations and evaluation from shared data/evidence and encoder work.
 Each Hero has its own editable JSON file. The external Google multimodal
 provider is documented; its API adapter and local evaluation remain proposed.
-Refer to the Heroes as **Hx01–Hx18**: Hx01–Hx13 own the corresponding operation
-families, Hx14 owns shared foundations and Hx15–Hx18 own encoders/providers.
+Refer to the Heroes as **Hx01–Hx20**: Hx01–Hx13 own the corresponding operation
+families, Hx14 owns shared foundations, Hx15–Hx18 own encoders/providers,
+Hx19 owns dataloaders and Hx20 owns the Temporal Fusion Transformer.
 The [naming convention](web/dashboard/SCHEMA.md#hero-references) derives these
 references from Hero numbers; OR-01–OR-13 remain the charter's capability IDs.
 Hero records hold current priorities, dependencies and acceptance criteria;

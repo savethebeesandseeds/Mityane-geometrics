@@ -17,6 +17,9 @@ on 22 October 2026. Fresh application training does not require that checkpoint
 or its C3/H128/F9/native36 geometry. A later reference change uses the
 [family screen](../../../evaluation/protocols/cpb_family_screen_v1/POLICY.md):
 development cannot promote, and January, February and March 2024 are consumed.
+The live readout scores the anchor resolution and cross-resolution agreement.
+Those four names are not the published three-instrument probes, and they do
+not enter the promotion rule.
 [`current.json`](../versions/current.json) and [`index.json`](../versions/index.json)
 are frozen catalogs. [Version roles](../versions/ROLES.md) name the one live pointer.
 
@@ -73,9 +76,22 @@ longer universal construction assertions. See [shape.h](include/embedding/encode
 The [runnable training example](examples/TRAINING.md) supplies a native CLI,
 typed input format and fresh/resume commands. The
 [generic observation-window archive](../../../../data/observations/OBSERVATION_WINDOWS.md)
-keeps data handling independent of this encoder. The CLI binds dataset,
+keeps that example independent of a market reader. The CLI binds dataset,
 settings and executable bytes, optimizer/batch policy and counter seeds;
 step/attempt budgets and periodic save cadence remain explicit run options.
+
+A numeric-series window enters through
+[numeric_series_history.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h).
+`history_from_edge_samples` reads one `edge_sample_t` per instrument from the
+numeric-series loader. Channel order is the configuration's torch interval
+ids. The anchor channel is the interval equal to `SAMPLING_INTERVAL`. Its last
+`HISTORY_LENGTH` valid keys are the shared clock. Each other channel contributes
+the latest valid bar at or before that key, held until its next bar. A
+log-return view uses `kline_cache_t::normalize_log_returns` against the previous
+valid bar of the same channel and does not write a second cache. `INPUT_WIDTH`
+is the nine kline features. The same `RawHistory` then goes to the fitter and
+`encode_at`. This does not select a population or replace the observation-window
+example.
 
 Include [family/training.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h).
 The caller supplies its own declared TRAIN stream and source/split manifests.

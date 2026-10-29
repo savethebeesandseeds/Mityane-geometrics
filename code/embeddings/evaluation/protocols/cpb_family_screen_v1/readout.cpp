@@ -1,9 +1,11 @@
 // Copyright (c) 2026 Waajacu. MIT; see LICENSE at repository root.
-// Family-screen linear readout. Width and update count come from the checkpoint.
-// No encoder updates, preprocessing fits, or legacy-target parity claim.
+// Family-screen linear readout for one instrument and timeframe channels.
+// Width and update count come from the checkpoint. No encoder updates,
+// preprocessing fits, or comparison with the published three-instrument probes.
 #include "embedding/encoders/causal_patch_bottleneck_mae/family.h"
 #include "embedding/data/observation_windows.h"
 #include "cuwacunu/evaluation/fixed_regression.h"
+#include "timeframe_targets.h"
 #include <torch/cuda.h>
 #include <algorithm>
 #include <filesystem>
@@ -18,6 +20,7 @@
 namespace cp=embedding::encoders::causal_patch_bottleneck_mae::family;
 namespace ow=embedding::data::observation_windows;
 namespace ev=cuwacunu::evaluation;
+namespace screen=embedding::evaluation::family_screen;
 namespace fs=std::filesystem;
 namespace {
 std::string quote(const std::string &value){
@@ -39,9 +42,30 @@ void finite(const torch::Tensor &value,const char *name){
       "[family screen] finite CPU F64 required: ",name);
 }
 cp::RawHistory raw(const ow::Dataset &data){return{data.values,data.observed,data.channel_ids,data.timestamps,data.sampling_interval};}
-void market_layout(const ow::Dataset &data,const char *name){
-  TORCH_CHECK(data.values.size(3)==9,"[family screen] ",name," feature count must be 9; this readout's past-window targets use close index 3 and volume index 4");
-  TORCH_CHECK(data.values.size(2)>=9,"[family screen] ",name," history must be at least 9");
+screen::FeatureView feature_view(const std::string &text){
+  if(text=="raw")return screen::FeatureView::RawPrices;
+  if(text=="log-returns")return screen::FeatureView::LogReturns;
+  TORCH_CHECK(false,"[family screen] --feature-view must be raw or log-returns");
+  return screen::FeatureView::RawPrices;
+}
+const char *view_name(screen::FeatureView view){return view==screen::FeatureView::LogReturns?"log-returns":"raw";}
+void same_channels(const cp::Config &config,const ow::Dataset &data,const char *name){
+  const auto expected=cp::implementation::resolved_channel_ids(config.level);
+  TORCH_CHECK(data.values.size(1)==config.level.channel_count&&static_cast<int64_t>(expected.size())==config.level.channel_count,
+      "[family screen] ",name," channel count must match the encoder");
+  TORCH_CHECK(data.values.size(3)==9&&config.level.input_width==9,
+      "[family screen] ",name," feature count must be the nine kline fields");
+  TORCH_CHECK(data.sampling_interval==config.level.sampling_interval,
+      "[family screen] ",name," sampling interval must match the encoder");
+  const auto ids=data.channel_ids.dim()==1?data.channel_ids:data.channel_ids.select(0,0);
+  TORCH_CHECK(ids.defined()&&ids.dim()==1&&ids.size(0)==config.level.channel_count,"[family screen] ",name," channel ids required");
+  if(data.channel_ids.dim()==2){
+    for(int64_t row=0;row<data.channel_ids.size(0);++row)
+      TORCH_CHECK(torch::equal(data.channel_ids.select(0,row),ids),"[family screen] ",name," channel ids must be the same on every row");
+  }
+  for(int64_t channel=0;channel<config.level.channel_count;++channel)
+    TORCH_CHECK(ids[channel].item<int64_t>()==expected[static_cast<std::size_t>(channel)],
+        "[family screen] ",name," channel ids must match the encoder, in order");
 }
 torch::Tensor features(cp::Loaded &live,const ow::Dataset &data,int64_t native_width){
   std::vector<torch::Tensor> rows;torch::NoGradGuard guard;live.model->eval();
@@ -74,18 +98,74 @@ std::string bound_recipe(const std::string &path,const cp::Loaded &live,const cp
       "[family screen] training state and inference checkpoint must be the same encoder");
   return recipe;
 }
-ev::TargetValues targets(const ow::Dataset &data){
-  // The float32 round trip matches the existing V17 market readout's target preparation.
-  auto prepared=ev::past_window_targets(data.values.to(torch::kFloat32).to(torch::kFloat64),data.observed);
-  TORCH_CHECK(prepared.values.size(1)==4&&prepared.valid.all().item<bool>(),"[family screen] all four past-window targets must be valid");
-  finite(prepared.values,"targets");return prepared;
+screen::TimeframeTargets targets(const cp::Config &config,const ow::Dataset &data,screen::FeatureView view,const char *name){
+  same_channels(config,data,name);
+  const auto window=cp::boundary::retain(raw(data),data.cutoffs,config);
+  auto prepared=screen::timeframe_window_targets(window.raw.data,window.raw.observed,window.raw.channel_ids,window.raw.sampling_interval,view);
+  TORCH_CHECK(prepared.values.size(1)==4&&prepared.valid.slice(1,0,3).all().item<bool>(),
+      "[family screen] ",name," anchor volatility, trend and activity must be valid on every retained row");
+  finite(prepared.values,name);return prepared;
+}
+struct Column{
+  torch::Tensor weight,prediction;
+  double target_mean{0},target_scale{1},intercept{0};
+  ev::RegressionScore score;
+  bool solved{false};
+};
+Column fit_column(const torch::Tensor &train_x,const torch::Tensor &validation_x,const torch::Tensor &train_y,const torch::Tensor &train_valid,
+    const torch::Tensor &validation_y,const torch::Tensor &validation_valid,bool required,const char *name){
+  const auto index=train_valid.nonzero().flatten();
+  Column column;
+  column.weight=torch::zeros({train_x.size(1)},train_x.options());
+  column.prediction=torch::zeros({validation_x.size(0)},train_x.options());
+  column.score.total=validation_y.size(0);
+  column.score.target_eligible=validation_valid.sum().item<int64_t>();
+  if(index.numel()<2||(required&&index.numel()!=train_y.size(0))){
+    TORCH_CHECK(!required,"[family screen] ",name," needs a complete TRAIN column with at least two rows");
+    return column;
+  }
+  const auto y=train_y.index_select(0,index);
+  const auto centered=y-y.mean();
+  if(!(centered.square().sum().item<double>()>0)){
+    TORCH_CHECK(!required,"[family screen] zero TRAIN target variance abstains: ",name);
+    return column;
+  }
+  const auto scale=centered.square().mean().sqrt().clamp_min(1e-8);
+  const auto standardized_y=centered/scale;
+  const auto rows=train_x.index_select(0,index);
+  const auto x_center=rows.mean(0),y_center=standardized_y.mean(),x=rows-x_center;
+  column.weight=at::linalg_solve(x.transpose(0,1).matmul(x)+torch::eye(x.size(1),x.options()),
+      x.transpose(0,1).matmul((standardized_y-y_center).unsqueeze(1))).squeeze(1);
+  column.intercept=(y_center-x_center.matmul(column.weight)).item<double>();
+  column.target_mean=y.mean().item<double>();
+  column.target_scale=scale.item<double>();
+  column.prediction=(validation_x.matmul(column.weight)+column.intercept)*column.target_scale+column.target_mean;
+  column.score=ev::regression_score(column.prediction,validation_y,validation_valid,torch::ones({validation_y.size(0)},torch::kBool));
+  column.solved=column.score.r2_supported;
+  if(required){
+    TORCH_CHECK(column.score.supported&&column.score.r2_supported&&column.score.coverage==1.&&column.score.valid==column.score.total,
+        "[family screen] strict finite complete anchor target required: ",name);
+  }
+  if(!column.solved){
+    column.weight.zero_();column.prediction.zero_();column.target_mean=0;column.target_scale=1;column.intercept=0;
+  }
+  finite(column.weight,name);finite(column.prediction,name);return column;
+}
+void write_score(std::ostream &report,const screen::TargetSpec &spec,const ev::RegressionScore &score,bool solved){
+  report<<"{\"task\":"<<quote(spec.name)<<",\"unit\":"<<quote(spec.unit)<<",\"supported\":"<<(solved?"true":"false")<<",\"r2\":";
+  if(solved)report<<score.r2;else report<<"null";
+  report<<",\"mae\":";if(score.supported&&solved)report<<score.mae;else report<<"null";
+  report<<",\"rmse\":";if(score.supported&&solved)report<<score.rmse;else report<<"null";
+  report<<",\"coverage\":"<<score.coverage<<",\"valid\":"<<score.valid<<",\"target_eligible\":"<<score.target_eligible
+    <<",\"total\":"<<score.total<<'}';
 }
 int run(int argc,char **argv){
-  TORCH_CHECK(argc==15,"[family screen] seven explicit flag/value pairs required");
-  const std::set<std::string> allowed{"--settings","--checkpoint","--training-state","--train","--validation","--output","--expected-updates"};
+  TORCH_CHECK(argc==17,"[family screen] eight explicit flag/value pairs required");
+  const std::set<std::string> allowed{"--settings","--checkpoint","--training-state","--train","--validation","--output","--expected-updates","--feature-view"};
   std::map<std::string,std::string> args;
   for(int i=1;i<argc;i+=2)TORCH_CHECK(allowed.count(argv[i])&&args.emplace(argv[i],argv[i+1]).second,"[family screen] unknown or duplicate option");
   for(const auto &key:allowed)TORCH_CHECK(args.count(key),"[family screen] missing option: ",key);
+  const auto view=feature_view(args.at("--feature-view"));
   torch::set_num_threads(1);torch::set_num_interop_threads(1);torch::NoGradGuard guard;
   TORCH_CHECK(torch::cuda::is_available(),"[family screen] CUDA is required to run the readout");
   std::map<std::string,std::string> hashes;
@@ -112,35 +192,36 @@ int run(int argc,char **argv){
       "[family screen] reading the training state must not mutate the inference checkpoint");
   const auto train=ow::read(args.at("--train")),validation=ow::read(args.at("--validation"));
   TORCH_CHECK(train.role=="TRAIN"&&validation.role=="VALIDATION"&&train.rows()>0&&validation.rows()>0,"[family screen] TRAIN and VALIDATION rows required");
-  market_layout(train,"TRAIN");market_layout(validation,"validation");
-  const auto train_targets=targets(train),validation_targets=targets(validation);
+  const auto train_targets=targets(config,train,view,"TRAIN"),validation_targets=targets(config,validation,view,"validation");
+  TORCH_CHECK(train_targets.anchor_id==validation_targets.anchor_id,"[family screen] TRAIN and validation must share the anchor channel");
   const auto train_rows=train.rows(),validation_rows=validation.rows();
   std::set<int64_t> train_ids;
   for(int64_t i=0;i<train_rows;++i)TORCH_CHECK(train_ids.insert(train.row_ids[i].item<int64_t>()).second,"[family screen] duplicate TRAIN row id");
   for(int64_t i=0;i<validation_rows;++i)TORCH_CHECK(!train_ids.count(validation.row_ids[i].item<int64_t>()),"[family screen] TRAIN/validation row-id overlap");
   const auto train_features=features(live,train,dims.native_width),validation_features=features(live,validation,dims.native_width);
-  TORCH_CHECK(train_targets.values.sizes()==torch::IntArrayRef({train_rows,4})&&validation_targets.values.sizes()==torch::IntArrayRef({validation_rows,4}),
-      "[family screen] four target columns required");
   finite(train_features,"TRAIN features");finite(validation_features,"validation features");
   const auto mean=train_features.mean(0),scale=(train_features-mean).square().mean(0).sqrt().clamp_min(1e-8);
   const auto standardized=(train_features-mean)/scale,validation_standardized=(validation_features-mean)/scale;
-  const auto target_mean=train_targets.values.mean(0),target_scale=(train_targets.values-target_mean).square().mean(0).sqrt().clamp_min(1e-8);
-  TORCH_CHECK((train_targets.values-target_mean).square().sum(0).gt(0).all().item<bool>(),"[family screen] zero TRAIN target variance abstains");
-  const auto standardized_targets=(train_targets.values-target_mean)/target_scale;
-  const auto feature_center=standardized.mean(0),target_center=standardized_targets.mean(0),centered=standardized-feature_center;
-  const auto weights=at::linalg_solve(centered.transpose(0,1).matmul(centered)+torch::eye(standardized.size(1),standardized.options()),
-      centered.transpose(0,1).matmul(standardized_targets-target_center));
-  const auto intercept=target_center-feature_center.matmul(weights);
-  const auto predictions=(validation_standardized.matmul(weights)+intercept)*target_scale+target_mean;
-  for(const auto &item:std::vector<std::pair<const char *,torch::Tensor>>{{"feature mean",mean},{"feature scale",scale},{"target mean",target_mean},{"target scale",target_scale},{"weights",weights},{"intercept",intercept},{"predictions",predictions}})finite(item.second,item.first);
-  std::vector<ev::RegressionScore> scores;auto reported_metrics=torch::empty({4,4},torch::kFloat64);
-  const auto names=ev::past_window_target_specs();TORCH_CHECK(names.size()==4,"[family screen] four fixed targets required");
+  std::vector<Column> columns;
+  int64_t head_fits=0;
   for(int64_t task=0;task<4;++task){
-    auto score=ev::regression_score(predictions.select(1,task),validation_targets.values.select(1,task),validation_targets.valid.select(1,task),torch::ones({validation_rows},torch::kBool));
-    TORCH_CHECK(score.supported&&score.r2_supported&&score.total==validation_rows&&score.target_eligible==validation_rows&&score.valid==validation_rows&&score.coverage==1.,
-        "[family screen] strict finite complete scored target required");
-    scores.push_back(score);reported_metrics[task].copy_(torch::tensor({score.r2,score.mae,score.rmse,score.coverage},torch::kFloat64));
+    auto column=fit_column(standardized,validation_standardized,train_targets.values.select(1,task),train_targets.valid.select(1,task),
+        validation_targets.values.select(1,task),validation_targets.valid.select(1,task),task<3,screen::kTimeframeTargets[static_cast<std::size_t>(task)].name);
+    if(column.solved)++head_fits;
+    columns.push_back(std::move(column));
   }
+  auto weights=torch::empty({standardized.size(1),4},torch::kFloat64),predictions=torch::empty({validation_rows,4},torch::kFloat64);
+  auto target_mean=torch::empty({4},torch::kFloat64),target_scale=torch::empty({4},torch::kFloat64),intercept=torch::empty({4},torch::kFloat64);
+  auto supported=torch::empty({4},torch::kBool),reported_metrics=torch::zeros({4,4},torch::kFloat64);
+  for(int64_t task=0;task<4;++task){
+    const auto &column=columns[static_cast<std::size_t>(task)];
+    weights.select(1,task).copy_(column.weight);predictions.select(1,task).copy_(column.prediction);
+    target_mean[task]=column.target_mean;target_scale[task]=column.target_scale;intercept[task]=column.intercept;
+    supported[task]=column.solved;
+    if(column.solved)reported_metrics[task].copy_(torch::tensor({column.score.r2,column.score.mae,column.score.rmse,column.score.coverage},torch::kFloat64));
+  }
+  finite(mean,"feature mean");finite(scale,"feature scale");finite(target_mean,"target mean");finite(target_scale,"target scale");
+  finite(weights,"weights");finite(intercept,"intercept");finite(predictions,"predictions");
   TORCH_CHECK(live.model->state_identity()==before&&live.scaler.identity()==scaler&&live.model->normalizer().identity()==bank,
       "[family screen] readout must not mutate encoder or preprocessing");
   for(const auto &item:hashes)TORCH_CHECK(cp::boundary::sha256_file(args.at(item.first))==item.second,"[family screen] input changed during execution: ",item.first);
@@ -148,10 +229,12 @@ int run(int argc,char **argv){
   const fs::path out=args.at("--output");TORCH_CHECK(!fs::exists(out)&&fs::is_directory(out.parent_path()),"[family screen] new output leaf with existing parent required");
   fs::create_directory(out);
   torch::serialize::OutputArchive archive;
-  archive.write("artifact_kind",ow::text_tensor("cpb_family_screen_ridge_witness_v1"),true);
+  archive.write("artifact_kind",ow::text_tensor("cpb_family_screen_timeframe_witness_v1"),true);
   archive.write("metric_columns",ow::text_tensor("r2,mae,rmse,coverage"),true);
   archive.write("recipe",ow::text_tensor(recipe),true);
   archive.write("group_identity",ow::text_tensor("row-id"),true);
+  archive.write("feature_view",ow::text_tensor(view_name(view)),true);
+  archive.write("target_names",ow::text_tensor("anchor_volatility,anchor_trend,anchor_activity,cross_resolution"),true);
   for(const auto &item:hashes){auto key=item.first.substr(2);std::replace(key.begin(),key.end(),'-','_');archive.write(key+"_sha256",ow::text_tensor(item.second),true);}
   archive.write("executable_sha256",ow::text_tensor(executable_sha),true);
   archive.write("native_width",torch::tensor(dims.native_width,torch::kInt64),true);
@@ -159,11 +242,14 @@ int run(int argc,char **argv){
   archive.write("spectral_width",torch::tensor(dims.spectral_width,torch::kInt64),true);
   archive.write("change_width",torch::tensor(dims.change_width,torch::kInt64),true);
   archive.write("causal_updates",torch::tensor(static_cast<int64_t>(updates),torch::kInt64),true);
+  archive.write("anchor_channel_id",torch::tensor(train_targets.anchor_id,torch::kInt64),true);
+  archive.write("history_length",torch::tensor(config.level.history_length,torch::kInt64),true);
   for(const auto &item:std::vector<std::pair<std::string,torch::Tensor>>{
       {"train_features",train_features},{"validation_features",validation_features},{"feature_mean",mean},{"feature_scale",scale},
       {"target_mean",target_mean},{"target_scale",target_scale},{"weights",weights},{"intercept",intercept},{"predictions",predictions},
       {"train_targets",train_targets.values},{"validation_targets",validation_targets.values},
       {"train_target_valid",train_targets.valid},{"validation_target_valid",validation_targets.valid},
+      {"target_column_supported",supported},
       {"train_feature_valid",torch::ones({train_rows},torch::kBool)},{"validation_feature_valid",torch::ones({validation_rows},torch::kBool)},
       {"train_row_ids",train.row_ids},{"validation_row_ids",validation.row_ids},
       {"train_group_ids",train.row_ids.clone()},{"validation_group_ids",validation.row_ids.clone()},
@@ -171,21 +257,20 @@ int run(int argc,char **argv){
   cp::checkpoint_detail::d::publish_checkpoint(archive,(out/"ridge-witness.pt").string());
   std::ofstream report(out/"summary.json");
   report<<std::setprecision(17)
-    <<"{\"kind\":\"cpb_family_screen_linear_readout_v1\",\"recipe\":"<<quote(recipe)<<",\"updates\":"<<updates
+    <<"{\"kind\":\"cpb_family_screen_timeframe_readout_v1\",\"recipe\":"<<quote(recipe)<<",\"updates\":"<<updates
     <<",\"learned_width\":"<<dims.shape_width<<",\"spectral_width\":"<<dims.spectral_width<<",\"change_width\":"<<dims.change_width
-    <<",\"native_width\":"<<dims.native_width<<",\"input_feature_count\":9,\"history_floor\":9"
-    <<",\"market_target_layout\":\"close index 3, volume index 4, H>=9, F==9\""
-    <<",\"target_preparation\":\"F64 observation values cast through F32 before past_window_targets\""
-    <<",\"head\":\"TRAIN-standardized-ridge1\",\"ridge_penalty\":1,\"encoder_updates\":0,\"preprocessing_fits\":0,\"head_fits\":4"
-    <<",\"legacy_target_parity\":false,\"group_identity\":\"row-id\""
+    <<",\"native_width\":"<<dims.native_width<<",\"input_feature_count\":9,\"history_length\":"<<config.level.history_length
+    <<",\"anchor_channel_id\":"<<train_targets.anchor_id<<",\"feature_view\":"<<quote(view_name(view))
+    <<",\"target_span\":\"boundary retain, last HISTORY_LENGTH ticks ending at the cutoff\""
+    <<",\"target_contract\":\"anchor_volatility, anchor_trend, anchor_activity, cross_resolution\""
+    <<",\"head\":\"TRAIN-standardized-ridge1\",\"ridge_penalty\":1,\"encoder_updates\":0,\"preprocessing_fits\":0,\"head_fits\":"<<head_fits
+    <<",\"legacy_target_parity\":false,\"decision_input\":false,\"comparable_to_seed_946103\":false,\"group_identity\":\"row-id\""
     <<",\"temporal_separation\":\"A confirmation population must be a disjoint later period. This tool checks row-id disjointness only.\""
     <<",\"fresh_confirmation\":false,\"reconstruction_evaluated\":false,\"training_feature_rows\":"<<train_rows
     <<",\"validation_feature_rows\":"<<validation_rows<<",\"metrics\":[";
   for(int64_t task=0;task<4;++task){
-    const auto &score=scores[static_cast<size_t>(task)];if(task)report<<',';
-    report<<"{\"task\":"<<quote(names[static_cast<size_t>(task)].name)<<",\"r2\":"<<score.r2<<",\"mae\":"<<score.mae
-      <<",\"rmse\":"<<score.rmse<<",\"coverage\":"<<score.coverage<<",\"valid\":"<<score.valid
-      <<",\"target_eligible\":"<<score.target_eligible<<",\"total\":"<<score.total<<'}';
+    if(task)report<<',';
+    write_score(report,screen::kTimeframeTargets[static_cast<std::size_t>(task)],columns[static_cast<std::size_t>(task)].score,columns[static_cast<std::size_t>(task)].solved);
   }
   report<<"],\"encoder_state_unchanged\":true,\"model_state_identity\":"<<quote(before)<<",\"scaler_identity\":"<<quote(scaler)
     <<",\"bank_identity\":"<<quote(bank)<<",\"inputs\":{";
@@ -199,7 +284,8 @@ int run(int argc,char **argv){
     <<",\"witness\":"<<artifact(out/"ridge-witness.pt",cp::boundary::sha256_file(out/"ridge-witness.pt"))
     <<",\"input_bytes_unchanged\":true}";
   report.close();TORCH_CHECK(report,"[family screen] write report");
-  std::cout<<"Saved four family-screen linear readouts. native_width="<<dims.native_width<<" updates="<<updates<<"\n";
+  std::cout<<"Saved timeframe family-screen readouts. native_width="<<dims.native_width<<" updates="<<updates
+    <<" anchor="<<train_targets.anchor_id<<" view="<<view_name(view)<<"\n";
   return 0;
 }
 }

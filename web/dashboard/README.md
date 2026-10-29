@@ -16,9 +16,10 @@ server, container, network connection or file picker.
 This is the Non-verba dashboard backbone: the same cream/sage/sand styling,
 overview → one Hero → one Goal navigation, milestone details, status filters,
 search, progress rings, evidence cards and dependency jumps. The manifest contains
-**18 Heroes**, referenced consistently as **Hx01–Hx18**: Hx01–Hx13 own the operation
+**20 Heroes**, referenced consistently as **Hx01–Hx20**: Hx01–Hx13 own the operation
 families, Hx14 owns shared foundations, Hx15–Hx17 own the existing encoder families,
-and Hx18 owns Google's external multimodal encoder. See [the work map](WORKSTREAMS.md) for their
+Hx18 owns Google's external multimodal encoder, Hx19 owns dataloaders, and Hx20
+owns the Temporal Fusion Transformer. See [the work map](WORKSTREAMS.md) for their
 boundaries. No Non-verba progress or artwork is included, and synthetic test
 records never enter the maintained page.
 
@@ -52,17 +53,18 @@ remain preserved alongside subsequent authorized work; the Google provider
 record does not imply a working API adapter. Guidance and proposed toolset
 criteria do not establish implementation or authorize new execution.
 
-After changing JSON, interface code or branding, refresh from the repository root:
+After changing JSON or interface code, refresh from the repository root:
 
 ```powershell
 .\web\dashboard\scripts\refresh.ps1
 ```
 
 The helper uses the existing `mityane-geometrics` container through
-`container.ps1`. It runs focused model and bundling checks, validates the data
-and evidence paths, then regenerates `public/index.html`. It refuses conflicting
-refreshes and detects source changes during generation. Reload the HTML afterward;
-browser file security prevents fetching adjacent JSON automatically.
+`container.ps1`. It reads the Hero JSON, checks the in-memory record, and
+writes `public/index.html` from that record and the prepared artwork. It refuses
+conflicting refreshes and detects changes to those inputs during generation.
+Reload the HTML afterward; browser file security prevents fetching adjacent JSON
+automatically.
 
 To verify freshness without changing the HTML:
 
@@ -70,16 +72,24 @@ To verify freshness without changing the HTML:
 .\web\dashboard\scripts\refresh.ps1 -Check
 ```
 
+Re-read evidence files and current receipts with `-Audit`. Run the focused
+dashboard tests with `-Test`. Prepare artwork with `-Branding`.
+
 ## Maintain the branding
 
 The dashboard uses the shared [cosmic character collection](../branding/index.html).
 Cosmic Synthesis is the global mark, introductory portrait and fallback image;
-each of the 18 Heroes has its own distinct character. Assignments are keyed by
+each of the 20 Heroes has its own distinct character. Assignments are keyed by
 the existing Hero IDs in [dashboard-assignments.json](../branding/dashboard-assignments.json).
-Change that file to select another original PNG, then run the normal refresh.
+Change that file to select another original PNG, then prepare the artwork:
+
+```powershell
+.\web\dashboard\scripts\refresh.ps1 -Branding
+```
+
 Adding a Hero also requires a distinct image assignment.
 
-Refresh prepares transparent WebP copies in `assets/branding/`: the global image
+`-Branding` prepares transparent WebP copies in `assets/branding/`: the global image
 is 384 × 384 and Hero images are 256 × 256. It regenerates
 [branding.json](assets/branding/branding.json) and records source/output hashes,
 dimensions and conversion settings in [provenance.json](assets/branding/provenance.json).
@@ -87,13 +97,13 @@ The full-resolution PNGs and generation records stay in `web/branding/`.
 
 Preparation runs inside the managed container, using Node's standard library
 and a small C++ helper with the already locked GdkPixbuf and libwebp libraries.
-Refresh builds the helper through the root Makefile into
+`-Branding` builds the helper through the root Makefile into
 `/opt/mityane-geometrics/web/build/`; it installs nothing and preserves the exact
 bilinear resize, WebP quality and output bytes. It keeps the existing 512 KiB
 combined artwork budget. The finished HTML embeds all
-19 selected images and needs no adjacent image files or service. `-Check` checks
-the prepared copies and standalone HTML without rewriting them. Visual theme
-tokens remain at the top of `src/dashboard.css`.
+20 selected images and needs no adjacent image files or service. `-Branding -Check`
+checks the prepared copies without rewriting them. `-Check` alone checks the
+standalone HTML. Visual theme tokens remain at the top of `src/dashboard.css`.
 
 ## Container dependencies
 

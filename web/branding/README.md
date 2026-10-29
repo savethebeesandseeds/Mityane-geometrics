@@ -10,8 +10,9 @@ character and one distinct character for every dashboard Hero. Cosmic Synthesis
 is the global image. These are visual assignments; the Hero records retain their
 existing scope and progress.
 
-Run `web/dashboard/scripts/refresh.ps1` from the repository root after changing
-assignments. It uses the managed Linux container to prepare compact transparent
-WebP copies, verify full Hero coverage and regenerate the standalone dashboard.
+Run `web/dashboard/scripts/refresh.ps1 -Branding` from the repository root after
+changing assignments. It uses the managed Linux container to prepare compact
+transparent WebP copies, verify full Hero coverage and regenerate the standalone
+dashboard.
 The original PNGs remain unchanged. The prepared copies and their hash records
 live in `web/dashboard/assets/branding/`.

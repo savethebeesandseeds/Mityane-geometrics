@@ -49,3 +49,17 @@ $(BUILD_DIR)/observation_windows_fixture.o: code/data/observations/tests/observa
 $(OBSERVATION_WINDOW_FIXTURE): $(BUILD_DIR)/observation_windows_fixture.o
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
 -include $(BUILD_DIR)/cpb_family_reference_equivalence.d $(BUILD_DIR)/cpb_family_train.d $(BUILD_DIR)/observation_windows_fixture.d
+
+CPB_FAMILY_NUMERIC_SERIES := $(BUILD_DIR)/test_cpb_family_numeric_series
+.PHONY: test-cpb-family-numeric-series
+test-cpb-family-numeric-series: $(CPB_FAMILY_NUMERIC_SERIES)
+	$(CPB_FAMILY_NUMERIC_SERIES)
+$(BUILD_DIR)/cpb_family_numeric_series_history.o: $(CPB_FAMILY_ROOT)/tests/numeric_series_history_test.cpp
+	mkdir -p "$(@D)"
+	$(CXX) $(CPB_FAMILY_CPPFLAGS) -Icode/dataloaders/numeric_series/include $(CXXFLAGS) -c $< -o $@
+$(BUILD_DIR)/numeric_series_record_types.o: code/dataloaders/numeric_series/src/record_types.cpp
+	mkdir -p "$(@D)"
+	$(CXX) $(CPB_FAMILY_CPPFLAGS) -Icode/dataloaders/numeric_series/include $(CXXFLAGS) -c $< -o $@
+$(CPB_FAMILY_NUMERIC_SERIES): $(BUILD_DIR)/cpb_family_numeric_series_history.o $(BUILD_DIR)/numeric_series_record_types.o
+	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
+-include $(BUILD_DIR)/cpb_family_numeric_series_history.d $(BUILD_DIR)/numeric_series_record_types.d

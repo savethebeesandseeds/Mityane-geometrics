@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "dataloaders",
+  "number": 19,
+  "title": "Dataloaders",
+  "purpose": "Provide reusable loaders for every admitted data form.",
+  "boundary": "This Hero owns source loading. Encoder Heroes own representation models. Hx14 owns observation and evidence contracts. A loader does not score an encoder or admit an experiment.",
+  "summary": "Numeric series is the first loader. It is the memory-mapped kline loader, kept in its own tree. Other data forms are not recorded yet.",
+  "updatedAt": "2026-10-29",
+  "goals": [
+    {
+      "id": "dataloaders-numeric-series",
+      "title": "Numeric series loader",
+      "description": "Time series is the first admitted form. The loader is the torch memory-mapped kline loader, isolated from encoders and from the observation archive.",
+      "milestones": [
+        {
+          "id": "dataloaders-numeric-series-isolation",
+          "title": "Keep the numeric-series loader in its own tree",
+          "status": "done",
+          "description": "The loader, its headers, one translation unit and its storage tests live under code/dataloaders/numeric_series and build without an encoder.",
+          "updatedAt": "2026-10-29",
+          "completedAt": "2026-10-29",
+          "acceptance": [
+            "The numeric-series tree contains the imported loader headers, record_types.cpp and the two storage tests.",
+            "The tree builds and its storage tests pass from its own makefile, with products under /opt/mityane-geometrics/dataloaders/build/numeric-series."
+          ],
+          "evidence": [
+            {
+              "label": "Public loader entry",
+              "path": "code/dataloaders/numeric_series/include/dataloader.h"
+            },
+            {
+              "label": "Provenance of the imported loader",
+              "path": "code/dataloaders/numeric_series/PROVENANCE.md"
+            },
+            {
+              "label": "Storage tests",
+              "path": "code/dataloaders/numeric_series/tests/test_memory_mapped.cpp"
+            },
+            {
+              "label": "Safety tests",
+              "path": "code/dataloaders/numeric_series/tests/test_data_safety.cpp"
+            }
+          ]
+        },
+        {
+          "id": "dataloaders-numeric-series-channel-table",
+          "title": "Add the retrieval channel table beside the loader",
+          "status": "proposed",
+          "description": "read_loader_settings fills channel_form_t and source_form_t from SOURCE_DEFAULTS, KLINE_SOURCE_SET, and CHANNEL_SET. A checked-in table that states the live channels is not in this tree yet. Writing that table does not select a training population or start an encoder run.",
+          "updatedAt": "2026-10-29",
+          "acceptance": [
+            "A configuration beside the numeric-series loader states each channel's interval, activity, record type, input length, future length, channel weight and normalization policy.",
+            "The configuration does not select a training population or start an encoder run."
+          ],
+          "evidence": [
+            {
+              "label": "Reader for the three settings blocks, and the note that no table is checked in",
+              "path": "code/dataloaders/numeric_series/include/settings_reader.h"
+            },
+            {
+              "label": "Channel and source field definitions",
+              "path": "code/dataloaders/numeric_series/include/source_config.h"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

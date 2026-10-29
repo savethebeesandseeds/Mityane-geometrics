@@ -9,6 +9,7 @@ unexport MITYANE_ROOT_RULES_INCLUDED
 MITYANE_CPB_FAMILY_GOALS := build-cpb-family test-cpb-family \
   build-cpb-family-equivalence test-cpb-family-equivalence \
   build-cpb-family-trainer build-observation-window-fixture test-cpb-family-training-example \
+  test-cpb-family-numeric-series \
   build-cpb-v17 test-cpb-v17 build-cpb-v17-diagnostic build-cpb-v17-trainer \
   build-cpb-v17-windows build-cpb-v17-readout build-cpb-v17-audit \
   build-cpb-v18 test-cpb-v18 build-cpb-v18-trainer build-cpb-v18-readout \

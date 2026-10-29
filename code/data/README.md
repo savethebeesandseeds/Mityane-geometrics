@@ -11,6 +11,7 @@ boundaries, event times and information-availability times when relevant.
 | [Observation-window datasets](observations/OBSERVATION_WINDOWS.md) | Encoder-independent typed raw F64 windows, masks, timeframe channel IDs, timestamps, explicit cutoffs and declared split/source identity |
 | [NSW archival reference adapter](observations/open_benchmarks/nsw_wooldridge_v1/README.md) | Explicitly imported non-synthetic job-training benchmark, provenance/license checks and unfitted baseline-only descriptors for separate Hx06 profile bindings |
 | `market/versions/v1/` | Market timelines, chronological associations/arrays, risk-target definitions and ledger I/O |
+| [Numeric-series dataloader](../dataloaders/numeric_series/README.md) | Memory-mapped kline loader. Hx19 keeps it in its own tree, apart from this directory |
 
 The existing `embedding/shared/data.h` and `cuwacunu/latent_market/` include
 names are retained as source compatibility boundaries. Physical ownership is

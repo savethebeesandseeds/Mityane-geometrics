@@ -2,10 +2,12 @@
 
 The owner requested an explicit work map on 18 October 2026: operation
 capabilities, a Hero for each existing encoder family, and an external Google
-multimodal encoder. There are **18 Heroes**, each maintained as one JSON file in
+multimodal encoder. On 29 October 2026 the owner added dataloaders as Hx19
+and the Temporal Fusion Transformer as Hx20.
+There are **20 Heroes**, each maintained as one JSON file in
 `heroes/` and registered in `manifest.json`.
 
-Use **Hx01–Hx18** as their canonical references: `Hx` plus the zero-padded Hero
+Use **Hx01–Hx20** as their canonical references: `Hx` plus the zero-padded Hero
 number. These references identify the workstreams and are independent of their
 stable JSON IDs and file paths. The [schema](SCHEMA.md#hero-references) defines
 the naming convention, including how to read historical references.
@@ -49,6 +51,8 @@ start an experiment.
 | Hx18 · Google multimodal encoder | Reusable external-provider adapter, configuration and validation tools within the capabilities recorded in the [provider guide](../../code/embeddings/encoders/google_multimodal_embedding/README.md); local adapter availability remains explicitly scoped |
 
 The provider folders under `code/embeddings/encoders/` each have one Hero.
+Hx20 is the forecasting family in that directory. It is not an
+observation-embedding family.
 The [current research summary](../../doc/EMBEDDINGS.md) distinguishes these
 leading successes, baseline roles, task-specific records and formal promotion.
 Versions and trained instances stay within the corresponding family Hero;
@@ -73,6 +77,28 @@ The Hero records hold the agreed work and evidence for these interfaces. This
 guidance does not claim that every family already supplies them or authorize
 new training, experiments or external API calls.
 
+## Temporal Fusion Transformer
+
+| Hero | Ownership and evidence boundary |
+| --- | --- |
+| Hx20 · Temporal Fusion Transformer | Reusable quantile-forecast family in [its own tree](../../code/embeddings/encoders/temporal_fusion_transformer/README.md). The imported surface adds one pooled vector per input group and a boolean time mask. It does not close Hx11, and it does not use the patch-bottleneck channel contract |
+
+The placed library is the Non-verba copy of the post-profit-economics C++ TFT.
+Its CPU suites passed in the managed container on 29 October 2026. CUDA was
+not run. Upstream synthetic checks and the Electricity comparison are not
+measurements of this tree.
+
+## Dataloaders
+
+| Hero | Ownership and evidence boundary |
+| --- | --- |
+| Hx19 · Dataloaders | Reusable loaders for every admitted data form. Numeric series is the first form, isolated in [its own tree](../../code/dataloaders/numeric_series/README.md). A loader reads source files into windows. It does not train an encoder or score an operation |
+
+Hx19 follows [the dataloader directory](../../code/dataloaders/README.md). Each
+data form has its own subdirectory and its own build. The numeric-series
+reader accepts `SOURCE_DEFAULTS`, `KLINE_SOURCE_SET`, and `CHANNEL_SET`. A
+checked-in channel table is not in that tree yet.
+
 Shared foundations own cross-component contracts and reproducibility. Encoder
 Heroes own representation production and its provenance. Operation Heroes own
 their input/output semantics, controls and evidence of usefulness. Combining
@@ -80,13 +106,14 @@ them does not transfer an encoder's historical scores into a new operation.
 
 ## Exposing each Hero as a toolset
 
-On 20 October 2026 the owner requested a toolset-exposure goal for every Hero,
-following the broader Hx06 goal. Each goal maps the Hero's developed components
-and selected future public capabilities, then exposes and verifies the agreed
+On 20 October 2026 the owner requested a toolset-exposure goal for every Hero
+then on the map, following the broader Hx06 goal. Those goals map each Hero's developed components
+and selected future public capabilities, then expose and verify the agreed
 building blocks through consistent command-line and reusable library interfaces.
 The [initial common tool boundary](../../code/operations/TOOLS.md) provides a
 starting convention; its first registered tool does not establish toolset
-completion for the other Heroes.
+completion for the other Heroes. Hx19 records loader scope. Its toolset goal
+waits until that surface is defined.
 
 Operation Heroes expose their own semantics across compatible representation
 providers. Encoder Heroes expose configurable family and provider tools,

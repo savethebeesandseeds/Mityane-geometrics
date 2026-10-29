@@ -5,7 +5,7 @@ import {mkdtemp, mkdir, writeFile, rm, symlink} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import test from 'node:test';
-import {readProject, sourceFingerprint} from '../scripts/project.mjs';
+import {publishFingerprint, readProject, readPublishedProject, sourceFingerprint} from '../scripts/project.mjs';
 
 const digest = value => createHash('sha256').update(value).digest('hex');
 
@@ -156,4 +156,21 @@ test('ready gates require the recorded outcome and freshly checked evidence whil
   const record = await readProject(value.directory);
   assert.equal(record.heroes[0].goals[0].milestones[0].status, 'done');
   assert.equal(record.verificationAssessments[value.milestone.id].status, 'stale');
+});
+
+test('publishing reads the Hero JSON without opening evidence targets', async t => {
+  const value = await fixture(t);
+  value.milestone.evidence[0].path = 'docs/absent.md';
+  value.milestone.verification = {
+    status: 'current', scope: 'The bounded recorded result.', reason: 'Recorded in the Hero JSON.',
+    receipt: 'docs/absent-receipt.json', receiptSha256: 'ab'.repeat(32),
+  };
+  await value.save();
+  const published = await readPublishedProject(value.directory);
+  assert.equal(published.verificationAssessments[value.milestone.id].status, 'current');
+  assert.equal(published.verificationAssessments[value.milestone.id].reason, 'Recorded in the Hero JSON.');
+  const before = await publishFingerprint(value.directory);
+  await writeFile(join(value.root, 'docs/result.md'), 'Changed evidence bytes.\n');
+  assert.equal(await publishFingerprint(value.directory), before);
+  await assert.rejects(readProject(value.directory), /regular file/);
 });

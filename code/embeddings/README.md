@@ -1,7 +1,8 @@
 # Representation providers and model evaluation
 
 This directory owns the imported MTF, RPB and causal patch bottleneck encoders,
-their model-specific training/evaluation, provider integration definitions, and
+their model-specific training/evaluation, provider integration definitions, the
+Temporal Fusion Transformer forecasting family, and
 the separately versioned State Representation Network. The predecessor is
 `cuwacunu_embedding`, with recorded upstream base revision
 `b15702b29753188482b11ca85e997006b503d0f0`; migration file inventories identify
@@ -11,7 +12,7 @@ has new path-bound source identities after integration.
 
 | Path | Responsibility |
 | --- | --- |
-| `encoders/` | Encoder families, provider definitions, adapters and model-owned workflows |
+| `encoders/` | Encoder families, the Temporal Fusion Transformer, provider definitions, adapters and model-owned workflows |
 | `state_representation/` | Mapping observation embeddings to task-dependent latent states |
 | `evaluation/` | Encoder/model protocols, cards, benchmarks and evaluation adapters |
 | `scripts/` | Maintained model and evaluation runners |
@@ -31,6 +32,11 @@ Source placement does not establish prediction skill or downstream utility.
 External/open models and API embeddings remain first-class representation sources.
 
 ## Encoder Hero development direction
+
+**Hx20 owns the Temporal Fusion Transformer**, a quantile-forecast family in
+[its own tree](encoders/temporal_fusion_transformer/README.md). It keeps the
+family, configuration, recipe and instance split. It does not use the
+patch-bottleneck channel contract, and a forecast from it does not close Hx11.
 
 **Hx15–Hx18 develop reusable encoder families and provider tools.** Read the
 [shared encoder instructions](encoders/AGENTS.md) and the assigned Hero record.

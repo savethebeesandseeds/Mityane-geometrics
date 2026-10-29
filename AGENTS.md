@@ -6,7 +6,7 @@ representations. Read `doc/operations_over_representations_design_spec_v0.1.0.md
 or evaluation policy. The research unit is an operation, its input/output
 contract, required representation properties, dependencies and explicit test.
 
-Refer to Heroes consistently as Hx01 through Hx18 (Hx plus the zero-padded
+Refer to Heroes consistently as Hx01 through Hx20 (Hx plus the zero-padded
 Hero number) in the dashboard and maintained prose. Keep Hero titles descriptive;
 derive the Hx reference from `number`. Preserve existing JSON IDs, file paths,
 dependencies and historical evidence identities. The mapping in
@@ -20,7 +20,8 @@ project domain-agnostic; market/time-series research is one application lane.
 
 Keep representation providers and model-owned research in `code/embeddings/`,
 operation implementations and their protocols/evidence in `code/operations/`,
-data code in `code/data/`, and cross-component utilities in `code/shared/`.
+data code in `code/data/`, dataloaders in `code/dataloaders/`, and
+cross-component utilities in `code/shared/`.
 Use the existing flat ownership boundaries: embeddings `encoders/`,
 `state_representation/` and `evaluation/`; operation forecasting modules and
 their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
@@ -30,7 +31,12 @@ Keep model-specific runners in `code/embeddings/scripts/`.
 Keep tests and versioned non-secret configurations with their owning component.
 Credentials belong in ignored environment files or external secret storage.
 All encoder Heroes Hx15–Hx18 develop reusable encoder/provider components and
-tools. Follow `code/embeddings/encoders/AGENTS.md`: separate the family/provider,
+tools. Hx20 owns the Temporal Fusion Transformer forecasting family at
+`code/embeddings/encoders/temporal_fusion_transformer`. It is not an
+observation-embedding family and it does not close Hx11. Hx19 owns dataloaders
+for every admitted data form. The numeric-series
+loader stays isolated in `code/dataloaders/numeric_series`. Follow
+`code/embeddings/encoders/AGENTS.md`: separate the family/provider,
 supported configuration, training/request recipe and each trained instance or
 provider result. Research checkpoints and benchmark shapes are scoped evidence,
 not the family's complete supported interface. Locally trainable families need
@@ -93,8 +99,10 @@ Build products, temporary files and dependency caches go under
 at `/opt/cuwacunu_embedding/libtorch`; its original verification records bind
 that path. Do not relocate, duplicate or modify the SDK. Persist selected data,
 checkpoints and reports under this repository's ignored `.temp/`.
-Keep data-handling source in `code/data/`; create local dataset directories
-under `.temp/` only when needed. This directory also preserves migration recovery
+Keep observation and market data-handling source in `code/data/`. Keep each
+dataloader form in its own directory under `code/dataloaders/`, with its own
+build, apart from encoders and from the observation archive. Create local
+dataset directories under `.temp/` only when needed. This directory also preserves migration recovery
 history and evidence; its name does not authorize deleting its contents.
 The imported component's ignored `output/`, `.build/` and `.external/` retain
 historical files in place; do not delete or rewrite them as cleanup. New named
@@ -130,12 +138,14 @@ Heroes and branding; do not seed guessed Heroes, Goals or Milestones. Read
 `heroes/`, listed in `manifest.json`, with the fixed Hero -> Goal -> Milestone
 hierarchy. Record only confirmed scope and evidence; only Milestones store states.
 
-After changing Hero JSON, the manifest, branding or interface, run
+After changing Hero JSON, the manifest or interface, run
 `./web/dashboard/scripts/refresh.ps1` from the repository root. It delegates
-through `container.ps1` to the existing managed container, runs focused tests and
-regenerates `public/index.html`. Do not hand-edit that generated file or run a
-host toolchain. The finished HTML opens directly without a server. Use `-Check`
-to check freshness without rewriting it. Preserve the imported AGPL notices.
+through `container.ps1` to the existing managed container and regenerates
+`public/index.html` from the Hero JSON and prepared artwork. Do not hand-edit
+that generated file or run a host toolchain. The finished HTML opens directly
+without a server. Use `-Check` to check freshness without rewriting it. Use
+`-Audit` to re-read evidence files and current receipts, `-Test` for the focused
+dashboard tests, and `-Branding` after artwork changes. Preserve the imported AGPL notices.
 
 # Research and publication
 

@@ -48,8 +48,9 @@ For example, Hx06 has `number: 6`, ID `or-06-comparisons`, and the title
 as **Hx06 · Matched comparisons, sensitivity, and counterfactual analysis**.
 
 **OR-NN** identifies a capability family in the Operations over Representations
-charter. Hx01–Hx13 currently map to OR-01–OR-13; Hx14 owns shared foundations and
-Hx15–Hx18 own encoders/providers. Use Hx references when discussing the Heroes,
+charter. Hx01–Hx13 currently map to OR-01–OR-13; Hx14 owns shared foundations,
+Hx15–Hx18 own encoders/providers, Hx19 owns dataloaders, and Hx20 owns the
+Temporal Fusion Transformer. Use Hx references when discussing the Heroes,
 their Goals or their Milestones. Use OR references for operation contracts and
 scientific classification. See the [complete mapping](WORKSTREAMS.md).
 
@@ -211,10 +212,12 @@ only its own declared prerequisites.
 
 Ready states are checked in two phases: structural validation checks completed
 direct prerequisites, then refresh and dashboard loading check all outcome and
-current-evidence gates through the dependency ancestry after evidence
-assessments are available. A ready record whose gates no longer pass must be
-reconciled before refresh can succeed; the validator does not change its state
-automatically. Historical done records retain their completion when gates drift.
+current-evidence gates through the dependency ancestry. A normal refresh uses
+the verification written in the Hero JSON. `-Audit` re-reads receipt and source
+bytes first and can mark that recorded current evidence stale before the same
+gate check. A ready record whose gates no longer pass must be reconciled before
+that refresh can succeed; the validator does not change its state automatically.
+Historical done records retain their completion when gates drift.
 
 ## Updating a milestone
 
@@ -230,8 +233,8 @@ automatically. Historical done records retain their completion when gates drift.
 ```
 
 The helper runs through the root `container.ps1` launcher against the existing
-`mityane-geometrics` container and its `/mityane` bind mount. It runs focused tests,
-validates the JSONs and regenerates `public/index.html`. It detects source changes
+`mityane-geometrics` container and its `/mityane` bind mount. It reads the Hero
+JSON and regenerates `public/index.html`. It detects changes to those inputs
 during generation. Hero JSONs remain the source of truth; never hand-edit the HTML.
 For a container-side invocation, use `bash web/dashboard/scripts/refresh.sh`.
 
@@ -243,10 +246,13 @@ Open [public/index.html](public/index.html) directly in a browser after a succes
 It opens populated without a picker or server. Browser file-open security prevents
 automatic fetching of adjacent JSONs, so the HTML includes the last validated
 snapshot. JSON edits become visible only after refresh and reopening/reloading
-the HTML. `./web/dashboard/scripts/refresh.ps1 -Check` validates data and HTML freshness
-without changing the HTML. Focused model and bundling checks run on every refresh.
+the HTML. `./web/dashboard/scripts/refresh.ps1 -Check` compares the HTML with the
+Hero JSON without changing it. `-Audit` re-reads evidence files and current
+receipts. `-Test` runs the focused model and bundling checks. `-Branding` prepares
+artwork.
 
 The formal definitions are [hero.schema.json](schemas/hero.schema.json) and
 [manifest.schema.json](schemas/manifest.schema.json). Runtime validation also checks real
-calendar dates, date ordering, global ID uniqueness, dependency references/cycles
-and existing evidence files. See [opening instructions](README.md#open-the-dashboard).
+calendar dates, date ordering, global ID uniqueness and dependency references/cycles.
+`-Audit` also checks that evidence paths resolve to files and that current receipts
+still match. See [opening instructions](README.md#open-the-dashboard).

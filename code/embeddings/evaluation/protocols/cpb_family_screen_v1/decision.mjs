@@ -9,6 +9,9 @@ export const REFERENCE_BUDGET = 2048;
 // The shipping trainer writes this prefix, then executable, settings, dataset,
 // batch, seeds and optimizer fields. The short token "cpb-family" is not a recipe.
 export const RECIPE_PREFIX = 'cpb-family-train-example-v1;';
+// Published three-instrument probe names. anchor_volatility, anchor_trend,
+// anchor_activity and cross_resolution are a different contract and are not
+// accepted by this rule.
 export const TASKS = ['past_volatility', 'past_trend', 'past_activity', 'past_relation'];
 export const CONSUMED = [
   'january-2024-mkt-hist-2-days-22-28',

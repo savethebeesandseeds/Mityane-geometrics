@@ -5,12 +5,13 @@ CPB_SCREEN_CPPFLAGS := $(CPB_FAMILY_CPPFLAGS) -Icode/embeddings/evaluation/proto
 CPB_SCREEN_SELF_TEST_OUTPUT ?= $(RUN_ROOT)/cpb-family-screen-audit-self-test
 .PHONY: build-cpb-family-screen test-cpb-family-screen
 build-cpb-family-screen: $(BUILD_DIR)/cpb_family_screen_readout $(BUILD_DIR)/cpb_family_screen_audit
-test-cpb-family-screen: build-cpb-family-screen
+test-cpb-family-screen: build-cpb-family-screen $(BUILD_DIR)/cpb_family_screen_timeframe_targets_test
+	$(BUILD_DIR)/cpb_family_screen_timeframe_targets_test
 	bash code/scripts/node.sh --test $(CPB_SCREEN_PROTOCOL)/decision.test.mjs
 	rm -rf "$(CPB_SCREEN_SELF_TEST_OUTPUT)" "$(CPB_SCREEN_SELF_TEST_OUTPUT).scratch"
 	mkdir -p "$(dir $(CPB_SCREEN_SELF_TEST_OUTPUT))"
 	$(BUILD_DIR)/cpb_family_screen_audit --self-test --output "$(CPB_SCREEN_SELF_TEST_OUTPUT)"
-$(BUILD_DIR)/cpb_family_screen_readout.o: $(CPB_SCREEN_PROTOCOL)/readout.cpp
+$(BUILD_DIR)/cpb_family_screen_readout.o: $(CPB_SCREEN_PROTOCOL)/readout.cpp $(CPB_SCREEN_PROTOCOL)/timeframe_targets.h
 	mkdir -p "$(@D)"
 	$(CXX) $(CPB_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(BUILD_DIR)/cpb_family_screen_fixed_regression.o: code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/deps/src/fixed_regression.cpp
@@ -23,4 +24,9 @@ $(BUILD_DIR)/cpb_family_screen_audit.o: $(CPB_SCREEN_PROTOCOL)/audit.cpp
 	$(CXX) $(CPB_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 $(BUILD_DIR)/cpb_family_screen_audit: $(BUILD_DIR)/cpb_family_screen_audit.o
 	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
--include $(BUILD_DIR)/cpb_family_screen_readout.d $(BUILD_DIR)/cpb_family_screen_fixed_regression.d $(BUILD_DIR)/cpb_family_screen_audit.d
+$(BUILD_DIR)/cpb_family_screen_timeframe_targets_test.o: $(CPB_SCREEN_PROTOCOL)/timeframe_targets_test.cpp $(CPB_SCREEN_PROTOCOL)/timeframe_targets.h
+	mkdir -p "$(@D)"
+	$(CXX) $(CPB_SCREEN_CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+$(BUILD_DIR)/cpb_family_screen_timeframe_targets_test: $(BUILD_DIR)/cpb_family_screen_timeframe_targets_test.o
+	$(CXX) $^ $(LDFLAGS) $(LDLIBS) -o $@
+-include $(BUILD_DIR)/cpb_family_screen_readout.d $(BUILD_DIR)/cpb_family_screen_fixed_regression.d $(BUILD_DIR)/cpb_family_screen_audit.d $(BUILD_DIR)/cpb_family_screen_timeframe_targets_test.d

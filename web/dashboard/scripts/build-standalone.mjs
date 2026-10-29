@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname, resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 import {validateProject, validateReadyMilestones} from '../src/model.js';
-import {readProject, sourceFingerprint} from './project.mjs';
+import {publishFingerprint, readProject, readPublishedProject, sourceFingerprint} from './project.mjs';
 import {readBranding, brandingScript} from './branding.mjs';
 import {assertManagedContainer} from './environment.mjs';
 assertManagedContainer();
@@ -44,9 +44,10 @@ export async function renderStandalone(record) {
     .replace('<!-- DASHBOARD_STYLE -->', `<style>\n${css.trimEnd()}\n</style>`)
     .replace('<!-- DASHBOARD_SCRIPTS -->', scripts.map(script => `<script>${script}</script>`).join('\n'));
 }
-export async function updateStandalone(record, {check = false, fingerprint} = {}) {
+export async function updateStandalone(record, {check = false, fingerprint, audit = false} = {}) {
   const html = await renderStandalone(record);
-  if (fingerprint && fingerprint !== await sourceFingerprint()) throw new Error('Dashboard source changed during refresh. Rerun with the current files.');
+  const currentFingerprint = audit ? sourceFingerprint : publishFingerprint;
+  if (fingerprint && fingerprint !== await currentFingerprint()) throw new Error('Dashboard source changed during refresh. Rerun with the current files.');
   const target = resolve(directory, 'public/index.html');
   if (check) {
     if (await read('public/index.html') !== html) throw new Error('Standalone HTML is out of date. Run web/dashboard/scripts/refresh.ps1 after JSON or interface changes.');
@@ -57,6 +58,8 @@ export async function updateStandalone(record, {check = false, fingerprint} = {}
   }
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const fingerprint = await sourceFingerprint();
-  await updateStandalone(await readProject(), {check: process.argv.includes('--check'), fingerprint});
+  const audit = process.argv.includes('--audit');
+  const fingerprint = await (audit ? sourceFingerprint() : publishFingerprint());
+  const record = audit ? await readProject() : await readPublishedProject();
+  await updateStandalone(record, {check: process.argv.includes('--check'), fingerprint, audit});
 }

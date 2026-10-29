@@ -43,6 +43,11 @@ channel is that interval. N is the supplied history length;
 it need not equal an encoder's retained history H. The consumer may retain a
 causally cropped window, including masked padding when its contract allows it.
 
+The memory-mapped kline loader in `code/dataloaders/numeric_series/` is a separate
+source. One sample there keeps a history length and a past-key row per
+resolution. This observation archive still stores one shared timestamp grid,
+so it does not carry those per-channel keys.
+
 `validate()` checks schema, metadata, finite declared time fields and uniqueness.
 It deliberately does **not** inspect raw value or mask contents across the
 whole supplied history. A consumer must first crop at each cutoff, then validate

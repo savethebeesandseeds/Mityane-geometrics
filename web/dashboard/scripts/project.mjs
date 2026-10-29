@@ -102,33 +102,51 @@ async function verificationAssessments(heroes, root, inputs) {
   return assessments;
 }
 
-async function loadProject(directory, inputs) {
+function recordedAssessments(heroes) {
+  const assessments = {};
+  for (const {milestone} of flattenMilestones(heroes)) {
+    const authored = milestone.verification;
+    assessments[milestone.id] = authored
+      ? {status: authored.status, scope: authored.scope, reason: authored.reason}
+      : {status: 'unverified', scope: 'Not assessed', reason: 'No current evidence assessment is recorded.'};
+  }
+  return assessments;
+}
+
+async function loadProject(directory, inputs, {audit = false} = {}) {
   const json = async file => JSON.parse((await readFile(resolve(directory, file), 'utf8')).replace(/^\uFEFF/, ''));
   const manifest = validateManifest(await json('manifest.json'));
   const heroes = await Promise.all(manifest.heroes.map(async entry => validateHero(await json(entry.file))));
   validateProject(manifest, heroes);
-  const root = await realpath(resolve(directory, '../..'));
   const milestones = flattenMilestones(heroes);
-  for (const {milestone} of milestones) {
-    for (const evidence of milestone.evidence || []) {
-      const file = repositoryFile(evidence.path, 'Evidence', true);
-      const target = await repositoryTarget(root, file, 'Evidence');
-      insist(target !== null && (await stat(target)).isFile(), `Evidence must resolve to a regular file: ${file}`);
-    }
-    if (milestone.verification?.receipt) {
-      const file = repositoryFile(milestone.verification.receipt, 'Verification');
-      await repositoryTarget(root, file, 'Verification');
-    }
-  }
   const record = {manifest, heroes};
-  if (milestones.some(({milestone}) => Object.hasOwn(milestone, 'verification') || Object.hasOwn(milestone, 'requiresCurrentEvidence'))) {
-    record.verificationAssessments = await verificationAssessments(heroes, root, inputs);
+  const assesses = milestones.some(({milestone}) => Object.hasOwn(milestone, 'verification') || Object.hasOwn(milestone, 'requiresCurrentEvidence'));
+  if (audit) {
+    const root = await realpath(resolve(directory, '../..'));
+    for (const {milestone} of milestones) {
+      for (const evidence of milestone.evidence || []) {
+        const file = repositoryFile(evidence.path, 'Evidence', true);
+        const target = await repositoryTarget(root, file, 'Evidence');
+        insist(target !== null && (await stat(target)).isFile(), `Evidence must resolve to a regular file: ${file}`);
+      }
+      if (milestone.verification?.receipt) {
+        const file = repositoryFile(milestone.verification.receipt, 'Verification');
+        await repositoryTarget(root, file, 'Verification');
+      }
+    }
+    if (assesses) record.verificationAssessments = await verificationAssessments(heroes, root, inputs);
+  } else if (assesses) {
+    record.verificationAssessments = recordedAssessments(heroes);
   }
   validateReadyMilestones(heroes, record.verificationAssessments || {});
   return record;
 }
 
 export async function readProject(directory = dashboardDirectory) {
+  return loadProject(directory, new Map(), {audit: true});
+}
+
+export async function readPublishedProject(directory = dashboardDirectory) {
   return loadProject(directory, new Map());
 }
 
@@ -146,12 +164,34 @@ export async function sourceFingerprint(directory = dashboardDirectory) {
   const hash = createHash('sha256');
   for (const file of files.sort()) hash.update(file).update('\0').update(await readFile(resolve(directory, file))).update('\0');
   const inputs = new Map();
-  await loadProject(directory, inputs);
+  await loadProject(directory, inputs, {audit: true});
   for (const [file, data] of [...inputs].sort(([left], [right]) => left.localeCompare(right))) {
     hash.update('repository/').update(file).update('\0');
     hash.update(data === null ? 'missing' : String(data.length)).update('\0');
     if (data !== null) hash.update(data);
     hash.update('\0');
   }
+  return hash.digest('hex');
+}
+
+async function collectFiles(directory, folder, files) {
+  let entries;
+  try { entries = await readdir(resolve(directory, folder), {withFileTypes: true}); }
+  catch (error) { if (missing(error)) return; throw error; }
+  for (const entry of entries) {
+    const file = `${folder}/${entry.name}`;
+    if (entry.isDirectory()) await collectFiles(directory, file, files);
+    else if (entry.isFile()) files.push(file);
+    else throw new Error(`Dashboard inputs must be ordinary files: ${file}`);
+  }
+}
+
+export async function publishFingerprint(directory = dashboardDirectory) {
+  const files = ['manifest.json'];
+  await collectFiles(directory, 'heroes', files);
+  await collectFiles(directory, 'src', files);
+  await collectFiles(directory, 'assets/branding', files);
+  const hash = createHash('sha256');
+  for (const file of files.sort()) hash.update(file).update('\0').update(await readFile(resolve(directory, file))).update('\0');
   return hash.digest('hex');
 }
