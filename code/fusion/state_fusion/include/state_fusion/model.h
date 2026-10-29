@@ -44,6 +44,15 @@ class StateFusionModelImpl : public torch::nn::Module {
   // [batch, seeds, d_model]. Permutation-invariant in the set dimension.
   torch::Tensor encode(const SetBatch& batch);
 
+  // Answer for each query row, [batch, queries, d_model].
+  // state is a cached market state from encode. query_batch uses the same
+  // fields as a record, with the set dimension as the query dimension. Each
+  // query is assembled by the shared token encoder, then one attention block
+  // reads the pooled state. The set is not encoded again. A hole uses the
+  // same absent path as a record hole. Mixture density sampling of this
+  // answer is deferred.
+  torch::Tensor query(const torch::Tensor& state, const SetBatch& query_batch);
+
   // Scalar reconstruction for every record, [batch, set, features].
   torch::Tensor reconstruct(const SetBatch& batch);
 
@@ -61,6 +70,7 @@ class StateFusionModelImpl : public torch::nn::Module {
   PMA pool_{nullptr};
   MAB decode_{nullptr};
   torch::nn::Linear scalar_head_{nullptr};
+  MAB query_{nullptr};
 };
 TORCH_MODULE(StateFusionModel);
 

@@ -106,6 +106,68 @@ void check_batch(const Config& config, const SetBatch& batch) {
   require(ids_ok.all().item<bool>(), "an observed categorical id is outside its cardinality");
 }
 
+// Same field contract as a record, without the key-row rule. An empty query
+// is a row of holes and is a valid question. A fully masked key row is not.
+void check_query(const Config& config, const SetBatch& batch) {
+  require(batch.scalars.defined() && batch.scalars.device().is_cuda(),
+          "state fusion requires CUDA tensors");
+  const auto device = batch.scalars.device();
+  const auto fields = static_cast<int64_t>(config.categorical_cardinalities.size());
+  require(batch.scalars.scalar_type() == torch::kFloat, "scalars must be float32");
+  require(batch.scalars.dim() == 3, "scalars must be [batch, set, features]");
+  const auto rows = batch.scalars.size(0);
+  const auto queries = batch.scalars.size(1);
+  require(rows >= 1 && queries >= 1, "a query batch needs at least one batch row and one query");
+  require(batch.scalars.size(2) == config.scalar_features, "scalar feature count does not match the model");
+
+  const auto expect_cuda = [&](const torch::Tensor& tensor, const char* name) {
+    require(tensor.defined() && tensor.device() == device, std::string(name) + " must be on the same CUDA device");
+  };
+  expect_cuda(batch.scalar_observed, "scalar_observed");
+  expect_cuda(batch.categoricals, "categoricals");
+  expect_cuda(batch.categorical_observed, "categorical_observed");
+  expect_cuda(batch.semantic, "semantic");
+  expect_cuda(batch.semantic_observed, "semantic_observed");
+  expect_cuda(batch.record_observed, "record_observed");
+
+  require(batch.scalar_observed.dtype() == torch::kBool &&
+              same_size(batch.scalar_observed, {rows, queries, config.scalar_features}),
+          "scalar_observed must be bool [batch, set, features]");
+  require(batch.categoricals.dtype() == torch::kLong &&
+              same_size(batch.categoricals, {rows, queries, fields}),
+          "categoricals must be int64 [batch, set, fields]");
+  require(batch.categorical_observed.dtype() == torch::kBool &&
+              same_size(batch.categorical_observed, {rows, queries, fields}),
+          "categorical_observed must be bool [batch, set, fields]");
+  require(batch.semantic.dtype() == torch::kFloat &&
+              same_size(batch.semantic, {rows, queries, config.semantic_width}),
+          "semantic must be float32 [batch, set, semantic_width]");
+  require(batch.semantic_observed.dtype() == torch::kBool &&
+              same_size(batch.semantic_observed, {rows, queries}),
+          "semantic_observed must be bool [batch, set]");
+  require(batch.record_observed.dtype() == torch::kBool && same_size(batch.record_observed, {rows, queries}),
+          "record_observed must be bool [batch, set]");
+
+  const auto active_scalar = batch.record_observed.unsqueeze(-1) & batch.scalar_observed;
+  const auto illegal_scalar = active_scalar & torch::logical_not(torch::isfinite(batch.scalars));
+  require(!illegal_scalar.any().item<bool>(), "an observed scalar must be finite");
+
+  const auto illegal_semantic =
+      batch.record_observed & batch.semantic_observed &
+      torch::logical_not(torch::isfinite(batch.semantic)).any(-1);
+  require(!illegal_semantic.any().item<bool>(), "an observed semantic vector must be finite");
+
+  auto ids_ok = torch::ones({rows, queries}, batch.record_observed.options());
+  for (int64_t field = 0; field < fields; ++field) {
+    const auto ids = batch.categoricals.select(2, field);
+    const auto present = batch.categorical_observed.select(2, field) & batch.record_observed;
+    const auto card = config.categorical_cardinalities[static_cast<size_t>(field)];
+    const auto in_range = (ids >= 0) & (ids < card);
+    ids_ok = ids_ok & (present.logical_not() | in_range);
+  }
+  require(ids_ok.all().item<bool>(), "an observed categorical id is outside its cardinality");
+}
+
 }  // namespace
 
 StateFusionModelImpl::StateFusionModelImpl(Config config) : config_(std::move(config)) {
@@ -123,6 +185,11 @@ StateFusionModelImpl::StateFusionModelImpl(Config config) : config_(std::move(co
       "decode", MAB(config_.d_model, config_.heads, config_.feedforward, config_.dropout));
   scalar_head_ = register_module(
       "scalar_head", torch::nn::Linear(config_.d_model, config_.scalar_features));
+  // Registered after the encoder and the reconstruction head so their
+  // initialization order is unchanged. This is one attention block over the
+  // cached state, not a second induced-set stack.
+  query_ = register_module(
+      "query", MAB(config_.d_model, config_.heads, config_.feedforward, config_.dropout));
 }
 
 torch::Tensor StateFusionModelImpl::encode(const SetBatch& batch) {
@@ -139,6 +206,29 @@ torch::Tensor StateFusionModelImpl::encode(const SetBatch& batch) {
   }
   const auto pooled = pool_->forward(sequence, padding);
   return pooled.permute({1, 0, 2}).contiguous();
+}
+
+torch::Tensor StateFusionModelImpl::query(const torch::Tensor& state, const SetBatch& query_batch) {
+  for (const auto& parameter : parameters()) {
+    if (!parameter.is_cuda()) {
+      throw std::invalid_argument("state fusion requires CUDA parameters");
+    }
+  }
+  require(state.defined() && state.is_cuda() && state.scalar_type() == torch::kFloat,
+          "state fusion requires a CUDA float32 market state");
+  require(state.dim() == 3 && state.size(0) >= 1 && state.size(1) == config_.pma_seeds &&
+              state.size(2) == config_.d_model,
+          "market state must be [batch, seeds, d_model]");
+  require(torch::isfinite(state).all().item<bool>(), "market state must be finite");
+  check_query(config_, query_batch);
+  require(query_batch.scalars.size(0) == state.size(0),
+          "query batch must match the market-state batch");
+  require(query_batch.scalars.device() == state.device(),
+          "query batch must be on the market-state device");
+
+  const auto queries = tokens_->forward(query_batch).permute({1, 0, 2}).contiguous();
+  const auto keys = state.permute({1, 0, 2}).contiguous();
+  return query_->forward(queries, keys).permute({1, 0, 2}).contiguous();
 }
 
 torch::Tensor StateFusionModelImpl::reconstruct(const SetBatch& batch) {

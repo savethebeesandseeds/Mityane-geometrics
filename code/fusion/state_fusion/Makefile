@@ -16,15 +16,17 @@ LIB_SRCS := src/blocks.cpp src/embeddings.cpp src/model.cpp src/synthetic.cpp
 LIB_OBJS := $(addprefix $(BUILD_DIR)/,$(notdir $(LIB_SRCS:.cpp=.o)))
 INVARIANCE := $(BUILD_DIR)/state_fusion_invariance
 FIDELITY := $(BUILD_DIR)/state_fusion_fidelity
+QUERY := $(BUILD_DIR)/state_fusion_query
 TRAIN := $(BUILD_DIR)/state_fusion_train
 
 .PHONY: build test train
 
-build: $(INVARIANCE) $(FIDELITY) $(TRAIN)
+build: $(INVARIANCE) $(FIDELITY) $(QUERY) $(TRAIN)
 
 test: build
 	$(INVARIANCE)
 	$(FIDELITY)
+	$(QUERY)
 	$(TRAIN)
 
 train: $(TRAIN)
@@ -40,6 +42,9 @@ $(INVARIANCE): tests/test_invariance.cpp $(LIB_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(FIDELITY): tests/test_fidelity.cpp $(LIB_OBJS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
+
+$(QUERY): tests/test_query.cpp $(LIB_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(TRAIN): src/train.cpp $(LIB_OBJS)
