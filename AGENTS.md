@@ -6,7 +6,7 @@ representations. Read `doc/operations_over_representations_design_spec_v0.1.0.md
 or evaluation policy. The research unit is an operation, its input/output
 contract, required representation properties, dependencies and explicit test.
 
-Refer to Heroes consistently as Hx01 through Hx20 (Hx plus the zero-padded
+Refer to Heroes consistently as Hx01 through Hx21 (Hx plus the zero-padded
 Hero number) in the dashboard and maintained prose. Keep Hero titles descriptive;
 derive the Hx reference from `number`. Preserve existing JSON IDs, file paths,
 dependencies and historical evidence identities. The mapping in
@@ -19,11 +19,13 @@ models or API embeddings are first-class representation sources. Keep the
 project domain-agnostic; market/time-series research is one application lane.
 
 Keep representation providers and model-owned research in `code/embeddings/`,
+fusion families in `code/fusion/`,
 operation implementations and their protocols/evidence in `code/operations/`,
 data code in `code/data/`, dataloaders in `code/dataloaders/`, and
 cross-component utilities in `code/shared/`.
 Use the existing flat ownership boundaries: embeddings `encoders/`,
-`state_representation/` and `evaluation/`; operation forecasting modules and
+`state_representation/` and `evaluation/`; fusion
+`temporal_fusion_transformer/` and `state_fusion/`; operation forecasting modules and
 their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
 `representation/` and `artifacts/`. Do not recreate the imported nested
 `code/embeddings/code/` tree or component-level environment/build configuration.
@@ -32,8 +34,11 @@ Keep tests and versioned non-secret configurations with their owning component.
 Credentials belong in ignored environment files or external secret storage.
 All encoder Heroes Hx15–Hx18 develop reusable encoder/provider components and
 tools. Hx20 owns the Temporal Fusion Transformer forecasting family at
-`code/embeddings/encoders/temporal_fusion_transformer`. It is not an
-observation-embedding family and it does not close Hx11. Hx19 owns dataloaders
+`code/fusion/temporal_fusion_transformer`. It is not an
+observation-embedding family and it does not close Hx11. Hx21 owns state
+fusion models at `code/fusion/state_fusion`. The owner marked that family as
+of great importance, and its goals wait for further instructions. The State
+Representation Network is not that family. Hx19 owns dataloaders
 for every admitted data form. The numeric-series
 loader stays isolated in `code/dataloaders/numeric_series`. Follow
 `code/embeddings/encoders/AGENTS.md`: separate the family/provider,

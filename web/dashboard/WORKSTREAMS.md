@@ -3,11 +3,12 @@
 The owner requested an explicit work map on 18 October 2026: operation
 capabilities, a Hero for each existing encoder family, and an external Google
 multimodal encoder. On 29 October 2026 the owner added dataloaders as Hx19
-and the Temporal Fusion Transformer as Hx20.
-There are **20 Heroes**, each maintained as one JSON file in
+and the Temporal Fusion Transformer as Hx20. On the same day the owner added
+state fusion models as Hx21 and marked that family as of great importance.
+There are **21 Heroes**, each maintained as one JSON file in
 `heroes/` and registered in `manifest.json`.
 
-Use **Hx01–Hx20** as their canonical references: `Hx` plus the zero-padded Hero
+Use **Hx01–Hx21** as their canonical references: `Hx` plus the zero-padded Hero
 number. These references identify the workstreams and are independent of their
 stable JSON IDs and file paths. The [schema](SCHEMA.md#hero-references) defines
 the naming convention, including how to read historical references.
@@ -51,8 +52,7 @@ start an experiment.
 | Hx18 · Google multimodal encoder | Reusable external-provider adapter, configuration and validation tools within the capabilities recorded in the [provider guide](../../code/embeddings/encoders/google_multimodal_embedding/README.md); local adapter availability remains explicitly scoped |
 
 The provider folders under `code/embeddings/encoders/` each have one Hero.
-Hx20 is the forecasting family in that directory. It is not an
-observation-embedding family.
+Hx20 and Hx21 live in `code/fusion/`, not in that directory.
 The [current research summary](../../doc/EMBEDDINGS.md) distinguishes these
 leading successes, baseline roles, task-specific records and formal promotion.
 Versions and trained instances stay within the corresponding family Hero;
@@ -81,12 +81,20 @@ new training, experiments or external API calls.
 
 | Hero | Ownership and evidence boundary |
 | --- | --- |
-| Hx20 · Temporal Fusion Transformer | Reusable quantile-forecast family in [its own tree](../../code/embeddings/encoders/temporal_fusion_transformer/README.md). The imported surface adds one pooled vector per input group and a boolean time mask. It does not close Hx11, and it does not use the patch-bottleneck channel contract |
+| Hx20 · Temporal Fusion Transformer | Reusable quantile-forecast family in [its own tree](../../code/fusion/temporal_fusion_transformer/README.md). The imported surface adds one pooled vector per input group and a boolean time mask. It does not close Hx11, and it does not use the patch-bottleneck channel contract |
 
 The placed library is the Non-verba copy of the post-profit-economics C++ TFT.
 Its CPU suites passed in the managed container on 29 October 2026. CUDA was
 not run. Upstream synthetic checks and the Electricity comparison are not
 measurements of this tree.
+
+## State fusion models
+
+| Hero | Ownership and evidence boundary |
+| --- | --- |
+| Hx21 · State fusion models | The family directory is [code/fusion/state_fusion](../../code/fusion/state_fusion/README.md). Goals and milestones are not recorded yet. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
+
+Further instructions are still to come. This record does not select an architecture, a dataset, or an experiment, and it does not close Hx11 or Hx20.
 
 ## Dataloaders
 

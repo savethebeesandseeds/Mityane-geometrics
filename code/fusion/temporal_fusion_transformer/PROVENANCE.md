@@ -2,6 +2,9 @@
 
 Imported on 29 October 2026 into
 `code/embeddings/encoders/temporal_fusion_transformer/`.
+Moved the same day to `code/fusion/temporal_fusion_transformer/`.
+The maintained path is the fusion directory. The earlier embeddings path is
+only the first landing place.
 
 The library bytes come from the Non-verba copy at
 `C:\Work\Non-verba\private-source\code\server\tools\temporal-fusion-transformer`.
@@ -36,8 +39,8 @@ The MIT license in `LICENSE` stays with the imported files. Copyright (c) 2026
 Waajacu. Upstream notes that point outside the tool directory remain notes of
 the post-profit-economics program and were not imported.
 
-The C++ namespace `praesidium_humanitatis` is unchanged. This path is the new
-source identity. Do not treat a file here as the file recorded by an upstream
-receipt.
+The C++ namespace `praesidium_humanitatis` is unchanged. The fusion path is
+the maintained source identity. Do not treat a file here as the file recorded
+by an upstream receipt, or as the file first landed under `code/embeddings/`.
 
 No Electricity run, synthetic study or CUDA suite was replayed for this copy.

@@ -3,7 +3,9 @@
 
 The State Representation Network maps each native signal embedding to a distinct
 predictive state. It owns neither market data admission nor the Encoder's
-reconstruction objective.
+reconstruction objective. Hx21 owns state fusion models in
+`code/fusion/state_fusion`. This network is not that family, and this page
+does not define it.
 
 | Version | Physical implementation | Namespace | Contract |
 | --- | --- | --- | --- |

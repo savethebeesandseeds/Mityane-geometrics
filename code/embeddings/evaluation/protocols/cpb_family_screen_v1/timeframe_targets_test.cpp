@@ -216,27 +216,27 @@ void refuses(F &&call, const char *why) {
 void refusals() {
   auto withdrawn = blank(1, 3, 9, {0, 1, 2});
   refuses([&] {
-    screen::timeframe_window_targets(withdrawn.values, withdrawn.observed, withdrawn.ids, 60000,
+    (void)screen::timeframe_window_targets(withdrawn.values, withdrawn.observed, withdrawn.ids, 60000,
         screen::FeatureView::RawPrices);
   }, "withdrawn instrument ids are refused");
   auto month = blank(1, 2, 9, {4, 18});
   refuses([&] {
-    screen::timeframe_window_targets(month.values, month.observed, month.ids, 60000, screen::FeatureView::LogReturns);
+    (void)screen::timeframe_window_targets(month.values, month.observed, month.ids, 60000, screen::FeatureView::LogReturns);
   }, "a calendar month has no fixed step");
   auto no_anchor = blank(1, 2, 9, {7, 9});
   refuses([&] {
-    screen::timeframe_window_targets(no_anchor.values, no_anchor.observed, no_anchor.ids, 60000,
+    (void)screen::timeframe_window_targets(no_anchor.values, no_anchor.observed, no_anchor.ids, 60000,
         screen::FeatureView::LogReturns);
   }, "a window with no anchor step is refused");
   auto short_history = blank(1, 1, 8, {4});
   refuses([&] {
-    screen::timeframe_window_targets(short_history.values, short_history.observed, short_history.ids, 60000,
+    (void)screen::timeframe_window_targets(short_history.values, short_history.observed, short_history.ids, 60000,
         screen::FeatureView::LogReturns);
   }, "history shorter than 9 is refused");
   auto broken = blank(1, 1, 9, {4});
   broken.values.accessor<double, 4>()[0][0][0][3] = std::numeric_limits<double>::quiet_NaN();
   refuses([&] {
-    screen::timeframe_window_targets(broken.values, broken.observed, broken.ids, 60000, screen::FeatureView::LogReturns);
+    (void)screen::timeframe_window_targets(broken.values, broken.observed, broken.ids, 60000, screen::FeatureView::LogReturns);
   }, "a nonfinite observed value is refused");
 }
 } // namespace

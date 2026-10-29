@@ -1,8 +1,9 @@
 # Encoder research and leading references
 
 This is the current scientific summary: which encoders led, what improved, what
-was tried and where to continue. Hx20, the Temporal Fusion Transformer, is a
-separate forecasting family and is not part of this ranking. The [Hero records](../web/dashboard/README.md)
+was tried and where to continue. Hx20, the Temporal Fusion Transformer, and
+Hx21, state fusion models, live in `code/fusion/` and are not part of this
+ranking. The [Hero records](../web/dashboard/README.md)
 hold work states. The [handoff addendum](EMBEDDINGS_HANDOFF_ADDENDUM_2026-10-18.md)
 holds migration locations, checkpoint identities and the exact pause boundary.
 Dated archived status and version notes describe their own historical stage.

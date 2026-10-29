@@ -21,11 +21,11 @@ This document establishes the conceptual backbone of a long-running research and
 
 Current priorities, dependencies, acceptance criteria and work states are maintained in the [Hero records](../web/dashboard/README.md). The program and demonstrators below are illustrative; they do not impose additional prerequisites on that work plan.
 
-Hero references use **Hx01–Hx20**, derived from their Hero numbers. **OR-01–OR-13**
+Hero references use **Hx01–Hx21**, derived from their Hero numbers. **OR-01–OR-13**
 are the Operations over Representations capability-family IDs; Hx01–Hx13 currently
 own work for those respective families, Hx14 owns shared foundations, Hx15–Hx18
-own encoders/providers, Hx19 owns dataloaders, and Hx20 owns the Temporal Fusion
-Transformer forecasting family. The [Hero work map](../web/dashboard/WORKSTREAMS.md) records
+own encoders/providers, Hx19 owns dataloaders, Hx20 owns the Temporal Fusion
+Transformer forecasting family, and Hx21 owns state fusion models. The [Hero work map](../web/dashboard/WORKSTREAMS.md) records
 the mapping; Hx references name workstreams while OR references classify operations.
 
 **Intended audiences:** researchers building representation models; engineers integrating open, pretrained, or custom encoders; people designing experiments, exploratory interfaces, indexes, agents, or downstream applications.

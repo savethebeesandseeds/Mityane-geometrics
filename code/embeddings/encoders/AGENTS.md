@@ -1,11 +1,7 @@
 # Shared encoder Hero instructions
 
 Applies to **Hx15–Hx18** and every encoder family/provider maintained here.
-**Hx20**, the Temporal Fusion Transformer, lives in this directory and keeps
-the same split between family, configuration, recipe and instance. Its input
-contract is static, past and known-future groups, plus an optional time mask.
-The channel-axis section below applies to the causal and raw patch bottleneck
-families. A TFT forecast does not close Hx11.
+Hx20 and Hx21 live in `code/fusion/`, not in this directory.
 Read this alongside the repository instructions, the assigned Hero JSON and
 the family README. Hero JSON holds current goals, acceptance and work states;
 this file defines the shared development direction.

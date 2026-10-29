@@ -16,10 +16,10 @@ server, container, network connection or file picker.
 This is the Non-verba dashboard backbone: the same cream/sage/sand styling,
 overview → one Hero → one Goal navigation, milestone details, status filters,
 search, progress rings, evidence cards and dependency jumps. The manifest contains
-**20 Heroes**, referenced consistently as **Hx01–Hx20**: Hx01–Hx13 own the operation
+**21 Heroes**, referenced consistently as **Hx01–Hx21**: Hx01–Hx13 own the operation
 families, Hx14 owns shared foundations, Hx15–Hx17 own the existing encoder families,
-Hx18 owns Google's external multimodal encoder, Hx19 owns dataloaders, and Hx20
-owns the Temporal Fusion Transformer. See [the work map](WORKSTREAMS.md) for their
+Hx18 owns Google's external multimodal encoder, Hx19 owns dataloaders, Hx20
+owns the Temporal Fusion Transformer, and Hx21 owns state fusion models. See [the work map](WORKSTREAMS.md) for their
 boundaries. No Non-verba progress or artwork is included, and synthetic test
 records never enter the maintained page.
 
@@ -79,7 +79,7 @@ dashboard tests with `-Test`. Prepare artwork with `-Branding`.
 
 The dashboard uses the shared [cosmic character collection](../branding/index.html).
 Cosmic Synthesis is the global mark, introductory portrait and fallback image;
-each of the 20 Heroes has its own distinct character. Assignments are keyed by
+each of the 21 Heroes has its own distinct character. Assignments are keyed by
 the existing Hero IDs in [dashboard-assignments.json](../branding/dashboard-assignments.json).
 Change that file to select another original PNG, then prepare the artwork:
 

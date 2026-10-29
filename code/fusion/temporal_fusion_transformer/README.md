@@ -4,9 +4,9 @@ Hx20 owns this forecasting family. The library is a C++17 Temporal Fusion
 Transformer on LibTorch. It forecasts one target over a horizon as quantiles.
 It also returns variable-selection weights and causal attention weights.
 
-This is a model family, kept with the other model-owned code under
-`code/embeddings/encoders/`. It is not an observation-embedding encoder, and it
-does not use the patch-bottleneck channel contract. Hx11 still owns operations
+This family lives in `code/fusion/`, beside state fusion models and apart from
+the observation-embedding encoders. It does not use the patch-bottleneck
+channel contract. Hx11 still owns operations
 that forecast latent states. A result from this library does not close that
 operation.
 
@@ -44,7 +44,7 @@ compiles the imported sources with g++. `CMakeLists.txt` remains the imported
 description of the same targets. From the container:
 
 ```bash
-make -C /mityane/code/embeddings/encoders/temporal_fusion_transformer test
+make -C /mityane/code/fusion/temporal_fusion_transformer test
 ```
 
 `make test` runs the CPU suites and the demo continuation check. Products go to
