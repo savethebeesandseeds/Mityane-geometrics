@@ -37,7 +37,8 @@ tools. Hx20 owns the Temporal Fusion Transformer forecasting family at
 `code/fusion/temporal_fusion_transformer`. It is not an
 observation-embedding family and it does not close Hx11. Hx21 owns state
 fusion models at `code/fusion/state_fusion`. The owner marked that family as
-of great importance, and its goals wait for further instructions. The State
+of great importance. The recorded surface is a Set Transformer; synthetic
+masked reconstruction is pipeline validation and does not close Hx11. The State
 Representation Network is not that family. Hx19 owns dataloaders
 for every admitted data form. The numeric-series
 loader stays isolated in `code/dataloaders/numeric_series`. Follow

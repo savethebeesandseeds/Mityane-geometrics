@@ -75,7 +75,8 @@ Encoder Heroes **Hx15–Hx18** develop reusable families and provider tools with
 supported configuration, callable interfaces and explicit workflow coverage.
 Hx20 owns the Temporal Fusion Transformer in `code/fusion/`. It is not one of
 those observation-embedding families. Hx21 owns state fusion models in
-`code/fusion/state_fusion`. Its goals are not recorded yet, and the State
+`code/fusion/state_fusion`. The recorded surface is a CUDA Set Transformer
+checked with synthetic masked reconstruction, and the State
 Representation Network is not that family.
 The [shared encoder instructions](code/embeddings/encoders/AGENTS.md) separate
 architecture/provider, configuration, recipe and each trained instance or

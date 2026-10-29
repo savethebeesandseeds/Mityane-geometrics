@@ -49,7 +49,7 @@ int main() {
     model->eval();
     const double initial = masked_mse(model, panel);
 
-    std::cout << "device=cuda:" << device.index()
+    std::cout << "device=cuda:" << static_cast<int>(device.index())
               << " libtorch=" << TORCH_VERSION
               << " d_model=" << config.d_model
               << " inducing_points=" << config.inducing_points

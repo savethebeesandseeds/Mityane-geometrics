@@ -93,9 +93,12 @@ error is not a forecast score.
 
 ## Recorded check
 
-On 29 October 2026, `make test` and `make train` ran in the managed container
-on an NVIDIA RTX A2000, CUDA toolkit 12.4, and LibTorch 2.6.0. The invariance
-test passed on `cuda:0` (`permutation_max_abs=3.57628e-07`, hole edits at 0,
-`observed_zero_gap=0.0210351`). Training for 400 steps printed
-`initial_masked_mse=1.32445` and `final_masked_mse=0.289911`. That change is
+On 29 October 2026, `make test` ran in the managed container on an NVIDIA RTX
+A2000, CUDA toolkit 12.4, and LibTorch 2.6.0. The invariance test passed on
+`cuda:0`: `permutation_max_abs=3.57628e-07`, hole, non-finite-hole, and
+unobserved-record gaps of 0, `padding_max_abs=4.76837e-07`,
+`two_seed_permutation_max_abs=7.15256e-07`, and
+`observed_zero_gap=0.0210351`. The training binary then ran 400 Adam steps on
+one fixed synthetic panel and printed `initial_masked_mse=1.25887` and
+`final_masked_mse=1.85048e-06`. CMake was not executed. That change is
 pipeline validation on synthetic panels.
