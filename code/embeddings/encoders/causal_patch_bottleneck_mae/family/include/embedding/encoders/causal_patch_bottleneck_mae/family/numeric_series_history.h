@@ -235,9 +235,10 @@ inline std::vector<PackedSlot> packed_slots(const mityane::data::edge_sample_t &
   const auto counts = resolve_bar_counts(config, bar_counts);
   TORCH_CHECK(static_cast<int64_t>(counts.size()) == channels,
       "[cpb-family numeric-series] CHANNEL_BAR_COUNTS must list one count per channel");
-  for (const auto count : counts) {
-    TORCH_CHECK(count >= 1 && count <= history,
-        "[cpb-family numeric-series] each bar count must be from 1 through HISTORY_LENGTH");
+  {
+    Config resolved = config;
+    resolved.channel_bar_counts = counts;
+    validate_channel_candle_groups(resolved);
   }
   TORCH_CHECK(cutoffs_ms.empty() || static_cast<int64_t>(cutoffs_ms.size()) == batch,
       "[cpb-family numeric-series] an explicit cutoff is one decision time per instrument");

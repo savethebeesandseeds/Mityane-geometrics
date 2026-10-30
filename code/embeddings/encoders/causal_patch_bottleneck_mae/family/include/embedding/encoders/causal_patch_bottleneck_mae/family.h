@@ -120,7 +120,8 @@ inline Config settings(const implementation::configuration::Document &document,
   Config result{c,native-c.export_width};validate_config(result);
   result.level.channel_ids=implementation::resolved_channel_ids(result.level);
   // Absent CHANNEL_BAR_COUNTS means HISTORY_LENGTH on every channel.
-  result.channel_bar_counts=channel_bar_counts(b,result);return result;
+  result.channel_bar_counts=channel_bar_counts(b,result);
+  validate_channel_candle_groups(result);return result;
 }
 inline Config read_settings(const std::filesystem::path &path){return settings(implementation::configuration::Document::read(path));}
 // The coordinate15 digest lock is the caller. These ids are not timeframes.
@@ -133,11 +134,11 @@ inline Config read_admitted_settings(const std::filesystem::path &path){
 }
 inline auto input_config(const Config &c){return implementation::configurable_spectral_input_config(c.level);}
 
-// A group contains a real bar when one of its slots has a finite time.
-// Shared width W is divisible by patch length P, and G = W/P is at least 3.
-// A channel is a reconstruction target only when every group contains at least
-// one of its candles. Empty left slots and a partly filled group stay visible
-// context: their hidden selection is cleared before the preserved masker reads it.
+// A filled group is a whole patch of that channel's candles. An empty group is
+// a whole patch of left padding. The shared row may be longer than a channel.
+// At least three filled groups put that channel in the loss. Exactly three is
+// enough. A channel with fewer filled groups stays out: its hidden selection
+// is cleared before the preserved masker reads it.
 [[nodiscard]] inline torch::Tensor patches_containing_a_real_bar(const torch::Tensor &times,const Config &config){
   const auto &level=config.level;
   TORCH_CHECK(times.defined() && times.device().is_cpu() && times.scalar_type()==torch::kFloat64 && times.dim()==3 &&
@@ -159,9 +160,10 @@ inline auto input_config(const Config &c){return implementation::configurable_sp
 }
 inline torch::Tensor limit_reconstruction_targets(const torch::Tensor &hidden,const torch::Tensor &times,const Config &config){
   const auto counts=patches_containing_a_real_bar(times,config);
-  const auto groups=config.level.history_length/config.level.patch_length;
-  if(counts.ge(groups).all().item<bool>()) return hidden;
-  const auto allowed=counts.ge(groups).to(hidden.device());
+  // At least three filled groups. Exactly three stays included. Empty whole
+  // groups on the left do not have to be filled.
+  if(counts.ge(3).all().item<bool>()) return hidden;
+  const auto allowed=counts.ge(3).to(hidden.device());
   return hidden.logical_and(allowed.unsqueeze(-1).unsqueeze(-1));
 }
 
@@ -196,7 +198,7 @@ inline Window retain(const RawHistory &history,const torch::Tensor &requested,co
       requested.sizes()==torch::IntArrayRef({B}) && torch::isfinite(requested).all().item<bool>(),"[cpb-family] explicit CPU F64 cutoff per example required");
   const auto counts=resolve_bar_counts(config,bar_counts);
   TORCH_CHECK(static_cast<int64_t>(counts.size())==C,"[cpb-family] one bar count per channel required");
-  for(const auto count:counts) TORCH_CHECK(count>=1 && count<=H,"[cpb-family] each bar count must be from 1 through HISTORY_LENGTH");
+  {Config resolved=config;resolved.channel_bar_counts=counts;validate_channel_candle_groups(resolved);}
   const auto times=history.timestamps.contiguous();
   const auto time_at=times.accessor<double,3>();
   std::vector<torch::Tensor> values,masks,window_times;
@@ -292,9 +294,8 @@ struct EncoderImpl : torch::nn::Module {
     packing_=Config(core_->config());
     TORCH_CHECK(static_cast<int64_t>(channel_bar_counts.size())==packing_.level.channel_count,
         "[cpb-family] the settings bar-count list is one count per channel");
-    for(const auto count:channel_bar_counts) TORCH_CHECK(count>=1 && count<=packing_.level.history_length,
-        "[cpb-family] each settings bar count must be from 1 through HISTORY_LENGTH");
     packing_.channel_bar_counts=std::move(channel_bar_counts);
+    validate_channel_candle_groups(packing_);
     normalizer_identity_=core_->normalizer().identity();initial_state_identity_=initial_state.empty()?boundary::state_identity(core_):initial_state;eval();
   }
   const Config &config()const{return packing_;}

@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <unistd.h>
 #include <vector>
 
@@ -31,6 +32,17 @@ void refuses(F call, const char *message) {
     call();
   } catch (const std::exception &) {
     caught = true;
+  }
+  check(caught, message);
+}
+
+template <class F>
+void refuses_with(F call, const char *fragment, const char *message) {
+  bool caught = false;
+  try {
+    call();
+  } catch (const std::exception &error) {
+    caught = std::string(error.what()).find(fragment) != std::string::npos;
   }
   check(caught, message);
 }
@@ -98,7 +110,7 @@ cp::Config read_fixture(const fs::path &path) {
          "  FEEDFORWARD_WIDTH = 32;\n"
          "  DECODER_HIDDEN_WIDTH = 16;\n"
          "  SAMPLING_INTERVAL = 60000;\n"
-         "  CHANNEL_BAR_COUNTS = 17, 1;\n"
+         "  CHANNEL_BAR_COUNTS = 17, 3;\n"
          "  DEVICE = cuda:0;\n"
          "}\n";
   TORCH_CHECK(out, "[cpb numeric-series] cannot write settings");
@@ -119,16 +131,16 @@ int main() {
   const auto config = read_fixture(settings);
   const auto counts = cp::channel_bar_counts(
       cp::implementation::configuration::Document::read(settings).block("ENCODER"), config);
-  check(counts.size() == 2 && counts[0] == 17 && counts[1] == 1, "CHANNEL_BAR_COUNTS is one count per channel");
+  check(counts.size() == 2 && counts[0] == 17 && counts[1] == 3, "CHANNEL_BAR_COUNTS is one count per channel");
 
   std::vector<double> minute_closes;
   const int64_t minute_first = cutoff - 17 * minute;
   for (int i = 0; i < 18; ++i) minute_closes.push_back(1000. + i);
-  std::vector<double> quarter_closes{2000., 2010., 2030.};
+  std::vector<double> quarter_closes{1990., 2000., 2010., 2030.};
   const auto minute_path = dir / "ONE-1m.cache.bin";
   const auto quarter_path = dir / "ONE-15m.cache.bin";
   write_cache(minute_path, minute_closes, minute_first, minute);
-  write_cache(quarter_path, quarter_closes, cutoff - 2 * quarter, quarter);
+  write_cache(quarter_path, quarter_closes, cutoff - 3 * quarter, quarter);
 
   data::raw_cache_channel_t minute_channel;
   minute_channel.path = minute_path.string();
@@ -138,7 +150,7 @@ int main() {
   data::raw_cache_channel_t quarter_channel = minute_channel;
   quarter_channel.path = quarter_path.string();
   quarter_channel.sha256 = data::sha256_file_hex(quarter_path.string());
-  quarter_channel.input_length = 3;
+  quarter_channel.input_length = 4;
   auto edge = data::open_raw_caches<data::kline_t>({minute_channel, quarter_channel}, torch::kFloat64);
   const auto sample = edge.get_by_anchor_key(cutoff);
   check(sample.normalized == false, "raw caches stay raw");
@@ -164,45 +176,41 @@ int main() {
     }
   }
   check(batch.cutoffs[0].item<double>() == static_cast<double>(cutoff), "cutoff is the latest valid bar");
+  const auto first_kept = view_of(2000., 1990.);
   const auto earlier = view_of(2010., 2000.);
   const auto last = view_of(2030., 2010.);
-  for (int64_t tick = 0; tick < 16; ++tick) {
-    check(!std::isfinite(times[0][1][tick]), "omitted argument keeps the settings count of one 15m bar");
+  for (int64_t tick = 0; tick < 14; ++tick) {
+    check(!std::isfinite(times[0][1][tick]), "the settings count of three 15m bars leaves one whole empty stretch on the left");
     for (int64_t feature = 0; feature < 9; ++feature)
       check(!observed[0][1][tick][feature] && values[0][1][tick][feature] == 0.,
             "the omitted list leaves the other 15m slots empty");
   }
+  check(times[0][1][14] == static_cast<double>(cutoff - 2 * quarter), "15m slot 14 is the first observed return");
+  check(times[0][1][15] == static_cast<double>(cutoff - quarter), "15m slot 15 is the middle observed return");
   check(times[0][1][16] == static_cast<double>(cutoff), "15m slot 16 is the bar that closes at the cutoff");
-  for (int64_t feature = 0; feature < 9; ++feature)
+  for (int64_t feature = 0; feature < 9; ++feature) {
+    check(observed[0][1][14][feature] && values[0][1][14][feature] == first_kept[static_cast<std::size_t>(feature)],
+          "the first kept 15m bar returns against the trimmed predecessor");
+    check(observed[0][1][15][feature] && values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
+          "the middle 15m bar returns against the immediately previous cache row");
     check(observed[0][1][16][feature] && values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
           "the omitted settings list keeps the latest 15m return");
+  }
 
-  const std::vector<int64_t> one_quarter{17, 1};
-  const auto counted = cp::history_from_edge_samples(config, {sample}, ids, true, one_quarter);
-  check(counted.history.observed[0][1].sum().item<int64_t>() == 9, "an explicit count keeps one 15m bar");
-  check(!std::isfinite(counted.history.timestamps[0][1][15].item<double>()), "the dropped 15m bar is a pad");
+  const std::vector<int64_t> three_quarters{17, 3};
+  const auto counted = cp::history_from_edge_samples(config, {sample}, ids, true, three_quarters);
+  check(counted.history.observed[0][1].sum().item<int64_t>() == 27, "an explicit count of three keeps three observed 15m bars");
+  check(!std::isfinite(counted.history.timestamps[0][1][13].item<double>()), "the trimmed predecessor is a pad");
+  check(counted.history.timestamps[0][1][14].item<double>() == static_cast<double>(cutoff - 2 * quarter),
+        "the first kept 15m bar is the first observed return");
   check(counted.history.timestamps[0][1][16].item<double>() == static_cast<double>(cutoff),
         "the kept 15m bar is the latest one");
+  check(counted.history.data[0][1][14][3].item<double>() == first_kept[3], "the first kept close returns against the predecessor");
   check(counted.history.data[0][1][16][3].item<double>() == last[3], "the kept 15m close is the latest view");
-
-  const auto kept_first = cp::history_from_edge_samples(config, {sample}, ids, true, std::vector<int64_t>{17, 3});
-  const auto kept_times = kept_first.history.timestamps.accessor<double, 3>();
-  const auto kept_values = kept_first.history.data.accessor<double, 4>();
-  const auto kept_observed = kept_first.history.observed.accessor<bool, 4>();
-  check(kept_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter),
-        "three raw 15m bars keep a masked first slot at that bar's own finite time, and the two returns stay right-aligned");
-  check(kept_times[0][1][15] == static_cast<double>(cutoff - quarter), "the middle 15m bar stays in its slot");
-  check(kept_times[0][1][16] == static_cast<double>(cutoff), "the last kept 15m bar closes at the cutoff");
-  for (int64_t feature = 0; feature < 9; ++feature) {
-    check(!kept_observed[0][1][14][feature] && kept_values[0][1][14][feature] == 0.,
-          "the first 15m bar is masked and does not store its close");
-    check(kept_observed[0][1][15][feature] &&
-              kept_values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
-          "the middle 15m bar returns against the immediately previous cache row");
-    check(kept_observed[0][1][16][feature] &&
-              kept_values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
-          "the last 15m bar returns against the immediately previous cache row");
-  }
+  refuses_with([&] { (void)cp::history_from_edge_samples(config, {sample}, ids, true, std::vector<int64_t>{17, 1}); },
+               "at least 3 groups", "one 15m bar is fewer than three groups");
+  refuses_with([&] { (void)cp::boundary::retain(batch.history, batch.cutoffs, config, std::vector<int64_t>{17, 1}); },
+               "at least 3 groups", "retain refuses a channel count of one group");
 
   const auto raw = cp::history_from_edge_samples(config, {sample}, ids, false);
   check(raw.history.data[0][0][16][3].item<double>() == 1017., "raw close is the cache close");
@@ -266,19 +274,23 @@ int main() {
   const auto wide_times = wide.history.timestamps.accessor<double, 3>();
   const auto wide_values = wide.history.data.accessor<double, 4>();
   const auto wide_observed = wide.history.observed.accessor<bool, 4>();
-  check(!std::isfinite(wide_times[0][1][13]), "absent-key history pads before the three 15m slots");
-  check(wide_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter), "absent-key history keeps the first 15m bar");
+  check(!std::isfinite(wide_times[0][1][12]), "absent-key history pads before the predecessor and the three 15m returns");
+  check(wide_times[0][1][13] == static_cast<double>(cutoff - 3 * quarter), "absent-key history keeps the masked predecessor at its own finite time");
+  check(wide_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter), "absent-key history keeps the first observed 15m return");
   check(wide_times[0][1][15] == static_cast<double>(cutoff - quarter), "absent-key history keeps the middle 15m bar");
   check(wide_times[0][1][16] == static_cast<double>(cutoff), "absent-key history keeps the last 15m bar");
   for (int64_t feature = 0; feature < 9; ++feature) {
-    check(!wide_observed[0][1][14][feature] && wide_values[0][1][14][feature] == 0.,
-          "the absent-key default masks the first 15m bar inside the kept window");
+    check(!wide_observed[0][1][13][feature] && wide_values[0][1][13][feature] == 0.,
+          "the absent-key default masks the predecessor and does not store its close");
+    check(wide_observed[0][1][14][feature] &&
+              wide_values[0][1][14][feature] == first_kept[static_cast<std::size_t>(feature)],
+          "the absent-key default returns the next bar against that predecessor");
     check(wide_observed[0][1][15][feature] &&
               wide_values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
           "the absent-key default returns the middle bar against its previous cache row");
     check(wide_observed[0][1][16][feature] &&
               wide_values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
-          "the absent-key default keeps two 15m returns plus the masked first bar");
+          "the absent-key default keeps three observed 15m returns plus the masked predecessor");
   }
 
   data::edge_sample_t gap;
@@ -306,7 +318,7 @@ int main() {
     if (!quarter_valid[row]) continue;
     for (int64_t feature = 4; feature < 9; ++feature) gap_features[1][row][feature] = 1.;
   }
-  const auto gapped = cp::history_from_edge_samples(config, {gap}, ids, true, std::vector<int64_t>{4, 4});
+  const auto gapped = cp::history_from_edge_samples(config, {gap}, ids, true, std::vector<int64_t>{17, 4});
   const auto gap_out_times = gapped.history.timestamps.accessor<double, 3>();
   const auto gap_out_values = gapped.history.data.accessor<double, 4>();
   const auto gap_out_observed = gapped.history.observed.accessor<bool, 4>();
@@ -339,23 +351,30 @@ int main() {
   auto shared = batch.history;
   shared.timestamps = batch.history.timestamps.select(1, 0).contiguous();
   refuses([&] { (void)cp::boundary::retain(shared, batch.cutoffs, config); }, "a shared timestamp row is refused");
-  const auto trimmed = cp::boundary::retain(batch.history, batch.cutoffs, config, one_quarter);
-  check(trimmed.raw.observed[0][1].sum().item<int64_t>() == 9, "retain honors the settings count");
+  const auto trimmed = cp::boundary::retain(batch.history, batch.cutoffs, config, three_quarters);
+  check(trimmed.raw.observed[0][1].sum().item<int64_t>() == 27, "retain honors the settings count of three observed 15m bars");
   check(trimmed.times[0][1][16].item<double>() == static_cast<double>(cutoff), "retain keeps the latest counted bar");
-  const auto trimmed_wide = cp::boundary::retain(wide.history, wide.cutoffs, absent_config, one_quarter);
-  check(trimmed_wide.raw.observed[0][1].sum().item<int64_t>() == 9,
-        "an explicit count overrides the absent-key HISTORY_LENGTH default");
+  const auto trimmed_wide = cp::boundary::retain(wide.history, wide.cutoffs, absent_config, three_quarters);
+  check(trimmed_wide.raw.observed[0][1].sum().item<int64_t>() == 27,
+        "an explicit count of three drops the masked predecessor and keeps three observed bars");
+  check(!std::isfinite(trimmed_wide.times[0][1][13].item<double>()), "the override drops the masked predecessor");
+  check(trimmed_wide.times[0][1][14].item<double>() == static_cast<double>(cutoff - 2 * quarter),
+        "the first kept 15m bar is the first observed return");
   check(trimmed_wide.times[0][1][16].item<double>() == static_cast<double>(cutoff),
         "the override keeps the latest 15m bar");
   const auto patch_counts = cp::patches_containing_a_real_bar(batch.history.timestamps, config);
-  check(patch_counts[0][0].item<int64_t>() == 17 && patch_counts[0][1].item<int64_t>() == 1,
-        "history 17 and patch length 1 give seventeen minute groups and one 15m group");
+  check(patch_counts[0][0].item<int64_t>() == 17 && patch_counts[0][1].item<int64_t>() == 3,
+        "history 17 and patch length 1 give seventeen minute groups and three 15m groups");
   const auto masks = tr::make_mask(batch.history, batch.cutoffs, config, 5, 0);
   const auto eligible = masks.eligible_channels.accessor<bool, 2>();
-  check(eligible[0][0] && eligible[1][0], "the minute channel fills every group and can be a target");
-  check(!eligible[0][1] && !eligible[1][1], "one 15m bar is visible context and is not a reconstruction target");
-  check(!masks.target[0][1].any().item<bool>() && !masks.target[1][1].any().item<bool>(),
-        "the short channel has no reconstruction target cells");
+  check(eligible[0][0] && eligible[1][0] && eligible[0][1] && eligible[1][1],
+        "exactly three filled groups stay in the loss, and a larger count stays too");
+  check(masks.target[0][1].sum().item<int64_t>() == 9 && masks.target[1][1].sum().item<int64_t>() == 9,
+        "exactly three filled groups hide one and leave two visible");
+  check(masks.visible[0][1].sum().item<int64_t>() == 18 && masks.visible[1][1].sum().item<int64_t>() == 18,
+        "exactly three filled groups leave two groups visible");
+  check(masks.target[0][0].sum().item<int64_t>() == 36 && masks.target[1][0].sum().item<int64_t>() == 36,
+        "a larger filled-group count still masks");
   tr::PreprocessingIdentity identity{"synthetic-numeric-series-no-market-population", "TRAIN-only-fixture",
                                      "numeric-series-log-return-view-v1"};
   tr::PreprocessingFitter fitter(config, identity);
@@ -363,7 +382,7 @@ int main() {
   fitter.add(wide.history, wide.cutoffs);
   const auto fitted = fitter.freeze();
   auto instance = cp::fresh(config, fitted.scaler, fitted.bank, 221119);
-  check(instance.model->config().channel_bar_counts == one_quarter,
+  check(instance.model->config().channel_bar_counts == three_quarters,
         "fresh construction keeps the settings bar-count list");
   const auto encoding = instance.model->encode_at(batch.history, batch.cutoffs, fitted.scaler);
   check(encoding.native.is_cuda() && encoding.native.size(0) == 2 &&
@@ -375,15 +394,15 @@ int main() {
   const auto checkpoint = dir / "roundtrip.pt";
   cp::save_checkpoint(checkpoint.string(), instance.model, fitted.scaler, 0);
   const auto loaded = cp::load_checkpoint(checkpoint.string(), config.level.device, &config);
-  check(loaded.config.channel_bar_counts == one_quarter, "checkpoint round-trip keeps the settings list");
-  check(loaded.model->config().channel_bar_counts == one_quarter, "the loaded encoder uses the stored list");
+  check(loaded.config.channel_bar_counts == three_quarters, "checkpoint round-trip keeps the settings list");
+  check(loaded.model->config().channel_bar_counts == three_quarters, "the loaded encoder uses the stored list");
   tr::OptimizerConfig recipe;
   auto optimizer = tr::make_optimizer(instance.model, recipe);
   tr::TrainingProgress progress{0, 0, 11, 12, 13};
   instance.model->train();
   const auto step = tr::train_step(instance.model, fitted.scaler, *optimizer, progress, batch.history, batch.cutoffs, recipe);
   check(step.updated && progress.completed_updates == 1 && progress.attempted_batches == 1,
-        "train_step honors the settings list and trains the minute channel");
+        "train_step honors the settings list and trains both channels");
 
   fs::remove_all(dir);
   std::cout << "numeric-series history passed\n";

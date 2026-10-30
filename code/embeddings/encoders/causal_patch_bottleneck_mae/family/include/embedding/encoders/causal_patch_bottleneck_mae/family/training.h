@@ -126,10 +126,11 @@ inline MaskBatch make_mask(const RawHistory &raw,const torch::Tensor &cutoffs,
   const auto retained=boundary::retain(raw,cutoffs,config);
   const auto seed=training_counter_seed(base_seed,attempt);
   auto plan=implementation::configurable_spectral_make_training_mask(retained.raw.observed,config.level,seed);
-  // A channel that misses a group stays visible context. The preserved masker
-  // throws when a target sits on an ineligible channel, so the hidden selection
-  // is cleared before that masker reads it. A channel that fills every group
-  // returns the same hidden tensor and keeps the mask bits.
+  // A channel with fewer than three filled groups stays out of the loss. The
+  // preserved masker throws when a target sits on an ineligible channel, so
+  // that hidden selection is cleared before the masker reads it. Exactly three
+  // filled groups, and any larger count, keep the mask bits. Empty whole groups
+  // on the left do not remove the channel.
   const auto limited=limit_reconstruction_targets(plan.hidden,retained.times,config);
   if(!limited.is_same(plan.hidden))
     plan=implementation::configurable_spectral_mask_from_hidden(retained.raw.observed,limited,config.level);

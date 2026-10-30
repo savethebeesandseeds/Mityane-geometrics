@@ -56,7 +56,7 @@ training budgets or measured quality winners.
 | Encoder attention | W divisible by number of heads |
 | Level width | D greater than `4*C*(C-1)/2`, leaving a positive learned part |
 | Native width | D + U; learned part `D - 4*choose(C,2)`, analytic spectral part `4*choose(C,2)`, change part U |
-| Shared groups | History length is evenly divisible by patch length. The quotient G is at least 3. A shorter channel may leave empty left slots and a partly filled group |
+| Shared groups | History length is the longest channel candle count. That length and each channel count are evenly divisible by the patch length. Each quotient is at least 3. Exactly 3 is legal. A shorter channel's left pad is whole empty groups. A group is empty or filled with that channel's candles |
 | Execution | Explicit CUDA device, F32 model; genuine CPU F64 observations, Boolean masks, timeframe channel IDs and explicit aligned cutoffs |
 | Architecture choices | One early channel mixer, global mode2/source0, raw patch projection and dropout0 |
 
@@ -65,11 +65,12 @@ knobs. Zero dropout also avoids an unrecorded stochastic network RNG on resume.
 The focused evidence uses CUDA:0; other CUDA devices and arbitrarily large valid
 configurations have not been tested. Shape validity is not a memory guarantee.
 
-Useful training support additionally needs every group on an eligible channel to
-contain at least one candle. The masker still needs at least three observed
-patches on that channel: two visible and one hidden target. Three groups is the
-minimum. A larger group count is allowed. Unsupported examples/batches abstain;
-a syntactically valid configuration does not ensure data support.
+Useful training support needs at least three filled groups on a channel. Exactly
+three is enough. A wholly empty left group does not remove the channel. The
+masker still needs at least three observed patches on that channel: it hides one
+and leaves two visible. A larger filled-group count still masks. Unsupported
+examples/batches abstain; a syntactically valid configuration does not ensure
+data support.
 
 `dimensions(config)` derives patch, pair, bank, decoder and native sizes.
 `parameter_counts(config)` derives learned/fixed tensor and value counts using
@@ -97,7 +98,8 @@ the list stored on the settings `Config`. `settings()` fills that list from
 `HISTORY_LENGTH` on every channel. An explicit empty list is refused. Each
 channel keeps the bars whose key is at or before the cutoff, takes the last
 count of the resulting slots, and right-aligns them. A shorter channel leaves
-NaN timestamps and a false mask on the left. Index i is that channel's i-th
+NaN timestamps and a false mask on the left. That empty stretch is a whole
+number of groups. Index i is that channel's i-th
 packed bar. A log-return view walks every edge-sample row and uses
 `kline_cache_t::normalize_log_returns` against the immediately previous row of
 the same channel. It does not compact holes and does not write a second cache.
@@ -112,16 +114,20 @@ refused, so the view is not applied twice. `INPUT_WIDTH`
 is the nine kline features. The fitter, `train_step`, and `encode_at` retain
 with that same settings list.
 
-A channel is a reconstruction target only when every group contains at least
-one of its candles. A candle is a finite timestamp, including a bar whose
-features are masked. One candle fills its group; empty slots inside that group
-do not. A channel that misses a group stays visible context: its hidden
-selection is cleared before the preserved masker reads it. History 24 and patch
-length 8 make three groups. Counts 24, 12, and 1 put the hourly channel in two
-groups and the daily channel in one group, so those two are not reconstruction
-targets. Seven daily bars still fill only the last group, so that count is not
-a learned daily target under this patch length. This does not select a
-population or replace the observation-window example.
+The loss includes every channel whose candle count makes at least three filled
+groups. A filled group is a whole patch of that channel's candles. An empty
+group is a whole patch of left padding. A candle is a finite timestamp,
+including a bar whose features are masked. With patch length 8, 32 five-minute
+candles are 4 groups, 24 hourly candles are 3, and 24 daily candles are 3. The
+shared row is the longest count: 32 slots and 4 groups. The hour row and the
+day row sit on the right. Eight slots on their left are one empty group. Both
+of those channels stay in the loss. The masker hides one of the three filled
+groups and leaves two visible. The 5-minute channel has four filled groups, and
+that larger count still masks. Seven daily bars fail both checks under patch
+length 8: 7 is not a multiple of 8, and 7 divided by 8 is below 3 groups. The
+application declaration of 24 five-minute, 24 hourly, and 7 daily bars is a
+different count. This does not select a population or replace the
+observation-window example.
 
 Include [family/training.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h).
 The caller supplies its own declared TRAIN stream and source/split manifests.
@@ -244,10 +250,13 @@ C4/H48/F3/P8/native37. Each shared width is evenly divisible by its patch
 length, and each quotient is 6 groups. It also checks benchmark
 constructor/forward parity, poisoned future values/masks, canonical channel
 order, diagnostic trace, frozen state, high-offset input scaling, typed export
-and refusal paths, including a width that is not a multiple of the patch length
-and a legal width whose group count is 2. The 30 October group check passed
-901 assertions, nine physical synthetic updates, and three exact next-step
-resume cases. Learned counts at these widths are 6162, 22787, and 81103; fixed
+and refusal paths, including a width that is not a multiple of the patch length,
+a legal width whose group count is 2, a channel count of exactly 2 groups, a
+channel count that is not a multiple of the patch length, and a list whose
+longest count is shorter than the shared width. A channel count of exactly 3
+groups is accepted. The 30 October group-count check passed
+**908 assertions**, nine physical synthetic updates, and three exact next-step
+resume cases in build `group-count-2026-10-30`. Learned counts at these widths are 6162, 22787, and 81103; fixed
 counts stay 0, 64, and 864. The
 [22 October receipt](evidence/portability-2026-10-22.json) records the passed
 **899 assertions**, **nine physical synthetic updates** and **three exact

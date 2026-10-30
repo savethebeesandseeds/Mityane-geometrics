@@ -54,7 +54,8 @@ inline Dimensions dimensions(const Config &config){
       c.num_layers>0 && c.num_heads>0 && c.feedforward_width>0 && c.decoder_hidden_width>0,
       "[cpb-family] positive dimensions and H>=17 required");
   const auto C=c.channel_count,H=c.history_length,F=c.input_width,P=c.patch_length;
-  // The shared row only. A shorter channel may still leave empty left slots.
+  // The shared row is the longest channel count. A shorter channel's left pad
+  // is a whole number of empty groups.
   TORCH_CHECK(H%P==0,
       "[cpb-family] shared history length must be evenly divisible by patch length");
   TORCH_CHECK(H/P>=3,
@@ -104,5 +105,30 @@ inline Dimensions dimensions(const Config &config){
   implementation::validate_location_scale_decoder_config(config);
   return d;
 }
-inline void validate_config(const Config &config){(void)parameter_counts(config);}
+// Each channel count is a whole number of groups, at least 3. The shared row is
+// the longest of those counts, so a shorter channel's left pad is also a whole
+// number of groups. Exactly 3 is legal. A group is then either empty or filled
+// with that channel's candles.
+inline void validate_channel_candle_groups(const Config &config){
+  const auto &counts=config.channel_bar_counts;
+  if(counts.empty()) return;
+  const auto H=config.level.history_length,P=config.level.patch_length;
+  TORCH_CHECK(static_cast<int64_t>(counts.size())==config.level.channel_count,
+      "[cpb-family] one candle count per channel required");
+  int64_t longest=0;
+  for(const auto count:counts){
+    TORCH_CHECK(count>=1 && count<=H,
+        "[cpb-family] each channel candle count must be from 1 through HISTORY_LENGTH");
+    TORCH_CHECK(count%P==0,
+        "[cpb-family] each channel candle count must be evenly divisible by patch length");
+    TORCH_CHECK(count/P>=3,
+        "[cpb-family] each channel candle count divided by patch length must be at least 3 groups");
+    if(count>longest) longest=count;
+  }
+  TORCH_CHECK(longest==H,"[cpb-family] shared history length is the longest channel candle count");
+}
+inline void validate_config(const Config &config){
+  (void)parameter_counts(config);
+  validate_channel_candle_groups(config);
+}
 } // namespace embedding::encoders::causal_patch_bottleneck_mae::family

@@ -146,6 +146,32 @@ void invalid_configurations(const fs::path &configs){
   refuses_with([&]{cp::validate_config(indivisible);},"evenly divisible by patch length","a shared width that is not a multiple of the patch length is refused");
   auto two_groups=valid;two_groups.level.history_length=18;two_groups.level.patch_length=9;
   refuses_with([&]{cp::validate_config(two_groups);},"at least 3 groups","two groups are refused after the history length already satisfies H>=17");
+  auto exact_three=valid;exact_three.channel_bar_counts={36,18};
+  bool accepted=true;try{cp::validate_config(exact_three);}catch(const std::exception &){accepted=false;}
+  check(accepted,"exactly 3 groups is a legal channel count");
+  auto two_filled=valid;two_filled.channel_bar_counts={36,12};
+  refuses_with([&]{cp::validate_config(two_filled);},"each channel candle count divided by patch length must be at least 3 groups","a channel count of exactly 2 groups is refused");
+  auto split_group=valid;split_group.channel_bar_counts={36,33};
+  refuses_with([&]{cp::validate_config(split_group);},"each channel candle count must be evenly divisible by patch length","a channel count that is not a multiple of the patch length is refused");
+  auto shorter=valid;shorter.channel_bar_counts={24,24};
+  refuses_with([&]{cp::validate_config(shorter);},"shared history length is the longest channel candle count","the shared row is the longest channel candle count");
+  // Patch 6. Shared width 24 is 4 groups. The short channel is 18 candles, exactly 3 groups,
+  // right-aligned, so its left 6 slots are one empty group.
+  auto four_and_three=valid;four_and_three.level.history_length=24;four_and_three.channel_bar_counts={24,18};
+  const auto &level=four_and_three.level;
+  const int64_t B=1,H=level.history_length,F=level.input_width,P=level.patch_length;
+  auto data=torch::ones({B,level.channel_count,H,F},torch::kFloat64);
+  auto support=torch::ones(data.sizes(),torch::kBool);
+  auto times=torch::full({B,level.channel_count,H},std::numeric_limits<double>::quiet_NaN(),torch::kFloat64);
+  for(int64_t tick=0;tick<H;++tick) times[0][0][tick]=static_cast<double>(tick)*level.sampling_interval;
+  for(int64_t tick=0;tick<P;++tick){support[0][1][tick].fill_(false);data[0][1][tick].zero_();}
+  for(int64_t tick=P;tick<H;++tick) times[0][1][tick]=static_cast<double>(tick)*level.sampling_interval;
+  const cp::RawHistory raw{data,support,torch::tensor(cp::implementation::resolved_channel_ids(level),torch::kInt64),times,level.sampling_interval};
+  const auto cutoffs=torch::tensor({static_cast<double>(H-1)*level.sampling_interval},torch::kFloat64);
+  const auto masks=tr::make_mask(raw,cutoffs,four_and_three,5,0);
+  check(masks.eligible_channels[0][0].item<bool>()&&masks.eligible_channels[0][1].item<bool>(),"exactly 3 filled groups stay in the loss with a channel of 4 groups");
+  check(masks.target[0][1].sum().item<int64_t>()==P*F&&masks.visible[0][1].sum().item<int64_t>()==2*P*F,"exactly 3 filled groups hide one and leave two visible");
+  check(masks.target[0][0].sum().item<int64_t>()==P*F,"four filled groups still mask");
 }
 void benchmark_constructor_parity(){
   const auto numerical=old::read_settings("code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/config/v16.conf");
