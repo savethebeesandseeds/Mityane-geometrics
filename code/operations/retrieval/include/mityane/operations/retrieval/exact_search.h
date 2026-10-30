@@ -22,7 +22,10 @@ enum class Reason {
   nonfinite_value,
   undefined_geometry,
   dimension_mismatch,
-  collinear_inputs
+  collinear_inputs,
+  fit,
+  directness,
+  outside_cone
 };
 enum class SkipReason { self_match, excluded_source, undefined_geometry, outside_cone };
 

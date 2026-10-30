@@ -4,8 +4,8 @@
   "number": 1,
   "title": "Retrieval and similarity matching",
   "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
-  "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Exact k-retrieval and geometric abstract retrieval are two uses of that ranker. The local profile consumes saved vectors from a named local encoder, including Hx15–Hx17, or a declared synthetic generator, and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric constructors are pure functions that build a query vector, a direction, or cone parameters, and then call exact k-retrieval. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
-  "summary": "OR01-RET 0.1.0 is one ranker with two uses. Exact k-retrieval takes a query vector already in hand and returns the nearest saved sources under cosine or L2. That use is the registered tool. Geometric abstract retrieval builds a difference, a shared residual, or a cone and then calls the same ranker. Both passed their engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2. The tool refuses live calls and unbound relevance, and it does not expose the constructors. OR01-RET-ABS 0.1.0 freezes the English WordNet text population, its shared-principle labels, and one local EmbeddingGemma 2 text SpaceRef. OR01-RET-ABS-EVAL 0.1.0 scores the seven eligible queries on that population: the shared residual is inconclusive against the point and lexical baselines, and the difference is negative. The ranks were listed before the score, and the protocol has no unseen split. The general local and Gemini profile milestones stay proposed. No Gemini adapter is bound.",
+  "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Retrieval takes a coordinate in a declared SpaceRef and returns ranked sources from a frozen corpus. Encoding is upstream: a text encoder, a kernel sample, or another producer may supply that coordinate, and the retrieval contract does not include the producer. Two methods share that corpus contract. Exact k-retrieval returns the k nearest sources under the declared metric and normalization. It is the registered tool and the fidelity baseline. Positive sparse combination retrieval approximates the same coordinate as a sparse non-negative combination of corpus vectors. Difference, shared residual, and cone constructors remain internal utilities and are not the retrieval strategy. The local profile consumes saved vectors from a named local encoder, including Hx15–Hx17, or a declared synthetic generator, and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness and mean neighbor distance are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
+  "summary": "OR01-RET 0.1.0 takes a coordinate and returns the nearest saved sources under cosine or L2. That method is the registered tool. It passed its engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2, and it refuses live calls and unbound relevance. Positive Sparse Combination Retrieval, OR01-COMB, solves non-negative least squares on the prepared corpus, repeats the minimum-weight refit until every survivor meets tau or none remain, and applies a fit floor and a path-length ceiling. Columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5 are empty, reason outside_cone. On 30 October 2026 make test-retrieval passed six combination checks. The registered tool does not link that solver, and the checks make no relevance claim. Continuation is the ready least-squares milestone: replace the normal equations and allow an ejected column to return. No corpus score starts before that step. Difference, shared residual, and cone constructors remain internal utilities. The 30 October geometric-query score on the English WordNet population stays indexed: the shared residual is inconclusive and the difference is negative. That score is not the current retrieval strategy. OR01-RET-ABS 0.1.0 still freezes that population and one local EmbeddingGemma 2 text SpaceRef. The general local and Gemini profile milestones stay proposed. No Gemini adapter is bound.",
   "updatedAt": "2026-10-30",
   "goals": [
     {
@@ -317,8 +317,8 @@
     },
     {
       "id": "or-01-geometric-abstract-retrieval",
-      "title": "Retrieve shared abstract concepts with geometric queries",
-      "description": "Geometric abstract retrieval constructs a query vector, direction, or cone from saved vectors, then ranks a separate frozen corpus of English abstract concepts with exact k-retrieval. The abstract population is not a concrete source population. Ranking distance, cone membership, and the geometric construction are not the relevance rule. An admitted run may claim exploratory description or task association. This goal introduces no approximate index, live call, or encoder training.",
+      "title": "Rank a frozen corpus from a target coordinate",
+      "description": "Retrieval takes a coordinate in a declared SpaceRef. Encoding that coordinate from text or another raw input is upstream. Exact k-retrieval is the registered method. Positive sparse combination is the second method. Its six engineering checks passed on 30 October 2026, including the tau witness that drops a refit below tau. Continuation is the ready least-squares milestone. These checks do not score the English abstract corpus. Difference, shared residual, and cone constructors remain internal utilities and are not the retrieval strategy. The English abstract population is one frozen corpus, separate from any concrete source population. Ranking distance, combination weights, and the residual are not the relevance rule. This goal introduces no approximate index, live call, or encoder training.",
       "milestones": [
         {
           "id": "or-01-abstract-corpus-binding",
@@ -366,7 +366,7 @@
           "id": "or-01-geometric-operators",
           "title": "Define geometric query constructors",
           "status": "done",
-          "description": "Geometric abstract retrieval lives beside exact k-retrieval. Pure constructors build the difference of two points, the shared residual after removing that difference span, and a cone with a unit axis, an angular aperture, and optional radial bounds. Ranking inside the cone calls exact k-retrieval. On 30 October 2026, make test-retrieval passed the seven exact-search checks and two constructor checks under g++ with -Wall -Wextra -Wpedantic. The registered tool links only the ranker. This is not a relevance result, and no abstract corpus is bound.",
+          "description": "Deprecated as a retrieval strategy on 30 October 2026. The functions remain internal utilities. They build the difference of two points, the shared residual after removing that difference span, and a cone with a unit axis, an angular aperture, and optional radial bounds. Ranking inside the cone calls exact k-retrieval. On 30 October 2026, make test-retrieval passed the seven exact-search checks and two constructor checks under g++ with -Wall -Wextra -Wpedantic. The registered tool links only the ranker. This is not a relevance result, and no abstract corpus is bound by these checks.",
           "updatedAt": "2026-10-30",
           "completedAt": "2026-10-30",
           "dependsOn": [
@@ -402,7 +402,7 @@
           "id": "or-01-geometric-abstract-evaluation-protocol",
           "title": "Evaluate abstract retrieval under geometric queries",
           "status": "done",
-          "description": "OR01-RET-ABS-EVAL 0.1.0 scores the seven eligible WordNet queries under the frozen shared-principle rule. Full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive and the difference negative. Cone aperture 0 is empty for every query. Apertures pi/3 and wider keep the whole corpus. The result is this population and this EmbeddingGemma 2 text SpaceRef only.",
+          "description": "Historical score of the deprecated geometric-query interpretation. It is not the current retrieval strategy. OR01-RET-ABS-EVAL 0.1.0 scores the seven eligible WordNet queries under the frozen shared-principle rule. Full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive and the difference negative. Cone aperture 0 is empty for every query. Apertures pi/3 and wider keep the whole corpus. The result is this population and this EmbeddingGemma 2 text SpaceRef only.",
           "updatedAt": "2026-10-30",
           "completedAt": "2026-10-30",
           "dependsOn": [
@@ -427,6 +427,54 @@
               "label": "OR01-RET requirements and evidence record 0.1.0",
               "path": "code/operations/retrieval/EVIDENCE.md"
             }
+          ]
+        },
+        {
+          "id": "or-01-retrieval-positive-sparse-combination",
+          "title": "Specify positive sparse combination retrieval",
+          "status": "done",
+          "description": "OR01-COMB approximates a prepared target coordinate as a sparse non-negative linear combination of prepared corpus vectors. The solver is non-negative least squares, followed by a refit down to a declared minimum weight. The refit repeats until every surviving weight is at least tau or no column remains. Columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5 finish empty, reason outside_cone, because the refit of the first column is 0.45. A fit floor requires the reconstruction cosine to meet gamma. A directness ceiling empties a combination whose path length over net length exceeds rho. An early cosine stop returns the rank-1 neighbor with its one-vector weight. On 30 October 2026 make test-retrieval passed six combination checks under g++ with -Wall -Wextra -Wpedantic. The registered tool does not link the solver. Claim level stays exploratory. The residual and the weights are not a relevance rule.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-exact-search-reference"
+          ],
+          "acceptance": [
+            "The method takes a coordinate in the declared SpaceRef and a frozen corpus. Source-space encoding is upstream and outside the retrieval contract. Exact k-retrieval remains the registered tool and the fidelity baseline.",
+            "The solver is non-negative least squares on vectors prepared by the same prepare() as exact search. A minimum weight tau is fixed beforehand. Columns below tau are dropped and the solve is refit on the survivors. The output includes the selected source identities and their positive weights, ordered by descending weight and then ascending source ID.",
+            "Weights are non-negative. The combination step does not subtract a corpus vector and does not negate a coordinate. Negation is available only when the corpus already contains that text. Identical columns resolve to the fewest positive weights, then the lexicographically smallest source-ID list.",
+            "The fit floor gamma requires ||Xw|| / ||t|| to meet gamma. That ratio is the reconstruction cosine and is a floor. The directness ceiling rho, at least 1, empties a solution whose path length divided by ||Xw|| exceeds rho. If the rank-1 exact-search cosine meets kappa, the result is that neighbor with the one-vector weight. A zero target abstains. All-zero weights are empty.",
+            "Engineering checks use synthetic fixtures: a one-direction sum that passes both gates, a rank-1 neighbor returned with its one-vector weight, a short combination that passes both gates, a path ratio above rho with outcome empty and reason directness, a target outside the cone with outcome empty, and the tau witness above. The checks call no provider, introduce no approximate index, and judge no relevance."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-COMB specification",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            },
+            {
+              "label": "30 October 2026 combination check",
+              "path": "code/operations/retrieval/reviews/positive-sparse-combination-v0.1.0.md"
+            },
+            {
+              "label": "Engineering checks",
+              "path": "code/operations/retrieval/tests/exact_search_test.cpp"
+            }
+          ]
+        },
+        {
+          "id": "or-01-retrieval-combination-least-squares",
+          "title": "Harden the combination least-squares step",
+          "status": "ready",
+          "description": "The active-set solver forms the normal equations, so the condition number of the Gram matrix is squared. An entering column whose pivot fails, or which the line search ejects, is blocked for the rest of that call. The six fixtures and a small brute-force probe, through 10 columns, did not show a wrong residual. A 768-dimensional corpus is outside that probe. This milestone replaces that least-squares step and lets an ejected column enter again when a later gradient is positive. It does not score the English abstract corpus, register a combination command, call Gemini, or add an approximate index. gamma, rho, tau, and kappa stay declared by the caller and are not chosen from WordNet weights. Early stop still skips the gates. combine() takes a bare target vector, so a second SpaceRef is not checked. An undefined prepared column is still dropped with no skip record, and a corpus of undefined columns is still empty, reason outside_cone.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-positive-sparse-combination"
+          ],
+          "acceptance": [
+            "The unconstrained step uses a factorization that does not form the normal equations. Rank deficiency stays an explicit failure of that step.",
+            "A column removed by the line search can enter again on a later iteration when its reduced gradient is positive. A synthetic fixture forces a column out of the passive set, and the residual on that fixture matches an independent non-negative subset solve.",
+            "make test-retrieval still passes the existing combination checks, including columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5, with outcome empty and reason outside_cone.",
+            "The registered tool still links only exact search. The milestone calls no provider, scores no corpus, and adds no approximate index."
           ]
         }
       ]

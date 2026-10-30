@@ -1,6 +1,6 @@
 # OR01-RET-ABS 0.1.0
 
-English abstract corpus binding for Hx01 geometric retrieval. This record freezes the text population, the parent lineage, the shared-principle labels, and one local text SpaceRef with its saved-vector hashes. It selects the `local-saved-vectors` profile. The score of that population is a separate record, [OR01-RET-ABS-EVAL 0.1.0](PROTOCOL.md).
+English abstract corpus binding for Hx01. This record freezes the text population, the parent lineage, the shared-principle labels, and one local text SpaceRef with its saved-vector hashes. It selects the `local-saved-vectors` profile. The geometric-query score of that population is a separate historical record, [OR01-RET-ABS-EVAL 0.1.0](PROTOCOL.md). The corpus remains available for a later retrieval method. The text freeze is unchanged.
 
 | Field | Value |
 | --- | --- |

@@ -1,8 +1,10 @@
 #pragma once
 
-// Geometric abstract retrieval. These constructors build a query vector or a
-// cone from saved vectors. Ranking calls exact k-retrieval in exact_search.h.
-// This header does not read artifacts, call a provider, or judge relevance.
+// Deprecated retrieval strategy, retained as internal utilities. These
+// constructors build a query vector or a cone from saved vectors. Ranking calls
+// exact k-retrieval in exact_search.h. Positive sparse combination lives in
+// combination.h. This header does not read artifacts,
+// call a provider, or judge relevance.
 
 #include "mityane/operations/retrieval/exact_search.h"
 

@@ -1,5 +1,7 @@
 # Abstract retrieval score, OR01-RET-ABS-EVAL 0.1.0
 
+**Status:** historical score of the deprecated geometric-query interpretation. Exact k-retrieval remains the registered method. Positive sparse combination is specified separately and was not scored here.
+
 **Claim level:** `task_association` for this population and this SpaceRef. The claim rule was fixed in [PROTOCOL.md](../bindings/oewn-2025/PROTOCOL.md) before these numbers were calculated.
 
 **Verdict:** `shared` is inconclusive. `difference` is negative. Neither system beats both baselines on full-list binary nDCG.

@@ -1,3 +1,4 @@
+#include "mityane/operations/retrieval/combination.h"
 #include "mityane/operations/retrieval/exact_search.h"
 #include "mityane/operations/retrieval/geometry.h"
 
@@ -261,6 +262,99 @@ void test_cone_rank_and_diagnostics() {
   check(!unlabeled.purity.has_value(), "an empty label list leaves purity unset");
 }
 
+retrieval::CombinationParameters gates(double tau, double gamma, double rho, double kappa) {
+  return {tau, gamma, rho, kappa};
+}
+
+bool near(double left, double right) { return std::abs(left - right) <= 1e-9; }
+
+void test_combination_one_direction_passes_gates() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {1, 0.25})}};
+  const retrieval::CombinationResult result = retrieval::combine(corpus, {2, 0.25}, gates(0, 0.5, 1.05, 0.999));
+  check(result.outcome == retrieval::Outcome::ranked && result.reason == retrieval::Reason::none,
+        "a one-direction sum passes both gates");
+  check(result.hits.size() == 2 && result.hits[0].source_id == "a" && result.hits[1].source_id == "b",
+        "equal weights follow source id");
+  check(near(result.hits[0].weight, 1) && near(result.hits[1].weight, 1), "the sum recovers both weights");
+  check(result.reconstruction_cosine > 0.999 && result.path_ratio < 1.05, "the path stays under the ceiling");
+}
+
+void test_combination_early_stop_weight() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::cosine, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {2, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationResult result = retrieval::combine(corpus, {4, 0}, gates(0, 0, 4, 0.5));
+  check(result.outcome == retrieval::Outcome::ranked && result.hits.size() == 1, "a close neighbor stops the solve");
+  check(result.hits[0].source_id == "a" && result.hits[0].rank == 1 && near(result.hits[0].weight, 2),
+        "the one-vector weight is the least-squares coefficient");
+}
+
+void test_combination_short_pair() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationResult result = retrieval::combine(corpus, {1, 1}, gates(0, 0.5, 2, 0.9));
+  check(result.outcome == retrieval::Outcome::ranked && result.hits.size() == 2, "a short pair is kept");
+  check(near(result.hits[0].weight, 1) && near(result.hits[1].weight, 1), "orthogonal axes keep unit weights");
+  check(near(result.path_ratio, std::sqrt(2.0)), "the orthogonal path ratio is sqrt(2)");
+}
+
+void test_combination_directness_ceiling() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationResult result = retrieval::combine(corpus, {1, 1}, gates(0, 0.5, 1.2, 0.9));
+  check(result.outcome == retrieval::Outcome::empty && result.reason == retrieval::Reason::directness,
+        "a wandering path is empty");
+  check(result.hits.empty() && result.path_ratio > 1.2, "the ceiling keeps the path ratio");
+}
+
+void test_combination_outside_cone_and_fit_floor() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::cosine, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationResult outside = retrieval::combine(corpus, {-1, 0}, gates(0, 0, 2, 0.25));
+  check(outside.outcome == retrieval::Outcome::empty && outside.reason == retrieval::Reason::outside_cone,
+        "a target outside the corpus cone is empty");
+  check(outside.hits.empty(), "an outside target emits no weight");
+
+  retrieval::Corpus axis{binding, {record("a", {1, 0})}};
+  const retrieval::CombinationResult low = retrieval::combine(axis, {0.2, 1}, gates(0, 0.5, 2, 0.99));
+  check(low.outcome == retrieval::Outcome::empty && low.reason == retrieval::Reason::fit, "a weak fit is empty");
+  check(low.reconstruction_cosine < 0.5, "the fit floor sees the reconstruction cosine");
+}
+
+void test_combination_tie_tau_and_refusals() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus copies{binding, {record("b", {1, 0}), record("a", {1, 0})}};
+  const retrieval::CombinationResult tie = retrieval::combine(copies, {1, 0.5}, gates(0, 0.5, 2, 0.99));
+  check(tie.outcome == retrieval::Outcome::ranked && tie.hits.size() == 1 && tie.hits[0].source_id == "a",
+        "identical columns keep the smaller source id");
+  check(near(tie.hits[0].weight, 1), "the single copy carries the whole coefficient");
+
+  retrieval::Corpus pair{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationResult trimmed = retrieval::combine(pair, {0.2, 1}, gates(0.5, 0.5, 2, 0.99));
+  check(trimmed.outcome == retrieval::Outcome::ranked && trimmed.hits.size() == 1 && trimmed.hits[0].source_id == "b",
+        "a weight below tau is refit away");
+  check(near(trimmed.hits[0].weight, 1), "the surviving axis is refit");
+
+  retrieval::Corpus suppression{binding, {record("a", {1, 0}), record("b", {-0.2, 1})}};
+  const retrieval::CombinationResult suppressed =
+      retrieval::combine(suppression, {0.45, 0.3}, gates(0.5, 0, 1e6, 1));
+  check(suppressed.outcome == retrieval::Outcome::empty && suppressed.reason == retrieval::Reason::outside_cone &&
+            suppressed.hits.empty(),
+        "a refit that falls below tau drops the last column");
+
+  check(retrieval::combine(pair, {1, 0}, gates(-0.1, 0, 2, 1)).reason == retrieval::Reason::invalid_request,
+        "a negative tau fails");
+  check(retrieval::combine(pair, {1, 0}, gates(0, 1.1, 2, 1)).reason == retrieval::Reason::invalid_request,
+        "a fit floor above one fails");
+  check(retrieval::combine(pair, {1, 0}, gates(0, 0, 0.5, 1)).reason == retrieval::Reason::invalid_request,
+        "a directness ceiling below one fails");
+  check(retrieval::combine(pair, {0, 0}, gates(0, 0, 2, 1)).outcome == retrieval::Outcome::abstained,
+        "a zero target abstains");
+  retrieval::Corpus duplicated{binding, {record("a", {1, 0}), record("a", {0, 1})}};
+  check(retrieval::combine(duplicated, {1, 0}, gates(0, 0, 2, 1)).reason == retrieval::Reason::duplicate_source_id,
+        "duplicate source ids fail");
+}
+
 }  // namespace
 
 int main() {
@@ -274,11 +368,18 @@ int main() {
     test_hubness();
     test_difference_and_shared_direction();
     test_cone_rank_and_diagnostics();
+    test_combination_one_direction_passes_gates();
+    test_combination_early_stop_weight();
+    test_combination_short_pair();
+    test_combination_directness_ceiling();
+    test_combination_outside_cone_and_fit_floor();
+    test_combination_tie_tau_and_refusals();
   } catch (const std::exception& error) {
     std::cerr << error.what() << '\n';
     return 1;
   }
   std::cout << "exact-search reference: 7 checks passed\n";
   std::cout << "geometric constructors: 2 checks passed\n";
+  std::cout << "positive sparse combination: 6 checks passed\n";
   return 0;
 }

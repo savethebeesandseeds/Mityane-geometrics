@@ -31,6 +31,9 @@ std::string reason_name(retrieval::Reason reason) {
     case retrieval::Reason::undefined_geometry: return "undefined_geometry";
     case retrieval::Reason::dimension_mismatch: return "dimension_mismatch";
     case retrieval::Reason::collinear_inputs: return "collinear_inputs";
+    case retrieval::Reason::fit: return "fit";
+    case retrieval::Reason::directness: return "directness";
+    case retrieval::Reason::outside_cone: return "outside_cone";
   }
   return "unknown";
 }

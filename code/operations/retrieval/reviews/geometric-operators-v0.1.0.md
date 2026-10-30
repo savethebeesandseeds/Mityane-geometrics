@@ -1,5 +1,7 @@
 # Geometric constructors check, 30 October 2026
 
+**Status:** historical. Difference, shared residual, and cone constructors are internal utilities. They are not the retrieval strategy.
+
 **Scope:** engineering constructors for OR01-RET 0.1.0. A difference, a shared residual, or a cone is built from caller-supplied vectors. Ranking inside the cone is exact search. No abstract corpus, encoder, Gemini call, approximate index, or relevance claim.
 
 **Command:** `make test-retrieval` in the managed container `mityane-geometrics`, compiler `g++ -std=c++20 -Wall -Wextra -Wpedantic`.

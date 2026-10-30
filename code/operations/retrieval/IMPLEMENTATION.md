@@ -5,7 +5,8 @@ Standard-library C++ for the numerical slice of [OR01-RET 0.1.0](CONTRACT.md). T
 | Piece | Path |
 | --- | --- |
 | Exact k-retrieval | [exact_search.h](include/mityane/operations/retrieval/exact_search.h), [exact_search.cpp](src/exact_search.cpp) |
-| Geometric abstract retrieval | [geometry.h](include/mityane/operations/retrieval/geometry.h), [geometry.cpp](src/geometry.cpp) |
+| Deprecated constructors | [geometry.h](include/mityane/operations/retrieval/geometry.h), [geometry.cpp](src/geometry.cpp) |
+| Positive sparse combination | [combination.h](include/mityane/operations/retrieval/combination.h), [combination.cpp](src/combination.cpp) |
 | Saved-vector inspector | [saved_vector_inspect.cpp](src/saved_vector_inspect.cpp) |
 | Checks | [exact_search_test.cpp](tests/exact_search_test.cpp) |
 
@@ -50,9 +51,9 @@ The recorded run is [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md). Pairwise s
 
 `make test-retrieval` runs seven checks: cosine tie order, L2 order and pairwise agreement, L2 normalization, reported exclusions, empty versus failure, refusal cases, and hubness on a three-point line. The recorded run is [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md). A later look the same day repeated those checks, passed the nine envelope checks, and confirmed the visible order: L2 distance 1 before distance 4, and cosine 1 before cosine 0. That look is [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
 
-## Geometric abstract retrieval
+## Deprecated geometric constructors
 
-`geometry.cpp` builds a query from saved vectors and then calls `search()`. Exact k-retrieval stays in `exact_search.cpp`. The registered tool links only that ranker. `difference` returns prepared target minus prepared origin. `shared_direction` removes the span of differences among two to eight points and returns the residual of the first point. `make_cone` returns a unit axis, an aperture in radians, and optional radial bounds. `search_cone` ranks eligible members against that axis and reports everyone else as `outside_cone`. A zero prepared vector has no angle and is `undefined_geometry`.
+These functions are internal utilities. They are not the retrieval strategy. `geometry.cpp` can still build a vector from saved points and then call `search()`. Exact k-retrieval stays in `exact_search.cpp`. The registered tool links only that ranker. `difference` returns prepared target minus prepared origin. `shared_direction` removes the span of differences among two to eight points and returns the residual of the first point. `make_cone` returns a unit axis, an aperture in radians, and optional radial bounds. `search_cone` ranks eligible members against that axis and reports everyone else as `outside_cone`. A zero prepared vector has no angle and is `undefined_geometry`.
 
 A zero difference or a zero residual is `collinear_inputs`. A zero-norm input under cosine or L2 normalization abstains. `cone_diagnostics` reports leave-one-out hubness and mean neighbor distance on the members inside the cone. Purity is the fraction of those members named by the caller. An empty name list leaves purity unset. None of these figures is a relevance result, and none closes Hx02.
 
@@ -62,4 +63,8 @@ The 30 October 2026 run printed `geometric constructors: 2 checks passed` after 
 
 `saved_vector_inspect` reads two `mityane-saved-vectors-v1` files and a query list. The commands are `point`, `difference`, `shared`, and `cone`. The binary links `exact_search.o` and `geometry.o`. The registered tool links only the ranker. Build the inspector with `make build-retrieval-inspect`.
 
-The English texts, labels, and local EmbeddingGemma 2 SpaceRef are [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md). The frozen scoring rule is [OR01-RET-ABS-EVAL 0.1.0](bindings/oewn-2025/PROTOCOL.md). The score is [oewn-abstract-evaluation-v0.1.0.md](reviews/oewn-abstract-evaluation-v0.1.0.md). On the seven eligible queries, mean full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive. On the six pairs, the difference mean is 0.390420899151, below both pair baselines, so the protocol calls it negative. Cone membership and purity stay out of that claim. The ranks were listed before the score, and the protocol has no unseen split. This library does not load the WordNet snapshot or the encoder weights. The vector bytes stay under ignored `.temp/`.
+The English texts, labels, and local EmbeddingGemma 2 SpaceRef are [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md). The geometric-query score is [oewn-abstract-evaluation-v0.1.0.md](reviews/oewn-abstract-evaluation-v0.1.0.md), under [OR01-RET-ABS-EVAL 0.1.0](bindings/oewn-2025/PROTOCOL.md). That score is historical. On the seven eligible queries, mean full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive. On the six pairs, the difference mean is 0.390420899151, below both pair baselines, so the protocol calls it negative. The ranks were listed before the score, and the protocol has no unseen split. This library does not load the WordNet snapshot or the encoder weights. The vector bytes stay under ignored `.temp/`.
+
+## Positive sparse combination
+
+OR01-COMB is [combination.cpp](src/combination.cpp). It prepares the target and the corpus with the same `prepare()` as exact search, then solves non-negative least squares. A declared minimum weight is refit until every surviving weight meets it. A fit floor requires the reconstruction cosine `||Xw|| / ||t||` to meet a declared `gamma`. A directness ceiling empties a path length that is too large beside the net length `||Xw||`. The weights stay in the result and are ordered by descending weight. The combination step does not negate a vector. Exact k-retrieval remains the fidelity baseline, the early-stop primitive, and the registered tool. The registered tool does not link this file. On 30 October 2026, `make test-retrieval` printed `positive sparse combination: 6 checks passed` after the exact-search and constructor lines. The record is [positive-sparse-combination-v0.1.0.md](reviews/positive-sparse-combination-v0.1.0.md).

@@ -1,6 +1,6 @@
 # OR01-RET-ABS-EVAL 0.1.0
 
-Evaluation protocol for the English abstract population in [BINDING.md](BINDING.md). This file fixes the comparison before the scores are calculated. It does not revise OR01-RET 0.1.0 or the relevance rule `oewn-shared-hypernym-depth-1-3`.
+Historical evaluation protocol for the deprecated geometric-query interpretation of the English abstract population in [BINDING.md](BINDING.md). This file fixes that comparison. It is not the current retrieval strategy. It does not revise OR01-RET 0.1.0 or the relevance rule `oewn-shared-hypernym-depth-1-3`.
 
 The same seven rankings were listed exploratorily in [oewn-abstract-neighborhoods-v0.1.0.md](../../reviews/oewn-abstract-neighborhoods-v0.1.0.md) before this file assigned a number. That listing did not choose the metric, the cutoffs, or the claim rule below.
 
