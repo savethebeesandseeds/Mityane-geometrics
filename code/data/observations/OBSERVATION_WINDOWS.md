@@ -30,7 +30,7 @@ All four dimensions must be positive.
 | `values` | F64 `[B,C,N,F]` | Genuine raw observation values, before parent/model F32 rounding |
 | `observed` | Boolean `[B,C,N,F]` | Cellwise support mask |
 | `channel_ids` | I64 `[C]` or `[B,C]` | Timeframe channel IDs, unique within each row. One window is one instrument |
-| `timestamps` | F64 `[N]` or `[B,N]` | Shared or row-specific finite timestamp grid |
+| `timestamps` | F64 `[N]`, `[B,N]`, or `[B,C,N]` | A shared finite grid, or one time row per channel |
 | `cutoffs` | F64 `[B]` | Explicit finite cutoff per source row |
 | `row_ids` | I64 `[B]` | Unique stable IDs within this source dataset |
 | `sampling_interval` | F64 scalar | Finite positive interval, in the same units as timestamps/cutoffs |
@@ -38,23 +38,32 @@ All four dimensions must be positive.
 Source/split/role strings must be nonempty, NUL-free and at most 1024 bytes.
 IDs are torch kline-interval ordinals, not array positions, class labels or
 instrument ordinals. Consumers map timeframe channels against their own
-configuration. The timestamp grid is one shared anchor. It does not mean every
-channel is that interval. N is the supplied history length;
-it need not equal an encoder's retained history H. The consumer may retain a
-causally cropped window, including masked padding when its contract allows it.
+configuration. `sampling_interval` is metadata in the same units as the
+timestamps and cutoffs. It is not a grid every channel is forced onto. N is
+the supplied history length; it need not equal an encoder's retained history H.
+The consumer may retain a causally cropped window, including masked padding
+when its contract allows it.
+
+A shared timestamp row is `[N]` or `[B,N]`, and every value in it is finite.
+A per-channel timestamp tensor is `[B,C,N]`. On that rank a NaN is legal only
+as a leading pad of a fully unobserved slot. A finite time is strictly
+increasing along that channel. An observed feature requires a finite time, and
+a NaN after a finite time is refused. The causal patch bottleneck family
+retains only the per-channel rank. A shared row still loads here and is refused
+at that retain.
 
 The memory-mapped kline loader in `code/dataloaders/numeric_series/` is a separate
 source. One sample there keeps a history length and a past-key row per
-resolution. This observation archive still stores one shared timestamp grid,
-so it does not carry those per-channel keys.
+resolution. A packed archive carries those keys in the `[B,C,N]` timestamp tensor.
 
-`validate()` checks schema, metadata, finite declared time fields and uniqueness.
-It deliberately does **not** inspect raw value or mask contents across the
-whole supplied history. A consumer must first crop at each cutoff, then validate
-its retained observed values and support. CPB additionally requires an ordered
-uniform grid, an aligned in-range cutoff, matching sampling interval and the
-configured semantic channels/features. Dataset schema validity alone does not
-establish those consumer-specific constraints or useful training support.
+`validate()` checks schema, metadata, the timestamp rank above, and uniqueness.
+It deliberately does **not** inspect raw value contents across the whole
+supplied history. A consumer must first crop at each cutoff, then validate its
+retained observed values and support. CPB requires per-channel timestamps,
+finite increasing bar times at or before the cutoff, a matching sampling
+interval, and the configured channels and features. The cutoff does not have to
+land on a sample. Dataset schema validity alone does not establish those
+consumer-specific constraints or useful training support.
 
 A `TRAIN` role is a caller declaration, not independent proof of population or
 split membership. Applications must bind the real source/split manifests and

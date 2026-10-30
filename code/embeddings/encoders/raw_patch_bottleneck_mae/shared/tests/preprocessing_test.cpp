@@ -56,7 +56,12 @@ void missingness_and_floors() {
 void endpoint_preparation() {
   auto c = config(); auto raw = input(c); auto tail = torch::full({3, 2, 8, 2}, 12345.0, torch::kFloat64);
   auto full = torch::cat({raw.data, tail}, 2); auto support = torch::ones_like(full, torch::kBool);
-  auto timestamps = torch::arange(40, torch::kFloat64);
+  const auto rows = full.size(0), channels = full.size(1), length = full.size(2);
+  auto shared = torch::arange(length, torch::kFloat64);
+  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, shared, raw.endpoints, c); }, "shared timestamp row");
+  auto row_clock = shared.view({1, length}).expand({rows, length}).contiguous();
+  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, row_clock, raw.endpoints, c); }, "shared batch timestamp row");
+  auto timestamps = shared.view({1, 1, length}).expand({rows, channels, length}).contiguous();
   auto cropped = rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, raw.endpoints, c);
   close(cropped.data, raw.data, "endpoint support crop", 0, 0);
   auto scaler = rpb::fit_scaler(cropped, c); rpb::Model model(c); model->eval(); torch::NoGradGuard no_grad;
@@ -65,11 +70,20 @@ void endpoint_preparation() {
   auto changed = rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, raw.endpoints, c);
   close(model->encode(scaler.transform(changed, c)).z_local, before, "preparation plus encoding future invariance", 0, 0);
   auto fractional = torch::full({3}, 31.5, torch::kFloat64);
-  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, fractional, c); }, "unaligned fractional endpoint support metadata");
+  auto fractional_crop = rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, fractional, c);
+  close(fractional_crop.data, raw.data, "fractional endpoint includes bars at or before it", 0, 0);
   auto early = torch::full({3}, 15.0, torch::kFloat64);
-  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, early, c); }, "insufficient endpoint history");
-  auto irregular = timestamps.clone(); irregular[5] += 0.1;
-  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, irregular, raw.endpoints, c); }, "irregular sampling");
+  auto early_crop = rpb::prepare_endpoint_history(full, support, raw.channel_ids, timestamps, early, c);
+  check(early_crop.observed.narrow(2, 0, 16).logical_not().all().item<bool>(), "early endpoint left-pads");
+  check(early_crop.observed.narrow(2, 16, 16).all().item<bool>(), "early endpoint keeps the present bars");
+  close(early_crop.data.narrow(2, 16, 16), full.narrow(2, 0, 16), "early endpoint keeps its own suffix", 0, 0);
+  auto irregular = timestamps.clone(); irregular.select(2, 5).copy_(irregular.select(2, 4));
+  rejects([&] { rpb::prepare_endpoint_history(full, support, raw.channel_ids, irregular, raw.endpoints, c); }, "non-increasing times");
+  auto mixed = timestamps.clone();
+  mixed.select(1, 1).copy_((torch::arange(length, torch::kFloat64) * 5).view({1, length}).expand({rows, length}));
+  auto independent = rpb::prepare_endpoint_history(full, support, raw.channel_ids, mixed, torch::full({3}, 155.0, torch::kFloat64), c);
+  close(independent.data.select(1, 0), full.select(1, 0).narrow(1, 8, 32), "one channel crops on its own times", 0, 0);
+  close(independent.data.select(1, 1), full.select(1, 1).narrow(1, 0, 32), "another channel keeps its own step", 0, 0);
 }
 }
 

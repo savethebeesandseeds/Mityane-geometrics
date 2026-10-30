@@ -28,8 +28,8 @@ cp::RawHistory history(const cp::Config &config){
       x[b][j][t][f]=10.+j*.7+f*.2+b*.3+.03*t+.6*std::sin(t*.27+f*.31+j*.13+b*.22);
       m[b][j][t][f]=(t+f+j+b)%29!=0;
     }
-  return{values,support,torch::tensor(cp::implementation::resolved_channel_ids(c),torch::kInt64),
-      torch::arange(N,torch::kFloat64)*c.sampling_interval,c.sampling_interval};
+  const auto times=(torch::arange(N,torch::kFloat64)*c.sampling_interval).view({1,1,N}).expand({B,c.channel_count,N}).contiguous();
+  return{values,support,torch::tensor(cp::implementation::resolved_channel_ids(c),torch::kInt64),times,c.sampling_interval};
 }
 torch::Tensor cuts(const cp::Config &c){return torch::full({4},(c.level.history_length-1)*c.level.sampling_interval,torch::kFloat64);}
 cp::RawHistory future_poison(const cp::RawHistory &raw,const cp::Config &c){
@@ -66,7 +66,7 @@ void fixture(const fs::path &configs,const fs::path &output,const std::string &n
   cp::training::PreprocessingFitter poison_fit(config,fit_identity);poison_fit.add(poison,cutoffs);const auto same_stats=poison_fit.freeze();
   check(stats.scaler.identity()==same_stats.scaler.identity()&&stats.bank.identity()==same_stats.bank.identity(),"fit crops before reading poisoned future values/masks");
   const auto permutation=torch::arange(c.channel_count-1,-1,-1,torch::kInt64);
-  const cp::RawHistory permuted{raw.data.index_select(1,permutation),raw.observed.index_select(1,permutation),raw.channel_ids.index_select(0,permutation),raw.timestamps,raw.sampling_interval};
+  const cp::RawHistory permuted{raw.data.index_select(1,permutation),raw.observed.index_select(1,permutation),raw.channel_ids.index_select(0,permutation),raw.timestamps.index_select(1,permutation),raw.sampling_interval};
   cp::training::PreprocessingFitter permutation_fit(config,fit_identity);permutation_fit.add(permuted,cutoffs);const auto reordered_stats=permutation_fit.freeze();
   check(stats.scaler.identity()==reordered_stats.scaler.identity()&&stats.bank.identity()==reordered_stats.bank.identity(),"timeframe channel mapping preserves preprocessing");
   auto fresh=cp::fresh(config,stats.scaler,stats.bank,221000+c.channel_count);
@@ -146,7 +146,7 @@ void benchmark_constructor_parity(){
   auto current=cp::fresh(config,stats.scaler,stats.bank,222000);
   const auto counts=cp::parameter_counts(config);
   auto historical=old::fresh(config,stats.scaler,stats.bank,222000);
-  const old::RawHistory historical_input{raw.data,raw.observed,raw.channel_ids,raw.timestamps,raw.sampling_interval};
+  const old::RawHistory historical_input{raw.data,raw.observed,raw.channel_ids,raw.timestamps.select(1,0).contiguous(),raw.sampling_interval};
   check(counts.learned_tensors==75&&counts.learned_values==293672&&counts.fixed_values==3888,"derived benchmark counts agree with historical fixture");
   const auto before=historical.model->named_parameters();
   for(const auto &item:current.model->named_parameters())check(before.contains(item.key())&&bits(item.value(),before[item.key()]),"family constructor matches historical numerical tensors at benchmark configuration");
@@ -159,7 +159,8 @@ void high_offset_preprocessing(const fs::path &configs){
   const int64_t B=1024,H=c.history_length;const double base=std::ldexp(1.,60),ulp=std::ldexp(1.,37);
   auto values=torch::full({B,1,H,1},base,torch::kFloat64);values[0][0][0][0]=base+ulp;
   // 11 is the torch ordinal of 4h, matching single.conf.
-  const cp::RawHistory raw{values,torch::ones(values.sizes(),torch::kBool),torch::tensor({11},torch::kInt64),torch::arange(H,torch::kFloat64)*c.sampling_interval,c.sampling_interval};
+  const auto times=(torch::arange(H,torch::kFloat64)*c.sampling_interval).view({1,1,H}).expand({B,1,H}).contiguous();
+  const cp::RawHistory raw{values,torch::ones(values.sizes(),torch::kBool),torch::tensor({11},torch::kInt64),times,c.sampling_interval};
   const auto cutoffs=torch::full({B},(H-1)*c.sampling_interval,torch::kFloat64);
   tr::PreprocessingFitter fitter(config,{"synthetic-high-offset-one-ulp","TRAIN-only-fixture","centered-window-moments-v1"});
   fitter.add(raw,cutoffs);const auto stats=fitter.freeze();

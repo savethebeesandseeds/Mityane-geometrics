@@ -21,10 +21,11 @@ namespace embedding::encoders::timeframe_channel {
 // checkpoints (three instruments on one clock). It is not this axis. Recorded
 // scores on that binding stay scores of that binding.
 //
-// This tensor still has one history length and one anchor sampling interval.
-// sampling_interval is that shared grid. It does not mean every channel is
-// that interval. Torch stores a length and past keys per channel; this
-// encoder's timestamp field does not.
+// HISTORY_LENGTH is a packing width, not a shared duration. Each channel's own
+// bars are right-aligned into that many slots. Index i is that channel's i-th
+// packed bar. Timestamps are [B,C,N]: NaN on a pad, finite and strictly
+// increasing on that channel's bars. sampling_interval is metadata. It is not
+// a grid every channel is forced onto.
 inline constexpr const char *kContract =
     "One window is one instrument. Channels are cuwacunu_torch kline intervals.";
 

@@ -7,8 +7,12 @@
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/shape.h"
 #include "embedding/encoders/timeframe_channel.h"
 #include <array>
+#include <cmath>
+#include <cstddef>
 #include <cstring>
 #include <iterator>
+#include <limits>
+#include <vector>
 
 namespace embedding::encoders::causal_patch_bottleneck_mae::family {
 using FrozenScaler=implementation::FrozenScaler;
@@ -23,7 +27,10 @@ inline constexpr const char *kCausalPolicy=
 inline constexpr const char *kInitializationKind="fresh-seeded-constructor-no-import-v1";
 
 // One window is one instrument. channel_ids are cuwacunu_torch kline intervals.
-// sampling_interval is the shared anchor grid, not the identity of each channel.
+// timestamps are [B,C,N]. A finite time is a bar of that channel even when every
+// feature is unobserved. A pad is not a bar: its time is NaN and its mask is false.
+// Pads are a leading prefix only. sampling_interval is metadata. It is not a grid
+// every channel is forced onto.
 struct RawHistory {
   torch::Tensor data,observed,channel_ids,timestamps;
   double sampling_interval{60000.};
@@ -38,12 +45,27 @@ struct CausalTrace : implementation::TemporalExecutionTrace {
 // timeframe: new family settings. withdrawn_instrument: only {0,1,2}.
 // admitted: a timeframe list or that recorded binding. v17-v19 load both.
 enum class ChannelAdmission { timeframe, withdrawn_instrument, admitted };
+// Absent means one HISTORY_LENGTH slot budget per channel. An explicit list,
+// including an empty one, must name one count in 1..HISTORY_LENGTH per channel.
+[[nodiscard]] inline std::vector<int64_t> channel_bar_counts(const implementation::configuration::Block &block,
+                                                             const Config &config){
+  const auto channels=config.level.channel_count,history=config.level.history_length;
+  TORCH_CHECK(channels>0 && history>0,"[cpb-family settings] channel count and history length are required");
+  if(!block.contains("CHANNEL_BAR_COUNTS")) return std::vector<int64_t>(static_cast<std::size_t>(channels),history);
+  const auto values=block.integers("CHANNEL_BAR_COUNTS");
+  TORCH_CHECK(!values.empty() && static_cast<int64_t>(values.size())==channels,
+      "[cpb-family settings] CHANNEL_BAR_COUNTS must list one count per channel");
+  for(const auto count:values) TORCH_CHECK(count>=1 && count<=history,
+      "[cpb-family settings] each CHANNEL_BAR_COUNTS entry must be from 1 through HISTORY_LENGTH");
+  return values;
+}
 inline Config settings(const implementation::configuration::Document &document,
                        ChannelAdmission admission=ChannelAdmission::timeframe){
   document.reject_unknown_blocks({"ENCODER"});const auto &b=document.block("ENCODER");
   b.reject_unknown_keys({"MODEL_TAG","CHANNEL_COUNT","HISTORY_LENGTH","INPUT_WIDTH","PATCH_LENGTH","EMBEDDING_SIZE",
       "LEVEL_EMBEDDING_SIZE","ENCODER_WIDTH","NUM_LAYERS","NUM_HEADS","FEEDFORWARD_WIDTH","DECODER_HIDDEN_WIDTH",
-      "LAYER_NORM_EPSILON","MASK_RATIO","HUBER_DELTA","SCALE_FLOOR","SAMPLING_INTERVAL","CHANNEL_IDS","DEVICE"});
+      "LAYER_NORM_EPSILON","MASK_RATIO","HUBER_DELTA","SCALE_FLOOR","SAMPLING_INTERVAL","CHANNEL_IDS",
+      "CHANNEL_BAR_COUNTS","DEVICE"});
   TORCH_CHECK(b.string("MODEL_TAG")==kModelTag,"[cpb-family settings] MODEL_TAG must be CPB-family");
   const auto device=b.string_or("DEVICE","cuda:0");
   TORCH_CHECK(device.rfind("cuda:",0)==0,"[cpb-family settings] explicit cuda:N device required");
@@ -72,7 +94,8 @@ inline Config settings(const implementation::configuration::Document &document,
   const auto native=b.integer_or("EMBEDDING_SIZE",fallback);
   TORCH_CHECK(native>c.export_width && c.export_width>0,"[cpb-family settings] native width must exceed positive level width");
   Config result{c,native-c.export_width};validate_config(result);
-  result.level.channel_ids=implementation::resolved_channel_ids(result.level);return result;
+  result.level.channel_ids=implementation::resolved_channel_ids(result.level);
+  (void)channel_bar_counts(b,result);return result;
 }
 inline Config read_settings(const std::filesystem::path &path){return settings(implementation::configuration::Document::read(path));}
 // The coordinate15 digest lock is the caller. These ids are not timeframes.
@@ -87,14 +110,19 @@ inline auto input_config(const Config &c){return implementation::configurable_sp
 
 namespace boundary {
 struct Window {implementation::Input raw;torch::Tensor times,cutoffs;};
-inline Window retain(const RawHistory &history,const torch::Tensor &requested,const Config &config){
+// bar_counts empty means HISTORY_LENGTH bars of each channel. A finite timestamp
+// is a bar even when every feature is unobserved. A NaN timestamp is a leading
+// pad, not a bar. A NaN after a finite time is refused. The cutoff need not land
+// on a sample. Kept values are read only at the selected indices.
+inline Window retain(const RawHistory &history,const torch::Tensor &requested,const Config &config,
+                     const std::vector<int64_t> &bar_counts={}){
   const auto &c=config.level;validate_config(config);
   TORCH_CHECK(history.data.defined() && history.data.device().is_cpu() && history.data.scalar_type()==torch::kFloat64 &&
       history.data.dim()==4 && history.data.size(0)>0 && history.data.size(1)==c.channel_count &&
       history.data.size(2)>0 && history.data.size(3)==c.input_width,"[cpb-family] CPU raw F64 history B,C,N,F required");
   TORCH_CHECK(history.observed.defined() && history.observed.device().is_cpu() &&
       history.observed.scalar_type()==torch::kBool && history.observed.sizes()==history.data.sizes(),"[cpb-family] matching CPU bool history mask required");
-  const auto B=history.data.size(0),N=history.data.size(2),H=c.history_length;
+  const auto B=history.data.size(0),C=history.data.size(1),N=history.data.size(2),H=c.history_length,F=c.input_width;
   TORCH_CHECK(history.channel_ids.defined() && history.channel_ids.device().is_cpu() &&
       history.channel_ids.scalar_type()==torch::kInt64,"[cpb-family] CPU timeframe channel IDs required");
   std::string channel_error;
@@ -102,37 +130,53 @@ inline Window retain(const RawHistory &history,const torch::Tensor &requested,co
     TORCH_CHECK(false,"[cpb-family] ",channel_error);
   (void)implementation::channel_indices(history.channel_ids,c,B,torch::kCPU);
   TORCH_CHECK(std::isfinite(history.sampling_interval) && history.sampling_interval==c.sampling_interval,
-      "[cpb-family] declared sampling grid must match config");
+      "[cpb-family] declared sampling interval must match config");
   TORCH_CHECK(history.timestamps.defined() && history.timestamps.device().is_cpu() &&
-      history.timestamps.scalar_type()==torch::kFloat64 && ((history.timestamps.dim()==1 && history.timestamps.size(0)==N) ||
-      (history.timestamps.dim()==2 && history.timestamps.sizes()==torch::IntArrayRef({B,N}))),"[cpb-family] CPU F64 timestamp grid N or B,N required");
+      history.timestamps.scalar_type()==torch::kFloat64 && history.timestamps.dim()==3 &&
+      history.timestamps.sizes()==torch::IntArrayRef({B,C,N}),"[cpb-family] CPU F64 per-channel timestamps B,C,N required");
   TORCH_CHECK(requested.defined() && requested.device().is_cpu() && requested.scalar_type()==torch::kFloat64 &&
       requested.sizes()==torch::IntArrayRef({B}) && torch::isfinite(requested).all().item<bool>(),"[cpb-family] explicit CPU F64 cutoff per example required");
-  const auto times=(history.timestamps.dim()==1?history.timestamps.unsqueeze(0).expand({B,N}):history.timestamps).contiguous();
-  TORCH_CHECK(torch::isfinite(times).all().item<bool>(),"[cpb-family] finite declared timestamp schema required");
-  const double tolerance=c.sampling_interval*1e-9;
+  std::vector<int64_t> counts=bar_counts;
+  if(counts.empty()) counts.assign(static_cast<std::size_t>(C),H);
+  TORCH_CHECK(static_cast<int64_t>(counts.size())==C,"[cpb-family] one bar count per channel required");
+  for(const auto count:counts) TORCH_CHECK(count>=1 && count<=H,"[cpb-family] each bar count must be from 1 through HISTORY_LENGTH");
+  const auto times=history.timestamps.contiguous();
+  const auto time_at=times.accessor<double,3>();
   std::vector<torch::Tensor> values,masks,window_times;
   for(int64_t b=0;b<B;++b){
-    const auto grid=times[b];
-    if(N>1){const auto delta=grid.narrow(0,1,N-1)-grid.narrow(0,0,N-1);
-      TORCH_CHECK(delta.gt(0).all().item<bool>() && torch::allclose(delta,torch::full_like(delta,c.sampling_interval),1e-9,tolerance),
-          "[cpb-family] timestamp grid must be ordered and uniform");}
-    const double cutoff=requested[b].item<double>(),first=grid[0].item<double>(),last=grid[N-1].item<double>();
-    TORCH_CHECK(cutoff>=first && cutoff<=last,"[cpb-family] cutoff outside supplied grid");
-    const double coordinate=(cutoff-first)/c.sampling_interval;
-    TORCH_CHECK(coordinate>=0 && coordinate<=double(N-1),"[cpb-family] cutoff coordinate outside grid");
-    const auto end=static_cast<int64_t>(std::llround(coordinate));
-    TORCH_CHECK(end>=0 && end<N && std::abs(grid[end].item<double>()-cutoff)<=tolerance,
-        "[cpb-family] cutoff must coincide with an explicitly supplied timestamp");
-    const auto begin=std::max<int64_t>(0,end-H+1),count=end-begin+1,pad=H-count;
-    // This slice is the first operation that reads observation values/masks.
-    // In particular no finite-value check, cast or support reduction sees suffix cells.
-    const auto retained=history.data[b].narrow(1,begin,count);
-    const auto observed=history.observed[b].narrow(1,begin,count);
-    const auto safe=torch::where(observed,retained,torch::zeros_like(retained));
-    values.push_back(torch::cat({torch::zeros({c.channel_count,pad,c.input_width},retained.options()),safe},1));
-    masks.push_back(torch::cat({torch::zeros({c.channel_count,pad,c.input_width},observed.options()),observed},1));
-    window_times.push_back(torch::arange(1-H,1,torch::TensorOptions().dtype(torch::kFloat64))*c.sampling_interval+cutoff);
+    const double cutoff=requested[b].item<double>();
+    auto row_values=torch::zeros({C,H,F},history.data.options());
+    auto row_masks=torch::zeros({C,H,F},history.observed.options());
+    auto row_times=torch::full({C,H},std::numeric_limits<double>::quiet_NaN(),torch::kFloat64);
+    for(int64_t channel=0;channel<C;++channel){
+      std::vector<int64_t> kept;
+      bool seen=false;double previous=0;
+      for(int64_t slot=0;slot<N;++slot){
+        const double stamp=time_at[b][channel][slot];
+        if(!std::isfinite(stamp)){
+          TORCH_CHECK(std::isnan(stamp),"[cpb-family] a timestamp must be finite or NaN");
+          TORCH_CHECK(!history.observed[b][channel][slot].any().item<bool>(),"[cpb-family] an observed feature requires a finite time");
+          TORCH_CHECK(!seen,"[cpb-family] a NaN time after a finite time is a hole");
+          continue;
+        }
+        TORCH_CHECK(!seen || stamp>previous,"[cpb-family] finite times on one channel must strictly increase");
+        seen=true;previous=stamp;
+        if(stamp<=cutoff) kept.push_back(slot);
+      }
+      const auto keep=static_cast<std::size_t>(counts[static_cast<std::size_t>(channel)]);
+      if(kept.size()>keep) kept.erase(kept.begin(),kept.end()-static_cast<std::ptrdiff_t>(keep));
+      if(kept.empty()) continue;
+      const auto pad=H-static_cast<int64_t>(kept.size());
+      const auto index=torch::tensor(kept,torch::kLong);
+      // Index select is the first read of observation values. Future cells stay unread.
+      const auto retained=history.data[b][channel].index_select(0,index);
+      const auto support=history.observed[b][channel].index_select(0,index);
+      const auto safe=torch::where(support,retained,torch::zeros_like(retained));
+      row_values[channel].narrow(0,pad,static_cast<int64_t>(kept.size())).copy_(safe);
+      row_masks[channel].narrow(0,pad,static_cast<int64_t>(kept.size())).copy_(support);
+      for(std::size_t i=0;i<kept.size();++i) row_times[channel][pad+static_cast<int64_t>(i)]=time_at[b][channel][kept[i]];
+    }
+    values.push_back(row_values);masks.push_back(row_masks);window_times.push_back(row_times);
   }
   implementation::Input raw{torch::stack(values),torch::stack(masks),history.channel_ids,requested.clone(),history.sampling_interval};
   implementation::validate_relative_change_raw(raw,c);
@@ -224,9 +268,13 @@ struct EncoderImpl : torch::nn::Module {
     const auto &c=config().level;
     if(out.patch_rows.numel()){
       const auto batches=torch::floor_divide(out.patch_rows,c.channel_count);
+      const auto channels=torch::remainder(out.patch_rows,c.channel_count);
       const auto indices=(out.patch_positions.clamp_min(0)*c.patch_length+c.patch_length-1).clamp_max(c.history_length-1);
-      const auto grid=window.times.to(c.device).index_select(0,batches);
-      out.token_end_times=torch::where(out.patch_valid,grid.gather(1,indices),torch::zeros_like(indices).to(torch::kFloat64));
+      const auto batch_index=batches.unsqueeze(-1).expand_as(indices);
+      const auto channel_index=channels.unsqueeze(-1).expand_as(indices);
+      const auto selected=window.times.to(c.device).index({batch_index,channel_index,indices});
+      const auto present=selected.isfinite();
+      out.token_end_times=torch::where(out.patch_valid.to(torch::kBool) & present,selected,torch::zeros_like(selected));
     }else out.token_end_times=torch::zeros(out.patch_positions.sizes(),torch::TensorOptions().device(c.device).dtype(torch::kFloat64));
     return out;
   }

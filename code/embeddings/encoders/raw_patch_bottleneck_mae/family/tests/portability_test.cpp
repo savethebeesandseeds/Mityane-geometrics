@@ -230,7 +230,7 @@ std::string run(const fs::path &config_path,const fs::path &out,const std::strin
   const auto tail=torch::full({4,c.channel_count,3,c.input_width},1e8,torch::kFloat64);
   const auto long_data=torch::cat({raw.data,tail},2);
   const auto long_mask=torch::cat({raw.observed,torch::ones(tail.sizes(),torch::kBool)},2);
-  const auto time=torch::arange(c.history_length+3,torch::kFloat64);
+  const auto time=torch::arange(c.history_length+3,torch::kFloat64).view({1,1,-1}).expand({long_data.size(0),c.channel_count,c.history_length+3}).contiguous();
   const auto crop=r::prepare_endpoint_history(long_data,long_mask,raw.channel_ids,time,raw.endpoints,
       r::configurable_spectral_input_config(c));
   check(exact(final.z_contextual_global,f::encode(model,scaler,crop).z_contextual_global),

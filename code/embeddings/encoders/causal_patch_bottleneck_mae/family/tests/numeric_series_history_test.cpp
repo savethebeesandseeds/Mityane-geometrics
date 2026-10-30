@@ -6,6 +6,7 @@
 
 #include <torch/cuda.h>
 
+#include <cmath>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -97,6 +98,7 @@ cp::Config read_fixture(const fs::path &path) {
          "  FEEDFORWARD_WIDTH = 32;\n"
          "  DECODER_HIDDEN_WIDTH = 16;\n"
          "  SAMPLING_INTERVAL = 60000;\n"
+         "  CHANNEL_BAR_COUNTS = 17, 1;\n"
          "  DEVICE = cuda:0;\n"
          "}\n";
   TORCH_CHECK(out, "[cpb numeric-series] cannot write settings");
@@ -113,7 +115,11 @@ int main() {
   constexpr int64_t quarter = 900000;
   constexpr int64_t cutoff = 1800000000000;
   constexpr int64_t history = 17;
-  const auto config = read_fixture(dir / "encoder.conf");
+  const auto settings = dir / "encoder.conf";
+  const auto config = read_fixture(settings);
+  const auto counts = cp::channel_bar_counts(
+      cp::implementation::configuration::Document::read(settings).block("ENCODER"), config);
+  check(counts.size() == 2 && counts[0] == 17 && counts[1] == 1, "CHANNEL_BAR_COUNTS is one count per channel");
 
   std::vector<double> minute_closes;
   const int64_t minute_first = cutoff - 17 * minute;
@@ -142,13 +148,14 @@ int main() {
   const auto batch = cp::history_from_edge_samples(config, {sample, sample}, ids, true);
   check(batch.history.data.sizes() == torch::IntArrayRef({2, 2, history, 9}), "batched encoder history");
   check(batch.history.observed.sizes() == batch.history.data.sizes(), "matching observation mask");
+  check(batch.history.timestamps.sizes() == torch::IntArrayRef({2, 2, history}), "per-channel timestamps");
   check(batch.cutoffs.sizes() == torch::IntArrayRef({2}), "one cutoff per instrument");
   const auto values = batch.history.data.accessor<double, 4>();
   const auto observed = batch.history.observed.accessor<bool, 4>();
-  const auto times = batch.history.timestamps.accessor<double, 2>();
+  const auto times = batch.history.timestamps.accessor<double, 3>();
   for (int64_t tick = 0; tick < history; ++tick) {
     const auto key = static_cast<double>(cutoff - (16 - tick) * minute);
-    check(times[0][tick] == key && times[1][tick] == key, "shared anchor clock");
+    check(times[0][0][tick] == key && times[1][0][tick] == key, "minute slot is that minute bar");
     const auto minute_view = view_of(1000. + (tick + 1), 1000. + tick);
     for (int64_t feature = 0; feature < 9; ++feature) {
       check(observed[0][0][tick][feature], "minute bar is observed");
@@ -156,22 +163,29 @@ int main() {
             "minute log-return view");
     }
   }
-  check(batch.cutoffs[0].item<double>() == static_cast<double>(cutoff), "cutoff is the last anchor");
-  for (int64_t feature = 0; feature < 9; ++feature)
-    check(!observed[0][1][0][feature], "15m bar without a previous bar stays masked");
-  const auto held = view_of(2010., 2000.);
+  check(batch.cutoffs[0].item<double>() == static_cast<double>(cutoff), "cutoff is the latest valid bar");
+  const auto earlier = view_of(2010., 2000.);
   const auto last = view_of(2030., 2010.);
-  for (int64_t tick = 1; tick <= 15; ++tick) {
-    for (int64_t feature = 0; feature < 9; ++feature) {
-      check(observed[0][1][tick][feature], "held 15m bar is observed");
-      check(values[0][1][tick][feature] == held[static_cast<std::size_t>(feature)],
-            "15m bar is held between its own closes");
-    }
+  for (int64_t tick = 0; tick < 15; ++tick) {
+    check(!std::isfinite(times[0][1][tick]), "15m pad time is NaN");
+    for (int64_t feature = 0; feature < 9; ++feature)
+      check(!observed[0][1][tick][feature], "15m left slots are not bars");
   }
-  for (int64_t feature = 0; feature < 9; ++feature)
-    check(observed[0][1][16][feature] &&
-              values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
-          "the anchor tick uses the 15m bar that just closed");
+  check(times[0][1][15] == static_cast<double>(cutoff - quarter), "15m slot 15 is its own earlier bar");
+  check(times[0][1][16] == static_cast<double>(cutoff), "15m slot 16 is the bar that closes at the cutoff");
+  for (int64_t feature = 0; feature < 9; ++feature) {
+    check(observed[0][1][15][feature] && values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
+          "the earlier 15m bar stays in its own slot");
+    check(observed[0][1][16][feature] && values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
+          "the last 15m bar is the latest view");
+  }
+
+  const auto counted = cp::history_from_edge_samples(config, {sample}, ids, true, {17, 1});
+  check(counted.history.observed[0][1].sum().item<int64_t>() == 9, "an explicit count keeps one 15m bar");
+  check(!std::isfinite(counted.history.timestamps[0][1][15].item<double>()), "the dropped 15m bar is a pad");
+  check(counted.history.timestamps[0][1][16].item<double>() == static_cast<double>(cutoff),
+        "the kept 15m bar is the latest one");
+  check(counted.history.data[0][1][16][3].item<double>() == last[3], "the kept 15m close is the latest view");
 
   const auto raw = cp::history_from_edge_samples(config, {sample}, ids, false);
   check(raw.history.data[0][0][16][3].item<double>() == 1017., "raw close is the cache close");
@@ -181,9 +195,40 @@ int main() {
           "a second log-return view is refused");
   refuses([&] { (void)cp::history_from_edge_samples(config, {sample}, {7, 4}, true); },
           "channel order must match the configuration");
+  {
+    std::ofstream empty(dir / "empty.conf");
+    empty << "ENCODER {\n"
+             "  MODEL_TAG = CPB-family;\n"
+             "  CHANNEL_COUNT = 2;\n"
+             "  CHANNEL_IDS = 4, 7;\n"
+             "  HISTORY_LENGTH = 17;\n"
+             "  INPUT_WIDTH = 9;\n"
+             "  PATCH_LENGTH = 4;\n"
+             "  LEVEL_EMBEDDING_SIZE = 8;\n"
+             "  EMBEDDING_SIZE = 12;\n"
+             "  ENCODER_WIDTH = 16;\n"
+             "  NUM_LAYERS = 1;\n"
+             "  NUM_HEADS = 2;\n"
+             "  FEEDFORWARD_WIDTH = 32;\n"
+             "  DECODER_HIDDEN_WIDTH = 16;\n"
+             "  SAMPLING_INTERVAL = 60000;\n"
+             "  CHANNEL_BAR_COUNTS = ;\n"
+             "  DEVICE = cuda:0;\n"
+             "}\n";
+  }
+  refuses([&] { (void)cp::read_settings(dir / "empty.conf"); }, "an empty CHANNEL_BAR_COUNTS list is refused");
 
   const auto retained = cp::boundary::retain(batch.history, batch.cutoffs, config);
-  check(retained.raw.data.sizes() == torch::IntArrayRef({2, 2, history, 9}), "encoder retains the shared window");
+  check(retained.raw.data.sizes() == torch::IntArrayRef({2, 2, history, 9}), "encoder retains the packed window");
+  check(retained.times.sizes() == torch::IntArrayRef({2, 2, history}), "retained times stay per channel");
+  check(!std::isfinite(retained.times[0][1][0].item<double>()), "retain keeps the 15m pad");
+  check(retained.times[0][0][16].item<double>() == static_cast<double>(cutoff), "retain keeps the last minute bar");
+  auto shared = batch.history;
+  shared.timestamps = batch.history.timestamps.select(1, 0).contiguous();
+  refuses([&] { (void)cp::boundary::retain(shared, batch.cutoffs, config); }, "a shared timestamp row is refused");
+  const auto trimmed = cp::boundary::retain(batch.history, batch.cutoffs, config, {17, 1});
+  check(trimmed.raw.observed[0][1].sum().item<int64_t>() == 9, "retain honors a shorter bar count");
+  check(trimmed.times[0][1][16].item<double>() == static_cast<double>(cutoff), "retain keeps the latest counted bar");
   tr::PreprocessingIdentity identity{"synthetic-numeric-series-no-market-population", "TRAIN-only-fixture",
                                      "numeric-series-log-return-view-v1"};
   tr::PreprocessingFitter fitter(config, identity);

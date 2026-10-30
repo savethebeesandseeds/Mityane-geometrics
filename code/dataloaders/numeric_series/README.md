@@ -26,6 +26,7 @@ A checked-in channel table is not in this directory. A published raw cache
 opens by path and SHA256 through `add_raw_cache`. That call does not prepare
 a CSV.
 
-The causal patch bottleneck family places one edge sample per instrument onto
-its shared anchor clock in `history_from_edge_samples`. That adapter lives with
-the encoder.
+The causal patch bottleneck family packs one edge sample per instrument in
+`history_from_edge_samples`. Each channel keeps its own bars, right-aligned
+into `HISTORY_LENGTH` slots. A shorter channel leaves the left slots empty.
+That adapter lives with the encoder.

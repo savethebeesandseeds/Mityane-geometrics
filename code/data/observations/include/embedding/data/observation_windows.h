@@ -46,10 +46,31 @@ inline void validate(const Dataset &data){
   const auto ids=(data.channel_ids.dim()==1?data.channel_ids.unsqueeze(0):data.channel_ids).contiguous();
   for(int64_t b=0;b<ids.size(0);++b){const auto row=ids[b].contiguous();const auto *p=row.const_data_ptr<int64_t>();
     TORCH_CHECK(std::set<int64_t>(p,p+C).size()==size_t(C),"[observation windows] channel IDs must be unique within each row");}
-  TORCH_CHECK(std::isfinite(data.sampling_interval)&&data.sampling_interval>0,"[observation windows] finite positive grid interval required");
-  TORCH_CHECK(data.timestamps.defined()&&data.timestamps.device().is_cpu()&&data.timestamps.scalar_type()==torch::kFloat64&&
-      ((data.timestamps.dim()==1&&data.timestamps.size(0)==N)||(data.timestamps.dim()==2&&data.timestamps.sizes()==torch::IntArrayRef({B,N})))&&
-      torch::isfinite(data.timestamps).all().item<bool>(),"[observation windows] finite declared CPU F64 timestamp schema required");
+  TORCH_CHECK(std::isfinite(data.sampling_interval)&&data.sampling_interval>0,"[observation windows] finite positive interval required");
+  const auto &stamps=data.timestamps;
+  TORCH_CHECK(stamps.defined()&&stamps.device().is_cpu()&&stamps.scalar_type()==torch::kFloat64,
+      "[observation windows] CPU F64 timestamps required");
+  if(stamps.dim()==1||stamps.dim()==2){
+    TORCH_CHECK((stamps.dim()==1&&stamps.size(0)==N)||(stamps.dim()==2&&stamps.sizes()==torch::IntArrayRef({B,N})),
+        "[observation windows] a shared timestamp grid must be [N] or [B,N]");
+    TORCH_CHECK(torch::isfinite(stamps).all().item<bool>(),"[observation windows] a shared timestamp grid must be finite");
+  }else{
+    TORCH_CHECK(stamps.dim()==3&&stamps.sizes()==torch::IntArrayRef({B,C,N}),
+        "[observation windows] per-channel timestamps must be [B,C,N]");
+    const auto finite=torch::isfinite(stamps);
+    const auto any_observed=data.observed.any(-1);
+    TORCH_CHECK(!(any_observed & finite.logical_not()).any().item<bool>(),
+        "[observation windows] an observed feature requires a finite time");
+    if(N>1){
+      const auto seen=finite.to(torch::kInt32).cumsum(-1);
+      TORCH_CHECK(!(finite.logical_not() & seen.gt(0)).any().item<bool>(),
+          "[observation windows] a NaN time after a finite time is a hole");
+      const auto both=finite.narrow(-1,0,N-1) & finite.narrow(-1,1,N-1);
+      const auto delta=stamps.narrow(-1,1,N-1)-stamps.narrow(-1,0,N-1);
+      TORCH_CHECK((delta.gt(0) | both.logical_not()).all().item<bool>(),
+          "[observation windows] finite times on one channel must strictly increase");
+    }
+  }
   TORCH_CHECK(data.cutoffs.defined()&&data.cutoffs.device().is_cpu()&&data.cutoffs.scalar_type()==torch::kFloat64&&
       data.cutoffs.sizes()==torch::IntArrayRef({B})&&torch::isfinite(data.cutoffs).all().item<bool>(),"[observation windows] finite CPU F64 cutoffs B required");
   TORCH_CHECK(data.row_ids.defined()&&data.row_ids.device().is_cpu()&&data.row_ids.scalar_type()==torch::kInt64&&

@@ -1,16 +1,16 @@
 // Copyright (c) 2026 Waajacu. MIT; see LICENSE at repository root.
 // Targets for one instrument whose channels are time resolutions.
 // This is not past_window_targets. Volatility, trend and activity come from
-// the anchor channel only. cross_resolution is one sample per held coarser
-// bar, and it abstains instead of writing zero. Do not feed these names to
-// the published three-instrument decision rule.
+// the anchor channel only: the channel whose step equals sampling_interval,
+// and each observed slot of that channel is one of its own bars.
+// cross_resolution abstains. A packed slot index is not a shared clock.
+// Do not feed these names to the published three-instrument decision rule.
 #pragma once
 
 #include "embedding/encoders/timeframe_channel.h"
 
 #include <torch/torch.h>
 
-#include <array>
 #include <cmath>
 #include <cstdint>
 #include <string>
@@ -46,7 +46,6 @@ inline constexpr int64_t kClose = 3;
 inline constexpr int64_t kVolume = 4;
 inline constexpr int64_t kWidth = 9;
 inline constexpr int64_t kMinimumCount = 8;
-inline constexpr double kVarianceFloor = 1e-12;
 
 inline int64_t integer_milliseconds(double sampling_interval) {
   TORCH_CHECK(std::isfinite(sampling_interval) && sampling_interval >= 1. &&
@@ -94,49 +93,22 @@ inline Moment moment(const std::vector<double> &samples) {
   out.ok = std::isfinite(out.mean) && std::isfinite(out.deviation);
   return out;
 }
-
-// Population Pearson correlation. Fewer than 8 pairs, or either population
-// variance below the floor, abstains.
-inline bool correlation(const std::vector<double> &left, const std::vector<double> &right, double &out) {
-  if (left.size() != right.size() || static_cast<int64_t>(left.size()) < kMinimumCount) return false;
-  const double count = static_cast<double>(left.size());
-  double sum_left = 0, sum_right = 0;
-  for (std::size_t i = 0; i < left.size(); ++i) {
-    sum_left += left[i];
-    sum_right += right[i];
-  }
-  const double mean_left = sum_left / count, mean_right = sum_right / count;
-  double var_left = 0, var_right = 0, product = 0;
-  for (std::size_t i = 0; i < left.size(); ++i) {
-    const double dx = left[i] - mean_left, dy = right[i] - mean_right;
-    var_left += dx * dx;
-    var_right += dy * dy;
-    product += dx * dy;
-  }
-  var_left /= count;
-  var_right /= count;
-  product /= count;
-  if (!(var_left >= kVarianceFloor) || !(var_right >= kVarianceFloor)) return false;
-  out = std::clamp(product / std::sqrt(var_left * var_right), -1.0, 1.0);
-  return std::isfinite(out);
-}
 } // namespace timeframe_detail
 
 // values and observed are CPU [N,C,H,9]. H is at least 9. channel_ids is
 // int64 [C] or [N,C] and names cuwacunu_torch kline intervals. Exactly one
 // channel has a fixed step equal to sampling_interval; every other step is a
-// positive multiple of it. A calendar month is refused.
+// positive multiple of it. A calendar month is refused. The step check does
+// not place those channels on one clock.
 //
 // RawPrices reads positive closes and nonnegative volume, then takes adjacent
 // anchor log returns and log1p volume. LogReturns reads the stored anchor
 // close as the per-bar return and the stored volume as log1p. A negative
-// stored return is legal in that view and is not logged again.
+// stored return is legal in that view and is not logged again. Each observed
+// anchor slot is one bar of the anchor channel.
 //
-// A coarser sample is the first tick of a run of identical observed feature
-// vectors. Held repeats of one bar are one sample. Two different bars with
-// the same nine values are also one sample, because this window has no
-// per-channel key. The paired anchor value is the anchor return at that same
-// tick, not the sum of the anchor ticks the bar was held across.
+// cross_resolution stays invalid. Slot i of one channel is not the same
+// instant as slot i of another, so those slots are not paired.
 [[nodiscard]] inline TimeframeTargets timeframe_window_targets(
     const torch::Tensor &values, const torch::Tensor &observed, const torch::Tensor &channel_ids,
     double sampling_interval, FeatureView view) {
@@ -224,66 +196,6 @@ inline bool correlation(const std::vector<double> &left, const std::vector<doubl
     if (activity_moment.ok) {
       out[row][2] = activity_moment.mean;
       ok[row][2] = true;
-    }
-
-    std::vector<double> correlations;
-    for (int64_t channel = 0; channel < channels; ++channel) {
-      if (channel == anchor) continue;
-      std::vector<double> paired_anchor, paired_coarse;
-      bool open = false;
-      bool have_close = false;
-      double previous_close = 0;
-      std::array<double, kWidth> run{};
-      for (int64_t tick = 0; tick < history; ++tick) {
-        std::array<double, kWidth> feature{};
-        bool present = true;
-        for (int64_t coord = 0; coord < kWidth; ++coord) {
-          if (!seen[row][channel][tick][coord]) {
-            present = false;
-            break;
-          }
-          feature[static_cast<std::size_t>(coord)] = at[row][channel][tick][coord];
-        }
-        if (!present) {
-          open = false;
-          continue;
-        }
-        if (open) {
-          bool same = true;
-          for (int64_t coord = 0; coord < kWidth; ++coord) {
-            if (feature[static_cast<std::size_t>(coord)] != run[static_cast<std::size_t>(coord)]) same = false;
-          }
-          if (same) continue;
-        }
-        open = true;
-        run = feature;
-        const double close = feature[static_cast<std::size_t>(kClose)];
-        if (view == FeatureView::LogReturns) {
-          if (!anchor_ok[static_cast<std::size_t>(tick)]) continue;
-          paired_anchor.push_back(anchor_return[static_cast<std::size_t>(tick)]);
-          paired_coarse.push_back(close);
-          continue;
-        }
-        if (!(close > 0) || !std::isfinite(close)) {
-          have_close = false;
-          continue;
-        }
-        if (have_close && anchor_ok[static_cast<std::size_t>(tick)]) {
-          paired_anchor.push_back(anchor_return[static_cast<std::size_t>(tick)]);
-          paired_coarse.push_back(std::log(close) - std::log(previous_close));
-        }
-        previous_close = close;
-        have_close = true;
-      }
-      double value = 0;
-      if (correlation(paired_anchor, paired_coarse, value)) correlations.push_back(value);
-    }
-    if (!correlations.empty()) {
-      double sum = 0;
-      for (const double value : correlations) sum += value;
-      out[row][3] = sum / static_cast<double>(correlations.size());
-      ok[row][3] = std::isfinite(out[row][3]);
-      if (!ok[row][3]) out[row][3] = 0;
     }
   }
   TORCH_CHECK(torch::isfinite(output).all().item<bool>(), "[family screen timeframe] target arithmetic overflow");

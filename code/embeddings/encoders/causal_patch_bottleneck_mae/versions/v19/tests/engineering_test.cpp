@@ -25,7 +25,7 @@ cp::RawHistory history(const cp::Config &config,int64_t phase=0){
     x[b][j][t][f]=20.+2*j+.2*f+.3*b+.021*t+.009*phase+.7*std::sin(.19*t+.31*f+.27*j+.17*b+.03*phase);
     m[b][j][t][f]=(t+3*f+j+b)%37!=0;
   }
-  return{data,observed,torch::tensor(cp::implementation::resolved_channel_ids(c),torch::kInt64),torch::arange(N,torch::kFloat64)*c.sampling_interval,c.sampling_interval};
+  return{data,observed,torch::tensor(cp::implementation::resolved_channel_ids(c),torch::kInt64),(torch::arange(N,torch::kFloat64)*c.sampling_interval).view({1,1,N}).expand({B,c.channel_count,N}).contiguous(),c.sampling_interval};
 }
 torch::Tensor cuts(const cp::Config &c){return torch::full({2},(c.level.history_length-1)*c.level.sampling_interval,torch::kFloat64);}
 void same_model(const cp::Encoder &a,const cp::Encoder &b){

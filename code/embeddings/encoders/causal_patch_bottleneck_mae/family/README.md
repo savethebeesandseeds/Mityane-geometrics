@@ -89,14 +89,16 @@ A numeric-series window enters through
 [numeric_series_history.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h).
 `history_from_edge_samples` reads one `edge_sample_t` per instrument from the
 numeric-series loader. Channel order is the configuration's torch interval
-ids. The anchor channel is the interval equal to `SAMPLING_INTERVAL`. Its last
-`HISTORY_LENGTH` valid keys are the shared clock. Each other channel contributes
-the latest valid bar at or before that key, held until its next bar. A
-log-return view uses `kline_cache_t::normalize_log_returns` against the previous
-valid bar of the same channel and does not write a second cache. `INPUT_WIDTH`
-is the nine kline features. The same `RawHistory` then goes to the fitter and
-`encode_at`. This does not select a population or replace the observation-window
-example.
+ids. `HISTORY_LENGTH` is a packing width. Each channel contributes its own bars
+with keys at or before the cutoff, keeps the last `CHANNEL_BAR_COUNTS` of the
+resulting slots (or `HISTORY_LENGTH` when that list is absent), and right-aligns
+them. A shorter channel leaves NaN timestamps and a false mask on the left.
+Index i is that channel's i-th packed bar. A log-return view uses
+`kline_cache_t::normalize_log_returns` against the previous valid bar of the
+same channel and does not write a second cache. The first bar of that channel
+stays out. `INPUT_WIDTH` is the nine kline features. The same `RawHistory` then
+goes to the fitter and `encode_at`. This does not select a population or replace
+the observation-window example.
 
 Include [family/training.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h).
 The caller supplies its own declared TRAIN stream and source/split manifests.

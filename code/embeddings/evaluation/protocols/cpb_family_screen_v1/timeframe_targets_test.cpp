@@ -25,29 +25,6 @@ double population_std(const std::vector<double> &samples) {
   return std::sqrt(square / static_cast<double>(samples.size()));
 }
 
-double pearson(const std::vector<double> &left, const std::vector<double> &right) {
-  expect(left.size() == right.size() && left.size() >= 2, "fixture correlation needs two pairs");
-  const double count = static_cast<double>(left.size());
-  double sum_left = 0, sum_right = 0;
-  for (std::size_t i = 0; i < left.size(); ++i) {
-    sum_left += left[i];
-    sum_right += right[i];
-  }
-  const double mean_left = sum_left / count, mean_right = sum_right / count;
-  double var_left = 0, var_right = 0, product = 0;
-  for (std::size_t i = 0; i < left.size(); ++i) {
-    const double dx = left[i] - mean_left, dy = right[i] - mean_right;
-    var_left += dx * dx;
-    var_right += dy * dy;
-    product += dx * dy;
-  }
-  var_left /= count;
-  var_right /= count;
-  product /= count;
-  expect(var_left > 0 && var_right > 0, "fixture correlation needs variation");
-  return product / std::sqrt(var_left * var_right);
-}
-
 struct Window {
   torch::Tensor values, observed, ids;
 };
@@ -79,7 +56,7 @@ void raw_anchor_ignores_the_coarser_channel() {
   near(row[0][1], 0.25, "anchor trend is the mean anchor log return");
   near(row[0][0], population_std(returns), "anchor volatility is not diluted by the coarser channel");
   near(row[0][2], 0, "anchor activity is log1p of the anchor volume");
-  expect(!valid[0][3] && row[0][3] == 0, "fewer than eight coarser bars abstains, and the stored value is zero");
+  expect(!valid[0][3] && row[0][3] == 0, "cross_resolution abstains, and the stored value is zero");
 }
 
 void log_return_view_is_not_logged_again() {
@@ -108,71 +85,37 @@ void log_return_view_is_not_logged_again() {
   near(raw_row[0][2], std::log1p(1), "raw activity applies log1p once");
 }
 
-void cross_resolution_uses_one_sample_per_held_bar() {
+void cross_resolution_abstains() {
   constexpr int64_t kHistory = 120;
-  constexpr int64_t kBars = 8;
-  auto window = blank(2, 3, kHistory, {4, 7, 9});
+  auto window = blank(1, 3, kHistory, {4, 7, 9});
   auto values = window.values.accessor<double, 4>();
-  std::vector<double> anchor_at_change, coarse_at_change, every_anchor, every_coarse;
-  for (int64_t bar = 0; bar < kBars; ++bar) {
-    const double sample = 0.1 * static_cast<double>(bar + 1);
-    for (int64_t offset = 0; offset < 15; ++offset) {
-      const int64_t tick = bar * 15 + offset;
-      values[0][1][tick][3] = sample;
-      every_coarse.push_back(sample);
-      const double anchor = offset == 0 ? sample : 0;
-      values[0][0][tick][3] = anchor;
-      every_anchor.push_back(anchor);
-    }
-    anchor_at_change.push_back(sample);
-    coarse_at_change.push_back(sample);
+  for (int64_t tick = 0; tick < kHistory; ++tick) {
+    values[0][0][tick][3] = 0.01 * static_cast<double>(tick + 1);
+    values[0][1][tick][3] = 0.02 * static_cast<double>(tick + 1);
+    values[0][2][tick][3] = tick < 60 ? 5.0 : -5.0;
   }
-  for (int64_t tick = 0; tick < kHistory; ++tick) values[0][2][tick][3] = tick < 60 ? 5.0 : -5.0;
-  for (int64_t tick = 0; tick < kHistory; ++tick) values[1][1][tick][3] = 0.4;
   const auto targets = screen::timeframe_window_targets(
       window.values, window.observed, window.ids, 60000, screen::FeatureView::LogReturns);
   const auto row = targets.values.accessor<double, 2>();
   const auto valid = targets.valid.accessor<bool, 2>();
-  expect(valid[0][3], "eight 15m bars support cross_resolution");
-  near(row[0][3], 1, "paired change points are perfectly correlated");
-  const double naive = pearson(every_anchor, every_coarse);
-  expect(std::abs(naive - 1) > 0.05, "scoring every held tick is a different statistic");
-  expect(!valid[1][3] && row[1][3] == 0, "one held bar abstains on that row only");
-  expect(std::abs(row[0][3] - 0.5) > 0.05, "the two-bar hour channel does not halve the correlation");
+  expect(valid[0][0] && valid[0][1] && valid[0][2], "anchor columns stay measured");
+  expect(!valid[0][3] && row[0][3] == 0, "slot index is not a shared clock");
 }
 
-void raw_cross_resolution_pairs_the_change_tick() {
-  constexpr int64_t kBars = 9;
-  constexpr int64_t kHistory = kBars * 15;
+void raw_cross_resolution_abstains() {
+  constexpr int64_t kHistory = 30;
   auto window = blank(1, 2, kHistory, {4, 7});
   auto values = window.values.accessor<double, 4>();
-  std::vector<double> step(static_cast<std::size_t>(kHistory), 0);
-  std::vector<double> change_anchor, change_coarse, summed, coarse_return;
-  for (int64_t bar = 1; bar < kBars; ++bar) {
-    const double sample = static_cast<double>(bar);
-    step[static_cast<std::size_t>(bar * 15)] = sample;
-    step[static_cast<std::size_t>(bar * 15 + 1)] = bar % 2 == 1 ? 10 : -10;
-    change_anchor.push_back(sample);
-    change_coarse.push_back(sample);
-    summed.push_back(sample + (bar % 2 == 1 ? 10 : -10));
-    coarse_return.push_back(sample);
-  }
-  values[0][0][0][3] = 1;
-  for (int64_t tick = 1; tick < kHistory; ++tick)
-    values[0][0][tick][3] = values[0][0][tick - 1][3] * std::exp(step[static_cast<std::size_t>(tick)]);
-  for (int64_t offset = 0; offset < 15; ++offset) values[0][1][offset][3] = 1;
-  for (int64_t bar = 1; bar < kBars; ++bar) {
-    const double close = std::exp(static_cast<double>(bar * (bar + 1)) / 2.0);
-    for (int64_t offset = 0; offset < 15; ++offset) values[0][1][bar * 15 + offset][3] = close;
+  for (int64_t tick = 0; tick < kHistory; ++tick) {
+    values[0][0][tick][3] = 1.0 + static_cast<double>(tick);
+    values[0][1][tick][3] = 100.0 + static_cast<double>(tick);
   }
   const auto targets = screen::timeframe_window_targets(
       window.values, window.observed, window.ids, 60000, screen::FeatureView::RawPrices);
   const auto row = targets.values.accessor<double, 2>();
   const auto valid = targets.valid.accessor<bool, 2>();
-  expect(valid[0][3], "nine raw bars produce eight paired returns");
-  near(row[0][3], pearson(change_anchor, change_coarse), "raw pairing uses the anchor return at the change tick");
-  expect(std::abs(pearson(summed, coarse_return) - row[0][3]) > 0.05,
-      "summing the held anchor ticks is a different statistic");
+  expect(valid[0][0] && valid[0][1], "raw anchor columns stay measured");
+  expect(!valid[0][3] && row[0][3] == 0, "raw slot index is not a shared clock");
 }
 
 void one_channel_abstains_only_on_cross_resolution() {
@@ -244,8 +187,8 @@ void refusals() {
 int main() {
   raw_anchor_ignores_the_coarser_channel();
   log_return_view_is_not_logged_again();
-  cross_resolution_uses_one_sample_per_held_bar();
-  raw_cross_resolution_pairs_the_change_tick();
+  cross_resolution_abstains();
+  raw_cross_resolution_abstains();
   one_channel_abstains_only_on_cross_resolution();
   short_anchor_support_abstains();
   refusals();

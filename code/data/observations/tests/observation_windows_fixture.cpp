@@ -37,7 +37,8 @@ int main(int argc,char **argv){try{
   std::vector<int64_t> ids;for(int64_t c=0;c<C;++c)ids.push_back(kTimeframeIds[c]);
   std::string channel_error;
   TORCH_CHECK(embedding::encoders::timeframe_channel::timeframe_ids_ok(ids,&channel_error),channel_error);
-  ow::Dataset data{values,observed,torch::tensor(ids,torch::kInt64),torch::arange(N,torch::kFloat64)*interval,
+  const auto times=(torch::arange(N,torch::kFloat64)*interval).view({1,1,N}).expand({B,C,N}).contiguous();
+  ow::Dataset data{values,observed,torch::tensor(ids,torch::kInt64),times,
       torch::full({B},(N-1)*interval,torch::kFloat64),torch::arange(B,torch::kInt64),interval,
       "synthetic-observation-window-fixture-v1","synthetic-TRAIN-only-no-quality-population","TRAIN"};
   ow::write(options.at("--output"),data);

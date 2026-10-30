@@ -32,7 +32,7 @@ std::string quote(const std::string &text){
     else if(c<32)out<<"\\u"<<std::hex<<std::setw(4)<<std::setfill('0')<<int(c)<<std::dec;else out<<c;}
   out<<'"';return out.str();
 }
-old::RawHistory historical(const cp::RawHistory &raw){return{raw.data,raw.observed,raw.channel_ids,raw.timestamps,raw.sampling_interval};}
+old::RawHistory historical(const cp::RawHistory &raw){return{raw.data,raw.observed,raw.channel_ids,raw.timestamps.select(1,0).contiguous(),raw.sampling_interval};}
 cp::RawHistory history(const cp::Config &config,int64_t phase=0){
   const auto &c=config.level;const int64_t B=3,N=c.history_length+17;
   auto data=torch::zeros({B,c.channel_count,N,c.input_width},torch::kFloat64);
@@ -44,8 +44,8 @@ cp::RawHistory history(const cp::Config &config,int64_t phase=0){
           .8*std::sin(t*.13+f*.23+j*.37+b*.29+.01*phase)+.17*std::cos(t*.67+f*.11);
       m[b][j][t][f]=(t+f*3+j+b)%31!=0 && !(j==1 && t>=42 && t<=48);
     }
-  return{data,observed,torch::tensor(impl::resolved_channel_ids(c),torch::kInt64),
-      torch::arange(N,torch::kFloat64)*c.sampling_interval,c.sampling_interval};
+  const auto times=(torch::arange(N,torch::kFloat64)*c.sampling_interval).view({1,1,N}).expand({B,c.channel_count,N}).contiguous();
+  return{data,observed,torch::tensor(impl::resolved_channel_ids(c),torch::kInt64),times,c.sampling_interval};
 }
 torch::Tensor cutoffs(const cp::Config &config){
   const auto H=config.level.history_length;
@@ -54,7 +54,7 @@ torch::Tensor cutoffs(const cp::Config &config){
 cp::RawHistory poisoned(const cp::RawHistory &raw,const torch::Tensor &cuts){
   auto out=raw;out.data=raw.data.clone();out.observed=raw.observed.clone();
   for(int64_t b=0;b<raw.data.size(0);++b){
-    const auto future=raw.timestamps.gt(cuts[b]).view({1,-1,1}).expand_as(out.data[b]);
+    const auto future=raw.timestamps[b].gt(cuts[b]).unsqueeze(-1).expand_as(out.data[b]);
     out.data[b].masked_fill_(future,std::numeric_limits<double>::quiet_NaN());
     out.observed[b].copy_(torch::where(future,out.observed[b].logical_not(),out.observed[b]));
   }

@@ -2,8 +2,12 @@
 #pragma once
 
 #include "embedding/encoders/raw_patch_bottleneck_mae/types.h"
+#include <cmath>
+#include <cstddef>
 #include <iomanip>
+#include <limits>
 #include <sstream>
+#include <vector>
 
 namespace embedding::encoders::raw_patch_bottleneck_mae {
 
@@ -123,9 +127,10 @@ inline FrozenScaler fit_scaler(const Input &input, const Config &c) {
   return out;
 }
 
-// Crops raw observations before model/scaler use; future samples cannot influence the result.
-// In this uniform schema the endpoint denotes the last included timestamp, not a
-// cutoff between samples. Reject unaligned cutoffs instead of misreporting support.
+// Crops each channel's own bars at or before the endpoint, then right-aligns the
+// last history_length of them. A short channel is left-padded. The endpoint need
+// not land on a sample, and a channel's step need not equal sampling_interval.
+// Timestamps are [B,C,T]. A finite time is a present slot. A NaN is a leading pad.
 inline Input prepare_endpoint_history(const torch::Tensor &values,
                                       const torch::Tensor &observed,
                                       const torch::Tensor &ids,
@@ -137,35 +142,52 @@ inline Input prepare_endpoint_history(const torch::Tensor &values,
                   values.size(3) == c.input_width && observed.sizes() == values.sizes() &&
                   observed.scalar_type() == torch::kBool,
               "[rpb-mae] raw endpoint preparation requires BCTF values/bool support");
-  const auto B = values.size(0), T = values.size(2);
-  TORCH_CHECK(timestamps.is_floating_point() &&
-                  ((timestamps.dim() == 1 && timestamps.size(0) == T) ||
-                   (timestamps.dim() == 2 && timestamps.size(0) == B && timestamps.size(1) == T)) &&
-                  endpoints.is_floating_point() && endpoints.dim() == 1 && endpoints.size(0) == B &&
-                  torch::isfinite(timestamps).all().item<bool>() &&
-                  torch::isfinite(endpoints).all().item<bool>(),
-              "[rpb-mae] preparation requires finite times [T]/[B,T] and endpoints [B]");
-  auto times = (timestamps.dim() == 1 ? timestamps.unsqueeze(0).expand({B, T}) : timestamps)
-                   .to(torch::kCPU, torch::kFloat64);
-  auto ends = endpoints.to(torch::kCPU, torch::kFloat64);
-  const double sampling_tolerance = c.sampling_interval * 1e-9;
-  std::vector<torch::Tensor> histories, supports;
+  const auto B = values.size(0), C = values.size(1), T = values.size(2), H = c.history_length;
+  const auto F = values.size(3);
+  TORCH_CHECK(timestamps.is_floating_point() && timestamps.dim() == 3 && timestamps.size(0) == B &&
+                  timestamps.size(1) == C && timestamps.size(2) == T && endpoints.is_floating_point() &&
+                  endpoints.dim() == 1 && endpoints.size(0) == B && torch::isfinite(endpoints).all().item<bool>(),
+              "[rpb-mae] preparation requires per-channel times [B,C,T] and finite endpoints [B]");
+  auto times = timestamps.to(torch::kCPU, torch::kFloat64).contiguous();
+  auto ends = endpoints.to(torch::kCPU, torch::kFloat64).contiguous();
+  auto stored = values.to(torch::kCPU, torch::kFloat64);
+  auto support = observed.to(torch::kCPU);
+  const auto time_at = times.accessor<double, 3>();
+  auto out_data = torch::zeros({B, C, H, F}, stored.options());
+  auto out_mask = torch::zeros({B, C, H, F}, torch::kBool);
   for (int64_t b = 0; b < B; ++b) {
-    auto row = times.select(0, b);
-    auto differences = row.slice(0, 1) - row.slice(0, 0, T - 1);
-    TORCH_CHECK(differences.gt(0).all().item<bool>() &&
-                    torch::allclose(differences, torch::full_like(differences, c.sampling_interval), 1e-9, sampling_tolerance),
-                "[rpb-mae] timestamp support must be ordered and uniformly sampled");
-    const auto available = row.le(ends[b]).sum().item<int64_t>();
-    TORCH_CHECK(available >= c.history_length, "[rpb-mae] endpoint has insufficient history");
-    TORCH_CHECK(std::abs(row[available - 1].item<double>() - ends[b].item<double>()) <=
-                    2.0 * sampling_tolerance,
-                "[rpb-mae] endpoint must coincide with the last included uniform timestamp");
-    const auto begin = available - c.history_length;
-    histories.push_back(values.select(0, b).slice(1, begin, available));
-    supports.push_back(observed.select(0, b).slice(1, begin, available));
+    const double endpoint = ends[b].item<double>();
+    for (int64_t channel = 0; channel < C; ++channel) {
+      std::vector<int64_t> kept;
+      bool seen = false;
+      double previous = 0;
+      for (int64_t slot = 0; slot < T; ++slot) {
+        const double stamp = time_at[b][channel][slot];
+        if (!std::isfinite(stamp)) {
+          TORCH_CHECK(std::isnan(stamp), "[rpb-mae] a timestamp must be finite or NaN");
+          TORCH_CHECK(!support[b][channel][slot].any().item<bool>(),
+                      "[rpb-mae] an observed feature requires a finite time");
+          TORCH_CHECK(!seen, "[rpb-mae] a NaN time after a finite time is a hole");
+          continue;
+        }
+        TORCH_CHECK(!seen || stamp > previous, "[rpb-mae] present times must strictly increase");
+        seen = true;
+        previous = stamp;
+        if (stamp <= endpoint) kept.push_back(slot);
+      }
+      if (kept.size() > static_cast<std::size_t>(H))
+        kept.erase(kept.begin(), kept.end() - static_cast<std::ptrdiff_t>(H));
+      if (kept.empty()) continue;
+      const auto pad = H - static_cast<int64_t>(kept.size());
+      const auto index = torch::tensor(kept, torch::kLong);
+      const auto taken_values = stored[b][channel].index_select(0, index);
+      const auto taken_mask = support[b][channel].index_select(0, index);
+      const auto safe = torch::where(taken_mask, taken_values, torch::zeros_like(taken_values));
+      out_data[b][channel].narrow(0, pad, static_cast<int64_t>(kept.size())).copy_(safe);
+      out_mask[b][channel].narrow(0, pad, static_cast<int64_t>(kept.size())).copy_(taken_mask);
+    }
   }
-  Input out{torch::stack(histories), torch::stack(supports), ids, ends, c.sampling_interval};
+  Input out{out_data, out_mask, ids, ends, c.sampling_interval};
   validate_input(out, c);
   return out;
 }

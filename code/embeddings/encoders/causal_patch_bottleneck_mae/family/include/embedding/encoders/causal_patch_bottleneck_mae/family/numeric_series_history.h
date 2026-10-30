@@ -1,9 +1,11 @@
 // Copyright (c) 2026 Waajacu. All rights reserved. See LICENSE at repository root.
-// Places a numeric-series edge window onto this encoder's shared anchor grid.
-// The loader keeps one length and one past-key row per resolution. This
-// encoder keeps one history length and one sampling interval. A value at an
-// anchor tick is the latest valid bar of that channel whose key is at or
-// before the tick. Coarser bars are held. Nothing is interpolated.
+// Packs each channel's own bars into HISTORY_LENGTH slots.
+// HISTORY_LENGTH is a packing width, the same number of slots on every channel,
+// not a shared duration. Each channel contributes that resolution's own bars,
+// time-ordered and right-aligned. A shorter channel leaves the left slots empty.
+// An empty slot is not a bar: its timestamp is NaN and its mask is false.
+// Index i is the i-th packed bar of that channel. It is not the same timestamp
+// as index i of another channel. Nothing is interpolated and nothing is held.
 #pragma once
 
 #include "embedding/encoders/causal_patch_bottleneck_mae/family.h"
@@ -12,7 +14,9 @@
 
 #include <array>
 #include <cmath>
+#include <cstddef>
 #include <cstdint>
+#include <limits>
 #include <vector>
 
 namespace embedding::encoders::causal_patch_bottleneck_mae::family {
@@ -29,14 +33,6 @@ struct Bar {
   int64_t key{0};
   std::array<double, kFeatures> value{};
 };
-
-inline int64_t integer_milliseconds(double sampling_interval) {
-  TORCH_CHECK(std::isfinite(sampling_interval) && sampling_interval >= 1. &&
-                  sampling_interval <= 9007199254740991. &&
-                  std::floor(sampling_interval) == sampling_interval,
-      "[cpb-family numeric-series] SAMPLING_INTERVAL must be an exact positive millisecond count");
-  return static_cast<int64_t>(sampling_interval);
-}
 
 inline int64_t channel_step(int64_t channel_id) {
   const auto *entry = timeframe_channel::find(channel_id);
@@ -121,27 +117,21 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
   }
   return out;
 }
-
-// Latest valid bar at or before the tick. Returns bars.size() when none exists.
-inline std::size_t latest_at_or_before(const std::vector<Bar> &bars, int64_t tick) {
-  std::size_t chosen = bars.size();
-  for (std::size_t i = 0; i < bars.size(); ++i) {
-    if (bars[i].key <= tick) chosen = i;
-    else break;
-  }
-  return chosen;
-}
 } // namespace numeric_series_detail
 
 // samples[b] is one instrument. channel_ids[c] is the torch ordinal of
 // samples[b]'s channel c, in that order, and it must equal the configuration.
-// The anchor channel is the one whose interval equals SAMPLING_INTERVAL.
-// Its last HISTORY_LENGTH valid keys are the shared clock. A log-return view
+// Each channel keeps the bars whose key is at or before the cutoff, takes the
+// last bar_counts[c] of the resulting slots (HISTORY_LENGTH when bar_counts is
+// empty), and right-aligns them. Left slots stay masked and their times are NaN.
+// An omitted cutoff is the latest valid key in that sample. A log-return view
 // uses the previous valid bar of the same channel and does not write a cache.
-// An edge sample that is already normalized cannot take that view again.
+// The first bar of a channel stays out of that view. An edge sample that is
+// already normalized cannot take the view again.
 [[nodiscard]] inline NumericSeriesHistory history_from_edge_samples(
     const Config &config, const std::vector<mityane::data::edge_sample_t> &samples,
-    const std::vector<int64_t> &channel_ids, bool log_returns) {
+    const std::vector<int64_t> &channel_ids, bool log_returns,
+    const std::vector<int64_t> &bar_counts = {}, const std::vector<int64_t> &cutoffs_ms = {}) {
   validate_config(config);
   const auto &level = config.level;
   TORCH_CHECK(level.input_width == numeric_series_detail::kFeatures,
@@ -149,31 +139,31 @@ inline std::size_t latest_at_or_before(const std::vector<Bar> &bars, int64_t tic
   TORCH_CHECK(!samples.empty() && channel_ids.size() == static_cast<std::size_t>(level.channel_count) &&
                   channel_ids == implementation::resolved_channel_ids(level),
       "[cpb-family numeric-series] channel ids must match the configuration, one sample per instrument");
-  const auto anchor_step = numeric_series_detail::integer_milliseconds(level.sampling_interval);
-  std::vector<int64_t> steps;
-  steps.reserve(channel_ids.size());
-  int64_t anchor_channel = -1;
-  for (std::size_t channel = 0; channel < channel_ids.size(); ++channel) {
-    const auto step = numeric_series_detail::channel_step(channel_ids[channel]);
-    TORCH_CHECK(step % anchor_step == 0,
-        "[cpb-family numeric-series] every channel interval must be a whole number of anchor steps");
-    if (step == anchor_step) anchor_channel = static_cast<int64_t>(channel);
-    steps.push_back(step);
-  }
-  TORCH_CHECK(anchor_channel >= 0,
-      "[cpb-family numeric-series] one channel interval must equal SAMPLING_INTERVAL");
-
   const auto batch = static_cast<int64_t>(samples.size());
   const auto channels = level.channel_count;
   const auto history = level.history_length;
   const auto features = level.input_width;
+  std::vector<int64_t> counts = bar_counts;
+  if (counts.empty()) counts.assign(static_cast<std::size_t>(channels), history);
+  TORCH_CHECK(static_cast<int64_t>(counts.size()) == channels,
+      "[cpb-family numeric-series] CHANNEL_BAR_COUNTS must list one count per channel");
+  for (const auto count : counts) {
+    TORCH_CHECK(count >= 1 && count <= history,
+        "[cpb-family numeric-series] each bar count must be from 1 through HISTORY_LENGTH");
+  }
+  TORCH_CHECK(cutoffs_ms.empty() || static_cast<int64_t>(cutoffs_ms.size()) == batch,
+      "[cpb-family numeric-series] an explicit cutoff is one decision time per instrument");
+  std::vector<int64_t> steps;
+  steps.reserve(channel_ids.size());
+  for (const auto channel_id : channel_ids) steps.push_back(numeric_series_detail::channel_step(channel_id));
+
   auto values = torch::zeros({batch, channels, history, features}, torch::kFloat64);
   auto observed = torch::zeros({batch, channels, history, features}, torch::kBool);
-  auto timestamps = torch::empty({batch, history}, torch::kFloat64);
+  auto timestamps = torch::full({batch, channels, history}, std::numeric_limits<double>::quiet_NaN(), torch::kFloat64);
   auto cutoffs = torch::empty({batch}, torch::kFloat64);
   auto value_at = values.accessor<double, 4>();
   auto observed_at = observed.accessor<bool, 4>();
-  auto time_at = timestamps.accessor<double, 2>();
+  auto time_at = timestamps.accessor<double, 3>();
   auto cutoff_at = cutoffs.accessor<double, 1>();
 
   for (int64_t row = 0; row < batch; ++row) {
@@ -183,37 +173,50 @@ inline std::size_t latest_at_or_before(const std::vector<Bar> &bars, int64_t tic
     TORCH_CHECK(!(sample.normalized && log_returns),
         "[cpb-family numeric-series] a normalized edge sample is already a view; a second log-return view is refused");
     std::vector<std::vector<numeric_series_detail::Bar>> bars(static_cast<std::size_t>(channels));
-    for (int64_t channel = 0; channel < channels; ++channel)
-      bars[static_cast<std::size_t>(channel)] =
-          numeric_series_detail::valid_bars(sample, channel, steps[static_cast<std::size_t>(channel)]);
-    const auto &anchor_bars = bars[static_cast<std::size_t>(anchor_channel)];
-    TORCH_CHECK(static_cast<int64_t>(anchor_bars.size()) >= history,
-        "[cpb-family numeric-series] the anchor channel needs HISTORY_LENGTH valid bars");
-    const auto begin = anchor_bars.size() - static_cast<std::size_t>(history);
-    for (int64_t tick = 0; tick < history; ++tick) {
-      const auto key = anchor_bars[begin + static_cast<std::size_t>(tick)].key;
-      const auto expected = static_cast<__int128>(anchor_bars[begin].key) +
-                            static_cast<__int128>(tick) * anchor_step;
-      TORCH_CHECK(expected == key && expected <= 9007199254740991LL,
-          "[cpb-family numeric-series] the anchor channel's last HISTORY_LENGTH keys must be uniform");
-      time_at[row][tick] = static_cast<double>(key);
-    }
-    cutoff_at[row] = time_at[row][history - 1];
+    int64_t latest = 0;
+    bool any = false;
     for (int64_t channel = 0; channel < channels; ++channel) {
+      auto channel_bars = numeric_series_detail::valid_bars(sample, channel, steps[static_cast<std::size_t>(channel)]);
+      for (const auto &bar : channel_bars) {
+        if (!any || bar.key > latest) latest = bar.key;
+        any = true;
+      }
+      bars[static_cast<std::size_t>(channel)] = std::move(channel_bars);
+    }
+    const auto cutoff = cutoffs_ms.empty() ? latest : cutoffs_ms[static_cast<std::size_t>(row)];
+    TORCH_CHECK(cutoffs_ms.empty() ? any : true,
+        "[cpb-family numeric-series] an omitted cutoff needs one valid bar");
+    TORCH_CHECK(cutoff >= 0 && cutoff <= 9007199254740991LL,
+        "[cpb-family numeric-series] a cutoff must be an exact nonnegative millisecond count");
+    cutoff_at[row] = static_cast<double>(cutoff);
+    for (int64_t channel = 0; channel < channels; ++channel) {
+      struct Slot {
+        int64_t key;
+        std::array<double, numeric_series_detail::kFeatures> value;
+      };
+      std::vector<Slot> slots;
       const auto &channel_bars = bars[static_cast<std::size_t>(channel)];
-      for (int64_t tick = 0; tick < history; ++tick) {
-        const auto key = anchor_bars[begin + static_cast<std::size_t>(tick)].key;
-        const auto chosen = numeric_series_detail::latest_at_or_before(channel_bars, key);
-        if (chosen == channel_bars.size()) continue;
-        std::array<double, numeric_series_detail::kFeatures> feature{};
+      for (std::size_t i = 0; i < channel_bars.size(); ++i) {
+        if (channel_bars[i].key > cutoff) break;
         if (log_returns) {
-          if (chosen == 0) continue;
-          feature = numeric_series_detail::log_return_view(channel_bars[chosen], channel_bars[chosen - 1]);
+          if (i == 0) continue;
+          slots.push_back(Slot{channel_bars[i].key,
+              numeric_series_detail::log_return_view(channel_bars[i], channel_bars[i - 1])});
         } else {
-          feature = channel_bars[chosen].value;
+          slots.push_back(Slot{channel_bars[i].key, channel_bars[i].value});
         }
+      }
+      const auto keep = static_cast<std::size_t>(counts[static_cast<std::size_t>(channel)]);
+      if (slots.size() > keep) slots.erase(slots.begin(), slots.end() - static_cast<std::ptrdiff_t>(keep));
+      const auto pad = history - static_cast<int64_t>(slots.size());
+      for (std::size_t i = 0; i < slots.size(); ++i) {
+        const auto tick = pad + static_cast<int64_t>(i);
+        const auto &slot = slots[i];
+        TORCH_CHECK(slot.key >= 0 && slot.key <= 9007199254740991LL,
+            "[cpb-family numeric-series] a packed bar key must be an exact millisecond count");
+        time_at[row][channel][tick] = static_cast<double>(slot.key);
         for (int64_t coord = 0; coord < features; ++coord) {
-          value_at[row][channel][tick][coord] = feature[static_cast<std::size_t>(coord)];
+          value_at[row][channel][tick][coord] = slot.value[static_cast<std::size_t>(coord)];
           observed_at[row][channel][tick][coord] = true;
         }
       }
