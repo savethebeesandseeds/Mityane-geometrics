@@ -12,6 +12,7 @@
 #include <cstring>
 #include <iterator>
 #include <limits>
+#include <optional>
 #include <vector>
 
 namespace embedding::encoders::causal_patch_bottleneck_mae::family {
@@ -45,19 +46,42 @@ struct CausalTrace : implementation::TemporalExecutionTrace {
 // timeframe: new family settings. withdrawn_instrument: only {0,1,2}.
 // admitted: a timeframe list or that recorded binding. v17-v19 load both.
 enum class ChannelAdmission { timeframe, withdrawn_instrument, admitted };
-// Absent means one HISTORY_LENGTH slot budget per channel. An explicit list,
-// including an empty one, must name one count in 1..HISTORY_LENGTH per channel.
-[[nodiscard]] inline std::vector<int64_t> channel_bar_counts(const implementation::configuration::Block &block,
-                                                             const Config &config){
+// Absent CHANNEL_BAR_COUNTS means HISTORY_LENGTH on every channel. The name is
+// the call site for that default. An explicit list, including an empty one,
+// must name one count in 1..HISTORY_LENGTH per channel.
+[[nodiscard]] inline std::vector<int64_t> history_length_bar_counts(const implementation::LocationScaleDecoderConfig &config){
   const auto channels=config.level.channel_count,history=config.level.history_length;
   TORCH_CHECK(channels>0 && history>0,"[cpb-family settings] channel count and history length are required");
-  if(!block.contains("CHANNEL_BAR_COUNTS")) return std::vector<int64_t>(static_cast<std::size_t>(channels),history);
+  return std::vector<int64_t>(static_cast<std::size_t>(channels),history);
+}
+[[nodiscard]] inline Config with_history_length_counts(const implementation::LocationScaleDecoderConfig &numerical){
+  Config config(numerical);
+  config.channel_bar_counts=history_length_bar_counts(numerical);
+  return config;
+}
+[[nodiscard]] inline std::vector<int64_t> channel_bar_counts(const implementation::configuration::Block &block,
+                                                             const implementation::LocationScaleDecoderConfig &config){
+  if(!block.contains("CHANNEL_BAR_COUNTS")) return history_length_bar_counts(config);
   const auto values=block.integers("CHANNEL_BAR_COUNTS");
+  const auto channels=config.level.channel_count,history=config.level.history_length;
   TORCH_CHECK(!values.empty() && static_cast<int64_t>(values.size())==channels,
       "[cpb-family settings] CHANNEL_BAR_COUNTS must list one count per channel");
   for(const auto count:values) TORCH_CHECK(count>=1 && count<=history,
       "[cpb-family settings] each CHANNEL_BAR_COUNTS entry must be from 1 through HISTORY_LENGTH");
   return values;
+}
+// An omitted list uses the settings list stored on config. An empty list is refused.
+// This function does not substitute HISTORY_LENGTH. That default belongs to
+// channel_bar_counts when the settings key itself is absent.
+[[nodiscard]] inline std::vector<int64_t> resolve_bar_counts(const Config &config,
+                                                             const std::optional<std::vector<int64_t>> &requested){
+  if(requested.has_value()){
+    TORCH_CHECK(!requested->empty(),"[cpb-family] an empty bar-count list is refused");
+    return *requested;
+  }
+  TORCH_CHECK(!config.channel_bar_counts.empty(),
+      "[cpb-family] an omitted bar-count list uses the settings CHANNEL_BAR_COUNTS, and that list is empty");
+  return config.channel_bar_counts;
 }
 inline Config settings(const implementation::configuration::Document &document,
                        ChannelAdmission admission=ChannelAdmission::timeframe){
@@ -95,7 +119,8 @@ inline Config settings(const implementation::configuration::Document &document,
   TORCH_CHECK(native>c.export_width && c.export_width>0,"[cpb-family settings] native width must exceed positive level width");
   Config result{c,native-c.export_width};validate_config(result);
   result.level.channel_ids=implementation::resolved_channel_ids(result.level);
-  (void)channel_bar_counts(b,result);return result;
+  // Absent CHANNEL_BAR_COUNTS means HISTORY_LENGTH on every channel.
+  result.channel_bar_counts=channel_bar_counts(b,result);return result;
 }
 inline Config read_settings(const std::filesystem::path &path){return settings(implementation::configuration::Document::read(path));}
 // The coordinate15 digest lock is the caller. These ids are not timeframes.
@@ -108,14 +133,47 @@ inline Config read_admitted_settings(const std::filesystem::path &path){
 }
 inline auto input_config(const Config &c){return implementation::configurable_spectral_input_config(c.level);}
 
+// A group contains a real bar when one of its slots has a finite time.
+// Shared width W is divisible by patch length P, and G = W/P is at least 3.
+// A channel is a reconstruction target only when every group contains at least
+// one of its candles. Empty left slots and a partly filled group stay visible
+// context: their hidden selection is cleared before the preserved masker reads it.
+[[nodiscard]] inline torch::Tensor patches_containing_a_real_bar(const torch::Tensor &times,const Config &config){
+  const auto &level=config.level;
+  TORCH_CHECK(times.defined() && times.device().is_cpu() && times.scalar_type()==torch::kFloat64 && times.dim()==3 &&
+      times.size(1)==level.channel_count && times.size(2)==level.history_length,
+      "[cpb-family] real-bar patches require CPU F64 times B,C,HISTORY_LENGTH");
+  const auto present=times.isfinite().contiguous();
+  const auto rows=present.size(0),channels=present.size(1),history=level.history_length,patch=level.patch_length;
+  const auto patches=history/patch+(history%patch?1:0);
+  auto counts=torch::zeros({rows,channels},torch::kInt64);
+  const auto at=present.accessor<bool,3>();
+  auto out=counts.accessor<int64_t,2>();
+  for(int64_t row=0;row<rows;++row) for(int64_t channel=0;channel<channels;++channel) for(int64_t patch_index=0;patch_index<patches;++patch_index){
+    const auto begin=patch_index*patch,end=std::min(history,begin+patch);
+    bool real=false;
+    for(int64_t tick=begin;tick<end;++tick) real=real||at[row][channel][tick];
+    if(real) ++out[row][channel];
+  }
+  return counts;
+}
+inline torch::Tensor limit_reconstruction_targets(const torch::Tensor &hidden,const torch::Tensor &times,const Config &config){
+  const auto counts=patches_containing_a_real_bar(times,config);
+  const auto groups=config.level.history_length/config.level.patch_length;
+  if(counts.ge(groups).all().item<bool>()) return hidden;
+  const auto allowed=counts.ge(groups).to(hidden.device());
+  return hidden.logical_and(allowed.unsqueeze(-1).unsqueeze(-1));
+}
+
 namespace boundary {
 struct Window {implementation::Input raw;torch::Tensor times,cutoffs;};
-// bar_counts empty means HISTORY_LENGTH bars of each channel. A finite timestamp
-// is a bar even when every feature is unobserved. A NaN timestamp is a leading
-// pad, not a bar. A NaN after a finite time is refused. The cutoff need not land
-// on a sample. Kept values are read only at the selected indices.
+// An omitted bar_counts uses the settings list on config. An empty list is
+// refused. A finite timestamp is a bar even when every feature is unobserved.
+// A NaN timestamp is a leading pad, not a bar. A NaN after a finite time is
+// refused. The cutoff need not land on a sample. Kept values are read only at
+// the selected indices.
 inline Window retain(const RawHistory &history,const torch::Tensor &requested,const Config &config,
-                     const std::vector<int64_t> &bar_counts={}){
+                     const std::optional<std::vector<int64_t>> &bar_counts=std::nullopt){
   const auto &c=config.level;validate_config(config);
   TORCH_CHECK(history.data.defined() && history.data.device().is_cpu() && history.data.scalar_type()==torch::kFloat64 &&
       history.data.dim()==4 && history.data.size(0)>0 && history.data.size(1)==c.channel_count &&
@@ -136,8 +194,7 @@ inline Window retain(const RawHistory &history,const torch::Tensor &requested,co
       history.timestamps.sizes()==torch::IntArrayRef({B,C,N}),"[cpb-family] CPU F64 per-channel timestamps B,C,N required");
   TORCH_CHECK(requested.defined() && requested.device().is_cpu() && requested.scalar_type()==torch::kFloat64 &&
       requested.sizes()==torch::IntArrayRef({B}) && torch::isfinite(requested).all().item<bool>(),"[cpb-family] explicit CPU F64 cutoff per example required");
-  std::vector<int64_t> counts=bar_counts;
-  if(counts.empty()) counts.assign(static_cast<std::size_t>(C),H);
+  const auto counts=resolve_bar_counts(config,bar_counts);
   TORCH_CHECK(static_cast<int64_t>(counts.size())==C,"[cpb-family] one bar count per channel required");
   for(const auto count:counts) TORCH_CHECK(count>=1 && count<=H,"[cpb-family] each bar count must be from 1 through HISTORY_LENGTH");
   const auto times=history.timestamps.contiguous();
@@ -228,12 +285,19 @@ inline std::string state_identity(const implementation::LocationScaleDecoderMode
 
 class Encoder;
 struct EncoderImpl : torch::nn::Module {
-  explicit EncoderImpl(implementation::LocationScaleDecoderModel core,int64_t seed,const std::string &scaler_id,int64_t updates=0,const std::string &initial_state={})
+  explicit EncoderImpl(implementation::LocationScaleDecoderModel core,int64_t seed,const std::string &scaler_id,int64_t updates,
+      const std::string &initial_state,std::vector<int64_t> channel_bar_counts)
       :core_(register_module("core",core)),causal_updates_(updates),initialization_seed_(seed),scaler_identity_(scaler_id){
     TORCH_CHECK(core_&&updates>=0&&seed>=0&&!scaler_id.empty(),"[cpb-family] fresh model/seed/scaler and nonnegative causal updates required");
+    packing_=Config(core_->config());
+    TORCH_CHECK(static_cast<int64_t>(channel_bar_counts.size())==packing_.level.channel_count,
+        "[cpb-family] the settings bar-count list is one count per channel");
+    for(const auto count:channel_bar_counts) TORCH_CHECK(count>=1 && count<=packing_.level.history_length,
+        "[cpb-family] each settings bar count must be from 1 through HISTORY_LENGTH");
+    packing_.channel_bar_counts=std::move(channel_bar_counts);
     normalizer_identity_=core_->normalizer().identity();initial_state_identity_=initial_state.empty()?boundary::state_identity(core_):initial_state;eval();
   }
-  const Config &config()const{return core_->config();}
+  const Config &config()const{return packing_;}
   const BankStandardizer &normalizer()const{return core_->normalizer();}
   int64_t source_updates()const{return 0;}
   int64_t causal_updates()const{return causal_updates_;}
@@ -284,9 +348,10 @@ struct EncoderImpl : torch::nn::Module {
     TORCH_CHECK(is_training()?torch::GradMode::is_enabled():!torch::GradMode::is_enabled(),"[cpb-family] training needs gradients; eval reconstruction needs NoGradGuard");
     // Observation/target storage is cropped before either masking stream is read.
     const auto retained=boundary::retain(raw,cutoffs,config());const auto &c=config().level;
+    const auto limited=limit_reconstruction_targets(hidden,retained.times,config());
     TORCH_CHECK(scaler.identity()==scaler_identity_,"[cpb-family] training must use its own frozen TRAIN scaler");
     const auto target=implementation::relative_change_parent_input(retained.raw,scaler,c);
-    const auto masks=implementation::configurable_spectral_mask_from_hidden(retained.raw.observed.to(c.device),hidden.to(c.device),c);
+    const auto masks=implementation::configurable_spectral_mask_from_hidden(retained.raw.observed.to(c.device),limited.to(c.device),c);
     auto visible=masks.visible;
     if(context_deleted.defined()){
       TORCH_CHECK(context_deleted.scalar_type()==torch::kBool&&context_deleted.sizes()==visible.sizes(),"[cpb-family] retained-window boolean context deletion required");
@@ -296,7 +361,7 @@ struct EncoderImpl : torch::nn::Module {
     const implementation::Input input{retained.raw.data,visible.to(torch::kCPU),retained.raw.channel_ids,retained.raw.endpoints,retained.raw.sampling_interval};
     return core_->forward_with_trace(input,target.data,masks.target,masks.eligible_channels,scaler);
   }
-private:implementation::LocationScaleDecoderModel core_{nullptr};int64_t causal_updates_{0},initialization_seed_{0};
+private:implementation::LocationScaleDecoderModel core_{nullptr};Config packing_;int64_t causal_updates_{0},initialization_seed_{0};
   std::string scaler_identity_,normalizer_identity_,initial_state_identity_;
 };
 TORCH_MODULE(Encoder);
@@ -321,7 +386,8 @@ inline Loaded fresh(const Config &c,const FrozenScaler &scaler,const BankStandar
   validate_config(c);scaler.validate(input_config(c));
   const auto scaler_id=scaler.identity();normalizer.validate(c.level,nullptr,&scaler_id);
   TORCH_CHECK(seed>=0&&normalizer.frozen,"[cpb-family] seed and frozen TRAIN normalizer required");
-  torch::manual_seed(seed);auto core=implementation::LocationScaleDecoderModel(c,normalizer);auto model=Encoder(core,seed,scaler_id);
+  TORCH_CHECK(!c.channel_bar_counts.empty(),"[cpb-family] fresh construction needs the settings bar-count list");
+  torch::manual_seed(seed);auto core=implementation::LocationScaleDecoderModel(c,normalizer);auto model=Encoder(core,seed,scaler_id,0,std::string{},c.channel_bar_counts);
   validate_model_counts(model);model->validate_frozen();
   return{c,model,scaler,0,0,seed,model->initial_state_identity()};
 }
@@ -354,7 +420,7 @@ inline void read_objective(torch::serialize::InputArchive &a){
       coefficient.dim()==0 && coefficient.scalar_type()==torch::kFloat64 && coefficient.item<double>()==1.,
       "[cpb-family] objective/support/reduction/lag/scale/coefficient identity mismatch");
 }
-inline void validate_geometry(torch::serialize::InputArchive &a,const Config &c){
+inline void validate_geometry(torch::serialize::InputArchive &a,const implementation::LocationScaleDecoderConfig &c){
   TORCH_CHECK(boundary::same_bits(d::read_vector(a,"config_integer_v1",torch::kInt64,d::integers(c.level).size()),torch::tensor(d::integers(c.level),torch::kInt64))&&
       boundary::same_bits(d::read_vector(a,"config_number_v1",torch::kFloat64,d::numbers(c.level).size()),torch::tensor(d::numbers(c.level),torch::kFloat64))&&
       boundary::same_bits(d::read_vector(a,"channel_ids",torch::kInt64,c.level.channel_count),torch::tensor(implementation::resolved_channel_ids(c.level),torch::kInt64))&&
@@ -376,6 +442,7 @@ inline void write(torch::serialize::OutputArchive &a,const Encoder &model,const 
   a.write("state_identity",d::text_tensor(model->state_identity()),true);a.write("initial_state_identity",d::text_tensor(model->initial_state_identity()),true);a.write("normalizer_source_identity",d::text_tensor(model->normalizer().source_identity),true);
   const auto &c=model->config();a.write("config_integer_v1",torch::tensor(d::integers(c.level),torch::kInt64),true);
   a.write("config_number_v1",torch::tensor(d::numbers(c.level),torch::kFloat64),true);a.write("channel_ids",torch::tensor(implementation::resolved_channel_ids(c.level),torch::kInt64),true);
+  a.write("channel_bar_counts",torch::tensor(c.channel_bar_counts,torch::kInt64),true);
   a.write("change_width",torch::tensor(c.change_width,torch::kInt64),true);a.write("native_width",torch::tensor(implementation::location_scale_decoder_native_width(c),torch::kInt64),true);
   torch::serialize::OutputArchive payload;implementation::location_scale_decoder_checkpoint_detail::write(payload,model->core(),scaler,updates);a.write("payload",payload);
 }
@@ -385,18 +452,34 @@ inline Loaded read(torch::serialize::InputArchive &a,torch::Device device,const 
       d::read_text(a,"causal_policy")==kCausalPolicy&&d::read_text(a,"training_policy")==kTrainingPolicy&&d::read_text(a,"gradient_policy")==kGradientPolicy&&d::read_text(a,"initialization_kind")==kInitializationKind&&
       d::read_text(a,"pretrained_ancestor")=="none"&&integer(a,"source_updates")==0&&integer(a,"causal_updates")>=0&&integer(a,"initialization_seed")>=0,"[cpb-family] typed fresh family/causal policy/zero ancestry required");
   read_objective(a);
-  const Config outer{d::read_config(a,device),integer(a,"change_width")};validate_config(outer);
-  if(expected){validate_config(*expected);TORCH_CHECK(expected->level.device==device &&
-      d::same_config(outer.level,expected->level)&&outer.change_width==expected->change_width,
-      "[cpb-family] expected configuration/device mismatch");}
+  Config loaded{d::read_config(a,device),integer(a,"change_width")};validate_config(loaded);
+  torch::Tensor stored_counts;
+  if(a.try_read("channel_bar_counts",stored_counts,true)){
+    stored_counts=stored_counts.to(torch::kCPU).contiguous();
+    TORCH_CHECK(stored_counts.defined()&&stored_counts.scalar_type()==torch::kInt64&&stored_counts.dim()==1&&
+        stored_counts.size(0)==loaded.level.channel_count,"[cpb-family] channel_bar_counts must be one Int64 count per channel");
+    const auto at=stored_counts.accessor<int64_t,1>();
+    loaded.channel_bar_counts.resize(static_cast<std::size_t>(stored_counts.size(0)));
+    for(int64_t i=0;i<stored_counts.size(0);++i){
+      TORCH_CHECK(at[i]>=1&&at[i]<=loaded.level.history_length,"[cpb-family] each stored bar count must be from 1 through HISTORY_LENGTH");
+      loaded.channel_bar_counts[static_cast<std::size_t>(i)]=at[i];
+    }
+  }else{
+    // An absent archive key is the shared-clock record. HISTORY_LENGTH on every channel.
+    loaded.channel_bar_counts=history_length_bar_counts(loaded);
+  }
+  if(expected){validate_config(*expected);TORCH_CHECK(!expected->channel_bar_counts.empty()&&expected->level.device==device &&
+      d::same_config(loaded.level,expected->level)&&loaded.change_width==expected->change_width&&
+      expected->channel_bar_counts==loaded.channel_bar_counts,
+      "[cpb-family] expected configuration/device/bar-count mismatch");}
   const auto updates=integer(a,"causal_updates"),seed=integer(a,"initialization_seed");const auto state=d::read_text(a,"state_identity"),initial_state=d::read_text(a,"initial_state_identity");
   const auto scaler_id=d::read_text(a,"scaler_identity"),bank_id=d::read_text(a,"normalizer_identity"),bank_source=d::read_text(a,"normalizer_source_identity");torch::serialize::InputArchive payload;a.read("payload",payload);
   TORCH_CHECK(d::read_text(a,"initialization_binding")==std::string(kInitializationKind)+":"+std::to_string(seed)+":"+initial_state+":"+scaler_id+":"+bank_id,"[cpb-family] fresh initialization/seed/stat binding mismatch");
-  auto copied=implementation::location_scale_decoder_checkpoint_detail::read(payload,device,&outer,&scaler_id,&bank_source,&bank_id);
+  auto copied=implementation::location_scale_decoder_checkpoint_detail::read(payload,device,&loaded,&scaler_id,&bank_source,&bank_id);
   validate_geometry(a,copied.config);TORCH_CHECK(copied.training_updates==updates,"[cpb-family] nested update mismatch");
-  auto model=Encoder(copied.model,seed,scaler_id,updates,initial_state);validate_model_counts(model);model->clear_gradients();model->validate_frozen();
+  auto model=Encoder(copied.model,seed,scaler_id,updates,initial_state,loaded.channel_bar_counts);validate_model_counts(model);model->clear_gradients();model->validate_frozen();
   TORCH_CHECK(model->state_identity()==state&&(!initial_state.empty())&&(updates!=0||state==initial_state),"[cpb-family] model/initial tensor state binding mismatch");
-  return{copied.config,model,copied.scaler,0,updates,seed,initial_state};
+  return{loaded,model,copied.scaler,0,updates,seed,initial_state};
 }
 } // namespace checkpoint_detail
 inline void save_checkpoint(const std::string &path,const Encoder &model,const FrozenScaler &scaler,int64_t updates){

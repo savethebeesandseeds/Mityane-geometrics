@@ -17,6 +17,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <limits>
+#include <optional>
 #include <vector>
 
 namespace embedding::encoders::causal_patch_bottleneck_mae::family {
@@ -41,6 +42,7 @@ inline int64_t channel_step(int64_t channel_id) {
   return entry->step_ms;
 }
 
+// Latest-key prepass only. Packing does not use this compacted list.
 inline std::vector<Bar> valid_bars(const mityane::data::edge_sample_t &sample, int64_t channel,
                                    int64_t step) {
   TORCH_CHECK(sample.features.defined() && sample.mask.defined() && sample.past_keys.defined(),
@@ -117,21 +119,108 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
   }
   return out;
 }
+
+struct PackedSlot {
+  int64_t key{0};
+  bool observed{false};
+  std::array<double, kFeatures> value{};
+};
+
+// Walk every edge-sample row. Do not compact. A missing bar is mask false with
+// its own past key. A false mask whose key is a later on-grid close keeps that
+// finite time, a false mask, and value 0. A false mask that is not a later
+// on-grid close is a leading pad and stays a NaN time. A NaN time is a leading
+// prefix only. The log return uses the immediately previous row. When that row
+// is absent or its mask is false, this row is masked and its raw close is kept
+// only as the reference for the next row. The return does not reach across a
+// hole. Open, high, and low use that same previous close. Volume, quote volume,
+// trades, and both taker volumes are log1p of the current row, and they are
+// masked with the row. A zero, negative, or non-finite price is not a missing
+// bar; kline_cache_t::normalize_log_returns keeps the 1e-12 clamp.
+inline std::vector<PackedSlot> packed_slots(const mityane::data::edge_sample_t &sample, int64_t channel,
+                                           int64_t step, int64_t cutoff, bool log_returns) {
+  const auto features = sample.features.to(torch::kFloat64).contiguous();
+  const auto mask = sample.mask.contiguous();
+  const auto keys = sample.past_keys.contiguous();
+  TORCH_CHECK(features.dim() == 3 && mask.dim() == 2 && keys.dim() == 2 && features.size(0) > channel &&
+                  mask.sizes() == keys.sizes() && mask.size(0) == features.size(0) &&
+                  mask.size(1) == features.size(1) && features.size(2) == kFeatures,
+      "[cpb-family numeric-series] channel rows are [C,H,F], [C,H] and [C,H]");
+  const auto values = features.accessor<double, 3>();
+  const auto valid = mask.accessor<bool, 2>();
+  const auto stamps = keys.accessor<int64_t, 2>();
+  std::vector<PackedSlot> slots;
+  bool grid = false;
+  int64_t anchor = 0;
+  int64_t last_key = 0;
+  bool have_reference = false;
+  Bar reference{};
+  for (int64_t row = 0; row < features.size(1); ++row) {
+    const auto key = stamps[channel][row];
+    const bool row_valid = valid[channel][row];
+    const bool later_on_grid = grid && key >= 0 && key > last_key && (key - anchor) % step == 0;
+    if (!later_on_grid) {
+      if (!row_valid && !grid) continue;
+      TORCH_CHECK(!grid && row_valid && key >= 0,
+          "[cpb-family numeric-series] an interior row must be a later on-grid close; a NaN time is a leading prefix only");
+    }
+    if (key > cutoff) break;
+    if (!grid) anchor = key;
+    grid = true;
+    last_key = key;
+    PackedSlot slot;
+    slot.key = key;
+    if (!row_valid) {
+      have_reference = false;
+      slots.push_back(slot);
+      continue;
+    }
+    Bar current;
+    current.key = key;
+    for (int64_t feature = 0; feature < kFeatures; ++feature) {
+      current.value[static_cast<std::size_t>(feature)] = values[channel][row][feature];
+      if (!log_returns) {
+        TORCH_CHECK(std::isfinite(current.value[static_cast<std::size_t>(feature)]),
+            "[cpb-family numeric-series] a valid raw kline feature must be finite");
+      }
+    }
+    if (!log_returns) {
+      slot.observed = true;
+      slot.value = current.value;
+    } else if (!have_reference) {
+      have_reference = true;
+      reference = current;
+    } else {
+      slot.observed = true;
+      slot.value = log_return_view(current, reference);
+      reference = current;
+    }
+    slots.push_back(slot);
+  }
+  return slots;
+}
 } // namespace numeric_series_detail
 
 // samples[b] is one instrument. channel_ids[c] is the torch ordinal of
 // samples[b]'s channel c, in that order, and it must equal the configuration.
-// Each channel keeps the bars whose key is at or before the cutoff, takes the
-// last bar_counts[c] of the resulting slots (HISTORY_LENGTH when bar_counts is
-// empty), and right-aligns them. Left slots stay masked and their times are NaN.
+// An omitted bar_counts uses the settings list on config. An explicit empty
+// list is refused. settings() stores HISTORY_LENGTH on every channel when
+// CHANNEL_BAR_COUNTS itself is absent. Each channel keeps the bars whose key
+// is at or before the cutoff, takes the last count of the resulting slots, and
+// right-aligns them. Left slots stay masked and their times are NaN.
 // An omitted cutoff is the latest valid key in that sample. A log-return view
-// uses the previous valid bar of the same channel and does not write a cache.
-// The first bar of a channel stays out of that view. An edge sample that is
-// already normalized cannot take the view again.
+// walks every row in order and does not write a cache. It uses the immediately
+// previous row of the same channel. A missing row keeps its own finite close
+// time, a false mask, and value 0. The next row is masked, and that row's raw
+// close is the reference for the following return. The return does not reach
+// an older close. A false mask that is not a later on-grid close is a leading
+// NaN pad. The first bar stays in its slot and stays masked. An edge sample
+// that is already normalized cannot take the view again.
 [[nodiscard]] inline NumericSeriesHistory history_from_edge_samples(
     const Config &config, const std::vector<mityane::data::edge_sample_t> &samples,
     const std::vector<int64_t> &channel_ids, bool log_returns,
-    const std::vector<int64_t> &bar_counts = {}, const std::vector<int64_t> &cutoffs_ms = {}) {
+    const std::optional<std::vector<int64_t>> &bar_counts = std::nullopt,
+    const std::vector<int64_t> &cutoffs_ms = {}) {
   validate_config(config);
   const auto &level = config.level;
   TORCH_CHECK(level.input_width == numeric_series_detail::kFeatures,
@@ -143,8 +232,7 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
   const auto channels = level.channel_count;
   const auto history = level.history_length;
   const auto features = level.input_width;
-  std::vector<int64_t> counts = bar_counts;
-  if (counts.empty()) counts.assign(static_cast<std::size_t>(channels), history);
+  const auto counts = resolve_bar_counts(config, bar_counts);
   TORCH_CHECK(static_cast<int64_t>(counts.size()) == channels,
       "[cpb-family numeric-series] CHANNEL_BAR_COUNTS must list one count per channel");
   for (const auto count : counts) {
@@ -172,16 +260,13 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
         "[cpb-family numeric-series] each sample must have one row per configured channel");
     TORCH_CHECK(!(sample.normalized && log_returns),
         "[cpb-family numeric-series] a normalized edge sample is already a view; a second log-return view is refused");
-    std::vector<std::vector<numeric_series_detail::Bar>> bars(static_cast<std::size_t>(channels));
     int64_t latest = 0;
     bool any = false;
     for (int64_t channel = 0; channel < channels; ++channel) {
-      auto channel_bars = numeric_series_detail::valid_bars(sample, channel, steps[static_cast<std::size_t>(channel)]);
-      for (const auto &bar : channel_bars) {
+      for (const auto &bar : numeric_series_detail::valid_bars(sample, channel, steps[static_cast<std::size_t>(channel)])) {
         if (!any || bar.key > latest) latest = bar.key;
         any = true;
       }
-      bars[static_cast<std::size_t>(channel)] = std::move(channel_bars);
     }
     const auto cutoff = cutoffs_ms.empty() ? latest : cutoffs_ms[static_cast<std::size_t>(row)];
     TORCH_CHECK(cutoffs_ms.empty() ? any : true,
@@ -190,22 +275,8 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
         "[cpb-family numeric-series] a cutoff must be an exact nonnegative millisecond count");
     cutoff_at[row] = static_cast<double>(cutoff);
     for (int64_t channel = 0; channel < channels; ++channel) {
-      struct Slot {
-        int64_t key;
-        std::array<double, numeric_series_detail::kFeatures> value;
-      };
-      std::vector<Slot> slots;
-      const auto &channel_bars = bars[static_cast<std::size_t>(channel)];
-      for (std::size_t i = 0; i < channel_bars.size(); ++i) {
-        if (channel_bars[i].key > cutoff) break;
-        if (log_returns) {
-          if (i == 0) continue;
-          slots.push_back(Slot{channel_bars[i].key,
-              numeric_series_detail::log_return_view(channel_bars[i], channel_bars[i - 1])});
-        } else {
-          slots.push_back(Slot{channel_bars[i].key, channel_bars[i].value});
-        }
-      }
+      auto slots = numeric_series_detail::packed_slots(
+          sample, channel, steps[static_cast<std::size_t>(channel)], cutoff, log_returns);
       const auto keep = static_cast<std::size_t>(counts[static_cast<std::size_t>(channel)]);
       if (slots.size() > keep) slots.erase(slots.begin(), slots.end() - static_cast<std::ptrdiff_t>(keep));
       const auto pad = history - static_cast<int64_t>(slots.size());
@@ -215,6 +286,7 @@ inline std::array<double, kFeatures> log_return_view(const Bar &current, const B
         TORCH_CHECK(slot.key >= 0 && slot.key <= 9007199254740991LL,
             "[cpb-family numeric-series] a packed bar key must be an exact millisecond count");
         time_at[row][channel][tick] = static_cast<double>(slot.key);
+        if (!slot.observed) continue;
         for (int64_t coord = 0; coord < features; ++coord) {
           value_at[row][channel][tick][coord] = slot.value[static_cast<std::size_t>(coord)];
           observed_at[row][channel][tick][coord] = true;

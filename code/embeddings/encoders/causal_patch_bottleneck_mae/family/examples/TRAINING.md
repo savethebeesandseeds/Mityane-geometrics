@@ -38,7 +38,7 @@ The fixture creates eight explicitly synthetic rows. Each row is one instrument
 with two timeframe channels `[11,18]` (`4h` and `1M`), 40 raw ticks, two
 features and a 1000-unit anchor timestamp interval. That interval is the shared
 grid, not a claim that both channels are 1-second bars.
-The supplied [paired.conf](../config/paired.conf) uses the most recent 33 ticks,
+The supplied [paired.conf](../config/paired.conf) uses the most recent 36 ticks,
 patch6, encoder width32, level12/change3 and native15. Raw supplied history N and
 configured retained history H are separate quantities. This cohort is a tooling
 fixture, not a proposed real TRAIN population or a useful trained model.

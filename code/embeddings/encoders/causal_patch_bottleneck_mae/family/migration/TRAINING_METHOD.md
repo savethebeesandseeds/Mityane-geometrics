@@ -62,9 +62,11 @@ never refit them on resume, validation, TEST or inference.
 The mask ratio defaults to `0.25` and is part of configuration. For each
 example/channel, shuffle observed patch positions and hide
 `clamp(floor(mask_ratio*M + 0.5), 1, M-2)` complete patches, where M is the number
-of patches containing observations. At least three observed patches are needed:
-two remain visible and at least one is a hidden target. Partial final patches
-use the padded mask implementation while keeping the real history grid.
+of patches containing observations. The shared history width must be evenly
+divisible by the patch length, and that quotient must be at least 3. A channel
+is a reconstruction target only when every group contains at least one of its
+candles. The mask still needs at least three observed patches: two remain
+visible and at least one is a hidden target.
 
 Let O be original observation support and A the artificial patch mask. Query
 targets are **Q = O & A**; original visible context is **O & ~A**. Optional

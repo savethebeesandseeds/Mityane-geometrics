@@ -89,7 +89,7 @@ cp::Config read_fixture(const fs::path &path) {
          "  CHANNEL_IDS = 4, 7;\n"
          "  HISTORY_LENGTH = 17;\n"
          "  INPUT_WIDTH = 9;\n"
-         "  PATCH_LENGTH = 4;\n"
+         "  PATCH_LENGTH = 1;\n"
          "  LEVEL_EMBEDDING_SIZE = 8;\n"
          "  EMBEDDING_SIZE = 12;\n"
          "  ENCODER_WIDTH = 16;\n"
@@ -166,26 +166,43 @@ int main() {
   check(batch.cutoffs[0].item<double>() == static_cast<double>(cutoff), "cutoff is the latest valid bar");
   const auto earlier = view_of(2010., 2000.);
   const auto last = view_of(2030., 2010.);
-  for (int64_t tick = 0; tick < 15; ++tick) {
-    check(!std::isfinite(times[0][1][tick]), "15m pad time is NaN");
+  for (int64_t tick = 0; tick < 16; ++tick) {
+    check(!std::isfinite(times[0][1][tick]), "omitted argument keeps the settings count of one 15m bar");
     for (int64_t feature = 0; feature < 9; ++feature)
-      check(!observed[0][1][tick][feature], "15m left slots are not bars");
+      check(!observed[0][1][tick][feature] && values[0][1][tick][feature] == 0.,
+            "the omitted list leaves the other 15m slots empty");
   }
-  check(times[0][1][15] == static_cast<double>(cutoff - quarter), "15m slot 15 is its own earlier bar");
   check(times[0][1][16] == static_cast<double>(cutoff), "15m slot 16 is the bar that closes at the cutoff");
-  for (int64_t feature = 0; feature < 9; ++feature) {
-    check(observed[0][1][15][feature] && values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
-          "the earlier 15m bar stays in its own slot");
+  for (int64_t feature = 0; feature < 9; ++feature)
     check(observed[0][1][16][feature] && values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
-          "the last 15m bar is the latest view");
-  }
+          "the omitted settings list keeps the latest 15m return");
 
-  const auto counted = cp::history_from_edge_samples(config, {sample}, ids, true, {17, 1});
+  const std::vector<int64_t> one_quarter{17, 1};
+  const auto counted = cp::history_from_edge_samples(config, {sample}, ids, true, one_quarter);
   check(counted.history.observed[0][1].sum().item<int64_t>() == 9, "an explicit count keeps one 15m bar");
   check(!std::isfinite(counted.history.timestamps[0][1][15].item<double>()), "the dropped 15m bar is a pad");
   check(counted.history.timestamps[0][1][16].item<double>() == static_cast<double>(cutoff),
         "the kept 15m bar is the latest one");
   check(counted.history.data[0][1][16][3].item<double>() == last[3], "the kept 15m close is the latest view");
+
+  const auto kept_first = cp::history_from_edge_samples(config, {sample}, ids, true, std::vector<int64_t>{17, 3});
+  const auto kept_times = kept_first.history.timestamps.accessor<double, 3>();
+  const auto kept_values = kept_first.history.data.accessor<double, 4>();
+  const auto kept_observed = kept_first.history.observed.accessor<bool, 4>();
+  check(kept_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter),
+        "three raw 15m bars keep a masked first slot at that bar's own finite time, and the two returns stay right-aligned");
+  check(kept_times[0][1][15] == static_cast<double>(cutoff - quarter), "the middle 15m bar stays in its slot");
+  check(kept_times[0][1][16] == static_cast<double>(cutoff), "the last kept 15m bar closes at the cutoff");
+  for (int64_t feature = 0; feature < 9; ++feature) {
+    check(!kept_observed[0][1][14][feature] && kept_values[0][1][14][feature] == 0.,
+          "the first 15m bar is masked and does not store its close");
+    check(kept_observed[0][1][15][feature] &&
+              kept_values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
+          "the middle 15m bar returns against the immediately previous cache row");
+    check(kept_observed[0][1][16][feature] &&
+              kept_values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
+          "the last 15m bar returns against the immediately previous cache row");
+  }
 
   const auto raw = cp::history_from_edge_samples(config, {sample}, ids, false);
   check(raw.history.data[0][0][16][3].item<double>() == 1017., "raw close is the cache close");
@@ -203,7 +220,7 @@ int main() {
              "  CHANNEL_IDS = 4, 7;\n"
              "  HISTORY_LENGTH = 17;\n"
              "  INPUT_WIDTH = 9;\n"
-             "  PATCH_LENGTH = 4;\n"
+             "  PATCH_LENGTH = 1;\n"
              "  LEVEL_EMBEDDING_SIZE = 8;\n"
              "  EMBEDDING_SIZE = 12;\n"
              "  ENCODER_WIDTH = 16;\n"
@@ -217,6 +234,102 @@ int main() {
              "}\n";
   }
   refuses([&] { (void)cp::read_settings(dir / "empty.conf"); }, "an empty CHANNEL_BAR_COUNTS list is refused");
+  refuses([&] { (void)cp::history_from_edge_samples(config, {sample}, ids, true, std::vector<int64_t>{}); },
+          "an explicit empty bar-count list is refused");
+  refuses([&] { (void)cp::boundary::retain(batch.history, batch.cutoffs, config, std::vector<int64_t>{}); },
+          "retain refuses an explicit empty bar-count list");
+
+  {
+    std::ofstream absent(dir / "absent.conf");
+    absent << "ENCODER {\n"
+              "  MODEL_TAG = CPB-family;\n"
+              "  CHANNEL_COUNT = 2;\n"
+              "  CHANNEL_IDS = 4, 7;\n"
+              "  HISTORY_LENGTH = 17;\n"
+              "  INPUT_WIDTH = 9;\n"
+              "  PATCH_LENGTH = 1;\n"
+              "  LEVEL_EMBEDDING_SIZE = 8;\n"
+              "  EMBEDDING_SIZE = 12;\n"
+              "  ENCODER_WIDTH = 16;\n"
+              "  NUM_LAYERS = 1;\n"
+              "  NUM_HEADS = 2;\n"
+              "  FEEDFORWARD_WIDTH = 32;\n"
+              "  DECODER_HIDDEN_WIDTH = 16;\n"
+              "  SAMPLING_INTERVAL = 60000;\n"
+              "  DEVICE = cuda:0;\n"
+              "}\n";
+  }
+  const auto absent_config = cp::read_settings(dir / "absent.conf");
+  check(absent_config.channel_bar_counts == std::vector<int64_t>{17, 17},
+        "an absent CHANNEL_BAR_COUNTS key stores HISTORY_LENGTH on every channel");
+  const auto wide = cp::history_from_edge_samples(absent_config, {sample}, ids, true);
+  const auto wide_times = wide.history.timestamps.accessor<double, 3>();
+  const auto wide_values = wide.history.data.accessor<double, 4>();
+  const auto wide_observed = wide.history.observed.accessor<bool, 4>();
+  check(!std::isfinite(wide_times[0][1][13]), "absent-key history pads before the three 15m slots");
+  check(wide_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter), "absent-key history keeps the first 15m bar");
+  check(wide_times[0][1][15] == static_cast<double>(cutoff - quarter), "absent-key history keeps the middle 15m bar");
+  check(wide_times[0][1][16] == static_cast<double>(cutoff), "absent-key history keeps the last 15m bar");
+  for (int64_t feature = 0; feature < 9; ++feature) {
+    check(!wide_observed[0][1][14][feature] && wide_values[0][1][14][feature] == 0.,
+          "the absent-key default masks the first 15m bar inside the kept window");
+    check(wide_observed[0][1][15][feature] &&
+              wide_values[0][1][15][feature] == earlier[static_cast<std::size_t>(feature)],
+          "the absent-key default returns the middle bar against its previous cache row");
+    check(wide_observed[0][1][16][feature] &&
+              wide_values[0][1][16][feature] == last[static_cast<std::size_t>(feature)],
+          "the absent-key default keeps two 15m returns plus the masked first bar");
+  }
+
+  data::edge_sample_t gap;
+  constexpr int64_t gap_rows = 4;
+  gap.features = torch::zeros({2, gap_rows, 9}, torch::kFloat64);
+  gap.mask = torch::zeros({2, gap_rows}, torch::kBool);
+  gap.past_keys = torch::zeros({2, gap_rows}, torch::kInt64);
+  gap.normalized = false;
+  auto gap_features = gap.features.accessor<double, 3>();
+  auto gap_mask = gap.mask.accessor<bool, 2>();
+  auto gap_keys = gap.past_keys.accessor<int64_t, 2>();
+  for (int64_t row = 0; row < gap_rows; ++row) {
+    gap_mask[0][row] = true;
+    gap_keys[0][row] = cutoff - (3 - row) * minute;
+    for (int64_t feature = 0; feature < 9; ++feature) gap_features[0][row][feature] = 1000. + static_cast<double>(row);
+    for (int64_t feature = 4; feature < 9; ++feature) gap_features[0][row][feature] = 1.;
+  }
+  const int64_t quarter_keys[4] = {cutoff - 3 * quarter, cutoff - 2 * quarter, cutoff - quarter, cutoff};
+  const double gap_quarter_closes[4] = {2000., 50., 2010., 2030.};
+  const bool quarter_valid[4] = {true, false, true, true};
+  for (int64_t row = 0; row < gap_rows; ++row) {
+    gap_mask[1][row] = quarter_valid[row];
+    gap_keys[1][row] = quarter_keys[row];
+    for (int64_t feature = 0; feature < 9; ++feature) gap_features[1][row][feature] = gap_quarter_closes[row];
+    if (!quarter_valid[row]) continue;
+    for (int64_t feature = 4; feature < 9; ++feature) gap_features[1][row][feature] = 1.;
+  }
+  const auto gapped = cp::history_from_edge_samples(config, {gap}, ids, true, std::vector<int64_t>{4, 4});
+  const auto gap_out_times = gapped.history.timestamps.accessor<double, 3>();
+  const auto gap_out_values = gapped.history.data.accessor<double, 4>();
+  const auto gap_out_observed = gapped.history.observed.accessor<bool, 4>();
+  const double close_after = 2030.;
+  const double close_of_the_masked_post_hole_bar = 2010.;
+  const auto followed = view_of(close_after, close_of_the_masked_post_hole_bar);
+  check(!std::isfinite(gap_out_times[0][1][12]), "four on-grid rows right-align at ticks 13 through 16");
+  check(gap_out_times[0][1][13] == static_cast<double>(cutoff - 3 * quarter), "row 0 keeps its own finite close time");
+  check(gap_out_times[0][1][14] == static_cast<double>(cutoff - 2 * quarter), "the missing bar keeps its own finite close time");
+  check(gap_out_times[0][1][15] == static_cast<double>(cutoff - quarter), "the bar after the hole does not move into the hole's index");
+  check(gap_out_times[0][1][16] == static_cast<double>(cutoff), "the bar after the masked post-hole bar closes at the cutoff");
+  for (int64_t feature = 0; feature < 9; ++feature) {
+    check(!gap_out_observed[0][1][13][feature] && gap_out_values[0][1][13][feature] == 0.,
+          "row 0 is masked and its value is 0");
+    check(!gap_out_observed[0][1][14][feature] && gap_out_values[0][1][14][feature] == 0.,
+          "the missing row is masked and its value is 0");
+    check(!gap_out_observed[0][1][15][feature] && gap_out_values[0][1][15][feature] == 0.,
+          "the bar after the hole is masked and its value is 0");
+    check(gap_out_observed[0][1][16][feature] &&
+              gap_out_values[0][1][16][feature] == followed[static_cast<std::size_t>(feature)],
+          "the following bar returns against the masked post-hole bar");
+  }
+  check(gap_out_values[0][1][16][3] == std::log(close_after / close_of_the_masked_post_hole_bar), "log(close_after / close_of_the_masked_post_hole_bar)");
 
   const auto retained = cp::boundary::retain(batch.history, batch.cutoffs, config);
   check(retained.raw.data.sizes() == torch::IntArrayRef({2, 2, history, 9}), "encoder retains the packed window");
@@ -226,19 +339,51 @@ int main() {
   auto shared = batch.history;
   shared.timestamps = batch.history.timestamps.select(1, 0).contiguous();
   refuses([&] { (void)cp::boundary::retain(shared, batch.cutoffs, config); }, "a shared timestamp row is refused");
-  const auto trimmed = cp::boundary::retain(batch.history, batch.cutoffs, config, {17, 1});
-  check(trimmed.raw.observed[0][1].sum().item<int64_t>() == 9, "retain honors a shorter bar count");
+  const auto trimmed = cp::boundary::retain(batch.history, batch.cutoffs, config, one_quarter);
+  check(trimmed.raw.observed[0][1].sum().item<int64_t>() == 9, "retain honors the settings count");
   check(trimmed.times[0][1][16].item<double>() == static_cast<double>(cutoff), "retain keeps the latest counted bar");
+  const auto trimmed_wide = cp::boundary::retain(wide.history, wide.cutoffs, absent_config, one_quarter);
+  check(trimmed_wide.raw.observed[0][1].sum().item<int64_t>() == 9,
+        "an explicit count overrides the absent-key HISTORY_LENGTH default");
+  check(trimmed_wide.times[0][1][16].item<double>() == static_cast<double>(cutoff),
+        "the override keeps the latest 15m bar");
+  const auto patch_counts = cp::patches_containing_a_real_bar(batch.history.timestamps, config);
+  check(patch_counts[0][0].item<int64_t>() == 17 && patch_counts[0][1].item<int64_t>() == 1,
+        "history 17 and patch length 1 give seventeen minute groups and one 15m group");
+  const auto masks = tr::make_mask(batch.history, batch.cutoffs, config, 5, 0);
+  const auto eligible = masks.eligible_channels.accessor<bool, 2>();
+  check(eligible[0][0] && eligible[1][0], "the minute channel fills every group and can be a target");
+  check(!eligible[0][1] && !eligible[1][1], "one 15m bar is visible context and is not a reconstruction target");
+  check(!masks.target[0][1].any().item<bool>() && !masks.target[1][1].any().item<bool>(),
+        "the short channel has no reconstruction target cells");
   tr::PreprocessingIdentity identity{"synthetic-numeric-series-no-market-population", "TRAIN-only-fixture",
                                      "numeric-series-log-return-view-v1"};
   tr::PreprocessingFitter fitter(config, identity);
   fitter.add(batch.history, batch.cutoffs);
+  fitter.add(wide.history, wide.cutoffs);
   const auto fitted = fitter.freeze();
   auto instance = cp::fresh(config, fitted.scaler, fitted.bank, 221119);
+  check(instance.model->config().channel_bar_counts == one_quarter,
+        "fresh construction keeps the settings bar-count list");
   const auto encoding = instance.model->encode_at(batch.history, batch.cutoffs, fitted.scaler);
   check(encoding.native.is_cuda() && encoding.native.size(0) == 2 &&
             torch::isfinite(encoding.native).all().item<bool>() && encoding.valid.all().item<bool>(),
         "finite CUDA forward on the numeric-series window");
+  const auto wide_encoding = instance.model->encode_at(wide.history, wide.cutoffs, fitted.scaler);
+  check(wide_encoding.native.size(0) == 1 && torch::isfinite(wide_encoding.native).all().item<bool>(),
+        "encode_at applies the settings bar counts to a longer history");
+  const auto checkpoint = dir / "roundtrip.pt";
+  cp::save_checkpoint(checkpoint.string(), instance.model, fitted.scaler, 0);
+  const auto loaded = cp::load_checkpoint(checkpoint.string(), config.level.device, &config);
+  check(loaded.config.channel_bar_counts == one_quarter, "checkpoint round-trip keeps the settings list");
+  check(loaded.model->config().channel_bar_counts == one_quarter, "the loaded encoder uses the stored list");
+  tr::OptimizerConfig recipe;
+  auto optimizer = tr::make_optimizer(instance.model, recipe);
+  tr::TrainingProgress progress{0, 0, 11, 12, 13};
+  instance.model->train();
+  const auto step = tr::train_step(instance.model, fitted.scaler, *optimizer, progress, batch.history, batch.cutoffs, recipe);
+  check(step.updated && progress.completed_updates == 1 && progress.attempted_batches == 1,
+        "train_step honors the settings list and trains the minute channel");
 
   fs::remove_all(dir);
   std::cout << "numeric-series history passed\n";

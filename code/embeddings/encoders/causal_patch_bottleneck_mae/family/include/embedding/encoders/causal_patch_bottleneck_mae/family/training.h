@@ -125,7 +125,15 @@ inline MaskBatch make_mask(const RawHistory &raw,const torch::Tensor &cutoffs,
   family::validate_config(config);
   const auto retained=boundary::retain(raw,cutoffs,config);
   const auto seed=training_counter_seed(base_seed,attempt);
-  return implementation::configurable_spectral_make_training_mask(retained.raw.observed,config.level,seed);
+  auto plan=implementation::configurable_spectral_make_training_mask(retained.raw.observed,config.level,seed);
+  // A channel that misses a group stays visible context. The preserved masker
+  // throws when a target sits on an ineligible channel, so the hidden selection
+  // is cleared before that masker reads it. A channel that fills every group
+  // returns the same hidden tensor and keeps the mask bits.
+  const auto limited=limit_reconstruction_targets(plan.hidden,retained.times,config);
+  if(!limited.is_same(plan.hidden))
+    plan=implementation::configurable_spectral_mask_from_hidden(retained.raw.observed,limited,config.level);
+  return plan;
 }
 
 struct StepResult {

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <string>
 
 namespace cp=embedding::encoders::causal_patch_bottleneck_mae::family;
 namespace old=embedding::encoders::causal_patch_bottleneck_mae::v16;
@@ -17,6 +18,10 @@ namespace {
 int64_t checks=0,updates=0;
 void check(bool condition,const char *message){++checks;TORCH_CHECK(condition,"[CPB family fixture] ",message);}
 template<class F>void refuses(F call,const char *message){bool caught=false;try{call();}catch(const std::exception&){caught=true;}check(caught,message);}
+template<class F>void refuses_with(F call,const char *fragment,const char *message){
+  bool caught=false;try{call();}catch(const std::exception &error){caught=std::string(error.what()).find(fragment)!=std::string::npos;}
+  check(caught,message);
+}
 bool bits(const torch::Tensor &a,const torch::Tensor &b){return cp::boundary::same_bits(a,b);}
 cp::RawHistory history(const cp::Config &config){
   const auto &c=config.level;const int64_t B=4,N=c.history_length+7;
@@ -137,15 +142,20 @@ void invalid_configurations(const fs::path &configs){
     if(kind==0)c.level.history_length=16;else if(kind==1)c.level.num_heads=3;else if(kind==2)c.level.export_width=4;
     else if(kind==3)c.change_width=0;else if(kind==4)c.level.channel_ids={11,11};else c.level.input_width=std::numeric_limits<int64_t>::max();
     refuses([&]{cp::training::PreprocessingFitter fitter(c,{"synthetic","TRAIN","fixture"});},"invalid or overflowing configuration refused before allocation");}
+  auto indivisible=valid;indivisible.level.history_length=34;
+  refuses_with([&]{cp::validate_config(indivisible);},"evenly divisible by patch length","a shared width that is not a multiple of the patch length is refused");
+  auto two_groups=valid;two_groups.level.history_length=18;two_groups.level.patch_length=9;
+  refuses_with([&]{cp::validate_config(two_groups);},"at least 3 groups","two groups are refused after the history length already satisfies H>=17");
 }
 void benchmark_constructor_parity(){
-  const auto config=old::read_settings("code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/config/v16.conf");
+  const auto numerical=old::read_settings("code/embeddings/encoders/causal_patch_bottleneck_mae/versions/v16/config/v16.conf");
+  const auto config=cp::with_history_length_counts(numerical);
   const auto raw=history(config);const auto cutoffs=cuts(config);
   tr::PreprocessingFitter fitter(config,{"synthetic-benchmark-constructor-only","TRAIN-only-fixture","family-rounded-moments-v1"});
   fitter.add(raw,cutoffs);const auto stats=fitter.freeze();
   auto current=cp::fresh(config,stats.scaler,stats.bank,222000);
   const auto counts=cp::parameter_counts(config);
-  auto historical=old::fresh(config,stats.scaler,stats.bank,222000);
+  auto historical=old::fresh(numerical,stats.scaler,stats.bank,222000);
   const old::RawHistory historical_input{raw.data,raw.observed,raw.channel_ids,raw.timestamps.select(1,0).contiguous(),raw.sampling_interval};
   check(counts.learned_tensors==75&&counts.learned_values==293672&&counts.fixed_values==3888,"derived benchmark counts agree with historical fixture");
   const auto before=historical.model->named_parameters();

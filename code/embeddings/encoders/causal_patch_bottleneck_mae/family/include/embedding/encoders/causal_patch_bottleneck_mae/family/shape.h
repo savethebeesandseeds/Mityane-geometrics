@@ -2,10 +2,22 @@
 #pragma once
 #include "embedding/encoders/causal_patch_bottleneck_mae/detail/v16/location_scale_decoder_config.h"
 #include <initializer_list>
+#include <utility>
+#include <vector>
 
 namespace embedding::encoders::causal_patch_bottleneck_mae::family {
 namespace implementation=embedding::encoders::causal_patch_bottleneck_mae::detail::v16;
-using Config=implementation::LocationScaleDecoderConfig;
+// The numerical fields are the preserved V16 configuration. channel_bar_counts
+// is family packing state. It is not part of the V16 numerical entry.
+struct Config : implementation::LocationScaleDecoderConfig {
+  std::vector<int64_t> channel_bar_counts;
+  Config()=default;
+  template<class Level>
+  Config(Level level,int64_t change_width)
+      :implementation::LocationScaleDecoderConfig{std::move(level),change_width}{}
+  explicit Config(const implementation::LocationScaleDecoderConfig &numerical)
+      :implementation::LocationScaleDecoderConfig(numerical){}
+};
 
 // This family reuses the frozen V16 numerical implementation. Geometry and
 // capacity belong to Config; none of these counts identifies a trained instance.
@@ -41,15 +53,20 @@ inline Dimensions dimensions(const Config &config){
       c.patch_length>0 && c.encoder_width>0 && c.export_width>0 && config.change_width>0 &&
       c.num_layers>0 && c.num_heads>0 && c.feedforward_width>0 && c.decoder_hidden_width>0,
       "[cpb-family] positive dimensions and H>=17 required");
+  const auto C=c.channel_count,H=c.history_length,F=c.input_width,P=c.patch_length;
+  // The shared row only. A shorter channel may still leave empty left slots.
+  TORCH_CHECK(H%P==0,
+      "[cpb-family] shared history length must be evenly divisible by patch length");
+  TORCH_CHECK(H/P>=3,
+      "[cpb-family] shared history length divided by patch length must be at least 3 groups");
   TORCH_CHECK(c.device.is_cuda() && c.device.index()>=0,
       "[cpb-family] an explicit CUDA device index is required");
-  const auto C=c.channel_count,H=c.history_length,F=c.input_width,P=c.patch_length;
   // Match the original checked pair-count domain before its C*C validation.
   (void)multiply({C,C});
   const auto pairs=multiply({C,C-1})/2,spectral=multiply({4,pairs});
   TORCH_CHECK(c.export_width>spectral,"[cpb-family] level width must exceed four coordinates per channel pair");
   const auto K=add({H/P,H%P?1:0}),padded=multiply({K,P});
-  (void)add({H,P-1}); // The unchanged core uses (H+P-1)/P.
+  (void)add({H,P-1}); // The unchanged core uses (H+P-1)/P. Valid configs have H%P==0, so K is H/P.
   return{C,H,F,P,c.encoder_width,c.export_width,config.change_width,
       add({c.export_width,config.change_width}),K,padded,pairs,spectral,c.export_width-spectral,
       multiply({8,pairs,F,F}),multiply({10,C,F}),multiply({C,H,F})};

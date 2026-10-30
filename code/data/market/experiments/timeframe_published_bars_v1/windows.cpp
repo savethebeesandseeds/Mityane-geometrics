@@ -3,10 +3,15 @@
 // One instrument per row. Each channel is that resolution's own exchange file.
 // history_from_edge_samples right-aligns each channel's own bars into the
 // packing width. This program does not aggregate and does not hold a bar
-// across another channel's slots. The first decision leaves one finest bar
-// before the packed suffix so the log-return view can fill every requested
-// finest slot. Validation decisions stay far enough apart that every packed
-// channel, including its log-return predecessor, is disjoint.
+// across another channel's slots. Each channel is loaded with one extra bar.
+// That bar's previous cache row is missing or invalid, so the log-return view
+// leaves it masked, and the requested count then drops it. Every requested
+// slot is a return against the immediately previous cache row. The first
+// decision leaves that predecessor inside the role. Validation decisions stay
+// far enough apart that every packed channel, including its log-return
+// predecessor, is disjoint. width128.conf and width64.conf are the one-clock
+// record of the 29 October measurement. This builder refuses those filenames
+// and any settings file that does not name CHANNEL_BAR_COUNTS.
 #include "embedding/data/observation_windows.h"
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h"
 
@@ -175,23 +180,27 @@ std::string join_ids(const std::vector<int64_t> &ids) {
 
 int main(int argc, char **argv) {
   try {
-    check(argc == 5 || argc == 7, "usage: timeframe_published_windows --root PUBLISHED_ROOT --output NEWLEAF [--settings FILE]");
-    check(std::string(argv[1]) == "--root" && std::string(argv[3]) == "--output",
-        "usage: timeframe_published_windows --root PUBLISHED_ROOT --output NEWLEAF [--settings FILE]");
-    fs::path settings_path = "code/data/market/experiments/timeframe_published_bars_v1/width64.conf";
-    if (argc == 7) {
-      check(std::string(argv[5]) == "--settings", "optional pair is --settings FILE");
-      settings_path = argv[6];
-    }
-    const auto root = fs::canonical(argv[2]);
+    check(argc == 7, "usage: timeframe_published_windows --root PUBLISHED_ROOT --output NEWLEAF --settings FILE");
+    check(std::string(argv[1]) == "--root" && std::string(argv[3]) == "--output" && std::string(argv[5]) == "--settings",
+        "usage: timeframe_published_windows --root PUBLISHED_ROOT --output NEWLEAF --settings FILE");
+    const fs::path settings_path = argv[6];
+    const auto settings_name = settings_path.filename().string();
+    check(settings_name != "width128.conf" && settings_name != "width64.conf",
+        "width128.conf and width64.conf are the one-clock record of the 29 October measurement; "
+        "seed 949102 held 129 minute bars, 6 hour bars, and 3 day bars on the minute sample. "
+        "This builder will not read them as packed geometry and will not rebuild that dataset");
     const fs::path output = fs::absolute(argv[4]).lexically_normal();
     check(!fs::exists(output) && fs::is_directory(output.parent_path()), "new output leaf in an existing parent");
+    const auto root = fs::canonical(argv[2]);
     const auto settings_file = fs::canonical(settings_path);
     torch::set_num_threads(1);
     torch::set_num_interop_threads(1);
     const auto document = cp::implementation::configuration::Document::read(settings_file);
+    check(document.block("ENCODER").contains("CHANNEL_BAR_COUNTS"),
+        "packed geometry requires CHANNEL_BAR_COUNTS; an absent list is the shared-clock record "
+        "and this builder will not read it as HISTORY_LENGTH bars of every channel");
     const auto config = cp::settings(document);
-    const auto counts = cp::channel_bar_counts(document.block("ENCODER"), config);
+    const auto counts = config.channel_bar_counts;
     const auto ids = cp::implementation::resolved_channel_ids(config.level);
     check(config.level.history_length >= 17 && !ids.empty() && counts.size() == ids.size(), "settings packing width");
     int64_t finest_step = std::numeric_limits<int64_t>::max();

@@ -94,7 +94,7 @@ cp::Encoder adapt_reference(const old::Loaded &reference){
     for(const auto &p:source_buffers){check(destination_buffers.contains(p.key()),"reference adaptation buffer key");destination_buffers[p.key()].copy_(p.value());
       check(cp::boundary::same_bits(destination_buffers[p.key()],p.value())&&(p.value().numel()==0||destination_buffers[p.key()].const_data_ptr()!=p.value().const_data_ptr()),"independent exact buffer adaptation");}
   }
-  auto result=cp::Encoder(core,reference.initialization_seed,reference.scaler.identity(),reference.causal_updates,reference.initial_state_identity);
+  auto result=cp::Encoder(core,reference.initialization_seed,reference.scaler.identity(),reference.causal_updates,reference.initial_state_identity,cp::history_length_bar_counts(reference.config));
   cp::validate_model_counts(result);result->eval();result->clear_gradients();return result;
 }
 struct GradientSet {

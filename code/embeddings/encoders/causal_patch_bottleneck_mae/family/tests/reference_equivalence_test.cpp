@@ -33,7 +33,7 @@ std::string quote(const std::string &text){
   out<<'"';return out.str();
 }
 old::RawHistory historical(const cp::RawHistory &raw){return{raw.data,raw.observed,raw.channel_ids,raw.timestamps.select(1,0).contiguous(),raw.sampling_interval};}
-cp::RawHistory history(const cp::Config &config,int64_t phase=0){
+cp::RawHistory history(const impl::LocationScaleDecoderConfig &config,int64_t phase=0){
   const auto &c=config.level;const int64_t B=3,N=c.history_length+17;
   auto data=torch::zeros({B,c.channel_count,N,c.input_width},torch::kFloat64);
   auto observed=torch::ones(data.sizes(),torch::kBool);
@@ -47,7 +47,7 @@ cp::RawHistory history(const cp::Config &config,int64_t phase=0){
   const auto times=(torch::arange(N,torch::kFloat64)*c.sampling_interval).view({1,1,N}).expand({B,c.channel_count,N}).contiguous();
   return{data,observed,torch::tensor(impl::resolved_channel_ids(c),torch::kInt64),times,c.sampling_interval};
 }
-torch::Tensor cutoffs(const cp::Config &config){
+torch::Tensor cutoffs(const impl::LocationScaleDecoderConfig &config){
   const auto H=config.level.history_length;
   return torch::tensor(std::vector<double>{double(H-1),double(H+7),double(H+16)},torch::kFloat64)*config.level.sampling_interval;
 }
@@ -138,7 +138,7 @@ cp::Encoder reference_adapter(const old::Loaded &reference){
       check(destination_buffers[p.key()].unsafeGetTensorImpl()!=p.value().unsafeGetTensorImpl()&&
           (p.value().numel()==0||destination_buffers[p.key()].const_data_ptr()!=p.value().const_data_ptr()),"reference buffers use independent storage");}
   }
-  auto model=cp::Encoder(core,reference.initialization_seed,reference.scaler.identity(),reference.causal_updates,reference.initial_state_identity);
+  auto model=cp::Encoder(core,reference.initialization_seed,reference.scaler.identity(),reference.causal_updates,reference.initial_state_identity,cp::history_length_bar_counts(reference.config));
   cp::validate_model_counts(model);model->eval();model->clear_gradients();return model;
 }
 torch::Tensor context(const impl::MaskPlan &masks,const tr::TrainingProgress &progress){
@@ -178,7 +178,7 @@ ReferenceResult trained_reference(old::Loaded &reference){
   const auto future=adapted->encode_at(poison,cuts,reference.scaler);
   check(bits(b.native,future.native)&&bits(b.valid,future.valid),"trained family reference crops future values and masks");
   const tr::TrainingProgress counters{0,0,221101,221102,221103};
-  const auto masks=tr::make_mask(raw,cuts,reference.config,counters.mask_seed,0);const auto deleted=context(masks,counters);
+  const auto masks=tr::make_mask(raw,cuts,cp::with_history_length_counts(reference.config),counters.mask_seed,0);const auto deleted=context(masks,counters);
   reference.model->train();adapted->train();
   const auto old_forward=reference.model->forward_at(legacy,cuts,masks.hidden,reference.scaler,deleted);
   const auto new_forward=adapted->forward_at(raw,cuts,masks.hidden,reference.scaler,deleted);
@@ -195,7 +195,7 @@ ReferenceResult trained_reference(old::Loaded &reference){
 void matched_fresh_training(const old::Loaded &reference,const fs::path &output){
   // Use the exact saved preprocessing to isolate the API change. No fitter is called.
   auto legacy=old::fresh(reference.config,reference.scaler,reference.model->normalizer(),946103);
-  auto current=cp::fresh(reference.config,reference.scaler,reference.model->normalizer(),946103);
+  auto current=cp::fresh(cp::with_history_length_counts(reference.config),reference.scaler,reference.model->normalizer(),946103);
   check(legacy.model->initial_state_identity()==reference.initial_state_identity,"fresh historical initialization recreates selected checkpoint's recorded initial state");
   same_model(legacy.model,current.model);const auto initial=legacy.model->state_identity();
   auto legacy_optimizer=ot::make_optimizer(legacy.model),current_optimizer=tr::make_optimizer(current.model);
@@ -206,7 +206,7 @@ void matched_fresh_training(const old::Loaded &reference,const fs::path &output)
       cp::Encoder &new_model,torch::optim::AdamW &new_optimizer,tr::TrainingProgress &new_progress){
     same_progress(old_progress,new_progress);const auto phase=tr::training_counter_seed(old_progress.row_seed,old_progress.attempted_batches)%97;
     const auto raw=history(reference.config,phase);const auto cuts=cutoffs(reference.config);
-    const auto masks=tr::make_mask(raw,cuts,reference.config,old_progress.mask_seed,old_progress.attempted_batches);
+    const auto masks=tr::make_mask(raw,cuts,cp::with_history_length_counts(reference.config),old_progress.mask_seed,old_progress.attempted_batches);
     const auto retained=old::boundary::retain(historical(raw),cuts,reference.config);
     const auto historical_masks=impl::configurable_spectral_make_training_mask(retained.raw.observed.to(reference.config.level.device),
         reference.config.level,ot::training_counter_seed(old_progress.mask_seed,old_progress.attempted_batches));
@@ -222,7 +222,7 @@ void matched_fresh_training(const old::Loaded &reference,const fs::path &output)
   ot::save_training_state(old_path.string(),legacy.model,legacy.scaler,*legacy_optimizer,identity,lp);
   tr::save_training_state(new_path.string(),current.model,current.scaler,*current_optimizer,identity,cp_progress,options);
   auto old_resumed=ot::load_training_state(old_path.string(),reference.config,identity);
-  auto new_resumed=tr::load_training_state(new_path.string(),reference.config,identity,options);
+  auto new_resumed=tr::load_training_state(new_path.string(),cp::with_history_length_counts(reference.config),identity,options);
   same_model(legacy.model,old_resumed.model);same_optimizer(legacy.model,*legacy_optimizer,old_resumed.model,*old_resumed.optimizer);same_progress(lp,old_resumed.progress);
   same_model(current.model,new_resumed.model);same_optimizer(current.model,*current_optimizer,new_resumed.model,*new_resumed.optimizer);same_progress(cp_progress,new_resumed.progress);
   for(int step=0;step<2;++step){

@@ -56,7 +56,7 @@ training budgets or measured quality winners.
 | Encoder attention | W divisible by number of heads |
 | Level width | D greater than `4*C*(C-1)/2`, leaving a positive learned part |
 | Native width | D + U; learned part `D - 4*choose(C,2)`, analytic spectral part `4*choose(C,2)`, change part U |
-| Partial final patch | Allowed: learned backbone pads to `ceil(H/P)*P`; harmonic/time coordinates keep original H |
+| Shared groups | History length is evenly divisible by patch length. The quotient G is at least 3. A shorter channel may leave empty left slots and a partly filled group |
 | Execution | Explicit CUDA device, F32 model; genuine CPU F64 observations, Boolean masks, timeframe channel IDs and explicit aligned cutoffs |
 | Architecture choices | One early channel mixer, global mode2/source0, raw patch projection and dropout0 |
 
@@ -65,9 +65,11 @@ knobs. Zero dropout also avoids an unrecorded stochastic network RNG on resume.
 The focused evidence uses CUDA:0; other CUDA devices and arbitrarily large valid
 configurations have not been tested. Shape validity is not a memory guarantee.
 
-Useful training support additionally needs three observed patches per eligible
-channel: two visible and at least one hidden target. Unsupported examples/batches
-abstain; a syntactically valid configuration does not ensure data support.
+Useful training support additionally needs every group on an eligible channel to
+contain at least one candle. The masker still needs at least three observed
+patches on that channel: two visible and one hidden target. Three groups is the
+minimum. A larger group count is allowed. Unsupported examples/batches abstain;
+a syntactically valid configuration does not ensure data support.
 
 `dimensions(config)` derives patch, pair, bank, decoder and native sizes.
 `parameter_counts(config)` derives learned/fixed tensor and value counts using
@@ -89,16 +91,37 @@ A numeric-series window enters through
 [numeric_series_history.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h).
 `history_from_edge_samples` reads one `edge_sample_t` per instrument from the
 numeric-series loader. Channel order is the configuration's torch interval
-ids. `HISTORY_LENGTH` is a packing width. Each channel contributes its own bars
-with keys at or before the cutoff, keeps the last `CHANNEL_BAR_COUNTS` of the
-resulting slots (or `HISTORY_LENGTH` when that list is absent), and right-aligns
-them. A shorter channel leaves NaN timestamps and a false mask on the left.
-Index i is that channel's i-th packed bar. A log-return view uses
-`kline_cache_t::normalize_log_returns` against the previous valid bar of the
-same channel and does not write a second cache. The first bar of that channel
-stays out. `INPUT_WIDTH` is the nine kline features. The same `RawHistory` then
-goes to the fitter and `encode_at`. This does not select a population or replace
-the observation-window example.
+ids. `HISTORY_LENGTH` is a packing width. An omitted bar-count argument uses
+the list stored on the settings `Config`. `settings()` fills that list from
+`CHANNEL_BAR_COUNTS`. When the key is absent, that call site stores
+`HISTORY_LENGTH` on every channel. An explicit empty list is refused. Each
+channel keeps the bars whose key is at or before the cutoff, takes the last
+count of the resulting slots, and right-aligns them. A shorter channel leaves
+NaN timestamps and a false mask on the left. Index i is that channel's i-th
+packed bar. A log-return view walks every edge-sample row and uses
+`kline_cache_t::normalize_log_returns` against the immediately previous row of
+the same channel. It does not compact holes and does not write a second cache.
+A missing row keeps its own finite close time, a false mask, and value 0. The
+next row is masked, and that row's raw close is only the reference for the
+following return. The return does not reach an older close. Open, high, and
+low use that previous close. Volume, quote volume, trades, and both taker
+volumes are log1p of the current row, and they are masked with the row. A
+false mask that is not a later on-grid close is a leading NaN pad. The first
+bar stays in its slot and stays masked. A cache that is already normalized is
+refused, so the view is not applied twice. `INPUT_WIDTH`
+is the nine kline features. The fitter, `train_step`, and `encode_at` retain
+with that same settings list.
+
+A channel is a reconstruction target only when every group contains at least
+one of its candles. A candle is a finite timestamp, including a bar whose
+features are masked. One candle fills its group; empty slots inside that group
+do not. A channel that misses a group stays visible context: its hidden
+selection is cleared before the preserved masker reads it. History 24 and patch
+length 8 make three groups. Counts 24, 12, and 1 put the hourly channel in two
+groups and the daily channel in one group, so those two are not reconstruction
+targets. Seven daily bars still fill only the last group, so that count is not
+a learned daily target under this patch length. This does not select a
+population or replace the observation-window example.
 
 Include [family/training.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h).
 The caller supplies its own declared TRAIN stream and source/split manifests.
@@ -216,18 +239,24 @@ Run once in a new named session/output leaf:
 ```
 
 The fixture generates its own TRAIN data and reads no trained checkpoint or
-market dataset. It covers C1/H25/F1/P4/native10, C2/H33/F2/P6/native15 and
-C4/H49/F3/P8/native37, changing capacity as well as shape. It also checks
-benchmark constructor/forward parity, poisoned future values/masks, canonical
-channel order, partial-patch trace, frozen state, high-offset input scaling,
-typed export and refusal paths. The
+market dataset. It covers C1/H24/F1/P4/native10, C2/H36/F2/P6/native15 and
+C4/H48/F3/P8/native37. Each shared width is evenly divisible by its patch
+length, and each quotient is 6 groups. It also checks benchmark
+constructor/forward parity, poisoned future values/masks, canonical channel
+order, diagnostic trace, frozen state, high-offset input scaling, typed export
+and refusal paths, including a width that is not a multiple of the patch length
+and a legal width whose group count is 2. The 30 October group check passed
+901 assertions, nine physical synthetic updates, and three exact next-step
+resume cases. Learned counts at these widths are 6162, 22787, and 81103; fixed
+counts stay 0, 64, and 864. The
 [22 October receipt](evidence/portability-2026-10-22.json) records the passed
 **899 assertions**, **nine physical synthetic updates** and **three exact
-next-step resume cases**, with source and tested-binary pins. Learned parameter
-counts are 6197, 22751 and 81228 for the three fixtures; fixed counts are 0, 64
-and 864. The benchmark's constructor and forward output also match the preserved
-entry at its original configuration. These are engineering checks, not evidence
-of quality at the alternative geometries.
+next-step resume cases** at the earlier widths H25, H33, and H49, with source
+and tested-binary pins. Learned parameter counts in that receipt are 6197,
+22751 and 81228; fixed counts are 0, 64 and 864. The benchmark's constructor
+and forward output also match the preserved entry at its original
+configuration. These are engineering checks, not evidence of quality at the
+alternative geometries.
 
 ## Trained-reference compatibility and runnable example
 
