@@ -74,8 +74,8 @@ Tests and configuration files live with their owning component.
 Encoder Heroes **Hx15–Hx18** develop reusable families and provider tools with
 supported configuration, callable interfaces and explicit workflow coverage.
 Hx20 owns the Temporal Fusion Transformer in `code/fusion/`. It is not one of
-those observation-embedding families. Hx21 owns state fusion models in
-`code/fusion/state_fusion`. The recorded surface is a CUDA Set Transformer
+those observation-embedding families. Hx21 owns the State fusion transformer in
+`code/fusion/state_fusion_transformer`. The recorded surface is a CUDA Set Transformer
 checked with synthetic masked reconstruction, and the State
 Representation Network is not that family.
 The [shared encoder instructions](code/embeddings/encoders/AGENTS.md) separate
@@ -106,8 +106,9 @@ reconstruction leader; V3 is the clean baseline. V14 is the latest catalogued
 historical instance, separate from this research-reference choice. The
 [29 October handoff](code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
 names the timeframe development instance for Cuwacunu: CPB-family width 128,
-seed 949102, 2048 updates, channels 1m/1h/1d. That note does not replace the
-research reference above.
+seed 949102, 2048 updates, channels 1m/1h/1d. The 29 October search is
+[closed](code/data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
+on that instance. That note does not replace the research reference above.
 
 The [V16 comparison](code/embeddings/evaluation/protocols/cpb_v16_temporal_v1/RESULTS.md)
 completed on 21 October with four January candidate record scopes. Both March

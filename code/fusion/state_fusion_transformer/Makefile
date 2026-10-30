@@ -3,7 +3,7 @@
 # LibTorch CUDA build. Products stay under /opt/mityane-geometrics.
 HERE := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 LIBTORCH ?= /opt/cuwacunu_embedding/libtorch
-BUILD_DIR ?= /opt/mityane-geometrics/fusion/build/state-fusion
+BUILD_DIR ?= /opt/mityane-geometrics/fusion/build/state-fusion-transformer
 CXX ?= g++
 CPPFLAGS := -I$(HERE)/include \
 	-isystem $(LIBTORCH)/include -isystem $(LIBTORCH)/include/torch/csrc/api/include \

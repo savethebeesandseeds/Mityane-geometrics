@@ -22,7 +22,9 @@ Those four names are not the published three-instrument probes, and they do
 not enter the promotion rule. The
 [29 October handoff](migration/HANDOFF_2026-10-29.md) names the development
 instance to bring into Cuwacunu: width 128, seed 949102, 2048 updates, channels
-4, 9, and 15. That handoff leaves this research reference in place.
+4, 9, and 15. The 29 October search is
+[closed](../../../../data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
+on that instance. The handoff leaves this research reference in place.
 [`current.json`](../versions/current.json) and [`index.json`](../versions/index.json)
 are frozen catalogs. [Version roles](../versions/ROLES.md) name the one live pointer.
 

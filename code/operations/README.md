@@ -23,6 +23,12 @@ Hx06's recorded paired-response comparator is its first registered tool. Each to
 own payload and representation requirements; model-owned encoding stays with
 the provider. Other existing interfaces remain available independently.
 
+The [retrieval component](retrieval/README.md) owns Hx01 / OR-01 ranked source
+retrieval. OR01-RET 0.1.0 is registered on the common tool boundary. It ranks
+caller-supplied saved vectors through the exact-search reference and refuses
+live calls and unbound relevance. Both profiles remain unbound. The registration
+establishes no retrieval quality.
+
 The [counterfactuals component](counterfactuals/README.md) owns Hx06 / OR-06
 comparison work. Its entry guide links the callable paired-response tool,
 contracts, synthetic evaluations, readout decision and separately authored

@@ -50,7 +50,7 @@ as **Hx06 · Matched comparisons, sensitivity, and counterfactual analysis**.
 **OR-NN** identifies a capability family in the Operations over Representations
 charter. Hx01–Hx13 currently map to OR-01–OR-13; Hx14 owns shared foundations,
 Hx15–Hx18 own encoders/providers, Hx19 owns dataloaders, Hx20 owns the
-Temporal Fusion Transformer, and Hx21 owns state fusion models. Use Hx references when discussing the Heroes,
+Temporal Fusion Transformer, and Hx21 owns the State fusion transformer. Use Hx references when discussing the Heroes,
 their Goals or their Milestones. Use OR references for operation contracts and
 scientific classification. See the [complete mapping](WORKSTREAMS.md).
 

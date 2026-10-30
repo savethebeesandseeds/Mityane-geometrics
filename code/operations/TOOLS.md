@@ -7,8 +7,11 @@ model does not require rewriting the operation.
 
 The first callable tool is **OR06-PCR 0.1.0**, recorded paired model-response
 comparison. Its [usage guide](counterfactuals/TOOL.md) provides examples and the
-exact boundary. Other OR families retain their existing interfaces until they
-adopt this boundary; they are not implicitly registered or migrated.
+exact boundary. **OR01-RET 0.1.0** ranks saved vectors with the exact-search
+reference. It accepts `exploratory_description` only, calls no provider, and
+does not score relevance. Its [usage note](retrieval/README.md) is the operation
+entry. Other OR families retain their existing interfaces until they adopt this
+boundary; they are not implicitly registered or migrated.
 
 ## Start using the toolset
 

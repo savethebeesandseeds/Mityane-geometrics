@@ -1,4 +1,4 @@
-# State fusion models
+# State fusion transformer
 
 Hx21 owns this directory. The family was named on 29 October 2026. It fuses an
 unordered collection of records into one fixed market-state tensor. A later
@@ -94,11 +94,11 @@ requests Torch 2.6 and fails if `libtorch_cuda` is absent. The image has no
 `cmake` binary. The Makefile compiles with g++ using that include path, C++17,
 `_GLIBCXX_USE_CXX11_ABI=1`, and `-ltorch_cuda`.
 
-Products go to `/opt/mityane-geometrics/fusion/build/state-fusion`.
+Products go to `/opt/mityane-geometrics/fusion/build/state-fusion-transformer`.
 
 ```text
-make -C /mityane/code/fusion/state_fusion test
-make -C /mityane/code/fusion/state_fusion train
+make -C /mityane/code/fusion/state_fusion_transformer test
+make -C /mityane/code/fusion/state_fusion_transformer train
 ```
 
 `test` runs the GPU invariance and hole checks, the fidelity checks, the query

@@ -25,7 +25,7 @@ data code in `code/data/`, dataloaders in `code/dataloaders/`, and
 cross-component utilities in `code/shared/`.
 Use the existing flat ownership boundaries: embeddings `encoders/`,
 `state_representation/` and `evaluation/`; fusion
-`temporal_fusion_transformer/` and `state_fusion/`; operation forecasting modules and
+`temporal_fusion_transformer/` and `state_fusion_transformer/`; operation forecasting modules and
 their `evaluation/`; data `observations/` and `market/`; shared `settings/`,
 `representation/` and `artifacts/`. Do not recreate the imported nested
 `code/embeddings/code/` tree or component-level environment/build configuration.
@@ -35,8 +35,8 @@ Credentials belong in ignored environment files or external secret storage.
 All encoder Heroes Hx15–Hx18 develop reusable encoder/provider components and
 tools. Hx20 owns the Temporal Fusion Transformer forecasting family at
 `code/fusion/temporal_fusion_transformer`. It is not an
-observation-embedding family and it does not close Hx11. Hx21 owns state
-fusion models at `code/fusion/state_fusion`. The owner marked that family as
+observation-embedding family and it does not close Hx11. Hx21 owns the State
+fusion transformer at `code/fusion/state_fusion_transformer`. The owner marked that family as
 of great importance. The recorded surface is a Set Transformer; synthetic
 masked reconstruction is pipeline validation and does not close Hx11. The State
 Representation Network is not that family. Hx19 owns dataloaders

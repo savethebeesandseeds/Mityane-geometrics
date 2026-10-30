@@ -157,7 +157,7 @@ void context15_self_check(const cp::implementation::Config &loaded){
 void help(){
   std::cout<<"cpb_family_train --settings FILE --dataset FILE --output NEWLEAF --steps TOTAL --max-attempts TOTAL --batch-size N\n"
     <<"  --row-seed I --mask-seed I --context-seed I (--seed I | --resume TRAINING_STATE)\n"
-    <<"  [--learning-rate .001] [--weight-decay .0001] [--clip-norm 1] [--save-every 0] [--context-deletion coordinate15]\n"
+    <<"  [--learning-rate .001] [--weight-decay .0001] [--clip-norm 1] [--save-every 0] [--temporal-weight 0.1] [--context-deletion coordinate15]\n"
     <<"Single-device configurable-family example; DATASET must be a typed observation_window_dataset_v1 archive declaring role TRAIN.\n"
     <<"--steps is the TOTAL completed-update target, not additional steps. --max-attempts is a TOTAL attempt ceiling.\n"
     <<"Resume requires identical data/settings/executable bytes, batching, options and stream seeds. Stop budgets may increase.\n"
@@ -171,7 +171,7 @@ int execute(int argc,char **argv){
   TORCH_CHECK(argc>1&&(argc-1)%2==0,"[CPB family train] use --help; options require values");
   const std::set<std::string> allowed{"--settings","--dataset","--output","--steps","--max-attempts","--batch-size","--seed","--resume",
     "--row-seed","--mask-seed","--context-seed","--learning-rate","--weight-decay","--clip-norm","--save-every",
-    "--context-deletion","--context-deletion-self-check"};
+    "--temporal-weight","--context-deletion","--context-deletion-self-check"};
   std::map<std::string,std::string> options;
   for(int i=1;i<argc;i+=2)TORCH_CHECK(allowed.count(argv[i])&&options.emplace(argv[i],argv[i+1]).second,"[CPB family train] unknown or duplicate option");
   const bool use_context15=options.count("--context-deletion");
@@ -200,6 +200,8 @@ int execute(int argc,char **argv){
   TORCH_CHECK(target>0&&maximum_attempts>=target&&maximum_attempts<std::numeric_limits<int64_t>::max()-1&&batch_size>0,
       "[CPB family train] positive target/batch, attempt ceiling>=target and incrementable counters required");
   const tr::OptimizerConfig optimizer_options{number("--learning-rate",.001),number("--weight-decay",.0001),number("--clip-norm",1.)};
+  const double temporal_weight=number("--temporal-weight",0.1);
+  TORCH_CHECK(std::isfinite(temporal_weight)&&temporal_weight>=0,"[CPB family train] --temporal-weight must be finite and nonnegative");
   tr::validate_optimizer_config(optimizer_options);
   const fs::path settings=options.at("--settings"),dataset_path=options.at("--dataset"),output=options.at("--output");
   TORCH_CHECK(fs::is_regular_file(settings)&&fs::is_regular_file(dataset_path)&&!fs::exists(output),"[CPB family train] settings/dataset must exist and output must be new");
@@ -217,7 +219,8 @@ int execute(int argc,char **argv){
       <<";batch="<<batch_size<<";rows=mt19937_64-counter-seed-mod-N-with-replacement-v1;context="<<context_label
       <<";calibration=all-TRAIN-source-order-batch-chunks-Chan-v1"
       <<";row-seed="<<row_seed<<";mask-seed="<<mask_seed<<";context-seed="<<context_seed
-      <<";AdamW-lr="<<optimizer_options.learning_rate<<";wd="<<optimizer_options.weight_decay<<";global-clip="<<optimizer_options.clip_norm;
+      <<";AdamW-lr="<<optimizer_options.learning_rate<<";wd="<<optimizer_options.weight_decay<<";global-clip="<<optimizer_options.clip_norm
+      <<";temporal-weight="<<temporal_weight;
   const tr::TrainingIdentity identity{source_binding,dataset.split_identity,recipe_stream.str()};
   const bool resuming=options.count("--resume");cp::Loaded live;std::unique_ptr<torch::optim::AdamW> optimizer;
   tr::TrainingProgress progress{0,0,row_seed,mask_seed,context_seed};int64_t fit_windows=0;std::string resume_sha;
@@ -261,8 +264,8 @@ int execute(int argc,char **argv){
       context_deleted=coordinate15_deleted(masks,retained.raw.channel_ids,live.model->config().level,progress.context_seed,progress.attempted_batches);
     }
     const auto result=use_context15
-        ?tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options,context_deleted)
-        :tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options);
+        ?tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options,context_deleted,temporal_weight)
+        :tr::train_step(live.model,live.scaler,*optimizer,progress,history,batch.cutoffs,optimizer_options,{},temporal_weight);
     if(!result.updated)++skipped;
     events<<"{\"attempt\":"<<result.attempt_index<<",\"updated\":"<<(result.updated?"true":"false")<<",\"completed_updates\":"<<progress.completed_updates
       <<",\"loss\":"<<result.total_loss<<",\"gaussian_nll\":"<<result.gaussian_nll<<",\"temporal_loss\":"<<result.temporal_loss<<",\"gradient_norm\":"<<result.gradient_norm<<",\"source_row_ids\":[";

@@ -46,7 +46,7 @@ MITYANE_MAINTENANCE_GOALS := test-maintenance check-layout dashboard-branding-na
   test-python-migration-node test-python-migration-candidates test-language-migration test-historical-parent-paths \
   test-migration-source-syntax test-migration-protocol-cli test-migration-source-closures test-migration-reader-source \
   build-saved-tensor-v1 check-saved-tensor-v1 build-independent-cpu-v1 check-independent-cpu-v1 \
-  test-cpb-v14-closeout test-counterfactuals build-counterfactuals-evaluation evaluate-counterfactuals \
+  test-cpb-v14-closeout test-counterfactuals test-retrieval build-retrieval-tool test-retrieval-tool build-counterfactuals-evaluation evaluate-counterfactuals \
   build-counterfactuals-tool build-operation-tools test-operation-tools test-counterfactual-profiles \
   build-counterfactual-contribution test-counterfactual-contribution evaluate-counterfactual-contribution \
   test-operation-ergonomics
@@ -1496,4 +1496,5 @@ endif
 
 # Operation-owned standard-library implementation; also available without model rules.
 include code/operations/counterfactuals/counterfactuals.mk
+include code/operations/retrieval/retrieval.mk
 endif # MITYANE_ROOT_RULES_INCLUDED

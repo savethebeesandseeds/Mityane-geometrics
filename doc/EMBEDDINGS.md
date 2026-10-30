@@ -45,6 +45,12 @@ Cuwacunu. **V16 seed 946103/final2048 remains the research reference.** This
 comparison does not rank against that seed, does not enter `decision.mjs`,
 and leaves `Mityane_application_selection` null.
 
+The follow-up search is closed. Temporal weights 0.3 and 1, including a repeat
+of weight 1, did not beat seed 949102 under the rules declared beforehand. A
+480-minute history made cross resolution measurable at R² −0.23302912246862673.
+The [close note](../code/data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
+records the table. Another weight or history length does not reopen it.
+
 ## Previous comparison: V19 EMA teacher — 23 October 2026
 
 The [V19 comparison](../code/embeddings/evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
@@ -418,7 +424,9 @@ in [Hx17](../web/dashboard/heroes/17-encoder-cpb.json).
 is the encoder to bring into Cuwacunu. The
 [handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
 binds its settings, inference archive, training state, preprocessing, and the
-matched width-64 control. The research reference above is unchanged.
+matched width-64 control. The follow-up search is
+[closed](../code/data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
+on that instance. The research reference above is unchanged.
 
 The next reference change uses the [family screen](../code/embeddings/evaluation/protocols/cpb_family_screen_v1/POLICY.md).
 Development cannot promote. January, February and March 2024 are consumed.

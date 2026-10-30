@@ -142,7 +142,7 @@ struct StepResult {
 inline StepResult train_step(Encoder &model,const FrozenScaler &scaler,
     torch::optim::AdamW &optimizer,TrainingProgress &progress,const RawHistory &raw,
     const torch::Tensor &cutoffs,const OptimizerConfig &options={},
-    const torch::Tensor &context_deleted={}) {
+    const torch::Tensor &context_deleted={},double temporal_weight=0.1) {
   TORCH_CHECK(model && torch::GradMode::is_enabled(),
       "[cpb family training] owned model and enabled gradients required");
   family::validate_config(model->config());validate_optimizer_config(options);
@@ -169,9 +169,20 @@ inline StepResult train_step(Encoder &model,const FrozenScaler &scaler,
   TORCH_CHECK(torch::isfinite(trace.output.loss).item<bool>() && trace.nll.eligible_example_count>0,
       "[cpb family training] finite supported objective required before backward");
   result.gaussian_nll=trace.nll.loss.item<double>();result.temporal_loss=trace.objective.temporal.loss.item<double>();
-  result.total_loss=trace.output.loss.item<double>();result.eligible_examples=trace.nll.eligible_example_count;
+  result.eligible_examples=trace.nll.eligible_example_count;
   result.target_cells=trace.nll.target_cell_count;
-  trace.output.loss.backward();
+  // Weight 0.1 is the frozen V16 coefficient already stored in output.loss.
+  // Any other finite nonnegative weight is this family's explicit reweight.
+  torch::Tensor objective=trace.output.loss;
+  if(temporal_weight!=0.1){
+    TORCH_CHECK(std::isfinite(temporal_weight)&&temporal_weight>=0,
+        "[cpb family training] temporal weight must be finite and nonnegative");
+    objective=trace.nll.loss+temporal_weight*trace.objective.temporal.loss;
+    TORCH_CHECK(torch::isfinite(objective).item<bool>(),
+        "[cpb family training] finite reweighted objective required before backward");
+  }
+  result.total_loss=objective.item<double>();
+  objective.backward();
   for(const auto &parameter:model->named_parameters()) {
     const auto gradient=parameter.value().grad();
     if(!gradient.defined())continue;

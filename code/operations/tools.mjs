@@ -4,10 +4,11 @@ import path from 'node:path';
 import {parseArgs} from 'node:util';
 import fs from 'node:fs';
 import {pairedResponseTool} from './counterfactuals/tool/adapter.mjs';
+import {retrievalTool} from './retrieval/tool/adapter.mjs';
 import {listTools, describeTool, checkTool, runTool, prepareTool, readResult, inspectResult, exitCode, outputPath, ROOT, createToolset}
   from '../shared/representation/tools/v1/runtime.mjs';
 
-export const tools = Object.freeze([pairedResponseTool]);
+export const tools = Object.freeze([pairedResponseTool, retrievalTool]);
 export const operations = createToolset(tools);
 export async function main(args) {
   if (args.length === 0 || args[0] === '--help' || args[0] === 'help') {

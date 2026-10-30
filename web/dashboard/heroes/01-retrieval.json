@@ -3,30 +3,100 @@
   "id": "or-01-retrieval",
   "number": 1,
   "title": "Retrieval and similarity matching",
-  "summary": "Rank source observations for a query under a declared representation, geometry and relevance definition.",
-  "updatedAt": "2026-10-20",
+  "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
+  "boundary": "Hx01 owns the retrieval operation, its contract, exact-search reference, relevance evidence and toolset. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Hubness and mean neighbor distance are diagnostics and do not close Hx02. Neighbors may feed Hx06; this operation does not state a contrast or an effect. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
+  "summary": "OR01-RET 0.1.0 returns the nearest saved sources to a query point in one embedding space. Closest is the declared geometry: cosine, or L2, with optional L2 normalization. Exact search and the engineering tool passed on 30 October 2026. A visible check ranked [1, 0] ahead of [4, 0] under L2, and a matching direction ahead of an orthogonal direction under cosine. The tool refuses live calls and unbound relevance. Both profiles stay unbound. No corpus, Gemini adapter, or relevance result exists.",
+  "updatedAt": "2026-10-30",
   "goals": [
     {
       "id": "or-01-retrieval-contract",
       "title": "Define the operation contract",
-      "description": "Define queries, searchable populations, relevance, source references, metric, ranking output and abstention conditions.",
+      "description": "Define queries, searchable populations, relevance, source references, metric, ranking output and abstention conditions. OR01-RET 0.1.0 is that reusable contract. The text-Gemini profile and the local saved-vector profile are defined and unbound.",
       "milestones": [
         {
           "id": "or-01-retrieval-define-contract",
           "title": "Specify inputs, outputs and requirements",
-          "status": "proposed",
-          "description": "Define queries, searchable populations, relevance, source references, metric, ranking output and abstention conditions. Create the Operation Contract and linked Requirements-and-Evidence Record before an experiment is admitted. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "status": "done",
+          "description": "OR01-RET 0.1.0 and OR01-RET-RER 0.1.0 define the ranked-retrieval interface, the two unbound profiles, and the checks an admitted run must apply. Authoring the contract admits no corpus and no run.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
           "evidence": [
             {
-              "label": "Capability charter and evidence standard",
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            },
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            },
+            {
+              "label": "Capability charter",
               "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
             }
           ],
           "acceptance": [
-            "The versioned Operation Contract and linked Requirements-and-Evidence Record specify input/output roles, claim scope, operation parameters, and typed failure or abstention conditions; existing charter links are design references, not evidence that this milestone is complete.",
-            "The contract inherits foundations-record-validation, foundations-temporal-integrity, foundations-data-protocol and foundations-lifecycle-admission. Any not-applicable rule is justified; a reusable interface can be drafted before instance selection, but an admitted run binds every required dataset, provider, artifact and protocol dependency.",
-            "Declare a frozen candidate-corpus snapshot, query eligibility and as-of policy, an independently defined relevance target, allowed query/document role pairs, and exclusions for self-matches, duplicates and source-window overlap where required by the evaluation design."
+            "OR01-RET 0.1.0 and OR01-RET-RER 0.1.0 specify input and output roles, claim scope, SpaceRef rules, ranking output, abstention and failure, and the two unbound profiles.",
+            "Each admitted profile must declare a frozen corpus snapshot, query eligibility, as-of policy, independent relevance, role pairs and exclusions. This revision selects no corpus and admits no run.",
+            "The text profile is Gemini Embedding 2 text input through the Hx18 provider record google-gemini-embedding-2. The local profile is saved vectors from a named encoder instance or a declared synthetic generator. Image, video, audio and PDF inputs stay unbound.",
+            "Pairwise similarity and kNN share the declared metric and normalization. Relevance is a separate declaration. Approximate-neighbor fidelity is specified against the exact reference and is not a relevance metric.",
+            "The contract states the record, temporal, data and admission checks an admitted run applies. The shared foundation validators remain proposed, so this revision does not call a shared implementation."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-gemini-text-binding",
+          "title": "Bind the text-only Gemini retrieval profile",
+          "status": "proposed",
+          "description": "Name the frozen text corpus, queries, independent relevance rule, lexical baseline, requested dimensions and task role for gemini-embedding-2. This binding is one of the two profiles. It does not authorize a live API call.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-define-contract",
+            "encoder-google-multimodal-provider-record"
+          ],
+          "acceptance": [
+            "The binding names gemini-embedding-2 through the Hx18 provider record google-gemini-embedding-2, text inputs only, the requested dimensions and normalization, the task or role pair, and the SpaceRef rule. Image, video, audio and PDF inputs are outside this profile.",
+            "It names a frozen text corpus snapshot, query eligibility, as-of policy, source identities, an independent relevance rule and a lexical baseline on the same eligible texts. Relevance is not the embedding distance used to rank.",
+            "It links OR01-RET and OR01-RET-RER for this profile. It does not authorize a live API call, select credentials or claim that the Hx18 adapter exists.",
+            "A hosted model ID is not an immutable checkpoint. The binding states how any returned revision, request configuration and response artifacts will be retained, and that replay of saved responses is distinct from a fresh call."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            },
+            {
+              "label": "Hx18 provider scope; design reference",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
+            },
+            {
+              "label": "Hx18 Gemini Embedding 2 provider record",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/provider.json"
+            }
+          ]
+        },
+        {
+          "id": "or-01-retrieval-local-vector-binding",
+          "title": "Bind the local saved-vector profile",
+          "status": "proposed",
+          "description": "Name one frozen snapshot of saved vectors, its encoder checkpoint or synthetic generator, and an independent relevance rule. This profile does not wait on the Hx18 adapter and does not authorize encoder training.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-define-contract"
+          ],
+          "acceptance": [
+            "The binding names one SpaceRef: encoder or generator identity, revision, dimensions, normalization, metric and task or role pair. Equal length alone is not acceptance.",
+            "It names a frozen vector snapshot, the source inputs those vectors came from, query eligibility, as-of or non-temporal mode, and the exclusion rules.",
+            "The relevance rule is hand-adjudicated regimes or a synthetic motif rule, fixed before ranking, plus a baseline on the same eligible queries and corpus. The ranking distance is not that rule.",
+            "The binding links OR01-RET and OR01-RET-RER. It selects no Gemini request and admits no run by itself."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            },
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            }
           ]
         }
       ]
@@ -34,50 +104,159 @@
     {
       "id": "or-01-retrieval-implementation",
       "title": "Provide a reference implementation",
-      "description": "Provide version-aware search with explicit index configuration, source identities, exclusion rules and failure reporting.",
+      "description": "Exact search and the OR01-RET engineering envelope are recorded. The tool returns the nearest saved sources under cosine or L2 and does not call Gemini. Approximate-index fidelity remains proposed.",
       "milestones": [
         {
-          "id": "or-01-retrieval-reference-implementation",
-          "title": "Implement the agreed operation interface",
-          "status": "proposed",
-          "description": "Provide version-aware search with explicit index configuration, source identities, exclusion rules and failure reporting. The method, dataset and implementation slice remain to be selected. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "id": "or-01-retrieval-exact-search-reference",
+          "title": "Rank saved vectors with exact search",
+          "status": "done",
+          "description": "The C++ reference returns the nearest caller-supplied sources under cosine or L2, with optional L2 normalization, source-ID ties, reported exclusions, pairwise similarity and leave-one-out neighborhood diagnostics. The comparison happens in embedding coordinates. The 30 October 2026 container check passed seven engineering checks. This is not a relevance result.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-define-contract"
+          ],
           "evidence": [
             {
-              "label": "Capability charter and evidence standard",
-              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+              "label": "Exact-search reference",
+              "path": "code/operations/retrieval/IMPLEMENTATION.md"
+            },
+            {
+              "label": "Exact-search interface",
+              "path": "code/operations/retrieval/include/mityane/operations/retrieval/exact_search.h"
+            },
+            {
+              "label": "Engineering checks",
+              "path": "code/operations/retrieval/tests/exact_search_test.cpp"
+            },
+            {
+              "label": "30 October 2026 container check",
+              "path": "code/operations/retrieval/reviews/exact-search-v0.1.0.md"
             }
           ],
           "acceptance": [
-            "Conformance tests exercise the declared role/SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
-            "Outputs retain parent/source lineage, representation kind, OperationRun identity, code/configuration and fitted-artifact identities. Engineering fixtures are labeled engineering-only and do not establish operation quality.",
-            "Use an exact-search reference with explicit metric, normalization, deterministic tie handling and source IDs before judging an approximate index. Reject stale or incompatible index/query combinations; a legitimate empty result remains distinct from execution failure."
+            "The reference ranks saved vectors with cosine and L2, normalization none and L2, deterministic source-ID ties and reported self-match, exclusion and undefined-geometry skips.",
+            "Empty, abstained and failed stay distinct. A mismatched space or snapshot binding, a duplicate source ID, a non-finite value and k of zero are rejected.",
+            "Pairwise similarity uses the same geometry as search. Hubness and mean neighbor distance are leave-one-out diagnostics and do not close Hx02.",
+            "make test-retrieval passed seven checks on 30 October 2026 under g++ with -Wall -Wextra -Wpedantic. The fixture does not call a provider, judge relevance or register a tool."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-reference-implementation",
+          "title": "Wrap exact search in the operation envelope",
+          "status": "done",
+          "description": "OR01-RET 0.1.0 is registered on the common check and run boundary. It returns the nearest saved sources through the exact-search reference and retains run identity, SpaceRef, code and configuration hashes, and the fitted-artifact id. The 30 October 2026 container check passed nine engineering checks, and a visible run confirmed the L2 and cosine order on two synthetic fixtures. Live calls and relevance claims are refused. This is not a relevance result.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-exact-search-reference"
+          ],
+          "evidence": [
+            {
+              "label": "Exact-search reference and envelope",
+              "path": "code/operations/retrieval/IMPLEMENTATION.md"
+            },
+            {
+              "label": "Common tool calling contract",
+              "path": "code/operations/TOOLS.md"
+            },
+            {
+              "label": "Engineering envelope checks",
+              "path": "code/operations/retrieval/tool/tool.test.mjs"
+            },
+            {
+              "label": "30 October 2026 container check",
+              "path": "code/operations/retrieval/reviews/envelope-v0.1.0.md"
+            },
+            {
+              "label": "30 October 2026 nearest-source confirmation",
+              "path": "code/operations/retrieval/reviews/nearest-source-v0.1.0.md"
+            }
+          ],
+          "acceptance": [
+            "Conformance tests exercise the declared role and SpaceRef relationship, applicable temporal checks, malformed or unsupported inputs, stale fitted artifacts and explicit failure propagation; no rejected record becomes an ordinary vector or unreported omission.",
+            "Outputs retain parent and source lineage, representation kind, OperationRun identity, code and configuration identity and fitted-artifact identities. Engineering fixtures stay labeled engineering-only and do not establish operation quality.",
+            "The envelope calls the exact-search reference for metric, normalization, deterministic tie handling and source IDs before any approximate index is judged. A legitimate empty result remains distinct from execution failure.",
+            "A provider call, credential handling and Gemini response retention stay with Hx18. The local profile reads saved vectors."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-approximate-fidelity",
+          "title": "Judge an approximate index against exact search",
+          "status": "proposed",
+          "description": "When an approximate index is introduced, measure it against the exact reference on the same eligible corpus. Those figures are not relevance metrics. OR01-RET 0.1.0 contains no approximate index.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-exact-search-reference"
+          ],
+          "acceptance": [
+            "Report recall of the exact reference neighbor set at the same k, and the distribution of approximation loss, on the same snapshot, exclusions and SpaceRef.",
+            "Keep that fidelity report separate from precision, recall, nDCG or MRR against the independent relevance rule.",
+            "Reject a stale or incompatible index and query pair. Do not replace the exact reference with the approximate ranking when reporting fidelity."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            }
           ]
         }
       ]
     },
     {
       "id": "or-01-retrieval-evaluation",
-      "title": "Establish operation-specific evidence",
-      "description": "Evaluate relevance and cost against meaningful retrieval baselines; control duplicates, leakage, population and representation version.",
+      "title": "Evaluate admitted retrieval profiles",
+      "description": "Run relevance evaluations only after a profile is bound and the operation envelope exists. The text profile waits on the Hx18 adapter. The local profile does not. Engineering checks of exact search do not complete either evaluation.",
       "milestones": [
         {
           "id": "or-01-retrieval-evaluation-protocol",
-          "title": "Define and execute the admitted evaluation",
+          "title": "Run the admitted Gemini text retrieval test",
           "status": "proposed",
-          "description": "Evaluate relevance and cost against meaningful retrieval baselines; control duplicates, leakage, population and representation version. Freeze the selected protocol, baselines and failure criteria before held-out assessment; retain negative outcomes and limitations. Apply the linked shared admission, compatibility, temporal and evidence rules; the acceptance criteria below define this milestone’s completion boundary.",
-          "updatedAt": "2026-10-18",
+          "description": "Run the bound text-only Gemini Embedding 2 test. Evaluate relevance and cost against the declared lexical baseline. Freeze the protocol, baselines and failure criteria before held-out assessment. This record does not authorize a live call.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-gemini-text-binding",
+            "or-01-retrieval-reference-implementation",
+            "encoder-google-multimodal-api-adapter"
+          ],
           "evidence": [
             {
-              "label": "Capability charter and evidence standard",
-              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            },
+            {
+              "label": "Hx18 provider scope; design reference",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
             }
           ],
           "acceptance": [
             "The admitted protocol fixes data partitions, instance and artifact identities, baselines, budgets, selection policy, metrics and failure criteria before held-out assessment. Diagnostic exposure, changes and repeated looks are indexed; a revised protocol does not silently reuse an exposed confirmation set.",
             "Report the declared evaluation unit, uncertainty or its justified limitation, coverage including abstentions and failures, and relevant resource costs. Index every initiated run and its outcome under foundations-evidence-ledger; do not discard unsuccessful or inconclusive evidence.",
             "A valid completed evaluation can be negative or inconclusive. Milestone completion is not a positive claim verdict, and invalid or unexecuted attempts alone cannot satisfy operation-quality evaluation acceptance.",
-            "Measure relevance against independent labels or a declared external rule, not the embedding distance used to rank candidates. Assess approximate-neighbor fidelity separately from application relevance; preserve the same eligible corpus, input information and query population for baselines."
+            "Measure relevance against independent labels or a declared external rule, not the embedding distance used to rank candidates. Preserve the same eligible corpus, input information and query population for the lexical baseline.",
+            "The population is the text-only Gemini Embedding 2 binding. Other modalities and other encoders are outside this run. Saved-response replay and a fresh provider call remain distinct evidence, and neither closes the Hx18 multimodal fixture."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-local-vector-evaluation",
+          "title": "Run the admitted local saved-vector test",
+          "status": "proposed",
+          "description": "Run the bound local snapshot through the operation envelope. Relevance uses the hand-adjudicated or synthetic rule fixed in the binding, and a baseline on the same queries and corpus. This test does not call Gemini.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-local-vector-binding",
+            "or-01-retrieval-reference-implementation"
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            }
+          ],
+          "acceptance": [
+            "The admitted protocol fixes the saved-vector snapshot, SpaceRef, partitions, baseline, metrics and failure criteria before held-out assessment. The exact-search engineering checks do not satisfy this milestone.",
+            "Measure relevance against the bound independent rule. Report coverage, abstentions, failures and the evaluation unit. Retain negative and inconclusive outcomes.",
+            "The population is the local saved-vector binding. A result here does not transfer to Gemini, to another encoder, or to a causal claim in Hx06."
           ]
         }
       ]
@@ -85,18 +264,18 @@
     {
       "id": "or-01-retrieval-toolset",
       "title": "Expose Hx01 capabilities as a reusable toolset",
-      "description": "Expose this Hero's developed components, validation, workflows and results through a consistent discover/configure/check/run/inspect command-line interface and reusable APIs across compatible representation providers. Cover retrieval configuration, query and corpus validation, search, ranking and result inspection; preserve operation-specific contracts and evidence limits as capabilities are selected and developed.",
+      "description": "Expose developed retrieval components through the common discover, configure, check, run and inspect boundary. The first numerical piece is the saved-vector reference. The text-Gemini and local profiles stay explicit. OR01-RET is not registered yet.",
       "milestones": [
         {
           "id": "or-01-retrieval-toolset-surface",
           "title": "Define the public toolset surface and coverage",
           "status": "proposed",
-          "description": "Map query/corpus admission, index construction and compatibility checks, exact or selected approximate search, ranking, exclusions and result/evidence inspection into public components and workflows.",
-          "updatedAt": "2026-10-20",
+          "description": "Map query and corpus admission, exact search, pairwise similarity, kNN, exclusions and result inspection into public components. Approximate search stays outside the surface until its fidelity milestone is admitted.",
+          "updatedAt": "2026-10-30",
           "acceptance": [
-            "Inventory implemented and selected future public capabilities, their owning components, contracts, request/result schemas, reusable APIs, composition points, gaps and claim levels; distinguish available tools from proposed work.",
-            "The surface specifies query/document roles, frozen corpus and index identities, geometry, normalization, deterministic tie behavior, source IDs and self-match or overlap exclusions; empty results, abstention and execution failure remain distinct.",
-            "Specify discover/configure/check/run/inspect behavior across compatible representation providers, declaring required roles, SpaceRefs, geometry and dependencies without assuming a universal vector shape or provider suitability."
+            "Inventory implemented and selected future public capabilities, their owning components, contracts, request and result schemas, reusable APIs, composition points, gaps and claim levels; distinguish the exact-search reference from proposed work.",
+            "The surface specifies query and document roles, frozen corpus and index identities, geometry, normalization, deterministic tie behavior, source IDs and self-match or overlap exclusions; empty results, abstention and execution failure remain distinct.",
+            "Specify discover, configure, check, run and inspect behavior for the local saved-vector profile and the text-Gemini profile, declaring required roles, SpaceRefs, geometry and dependencies without assuming a universal vector shape."
           ],
           "evidence": [
             {
@@ -104,8 +283,8 @@
               "path": "code/operations/TOOLS.md"
             },
             {
-              "label": "Capability charter and evidence standard; design reference",
-              "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
             }
           ]
         },
@@ -120,7 +299,7 @@
           ],
           "acceptance": [
             "Verify the agreed query-to-ranked-source workflow and independently callable components, including stale or incompatible index rejection, exclusion rules and deterministic ranking behavior. Approximate-search fidelity and independently measured application relevance retain separate evidence claims.",
-            "CLI and reusable API examples and conformance checks cover compatible provider interchange and explicit incompatibility, malformed input, failure and abstention; retain source/parent lineage, configuration, fitted-artifact identities and complete outcome accounting.",
+            "CLI and reusable API examples and conformance checks cover compatible provider interchange and explicit incompatibility, malformed input, failure and abstention; retain source and parent lineage, configuration, fitted-artifact identities and complete outcome accounting.",
             "Record implemented coverage, remaining gaps and evidence for each agreed public capability and composed workflow. Reusable engineering checks do not authorize paused research or establish operation quality; new experimental claims retain their own admitted contracts, protocols and permissions."
           ],
           "evidence": [
