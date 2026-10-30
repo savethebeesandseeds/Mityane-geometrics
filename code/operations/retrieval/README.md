@@ -13,6 +13,8 @@ Two profiles are defined and unbound. `text-gemini-embedding-2` is text input to
 
 The reference does not call a provider or read a dataset. The registered tool **OR01-RET 0.1.0** exposes that reference through the common envelopes in [TOOLS.md](../TOOLS.md). It accepts exploratory saved-vector requests and refuses live calls and unbound relevance claims. Encoding stays with the encoder or provider that produced the vectors.
 
+Geometric constructors in the same library build a difference, a shared residual, or a cone, and exact search ranks that neighborhood. They are engineering functions over caller-supplied arrays. The registered tool does not expose them. No abstract corpus is bound.
+
 ```powershell
 .\container.ps1 exec make test-retrieval-tool
 .\code\operations\tools.ps1 describe OR01-RET

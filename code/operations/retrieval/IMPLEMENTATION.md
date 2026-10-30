@@ -48,3 +48,11 @@ The recorded run is [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md). Pairwise s
 ## Check recorded with this revision
 
 `make test-retrieval` runs seven checks: cosine tie order, L2 order and pairwise agreement, L2 normalization, reported exclusions, empty versus failure, refusal cases, and hubness on a three-point line. The recorded run is [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md). A later look the same day repeated those checks, passed the nine envelope checks, and confirmed the visible order: L2 distance 1 before distance 4, and cosine 1 before cosine 0. That look is [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
+
+## Geometric constructors
+
+The same library builds a query from saved vectors and then calls exact search. `difference` returns prepared target minus prepared origin. `shared_direction` removes the span of differences among two to eight points and returns the residual of the first point. `make_cone` returns a unit axis, an aperture in radians, and optional radial bounds. `search_cone` ranks eligible members against that axis and reports everyone else as `outside_cone`. A zero prepared vector has no angle and is `undefined_geometry`.
+
+A zero difference or a zero residual is `collinear_inputs`. A zero-norm input under cosine or L2 normalization abstains. `cone_diagnostics` reports leave-one-out hubness and mean neighbor distance on the members inside the cone. Purity is the fraction of those members named by the caller. An empty name list leaves purity unset. None of these figures is a relevance result, and none closes Hx02.
+
+The 30 October 2026 run printed `geometric constructors: 2 checks passed` after the seven exact-search checks. The fixtures use `[1, 0]`, `[4, 0]`, `[1, 1]`, and a three-axis residual `[0, 0, 1]`. The record is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). The registered tool does not expose these functions. No abstract corpus is bound.

@@ -95,3 +95,11 @@ Negative and inconclusive relevance results remain indexed. An engineering execu
 ## 8. Revision limit
 
 OR01-RET 0.1.0 admits no relevance run. It freezes the fields an admitted profile must bind. It does not select a dataset, a checkpoint, a Gemini request budget, or an approximate index. An engineering tool may expose this revision on the common operation boundary. That registration does not admit a profile or establish relevance.
+
+## 9. Geometric constructors
+
+A constructor is a pure function of saved vectors, the SpaceRef normalization, and its parameters. It returns a query vector, a direction, or cone parameters. Ranking inside that neighborhood calls the exact-search reference. Cosine and L2, both normalizations, and the source-ID tie rule stay in force. No approximate index is introduced.
+
+The difference of two points is the prepared target minus the prepared origin. The shared direction is the component of the first point that remains after removing the span of the other points' differences from it. A cone is a unit axis, an angular aperture, and optional radial bounds on the prepared length. Members outside the cone are reported skips. A full aperture is pi. A zero aperture admits only an exact cosine of 1.
+
+Non-finite values, a mismatched length, a zero difference, a zero shared residual, and an aperture outside `[0, pi]` refuse or abstain with an explicit reason. Empty, abstained, and failed stay distinct. Leave-one-out hubness, mean neighbor distance inside the cone, and cone purity are diagnostics. Cone purity counts a caller-supplied partition. It is not a relevance rule. These constructors do not close Hx02 or Hx06, do not evaluate Nonverba, and do not admit the abstract corpus. The registered tool does not expose them.

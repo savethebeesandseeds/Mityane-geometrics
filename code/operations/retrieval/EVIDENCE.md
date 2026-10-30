@@ -46,7 +46,7 @@ The instance records the evaluation unit, including dependent windows or repeate
 
 ## 7. Results and limitations
 
-No profile run has been admitted. No relevance number is claimed. The engineering reference described in [IMPLEMENTATION.md](IMPLEMENTATION.md) checks nearest-source arithmetic only. On 30 October 2026, `make test-retrieval` passed seven checks and `make test-retrieval-tool` passed nine. A visible engineering run ranked source `near` (`[1, 0]`, L2 distance 1) ahead of `far` (`[4, 0]`, distance 4), and source `same` (cosine 1) ahead of `other` (cosine 0). The records are [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md), [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md), and [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
+No profile run has been admitted. No relevance number is claimed. The engineering reference described in [IMPLEMENTATION.md](IMPLEMENTATION.md) checks nearest-source arithmetic only. On 30 October 2026, `make test-retrieval` passed seven checks and `make test-retrieval-tool` passed nine. A visible engineering run ranked source `near` (`[1, 0]`, L2 distance 1) ahead of `far` (`[4, 0]`, distance 4), and source `same` (cosine 1) ahead of `other` (cosine 0). The same library later constructed a difference, a shared residual, and a cone on synthetic vectors; that check is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). It binds no abstract corpus. The records are [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md), [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md), and [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
 
 OR01-RET 0.1.0 does not establish retrieval quality, encoder quality, or Gemini service behavior.
 

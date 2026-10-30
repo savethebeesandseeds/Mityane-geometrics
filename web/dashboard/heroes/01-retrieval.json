@@ -4,8 +4,8 @@
   "number": 1,
   "title": "Retrieval and similarity matching",
   "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
-  "boundary": "Hx01 owns the retrieval operation, its contract, exact-search reference, relevance evidence and toolset. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Hubness and mean neighbor distance are diagnostics and do not close Hx02. Neighbors may feed Hx06; this operation does not state a contrast or an effect. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
-  "summary": "OR01-RET 0.1.0 returns the nearest saved sources to a query point in one embedding space. Closest is the declared geometry: cosine, or L2, with optional L2 normalization. Exact search and the engineering tool passed on 30 October 2026. A visible check ranked [1, 0] ahead of [4, 0] under L2, and a matching direction ahead of an orthogonal direction under cosine. The tool refuses live calls and unbound relevance. Both profiles stay unbound. No corpus, Gemini adapter, or relevance result exists.",
+  "boundary": "Hx01 owns the retrieval operation, its contract, exact-search reference, relevance evidence and toolset. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric operators are pure functions that build a query vector, a direction, or cone parameters. Ranking inside that neighborhood remains exact search. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
+  "summary": "OR01-RET 0.1.0 returns the nearest saved sources to a query point in one embedding space. Closest is the declared geometry: cosine, or L2, with optional L2 normalization. Exact search and the engineering tool passed on 30 October 2026. A visible check ranked [1, 0] ahead of [4, 0] under L2, and a matching direction ahead of an orthogonal direction under cosine. The same day, pure constructors for a difference, a shared residual, and a cone passed on synthetic vectors, and exact search ranks inside the cone. The tool refuses live calls and unbound relevance, and it does not expose the constructors. A separate English abstract corpus and its evaluation stay proposed. Both profiles stay unbound. No abstract corpus, Gemini adapter, or relevance result is bound.",
   "updatedAt": "2026-10-30",
   "goals": [
     {
@@ -264,7 +264,7 @@
     {
       "id": "or-01-retrieval-toolset",
       "title": "Expose Hx01 capabilities as a reusable toolset",
-      "description": "Expose developed retrieval components through the common discover, configure, check, run and inspect boundary. The first numerical piece is the saved-vector reference. The text-Gemini and local profiles stay explicit. OR01-RET is not registered yet.",
+      "description": "Expose developed retrieval components through the common discover, configure, check, run and inspect boundary. OR01-RET 0.1.0 is registered for exploratory saved-vector exact search. Pairwise similarity, neighborhood diagnostics, and geometric operators stay outside that surface until this goal admits them. The text-Gemini and local profiles stay explicit.",
       "milestones": [
         {
           "id": "or-01-retrieval-toolset-surface",
@@ -310,6 +310,104 @@
             {
               "label": "Capability charter and evidence standard; design reference",
               "path": "doc/operations_over_representations_design_spec_v0.1.0.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "or-01-geometric-abstract-retrieval",
+      "title": "Retrieve shared abstract concepts with geometric queries",
+      "description": "Construct a query vector, direction, or cone from saved vectors, then rank a separate frozen corpus of English abstract concepts with exact search. The abstract population is not a concrete source population. Ranking distance, cone membership, and the geometric construction are not the relevance rule. An admitted run may claim exploratory description or task association. This goal introduces no approximate index, live call, or encoder training.",
+      "milestones": [
+        {
+          "id": "or-01-abstract-corpus-binding",
+          "title": "Bind a minimal abstract concept corpus",
+          "status": "proposed",
+          "description": "Select a small frozen snapshot of English abstract statements on the local saved-vector profile. Preferred extraction rules, reproducible from public dumps, are Open English WordNet hypernym chains of depth at most 3 from a declared seed list of concrete terms, or ConceptNet edges of types IsA, UsedFor, and Causes limited to English nodes. The binding chooses one rule. An external draft may supply a frozen principle list, and writing that text stays outside this operation. The binding admits no run.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-define-contract",
+            "or-01-retrieval-exact-search-reference",
+            "or-01-retrieval-reference-implementation"
+          ],
+          "acceptance": [
+            "The binding names the ontology subset, the extraction rule, and the seed list. The population is English text. A multilingual expansion waits on explicit alignment diagnostics.",
+            "It declares one SpaceRef: encoder or generator identity, revision, dimensions, normalization, metric, and task or role pair. Equal length alone is not acceptance.",
+            "It freezes the text snapshot and the corresponding saved vectors. Every abstract entry keeps a source identity and parent lineage, such as an ontology term, path, relation, or extraction rule. The abstract population is separate from any concrete source population.",
+            "It declares an independent relevance rule, hand-adjudicated or a synthetic shared-principle label linking abstract statements to concrete pairs, plus exclusions and query eligibility. Ranking distance is not that rule.",
+            "The binding uses the local saved-vector profile and links OR01-RET and OR01-RET-RER. It does not authorize a live call, encoder training, or a relevance result."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
+            },
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            }
+          ]
+        },
+        {
+          "id": "or-01-geometric-operators",
+          "title": "Define geometric query constructors",
+          "status": "done",
+          "description": "The exact-search reference now includes pure constructors for the difference of two points, the shared residual after removing that difference span, and a cone with a unit axis, an angular aperture, and optional radial bounds. Ranking inside the cone is exact search. On 30 October 2026, make test-retrieval passed the seven exact-search checks and two constructor checks under g++ with -Wall -Wextra -Wpedantic. The registered tool does not expose the constructors. This is not a relevance result, and no abstract corpus is bound.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-retrieval-exact-search-reference",
+            "or-01-retrieval-reference-implementation"
+          ],
+          "acceptance": [
+            "The operators are pure deterministic functions of the input vectors and the declared parameters. They return a SpaceRef-compatible query vector, a direction, or cone parameters. Ranking inside the resulting neighborhood uses the existing exact-search metric, normalization, and source-ID tie rules.",
+            "Non-finite values, collinear inputs, a zero norm, undefined geometry, and a mismatched SpaceRef refuse or skip with an explicit report. Empty, abstained, and failed stay distinct.",
+            "Engineering checks use synthetic fixtures in the style of the recorded [1, 0] and [0, 1] cases. The checks call no provider and judge no relevance.",
+            "Leave-one-out hubness, mean neighbor distance inside the cone, and cone purity are reported diagnostics. They do not close Hx02, Hx06, or a Nonverba evaluation. Generating text from a geometric point stays a separate operation."
+          ],
+          "evidence": [
+            {
+              "label": "Exact-search reference and constructors",
+              "path": "code/operations/retrieval/IMPLEMENTATION.md"
+            },
+            {
+              "label": "Constructor interface",
+              "path": "code/operations/retrieval/include/mityane/operations/retrieval/exact_search.h"
+            },
+            {
+              "label": "Engineering checks",
+              "path": "code/operations/retrieval/tests/exact_search_test.cpp"
+            },
+            {
+              "label": "30 October 2026 constructor check",
+              "path": "code/operations/retrieval/reviews/geometric-operators-v0.1.0.md"
+            }
+          ]
+        },
+        {
+          "id": "or-01-geometric-abstract-evaluation-protocol",
+          "title": "Evaluate abstract retrieval under geometric queries",
+          "status": "proposed",
+          "description": "After the abstract corpus and the geometric operators are bound, measure ranking of independently labeled shared-principle items. The baseline is plain exact nearest-neighbor search on the same corpus and queries. This record does not authorize the run.",
+          "updatedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-abstract-corpus-binding",
+            "or-01-geometric-operators"
+          ],
+          "acceptance": [
+            "The protocol fixes partitions, SpaceRef, the plain exact-neighbor baseline, the metrics against the independent shared-principle labels, and the failure criteria before held-out assessment. nDCG or precision may be those metrics. Ranking distance, cone membership, and the geometric construction are not the relevance rule.",
+            "The report covers cone queries and point queries, abstentions, failures, and the evaluation unit. Negative and inconclusive outcomes stay indexed.",
+            "The population is the bound English abstract corpus on the local saved-vector profile. A result here does not transfer to Gemini, to another encoder, to a Nonverba evaluation, or to a causal claim in Hx06."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
+            },
+            {
+              "label": "OR01-RET contract 0.1.0",
+              "path": "code/operations/retrieval/CONTRACT.md"
             }
           ]
         }
