@@ -7,9 +7,10 @@ model does not require rewriting the operation.
 
 The first callable tool is **OR06-PCR 0.1.0**, recorded paired model-response
 comparison. Its [usage guide](counterfactuals/TOOL.md) provides examples and the
-exact boundary. **OR01-RET 0.1.0** ranks saved vectors with the exact-search
-reference. It accepts `exploratory_description` only, calls no provider, and
-does not score relevance. Its [usage note](retrieval/README.md) is the operation
+exact boundary. **OR01-RET 0.1.0** is the exact k-retrieval command: a query vector already in
+hand, ranked by the exact-search reference. It accepts `exploratory_description`
+only, calls no provider, and does not score relevance. Geometric abstract
+retrieval builds its query in the same library and is not a second tool. Its [usage note](retrieval/README.md) is the operation
 entry. Other OR families retain their existing interfaces until they adopt this
 boundary; they are not implicitly registered or migrated.
 

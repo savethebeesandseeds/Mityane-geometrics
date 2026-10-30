@@ -4,8 +4,8 @@ Standard-library C++ for the numerical slice of [OR01-RET 0.1.0](CONTRACT.md). T
 
 | Piece | Path |
 | --- | --- |
-| Interface | [exact_search.h](include/mityane/operations/retrieval/exact_search.h) |
-| Implementation | [exact_search.cpp](src/exact_search.cpp) |
+| Exact k-retrieval | [exact_search.h](include/mityane/operations/retrieval/exact_search.h), [exact_search.cpp](src/exact_search.cpp) |
+| Geometric abstract retrieval | [geometry.h](include/mityane/operations/retrieval/geometry.h), [geometry.cpp](src/geometry.cpp) |
 | Checks | [exact_search_test.cpp](tests/exact_search_test.cpp) |
 
 Build and run inside the managed container:
@@ -49,9 +49,9 @@ The recorded run is [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md). Pairwise s
 
 `make test-retrieval` runs seven checks: cosine tie order, L2 order and pairwise agreement, L2 normalization, reported exclusions, empty versus failure, refusal cases, and hubness on a three-point line. The recorded run is [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md). A later look the same day repeated those checks, passed the nine envelope checks, and confirmed the visible order: L2 distance 1 before distance 4, and cosine 1 before cosine 0. That look is [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
 
-## Geometric constructors
+## Geometric abstract retrieval
 
-The same library builds a query from saved vectors and then calls exact search. `difference` returns prepared target minus prepared origin. `shared_direction` removes the span of differences among two to eight points and returns the residual of the first point. `make_cone` returns a unit axis, an aperture in radians, and optional radial bounds. `search_cone` ranks eligible members against that axis and reports everyone else as `outside_cone`. A zero prepared vector has no angle and is `undefined_geometry`.
+`geometry.cpp` builds a query from saved vectors and then calls `search()`. Exact k-retrieval stays in `exact_search.cpp`. The registered tool links only that ranker. `difference` returns prepared target minus prepared origin. `shared_direction` removes the span of differences among two to eight points and returns the residual of the first point. `make_cone` returns a unit axis, an aperture in radians, and optional radial bounds. `search_cone` ranks eligible members against that axis and reports everyone else as `outside_cone`. A zero prepared vector has no angle and is `undefined_geometry`.
 
 A zero difference or a zero residual is `collinear_inputs`. A zero-norm input under cosine or L2 normalization abstains. `cone_diagnostics` reports leave-one-out hubness and mean neighbor distance on the members inside the cone. Purity is the fraction of those members named by the caller. An empty name list leaves purity unset. None of these figures is a relevance result, and none closes Hx02.
 

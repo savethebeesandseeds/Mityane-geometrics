@@ -1,4 +1,5 @@
 #include "mityane/operations/retrieval/exact_search.h"
+#include "mityane/operations/retrieval/geometry.h"
 
 #include <cmath>
 #include <iostream>

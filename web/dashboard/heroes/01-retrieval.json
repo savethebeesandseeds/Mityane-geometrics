@@ -4,8 +4,8 @@
   "number": 1,
   "title": "Retrieval and similarity matching",
   "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
-  "boundary": "Hx01 owns the retrieval operation, its contract, exact-search reference, relevance evidence and toolset. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric operators are pure functions that build a query vector, a direction, or cone parameters. Ranking inside that neighborhood remains exact search. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
-  "summary": "OR01-RET 0.1.0 returns the nearest saved sources to a query point in one embedding space. Closest is the declared geometry: cosine, or L2, with optional L2 normalization. Exact search and the engineering tool passed on 30 October 2026. A visible check ranked [1, 0] ahead of [4, 0] under L2, and a matching direction ahead of an orthogonal direction under cosine. The same day, pure constructors for a difference, a shared residual, and a cone passed on synthetic vectors, and exact search ranks inside the cone. The tool refuses live calls and unbound relevance, and it does not expose the constructors. A separate English abstract corpus and its evaluation stay proposed. Both profiles stay unbound. No abstract corpus, Gemini adapter, or relevance result is bound.",
+  "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Exact k-retrieval and geometric abstract retrieval are two uses of that ranker. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric constructors are pure functions that build a query vector, a direction, or cone parameters, and then call exact k-retrieval. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
+  "summary": "OR01-RET 0.1.0 is one ranker with two uses. Exact k-retrieval takes a query vector already in hand and returns the nearest saved sources under cosine or L2. That use is the registered tool. Geometric abstract retrieval builds a difference, a shared residual, or a cone and then calls the same ranker. Both passed their engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2. The tool refuses live calls and unbound relevance, and it does not expose the constructors. A separate English abstract corpus and its evaluation stay proposed. Both profiles stay unbound. No abstract corpus, Gemini adapter, or relevance result is bound.",
   "updatedAt": "2026-10-30",
   "goals": [
     {
@@ -318,7 +318,7 @@
     {
       "id": "or-01-geometric-abstract-retrieval",
       "title": "Retrieve shared abstract concepts with geometric queries",
-      "description": "Construct a query vector, direction, or cone from saved vectors, then rank a separate frozen corpus of English abstract concepts with exact search. The abstract population is not a concrete source population. Ranking distance, cone membership, and the geometric construction are not the relevance rule. An admitted run may claim exploratory description or task association. This goal introduces no approximate index, live call, or encoder training.",
+      "description": "Geometric abstract retrieval constructs a query vector, direction, or cone from saved vectors, then ranks a separate frozen corpus of English abstract concepts with exact k-retrieval. The abstract population is not a concrete source population. Ranking distance, cone membership, and the geometric construction are not the relevance rule. An admitted run may claim exploratory description or task association. This goal introduces no approximate index, live call, or encoder training.",
       "milestones": [
         {
           "id": "or-01-abstract-corpus-binding",
@@ -353,7 +353,7 @@
           "id": "or-01-geometric-operators",
           "title": "Define geometric query constructors",
           "status": "done",
-          "description": "The exact-search reference now includes pure constructors for the difference of two points, the shared residual after removing that difference span, and a cone with a unit axis, an angular aperture, and optional radial bounds. Ranking inside the cone is exact search. On 30 October 2026, make test-retrieval passed the seven exact-search checks and two constructor checks under g++ with -Wall -Wextra -Wpedantic. The registered tool does not expose the constructors. This is not a relevance result, and no abstract corpus is bound.",
+          "description": "Geometric abstract retrieval lives beside exact k-retrieval. Pure constructors build the difference of two points, the shared residual after removing that difference span, and a cone with a unit axis, an angular aperture, and optional radial bounds. Ranking inside the cone calls exact k-retrieval. On 30 October 2026, make test-retrieval passed the seven exact-search checks and two constructor checks under g++ with -Wall -Wextra -Wpedantic. The registered tool links only the ranker. This is not a relevance result, and no abstract corpus is bound.",
           "updatedAt": "2026-10-30",
           "completedAt": "2026-10-30",
           "dependsOn": [
@@ -372,8 +372,8 @@
               "path": "code/operations/retrieval/IMPLEMENTATION.md"
             },
             {
-              "label": "Constructor interface",
-              "path": "code/operations/retrieval/include/mityane/operations/retrieval/exact_search.h"
+              "label": "Geometric abstract retrieval",
+              "path": "code/operations/retrieval/include/mityane/operations/retrieval/geometry.h"
             },
             {
               "label": "Engineering checks",

@@ -11,9 +11,9 @@ Two profiles are defined and unbound. `text-gemini-embedding-2` is text input to
 | [OR01-RET contract](CONTRACT.md) and [RER](EVIDENCE.md) | Input and output roles, SpaceRef, exclusions, claim limits, and the two unbound profiles |
 | [C++ exact-search reference](IMPLEMENTATION.md) | Engineering-only cosine and L2 search, pairwise similarity, and neighborhood diagnostics on caller-supplied arrays |
 
-The reference does not call a provider or read a dataset. The registered tool **OR01-RET 0.1.0** exposes that reference through the common envelopes in [TOOLS.md](../TOOLS.md). It accepts exploratory saved-vector requests and refuses live calls and unbound relevance claims. Encoding stays with the encoder or provider that produced the vectors.
+Two uses share this operation and this ranker. **Exact k-retrieval** takes a query vector that is already in hand and returns the nearest sources. That is the registered tool **OR01-RET 0.1.0** in [TOOLS.md](../TOOLS.md). It accepts exploratory saved-vector requests and refuses live calls and unbound relevance claims. **Geometric abstract retrieval** builds a difference, a shared residual, or a cone in [geometry.h](include/mityane/operations/retrieval/geometry.h), then calls the same exact search. The tool does not expose those constructors. No abstract corpus is bound. Encoding stays with the encoder or provider that produced the vectors.
 
-Geometric constructors in the same library build a difference, a shared residual, or a cone, and exact search ranks that neighborhood. They are engineering functions over caller-supplied arrays. The registered tool does not expose them. No abstract corpus is bound.
+The reference does not call a provider or read a dataset.
 
 ```powershell
 .\container.ps1 exec make test-retrieval-tool

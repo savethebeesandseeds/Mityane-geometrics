@@ -4,9 +4,11 @@ RETRIEVAL_BUILD_DIR := $(if $(strip $(BUILD_DIR)),$(BUILD_DIR),/opt/mityane-geom
 RETRIEVAL_CPPFLAGS := -I$(RETRIEVAL_ROOT)/include
 RETRIEVAL_CXXFLAGS := -std=c++20 -O1 -g0 -Wall -Wextra -Wpedantic -MMD -MP
 RETRIEVAL_OBJECT := $(RETRIEVAL_BUILD_DIR)/exact_search.o
+RETRIEVAL_GEOMETRY_OBJECT := $(RETRIEVAL_BUILD_DIR)/geometry.o
 RETRIEVAL_TEST_OBJECT := $(RETRIEVAL_BUILD_DIR)/exact_search_test.o
 RETRIEVAL_TEST := $(RETRIEVAL_BUILD_DIR)/exact_search_test
 RETRIEVAL_HEADER := $(RETRIEVAL_ROOT)/include/mityane/operations/retrieval/exact_search.h
+RETRIEVAL_GEOMETRY_HEADER := $(RETRIEVAL_ROOT)/include/mityane/operations/retrieval/geometry.h
 RETRIEVAL_TOOL_OBJECT := $(RETRIEVAL_BUILD_DIR)/exact_search_tool.o
 RETRIEVAL_TOOL_BIN := $(RETRIEVAL_BUILD_DIR)/exact_search_tool
 
@@ -25,15 +27,19 @@ test-retrieval: $(RETRIEVAL_TEST)
 retrieval-container-check:
 	@test -f /.dockerenv && test "$(CURDIR)" = /mityane || { echo 'Use container.ps1 in mityane-geometrics.' >&2; exit 1; }
 
-$(RETRIEVAL_OBJECT): $(RETRIEVAL_ROOT)/src/exact_search.cpp $(RETRIEVAL_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
+$(RETRIEVAL_OBJECT): $(RETRIEVAL_ROOT)/src/exact_search.cpp $(RETRIEVAL_ROOT)/src/numeric.hpp $(RETRIEVAL_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
 	mkdir -p "$(@D)"
 	$(CXX) $(RETRIEVAL_CPPFLAGS) $(RETRIEVAL_CXXFLAGS) -c $< -o $@
 
-$(RETRIEVAL_TEST_OBJECT): $(RETRIEVAL_ROOT)/tests/exact_search_test.cpp $(RETRIEVAL_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
+$(RETRIEVAL_GEOMETRY_OBJECT): $(RETRIEVAL_ROOT)/src/geometry.cpp $(RETRIEVAL_ROOT)/src/numeric.hpp $(RETRIEVAL_HEADER) $(RETRIEVAL_GEOMETRY_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
 	mkdir -p "$(@D)"
 	$(CXX) $(RETRIEVAL_CPPFLAGS) $(RETRIEVAL_CXXFLAGS) -c $< -o $@
 
-$(RETRIEVAL_TEST): $(RETRIEVAL_OBJECT) $(RETRIEVAL_TEST_OBJECT)
+$(RETRIEVAL_TEST_OBJECT): $(RETRIEVAL_ROOT)/tests/exact_search_test.cpp $(RETRIEVAL_HEADER) $(RETRIEVAL_GEOMETRY_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
+	mkdir -p "$(@D)"
+	$(CXX) $(RETRIEVAL_CPPFLAGS) $(RETRIEVAL_CXXFLAGS) -c $< -o $@
+
+$(RETRIEVAL_TEST): $(RETRIEVAL_OBJECT) $(RETRIEVAL_GEOMETRY_OBJECT) $(RETRIEVAL_TEST_OBJECT)
 	$(CXX) $^ -o $@
 
 $(RETRIEVAL_TOOL_OBJECT): $(RETRIEVAL_ROOT)/tool/native.cpp $(RETRIEVAL_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
@@ -43,4 +49,4 @@ $(RETRIEVAL_TOOL_OBJECT): $(RETRIEVAL_ROOT)/tool/native.cpp $(RETRIEVAL_HEADER) 
 $(RETRIEVAL_TOOL_BIN): $(RETRIEVAL_OBJECT) $(RETRIEVAL_TOOL_OBJECT)
 	$(CXX) $^ -o $@
 
--include $(RETRIEVAL_OBJECT).d $(RETRIEVAL_TEST_OBJECT).d $(RETRIEVAL_TOOL_OBJECT).d
+-include $(RETRIEVAL_OBJECT).d $(RETRIEVAL_GEOMETRY_OBJECT).d $(RETRIEVAL_TEST_OBJECT).d $(RETRIEVAL_TOOL_OBJECT).d
