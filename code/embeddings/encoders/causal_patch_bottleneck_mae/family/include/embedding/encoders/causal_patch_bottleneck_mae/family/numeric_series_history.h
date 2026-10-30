@@ -2,7 +2,11 @@
 // Packs each channel's own bars into HISTORY_LENGTH slots.
 // HISTORY_LENGTH is a packing width, the same number of slots on every channel,
 // not a shared duration. Each channel contributes that resolution's own bars,
-// time-ordered and right-aligned. A shorter channel leaves the left slots empty.
+// time-ordered and right-aligned, ending at that channel's latest bar at or
+// before the sample's one anchor time. A count of 24 daily bars is 24 bars of
+// the daily series. It is not 24 days of a finer channel, and that finer
+// channel is not lengthened to match it. A shorter channel leaves the left
+// slots empty.
 // An empty slot is not a bar: its timestamp is NaN and its mask is false.
 // Index i is the i-th packed bar of that channel. It is not the same timestamp
 // as index i of another channel. Nothing is interpolated and nothing is held.

@@ -1,23 +1,45 @@
 // Copyright (c) 2026 Waajacu. See LICENSE at repository root.
-// Published January 2024 spot klines -> observation windows.
-// One instrument per row. Each channel is that resolution's own exchange file.
-// history_from_edge_samples right-aligns each channel's own bars into the
-// packing width. This program does not aggregate and does not hold a bar
-// across another channel's slots. Each channel is loaded with one extra bar.
-// That bar's previous cache row is missing or invalid, so the log-return view
-// leaves it masked, and the requested count then drops it. Every requested
-// slot is a return against the immediately previous cache row. The first
-// decision leaves that predecessor inside the role. Validation decisions stay
-// far enough apart that every packed channel, including its log-return
-// predecessor, is disjoint. width128.conf and width64.conf are the one-clock
-// record of the 29 October measurement. This builder refuses those filenames
-// and any settings file that does not name CHANNEL_BAR_COUNTS.
+// Published spot klines -> observation windows.
+//
+// One instrument per row. One sample has one anchor time. The channels are
+// independent series. They share that anchor and they do not share a span.
+// Each channel contributes its own last count bars of its own interval,
+// ending at that channel's latest bar at or before the anchor.
+//   32 five-minute bars are about 160 minutes of the five-minute series.
+//   24 hourly bars are 24 bars of the hourly series.
+//   24 daily bars are 24 bars of the daily series.
+// None of those counts is a length of another channel. The shared row is the
+// longest count. A shorter channel is left-padded with empty slots. Those
+// slots are not five-minute bars, and the five-minute channel is not asked
+// to cover the daily series.
+// This is the same cut cuwacunu_torch uses in get_edge_sample_at_anchor_key
+// and get_by_anchor_key, and the same cut cuwacunu_dev uses in
+// batch_on_anchor: the input field is that channel's own
+// [i-(count-1) ... i], the field ends at the closest bar at or before the
+// anchor, and a shorter channel is padded on the left so the last row is
+// the anchor side.
+// history_from_edge_samples right-aligns each channel. This program does not
+// aggregate and does not hold a bar across another channel's slots.
+// Each channel is loaded with one extra bar of its own series. That bar is
+// the log-return predecessor. The view masks it, and the requested count
+// drops it. Every requested slot is a return against the immediately previous
+// bar of the same channel. The first decision leaves the finest channel's
+// predecessor inside the role. A coarser channel may need its own earlier
+// bars from before the role. Those bars stay on that channel.
+// Validation decisions live on the finest channel. They are spaced by that
+// channel's own packed count, so its packed bars do not overlap. A coarser
+// channel's duration is not that gap. Nearby anchors may share a coarser
+// channel's bars.
+// width128.conf and width64.conf are the one-clock record of the 29 October
+// measurement. This builder refuses those filenames and any settings file
+// that does not name CHANNEL_BAR_COUNTS.
 #include "embedding/data/observation_windows.h"
 #include "embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h"
 
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <limits>
 #include <set>
 #include <sstream>
@@ -60,15 +82,15 @@ std::vector<int64_t> anchors(int64_t begin, int64_t end, int64_t count, int64_t 
   }
   check(std::set<int64_t>(rows.begin(), rows.end()).size() == rows.size(), "unique decision times");
   check(rows.front() >= begin && rows.back() <= end, "decision times stay inside the role");
-  check(rows.front() - (bar_count - 1) * step >= begin, "packed finest bars stay inside the role");
-  check(rows.front() - bar_count * step >= begin, "finest log-return predecessor stays inside the role");
+  check(rows.front() - (bar_count - 1) * step >= begin, "finest channel's own packed bars stay inside the role");
+  check(rows.front() - bar_count * step >= begin, "finest channel's own log-return predecessor stays inside the role");
   return rows;
 }
 
 struct Series {
   ns::MemoryMappedDataset<ns::kline_t> bars;
-  explicit Series(const fs::path &csv)
-      : bars(ns::sanitize_csv_into_binary_file<ns::kline_t>(csv.string(), "none"), 1, 0, torch::kFloat64) {}
+  Series(const fs::path &csv, bool force_rebuild)
+      : bars(ns::sanitize_csv_into_binary_file<ns::kline_t>(csv.string(), "none", force_rebuild), 1, 0, torch::kFloat64) {}
 };
 
 ns::edge_sample_t masked_channel(int64_t length) {
@@ -83,10 +105,16 @@ ns::edge_sample_t masked_channel(int64_t length) {
   return sample;
 }
 
-ns::edge_sample_t load_channel(Series &series, int64_t cutoff, int64_t desired, int64_t width) {
-  int64_t count = desired;
-  while (count > 0 && !series.bars.can_get_edge_sample_at_anchor_key(cutoff, static_cast<std::size_t>(count), 0)) --count;
-  if (count == 0) return masked_channel(width);
+ns::edge_sample_t load_channel(Series &series, int64_t cutoff, int64_t desired, int64_t width, const std::string &key) {
+  // desired is this channel's own packed count plus its own log-return
+  // predecessor. A short file is not trimmed into a shorter channel, and it
+  // is not filled with another channel's bars.
+  check(series.bars.can_get_edge_sample_at_anchor_key(cutoff, static_cast<std::size_t>(desired), 0),
+      "the " + key + " channel needs " + std::to_string(desired) +
+          " of its own bars at or before anchor " + std::to_string(cutoff) +
+          ". That is this channel's packed count plus its log-return predecessor. "
+          "It is not a length of another channel");
+  const int64_t count = desired;
   auto sample = series.bars.get_edge_sample_at_anchor_key(cutoff, static_cast<std::size_t>(count), 0);
   check(!sample.normalized && sample.features.scalar_type() == torch::kFloat64 && sample.past_keys.scalar_type() == torch::kInt64,
       "raw Float64 channel with Int64 keys");
@@ -101,8 +129,8 @@ ns::edge_sample_t load_channel(Series &series, int64_t cutoff, int64_t desired, 
 }
 
 ow::Dataset build_role(const cp::Config &config, const std::vector<int64_t> &counts, int64_t finest,
-    std::vector<std::vector<Series>> &instruments, const std::vector<int64_t> &times, const std::string &source,
-    const std::string &split, const std::string &role) {
+    const std::vector<std::string> &keys, std::vector<std::vector<Series>> &instruments,
+    const std::vector<int64_t> &times, const std::string &source, const std::string &split, const std::string &role) {
   const auto ids = cp::implementation::resolved_channel_ids(config.level);
   const auto channels = static_cast<int64_t>(ids.size());
   int64_t width = 0;
@@ -112,18 +140,18 @@ ow::Dataset build_role(const cp::Config &config, const std::vector<int64_t> &cou
     std::vector<ns::edge_sample_t> samples;
     samples.reserve(kSymbols.size());
     for (std::size_t instrument = 0; instrument < kSymbols.size(); ++instrument) {
-      std::vector<torch::Tensor> features, masks, keys;
+      std::vector<torch::Tensor> features, masks, past;
       for (int64_t channel = 0; channel < channels; ++channel) {
         auto loaded = load_channel(instruments[instrument][static_cast<std::size_t>(channel)], cutoff,
-            counts[static_cast<std::size_t>(channel)] + 1, width);
+            counts[static_cast<std::size_t>(channel)] + 1, width, keys[static_cast<std::size_t>(channel)]);
         features.push_back(loaded.features);
         masks.push_back(loaded.mask);
-        keys.push_back(loaded.past_keys);
+        past.push_back(loaded.past_keys);
       }
       ns::edge_sample_t sample;
       sample.features = torch::stack(features);
       sample.mask = torch::stack(masks);
-      sample.past_keys = torch::stack(keys);
+      sample.past_keys = torch::stack(past);
       sample.normalized = false;
       samples.push_back(std::move(sample));
     }
@@ -140,9 +168,14 @@ ow::Dataset build_role(const cp::Config &config, const std::vector<int64_t> &cou
     const auto slots = config.level.history_length;
     for (int64_t instrument = 0; instrument < static_cast<int64_t>(kSymbols.size()); ++instrument) {
       check(history.cutoffs[instrument].item<double>() == static_cast<double>(cutoff), "cutoff is the decision close");
-      const auto closes = history.history.observed[instrument][finest].select(1, 3);
-      check(closes.sum().item<int64_t>() == counts[static_cast<std::size_t>(finest)],
-          "finest channel keeps one observed bar per packed slot");
+      for (int64_t channel = 0; channel < channels; ++channel) {
+        const auto own = history.history.observed[instrument][channel].select(1, 3);
+        check(own.sum().item<int64_t>() == counts[static_cast<std::size_t>(channel)],
+            "the " + keys[static_cast<std::size_t>(channel)] +
+                " channel keeps one observed bar per one of its own packed slots");
+      }
+      // Only the anchor channel ends on the decision close. A coarser channel
+      // ends on its own latest bar at or before that close.
       check(history.history.timestamps[instrument][finest][slots - 1].item<double>() == static_cast<double>(cutoff),
           "finest channel's last packed bar is the decision close");
       ids_for_cutoff[instrument] = instrument * kRowScale + cutoff;
@@ -164,8 +197,42 @@ ow::Dataset build_role(const cp::Config &config, const std::vector<int64_t> &cou
   return data;
 }
 
-fs::path csv_path(const fs::path &root, const char *symbol, const char *interval) {
-  return root / symbol / interval / (std::string(symbol) + "-" + interval + "-2024-01.csv");
+fs::path month_csv(const fs::path &root, const char *symbol, const char *interval, const char *stamp) {
+  return root / symbol / interval / (std::string(symbol) + "-" + interval + "-" + stamp + ".csv");
+}
+
+// January is the role month. December 2023, when that tree sits beside it, is
+// earlier bars of the same channel. The publisher files stay untouched. The
+// stitched copy is only this channel's own read span, oldest month first.
+// A channel with no December file is read from January alone.
+struct ChannelFile {
+  fs::path csv;
+  bool stitched{false};
+};
+
+ChannelFile channel_file(const fs::path &january_root, const char *symbol, const char *interval) {
+  const auto january = month_csv(january_root, symbol, interval, "2024-01");
+  check(fs::is_regular_file(january), std::string(symbol) + " " + interval + " January file");
+  const auto december = month_csv(january_root.parent_path() / "timeframe-december-2023", symbol, interval, "2023-12");
+  if (!fs::is_regular_file(december)) return {january, false};
+  const auto span_dir = january_root.parent_path() / "timeframe-channel-span";
+  std::error_code error;
+  fs::create_directories(span_dir, error);
+  check(!error, "channel span directory");
+  const auto stitched = span_dir / (std::string(symbol) + "-" + interval + "-2023-12-2024-01.csv");
+  std::ifstream older(december, std::ios::binary);
+  std::ifstream newer(january, std::ios::binary);
+  check(bool(older) && bool(newer), "read this channel's own months");
+  const std::string older_bytes((std::istreambuf_iterator<char>(older)), {});
+  const std::string newer_bytes((std::istreambuf_iterator<char>(newer)), {});
+  check(!older_bytes.empty() && !newer_bytes.empty(), "this channel's month file is empty");
+  std::ofstream out(stitched, std::ios::binary | std::ios::trunc);
+  check(bool(out), "write this channel's own span");
+  out << older_bytes;
+  if (older_bytes.back() != '\n') out << '\n';
+  out << newer_bytes;
+  check(bool(out), "finish this channel's own span");
+  return {stitched, true};
 }
 
 std::string join_ids(const std::vector<int64_t> &ids) {
@@ -226,32 +293,33 @@ int main(int argc, char **argv) {
     const auto validation_end = kEpochMs + 28 * kDayMs - 1;
     const auto finest_count = counts[static_cast<std::size_t>(finest)];
     check(finest_count >= kAnchorMinimumBars, "anchor channel needs at least 8 observed bars");
-    int64_t lookback_ms = 0;
-    for (std::size_t channel = 0; channel < counts.size(); ++channel) {
-      const auto span = counts[channel] * tf::find(ids[channel])->step_ms;
-      if (span > lookback_ms) lookback_ms = span;
-    }
-    check(lookback_ms % finest_step == 0, "packed lookback is a whole number of finest bars");
-    const auto lookback_bars = lookback_ms / finest_step;
+    // The gap is the anchor channel's own packed count, in that channel's
+    // own steps. A coarser count is not converted into these steps.
+    const auto anchor_gap_bars = finest_count;
     const auto validation_first = validation_begin + finest_count * finest_step;
-    check(validation_first <= validation_end, "validation role contains one packed finest window");
+    check(validation_first <= validation_end, "validation role contains one window of the anchor channel");
     const auto validation_span = (validation_end - validation_first) / finest_step;
     int64_t validation_anchors = 0;
     for (int64_t candidate = kValidationAnchors; candidate >= 2; --candidate) {
-      if (validation_span / (candidate - 1) >= lookback_bars) {
+      if (validation_span / (candidate - 1) >= anchor_gap_bars) {
         validation_anchors = candidate;
         break;
       }
     }
     check(validation_anchors >= 2,
-        "validation windows do not overlap: packed lookback is " + std::to_string(lookback_bars) +
-            " finest bars and the role holds " + std::to_string(validation_span) + " steps");
+        "validation decisions on the " + keys[static_cast<std::size_t>(finest)] +
+            " channel overlap: that channel's own packed count is " + std::to_string(anchor_gap_bars) +
+            " bars and the role holds " + std::to_string(validation_span) +
+            " steps of the same channel. A coarser channel is not part of this gap");
     std::vector<std::vector<Series>> instruments;
     instruments.reserve(kSymbols.size());
     for (const auto symbol : kSymbols) {
       std::vector<Series> channels;
       channels.reserve(ids.size());
-      for (const auto &key : keys) channels.emplace_back(csv_path(root, symbol, key.c_str()));
+      for (const auto &key : keys) {
+        const auto file = channel_file(root, symbol, key.c_str());
+        channels.emplace_back(file.csv, file.stitched);
+      }
       instruments.push_back(std::move(channels));
     }
     const auto train_times = anchors(train_begin, train_end, kTrainAnchors, finest_step, finest_count);
@@ -264,14 +332,14 @@ int main(int argc, char **argv) {
     }
     const std::string source =
         "timeframe-published-bars-v1;population=january-2024-mkt-hist-2;one-instrument-per-row;"
-        "layout=per-channel-right-aligned;channel-ids=" + join_ids(ids) + ";keys=" + key_list.str() +
+        "layout=independent-channels-shared-anchor;channel-ids=" + join_ids(ids) + ";keys=" + key_list.str() +
         ";packing-slots=" + std::to_string(config.level.history_length) +
         ";bar-counts=" + join_ids(counts) + ";finest-step-ms=" + std::to_string(finest_step) +
         ";source=binance-spot-monthly-klines;view=numeric-series-log-returns";
-    auto train = build_role(config, counts, finest, instruments, train_times, source,
+    auto train = build_role(config, counts, finest, keys, instruments, train_times, source,
         "role=TRAIN;begin=" + std::to_string(train_begin) + ";end=" + std::to_string(train_end) +
         ";anchors=1024;days=2024-01-01/2024-01-21", "TRAIN");
-    auto validation = build_role(config, counts, finest, instruments, validation_times, source,
+    auto validation = build_role(config, counts, finest, keys, instruments, validation_times, source,
         "role=VALIDATION;begin=" + std::to_string(validation_begin) + ";end=" + std::to_string(validation_end) +
         ";anchors=" + std::to_string(validation_anchors) + ";days=2024-01-22/2024-01-28", "VALIDATION");
     check(fs::create_directory(output), "exclusive output leaf");
@@ -279,10 +347,12 @@ int main(int argc, char **argv) {
     ow::write(output / "probe-VALIDATION.pt", validation);
     std::ostringstream json;
     json << "{\"kind\":\"timeframe_published_bars_window_v1\",\"status\":\"passed\""
-         << ",\"layout\":\"per-channel-right-aligned\""
+         << ",\"layout\":\"independent-channels-shared-anchor\""
          << ",\"rows\":{\"train\":" << train.rows() << ",\"validation\":" << validation.rows() << "}"
          << ",\"history\":" << config.level.history_length
-         << ",\"packed_lookback_finest_bars\":" << lookback_bars
+         << ",\"anchor_channel\":\"" << keys[static_cast<std::size_t>(finest)] << "\""
+         << ",\"anchor_channel_bars\":" << finest_count
+         << ",\"validation_gap_anchor_bars\":" << anchor_gap_bars
          << ",\"anchors\":{\"train\":" << kTrainAnchors << ",\"validation\":" << validation_anchors << "}"
          << ",\"instruments\":[\"BTCUSDT\",\"ETHUSDT\",\"SOLUSDT\"],\"channel_ids\":[" << join_ids(ids) << "]"
          << ",\"promotes_reference\":false,\"confirmation_bound\":false}";

@@ -67,6 +67,9 @@ divisible by the patch length, and that quotient must be at least 3. Each
 channel's own candle count must also be evenly divisible by the patch length,
 and that quotient must be at least 3. Exactly 3 is legal. The shared row is the
 longest of those counts, so a shorter channel's left pad is whole empty groups.
+The counts do not share a span of time. One sample has one anchor. Each
+channel ends at its own latest bar at or before that anchor. A daily count is
+that many daily bars, not that many days of a finer channel.
 A group is either empty or filled with that channel's candles. The loss
 includes every such channel. The mask still needs at least three observed
 patches: it hides one and leaves two visible. A larger filled-group count still

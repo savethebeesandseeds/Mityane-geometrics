@@ -126,7 +126,13 @@ groups and leaves two visible. The 5-minute channel has four filled groups, and
 that larger count still masks. Seven daily bars fail both checks under patch
 length 8: 7 is not a multiple of 8, and 7 divided by 8 is below 3 groups. The
 application declaration of 24 five-minute, 24 hourly, and 7 daily bars is a
-different count. This does not select a population or replace the
+different count. These counts are each channel's own candles. One sample has
+one anchor time, and the channels do not share a span. 24 daily candles are
+24 bars of the daily series ending at that anchor. They are not 24 days of
+five-minute bars, and the five-minute channel is not lengthened to cover
+them. The published window builder spaces validation decisions by the anchor
+channel's own packed count. A coarser channel is not part of that gap.
+This does not select a population or replace the
 observation-window example.
 
 Include [family/training.h](include/embedding/encoders/causal_patch_bottleneck_mae/family/training.h).

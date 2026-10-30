@@ -5,8 +5,8 @@
   "title": "Encoder · Causal patch bottleneck MAE",
   "purpose": "Discover and develop reusable causal patch bottleneck architecture components and encoder tools that operations and application projects can configure, train and compose.",
   "boundary": "Own the family definition, supported configuration, portable initialization/preprocessing/training/export/resume surfaces and their scoped evidence, with unimplemented coverage stated explicitly. Cuwacunu and other applications own substantial application training and final docking. Keep architecture, configuration, recipe and trained instance separate; checkpoint scores do not restrict a family to one benchmark shape. Follow the shared encoder component instructions and preserve frozen source and research records.",
-  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. The family screen cpb_family_screen_v1 is the rule for a later reference change: development cannot promote, and January, February and March 2024 are consumed. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
-  "updatedAt": "2026-10-27",
+  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. The family screen cpb_family_screen_v1 is the rule for a later reference change: development cannot promote, and January, February and March 2024 are consumed. Packed channels are independent series that share one anchor. Each channel's own candle count is a multiple of the patch length and at least three groups, and the shared row is the longest count. January windows for 32 five-minute, 24 hourly and 24 daily bars are prepared. No packed fit has run. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
+  "updatedAt": "2026-10-30",
   "goals": [
     {
       "id": "encoder-cpb-v19-teacher",
@@ -629,6 +629,45 @@
             "scope": "Family-screen decision fixtures, readout and audit build, and the audit self-test including torch ridge agreement. No market window, training run, or research-reference edit.",
             "reason": "In mityane-geometrics, test-cpb-family-screen passed 11 decision tests and the scalar audit self-test at 8 training rows, 4 validation rows, width 3 and 7 causal updates, including torch linalg_solve agreement. The readout linked. It was not executed on market data."
           }
+        },
+        {
+          "id": "encoder-cpb-independent-channel-packing",
+          "title": "Pack each channel's own bars on one shared anchor",
+          "status": "done",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "description": "Each channel's own candle count is evenly divisible by the patch length, and that quotient is at least 3. Exactly 3 is legal. The shared row is the longest count. A shorter channel's left pad is whole empty groups, and the loss includes every legal channel. One sample has one anchor time. The channels are independent series: 32 five-minute bars, 24 hourly bars and 24 daily bars each end at that channel's latest bar at or before the anchor. A daily count is not a length of the five-minute channel. Validation decisions are spaced by the anchor channel's own packed count. The builder wrote the January windows at .temp/embeddings/runs/independent-channels-2026-10-30/windows: 3072 training rows, 96 validation rows, 1024 training anchors and 32 validation anchors. December 2023 daily and hourly publisher files supply those channels' own earlier bars. The five-minute series stays the January file. V16 seed946103/final2048/native36 remains the research reference. No packed fit ran and nothing here promotes.",
+          "dependsOn": [
+            "encoder-cpb-configurable-family-training"
+          ],
+          "acceptance": [
+            "Each channel candle count is evenly divisible by the patch length and makes at least three groups. Exactly three groups is legal. The shared history length is the longest channel count, and a shorter channel's left pad is whole empty groups.",
+            "One sample has one anchor time. Each channel contributes its own bars of its own interval, ending at that channel's latest bar at or before the anchor. A coarser count is not converted into bars of a finer channel.",
+            "Validation decisions are spaced by the anchor channel's own packed count. A coarser channel does not set that gap.",
+            "The 32/24/24 January windows exist as a development preparation. They do not promote a research reference and they are not a trained packed instance."
+          ],
+          "evidence": [
+            {
+              "label": "Independent-channel window builder",
+              "path": "code/data/market/experiments/timeframe_published_bars_v1/windows.cpp"
+            },
+            {
+              "label": "Packed 32/24/24 settings",
+              "path": "code/data/market/experiments/timeframe_published_bars_v1/packed-5m-h24.conf"
+            },
+            {
+              "label": "Family packing contract",
+              "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/README.md"
+            },
+            {
+              "label": "Per-channel history packing",
+              "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/include/embedding/encoders/causal_patch_bottleneck_mae/family/numeric_series_history.h"
+            },
+            {
+              "label": "Prepared January windows",
+              "path": ".temp/embeddings/runs/independent-channels-2026-10-30/windows/preparation.json"
+            }
+          ]
         }
       ]
     }
