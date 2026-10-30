@@ -19,3 +19,5 @@ The constructor checks cover:
 - Cone purity for one labeled member among three is one third. A repeated label counts once. An empty label list leaves purity unset. Hubness remains leave-one-out inside the cone.
 
 This run does not admit either retrieval profile and does not bind an abstract corpus.
+
+Later the same day the constructors moved to `geometry.cpp`. They call `search()` in `exact_search.cpp`. `make test-retrieval` was run again and printed the same two lines. The registered tool links `exact_search.o` and the tool object only.

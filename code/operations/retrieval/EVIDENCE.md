@@ -14,9 +14,9 @@ This revision refuses `controlled_model_response` and `identified_intervention_e
 
 The instance record must bind the corpus snapshot, query set, license, access, and retention; source IDs and parent lineage; partitions; duplicate and source-window overlap handling; the SpaceRef, including encoder or provider identity, revision policy, dimensions, normalization, metric, and task or role pair; preprocessing and fitted artifacts when used; code and configuration identity; environment; and temporal claim mode.
 
-The text profile additionally binds the Hx18 request-manifest digest, any returned model revision or its absence, the response-artifact digest, and whether the vectors are replayed artifacts or a fresh call. The local profile binds the saved-vector artifact and the encoder checkpoint or synthetic generator those vectors came from. Neither profile is bound in this revision.
+The text profile additionally binds the Hx18 request-manifest digest, any returned model revision or its absence, the response-artifact digest, and whether the vectors are replayed artifacts or a fresh call. The local profile binds the saved-vector artifact and the encoder checkpoint or synthetic generator those vectors came from. The two general profile milestones stay unbound. One English instance of the local profile is bound separately.
 
-**Current bindings:** none. The [exact-search reference](IMPLEMENTATION.md) and the registered engineering tool rank caller-supplied arrays. They select no encoder checkpoint, no Gemini response, and no dataset. A tool completion is not a relevance result.
+**Current bindings:** [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md) freezes an English abstract text population, its shared-principle labels, and one local EmbeddingGemma 2 text SpaceRef on the local profile. The saved-vector hashes are in that record. The bytes stay outside Git. The [exact-search reference](IMPLEMENTATION.md) and the registered engineering tool still rank caller-supplied arrays. They select no Gemini response. A tool completion is not a relevance result.
 
 ## 3. Controls and baselines
 
@@ -46,9 +46,9 @@ The instance records the evaluation unit, including dependent windows or repeate
 
 ## 7. Results and limitations
 
-No profile run has been admitted. No relevance number is claimed. The engineering reference described in [IMPLEMENTATION.md](IMPLEMENTATION.md) checks nearest-source arithmetic only. On 30 October 2026, `make test-retrieval` passed seven checks and `make test-retrieval-tool` passed nine. A visible engineering run ranked source `near` (`[1, 0]`, L2 distance 1) ahead of `far` (`[4, 0]`, distance 4), and source `same` (cosine 1) ahead of `other` (cosine 0). The same library later constructed a difference, a shared residual, and a cone on synthetic vectors; that check is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). It binds no abstract corpus. The records are [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md), [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md), and [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
+One `task_association` comparison is scored in [oewn-abstract-evaluation-v0.1.0.md](reviews/oewn-abstract-evaluation-v0.1.0.md). On the seven eligible queries, full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls `shared` inconclusive and `difference` negative. No positive retrieval-quality claim is made. The engineering reference described in [IMPLEMENTATION.md](IMPLEMENTATION.md) checks nearest-source arithmetic only. On 30 October 2026, `make test-retrieval` passed seven checks and `make test-retrieval-tool` passed nine. A visible engineering run ranked source `near` (`[1, 0]`, L2 distance 1) ahead of `far` (`[4, 0]`, distance 4), and source `same` (cosine 1) ahead of `other` (cosine 0). Geometric abstract retrieval in `geometry.cpp` later constructed a difference, a shared residual, and a cone on synthetic vectors, then called the same ranker. That check is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). It binds no abstract corpus. The English text population, its labels, and its local text vector hashes are a later record, [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md). That record includes no relevance number. The engineering records are [exact-search-v0.1.0.md](reviews/exact-search-v0.1.0.md), [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md), and [nearest-source-v0.1.0.md](reviews/nearest-source-v0.1.0.md).
 
-OR01-RET 0.1.0 does not establish retrieval quality, encoder quality, or Gemini service behavior.
+One exploratory neighborhood listing of that population is [oewn-abstract-neighborhoods-v0.1.0.md](reviews/oewn-abstract-neighborhoods-v0.1.0.md). Its claim level is `exploratory_description`. OR01-RET 0.1.0 does not establish retrieval quality, encoder quality, or Gemini service behavior.
 
 ## 8. Reproduction pointer
 
@@ -61,8 +61,8 @@ OR01-RET 0.1.0 does not establish retrieval quality, encoder quality, or Gemini 
 | Envelope check | `make test-retrieval-tool` in the managed container |
 | Visible order | `code/operations/retrieval/reviews/nearest-source-v0.1.0.md` |
 
-No query set, corpus hash, seed, or provider response is part of this revision.
+No provider response is part of this revision. The English text snapshot, its seed list, and the local text vector hashes are [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md).
 
 ## 9. Decision
 
-`exploratory` interface only. Both profiles remain unbound. No study is promoted, and none is admitted.
+`exploratory` interface for the reusable contract. Both general profile milestones remain unbound. OR01-RET-ABS 0.1.0 binds one English population and one local text SpaceRef. OR01-RET-ABS-EVAL 0.1.0 scores that population. The shared residual is inconclusive against the two baselines, and the difference is negative. No positive study is promoted.

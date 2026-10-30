@@ -11,10 +11,13 @@ RETRIEVAL_HEADER := $(RETRIEVAL_ROOT)/include/mityane/operations/retrieval/exact
 RETRIEVAL_GEOMETRY_HEADER := $(RETRIEVAL_ROOT)/include/mityane/operations/retrieval/geometry.h
 RETRIEVAL_TOOL_OBJECT := $(RETRIEVAL_BUILD_DIR)/exact_search_tool.o
 RETRIEVAL_TOOL_BIN := $(RETRIEVAL_BUILD_DIR)/exact_search_tool
+RETRIEVAL_INSPECT_OBJECT := $(RETRIEVAL_BUILD_DIR)/saved_vector_inspect.o
+RETRIEVAL_INSPECT_BIN := $(RETRIEVAL_BUILD_DIR)/saved_vector_inspect
 
-.PHONY: test-retrieval build-retrieval-tool test-retrieval-tool retrieval-container-check
+.PHONY: test-retrieval build-retrieval-tool test-retrieval-tool build-retrieval-inspect retrieval-container-check
 
 build-retrieval-tool: $(RETRIEVAL_TOOL_BIN)
+build-retrieval-inspect: $(RETRIEVAL_INSPECT_BIN)
 test-retrieval-tool: $(RETRIEVAL_TOOL_BIN) | retrieval-container-check
 	MITYANE_RETRIEVAL_TOOL_BINARY="$(abspath $(RETRIEVAL_TOOL_BIN))" bash code/scripts/node.sh --test $(RETRIEVAL_ROOT)/tool/tool.test.mjs
 
@@ -49,4 +52,11 @@ $(RETRIEVAL_TOOL_OBJECT): $(RETRIEVAL_ROOT)/tool/native.cpp $(RETRIEVAL_HEADER) 
 $(RETRIEVAL_TOOL_BIN): $(RETRIEVAL_OBJECT) $(RETRIEVAL_TOOL_OBJECT)
 	$(CXX) $^ -o $@
 
--include $(RETRIEVAL_OBJECT).d $(RETRIEVAL_GEOMETRY_OBJECT).d $(RETRIEVAL_TEST_OBJECT).d $(RETRIEVAL_TOOL_OBJECT).d
+$(RETRIEVAL_INSPECT_OBJECT): $(RETRIEVAL_ROOT)/src/saved_vector_inspect.cpp $(RETRIEVAL_HEADER) $(RETRIEVAL_GEOMETRY_HEADER) $(RETRIEVAL_ROOT)/retrieval.mk | retrieval-container-check
+	mkdir -p "$(@D)"
+	$(CXX) $(RETRIEVAL_CPPFLAGS) $(RETRIEVAL_CXXFLAGS) -c $< -o $@
+
+$(RETRIEVAL_INSPECT_BIN): $(RETRIEVAL_OBJECT) $(RETRIEVAL_GEOMETRY_OBJECT) $(RETRIEVAL_INSPECT_OBJECT)
+	$(CXX) $^ -o $@
+
+-include $(RETRIEVAL_OBJECT).d $(RETRIEVAL_GEOMETRY_OBJECT).d $(RETRIEVAL_TEST_OBJECT).d $(RETRIEVAL_TOOL_OBJECT).d $(RETRIEVAL_INSPECT_OBJECT).d

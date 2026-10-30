@@ -6,6 +6,7 @@ Standard-library C++ for the numerical slice of [OR01-RET 0.1.0](CONTRACT.md). T
 | --- | --- |
 | Exact k-retrieval | [exact_search.h](include/mityane/operations/retrieval/exact_search.h), [exact_search.cpp](src/exact_search.cpp) |
 | Geometric abstract retrieval | [geometry.h](include/mityane/operations/retrieval/geometry.h), [geometry.cpp](src/geometry.cpp) |
+| Saved-vector inspector | [saved_vector_inspect.cpp](src/saved_vector_inspect.cpp) |
 | Checks | [exact_search_test.cpp](tests/exact_search_test.cpp) |
 
 Build and run inside the managed container:
@@ -55,4 +56,10 @@ The recorded run is [envelope-v0.1.0.md](reviews/envelope-v0.1.0.md). Pairwise s
 
 A zero difference or a zero residual is `collinear_inputs`. A zero-norm input under cosine or L2 normalization abstains. `cone_diagnostics` reports leave-one-out hubness and mean neighbor distance on the members inside the cone. Purity is the fraction of those members named by the caller. An empty name list leaves purity unset. None of these figures is a relevance result, and none closes Hx02.
 
-The 30 October 2026 run printed `geometric constructors: 2 checks passed` after the seven exact-search checks. The fixtures use `[1, 0]`, `[4, 0]`, `[1, 1]`, and a three-axis residual `[0, 0, 1]`. The record is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). The registered tool does not expose these functions. No abstract corpus is bound.
+The 30 October 2026 run printed `geometric constructors: 2 checks passed` after the seven exact-search checks. The fixtures use `[1, 0]`, `[4, 0]`, `[1, 1]`, and a three-axis residual `[0, 0, 1]`. The record is [geometric-operators-v0.1.0.md](reviews/geometric-operators-v0.1.0.md). The registered tool does not expose these functions.
+
+## Saved-vector inspection
+
+`saved_vector_inspect` reads two `mityane-saved-vectors-v1` files and a query list. The commands are `point`, `difference`, `shared`, and `cone`. The binary links `exact_search.o` and `geometry.o`. The registered tool links only the ranker. Build the inspector with `make build-retrieval-inspect`.
+
+The English texts, labels, and local EmbeddingGemma 2 SpaceRef are [OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md). The frozen scoring rule is [OR01-RET-ABS-EVAL 0.1.0](bindings/oewn-2025/PROTOCOL.md). The score is [oewn-abstract-evaluation-v0.1.0.md](reviews/oewn-abstract-evaluation-v0.1.0.md). On the seven eligible queries, mean full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive. On the six pairs, the difference mean is 0.390420899151, below both pair baselines, so the protocol calls it negative. Cone membership and purity stay out of that claim. The ranks were listed before the score, and the protocol has no unseen split. This library does not load the WordNet snapshot or the encoder weights. The vector bytes stay under ignored `.temp/`.

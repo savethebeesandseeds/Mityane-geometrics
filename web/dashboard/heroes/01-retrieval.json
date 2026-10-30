@@ -4,8 +4,8 @@
   "number": 1,
   "title": "Retrieval and similarity matching",
   "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
-  "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Exact k-retrieval and geometric abstract retrieval are two uses of that ranker. The local profile consumes saved vectors from Hx15–Hx17 or a declared synthetic generator and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric constructors are pure functions that build a query vector, a direction, or cone parameters, and then call exact k-retrieval. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
-  "summary": "OR01-RET 0.1.0 is one ranker with two uses. Exact k-retrieval takes a query vector already in hand and returns the nearest saved sources under cosine or L2. That use is the registered tool. Geometric abstract retrieval builds a difference, a shared residual, or a cone and then calls the same ranker. Both passed their engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2. The tool refuses live calls and unbound relevance, and it does not expose the constructors. A separate English abstract corpus and its evaluation stay proposed. Both profiles stay unbound. No abstract corpus, Gemini adapter, or relevance result is bound.",
+  "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Exact k-retrieval and geometric abstract retrieval are two uses of that ranker. The local profile consumes saved vectors from a named local encoder, including Hx15–Hx17, or a declared synthetic generator, and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. Pairwise similarity and kNN share the retrieval geometry. Geometric constructors are pure functions that build a query vector, a direction, or cone parameters, and then call exact k-retrieval. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness, mean neighbor distance, and cone purity are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a geometric point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
+  "summary": "OR01-RET 0.1.0 is one ranker with two uses. Exact k-retrieval takes a query vector already in hand and returns the nearest saved sources under cosine or L2. That use is the registered tool. Geometric abstract retrieval builds a difference, a shared residual, or a cone and then calls the same ranker. Both passed their engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2. The tool refuses live calls and unbound relevance, and it does not expose the constructors. OR01-RET-ABS 0.1.0 freezes the English WordNet text population, its shared-principle labels, and one local EmbeddingGemma 2 text SpaceRef. OR01-RET-ABS-EVAL 0.1.0 scores the seven eligible queries on that population: the shared residual is inconclusive against the point and lexical baselines, and the difference is negative. The ranks were listed before the score, and the protocol has no unseen split. The general local and Gemini profile milestones stay proposed. No Gemini adapter is bound.",
   "updatedAt": "2026-10-30",
   "goals": [
     {
@@ -323,9 +323,10 @@
         {
           "id": "or-01-abstract-corpus-binding",
           "title": "Bind a minimal abstract concept corpus",
-          "status": "proposed",
-          "description": "Select a small frozen snapshot of English abstract statements on the local saved-vector profile. Preferred extraction rules, reproducible from public dumps, are Open English WordNet hypernym chains of depth at most 3 from a declared seed list of concrete terms, or ConceptNet edges of types IsA, UsedFor, and Causes limited to English nodes. The binding chooses one rule. An external draft may supply a frozen principle list, and writing that text stays outside this operation. The binding admits no run.",
+          "status": "done",
+          "description": "OR01-RET-ABS 0.1.0 freezes an English Open English WordNet 2025 population: 10 pinned concrete noun synsets, their hypernyms at depth 1 through 3 (29 abstract entries), and the shared-principle labels for sets of two or three seeds. Seven of 165 query sets are eligible for task association. The concrete seeds stay outside the abstract corpus. The local saved-vector profile is selected. The SpaceRef is google/embeddinggemma-2 revision f9972ac22e696a105c482202646979e33e4b5a1e, text only, 768 dimensions, L2 normalization, cosine, and the sentence-similarity prompt. Saved-vector hashes are in the binding. The bytes stay outside Git. The binding admits no live call, encoder training, or relevance result.",
           "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
           "dependsOn": [
             "or-01-retrieval-define-contract",
             "or-01-retrieval-exact-search-reference",
@@ -340,12 +341,24 @@
           ],
           "evidence": [
             {
+              "label": "OR01-RET-ABS 0.1.0 binding",
+              "path": "code/operations/retrieval/bindings/oewn-2025/BINDING.md"
+            },
+            {
+              "label": "Frozen English text snapshot",
+              "path": "code/operations/retrieval/bindings/oewn-2025/snapshot.json"
+            },
+            {
               "label": "OR01-RET contract 0.1.0",
               "path": "code/operations/retrieval/CONTRACT.md"
             },
             {
               "label": "OR01-RET requirements and evidence record 0.1.0",
               "path": "code/operations/retrieval/EVIDENCE.md"
+            },
+            {
+              "label": "Exploratory neighborhood listing, not a relevance result",
+              "path": "code/operations/retrieval/reviews/oewn-abstract-neighborhoods-v0.1.0.md"
             }
           ]
         },
@@ -388,9 +401,10 @@
         {
           "id": "or-01-geometric-abstract-evaluation-protocol",
           "title": "Evaluate abstract retrieval under geometric queries",
-          "status": "proposed",
-          "description": "After the abstract corpus and the geometric operators are bound, measure ranking of independently labeled shared-principle items. The baseline is plain exact nearest-neighbor search on the same corpus and queries. This record does not authorize the run.",
+          "status": "done",
+          "description": "OR01-RET-ABS-EVAL 0.1.0 scores the seven eligible WordNet queries under the frozen shared-principle rule. Full-list binary nDCG is 0.688317949329 for the point baseline, 0.421848381196 for the lexical baseline, and 0.662943315673 for the shared residual. The protocol calls the shared residual inconclusive and the difference negative. Cone aperture 0 is empty for every query. Apertures pi/3 and wider keep the whole corpus. The result is this population and this EmbeddingGemma 2 text SpaceRef only.",
           "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
           "dependsOn": [
             "or-01-abstract-corpus-binding",
             "or-01-geometric-operators"
@@ -402,12 +416,16 @@
           ],
           "evidence": [
             {
-              "label": "OR01-RET requirements and evidence record 0.1.0",
-              "path": "code/operations/retrieval/EVIDENCE.md"
+              "label": "Abstract evaluation protocol 0.1.0",
+              "path": "code/operations/retrieval/bindings/oewn-2025/PROTOCOL.md"
             },
             {
-              "label": "OR01-RET contract 0.1.0",
-              "path": "code/operations/retrieval/CONTRACT.md"
+              "label": "Abstract retrieval score, inconclusive and negative",
+              "path": "code/operations/retrieval/reviews/oewn-abstract-evaluation-v0.1.0.md"
+            },
+            {
+              "label": "OR01-RET requirements and evidence record 0.1.0",
+              "path": "code/operations/retrieval/EVIDENCE.md"
             }
           ]
         }

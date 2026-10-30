@@ -31,6 +31,8 @@ This revision defines two profiles and selects neither a corpus nor a query set.
 
 Image, video, audio, and PDF inputs stay outside the text profile. The text profile uses the Hx18 provider record. A live call also needs the Hx18 adapter, a request budget, and permissions. Replay of a saved response artifact is a different execution from a fresh call. The local profile reads vectors that already exist. It does not train an encoder and it does not wait on the Hx18 adapter.
 
+[OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md) begins one local-profile instance for an English abstract text population. The two profile rows above stay unbound. That instance does not revise this contract.
+
 A hosted model ID is not an immutable checkpoint. The text profile retains the request-manifest digest, any returned revision or its absence, the response-artifact digest, and the execution time. Credentials stay outside the operation record.
 
 ## 3. Logical input roles
@@ -103,3 +105,7 @@ OR01-RET has two uses and one ranker. Exact k-retrieval takes a query vector tha
 The difference of two points is the prepared target minus the prepared origin. The shared direction is the component of the first point that remains after removing the span of the other points' differences from it. A cone is a unit axis, an angular aperture, and optional radial bounds on the prepared length. Members outside the cone are reported skips. A full aperture is pi. A zero aperture admits only an exact cosine of 1.
 
 Non-finite values, a mismatched length, a zero difference, a zero shared residual, and an aperture outside `[0, pi]` refuse or abstain with an explicit reason. Empty, abstained, and failed stay distinct. Leave-one-out hubness, mean neighbor distance inside the cone, and cone purity are diagnostics. Cone purity counts a caller-supplied partition. It is not a relevance rule. These constructors do not close Hx02 or Hx06, do not evaluate Nonverba, and do not admit the abstract corpus. The registered tool does not expose them.
+
+## 10. English abstract binding
+
+[OR01-RET-ABS 0.1.0](bindings/oewn-2025/BINDING.md) freezes one English abstract text population on the local saved-vector profile: Open English WordNet 2025 hypernyms of depth at most 3 from ten pinned noun synsets, with a shared-principle label taken from the intersection of those closures. The concrete seeds stay outside that corpus. Its SpaceRef is local EmbeddingGemma 2 text, 768 dimensions, L2 normalization, cosine, and the saved-vector hashes are in that record. The scored comparison is [OR01-RET-ABS-EVAL 0.1.0](bindings/oewn-2025/PROTOCOL.md). It does not revise OR01-RET 0.1.0.

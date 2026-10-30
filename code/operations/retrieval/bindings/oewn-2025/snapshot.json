@@ -1,0 +1,3038 @@
+{
+  "binding_id": "OR01-RET-ABS",
+  "revision": "0.1.0",
+  "profile": "local-saved-vectors",
+  "language": "en",
+  "admits_run": false,
+  "contract": "OR01-RET",
+  "contract_revision": "0.1.0",
+  "requirements_record": "OR01-RET-RER",
+  "requirements_revision": "0.1.0",
+  "space_ref": {
+    "status": "unbound",
+    "encoder_or_generator": null,
+    "revision": null,
+    "dimensions": null,
+    "layout": null,
+    "normalization": null,
+    "metric": null,
+    "task_or_role_pair": "english-abstract-retrieval",
+    "saved_vectors": null
+  },
+  "source": {
+    "name": "Open English WordNet",
+    "edition": "2025",
+    "release_date": "2025-12-31",
+    "archive": "english-wordnet-2025-json.zip",
+    "archive_sha256": "7d749f6e2c39e6970e4997839dcf6e42fd281f3c2fae0171d2192bae8cfa4b51",
+    "url": "https://github.com/globalwordnet/english-wordnet/releases/download/2025-edition/english-wordnet-2025-json.zip",
+    "license": "CC-BY-4.0",
+    "citation": "John P. McCrae, Alexandre Rademaker, Francis Bond, Ewa Rudnicka, and Christiane Fellbaum (2019). English WordNet 2019 – An Open-Source WordNet for English."
+  },
+  "extraction": {
+    "relation": "hypernym",
+    "depth_min": 1,
+    "depth_max": 3,
+    "excluded_relations": [
+      "instance_hypernym"
+    ],
+    "part_of_speech": "n",
+    "concrete_seeds_excluded_from_corpus": true
+  },
+  "temporal": {
+    "mode": "non_temporal",
+    "reason": "The ontology snapshot has no observation time."
+  },
+  "exclusions": {
+    "duplicate_source_id": "refused",
+    "self_match": "not_applicable_across_populations",
+    "concrete_seeds_in_abstract_corpus": "excluded"
+  },
+  "relevance_rule": {
+    "id": "oewn-shared-hypernym-depth-1-3",
+    "kind": "synthetic_shared_principle",
+    "statement": "A concrete query set is relevant to an abstract synset exactly when that synset lies in the intersection of the seeds' hypernym closures at depth 1 through 3. An empty intersection is ineligible for task association.",
+    "not_relevance": [
+      "distance",
+      "similarity",
+      "cone_membership",
+      "cone_purity"
+    ]
+  },
+  "baselines_declared_not_run": [
+    {
+      "id": "plain-exact-neighbor-of-first-seed",
+      "description": "Exact k-retrieval using the saved vector of the first concrete source id, in ascending id order, as the query point on this abstract corpus."
+    },
+    {
+      "id": "lexical-token-overlap",
+      "description": "Rank abstract entries by the count of shared lowercase letter-tokens between the joined seed lemmas and the entry members plus definitions, then by ascending source id. This baseline reads text only."
+    }
+  ],
+  "counts": {
+    "concrete_seeds": 10,
+    "abstract_entries": 29,
+    "queries": 165,
+    "task_association_eligible_queries": 7
+  },
+  "concrete_catalog": [
+    {
+      "source_id": "02086723-n",
+      "lemma": "dog",
+      "sense_key": "dog%1:05:00::",
+      "members": [
+        "dog",
+        "domestic dog",
+        "Canis familiaris"
+      ],
+      "definition": [
+        "a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistoric times; occurs in many breeds"
+      ],
+      "ili": "i46360",
+      "lexfile": "noun.animal",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "02116752-n",
+      "lemma": "wolf",
+      "sense_key": "wolf%1:05:00::",
+      "members": [
+        "wolf"
+      ],
+      "definition": [
+        "any of various predatory carnivorous canine mammals of North America and Eurasia that usually hunt in packs"
+      ],
+      "ili": "i46549",
+      "lexfile": "noun.animal",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "02124272-n",
+      "lemma": "cat",
+      "sense_key": "cat%1:05:00::",
+      "members": [
+        "cat",
+        "true cat"
+      ],
+      "definition": [
+        "feline mammal usually having thick soft fur and no ability to roar"
+      ],
+      "ili": "i46593",
+      "lexfile": "noun.animal",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "02837983-n",
+      "lemma": "bicycle",
+      "sense_key": "bicycle%1:06:00::",
+      "members": [
+        "bicycle",
+        "bike",
+        "wheel",
+        "cycle"
+      ],
+      "definition": [
+        "a wheeled vehicle that has two wheels and is moved by foot pedals"
+      ],
+      "ili": "i50735",
+      "lexfile": "noun.artifact",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "02961779-n",
+      "lemma": "car",
+      "sense_key": "car%1:06:00::",
+      "members": [
+        "car",
+        "auto",
+        "automobile",
+        "machine",
+        "motorcar"
+      ],
+      "definition": [
+        "a motor vehicle with four wheels; usually propelled by an internal combustion engine"
+      ],
+      "ili": "i51496",
+      "lexfile": "noun.artifact",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "03024375-n",
+      "lemma": "chisel",
+      "sense_key": "chisel%1:06:00::",
+      "members": [
+        "chisel"
+      ],
+      "definition": [
+        "an edge tool with a flat steel blade with a cutting edge"
+      ],
+      "ili": "i51869",
+      "lexfile": "noun.artifact",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "03486255-n",
+      "lemma": "hammer",
+      "sense_key": "hammer%1:06:00::",
+      "members": [
+        "hammer"
+      ],
+      "definition": [
+        "a hand tool with a heavy rigid head and a handle; used to deliver an impulsive force by striking"
+      ],
+      "ili": "i54582",
+      "lexfile": "noun.artifact",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "03628765-n",
+      "lemma": "knife",
+      "sense_key": "knife%1:06:00::",
+      "members": [
+        "knife"
+      ],
+      "definition": [
+        "edge tool used as a cutting instrument; has a pointed blade with a sharp edge and a handle"
+      ],
+      "ili": "i55422",
+      "lexfile": "noun.artifact",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "07695101-n",
+      "lemma": "bread",
+      "sense_key": "bread%1:13:00::",
+      "members": [
+        "bread",
+        "breadstuff",
+        "staff of life"
+      ],
+      "definition": [
+        "food made from dough of flour or meal and usually raised with yeast or baking powder and then baked"
+      ],
+      "ili": "i77313",
+      "lexfile": "noun.food",
+      "population": "concrete-seed"
+    },
+    {
+      "source_id": "07755101-n",
+      "lemma": "apple",
+      "sense_key": "apple%1:13:00::",
+      "members": [
+        "apple"
+      ],
+      "definition": [
+        "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh"
+      ],
+      "ili": "i77708",
+      "lexfile": "noun.food",
+      "population": "concrete-seed"
+    }
+  ],
+  "abstract_corpus": [
+    {
+      "source_id": "00004475-n",
+      "members": [
+        "organism",
+        "being"
+      ],
+      "definition": [
+        "a living thing that has (or can develop) the ability to act or function independently"
+      ],
+      "ili": "i35553",
+      "lexfile": "noun.Tops",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 3,
+          "path": [
+            "02086723-n",
+            "01320032-n",
+            "00015568-n",
+            "00004475-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "00015568-n",
+      "members": [
+        "animal",
+        "animate being",
+        "beast",
+        "brute",
+        "creature",
+        "fauna"
+      ],
+      "definition": [
+        "a living organism characterized by voluntary movement"
+      ],
+      "ili": "i35563",
+      "lexfile": "noun.Tops",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 2,
+          "path": [
+            "02086723-n",
+            "01320032-n",
+            "00015568-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 2,
+          "path": [
+            "02086723-n",
+            "01320032-n",
+            "00015568-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "00021445-n",
+      "members": [
+        "food",
+        "nutrient"
+      ],
+      "definition": [
+        "any substance that can be metabolized by an animal to give energy and build tissue"
+      ],
+      "ili": "i35570",
+      "lexfile": "noun.Tops",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 3,
+          "path": [
+            "07695101-n",
+            "07582428-n",
+            "07581905-n",
+            "00021445-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 3,
+          "path": [
+            "07695101-n",
+            "07637670-n",
+            "07571428-n",
+            "00021445-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "01320032-n",
+      "members": [
+        "domestic animal",
+        "domesticated animal"
+      ],
+      "definition": [
+        "any of various animals that have been tamed and made fit for a human environment"
+      ],
+      "ili": "i42269",
+      "lexfile": "noun.animal",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "01320032-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "01320032-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "01320032-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "01889397-n",
+      "members": [
+        "placental",
+        "placental mammal",
+        "eutherian",
+        "eutherian mammal"
+      ],
+      "definition": [
+        "mammals having a placenta; all mammals except monotremes and marsupials"
+      ],
+      "ili": "i45230",
+      "lexfile": "noun.animal",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 3,
+          "path": [
+            "02086723-n",
+            "02085998-n",
+            "02077948-n",
+            "01889397-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 3,
+          "path": [
+            "02116752-n",
+            "02085998-n",
+            "02077948-n",
+            "01889397-n"
+          ]
+        },
+        {
+          "seed_id": "02124272-n",
+          "depth": 3,
+          "path": [
+            "02124272-n",
+            "02123649-n",
+            "02077948-n",
+            "01889397-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "02077948-n",
+      "members": [
+        "carnivore"
+      ],
+      "definition": [
+        "a terrestrial or aquatic flesh-eating mammal"
+      ],
+      "ili": "i46310",
+      "lexfile": "noun.animal",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 2,
+          "path": [
+            "02086723-n",
+            "02085998-n",
+            "02077948-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 2,
+          "path": [
+            "02086723-n",
+            "02085998-n",
+            "02077948-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 2,
+          "path": [
+            "02116752-n",
+            "02085998-n",
+            "02077948-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 2,
+          "path": [
+            "02116752-n",
+            "02085998-n",
+            "02077948-n"
+          ]
+        },
+        {
+          "seed_id": "02124272-n",
+          "depth": 2,
+          "path": [
+            "02124272-n",
+            "02123649-n",
+            "02077948-n"
+          ]
+        },
+        {
+          "seed_id": "02124272-n",
+          "depth": 2,
+          "path": [
+            "02124272-n",
+            "02123649-n",
+            "02077948-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "02085998-n",
+      "members": [
+        "canine",
+        "canid"
+      ],
+      "definition": [
+        "any of various fissiped mammals with nonretractile claws and typically long muzzles"
+      ],
+      "ili": "i46356",
+      "lexfile": "noun.animal",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "02085998-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "02085998-n"
+          ]
+        },
+        {
+          "seed_id": "02086723-n",
+          "depth": 1,
+          "path": [
+            "02086723-n",
+            "02085998-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 1,
+          "path": [
+            "02116752-n",
+            "02085998-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 1,
+          "path": [
+            "02116752-n",
+            "02085998-n"
+          ]
+        },
+        {
+          "seed_id": "02116752-n",
+          "depth": 1,
+          "path": [
+            "02116752-n",
+            "02085998-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "02123649-n",
+      "members": [
+        "feline",
+        "felid",
+        "cat"
+      ],
+      "definition": [
+        "any of various lithe-bodied roundheaded fissiped mammals, many with retractile claws"
+      ],
+      "ili": "i46591",
+      "lexfile": "noun.animal",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02124272-n",
+          "depth": 1,
+          "path": [
+            "02124272-n",
+            "02123649-n"
+          ]
+        },
+        {
+          "seed_id": "02124272-n",
+          "depth": 1,
+          "path": [
+            "02124272-n",
+            "02123649-n"
+          ]
+        },
+        {
+          "seed_id": "02124272-n",
+          "depth": 1,
+          "path": [
+            "02124272-n",
+            "02123649-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03105141-n",
+      "members": [
+        "conveyance",
+        "transport"
+      ],
+      "definition": [
+        "something that serves as a means of transportation"
+      ],
+      "ili": "i52319",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02837983-n",
+          "depth": 3,
+          "path": [
+            "02837983-n",
+            "04583497-n",
+            "04531608-n",
+            "03105141-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03158739-n",
+      "members": [
+        "cutter",
+        "cutlery",
+        "cutting tool"
+      ],
+      "definition": [
+        "a cutting implement; a tool for cutting"
+      ],
+      "ili": "i52653",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03024375-n",
+          "depth": 2,
+          "path": [
+            "03024375-n",
+            "03269943-n",
+            "03158739-n"
+          ]
+        },
+        {
+          "seed_id": "03024375-n",
+          "depth": 2,
+          "path": [
+            "03024375-n",
+            "03269943-n",
+            "03158739-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 2,
+          "path": [
+            "03628765-n",
+            "03269943-n",
+            "03158739-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 2,
+          "path": [
+            "03628765-n",
+            "03269943-n",
+            "03158739-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03159112-n",
+      "members": [
+        "cutting implement"
+      ],
+      "definition": [
+        "a tool used for cutting or slicing"
+      ],
+      "ili": "i52655",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03024375-n",
+          "depth": 3,
+          "path": [
+            "03024375-n",
+            "03269943-n",
+            "03158739-n",
+            "03159112-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 3,
+          "path": [
+            "03628765-n",
+            "03269943-n",
+            "03158739-n",
+            "03159112-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03269943-n",
+      "members": [
+        "edge tool"
+      ],
+      "definition": [
+        "any cutting tool with a sharp cutting edge (as a chisel or knife or plane or gouge)"
+      ],
+      "ili": "i53304",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03024375-n",
+          "depth": 1,
+          "path": [
+            "03024375-n",
+            "03269943-n"
+          ]
+        },
+        {
+          "seed_id": "03024375-n",
+          "depth": 1,
+          "path": [
+            "03024375-n",
+            "03269943-n"
+          ]
+        },
+        {
+          "seed_id": "03024375-n",
+          "depth": 1,
+          "path": [
+            "03024375-n",
+            "03269943-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 1,
+          "path": [
+            "03628765-n",
+            "03269943-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 1,
+          "path": [
+            "03628765-n",
+            "03269943-n"
+          ]
+        },
+        {
+          "seed_id": "03628765-n",
+          "depth": 1,
+          "path": [
+            "03628765-n",
+            "03269943-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03494245-n",
+      "members": [
+        "hand tool"
+      ],
+      "definition": [
+        "a tool used with workers' hands"
+      ],
+      "ili": "i54629",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03486255-n",
+          "depth": 1,
+          "path": [
+            "03486255-n",
+            "03494245-n"
+          ]
+        },
+        {
+          "seed_id": "03486255-n",
+          "depth": 1,
+          "path": [
+            "03486255-n",
+            "03494245-n"
+          ]
+        },
+        {
+          "seed_id": "03486255-n",
+          "depth": 1,
+          "path": [
+            "03486255-n",
+            "03494245-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03569147-n",
+      "members": [
+        "implement"
+      ],
+      "definition": [
+        "instrumentation (a piece of equipment or tool) used to effect an end"
+      ],
+      "ili": "i55068",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03486255-n",
+          "depth": 3,
+          "path": [
+            "03486255-n",
+            "03494245-n",
+            "04459089-n",
+            "03569147-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "03796768-n",
+      "members": [
+        "motor vehicle",
+        "automotive vehicle"
+      ],
+      "definition": [
+        "a self-propelled wheeled vehicle that does not run on rails"
+      ],
+      "ili": "i56401",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02961779-n",
+          "depth": 1,
+          "path": [
+            "02961779-n",
+            "03796768-n"
+          ]
+        },
+        {
+          "seed_id": "02961779-n",
+          "depth": 1,
+          "path": [
+            "02961779-n",
+            "03796768-n"
+          ]
+        },
+        {
+          "seed_id": "02961779-n",
+          "depth": 1,
+          "path": [
+            "02961779-n",
+            "03796768-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "04177098-n",
+      "members": [
+        "self-propelled vehicle"
+      ],
+      "definition": [
+        "a wheeled vehicle that carries in itself a means of propulsion"
+      ],
+      "ili": "i58653",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02961779-n",
+          "depth": 2,
+          "path": [
+            "02961779-n",
+            "03796768-n",
+            "04177098-n"
+          ]
+        },
+        {
+          "seed_id": "02961779-n",
+          "depth": 2,
+          "path": [
+            "02961779-n",
+            "03796768-n",
+            "04177098-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "04459089-n",
+      "members": [
+        "tool"
+      ],
+      "definition": [
+        "an implement used in the practice of a vocation"
+      ],
+      "ili": "i60365",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "03486255-n",
+          "depth": 2,
+          "path": [
+            "03486255-n",
+            "03494245-n",
+            "04459089-n"
+          ]
+        },
+        {
+          "seed_id": "03486255-n",
+          "depth": 2,
+          "path": [
+            "03486255-n",
+            "03494245-n",
+            "04459089-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "04531608-n",
+      "members": [
+        "vehicle"
+      ],
+      "definition": [
+        "a conveyance that transports people or objects"
+      ],
+      "ili": "i60795",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02837983-n",
+          "depth": 2,
+          "path": [
+            "02837983-n",
+            "04583497-n",
+            "04531608-n"
+          ]
+        },
+        {
+          "seed_id": "02837983-n",
+          "depth": 2,
+          "path": [
+            "02837983-n",
+            "04583497-n",
+            "04531608-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "04583497-n",
+      "members": [
+        "wheeled vehicle"
+      ],
+      "definition": [
+        "a vehicle that moves on wheels and usually has a container for transporting things or people"
+      ],
+      "ili": "i61100",
+      "lexfile": "noun.artifact",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "02837983-n",
+          "depth": 1,
+          "path": [
+            "02837983-n",
+            "04583497-n"
+          ]
+        },
+        {
+          "seed_id": "02837983-n",
+          "depth": 1,
+          "path": [
+            "02837983-n",
+            "04583497-n"
+          ]
+        },
+        {
+          "seed_id": "02837983-n",
+          "depth": 1,
+          "path": [
+            "02837983-n",
+            "04583497-n"
+          ]
+        },
+        {
+          "seed_id": "02961779-n",
+          "depth": 3,
+          "path": [
+            "02961779-n",
+            "03796768-n",
+            "04177098-n",
+            "04583497-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07571428-n",
+      "members": [
+        "solid food"
+      ],
+      "definition": [
+        "any solid substance (as opposed to liquid) that is used as a source of nourishment"
+      ],
+      "ili": "i76470",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 2,
+          "path": [
+            "07695101-n",
+            "07637670-n",
+            "07571428-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 2,
+          "path": [
+            "07695101-n",
+            "07637670-n",
+            "07571428-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 2,
+          "path": [
+            "07695101-n",
+            "07637670-n",
+            "07571428-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 3,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "07721456-n",
+            "07571428-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07581905-n",
+      "members": [
+        "foodstuff",
+        "food product"
+      ],
+      "definition": [
+        "a substance that can be used or prepared for use as food"
+      ],
+      "ili": "i76515",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 2,
+          "path": [
+            "07695101-n",
+            "07582428-n",
+            "07581905-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 2,
+          "path": [
+            "07695101-n",
+            "07582428-n",
+            "07581905-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07582428-n",
+      "members": [
+        "starches"
+      ],
+      "definition": [
+        "foodstuff rich in natural starch (especially potatoes, rice, bread)"
+      ],
+      "ili": "i76516",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07582428-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07582428-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07582428-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07637670-n",
+      "members": [
+        "baked goods"
+      ],
+      "definition": [
+        "foods (like breads and cakes and pastries) that are cooked in an oven"
+      ],
+      "ili": "i76898",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07637670-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07637670-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07637670-n"
+          ]
+        },
+        {
+          "seed_id": "07695101-n",
+          "depth": 1,
+          "path": [
+            "07695101-n",
+            "07637670-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07721456-n",
+      "members": [
+        "produce",
+        "green goods",
+        "green groceries",
+        "garden truck"
+      ],
+      "definition": [
+        "fresh fruits and vegetable grown for the market"
+      ],
+      "ili": "i77499",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "07721456-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "07721456-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "07721676-n",
+      "members": [
+        "edible fruit"
+      ],
+      "definition": [
+        "edible reproductive body of a seed plant especially one having sweet flesh"
+      ],
+      "ili": "i77500",
+      "lexfile": "noun.food",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "07721676-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "07721676-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "07721676-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "07721676-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "07721676-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "11696293-n",
+      "members": [
+        "reproductive structure"
+      ],
+      "definition": [
+        "the parts of a plant involved in its reproduction"
+      ],
+      "ili": "i98690",
+      "lexfile": "noun.plant",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07755101-n",
+          "depth": 3,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "13155706-n",
+            "11696293-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 3,
+          "path": [
+            "07755101-n",
+            "13159619-n",
+            "13155706-n",
+            "11696293-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "13155706-n",
+      "members": [
+        "fruit"
+      ],
+      "definition": [
+        "the ripened reproductive body of a seed plant"
+      ],
+      "ili": "i105676",
+      "lexfile": "noun.plant",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "13155706-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "07721676-n",
+            "13155706-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "13159619-n",
+            "13155706-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 2,
+          "path": [
+            "07755101-n",
+            "13159619-n",
+            "13155706-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "13159619-n",
+      "members": [
+        "pome",
+        "false fruit"
+      ],
+      "definition": [
+        "a fleshy fruit (apple or pear or related fruits) having seed chambers and an outer fleshy part"
+      ],
+      "ili": "i105691",
+      "lexfile": "noun.plant",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "13159619-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "13159619-n"
+          ]
+        },
+        {
+          "seed_id": "07755101-n",
+          "depth": 1,
+          "path": [
+            "07755101-n",
+            "13159619-n"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "15071467-n",
+      "members": [
+        "solid"
+      ],
+      "definition": [
+        "matter that is solid at room temperature and pressure"
+      ],
+      "ili": "i116244",
+      "lexfile": "noun.substance",
+      "population": "english-abstract",
+      "lineage": [
+        {
+          "seed_id": "07695101-n",
+          "depth": 3,
+          "path": [
+            "07695101-n",
+            "07637670-n",
+            "07571428-n",
+            "15071467-n"
+          ]
+        }
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "query_id": "02086723-n+02116752-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "01889397-n",
+        "02077948-n",
+        "02085998-n"
+      ]
+    },
+    {
+      "query_id": "02086723-n+02124272-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "01889397-n",
+        "02077948-n"
+      ]
+    },
+    {
+      "query_id": "02086723-n+02837983-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03024375-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "01889397-n",
+        "02077948-n"
+      ]
+    },
+    {
+      "query_id": "02116752-n+02837983-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03024375-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03486255-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03024375-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03486255-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03628765-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "04583497-n"
+      ]
+    },
+    {
+      "query_id": "02837983-n+03024375-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03486255-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03628765-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+07695101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03024375-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03486255-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03628765-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+07695101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+07755101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "03158739-n",
+        "03159112-n",
+        "03269943-n"
+      ]
+    },
+    {
+      "query_id": "03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "07571428-n"
+      ]
+    },
+    {
+      "query_id": "02086723-n+02116752-n+02124272-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "02124272-n"
+      ],
+      "eligible_for_task_association": true,
+      "relevant_source_ids": [
+        "01889397-n",
+        "02077948-n"
+      ]
+    },
+    {
+      "query_id": "02086723-n+02116752-n+02837983-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+02961779-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+03024375-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02116752-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02116752-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+02837983-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+02961779-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+03024375-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02124272-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02124272-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+02961779-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+03024375-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02837983-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02837983-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n+03024375-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+02961779-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "02961779-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02086723-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "02086723-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+02837983-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "02837983-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+02961779-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+03024375-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+03486255-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02124272-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02124272-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+02961779-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+03024375-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+03486255-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02837983-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02837983-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n+03024375-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n+03486255-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+02961779-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "02961779-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02116752-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "02116752-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+02961779-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "02961779-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+03024375-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+03486255-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+03628765-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02837983-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02837983-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n+03024375-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n+03486255-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n+03628765-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+02961779-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "02961779-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02124272-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "02124272-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n+03024375-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n",
+        "03024375-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n+03486255-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n+03628765-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n+07695101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+02961779-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "02961779-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02837983-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "02837983-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03024375-n+03486255-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03024375-n",
+        "03486255-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03024375-n+03628765-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03024375-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03024375-n+07695101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03024375-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03024375-n+07755101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03024375-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "02961779-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "02961779-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03486255-n+03628765-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03486255-n",
+        "03628765-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03486255-n+07695101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03486255-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03486255-n+07755101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03486255-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03024375-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "03024375-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+03628765-n+07695101-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "03628765-n",
+        "07695101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+03628765-n+07755101-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "03628765-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03486255-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "03486255-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    },
+    {
+      "query_id": "03628765-n+07695101-n+07755101-n",
+      "concrete_source_ids": [
+        "03628765-n",
+        "07695101-n",
+        "07755101-n"
+      ],
+      "eligible_for_task_association": false,
+      "relevant_source_ids": []
+    }
+  ]
+}
