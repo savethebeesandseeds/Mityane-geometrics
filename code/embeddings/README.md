@@ -79,11 +79,12 @@ V3 is the clean baseline. RPB-v24.market-01.alt-01 native36 retains its historic
 balanced-leader role. V14 is the latest catalogued historical instance, separate
 from the new research-reference choice. The
 [29 October handoff](encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
-records the timeframe development instance offered to Cuwacunu: width 128,
-seed 949102, native36, 2048 updates, published 1m/1h/1d bars, log-return view.
-The 29 October search is
+records the shared-clock development instance: width 128, seed 949102, native36,
+2048 updates, published 1m/1h/1d bars, log-return view. The 29 October search is
 [closed](../data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
-on that instance. It leaves the research reference unchanged.
+on that instance. The packed-channel instance offered to Cuwacunu is the
+[31 October handoff](encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-31.md),
+seed 949501. Further Mityane training on that packed layout is closed. Both leave the research reference unchanged.
 
 The latest [V19 EMA-teacher study](evaluation/protocols/cpb_v19_teacher_v1/RESULTS.md)
 completed three new 1,024-update candidates against the three preserved

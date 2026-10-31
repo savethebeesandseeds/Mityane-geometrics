@@ -257,7 +257,8 @@ V3 remains the clean baseline. Runtime/application adoption is a separate decisi
 | Role | Encoder | Recorded achievement and remaining limit |
 | --- | --- | --- |
 | Current research reference | **V16 candidate 946103, final2048/native36** | Both January trend records; positive matched March trend/activity gains. Chosen on 22 October for continued research. The study remains mixed; this checkpoint passes 0/8 strongest timing conditions and is not the leader in every task. |
-| Timeframe development instance | **CPB-family width 128, seed 949102, 2048 updates, native36** | Stronger of the two fresh 1m/1h/1d log-return arms on 29 October. Same-window volatility R² 0.7682422126010569 and trend R² 0.22475307149870904, activity saturated, cross resolution unmeasured. One seed. Offered to Cuwacunu for docking. It does not replace the research reference. |
+| Shared-clock hold | **CPB-family width 128, seed 949102, 2048 updates, native36** | Stronger of the two fresh 1m/1h/1d log-return arms on 29 October. Same-window volatility R² 0.7682422126010569 and trend R² 0.22475307149870904, activity saturated, cross resolution unmeasured. One seed. The follow-up search is closed. It does not replace the research reference. |
+| Packed development instance | **CPB-family width 128, seed 949501, 2048 updates, native36** | 31 October packed fit, counts 32/24/24. Anchor volatility R² 0.6358210729301564, trend R² -0.015615954516141839, activity R² 0.9803289779893186, cross resolution abstained. Hour and day move the native embedding. One seed. Offered to Cuwacunu. Further Mityane training on this layout is closed. It does not replace the research reference. |
 | Historical clean-causal breakthrough and comparator | **CPB-v4.market-01** | **19/22 original conditions**, all eight TEMPO-5 retention checks, major trend/relation gains and the best saved known-validation reconstruction. Linear volatility, linear activity and TRAIN query MAE failed their floors, withholding formal promotion. |
 | Historical balanced research leader | **RPB-v24.market-01.alt-01, native36** | **8/9 market conditions plus all four primary frozen TEMPO-5 transfer comparisons**, at full coverage using the same market-trained checkpoint. Later diagnosis limits its clean causal eligibility; its measured success and historical leading designation remain preserved. |
 | Stable clean research baseline | **CPB-v3.market-01** | First genuinely fresh causal-training reference; still leads linear volatility. Baseline status is not an overall quality ranking or a project-wide Mityane selection. |
@@ -421,12 +422,20 @@ its original selection flags. Current work states and acceptance criteria remain
 in [Hx17](../web/dashboard/heroes/17-encoder-cpb.json).
 
 **29 October 2026 — timeframe development instance.** Width 128, seed 949102,
-is the encoder to bring into Cuwacunu. The
+is the shared-clock encoder. The
 [handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
 binds its settings, inference archive, training state, preprocessing, and the
 matched width-64 control. The follow-up search is
 [closed](../code/data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
 on that instance. The research reference above is unchanged.
+
+**31 October 2026 — packed development instance.** Width 128, seed 949501, is
+the packed-channel encoder to bring into Cuwacunu. The
+[handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-31.md)
+binds counts 32/24/24, the inference archive, and the channel-blank measurement.
+Hour and day move the native embedding. Anchor trend R² is negative, which is
+the expected result for this shorter five-minute sample. Further Mityane
+training on this layout is closed. The research reference above is unchanged.
 
 The next reference change uses the [family screen](../code/embeddings/evaluation/protocols/cpb_family_screen_v1/POLICY.md).
 Development cannot promote. January, February and March 2024 are consumed.
@@ -574,7 +583,9 @@ owns the exact current research default and its dated decision basis. The
 family-owned [live ranking](../code/embeddings/encoders/causal_patch_bottleneck_mae/causal_patch_bottleneck_mae.ranking.md)
 owns current checkpoint standings and their dated changes. The
 [29 October handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-29.md)
-owns the timeframe development instance offered to Cuwacunu. Update the ranking
+owns the shared-clock development instance. The
+[31 October handoff](../code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-31.md)
+owns the packed-channel instance offered to Cuwacunu. Update the ranking
 from bound results and align the short family/dashboard summaries in the same
 change.
 Preserve earlier leaders, ties and original protocol scopes; retain the tables

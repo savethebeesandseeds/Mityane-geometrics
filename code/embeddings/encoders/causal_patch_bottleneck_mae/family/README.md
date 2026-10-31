@@ -20,11 +20,16 @@ development cannot promote, and January, February and March 2024 are consumed.
 The live readout scores the anchor resolution and cross-resolution agreement.
 Those four names are not the published three-instrument probes, and they do
 not enter the promotion rule. The
-[29 October handoff](migration/HANDOFF_2026-10-29.md) names the development
-instance to bring into Cuwacunu: width 128, seed 949102, 2048 updates, channels
-4, 9, and 15. The 29 October search is
+[29 October handoff](migration/HANDOFF_2026-10-29.md) names the shared-clock
+development instance: width 128, seed 949102, 2048 updates, channels 4, 9, and
+15. The 29 October search is
 [closed](../../../../data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
-on that instance. The handoff leaves this research reference in place.
+on that instance. The packed-channel instance to bring into Cuwacunu is the
+[31 October handoff](migration/HANDOFF_2026-10-31.md): width 128, seed 949501,
+2048 updates, counts 32 five-minute, 24 hourly, and 24 daily bars. Hour and
+day move the native embedding. The anchor trend probe does not beat the
+training mean. Further Mityane training on this packed layout is closed. Both
+handoffs leave this research reference in place.
 [`current.json`](../versions/current.json) and [`index.json`](../versions/index.json)
 are frozen catalogs. [Version roles](../versions/ROLES.md) name the one live pointer.
 

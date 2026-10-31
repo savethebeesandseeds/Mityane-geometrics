@@ -15,10 +15,13 @@ binding, and their scores stay scores of that binding.
 
 The first fresh comparison on that contract is the
 [29 October handoff](family/migration/HANDOFF_2026-10-29.md). Width 128,
-seed 949102, 2048 updates, is the instance to bring into Cuwacunu. Width 64,
-seed 949101, is its matched control. V16 seed 946103 remains the research
-reference. The new scores are same-window timeframe probes and are not a
-ranking against that seed. The follow-up search is
+seed 949102, 2048 updates, is the shared-clock instance. Width 64, seed 949101,
+is its matched control. The packed-channel instance to bring into Cuwacunu is
+the [31 October handoff](family/migration/HANDOFF_2026-10-31.md), seed 949501.
+Further Mityane training on that packed layout is closed.
+V16 seed 946103 remains the research reference. The new scores are same-window
+timeframe probes and are not a ranking against that seed. The follow-up search
+is
 [closed](../../../data/market/experiments/timeframe_published_bars_v1/CLOSE_2026-10-29.md)
 on seed 949102.
 

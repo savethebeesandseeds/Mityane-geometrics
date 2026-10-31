@@ -102,11 +102,12 @@ copying a receipt does not certify an import. Review refreshes against current
 consumer source/provenance before replacement. This export does not change the
 live application pipeline or start training.
 
-The [29 October handoff](HANDOFF_2026-10-29.md) is the later note for
+The [29 October handoff](HANDOFF_2026-10-29.md) is the shared-clock note for
 Cuwacunu. The 22 October bundle predates the timeframe channel contract.
-The instance to import is CPB-family width 128, seed 949102, with its
-settings and local inference archive named in that note. The research
-reference remains V16 seed 946103.
+The shared-clock instance is CPB-family width 128, seed 949102, with its
+settings and local inference archive named in that note. The packed-channel
+instance to import is the [31 October handoff](HANDOFF_2026-10-31.md), seed
+949501. Further Mityane training on that packed layout is closed. The research reference remains V16 seed 946103.
 
 ## Historical boundary
 

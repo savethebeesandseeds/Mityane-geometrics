@@ -5,8 +5,8 @@
   "title": "Encoder · Causal patch bottleneck MAE",
   "purpose": "Discover and develop reusable causal patch bottleneck architecture components and encoder tools that operations and application projects can configure, train and compose.",
   "boundary": "Own the family definition, supported configuration, portable initialization/preprocessing/training/export/resume surfaces and their scoped evidence, with unimplemented coverage stated explicitly. Cuwacunu and other applications own substantial application training and final docking. Keep architecture, configuration, recipe and trained instance separate; checkpoint scores do not restrict a family to one benchmark shape. Follow the shared encoder component instructions and preserve frozen source and research records.",
-  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. The family screen cpb_family_screen_v1 is the rule for a later reference change: development cannot promote, and January, February and March 2024 are consumed. Packed channels are independent series that share one anchor. Each channel's own candle count is a multiple of the patch length and at least three groups, and the shared row is the longest count. January windows for 32 five-minute, 24 hourly and 24 daily bars are prepared. No packed fit has run. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
-  "updatedAt": "2026-10-30",
+  "summary": "Continue CPB discovery through reusable configurable components. V19 EMA-teacher comparison is complete: volatility improved in all three pairs and relation in two, but trend/activity medians regressed and the continuation rule failed. No scoped linear record or reference changed. V18 contiguous masks and V17 weakening also failed. V16 seed946103/final2048/native36 remains the research reference with its mixed verdict. The family screen cpb_family_screen_v1 is the rule for a later reference change: development cannot promote, and January, February and March 2024 are consumed. Packed channels are independent series that share one anchor. Each channel's own candle count is a multiple of the patch length and at least three groups, and the shared row is the longest count. A packed development fit passed on 31 October 2026: seed 949501, 2048 updates, native36, counts 32/24/24. The January validation readout is anchor volatility R2 0.6358210729301564, trend R2 -0.015615954516141839, activity R2 0.9803289779893186, and cross resolution abstained. Blanking the hour channel or the day channel moves the native embedding. The packed instance for Cuwacunu is that fit. V16 seed946103/final2048/native36 remains the research reference. Nothing here promotes. Further Mityane training on this packed layout is closed. The weaker five-minute readout is the expected result for that shorter, coarser anchor sample. Complete construction, TRAIN fitting, training/resume/export and method provenance carry forward; application training/docking stay consumer-owned.",
+  "updatedAt": "2026-10-31",
   "goals": [
     {
       "id": "encoder-cpb-v19-teacher",
@@ -666,6 +666,49 @@
             {
               "label": "Prepared January windows",
               "path": ".temp/embeddings/runs/independent-channels-2026-10-30/windows/preparation.json"
+            }
+          ]
+        },
+        {
+          "id": "encoder-cpb-packed-development-fit",
+          "title": "Measure the packed fit and whether coarser channels move the embedding",
+          "status": "done",
+          "updatedAt": "2026-10-31",
+          "completedAt": "2026-10-31",
+          "description": "A development fit of packed-5m-h24.conf passed 2048 updates on the January independent-channel windows. Seed 949501, batch 8, native width 36, temporal weight 0.1, context deletion none. The timeframe readout on 96 validation rows scored anchor volatility R2 0.6358210729301564, trend R2 -0.015615954516141839, activity R2 0.9803289779893186, and cross resolution abstained. decision_input and comparable_to_seed_946103 are false. Blanking a channel sets its times to NaN, its mask to false, and its values to zero. The repeat encode is identical. Removing the hour channel moves the native embedding, median relative L2 0.31362285936740653. Removing the day channel moves it further, median relative L2 0.51066730052064235. Removing the five-minute channel is the scale, median relative L2 0.69336770377899615. The predeclared rule is one percent of that scale. Hour and day clear it. The trend probe still does not beat the training mean. V16 seed946103/final2048/native36 remains the research reference. Seed 949102 remains the shared-clock hold. February and March stay unbound. Further Mityane training on this packed layout is closed. The weaker five-minute readout is the expected result for that shorter, coarser anchor sample. Cuwacunu owns docking seed 949501.",
+          "dependsOn": [
+            "encoder-cpb-independent-channel-packing"
+          ],
+          "acceptance": [
+            "The packed development fit passes 2048 updates on packed-5m-h24.conf, seed 949501, batch 8, native width 36, and does not promote a research reference.",
+            "The timeframe readout on the 96-row January validation probe records anchor volatility, trend, activity, and an abstaining cross resolution, with decision_input and comparable_to_seed_946103 false.",
+            "Blanking the hour channel or the day channel, by NaN time and a false mask, moves the native embedding under the predeclared rule. The repeat encode is unchanged, and blanking the five-minute channel is the scale.",
+            "The research reference stays V16 seed 946103. Seed 949102 stays the shared-clock hold. February and March stay unbound. Further Mityane training on this packed layout is closed, and Cuwacunu owns docking seed 949501."
+          ],
+          "evidence": [
+            {
+              "label": "Packed development handoff",
+              "path": "code/embeddings/encoders/causal_patch_bottleneck_mae/family/migration/HANDOFF_2026-10-31.md"
+            },
+            {
+              "label": "Channel-blank probe",
+              "path": "code/data/market/experiments/timeframe_published_bars_v1/channel_blank.cpp"
+            },
+            {
+              "label": "Packed 32/24/24 settings",
+              "path": "code/data/market/experiments/timeframe_published_bars_v1/packed-5m-h24.conf"
+            },
+            {
+              "label": "Fit receipt",
+              "path": ".temp/embeddings/runs/packed-independent-2026-10-31/fit/run.json"
+            },
+            {
+              "label": "Timeframe readout",
+              "path": ".temp/embeddings/runs/packed-independent-2026-10-31/readout/summary.json"
+            },
+            {
+              "label": "Channel-blank receipt",
+              "path": ".temp/embeddings/runs/packed-independent-2026-10-31/channel-blank/summary.json"
             }
           ]
         }
