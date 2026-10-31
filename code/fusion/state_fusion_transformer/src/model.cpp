@@ -1,5 +1,9 @@
 #include "state_fusion/model.h"
 
+#include <ATen/CPUGeneratorImpl.h>
+#include <torch/serialize.h>
+
+#include <filesystem>
 #include <stdexcept>
 #include <string>
 
@@ -190,6 +194,16 @@ StateFusionModelImpl::StateFusionModelImpl(Config config) : config_(std::move(co
   // cached state, not a second induced-set stack.
   query_ = register_module(
       "query", MAB(config_.d_model, config_.heads, config_.feedforward, config_.dropout));
+  // The probe head is drawn here, then the CPU generator is restored.
+  // Encoder, reconstruction, and query-block initialization stay on the
+  // previous stream, and a later model constructed in the same process does
+  // too. LibTorch exposes the process generator as const; the object is the
+  // mutable default, and set_state is the call that puts the stream back.
+  const auto& cpu_generator = at::detail::getDefaultCPUGenerator();
+  const auto cpu_state = cpu_generator.get_state();
+  query_scalar_head_ = register_module(
+      "query_scalar_head", torch::nn::Linear(config_.d_model, config_.scalar_features));
+  const_cast<at::Generator&>(cpu_generator).set_state(cpu_state);
 }
 
 torch::Tensor StateFusionModelImpl::encode(const SetBatch& batch) {
@@ -231,6 +245,10 @@ torch::Tensor StateFusionModelImpl::query(const torch::Tensor& state, const SetB
   return query_->forward(queries, keys).permute({1, 0, 2}).contiguous();
 }
 
+torch::Tensor StateFusionModelImpl::query_scalars(const torch::Tensor& state, const SetBatch& query_batch) {
+  return query_scalar_head_(query(state, query_batch));
+}
+
 torch::Tensor StateFusionModelImpl::reconstruct(const SetBatch& batch) {
   const auto state = encode(batch);
   const auto queries = tokens_->forward(batch).permute({1, 0, 2}).contiguous();
@@ -262,6 +280,92 @@ torch::Tensor StateFusionModelImpl::reconstruction_loss(const SetBatch& visible,
   const auto error = (prediction - clean_scalars).square();
   const auto selected = torch::where(hidden, error, torch::zeros_like(error));
   return selected.sum() / count.to(selected.dtype());
+}
+
+namespace {
+
+constexpr int64_t kCheckpointVersion = 1;
+
+int64_t read_int(torch::serialize::InputArchive& archive, const char* name) {
+  c10::IValue value;
+  archive.read(name, value);
+  require(value.isInt(), std::string("checkpoint field ") + name + " must be an integer");
+  return value.toInt();
+}
+
+double read_double(torch::serialize::InputArchive& archive, const char* name) {
+  c10::IValue value;
+  archive.read(name, value);
+  require(value.isDouble(), std::string("checkpoint field ") + name + " must be a double");
+  return value.toDouble();
+}
+
+std::string read_string(torch::serialize::InputArchive& archive, const char* name) {
+  c10::IValue value;
+  archive.read(name, value);
+  require(value.isString(), std::string("checkpoint field ") + name + " must be a string");
+  return value.toStringRef();
+}
+
+}  // namespace
+
+void save_checkpoint(const StateFusionModel& model, const std::string& path) {
+  require(!path.empty(), "checkpoint path must be non-empty");
+  const auto& config = model->config();
+  torch::serialize::OutputArchive archive;
+  archive.write("format_version", c10::IValue(kCheckpointVersion));
+  archive.write("family", c10::IValue("state_fusion"));
+  archive.write("scalar_features", c10::IValue(config.scalar_features));
+  archive.write("semantic_width", c10::IValue(config.semantic_width));
+  archive.write("d_model", c10::IValue(config.d_model));
+  archive.write("heads", c10::IValue(config.heads));
+  archive.write("inducing_points", c10::IValue(config.inducing_points));
+  archive.write("isab_layers", c10::IValue(config.isab_layers));
+  archive.write("pma_seeds", c10::IValue(config.pma_seeds));
+  archive.write("feedforward", c10::IValue(config.feedforward));
+  archive.write("dropout", c10::IValue(config.dropout));
+  archive.write("categorical_cardinalities",
+                torch::tensor(config.categorical_cardinalities, torch::kLong), true);
+  torch::serialize::OutputArchive weights(archive.compilation_unit());
+  model->save(weights);
+  archive.write("model", weights);
+  archive.save_to(path);
+}
+
+StateFusionModel load_checkpoint(const std::string& path, torch::Device device) {
+  require(device.is_cuda(), "state fusion requires CUDA parameters");
+  require(!path.empty() && std::filesystem::is_regular_file(path),
+          "checkpoint path must name an existing file");
+  torch::NoGradGuard guard;
+  torch::serialize::InputArchive archive;
+  archive.load_from(path, torch::kCPU);
+  require(read_int(archive, "format_version") == kCheckpointVersion, "unsupported checkpoint format");
+  require(read_string(archive, "family") == "state_fusion", "checkpoint family must be state_fusion");
+
+  Config config;
+  config.scalar_features = read_int(archive, "scalar_features");
+  config.semantic_width = read_int(archive, "semantic_width");
+  config.d_model = read_int(archive, "d_model");
+  config.heads = read_int(archive, "heads");
+  config.inducing_points = read_int(archive, "inducing_points");
+  config.isab_layers = read_int(archive, "isab_layers");
+  config.pma_seeds = read_int(archive, "pma_seeds");
+  config.feedforward = read_int(archive, "feedforward");
+  config.dropout = read_double(archive, "dropout");
+  torch::Tensor cards;
+  archive.read("categorical_cardinalities", cards, true);
+  require(cards.defined() && cards.dim() == 1 && cards.scalar_type() == torch::kLong,
+          "checkpoint cardinalities must be an int64 vector");
+  cards = cards.cpu().contiguous();
+  config.categorical_cardinalities.assign(cards.data_ptr<int64_t>(),
+                                          cards.data_ptr<int64_t>() + cards.numel());
+
+  StateFusionModel model(config);
+  torch::serialize::InputArchive weights;
+  archive.read("model", weights);
+  model->load(weights);
+  model->to(device);
+  return model;
 }
 
 }  // namespace state_fusion

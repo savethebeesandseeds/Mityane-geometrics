@@ -4,6 +4,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
 #include <limits>
 #include <unordered_map>
 #include <utility>
@@ -18,6 +20,11 @@ using detail::squared_norm;
 using detail::text;
 
 constexpr double kSolverZero = 1e-10;
+
+bool trace_combination() {
+  const char* value = std::getenv("OR01_COMB_TRACE");
+  return value != nullptr && value[0] != '\0' && value[0] != '0';
+}
 
 struct PreparedColumn {
   std::string source_id;
@@ -165,6 +172,10 @@ std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& colu
       }
     }
     if (entering == count) break;
+    if (trace_combination() && (step % 10) == 0) {
+      std::fprintf(stderr, "combine step %zu entering %s gradient %.6g\n", step,
+                   columns[entering].source_id.c_str(), best);
+    }
     passive[entering] = true;
     for (std::size_t inner = 0; inner < limit; ++inner) {
       std::vector<const PreparedColumn*> active;
@@ -227,6 +238,10 @@ std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& colu
   });
 
   const std::size_t widest = support.size();
+  if (trace_combination()) {
+    std::fprintf(stderr, "combine face support %zu face %zu widest %zu\n", support.size(), face.size(), widest);
+  }
+  std::size_t subsets = 0;
   for (std::size_t width = 1; width <= widest && width <= face.size(); ++width) {
     std::vector<std::size_t> choice(width);
     for (std::size_t index = 0; index < width; ++index) choice[index] = index;
@@ -235,6 +250,9 @@ std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& colu
       subset.reserve(width);
       for (const std::size_t offset : choice) subset.push_back(face[offset]);
       std::vector<double> sparse;
+      if (trace_combination() && (++subsets % 100000) == 0) {
+        std::fprintf(stderr, "combine face subsets %zu width %zu\n", subsets, width);
+      }
       if (represents(columns, subset, projection, sparse)) return sparse;
       std::size_t cursor = width;
       while (cursor > 0 && choice[cursor - 1] == face.size() - width + (cursor - 1)) --cursor;

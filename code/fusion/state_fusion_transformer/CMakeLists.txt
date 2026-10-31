@@ -38,6 +38,8 @@ function(state_fusion_executable name source)
 endfunction()
 
 state_fusion_executable(state_fusion_train src/train.cpp)
+state_fusion_executable(state_fusion_capacity src/capacity.cpp)
+state_fusion_executable(state_fusion_lego src/lego.cpp)
 state_fusion_executable(state_fusion_invariance tests/test_invariance.cpp)
 state_fusion_executable(state_fusion_fidelity tests/test_fidelity.cpp)
 state_fusion_executable(state_fusion_query tests/test_query.cpp)

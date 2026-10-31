@@ -18,8 +18,10 @@ INVARIANCE := $(BUILD_DIR)/state_fusion_invariance
 FIDELITY := $(BUILD_DIR)/state_fusion_fidelity
 QUERY := $(BUILD_DIR)/state_fusion_query
 TRAIN := $(BUILD_DIR)/state_fusion_train
+CAPACITY := $(BUILD_DIR)/state_fusion_capacity
+LEGO := $(BUILD_DIR)/state_fusion_lego
 
-.PHONY: build test train
+.PHONY: build test train capacity lego
 
 build: $(INVARIANCE) $(FIDELITY) $(QUERY) $(TRAIN)
 
@@ -31,6 +33,12 @@ test: build
 
 train: $(TRAIN)
 	$(TRAIN)
+
+capacity: $(CAPACITY)
+	$(CAPACITY)
+
+lego: $(LEGO)
+	$(LEGO)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
@@ -48,6 +56,12 @@ $(QUERY): tests/test_query.cpp $(LIB_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(TRAIN): src/train.cpp $(LIB_OBJS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
+
+$(CAPACITY): src/capacity.cpp $(LIB_OBJS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
+
+$(LEGO): src/lego.cpp $(LIB_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(LIB_OBJS) $(LDFLAGS) $(LDLIBS) -o $@
 
 -include $(BUILD_DIR)/*.d

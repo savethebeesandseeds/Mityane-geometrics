@@ -5,8 +5,8 @@
   "title": "Retrieval and similarity matching",
   "purpose": "Rank existing source items for a query representation under a declared similarity relation and an independent relevance rule.",
   "boundary": "Hx01 owns one retrieval operation, its contract, exact-search reference, relevance evidence and toolset. Retrieval takes a coordinate in a declared SpaceRef and returns ranked sources from a frozen corpus. Encoding is upstream: a text encoder, a kernel sample, or another producer may supply that coordinate, and the retrieval contract does not include the producer. Two methods share that corpus contract. Exact k-retrieval returns the k nearest sources under the declared metric and normalization. It is the registered tool and the fidelity baseline. Positive sparse combination retrieval approximates the same coordinate as a sparse non-negative combination of corpus vectors. Difference, shared residual, and cone constructors remain internal utilities and are not the retrieval strategy. The local profile consumes saved vectors from a named local encoder, including Hx15–Hx17, or a declared synthetic generator, and does not train an encoder. Hx18 owns the Gemini Embedding 2 provider, its adapter, credentials and response retention. An abstract corpus is a declared frozen population, separate from any concrete source population, and every entry keeps a source identity and parent lineage. The first abstract binding uses the local saved-vector profile and English text. Hubness and mean neighbor distance are diagnostics and do not close Hx02. Neighbors may feed Hx06 or a later Nonverba mapping; this operation does not state a contrast, an effect, or a Nonverba result. Generating text from a point is a separate operation. Hx14 owns shared admission, temporal integrity and the evidence ledger. Hx19 owns source loading.",
-  "summary": "OR01-RET 0.1.0 takes a coordinate and returns the nearest saved sources under cosine or L2. That method is the registered tool. It passed its engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2, and it refuses live calls and unbound relevance. Positive Sparse Combination Retrieval, OR01-COMB, solves non-negative least squares on the prepared corpus, repeats the minimum-weight refit until every survivor meets tau or none remain, and applies a fit floor and a path-length ceiling. Columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5 are empty, reason outside_cone. On 30 October 2026 make test-retrieval passed six combination checks. The registered tool does not link that solver, and the checks make no relevance claim. Continuation is the ready least-squares milestone: replace the normal equations and allow an ejected column to return. No corpus score starts before that step. Difference, shared residual, and cone constructors remain internal utilities. The 30 October geometric-query score on the English WordNet population stays indexed: the shared residual is inconclusive and the difference is negative. That score is not the current retrieval strategy. OR01-RET-ABS 0.1.0 still freezes that population and one local EmbeddingGemma 2 text SpaceRef. The general local and Gemini profile milestones stay proposed. No Gemini adapter is bound.",
-  "updatedAt": "2026-10-30",
+  "summary": "OR01-RET 0.1.0 takes a coordinate and returns the nearest saved sources under cosine or L2. That method is the registered tool. It passed its engineering checks on 30 October 2026, including [1, 0] ahead of [4, 0] under L2, and it refuses live calls and unbound relevance. Positive Sparse Combination Retrieval, OR01-COMB, solves non-negative least squares on the prepared corpus, repeats the minimum-weight refit until every survivor meets tau or none remain, and applies a fit floor and a path-length ceiling. Columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5 are empty, reason outside_cone. On 30 October 2026 make test-retrieval passed six combination checks. The registered tool does not link that solver, and the checks make no relevance claim. The active objective is geometric combination over the Open English WordNet noun hypernym interior: 17,191 abstract synsets, with 54,673 leaves kept outside that corpus. Exact k-retrieval stays the registered baseline and is not the active objective. The 29-term depth-3 binding remains the minimal historical population. On 31 October 2026 those 17,191 texts were encoded with the same EmbeddingGemma 2 text tower, and an exploratory probe called the current solver with gates fixed beforehand: tau 0.05, gamma 0.2, rho 3, kappa 1. That probe is not a closed run. The least-squares milestone remains the gate, because the face enumeration grows with the active-set width. Difference, shared residual, and cone constructors remain internal utilities. The 30 October geometric-query score on the English WordNet population stays indexed: the shared residual is inconclusive and the difference is negative. That score is not the current retrieval strategy. OR01-RET-ABS 0.1.0 still freezes that population and one local EmbeddingGemma 2 text SpaceRef. The general local and Gemini profile milestones stay proposed. No Gemini adapter is bound.",
+  "updatedAt": "2026-10-31",
   "goals": [
     {
       "id": "or-01-retrieval-contract",
@@ -318,7 +318,7 @@
     {
       "id": "or-01-geometric-abstract-retrieval",
       "title": "Rank a frozen corpus from a target coordinate",
-      "description": "Retrieval takes a coordinate in a declared SpaceRef. Encoding that coordinate from text or another raw input is upstream. Exact k-retrieval is the registered method. Positive sparse combination is the second method. Its six engineering checks passed on 30 October 2026, including the tau witness that drops a refit below tau. Continuation is the ready least-squares milestone. These checks do not score the English abstract corpus. Difference, shared residual, and cone constructors remain internal utilities and are not the retrieval strategy. The English abstract population is one frozen corpus, separate from any concrete source population. Ranking distance, combination weights, and the residual are not the relevance rule. This goal introduces no approximate index, live call, or encoder training.",
+      "description": "Retrieval takes a coordinate in a declared SpaceRef. Encoding that coordinate from text or another raw input is upstream. Exact k-retrieval is the registered baseline and is not the active objective. The active objective is positive sparse combination over the noun hypernym interior, 17,191 English abstract synsets. The 29-term depth-3 binding stays the minimal historical population. The six combination checks passed on 30 October 2026, including the tau witness that drops a refit below tau. The least-squares milestone gates a run on the interior. Difference, shared residual, and cone constructors remain internal utilities and are not the retrieval strategy. The English abstract population is one frozen corpus, separate from any concrete source population. Ranking distance, combination weights, and the residual are not the relevance rule. This goal introduces no approximate index, live call, or encoder training.",
       "milestones": [
         {
           "id": "or-01-abstract-corpus-binding",
@@ -465,7 +465,7 @@
           "id": "or-01-retrieval-combination-least-squares",
           "title": "Harden the combination least-squares step",
           "status": "ready",
-          "description": "The active-set solver forms the normal equations, so the condition number of the Gram matrix is squared. An entering column whose pivot fails, or which the line search ejects, is blocked for the rest of that call. The six fixtures and a small brute-force probe, through 10 columns, did not show a wrong residual. A 768-dimensional corpus is outside that probe. This milestone replaces that least-squares step and lets an ejected column enter again when a later gradient is positive. It does not score the English abstract corpus, register a combination command, call Gemini, or add an approximate index. gamma, rho, tau, and kappa stay declared by the caller and are not chosen from WordNet weights. Early stop still skips the gates. combine() takes a bare target vector, so a second SpaceRef is not checked. An undefined prepared column is still dropped with no skip record, and a corpus of undefined columns is still empty, reason outside_cone.",
+          "description": "The active-set solver forms the normal equations, so the condition number of the Gram matrix is squared. An entering column whose pivot fails, or which the line search ejects, is blocked for the rest of that call. The six fixtures and a small brute-force probe, through 10 columns, did not show a wrong residual. The geometric run needs this step to be safe at the noun hypernym interior: 17,191 prepared columns in 768 dimensions. This milestone replaces that least-squares step and lets an ejected column enter again when a later gradient is positive. It does not score a corpus, register a combination command, call Gemini, or add an approximate index. gamma, rho, tau, and kappa stay declared by the caller and are not chosen from WordNet weights. Early stop still skips the gates. combine() takes a bare target vector, so a second SpaceRef is not checked. An undefined prepared column is still dropped with no skip record, and a corpus of undefined columns is still empty, reason outside_cone.",
           "updatedAt": "2026-10-30",
           "dependsOn": [
             "or-01-retrieval-positive-sparse-combination"
@@ -475,6 +475,82 @@
             "A column removed by the line search can enter again on a later iteration when its reduced gradient is positive. A synthetic fixture forces a column out of the passive set, and the residual on that fixture matches an independent non-negative subset solve.",
             "make test-retrieval still passes the existing combination checks, including columns (1, 0) and (-0.2, 1) against target (0.45, 0.3) at tau 0.5, with outcome empty and reason outside_cone.",
             "The registered tool still links only exact search. The milestone calls no provider, scores no corpus, and adds no approximate index."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-abstract-interior",
+          "title": "Bind the noun hypernym interior",
+          "status": "done",
+          "description": "OR01-RET-ABS 0.2.0 freezes the English noun hypernym interior of Open English WordNet 2025. A noun synset is abstract when at least one other noun synset names it as a hypernym. The freeze holds 17,191 abstract entries. 54,673 leaves stay outside. instance_hypernym is excluded. Every entry keeps its synset id, members, definition, ILI, lexfile, depth from entity, and direct hypernym parents. The 0.1.0 snapshot of 29 depth-3 entries is unchanged. This revision admits no run and stores no vectors.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "or-01-abstract-corpus-binding"
+          ],
+          "acceptance": [
+            "The extraction rule is noun hypernym only. A synset enters the corpus when another noun synset names it as a hypernym. Leaves stay outside. instance_hypernym is excluded.",
+            "The frozen text has 17,191 abstract entries from 71,864 noun synsets, each with source identity and direct hypernym parent lineage. The population is English.",
+            "OR01-RET-ABS 0.1.0 stays the minimal ten-seed population. Its snapshot sha256 is unchanged. This revision does not admit a relevance result, a vector file, or a live call."
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET-ABS 0.2.0 interior binding",
+              "path": "code/operations/retrieval/bindings/oewn-2025/INTERIOR.md"
+            },
+            {
+              "label": "Frozen noun hypernym interior",
+              "path": "code/operations/retrieval/bindings/oewn-2025/interior-snapshot.json"
+            },
+            {
+              "label": "Interior extraction",
+              "path": "code/operations/retrieval/bindings/oewn-2025/extract-interior.mjs"
+            }
+          ]
+        },
+        {
+          "id": "or-01-retrieval-interior-encode",
+          "title": "Encode the noun hypernym interior",
+          "status": "done",
+          "description": "Saved vectors for the 17,191 interior texts use the same EmbeddingGemma 2 text tower, prompt, surface, L2 normalization, and cosine metric as OR01-RET-ABS 0.1.0. The snapshot id is or01-ret-abs-0.2.0-local-text. The 0.1.0 vector hashes stayed in place. Ten noun-leaf queries were encoded beside the corpus and are not rows of it. No relevance claim follows from the vectors.",
+          "updatedAt": "2026-10-31",
+          "completedAt": "2026-10-31",
+          "dependsOn": [
+            "or-01-retrieval-abstract-interior"
+          ],
+          "evidence": [
+            {
+              "label": "OR01-RET-ABS 0.2.0 encode record",
+              "path": "code/operations/retrieval/bindings/oewn-2025/ENCODE.md"
+            },
+            {
+              "label": "Batched text-tower encode",
+              "path": "code/operations/retrieval/bindings/oewn-2025/encode_interior.py"
+            },
+            {
+              "label": "Declared noun-leaf queries",
+              "path": "code/operations/retrieval/bindings/oewn-2025/leaf-queries.json"
+            }
+          ],
+          "acceptance": [
+            "The encode uses google/embeddinggemma-2 revision f9972ac22e696a105c482202646979e33e4b5a1e, text tower only, 768 dimensions, prompt task: sentence similarity | query: , and the surface of the first member and the first definition.",
+            "The saved file has 17,191 rows, one per interior source id, under a new snapshot id. The 0.1.0 concrete and abstract vector hashes are unchanged.",
+            "Model weights and vector bytes stay outside Git. The encode does not train the model and does not rank neighbors."
+          ]
+        },
+        {
+          "id": "or-01-retrieval-geometric-combination-run",
+          "title": "Run combination on the noun hypernym interior",
+          "status": "proposed",
+          "description": "This is the geometric retrieval run. A noun leaf, outside the interior, is the target coordinate. OR01-COMB writes a non-negative combination of the 17,191 abstract entries. Exact k-retrieval is not this run. The claim level is exploratory_description. gamma, rho, tau, and kappa are declared before the run and are not chosen from the weights. The interior vectors exist. The run still waits on the least-squares step being safe at this width. An exploratory probe on 31 October 2026 called the current solver and is not this milestone.",
+          "updatedAt": "2026-10-31",
+          "dependsOn": [
+            "or-01-retrieval-interior-encode",
+            "or-01-retrieval-combination-least-squares"
+          ],
+          "acceptance": [
+            "Each query is a noun leaf and is not a member of the interior. The corpus is the encoded 17,191-entry interior under its declared SpaceRef.",
+            "The method is positive sparse combination. The result lists source identities and positive weights. Weights and the residual are not a relevance rule.",
+            "The gates are fixed before any interior result is inspected. Empty, abstained, and failed stay distinct. The run does not call Gemini, register a combination tool, or add an approximate index."
           ]
         }
       ]

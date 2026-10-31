@@ -5,6 +5,7 @@
 
 #include <torch/torch.h>
 
+#include <string>
 #include <vector>
 
 namespace state_fusion {
@@ -53,6 +54,10 @@ class StateFusionModelImpl : public torch::nn::Module {
   // answer is deferred.
   torch::Tensor query(const torch::Tensor& state, const SetBatch& query_batch);
 
+  // Linear probe on query(), [batch, queries, scalar_features].
+  // A training run that owns its task head can ignore this and read query().
+  torch::Tensor query_scalars(const torch::Tensor& state, const SetBatch& query_batch);
+
   // Scalar reconstruction for every record, [batch, set, features].
   torch::Tensor reconstruct(const SetBatch& batch);
 
@@ -71,7 +76,15 @@ class StateFusionModelImpl : public torch::nn::Module {
   MAB decode_{nullptr};
   torch::nn::Linear scalar_head_{nullptr};
   MAB query_{nullptr};
+  torch::nn::Linear query_scalar_head_{nullptr};
 };
 TORCH_MODULE(StateFusionModel);
+
+// LibTorch archive of the config and the module weights. The caller creates
+// the parent directory. This package does not ship a trained checkpoint.
+void save_checkpoint(const StateFusionModel& model, const std::string& path);
+
+// Restores a checkpoint written by save_checkpoint. device must be CUDA.
+StateFusionModel load_checkpoint(const std::string& path, torch::Device device);
 
 }  // namespace state_fusion

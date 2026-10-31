@@ -4,9 +4,9 @@
   "number": 18,
   "title": "Encoder · Google multimodal embeddings",
   "purpose": "Develop reusable hosted-provider configuration, adapter, validation and provenance tools that operations and application projects can compose.",
-  "boundary": "Own the external provider interface and its documented upstream constraints. Cuwacunu and other applications own final integration and application use. Local training, weight access and arbitrary output shapes are not implied; supported configuration follows exposed provider capabilities. Follow the shared encoder component instructions and retain historical provider records and claim limits.",
-  "summary": "Develop reusable Google multimodal provider tools. The documented Gemini Embedding 2 source has a local provider record; an API adapter and local operation evidence remain proposed. Hosted service capabilities and configuration limits belong to the provider contract, not a finished application.",
-  "updatedAt": "2026-10-22",
+  "boundary": "Own the external provider interface and its documented upstream constraints. Saved embeddings for this hero are kept in the copied IdyDB library at code/embeddings/idydb. That library is a local file store for text and float vectors. It is not the Gemini service, and its nearest-neighbor query is not a hosted retrieval result. Cuwacunu and other applications own final integration and application use. Local training, weight access and arbitrary output shapes are not implied; supported configuration follows exposed provider capabilities. Follow the shared encoder component instructions and retain historical provider records and claim limits.",
+  "summary": "Develop reusable Google multimodal provider tools. The documented Gemini Embedding 2 source has a local provider record; an API adapter and local operation evidence remain proposed. Saved embeddings now have a local file store: a source copy of IdyDB under code/embeddings/idydb. That store is not the Gemini adapter and it authorizes no live call. Hosted service capabilities and configuration limits belong to the provider contract, not a finished application.",
+  "updatedAt": "2026-10-30",
   "goals": [
     {
       "id": "encoder-google-multimodal-provider",
@@ -158,6 +158,43 @@
             {
               "label": "Shared encoder component instructions",
               "path": "code/embeddings/encoders/AGENTS.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encoder-google-multimodal-store",
+      "title": "Keep saved embeddings in a local file",
+      "description": "IdyDB is the local file for saved embeddings. The Gemini adapter remains a separate proposed milestone. A database file is not a hosted response and it does not close the provider evaluation.",
+      "milestones": [
+        {
+          "id": "encoder-google-multimodal-idydb-copy",
+          "title": "Copy IdyDB in as the embedding store",
+          "status": "done",
+          "description": "The IdyDB C/C++ engine from C:\\Work\\idydb is copied under code/embeddings/idydb, with its MIT license and upstream readme. Windows build products were not copied. Two root-only fixture files were not readable and are absent. The library stores text and float vectors and has its own cosine and L2 nearest-neighbor query. That query is not OR01-COMB and it is not a Gemini result. No live API call is authorized.",
+          "updatedAt": "2026-10-30",
+          "completedAt": "2026-10-30",
+          "dependsOn": [
+            "encoder-google-multimodal-provider-record"
+          ],
+          "acceptance": [
+            "The copy keeps the upstream MIT license, the public header, and the engine sources. The Mityane note names what was left out.",
+            "The library builds in the managed container against the image OpenSSL Crypto.",
+            "The copy does not implement the Gemini adapter, does not store credentials, and does not admit a live provider call."
+          ],
+          "evidence": [
+            {
+              "label": "IdyDB copy note",
+              "path": "code/embeddings/idydb/MITYANE.md"
+            },
+            {
+              "label": "Upstream IdyDB readme",
+              "path": "code/embeddings/idydb/README.md"
+            },
+            {
+              "label": "Hx18 provider scope",
+              "path": "code/embeddings/encoders/google_multimodal_embedding/README.md"
             }
           ]
         }

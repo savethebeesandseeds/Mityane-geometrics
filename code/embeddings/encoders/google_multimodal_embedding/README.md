@@ -39,6 +39,15 @@ adapter and operation evaluation remain proposed. No credentials were inspected,
 SDK installed, media uploaded, API request executed or weights imported for
 this registration. Foundation-model training is outside this workstream.
 
+## Local embedding file
+
+Saved embeddings for this hero are kept in IdyDB, a copied flat-file library
+at [code/embeddings/idydb](../../idydb/MITYANE.md). The copy arrived on 30
+October 2026 from `C:\Work\idydb`. It stores text and float vectors. Its own
+cosine and L2 query is a nearest-neighbor helper inside that library. It does
+not implement the Gemini adapter, and it does not authorize a live API call.
+Vector files stay outside Git.
+
 ## Integration work
 
 The adapter should accept source-referenced text or media observations and return
