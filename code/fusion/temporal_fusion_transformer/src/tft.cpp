@@ -419,6 +419,11 @@ Recurrent run_lstm(torch::nn::LSTM& lstm, const torch::Tensor& input,
   return hold_lstm(lstm, input, observed, hidden, cell);
 }
 
+struct NetworkPass {
+  Output forecast;
+  torch::Tensor temporal_state;
+};
+
 struct TFTNetworkImpl : torch::nn::Module {
   explicit TFTNetworkImpl(const Config& cfg) {
     const auto hidden = cfg.hidden_size;
@@ -458,7 +463,7 @@ struct TFTNetworkImpl : torch::nn::Module {
     projection = register_module("projection", torch::nn::Linear(hidden, static_cast<int64_t>(cfg.quantiles.size())));
   }
 
-  Output forward(const Batch& batch, std::map<std::string, torch::Tensor>* diagnostics) {
+  NetworkPass forward(const Batch& batch, std::map<std::string, torch::Tensor>* diagnostics) {
     auto static_embedded = static_embedding->forward(batch.statics);
     auto statics = static_selection->forward(static_embedded);
     auto selection_state = selection_context->forward(statics.values);
@@ -528,7 +533,7 @@ struct TFTNetworkImpl : torch::nn::Module {
                       {"final", final},
                       {"raw_projection", raw_projection}};
     }
-    return {raw_projection, statics.weights, past.weights, future.weights, attended.weights};
+    return {{raw_projection, statics.weights, past.weights, future.weights, attended.weights}, final};
   }
 
   std::shared_ptr<EmbeddingGroupImpl> static_embedding, past_embedding, future_embedding;
@@ -549,9 +554,7 @@ TFTImpl::TFTImpl(Config configuration) : config(std::move(configuration)) {
   network_ = register_module("network", std::make_shared<detail::TFTNetworkImpl>(config));
 }
 
-Output TFTImpl::forward(const Batch& batch,
-                        std::map<std::string, torch::Tensor>* diagnostics) {
-  if (diagnostics) diagnostics->clear();
+void TFTImpl::validate_batch(const Batch& batch) const {
   const auto parameter = parameters().front();
   TORCH_CHECK(parameter.device().is_cpu() || parameter.device().is_cuda(),
               "TFT supports CPU and CUDA devices");
@@ -572,7 +575,14 @@ Output TFTImpl::forward(const Batch& batch,
   TORCH_CHECK(batch.past.continuous.size(0) == batch_size &&
                   batch.future.continuous.size(0) == batch_size,
               "Static, past, and future batch sizes must match");
-  auto output = network_->forward(batch, diagnostics);
+}
+
+Output TFTImpl::forward(const Batch& batch,
+                        std::map<std::string, torch::Tensor>* diagnostics) {
+  if (diagnostics) diagnostics->clear();
+  validate_batch(batch);
+  auto pass = network_->forward(batch, diagnostics);
+  auto output = std::move(pass.forecast);
   if (config.ordered_quantiles && config.quantiles.size() > 1) {
     // Keep the quantile nearest 0.5 unconstrained; build outward with positive
     // gaps. The raw projection is never sorted or detached, so pinball loss
@@ -591,6 +601,11 @@ Output TFTImpl::forward(const Batch& batch,
     output.predictions = torch::stack(ordered, -1);
   }
   return output;
+}
+
+TemporalState TFTImpl::temporal_state(const Batch& batch) {
+  validate_batch(batch);
+  return {network_->forward(batch, nullptr).temporal_state};
 }
 
 torch::Tensor quantile_loss(const torch::Tensor& predictions,

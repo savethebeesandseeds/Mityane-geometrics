@@ -81,7 +81,7 @@ new training, experiments or external API calls.
 
 | Hero | Ownership and evidence boundary |
 | --- | --- |
-| Hx20 · Temporal Fusion Transformer | Reusable quantile-forecast family in [its own tree](../../code/fusion/temporal_fusion_transformer/README.md). The imported surface adds one pooled vector per input group and a boolean time mask. It does not close Hx11, and it does not use the patch-bottleneck channel contract |
+| Hx20 · Temporal Fusion Transformer | Reusable temporal family in [its own tree](../../code/fusion/temporal_fusion_transformer/README.md). The quantile forecast stays. `temporal_state` returns `[batch, horizon, hidden]`, the residual the quantile projection reads. Attention queries the known-future steps, so history is a key. The enriched sequence before attention keeps the history rows. The imported surface adds one pooled vector per input group and a boolean time mask. It does not close Hx11, and it does not use the patch-bottleneck channel contract |
 
 The placed library is the Non-verba copy of the post-profit-economics C++ TFT.
 Its CPU suites passed in the managed container on 29 October 2026. CUDA was

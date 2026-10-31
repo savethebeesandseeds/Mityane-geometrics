@@ -15,7 +15,21 @@ operation.
 Static, past and known-future inputs stay in separate groups. Each group can
 hold continuous values, categorical ids and, when its width is positive, one
 pooled vector. Future targets are an argument of the loss. They are not an
-input of `forward`.
+input of `forward` or `temporal_state`.
+
+`forward` still returns the quantile forecast. `temporal_state` returns the
+representation that forecast reads, and nothing from the quantile head.
+`values` has shape `[batch, horizon, hidden_size]`. The stage is the
+layer-normalized residual passed to the linear projection: variable
+selection, the encoder and decoder LSTMs, static enrichment, interpretable
+temporal attention, the position-wise feed-forward, and the final gated skip
+from the recurrent features. Attention queries the known-future steps, so the
+time axis is the horizon and history is present as attention keys. One stage
+earlier, the enriched sequence still has one row for every history step and
+every known-future step. `temporal_state` is the later tensor, the one the
+quantile projection reads. The tensor keeps its autograd graph. Hole steps
+hold the LSTM state and are not attention keys, as in `forward`. The
+diagnostics map stays on `forward`.
 
 A boolean time mask may mark a hole. A false step holds the LSTM state, is not
 an attention key, and is left out of the loss. An observed zero still advances.

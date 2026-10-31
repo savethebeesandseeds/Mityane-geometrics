@@ -95,6 +95,21 @@ struct Output {
   torch::Tensor attention_weights; // [batch, heads, horizon, history + horizon]
 };
 
+// Temporal state taken immediately before the linear quantile projection.
+// values: [batch, horizon, hidden_size], the model's dtype and device.
+// Stage: LayerNorm(temporal[:, history:, :] + GLU(positionwise(attention_skip))).
+// That follows variable selection, the encoder and decoder LSTMs, static
+// enrichment, interpretable temporal attention, and the position-wise GRN.
+// Attention queries are the known-future steps, so the time axis is the
+// horizon. History is a key, not a row of this tensor. The enriched sequence
+// before attention still has one row per history step and known-future step.
+// This struct is the later tensor. The graph stops before the quantile head.
+// Future targets are not an input. A hole holds the LSTM state and is not an
+// attention key, as in forward.
+struct TemporalState {
+  torch::Tensor values;
+};
+
 namespace detail {
 struct TFTNetworkImpl;
 }
@@ -106,11 +121,14 @@ struct TFTImpl : torch::nn::Module {
   // callers own its lifetime and may retain_grad() before backward if needed.
   Output forward(const Batch& batch,
                  std::map<std::string, torch::Tensor>* diagnostics = nullptr);
+  // Same batch as forward. Does not write the diagnostics map.
+  TemporalState temporal_state(const Batch& batch);
 
   // Immutable because changing dimensions after registration invalidates modules.
   const Config config;
 
  private:
+  void validate_batch(const Batch& batch) const;
   std::shared_ptr<detail::TFTNetworkImpl> network_;
 };
 TORCH_MODULE(TFT);

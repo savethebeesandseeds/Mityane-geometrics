@@ -5,7 +5,7 @@ Encoders and the State Representation Network stay there.
 
 | Family | Path | What is here |
 | --- | --- | --- |
-| Hx20 · Temporal Fusion Transformer | [temporal_fusion_transformer](temporal_fusion_transformer/README.md) | The imported quantile-forecast library |
+| Hx20 · Temporal Fusion Transformer | [temporal_fusion_transformer](temporal_fusion_transformer/README.md) | Quantile forecasts, and a temporal state `[batch, horizon, hidden]` before that head |
 | Hx21 · State fusion transformer | [state_fusion_transformer](state_fusion_transformer/README.md) | Set Transformer (set fusion) on CUDA. The goal is state fusion |
 
 The method is a Set Transformer (set fusion) ([Lee et al., ICML 2019](https://proceedings.mlr.press/v97/lee19d.html)).

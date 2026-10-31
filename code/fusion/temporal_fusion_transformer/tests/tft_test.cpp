@@ -467,6 +467,55 @@ void test_fixed_batch_overfit(const torch::Device& device) {
 
 }  // namespace
 
+void test_temporal_state(const torch::Device& device) {
+  const auto config = make_config();
+  const auto batch = make_batch(config, device);
+  auto model = make_model(config, device);
+  model->zero_grad();
+  const auto state = model->temporal_state(batch);
+  require(state.values.sizes() == torch::IntArrayRef({6, 3, config.hidden_size}),
+          "temporal state must be [batch, horizon, hidden]");
+  require(state.values.device() == device, "temporal state must stay on device");
+  require(state.values.scalar_type() == torch::kFloat32, "temporal state must match the model dtype");
+  require(state.values.requires_grad(), "temporal state must retain autograd");
+  require_finite(state.values, "temporal state must be finite");
+  state.values.sum().backward();
+  bool body = false;
+  bool head = false;
+  for (const auto& parameter : model->named_parameters()) {
+    const auto& grad = parameter.value().grad();
+    const bool head_parameter = parameter.key().find("network.projection.") == 0;
+    if (head_parameter) {
+      require(!grad.defined(), "the quantile head must stay outside the temporal state");
+      head = true;
+      continue;
+    }
+    if (grad.defined() && grad.abs().sum().item<double>() > 0.0) body = true;
+  }
+  require(head, "the quantile projection must stay registered");
+  require(body, "the temporal state must carry a gradient into the body");
+
+  model->eval();
+  auto holed = make_batch(config, device);
+  const auto mask_options = torch::TensorOptions().dtype(torch::kBool).device(device);
+  holed.past_observed = torch::ones({6, 4}, mask_options);
+  holed.past_observed.select(1, 1).fill_(false);
+  auto dirty = holed;
+  dirty.past.continuous = holed.past.continuous.clone();
+  dirty.past.categorical = holed.past.categorical.clone();
+  dirty.past.continuous.select(1, 1).fill_(999.0);
+  dirty.past.categorical.select(1, 1).zero_();
+  auto moved = holed;
+  moved.past.continuous = holed.past.continuous.clone();
+  moved.past.continuous.select(1, 0).add_(3.0);
+  torch::NoGradGuard no_grad;
+  require_close(model->temporal_state(dirty).values, model->temporal_state(holed).values,
+                "a hole's stored values must not move the temporal state");
+  require(!torch::allclose(model->temporal_state(moved).values,
+                           model->temporal_state(holed).values, 1e-6, 1e-6),
+          "an observed past step must still be able to move the temporal state");
+}
+
 int main(int argc, char** argv) {
   torch::Device device(torch::kCPU);
   if (argc == 3 && std::string(argv[1]) == "--device") {
@@ -498,6 +547,7 @@ int main(int argc, char** argv) {
       {"checkpoint round trip", [&] { test_checkpoint(device); }},
       {"double precision", [&] { test_double_precision(device); }},
       {"fixed-batch training", [&] { test_fixed_batch_overfit(device); }},
+      {"temporal state before the quantile head", [&] { test_temporal_state(device); }},
   };
   int failures = 0;
   for (const auto& test : tests) {
