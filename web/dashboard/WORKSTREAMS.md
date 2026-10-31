@@ -92,9 +92,9 @@ measurements of this tree.
 
 | Hero | Ownership and evidence boundary |
 | --- | --- |
-| Hx21 · State fusion transformer | The family directory is [code/fusion/state_fusion_transformer](../../code/fusion/state_fusion_transformer/README.md). The encoder is a Set Transformer (ISAB and PMA) on CUDA. The GPU invariance test and the synthetic masked-reconstruction run are recorded on the set-encoder milestone. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
+| Hx21 · State fusion transformer | The family directory is [code/fusion/state_fusion_transformer](../../code/fusion/state_fusion_transformer/README.md). The encoder is a Set Transformer (ISAB and PMA) on CUDA. It is the set-to-state machinery for Nonverba. Nonverba fills the records, trains, and owns the checkpoint. The GPU invariance test and the synthetic masked-reconstruction run are recorded on the set-encoder milestone. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
 
-The synthetic panels validate the pipeline. They are not a market result. This record does not close Hx11 or Hx20.
+The synthetic panels, the capacity protocol, and the LEGO study check that path. Nonverba's records and query answers are not bound here. This record does not close Hx11 or Hx20.
 
 ## Dataloaders
 

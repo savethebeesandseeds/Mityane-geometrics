@@ -177,7 +177,7 @@ int main() {
               << " batch=" << kBatch
               << " records=" << kRecords
               << " heldout_panels=" << kHeldout << "\n";
-    std::cout << "note=synthetic_capacity_not_a_market\n";
+    std::cout << "note=synthetic_capacity\n";
     print_score("untrained", untrained);
     std::cout << "baselines zero_reconstruction=" << untrained.zero_baseline
               << " set_mean_reconstruction=" << untrained.set_mean_baseline

@@ -189,7 +189,7 @@ int main() {
 
       const auto cached = state.detach().clone();
       cached_gap = max_abs(answer, model->query(cached, question));
-      require(cached_gap <= kClose, "a cloned market state changed the answer by " + std::to_string(cached_gap));
+      require(cached_gap <= kClose, "a cloned state changed the answer by " + std::to_string(cached_gap));
 
       state_fusion::Config two_seeds = config;
       two_seeds.pma_seeds = 2;
@@ -218,7 +218,7 @@ int main() {
     }
     require(rejects([&] { model->query(state, on_cpu); }, "CUDA"), "a CPU query batch was accepted");
     require(rejects([&] { model->query(state.to(torch::kCPU), question); }, "CUDA"),
-            "a CPU market state was accepted");
+            "a CPU state was accepted");
 
     state_fusion::StateFusionModel cpu_model(config);
     require(rejects([&] { cpu_model->query(state, question); }, "CUDA"), "CPU parameters were accepted");

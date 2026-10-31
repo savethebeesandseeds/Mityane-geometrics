@@ -1,10 +1,27 @@
 # State fusion transformer
 
-Hx21 owns this directory. The family was named on 29 October 2026. It fuses an
-unordered collection of records into one fixed market-state tensor. Nonverba
-fills `SetBatch` from domain records, calls `encode` and `query`, optimizes
-the losses in this package, and saves a checkpoint. This package does not
-ship trained weights.
+Hx21 owns this directory. The family was named on 29 October 2026. It is the
+set-to-state machinery for Nonverba.
+
+Nonverba fills `SetBatch` from its records, calls `encode` and `query`,
+trains the weights, and owns the checkpoint. This package supplies that
+machinery and ships no trained weights. The records and the query answers
+stay with Nonverba.
+
+`encode` fuses one unordered set of records into one fixed state,
+`[batch, seeds, d_model]`. Order does not change that state. `query` asks
+in the same record language against the cached state and does not encode
+the set again.
+
+The reading this family is built for is a set of evidence, performance,
+attestation, or outcome records, fused once and then queried. A query can
+support a track record, a decaying vote, a dispute check, or a verification.
+Which records those are, and what each query returns, remains open in this
+package. Binding them is the remaining handoff.
+
+The synthetic panels, the capacity protocol, and the LEGO study only check
+that path: missing values, permutation invariance, and a query against a
+cached state. They are checks. They are not the purpose of the family.
 
 This is not the State Representation Network in
 `code/embeddings/state_representation/`. That network maps one observation
@@ -56,14 +73,17 @@ true entry in that mask ignores the key [4]. The record is not replaced by a
 zero token. Attention does not add a zero slot. Each set needs at least one
 observed record, because a fully masked key row makes softmax undefined.
 
-The default categorical cardinalities are synthetic bounds for this package.
-They are not a domain ontology. `semantic_width` is configuration; the
+The categorical columns are named place, kind, record type, side, and
+currency. Those names are the slot labels used by the checks in this package.
+They are not Nonverba's schema. A projection chooses which Nonverba field
+occupies each slot, and it may raise the cardinalities. The default
+cardinalities are synthetic bounds. `semantic_width` is configuration; the
 synthetic panels use 16.
 
 ## Query
 
-`query(state, query_batch)` answers one or more questions against a market
-state already returned by `encode`. The set is not encoded again. `state` is
+`query(state, query_batch)` answers one or more questions against a state
+already returned by `encode`. The set is not encoded again. `state` is
 `[batch, seeds, d_model]`. `query_batch` is a `SetBatch` whose set dimension
 is the query dimension, so a later projection fills the same fields it fills
 for records and calls `query` without changing this package.
@@ -123,20 +143,23 @@ the initial error. The optimizer is Adam [6].
 
 ## Synthetic objective
 
-`make_panel` builds the panels in C++. Records in one set share a latent
-scalar vector, plus noise, real zeros, field holes, record holes, and absent
-semantic vectors. A fraction of the originally observed scalars is withheld.
+This section is a pipeline check. `make_panel` builds the panels in C++.
+Records in one set share a latent scalar vector, plus noise, real zeros,
+field holes, record holes, and absent semantic vectors. A fraction of the originally observed scalars is withheld.
 The visible batch stores garbage in holes and in withheld cells, and those
 cells are marked unobserved. The loss is the mean squared error on the
 withheld cells only.
 
-These panels validate the pipeline. They are not a market, and the printed
-error is not a forecast score.
+These panels validate the pipeline. The printed error is the masked error on
+that one synthetic panel.
 
 ## Training handoff
 
-Nonverba trains this model. The files for that handoff are the model, the
-synthetic panels, `src/train.cpp`, and `src/capacity.cpp`.
+Nonverba trains this model on its own records. The callable surface is
+`StateFusionModel`, `reconstruction_loss`, `query`, `query_scalars`,
+`save_checkpoint`, and `load_checkpoint`. `src/train.cpp` and
+`src/capacity.cpp` show that surface on synthetic panels. Those panels are
+not Nonverba's data.
 
 Construct `StateFusionModel` from `Config`, move it to CUDA, and fill
 `SetBatch` on that device. `reconstruction_loss` is the masked scalar error
@@ -153,8 +176,9 @@ separate protocol. It is not part of `make test`.
 
 ## Capacity protocol
 
-`make_capacity_panel` builds a fresh CUDA panel on every step. The set size
-is even. Records come in pairs. A pair shares a place in `{0, 1, 2, 3}` and a
+This protocol checks that one pooled state can answer a query. Nonverba's
+records are not in this run. `make_capacity_panel` builds a fresh CUDA panel
+on every step. The set size is even. Records come in pairs. A pair shares a place in `{0, 1, 2, 3}` and a
 kind in `{0, 1}`, and no two pairs in a set share that combination. Scalar
 feature 0 is the shared latent plus `0.5 * (place - 1.5) + 0.4 * (kind - 0.5)`
 plus noise of scale 0.05. The other scalar features are the shared latent
@@ -178,12 +202,12 @@ never training seeds. Metrics are computed in eval mode. The baselines are a
 prediction of zero on hidden cells, and the set mean of the visible clean
 scalars.
 
-The run prints `note=synthetic_capacity_not_a_market`. A passing run has
-held-out reconstruction below half its untrained value, held-out empty-query
-error below half its untrained value, held-out filter feature-0 error below
-the held-out set-mean baseline, and a reloaded checkpoint whose
-`query_scalars` answers match within `1e-4`. This is a synthetic capacity
-measurement. It is not a market result and it does not close Hx11 or Hx20.
+The program prints `note=synthetic_capacity`. A passing run has held-out
+reconstruction below half its untrained value, held-out empty-query error
+below half its untrained value, held-out filter feature-0 error below the
+held-out set-mean baseline, and a reloaded checkpoint whose `query_scalars`
+answers match within `1e-4`. This is a synthetic capacity measurement. It
+does not close Hx11 or Hx20.
 
 On 31 October 2026, `make capacity` ran in the managed container on the same
 RTX A2000, with TensorFloat-32 off and LibTorch 2.6.0. The untrained held-out
@@ -203,12 +227,13 @@ indexed by place and kind. That error is still above the variance of the
 0.05 observation noise. The curve was still falling at step 1600.
 Reconstruction beat zero and fell below half of its untrained value. It
 remains above the visible set-mean baseline of `0.0642019`. These figures
-are the synthetic capacity measurement, not a market or forecast score.
+are the synthetic capacity measurement.
 
 ## LEGO boxes
 
-`make lego` is a separate study. It is not part of `make test`. One situation
-is one LEGO set. One record is one loose part in one color. The covered pile
+`make lego` checks the same path on one catalog of boxes. It is not part of
+`make test`, and it is not the purpose of the family. One situation is one
+LEGO set. One record is one loose part in one color. The covered pile
 is left out of the state. The query names its color, its part category, and
 its part number. The probe answers with a brick count. Spare pieces are
 excluded. Pieces inside a minifig are not opened. The year on the box is unused.
@@ -254,7 +279,7 @@ weak opponent here: many Duplo part-and-color pairs never appear in the
 training boxes, and even on seen themes the box average is closer than the
 catalog. An error of about 0.7 bricks on Duplo, where the average pile is
 about 1.9 bricks, still misses by a large share of the count. This is a count
-inside a box. It is not a forecast.
+inside a box.
 
 ## Recorded check
 
@@ -277,7 +302,7 @@ permuting the encoded set (`permutation_max_abs=4.76837e-07`, and
 `two_seed_permutation_max_abs=3.57628e-07`). Editing a query hole left the
 answer unchanged. An observed zero moved the answer by `0.209496`, and the
 place-and-kind query differed from an empty query by `3.25368`. A cloned
-market state reproduced the answer exactly. These checks do not train the
+state reproduced the answer exactly. These checks do not train the
 query block.
 
 ## References

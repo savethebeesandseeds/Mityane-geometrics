@@ -1,3 +1,4 @@
+// This study checks the set-to-state path on one catalog of boxes.
 // One LEGO box is one situation. One loose part in one color is one record.
 // The covered pile is left out of the state. The query names its color, part
 // category, and part number, and the probe answers with a brick count.
@@ -700,7 +701,7 @@ int main() {
               << " left_out_theme_boxes=" << split.theme.size() << " colors=" << vocab.color_card
               << " categories=" << vocab.category_card << " parts=" << vocab.part_card
               << " log_quantity_mean=" << scaler.mean << " log_quantity_std=" << scaler.std << "\n";
-    std::cout << "note=lego_box_count_not_a_forecast\n" << std::flush;
+    std::cout << "note=lego_box_count\n" << std::flush;
 
     torch::manual_seed(static_cast<uint64_t>(kSeed));
     torch::cuda::manual_seed_all(kSeed);

@@ -229,16 +229,16 @@ torch::Tensor StateFusionModelImpl::query(const torch::Tensor& state, const SetB
     }
   }
   require(state.defined() && state.is_cuda() && state.scalar_type() == torch::kFloat,
-          "state fusion requires a CUDA float32 market state");
+          "state fusion requires a CUDA float32 state");
   require(state.dim() == 3 && state.size(0) >= 1 && state.size(1) == config_.pma_seeds &&
               state.size(2) == config_.d_model,
-          "market state must be [batch, seeds, d_model]");
-  require(torch::isfinite(state).all().item<bool>(), "market state must be finite");
+          "state must be [batch, seeds, d_model]");
+  require(torch::isfinite(state).all().item<bool>(), "state must be finite");
   check_query(config_, query_batch);
   require(query_batch.scalars.size(0) == state.size(0),
-          "query batch must match the market-state batch");
+          "query batch must match the state batch");
   require(query_batch.scalars.device() == state.device(),
-          "query batch must be on the market-state device");
+          "query batch must be on the state device");
 
   const auto queries = tokens_->forward(query_batch).permute({1, 0, 2}).contiguous();
   const auto keys = state.permute({1, 0, 2}).contiguous();

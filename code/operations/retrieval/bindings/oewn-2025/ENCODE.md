@@ -8,7 +8,7 @@ The ten leaf queries are a separate file. Their snapshot id is `or01-ret-abs-0.2
 
 The 0.1.0 files were checked before this encode and left unchanged: abstract `0096a2d4338d03ba94973d2679ad0604a0003958985208171acc13f2da535a81`, concrete `6c8e7bccf3b2e16cdb01abe1a80489d266b167954dfe035271ee30e8fe90e885`.
 
-Vector bytes and the plaintext IdyDB file stay under ignored `.temp/` or the container build disk. This record does not admit a relevance result. The encode does not train the model and does not rank neighbors.
+Vector bytes and the plaintext IdyDB file stay under ignored `.temp/` or the container build disk. The plaintext file `.temp/operations/retrieval/or01-ret-abs-0.2.0-local-text/interior.idydb` holds 17,191 rows. Column 1 is the source id, a tab, and the surface. Column 2 is the 768-float vector. Its sha256 is `1100c5eb21560f8ce427acfa460318419060d686b450b80819b9da04e37cc464`. A read-only cosine query of the first stored vector returned that same row with score 1. This record does not admit a relevance result. The encode does not train the model and does not rank neighbors. IdyDB's own nearest-neighbor query is not OR01-COMB.
 
 Reproduction, from the repository root, through the managed container:
 

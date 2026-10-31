@@ -27,7 +27,9 @@ struct Config {
 // Observed flags are true when the value is present. A false flag is a hole,
 // including when the stored value is zero or non-finite.
 // Categorical columns, in order, are place, kind, record type, side, and
-// currency. Cardinalities are configuration. The defaults are synthetic bounds.
+// currency. Those names are slot labels for the checks in this package.
+// They are not Nonverba's schema. Cardinalities are configuration.
+// The defaults are synthetic bounds.
 struct SetBatch {
   torch::Tensor scalars;               // [batch, set, features] float32
   torch::Tensor scalar_observed;       // [batch, set, features] bool
@@ -46,7 +48,7 @@ class StateFusionModelImpl : public torch::nn::Module {
   torch::Tensor encode(const SetBatch& batch);
 
   // Answer for each query row, [batch, queries, d_model].
-  // state is a cached market state from encode. query_batch uses the same
+  // state is a cached state from encode. query_batch uses the same
   // fields as a record, with the set dimension as the query dimension. Each
   // query is assembled by the shared token encoder, then one attention block
   // reads the pooled state. The set is not encoded again. A hole uses the

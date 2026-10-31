@@ -2,8 +2,8 @@
 # State Representation Network
 
 The State Representation Network maps each native signal embedding to a distinct
-predictive state. It owns neither market data admission nor the Encoder's
-reconstruction objective. Hx21 owns the State fusion transformer in
+predictive state. Dataset admission and the Encoder's reconstruction
+objective stay outside this network. Hx21 owns the State fusion transformer in
 `code/fusion/state_fusion_transformer`. This network is not that family, and this page
 does not define it.
 
