@@ -28,8 +28,7 @@ struct Config {
 // including when the stored value is zero or non-finite.
 // Categorical columns, in order, are place, kind, record type, side, and
 // currency. Those names are slot labels for the checks in this package.
-// They are not Nonverba's schema. Cardinalities are configuration.
-// The defaults are synthetic bounds.
+// Cardinalities are configuration. The defaults are synthetic bounds.
 struct SetBatch {
   torch::Tensor scalars;               // [batch, set, features] float32
   torch::Tensor scalar_observed;       // [batch, set, features] bool
@@ -40,11 +39,12 @@ struct SetBatch {
   torch::Tensor record_observed;       // [batch, set] bool
 };
 
+// Method: Set Transformer (set fusion). Goal: state fusion, one fixed state.
 class StateFusionModelImpl : public torch::nn::Module {
  public:
   explicit StateFusionModelImpl(Config config);
 
-  // [batch, seeds, d_model]. Permutation-invariant in the set dimension.
+  // State fusion: [batch, seeds, d_model]. Permutation-invariant in the set dimension.
   torch::Tensor encode(const SetBatch& batch);
 
   // Answer for each query row, [batch, queries, d_model].

@@ -1,27 +1,19 @@
 # State fusion transformer
 
-Hx21 owns this directory. The family was named on 29 October 2026. It is the
-set-to-state machinery for Nonverba.
+Hx21 owns this directory. The family was named on 29 October 2026.
 
-Nonverba fills `SetBatch` from its records, calls `encode` and `query`,
-trains the weights, and owns the checkpoint. This package supplies that
-machinery and ships no trained weights. The records and the query answers
-stay with Nonverba.
+The method is a Set Transformer (set fusion): induced set attention and
+pooling by multihead attention. The goal is state fusion. `encode` brings
+one unordered set of records to one fixed state, `[batch, seeds, d_model]`.
+Order does not change that state. `query` asks in the same record language
+against that cached state and does not encode the set again.
 
-`encode` fuses one unordered set of records into one fixed state,
-`[batch, seeds, d_model]`. Order does not change that state. `query` asks
-in the same record language against the cached state and does not encode
-the set again.
+The package ships no trained weights. A caller fills `SetBatch`, chooses
+the loss, and owns the checkpoint.
 
-The reading this family is built for is a set of evidence, performance,
-attestation, or outcome records, fused once and then queried. A query can
-support a track record, a decaying vote, a dispute check, or a verification.
-Which records those are, and what each query returns, remains open in this
-package. Binding them is the remaining handoff.
-
-The synthetic panels, the capacity protocol, and the LEGO study only check
-that path: missing values, permutation invariance, and a query against a
-cached state. They are checks. They are not the purpose of the family.
+The synthetic panels, the capacity protocol, and the LEGO study check that
+path: missing values, permutation invariance, and a query against a cached
+state. A caller supplies its own records.
 
 This is not the State Representation Network in
 `code/embeddings/state_representation/`. That network maps one observation
@@ -30,7 +22,9 @@ the sibling directory. A result here does not close Hx11 or Hx20.
 
 ## Architecture
 
-The encoder is a Set Transformer [1], written here against the LibTorch C++
+Set fusion is the encoder below. State fusion is the fixed state it writes,
+and the query that reads that state. The encoder is a Set Transformer [1],
+written here against the LibTorch C++
 API from PyTorch 2.6.0 [4]. Two induced set attention blocks (ISAB) use 16
 learned inducing points. Pooling by multihead attention (PMA) uses one seed
 vector and returns `[batch, seeds, d_model]`. The width is 64, with 4 heads
@@ -75,7 +69,7 @@ observed record, because a fully masked key row makes softmax undefined.
 
 The categorical columns are named place, kind, record type, side, and
 currency. Those names are the slot labels used by the checks in this package.
-They are not Nonverba's schema. A projection chooses which Nonverba field
+They are configuration, not a domain schema. A caller chooses which field
 occupies each slot, and it may raise the cardinalities. The default
 cardinalities are synthetic bounds. `semantic_width` is configuration; the
 synthetic panels use 16.
@@ -155,11 +149,10 @@ that one synthetic panel.
 
 ## Training handoff
 
-Nonverba trains this model on its own records. The callable surface is
+A caller trains this model on its own records. The callable surface is
 `StateFusionModel`, `reconstruction_loss`, `query`, `query_scalars`,
 `save_checkpoint`, and `load_checkpoint`. `src/train.cpp` and
-`src/capacity.cpp` show that surface on synthetic panels. Those panels are
-not Nonverba's data.
+`src/capacity.cpp` show that surface on synthetic panels.
 
 Construct `StateFusionModel` from `Config`, move it to CUDA, and fill
 `SetBatch` on that device. `reconstruction_loss` is the masked scalar error
@@ -176,9 +169,9 @@ separate protocol. It is not part of `make test`.
 
 ## Capacity protocol
 
-This protocol checks that one pooled state can answer a query. Nonverba's
-records are not in this run. `make_capacity_panel` builds a fresh CUDA panel
-on every step. The set size is even. Records come in pairs. A pair shares a place in `{0, 1, 2, 3}` and a
+This protocol checks that one pooled state can answer a query.
+`make_capacity_panel` builds a fresh CUDA panel on every step. The set size
+is even. Records come in pairs. A pair shares a place in `{0, 1, 2, 3}` and a
 kind in `{0, 1}`, and no two pairs in a set share that combination. Scalar
 feature 0 is the shared latent plus `0.5 * (place - 1.5) + 0.4 * (kind - 0.5)`
 plus noise of scale 0.05. The other scalar features are the shared latent

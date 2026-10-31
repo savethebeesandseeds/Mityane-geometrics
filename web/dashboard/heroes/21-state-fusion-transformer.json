@@ -3,15 +3,15 @@
   "id": "state-fusion-transformer",
   "number": 21,
   "title": "State fusion transformer",
-  "purpose": "Supply Nonverba with the state fusion transformer. The owner identified this family as of great importance. Nonverba fills the records, trains the weights, and owns the checkpoint. This package supplies the set-to-state path.",
-  "boundary": "This Hero owns the state fusion transformer in code/fusion/state_fusion_transformer. The model is a Set Transformer with induced set attention and pooling by multihead attention. It encodes an unordered set of records into one fixed state, and a query reads that cached state. Nonverba fills SetBatch, calls encode and query, and owns the checkpoint. The records and the query answers are not bound here. Hx11 owns latent-dynamics operations. Hx20 owns the Temporal Fusion Transformer in code/fusion. The State Representation Network maps one observation embedding to a predictive state and is not this family. This family has no temporal feature. A result here does not close Hx11 or Hx20.",
+  "purpose": "Develop state fusion. The owner identified this family as of great importance. The method is a Set Transformer (set fusion). The goal is one fixed state from an unordered set of records, and a query against that state.",
+  "boundary": "This Hero owns the state fusion transformer in code/fusion/state_fusion_transformer. The method is a Set Transformer with induced set attention and pooling by multihead attention: set fusion. The goal is state fusion. An unordered set of records becomes one fixed state, and a query reads that cached state. A caller fills SetBatch, calls encode and query, and owns the checkpoint. Hx11 owns latent-dynamics operations. Hx20 owns the Temporal Fusion Transformer in code/fusion. The State Representation Network maps one observation embedding to a predictive state and is not this family. This family has no temporal feature. A result here does not close Hx11 or Hx20.",
   "summary": "On 29 October 2026 the family was placed in code/fusion/state_fusion_transformer and given a CUDA Set Transformer. Induced set attention and one-seed pooling encode an unordered set. A GPU test checked permutation invariance, hole gating, and key padding. On one fixed synthetic panel, 400 Adam steps reduced masked error from 1.25887 to 1.85048e-06. The panels are pipeline validation. No pretrained weights are used.",
   "updatedAt": "2026-10-31",
   "goals": [
     {
       "id": "state-fusion-market-state",
       "title": "Encode an unordered set into one fixed state",
-      "description": "Fuse records with explicit holes into one fixed state tensor. The recorded scope is the CUDA encoder and the synthetic pipeline check. Nonverba's record binding remains open.",
+      "description": "The method is a Set Transformer (set fusion). The goal is state fusion: records with explicit holes become one fixed state tensor. The recorded scope is the CUDA encoder and the synthetic pipeline check.",
       "milestones": [
         {
           "id": "state-fusion-set-encoder",
