@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <limits>
+#include <set>
 #include <unordered_map>
 #include <utility>
 
@@ -21,10 +22,14 @@ using detail::text;
 
 constexpr double kSolverZero = 1e-10;
 
-bool trace_combination() {
-  const char* value = std::getenv("OR01_COMB_TRACE");
+bool env_flag(const char* name) {
+  const char* value = std::getenv(name);
   return value != nullptr && value[0] != '\0' && value[0] != '0';
 }
+
+bool trace_combination() { return env_flag("OR01_COMB_TRACE"); }
+
+bool skip_face_search() { return env_flag("OR01_COMB_SKIP_FACE"); }
 
 struct PreparedColumn {
   std::string source_id;
@@ -59,7 +64,8 @@ bool parameter_ok(const CombinationParameters& parameters) {
          std::isfinite(parameters.fit_floor) && parameters.fit_floor >= 0 && parameters.fit_floor <= 1 &&
          std::isfinite(parameters.directness_ceiling) && parameters.directness_ceiling >= 1 &&
          std::isfinite(parameters.early_stop_cosine) && parameters.early_stop_cosine >= 0 &&
-         parameters.early_stop_cosine <= 1;
+         parameters.early_stop_cosine <= 1 && std::isfinite(parameters.leftover_floor) &&
+         parameters.leftover_floor >= 0 && parameters.leftover_floor <= 1 && parameters.peel_cap >= 1;
 }
 
 Reason corpus_problem(const Corpus& corpus) {
@@ -150,7 +156,8 @@ bool represents(const std::vector<PreparedColumn>& columns, const std::vector<st
 // Lawson-Hanson gives one optimal projection. The weight vector for that
 // projection can still be chosen in more than one way, so the face of columns
 // with a zero gradient is searched from the smallest supports upward.
-std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& columns, const std::vector<double>& target) {
+std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& columns, const std::vector<double>& target,
+                                         bool skip_face) {
   const std::size_t count = columns.size();
   std::vector<double> weights(count, 0);
   if (count == 0) return weights;
@@ -222,6 +229,12 @@ std::vector<double> non_negative_weights(const std::vector<PreparedColumn>& colu
     if (weights[index] > kSolverZero) support.push_back(index);
   }
   if (support.empty()) return std::vector<double>(count, 0);
+  if (skip_face || skip_face_search()) {
+    if (trace_combination()) {
+      std::fprintf(stderr, "combine skip face support %zu\n", support.size());
+    }
+    return weights;
+  }
 
   std::vector<std::size_t> face = support;
   const double residual_norm = norm_of(projection_residual);
@@ -309,6 +322,142 @@ CombinationResult from_weights(const std::vector<PreparedColumn>& columns, const
   return result;
 }
 
+CombinationResult solve_prepared(std::vector<PreparedColumn> columns, const std::vector<double>& target,
+                                 const CombinationParameters& parameters, bool skip_face) {
+  std::vector<double> weights = non_negative_weights(columns, target, skip_face);
+  for (;;) {
+    std::vector<PreparedColumn> kept;
+    for (std::size_t index = 0; index < columns.size(); ++index) {
+      if (weights[index] < parameters.minimum_weight || !(weights[index] > kSolverZero)) continue;
+      kept.push_back(columns[index]);
+    }
+    if (kept.size() == columns.size()) break;
+    columns = std::move(kept);
+    weights = non_negative_weights(columns, target, skip_face);
+  }
+  return from_weights(columns, weights, target, parameters);
+}
+
+void measure(Metric metric, const std::vector<double>& left, const std::vector<double>& right, double& distance,
+             double& similarity) {
+  double inner = 0;
+  double left_squared = 0;
+  double right_squared = 0;
+  double squared = 0;
+  for (std::size_t index = 0; index < left.size(); ++index) {
+    const double delta = left[index] - right[index];
+    inner += left[index] * right[index];
+    left_squared += left[index] * left[index];
+    right_squared += right[index] * right[index];
+    squared += delta * delta;
+  }
+  if (metric == Metric::cosine) {
+    similarity = inner / std::sqrt(left_squared * right_squared);
+    distance = 1 - similarity;
+    return;
+  }
+  distance = std::sqrt(squared);
+  similarity = 1 / (1 + distance);
+}
+
+bool better_hit(Metric metric, const Hit& left, const Hit& right) {
+  if (metric == Metric::cosine) {
+    if (left.similarity != right.similarity) return left.similarity > right.similarity;
+  } else if (left.distance != right.distance) {
+    return left.distance < right.distance;
+  }
+  return left.source_id < right.source_id;
+}
+
+ReconstructionSet set_failed(Reason reason) {
+  ReconstructionSet result;
+  result.outcome = Outcome::failed;
+  result.reason = reason;
+  return result;
+}
+
+ReconstructionSet set_finished(Outcome outcome, Reason reason) {
+  ReconstructionSet result;
+  result.outcome = outcome;
+  result.reason = reason;
+  return result;
+}
+
+const PreparedColumn* column_named(const std::vector<PreparedColumn>& columns, const std::string& source_id) {
+  for (const PreparedColumn& column : columns) {
+    if (column.source_id == source_id) return &column;
+  }
+  return nullptr;
+}
+
+const PreparedColumn* best_positive(const std::vector<PreparedColumn>& columns, const std::vector<double>& leftover,
+                                    const std::set<std::string>& used, double minimum_weight) {
+  const double leftover_norm = norm_of(leftover);
+  if (leftover_norm <= kSolverZero) return nullptr;
+  const PreparedColumn* best = nullptr;
+  double best_similarity = -1;
+  for (const PreparedColumn& column : columns) {
+    if (used.find(column.source_id) != used.end()) continue;
+    const double inner = dot(column.values, leftover);
+    const double weight = std::max(0.0, inner) / squared_norm(column.values);
+    if (!(weight > kSolverZero)) continue;
+    const double similarity = inner / (column.norm * leftover_norm);
+    if (similarity < minimum_weight) continue;
+    if (best == nullptr || similarity > best_similarity ||
+        (similarity == best_similarity && column.source_id < best->source_id)) {
+      best = &column;
+      best_similarity = similarity;
+    }
+  }
+  return best;
+}
+
+CombinationResult greedy_chain(const std::vector<PreparedColumn>& columns, const std::vector<double>& target,
+                               const CombinationParameters& parameters, const std::string& locked_id,
+                               double& leftover_ratio, std::size_t& depth) {
+  leftover_ratio = 1;
+  depth = 0;
+  const double target_norm = norm_of(target);
+  if (target_norm <= kSolverZero) return finished(Outcome::abstained, Reason::undefined_geometry);
+  std::set<std::string> used;
+  std::vector<double> leftover = target;
+  std::vector<PreparedColumn> taken;
+  std::vector<double> weights;
+  for (std::size_t step = 0; step < parameters.peel_cap; ++step) {
+    leftover_ratio = norm_of(leftover) / target_norm;
+    if (leftover_ratio <= parameters.leftover_floor) break;
+    const PreparedColumn* column = nullptr;
+    if (step == 0 && !locked_id.empty()) {
+      column = column_named(columns, locked_id);
+      if (column != nullptr) {
+        const double inner = dot(column->values, leftover);
+        const double weight = std::max(0.0, inner) / squared_norm(column->values);
+        const double leftover_norm = norm_of(leftover);
+        const double similarity = leftover_norm > kSolverZero ? inner / (column->norm * leftover_norm) : 0;
+        if (similarity < parameters.minimum_weight || !(weight > kSolverZero)) column = nullptr;
+      }
+    } else {
+      column = best_positive(columns, leftover, used, parameters.minimum_weight);
+    }
+    if (column == nullptr) break;
+    const double weight = std::max(0.0, dot(column->values, leftover)) / squared_norm(column->values);
+    for (std::size_t axis = 0; axis < leftover.size(); ++axis) leftover[axis] -= weight * column->values[axis];
+    taken.push_back(*column);
+    weights.push_back(weight);
+    used.insert(column->source_id);
+  }
+  leftover_ratio = norm_of(leftover) / target_norm;
+  depth = taken.size();
+  if (taken.empty()) return finished(Outcome::empty, Reason::outside_cone);
+  CombinationResult result = from_weights(taken, weights, target, parameters);
+  if (result.outcome != Outcome::ranked) return result;
+  result.hits.clear();
+  for (std::size_t index = 0; index < taken.size(); ++index) {
+    result.hits.push_back({taken[index].source_id, index + 1, weights[index]});
+  }
+  return result;
+}
+
 }  // namespace
 
 CombinationResult combine(const Corpus& corpus, const std::vector<double>& target,
@@ -362,18 +511,63 @@ CombinationResult combine(const Corpus& corpus, const std::vector<double>& targe
     }
   }
 
-  std::vector<double> weights = non_negative_weights(columns, prepared_target);
-  for (;;) {
-    std::vector<PreparedColumn> kept;
-    for (std::size_t index = 0; index < columns.size(); ++index) {
-      if (weights[index] < parameters.minimum_weight || !(weights[index] > kSolverZero)) continue;
-      kept.push_back(columns[index]);
-    }
-    if (kept.size() == columns.size()) break;
-    columns = std::move(kept);
-    weights = non_negative_weights(columns, prepared_target);
+  return solve_prepared(std::move(columns), prepared_target, parameters, parameters.skip_face);
+}
+
+ReconstructionSet reconstruct_k(const Corpus& corpus, const std::vector<double>& target,
+                                std::size_t reconstruction_count, const CombinationParameters& parameters) {
+  if (reconstruction_count < 1) return set_failed(Reason::invalid_request);
+  if (!parameter_ok(parameters)) return set_failed(Reason::invalid_request);
+  const Reason problem = corpus_problem(corpus);
+  if (problem != Reason::none) return set_failed(problem);
+  if (target.size() != corpus.binding.dimensions) return set_failed(Reason::dimension_mismatch);
+  if (!finite_values(target)) return set_failed(Reason::nonfinite_value);
+  if (squared_norm(target) == 0) return set_finished(Outcome::abstained, Reason::undefined_geometry);
+
+  bool target_undefined = false;
+  std::vector<double> prepared_target;
+  prepare(target, corpus.binding.metric, corpus.binding.normalization, prepared_target, target_undefined);
+  if (target_undefined || squared_norm(prepared_target) == 0) {
+    return set_finished(Outcome::abstained, Reason::undefined_geometry);
   }
-  return from_weights(columns, weights, prepared_target, parameters);
+
+  std::vector<PreparedColumn> columns;
+  columns.reserve(corpus.records.size());
+  for (const VectorRecord& record : corpus.records) {
+    bool undefined = false;
+    PreparedColumn column;
+    prepare(record.values, corpus.binding.metric, corpus.binding.normalization, column.values, undefined);
+    if (undefined || squared_norm(column.values) == 0) continue;
+    column.source_id = record.source_id;
+    column.norm = norm_of(column.values);
+    columns.push_back(std::move(column));
+  }
+
+  ReconstructionSet result = set_finished(Outcome::ranked, Reason::none);
+  std::vector<Hit> ranked;
+  ranked.reserve(columns.size());
+  for (const PreparedColumn& column : columns) {
+    Hit hit;
+    hit.source_id = column.source_id;
+    measure(corpus.binding.metric, prepared_target, column.values, hit.distance, hit.similarity);
+    ranked.push_back(hit);
+  }
+  std::sort(ranked.begin(), ranked.end(), [&](const Hit& left, const Hit& right) {
+    return better_hit(corpus.binding.metric, left, right);
+  });
+  for (std::size_t index = 0; index < ranked.size(); ++index) ranked[index].rank = index + 1;
+  const std::size_t neighbor_count = std::min(reconstruction_count, ranked.size());
+  result.nearest.assign(ranked.begin(), ranked.begin() + static_cast<std::ptrdiff_t>(neighbor_count));
+
+  for (std::size_t index = 0; index < neighbor_count; ++index) {
+    const Hit& start = ranked[index];
+    GeometricReconstruction peel;
+    peel.start_source_id = start.source_id;
+    peel.start_similarity = start.similarity;
+    peel.combination = greedy_chain(columns, prepared_target, parameters, start.source_id, peel.leftover_ratio, peel.depth);
+    result.reconstructions.push_back(std::move(peel));
+  }
+  return result;
 }
 
 }  // namespace mityane::operations::retrieval::v1

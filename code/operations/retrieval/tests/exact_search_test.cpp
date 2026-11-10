@@ -355,6 +355,59 @@ void test_combination_tie_tau_and_refusals() {
         "duplicate source ids fail");
 }
 
+void test_reconstruct_k_anchor_chains() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  const retrieval::CombinationParameters parameters = gates(0, 0, 100, 0.5);
+  const retrieval::CombinationResult stopped = retrieval::combine(corpus, {0.8, 0.6}, parameters);
+  check(stopped.hits.size() == 1 && stopped.hits[0].source_id == "a",
+        "combine still early-stops when kappa fires");
+
+  const retrieval::ReconstructionSet pack = retrieval::reconstruct_k(corpus, {0.8, 0.6}, 3, parameters);
+  check(pack.outcome == retrieval::Outcome::ranked, "k reconstructions should succeed");
+  check(pack.nearest.size() == 2 && pack.nearest[0].source_id == "a" && pack.nearest[1].source_id == "b",
+        "nearest ranks the anchors from the same pass");
+  check(pack.reconstructions.size() == 2, "K retrievals match the number of available anchors");
+  check(pack.reconstructions[0].start_source_id == "a",
+        "the first retrieval starts at the closest source");
+  check(pack.reconstructions[0].depth == 2 && pack.reconstructions[0].combination.hits[0].source_id == "a" &&
+            pack.reconstructions[0].combination.hits[1].source_id == "b",
+        "a chain keeps peeling until leftover is under the floor");
+  check(pack.reconstructions[1].start_source_id == "b" &&
+            pack.reconstructions[1].combination.hits[0].source_id == "b",
+        "the second retrieval starts at the second-closest source");
+
+  retrieval::CombinationParameters shallow = parameters;
+  shallow.leftover_floor = 0.7;
+  const retrieval::ReconstructionSet short_chain = retrieval::reconstruct_k(corpus, {0.8, 0.6}, 2, shallow);
+  check(short_chain.reconstructions.size() == 2 && short_chain.reconstructions[0].depth == 1 &&
+            short_chain.reconstructions[0].combination.hits[0].source_id == "a",
+        "a high leftover floor stops the first chain after the start");
+
+  retrieval::CombinationParameters cosine_tau = parameters;
+  cosine_tau.minimum_weight = 0.7;
+  const retrieval::ReconstructionSet continued = retrieval::reconstruct_k(corpus, {0.8, 0.6}, 2, cosine_tau);
+  check(continued.reconstructions.size() == 2 && continued.reconstructions[0].depth == 2 &&
+            continued.reconstructions[0].combination.hits[0].source_id == "a" &&
+            continued.reconstructions[0].combination.hits[1].source_id == "b",
+        "tau on a chain is a cosine with leftover, so peeling continues");
+}
+
+void test_reconstruct_k_refusals_and_zero_leftover() {
+  const retrieval::SpaceBinding binding = space(retrieval::Metric::l2, retrieval::Normalization::none, 2);
+  retrieval::Corpus corpus{binding, {record("a", {1, 0}), record("b", {0, 1})}};
+  check(retrieval::reconstruct_k(corpus, {1, 0}, 0, gates(0, 0, 2, 1)).reason == retrieval::Reason::invalid_request,
+        "k below one fails");
+  const retrieval::ReconstructionSet aligned = retrieval::reconstruct_k(corpus, {1, 0}, 2, gates(0, 0, 2, 1));
+  check(aligned.outcome == retrieval::Outcome::ranked, "a collinear target still returns a set");
+  check(aligned.reconstructions.size() == 2 && aligned.reconstructions[0].start_source_id == "a" &&
+            aligned.reconstructions[0].depth == 1 &&
+            aligned.reconstructions[0].combination.hits[0].source_id == "a",
+        "the first chain stops when leftover is already under the floor");
+  check(aligned.reconstructions[1].start_source_id == "b",
+        "the second retrieval still uses the second-closest source as its anchor");
+}
+
 }  // namespace
 
 int main() {
@@ -374,6 +427,8 @@ int main() {
     test_combination_directness_ceiling();
     test_combination_outside_cone_and_fit_floor();
     test_combination_tie_tau_and_refusals();
+    test_reconstruct_k_anchor_chains();
+    test_reconstruct_k_refusals_and_zero_leftover();
   } catch (const std::exception& error) {
     std::cerr << error.what() << '\n';
     return 1;
@@ -381,5 +436,6 @@ int main() {
   std::cout << "exact-search reference: 7 checks passed\n";
   std::cout << "geometric constructors: 2 checks passed\n";
   std::cout << "positive sparse combination: 6 checks passed\n";
+  std::cout << "k geometric reconstructions: 2 checks passed\n";
   return 0;
 }

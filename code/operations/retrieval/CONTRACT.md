@@ -136,4 +136,12 @@ The output lists the selected source identities and their positive weights. A ze
 
 Exact k-retrieval remains the registered tool. This method adds no live call, no approximate index, and no relevance claim. It applies to any frozen vector corpus under a declared SpaceRef. The English abstract corpus is one population it may later use.
 
-The engineering fixtures ran on 30 October 2026. The record is [positive-sparse-combination-v0.1.0.md](reviews/positive-sparse-combination-v0.1.0.md). They keep the early stop from hiding the ceiling: a one-direction sum that passes both gates, a rank-1 neighbor returned with its one-vector weight, a short combination that passes both gates, a path ratio above `rho` with outcome `empty` and reason `directness`, and a target outside the cone with outcome `empty` and reason `outside_cone`.
+## 12. k geometric reconstructions
+
+`reconstruct_k` returns K geometric retrievals of one point. Each retrieval is the same method: lock an anchor, then keep adding sources until leftover / `||t||` meets `leftover_floor` or `peel_cap`. Retrieval `i` uses the `i`-th nearest corpus source as that anchor. Exact k-retrieval stays aside: it only ranks those anchors. `combine()` stays aside: it is the all-at-once mix and is not one of the K retrievals. The registered tool does not call this entry. Encoding stays upstream.
+
+The expensive work is one prepared pass over the corpus. The K chains reuse those prepared columns. `leftover_floor` is a residual ratio in `[0, 1]`; the default is 0.2. `peel_cap` is a safety bound of at least 1; the default is 16. Depth is not a requested count. On a chain, `tau` is a minimum cosine with the current leftover. A start whose cosine with the leftover is below `tau` is skipped. A chain that never takes a column is `empty`, with reason `outside_cone`. Each retrieval applies `tau`, `gamma`, and `rho` on its own. An empty or abstained chain does not fail the set.
+
+Weights, peel order, and residual length are not a relevance rule. The claim level is `exploratory_description`. Empty, abstained, and failed stay distinct. No live call, approximate index, or combination tool command is added.
+
+The engineering fixtures for this entry ran on 11 November 2026. The record is [k-geometric-reconstructions-v0.1.0.md](reviews/k-geometric-reconstructions-v0.1.0.md). Two axes yield one chain from the closest source and one chain from the second-closest. A high leftover floor stops a chain after the start. A collinear target leaves the first chain at depth one.
