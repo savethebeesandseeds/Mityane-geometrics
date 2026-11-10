@@ -5,10 +5,11 @@ capabilities, a Hero for each existing encoder family, and an external Google
 multimodal encoder. On 29 October 2026 the owner added dataloaders as Hx19
 and the Temporal Fusion Transformer as Hx20. On the same day the owner added
 state fusion models as Hx21 and marked that family as of great importance.
-There are **21 Heroes**, each maintained as one JSON file in
+On 1 November 2026 the owner added insight discovery as Hx22.
+There are **22 Heroes**, each maintained as one JSON file in
 `heroes/` and registered in `manifest.json`.
 
-Use **Hx01–Hx21** as their canonical references: `Hx` plus the zero-padded Hero
+Use **Hx01–Hx22** as their canonical references: `Hx` plus the zero-padded Hero
 number. These references identify the workstreams and are independent of their
 stable JSON IDs and file paths. The [schema](SCHEMA.md#hero-references) defines
 the naming convention, including how to read historical references.
@@ -40,6 +41,12 @@ start an experiment.
 | Hx11 | OR-11 | Latent dynamics and forecasting: future latent states and distributions |
 | Hx12 | OR-12 | Decision making, planning and control: actions under objectives and constraints |
 | Hx13 | OR-13 | Information acquisition and exploration: budgeted selection of new evidence |
+
+## Insight discovery
+
+| Hero | Ownership and evidence boundary |
+| --- | --- |
+| Hx22 · Insight discovery | The operation directory is [code/operations/insight_discovery](../../code/operations/insight_discovery/README.md). INSIGHT-DISC 0.1.0 defines ranking, comparison, correlation, trend, and trade-off. `evaluate` checks one candidate against the original rows. `search` is the budgeted discovery baseline and records how many candidates were examined. The later question is whether Approach B, which builds the first query from a learned intention over a cached Hx21 state, beats that search at the same evaluation budget. Approach A only refines a skeleton the search already listed. `INSIGHT-QUERY 0.1.0` writes class, aggregator, relationship form, and field roles into the semantic vector. The comparison also reports discoveries per budget unit, recall, abstention rate, wall-clock, and GPU time. One seed versus two seeds is a hypothesis. Neither procedure is implemented. The thirteen families above stay OR-01 through OR-13. Non-Verba is the first intended application and is not a type in the evaluator |
 
 ## Shared foundations and encoders
 
@@ -85,8 +92,10 @@ new training, experiments or external API calls.
 
 The placed library is the Non-verba copy of the post-profit-economics C++ TFT.
 Its CPU suites passed in the managed container on 29 October 2026. CUDA was
-not run. Upstream synthetic checks and the Electricity comparison are not
-measurements of this tree.
+not run. On 31 October 2026 the CPU suite passed again with `temporal_state`.
+Upstream synthetic checks and the Electricity comparison are not
+measurements of this tree. The family guide records where this stands on
+11 November 2026, including what to consider on a later return.
 
 ## State fusion transformer
 
@@ -94,7 +103,7 @@ measurements of this tree.
 | --- | --- |
 | Hx21 · State fusion transformer | The family directory is [code/fusion/state_fusion_transformer](../../code/fusion/state_fusion_transformer/README.md). The method is a Set Transformer (set fusion) on CUDA: induced set attention and pooling by multihead attention. The goal is state fusion, one unordered set of records brought to one fixed state, which a query can read. The GPU invariance test and the synthetic masked-reconstruction run are recorded on the set-encoder milestone. The [State Representation Network](../../code/embeddings/state_representation/README.md) is a separate mapping from one embedding to a predictive state |
 
-The synthetic panels, the capacity protocol, and the LEGO study check that path. This record does not close Hx11 or Hx20.
+The synthetic panels, the capacity protocol, and the LEGO study check that path. This record does not close Hx11 or Hx20. The family guide records where this stands on 11 November 2026: the query and the checkpoint are part of the surface, the two checks have the limits written there, and a later return still has to choose the caller's records.
 
 ## Dataloaders
 

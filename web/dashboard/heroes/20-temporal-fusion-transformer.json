@@ -5,8 +5,8 @@
   "title": "Temporal Fusion Transformer",
   "purpose": "Develop the Temporal Fusion Transformer as a reusable temporal family. The quantile forecast stays. temporal_state returns [batch, horizon, hidden_size], the residual the quantile projection reads.",
   "boundary": "This Hero owns the TFT family in code/fusion/temporal_fusion_transformer, its configuration, its training and checkpoint surface, and its quantile forecast contract. temporal_state returns [batch, horizon, hidden_size] from the layer-normalized residual that the quantile projection reads. Attention queries the known-future steps, so history is a key. The enriched sequence before attention keeps one row per history step and known-future step. temporal_state is the later tensor. Hx11 owns latent-dynamics operations. Hx15–Hx18 own observation-embedding families. Hx19 owns dataloaders. Hx21 owns the State fusion transformer in the same fusion directory. A TFT forecast does not close Hx11, and this family does not use the patch-bottleneck channel contract.",
-  "summary": "The library placed on 29 October 2026 is the Non-verba copy. It adds one pooled vector per input group and a boolean time mask on top of the post-profit-economics C++ TFT. It was moved the same day from code/embeddings into code/fusion. The managed-container CPU suites passed the same day. CUDA was not run. On 31 October 2026 temporal_state was added and the CPU suite passed again in the managed container. CUDA was not run for that change. Electricity replication and forecast quality remain unproven.",
-  "updatedAt": "2026-10-31",
+  "summary": "On 11 November 2026 the family is paused with the quantile forecast and temporal_state. temporal_state returns [batch, horizon, hidden_size] from the residual the quantile projection reads. History is an attention key. The CPU suite, including that check, passed on 31 October 2026. CUDA has not been run. Electricity replication and forecast quality remain unproven.",
+  "updatedAt": "2026-11-11",
   "goals": [
     {
       "id": "temporal-fusion-transformer-placement",
@@ -74,6 +74,93 @@
             {
               "label": "Demo continuation check",
               "path": "code/fusion/temporal_fusion_transformer/tests/demo_workflow.sh"
+            }
+          ]
+        },
+        {
+          "id": "temporal-fusion-transformer-temporal-state",
+          "title": "Return the state before the quantile head",
+          "status": "done",
+          "description": "On 31 October 2026 temporal_state was added. It returns [batch, horizon, hidden_size] from the layer-normalized residual that the quantile projection reads. Attention queries the known-future steps, so history is a key. The enriched sequence before attention keeps the history rows. make test passed on CPU in the managed container, and tft_test printed 12/12 including this check. CUDA was not run. The forecast path, the loss, and the checkpoint format stayed in place.",
+          "updatedAt": "2026-10-31",
+          "completedAt": "2026-10-31",
+          "acceptance": [
+            "temporal_state accepts the same batch as forward and does not require future targets.",
+            "The returned tensor is [batch, horizon, hidden_size], keeps a gradient into the body, and leaves the quantile projection outside that graph.",
+            "A hole's stored values do not move the temporal state, and an observed past step can.",
+            "The CPU suite passes with this method present. CUDA is not claimed."
+          ],
+          "evidence": [
+            {
+              "label": "Public model contract",
+              "path": "code/fusion/temporal_fusion_transformer/include/praesidium-humanitatis/tft.h"
+            },
+            {
+              "label": "Temporal-state check",
+              "path": "code/fusion/temporal_fusion_transformer/tests/tft_test.cpp"
+            },
+            {
+              "label": "Family guide",
+              "path": "code/fusion/temporal_fusion_transformer/README.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "temporal-fusion-later",
+      "title": "Decide the open questions before another run",
+      "description": "A later return. These questions are recorded so the next session starts from the pause. None of them authorizes a run.",
+      "type": "conditional",
+      "milestones": [
+        {
+          "id": "temporal-fusion-later-cuda",
+          "title": "Run the CUDA suite before a GPU claim",
+          "status": "proposed",
+          "description": "make test-cuda has not been run for this tree. A later note either records that run or states that CPU remains the only executed suite.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note records a completed make test-cuda, including any skip, or states that no GPU run is claimed.",
+            "A skipped CUDA test is not recorded as a pass."
+          ],
+          "evidence": [
+            {
+              "label": "Where this stands",
+              "path": "code/fusion/temporal_fusion_transformer/README.md"
+            }
+          ]
+        },
+        {
+          "id": "temporal-fusion-later-rows",
+          "title": "Keep the horizon shape unless a caller needs the history rows",
+          "status": "proposed",
+          "description": "The enriched sequence before attention has one row per history step and known-future step. temporal_state is the later tensor, over the horizon only. A later note keeps that shape, or states why a caller needs a post-attention history row before any network change.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note keeps [batch, horizon, hidden_size], or names the caller need that would justify a post-attention history row.",
+            "The quantile forecast path stays available either way."
+          ],
+          "evidence": [
+            {
+              "label": "Where this stands",
+              "path": "code/fusion/temporal_fusion_transformer/README.md"
+            }
+          ]
+        },
+        {
+          "id": "temporal-fusion-later-quality",
+          "title": "Treat forecast quality as its own protocol",
+          "status": "proposed",
+          "description": "Electricity replication and forecast quality are unproven. A later note either leaves them unproven or writes the protocol, the split, and the baselines before a run.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note keeps the imported checks separate from a forecast-quality claim.",
+            "Any new run names its population, horizon, baselines, and what a pass would mean before it starts."
+          ],
+          "evidence": [
+            {
+              "label": "Where this stands",
+              "path": "code/fusion/temporal_fusion_transformer/README.md"
             }
           ]
         }

@@ -70,6 +70,36 @@ The examples `tft_demo`, `tft_uncertainty`, `tft_compare_reference` and
 `tft_train_electricity` build with the library. Running one is a chosen
 experiment, not part of `make test`.
 
+## Where this stands
+
+On 11 November 2026 this family is paused with the quantile forecast and
+`temporal_state`.
+
+What is here:
+
+- `forward` returns quantile predictions, variable-selection weights, and
+  causal attention weights. Future targets belong to the loss.
+- `temporal_state` returns `[batch, horizon, hidden_size]`, the residual the
+  linear quantile projection reads. Attention queries the known-future steps.
+  History is a key. The enriched sequence, one stage earlier, still has one
+  row for every history step and every known-future step.
+- On 31 October 2026, `make test` in the managed container passed on CPU,
+  including `tft_test` at 12/12 with the temporal-state check. CUDA was not
+  run. The 29 October CPU placement is recorded on the Hero. Electricity
+  replication and forecast quality remain unproven.
+
+What to consider on a later return:
+
+- Run `make test-cuda` before any statement that the same suites pass on a
+  GPU. A skipped CUDA test is not that statement.
+- Keep the horizon shape unless a caller needs the history rows of the
+  enriched sequence. Adding a post-attention row for each history step would
+  change the network.
+- Treat Electricity and any claim of forecast quality as their own protocol.
+  The imported checks do not establish either.
+
+None of those considerations authorizes a run.
+
 ## What this import does not claim
 
 The [provenance](PROVENANCE.md) names the two source trees. Upstream synthetic

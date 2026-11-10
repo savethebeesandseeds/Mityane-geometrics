@@ -5,13 +5,13 @@
   "title": "State fusion transformer",
   "purpose": "Develop state fusion. The owner identified this family as of great importance. The method is a Set Transformer (set fusion). The goal is one fixed state from an unordered set of records, and a query against that state.",
   "boundary": "This Hero owns the state fusion transformer in code/fusion/state_fusion_transformer. The method is a Set Transformer with induced set attention and pooling by multihead attention: set fusion. The goal is state fusion. An unordered set of records becomes one fixed state, and a query reads that cached state. A caller fills SetBatch, calls encode and query, and owns the checkpoint. Hx11 owns latent-dynamics operations. Hx20 owns the Temporal Fusion Transformer in code/fusion. The State Representation Network maps one observation embedding to a predictive state and is not this family. This family has no temporal feature. A result here does not close Hx11 or Hx20.",
-  "summary": "On 29 October 2026 the family was placed in code/fusion/state_fusion_transformer and given a CUDA Set Transformer. Induced set attention and one-seed pooling encode an unordered set. A GPU test checked permutation invariance, hole gating, and key padding. On one fixed synthetic panel, 400 Adam steps reduced masked error from 1.25887 to 1.85048e-06. The panels are pipeline validation. No pretrained weights are used.",
-  "updatedAt": "2026-10-31",
+  "summary": "On 11 November 2026 the family is paused at a working set-to-state surface. encode writes one fixed state and query reads it. The caller owns the checkpoint, and no trained weights ship in git. make test remains the 29 October CUDA pipeline check. make capacity and make lego, run on 31 October, are separate checks: the capacity filter beat the set mean and stayed above the noise, reconstruction stayed above the visible set mean, and the Duplo miss was 0.717937 bricks against 1.04814 for the other piles, on a pile of about 1.9. A caller still chooses the records and the query answers.",
+  "updatedAt": "2026-11-11",
   "goals": [
     {
       "id": "state-fusion-market-state",
       "title": "Encode an unordered set into one fixed state",
-      "description": "The method is a Set Transformer (set fusion). The goal is state fusion: records with explicit holes become one fixed state tensor. The recorded scope is the CUDA encoder and the synthetic pipeline check.",
+      "description": "The method is a Set Transformer (set fusion). The goal is state fusion: records with explicit holes become one fixed state tensor, and a query reads that cached state. The recorded scope is the CUDA surface, the synthetic pipeline check, and the two later path checks. A caller still chooses the records.",
       "milestones": [
         {
           "id": "state-fusion-set-encoder",
@@ -58,6 +58,119 @@
             {
               "label": "Container build entry",
               "path": "code/fusion/state_fusion_transformer/Makefile"
+            }
+          ]
+        },
+        {
+          "id": "state-fusion-query-checkpoint",
+          "title": "Read the cached state and reload the weights",
+          "status": "done",
+          "description": "query answers in the same record language against the cached encode result. query_scalars is a linear probe on that answer. save_checkpoint and load_checkpoint store the config and the weights. The 29 October make test numbers stayed in force after the probe head was added. These calls do not ship a trained checkpoint.",
+          "updatedAt": "2026-10-31",
+          "completedAt": "2026-10-31",
+          "acceptance": [
+            "query reads a cached state and does not encode the set again.",
+            "A checkpoint written by save_checkpoint reloads on CUDA with a finite query_scalars gap no larger than 1e-4 on the checks that saved one.",
+            "make test remains the recorded pipeline check. The capacity and LEGO binaries are separate."
+          ],
+          "evidence": [
+            {
+              "label": "Model contract",
+              "path": "code/fusion/state_fusion_transformer/include/state_fusion/model.h"
+            },
+            {
+              "label": "Query test",
+              "path": "code/fusion/state_fusion_transformer/tests/test_query.cpp"
+            },
+            {
+              "label": "Family guide",
+              "path": "code/fusion/state_fusion_transformer/README.md"
+            }
+          ]
+        },
+        {
+          "id": "state-fusion-path-checks",
+          "title": "Record the capacity and LEGO checks",
+          "status": "done",
+          "description": "On 31 October 2026, in the managed container on an RTX A2000 with TensorFloat-32 off, make capacity and make lego each printed pass. Capacity filter feature 0 was 0.0925034 against a set-mean baseline of 0.348477, and above the 0.05-noise variance. Reconstruction was 0.0994731, above the visible set mean 0.0642019. The LEGO holdout was Duplo. Its miss was 0.717937 bricks against 1.04814 for the other piles, 1.94452 for zero, and 2.0558 for the catalog, on a pile of about 1.9. Both probe files stay under .temp.",
+          "updatedAt": "2026-10-31",
+          "completedAt": "2026-10-31",
+          "acceptance": [
+            "The capacity binary beats its three declared gates on the held-out synthetic panels and records that reconstruction stays above the visible set mean.",
+            "The LEGO binary beats zero, the other piles in the box, and the training catalog on the pre-declared Duplo holdout, and records that the miss is still a large share of the pile.",
+            "Neither check is part of make test, and neither ships its checkpoint."
+          ],
+          "evidence": [
+            {
+              "label": "Family guide",
+              "path": "code/fusion/state_fusion_transformer/README.md"
+            },
+            {
+              "label": "Capacity driver",
+              "path": "code/fusion/state_fusion_transformer/src/capacity.cpp"
+            },
+            {
+              "label": "LEGO driver",
+              "path": "code/fusion/state_fusion_transformer/src/lego.cpp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "state-fusion-later",
+      "title": "Decide the open questions before another run",
+      "description": "A later return. These questions are recorded so the next session starts from the pause. None of them authorizes a run.",
+      "type": "conditional",
+      "milestones": [
+        {
+          "id": "state-fusion-later-caller",
+          "title": "Choose the caller's records and query answers",
+          "status": "proposed",
+          "description": "The slot names used by the checks are configuration. A later note either names the records that fill SetBatch and what each query returns, or records that the slots stay generic. This package does not settle that binding.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note names the records and the query answers, or states that the binding stays open.",
+            "The note leaves the Set Transformer and the encode and query contracts in place."
+          ],
+          "evidence": [
+            {
+              "label": "Where this stands",
+              "path": "code/fusion/state_fusion_transformer/README.md"
+            }
+          ]
+        },
+        {
+          "id": "state-fusion-later-capacity",
+          "title": "Choose whether the capacity curve continues",
+          "status": "proposed",
+          "description": "At step 1600 the filter error was still falling and remained above the observation noise. Reconstruction remained above the visible set mean. A later note either stops at that measurement or writes a new protocol before any further steps.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note keeps the 31 October measurement as the recorded capacity result, or states a new step count, seed, and gates before a run.",
+            "The note does not treat the synthetic filter score as a count or a forecast."
+          ],
+          "evidence": [
+            {
+              "label": "Capacity measurement",
+              "path": "code/fusion/state_fusion_transformer/README.md"
+            }
+          ]
+        },
+        {
+          "id": "state-fusion-later-count",
+          "title": "Choose whether a trusted count needs another width",
+          "status": "proposed",
+          "description": "The Duplo miss of about 0.7 bricks is a large share of a pile of about 1.9. A later note either keeps the one-seed state and the recorded theme, or states a different width before a new run. The holdout theme stays Duplo for this protocol.",
+          "updatedAt": "2026-11-11",
+          "acceptance": [
+            "The note keeps the recorded Duplo comparison, or states the new width and the same holdout rule before a run.",
+            "The note does not select a new theme after looking at the score."
+          ],
+          "evidence": [
+            {
+              "label": "LEGO measurement",
+              "path": "code/fusion/state_fusion_transformer/README.md"
             }
           ]
         }

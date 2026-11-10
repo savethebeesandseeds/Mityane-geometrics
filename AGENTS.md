@@ -6,7 +6,7 @@ representations. Read `doc/operations_over_representations_design_spec_v0.1.0.md
 or evaluation policy. The research unit is an operation, its input/output
 contract, required representation properties, dependencies and explicit test.
 
-Refer to Heroes consistently as Hx01 through Hx21 (Hx plus the zero-padded
+Refer to Heroes consistently as Hx01 through Hx22 (Hx plus the zero-padded
 Hero number) in the dashboard and maintained prose. Keep Hero titles descriptive;
 derive the Hx reference from `number`. Preserve existing JSON IDs, file paths,
 dependencies and historical evidence identities. The mapping in
@@ -39,7 +39,16 @@ observation-embedding family and it does not close Hx11. Hx21 owns the State
 fusion transformer at `code/fusion/state_fusion_transformer`. The owner marked that family as
 of great importance. The recorded surface is a Set Transformer; synthetic
 masked reconstruction is pipeline validation and does not close Hx11. The State
-Representation Network is not that family. Hx19 owns dataloaders
+Representation Network is not that family. Hx22 owns insight discovery at
+`code/operations/insight_discovery`. INSIGHT-DISC 0.1.0 defines ranking,
+comparison, correlation, trend, and trade-off. `evaluate` checks one candidate
+against the original rows. `search` is the budgeted discovery baseline.
+Approach B may call Hx21 `encode` and `query`. It builds the first query from
+an INSIGHT-QUERY 0.1.0 intention over the cached state. Approach A only refines
+a skeleton `search` already listed. The comparison uses the same number of
+`evaluate` calls and also reports wall-clock and GPU time. One seed versus two
+seeds is a hypothesis. Neither procedure is implemented. It adds no OR
+identifier and closes none of Hx01–Hx13. Hx19 owns dataloaders
 for every admitted data form. The numeric-series
 loader stays isolated in `code/dataloaders/numeric_series`. Follow
 `code/embeddings/encoders/AGENTS.md`: separate the family/provider,

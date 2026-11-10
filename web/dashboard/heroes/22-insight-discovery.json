@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 2,
+  "id": "insight-discovery",
+  "number": 22,
+  "title": "Insight discovery",
+  "purpose": "Discover relationships in an unordered set of observations and record each one as a structured proposition. A candidate names the relationship and carries no statistic. evaluate recomputes the statistic from the original rows and returns verified, insufficient_evidence, rejected, abstained, or failed. search examines a declared space of candidates under an evaluation budget. The first query does not come from a finished candidate. Approach B, the research objective, reads the cached Hx21 state, emits an intention from the INSIGHT-QUERY 0.1.0 vocabulary, and only then builds the query row. Approach A encodes a skeleton that search already listed and is a baseline. The dictionary writes class, aggregator, relationship form, and field roles into the semantic vector, and it uses observation masks for filters. The question for this Hero is whether Approach B, at the same evaluation budget, surfaces more valid and diverse propositions than search. The comparison also reports discoveries per budget unit, recall, abstention rate, wall-clock, and GPU time. Diversity counts distinct tuples of class, fields, aggregator, relationship form, and filter signature. The first study reports those figures and does not report usefulness. A verified proposition is a statement about the evaluated rows, not a policy recommendation.",
+  "boundary": "This Hero owns code/operations/insight_discovery. evaluate checks one candidate. search is the discovery baseline and is not a neural model. A learned candidate may call Hx21 encode and query. Approach B emits an intention from the cached state. Approach A encodes a skeleton from search. INSIGHT-QUERY 0.1.0 places analytical roles in the semantic vector and uses masks for filters. Hx21 gains no new function. An empty or all-hole set abstains before encode. With the default one PMA seed, query has a single key; two seeds are the widest state the current package builds. Whether ranking survives one seed, and whether a trade-off keeps more of its structure at two seeds, is a hypothesis. Either outcome, including a tie, is a finding about the pooled state. Neither outcome by itself authorizes an edit to Hx21. The table-feature control emits candidates under the same budget. Comparing one seed, two seeds, and that control is part of the learned study. This Hero does not add a transformer and does not modify the Hx21 package. More than two seeds would be that kind of edit and is outside this contract. Statistics come from the caller's original rows. A marginal interval belongs to one proposition. A search that examines many candidates records the count and either a named multiplicity adjustment, a confirmation split, or an explicit unadjusted label. Generator truth is the relationship planted by a mechanism. Observed evidence is what that sample supports. A refusal that matches the sample is a success even when the mechanism planted the relationship. The initial ranking rule compares a leader interval with the next point estimate. The initial Pareto rule uses point estimates. Stronger contrast intervals and robust dominance are later checks. OR-01 through OR-13 stay the charter families. Ranking here orders groups by a field statistic; Hx01 owns nearest-source retrieval. A comparison here is an observed contrast; Hx06 owns controlled responses and identified effects. A trend here describes an observed order; Hx11 and Hx20 own forecasts. A trade-off here names dominance or opposing objectives; Hx12 owns action choice. Correlation states association. Non-Verba is the first intended application and is not a type in the evaluator. No population, implementation, or run is bound.",
+  "summary": "On 1 November 2026 the owner specified Insight Discovery and then sharpened the handoff to Hx21. INSIGHT-DISC 0.1.0 defines ranking, comparison, correlation, trend, and trade-off. evaluate checks one candidate. search is the budgeted discovery baseline. Approach B builds the first query from a learned intention. Approach A only refines a skeleton from search. INSIGHT-QUERY 0.1.0 is the candidate-to-query dictionary. Ranking from one seed and trade-off from two seeds are a hypothesis, not a predicted winner. An empty or all-hole set abstains, spends one budget unit, and agrees with observed evidence. The table-feature control emits candidates under the same budget. The first study reports validity, diversity, discoveries per budget unit, recall, abstention rate, wall-clock, and GPU time. It does not report usefulness. No evaluator, search, generator, dictionary fixture, Lean proof, or application run exists.",
+  "updatedAt": "2026-11-01",
+  "goals": [
+    {
+      "id": "insight-discovery-definition",
+      "title": "Record the discipline and the discovery question",
+      "description": "Write the contract, the evidence boundary, and the design note, including the difference between checking a candidate and discovering one, and including where the first Hx21 query comes from, before any evaluator or generator is admitted.",
+      "milestones": [
+        {
+          "id": "insight-discovery-record-contract",
+          "title": "Specify the five classes, the proposition, and the evidence boundary",
+          "status": "done",
+          "description": "On 1 November 2026 the owner specified Insight Discovery. INSIGHT-DISC 0.1.0 defines the five classes, the separation of candidate from validity, provenance, uncertainty, and the Hx21 composition. INSIGHT-DISC-RER 0.1.0 records that no population or run is bound. The design note inventories the existing components and the smallest additions. An earlier same-day draft, which only cited existing operation results, bound nothing and was replaced the same day. The discovery question, the two synthetic labels, and the limits of the initial ranking and Pareto rules are recorded on the next milestone.",
+          "updatedAt": "2026-11-01",
+          "completedAt": "2026-11-01",
+          "acceptance": [
+            "INSIGHT-DISC 0.1.0 names the question, the table and candidate inputs, the proposition fields, the five class definitions, the evidence rules, and the statuses verified, insufficient_evidence, rejected, abstained, and failed.",
+            "The contract keeps statistics on the original rows, keeps model confidence separate from the statistical interval, and refuses controlled-model and identified-intervention claim levels.",
+            "The design note identifies the Hx21 encode and query surface, states that no second transformer is added, and lists the deterministic evaluator as the first implementation.",
+            "INSIGHT-DISC-RER 0.1.0 records that no hypothesis, population, generator, Lean development, or numeric insight result is bound."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Requirements and evidence record",
+              "path": "code/operations/insight_discovery/EVIDENCE.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            },
+            {
+              "label": "Operation guide",
+              "path": "code/operations/insight_discovery/README.md"
+            }
+          ]
+        },
+        {
+          "id": "insight-discovery-record-discovery-question",
+          "title": "Separate evaluation, discovery, and sample evidence",
+          "status": "done",
+          "description": "On 1 November 2026 the specification was refined before any implementation. evaluate answers whether one named candidate holds. search enumerates a declared candidate space under an evaluation budget, ranks the evaluated propositions, and records how many candidates were examined. The marginal interval on one proposition is not rewritten to hide that search. A search result carries a named multiplicity adjustment, a confirmation split declared in advance, or the explicit label unadjusted together with the count examined. Synthetic examples store generator truth, the relationship planted by the mechanism, separately from observed evidence, the status evaluate returns on that sample. A small noisy sample of a truly positive association may be weak or reversed. The proposer is scored against the sample. A refusal is a success when the sample does not support the claim. The initial ranking margin compares the leader's interval with the next group's point estimate. The initial Pareto rule uses point estimates. Both limits are written down. The stronger gap interval and robust dominance are later milestones. Hx21 defaults to one PMA seed, so query has one key. Two seeds are the current maximum. The learned study compares one seed, two seeds, and ordinary table features, with rare relationships reported on their own. The question Hx22 is for: at the same budget, does the Hx21 proposer surface more valid and diverse propositions than search?",
+          "updatedAt": "2026-11-01",
+          "completedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-record-contract"
+          ],
+          "acceptance": [
+            "INSIGHT-DISC 0.1.0 defines evaluate as the check of one candidate and search as the budgeted discovery procedure, and it requires a multiplicity record on every searched list.",
+            "The contract states that generator truth and observed evidence are different objects, and that a proposer is not penalized for matching a sample that fails to show the planted relationship.",
+            "The contract states the limit of interval_excludes_next and of point-estimate Pareto, and it names interval_on_gap and robust dominance as later rules that the first evaluator does not implement.",
+            "The design note states the matched-budget comparison, including one PMA seed, two PMA seeds, and a table-feature proposer, and it states that a verified proposition is about the evaluated rows."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Requirements and evidence record",
+              "path": "code/operations/insight_discovery/EVIDENCE.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        },
+        {
+          "id": "insight-discovery-record-handoff",
+          "title": "Fix the query, the budget, and the first-study scores",
+          "status": "done",
+          "description": "On 1 November 2026 the handoff to Hx21 was written down. query attends one record-shaped row over the cached state. Hx21 gains no new function. An empty table, or a table whose every record is a hole, is not passed to encode, because Hx21 rejects a fully unobserved set. The proposer returns abstained with reason empty_set, that return spends one evaluation-budget unit, and it agrees with observed_evidence. The table-feature control emits candidates under the same budget and then calls evaluate. It does not return a feature score in place of a candidate. Diversity is the number of distinct verified tuples of insight type, variables, aggregator, relationship form, and canonical filter signature. Description text is not part of the tuple. Each synthetic class is planted by one rule: a shift for ranking, a two-filter contrast for comparison, an association plus noise for correlation, an ordered sequence plus noise for trend, and two opposing objectives for trade-off. Generator truth records the rule. evaluate records the sample. The first study does not embed descriptions and does not call the preference ranker. The same-day query-source record replaces two earlier sentences of this handoff: observed slots are not how a question names its measured field, and one seed versus two seeds is a hypothesis rather than an expectation.",
+          "updatedAt": "2026-11-01",
+          "completedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-record-discovery-question"
+          ],
+          "acceptance": [
+            "INSIGHT-DISC 0.1.0 states that query attends one record-shaped row over a cached state, and that Hx21 is not given a new function for that row.",
+            "The contract states that an empty or all-hole table returns abstained with reason empty_set, spends one budget unit, and is scored as agreement with observed_evidence.",
+            "The contract defines diversity on the tuple of class, fields, aggregator, relationship form, and filter signature. The one-seed versus two-seed comparison is a hypothesis on the query-source milestone, not an expectation frozen here.",
+            "The contract gives each of the five classes one planting rule, keeps description embedding and preference ranking out of the first discovery comparison, and gives the table-feature proposer the same propose-then-evaluate budget."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            },
+            {
+              "label": "Requirements and evidence record",
+              "path": "code/operations/insight_discovery/EVIDENCE.md"
+            }
+          ]
+        },
+        {
+          "id": "insight-discovery-record-query-source",
+          "title": "Name where the first query comes from",
+          "status": "done",
+          "description": "On 1 November 2026 the learned proposer was given an explicit first query. Approach A is a baseline. A skeleton policy, including search, emits a skeleton with no statistic. encode_query builds one row. query may keep or edit that skeleton, and evaluate checks the result. This path asks whether the cached state helps choose among skeletons the policy already listed. Approach B is the research objective. An intention module reads only the cached Hx21 state and emits a code from the INSIGHT-QUERY 0.1.0 vocabulary. encode_query builds the row from that code. A readout emits a skeleton with empty statistics, and evaluate checks it. The first query comes from the intention module. A study that runs only Approach A does not answer whether Hx21 can discover. The dictionary writes class, aggregator, relationship form, and field roles into the semantic vector. Filter values occupy observed scalar or categorical slots. Marking a field observed does not name it as the measured field, the grouping field, or the aggregator. The question about the highest median compensation by category puts ranking and median in the semantic vector, names compensation as the primary field and category as the secondary field, and leaves both of those slots as holes. A semantic width below 16 fails the query. Two intentions that differ in class, aggregator, form, primary field, secondary field, or filter signature must differ in the semantic vector or the observation mask. That check compares query rows and does not require a trained network. The comparison reports validity, diversity, verified discoveries per budget unit, recall of sample-supported relationships, abstention rate, wall-clock, and GPU time. A matched budget is a matched count of evaluate calls. It is not matched wall-clock or GPU time. An arm that agrees by abstaining shows up in the abstention rate and in discoveries per budget unit. Whether ranking survives one seed, and whether a trade-off keeps more structure at two seeds, is a hypothesis. Either outcome, including a tie, is a finding about the pooled state. The deterministic evaluator does not wait on this interface.",
+          "updatedAt": "2026-11-01",
+          "completedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-record-handoff"
+          ],
+          "acceptance": [
+            "INSIGHT-DISC 0.1.0 defines Approach A as the skeleton-guided baseline and Approach B as the intention-guided research objective, and it states that the first query of Approach B does not come from a finished candidate.",
+            "INSIGHT-QUERY 0.1.0 assigns class, aggregator, relationship form, primary field, secondary field, and the filter predicate to named indexes of the semantic vector, fails a semantic width below 16, and works the highest-median-by-category question as holes on those fields plus codes in the semantic vector.",
+            "The contract requires distinct intentions to differ in the query row, and it states that the fixture compares rows rather than a trained network's answers.",
+            "The contract requires discoveries per budget unit, recall, abstention rate, wall-clock, and GPU time in addition to validity and diversity, and it states that equal evaluate counts are not equal cost.",
+            "The one-seed versus two-seed comparison is written as a hypothesis. The contract does not treat either seed count as the predicted winner, and it does not treat either outcome as authority to edit Hx21."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            },
+            {
+              "label": "Requirements and evidence record",
+              "path": "code/operations/insight_discovery/EVIDENCE.md"
+            },
+            {
+              "label": "Operation guide",
+              "path": "code/operations/insight_discovery/README.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-baseline-goal",
+      "title": "Check one candidate against the rows",
+      "description": "Implement evaluate for the five classes. This milestone checks arithmetic, uncertainty, and rejection. It does not choose which candidate to examine.",
+      "milestones": [
+        {
+          "id": "insight-discovery-deterministic-baseline",
+          "title": "Implement the five evaluators",
+          "status": "ready",
+          "description": "The first implementation milestone. A C++ evaluator in this operation reads a table and one candidate and returns the proposition defined by INSIGHT-DISC 0.1.0. It does not link LibTorch. Ranking uses interval_excludes_next and records that rule. Pareto uses point estimates and records dominance_basis point_estimate. An empty table, or a table whose every record is a hole, returns abstained with reason empty_set. The uncertainty method, its parameters, and the numeric tolerance are frozen in the implementation note before fixtures are scored. Passing fixtures show that a supplied candidate was checked. They are not a discovery result. Readiness records that the contract is written. It does not admit a population or an application run.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-record-handoff"
+          ],
+          "acceptance": [
+            "Fixtures cover each class with one supported relationship, one unsupported relationship, one case that abstains because the uncertainty method cannot be formed, and one empty or all-hole table that returns abstained with reason empty_set.",
+            "A supported fixture returns verified only when recomputation matches and the declared margin rule holds. An unsupported fixture returns insufficient_evidence or rejected, and the statistic remains on the proposition when recomputation matches.",
+            "Provenance stores the snapshot identifier, filters, admitted and excluded counts, and the evaluator version. model_confidence is absent on this path. A ranking fixture records margin_rule interval_excludes_next. A Pareto fixture records dominance_basis point_estimate.",
+            "Correlation fixtures are labeled as association. Comparison fixtures do not use an Hx06 claim level. The evaluator source does not define a Non-Verba type, does not copy Hx21 sources, and does not enumerate a candidate space."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-search-goal",
+      "title": "Discover candidates under a declared budget",
+      "description": "Add the deterministic search that chooses which candidates evaluate will see. This is the baseline a learned proposer has to beat.",
+      "milestones": [
+        {
+          "id": "insight-discovery-deterministic-search",
+          "title": "Enumerate a candidate space and record the search",
+          "status": "proposed",
+          "description": "search takes a table, a declared space of classes, fields, filters, and aggregators, and a maximum number of evaluate calls. A named pruning rule may drop candidates before evaluation. Those drops are counted and are not billed as evaluations. Every emitted proposition has been through evaluate. The rank score is a named function of the evaluated proposition and is not a model score. The search record stores the space, the budget, the number evaluated, the number pruned, the rank score, and one multiplicity choice frozen before the winners are read: a named adjustment, a confirmation split, or unadjusted together with the count examined. The marginal interval stored on each proposition stays the single-candidate interval. The first implementation may use unadjusted plus the count. It may not choose an adjustment after seeing which candidates won.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-baseline"
+          ],
+          "acceptance": [
+            "On a hand-built table, the emitted propositions match evaluate on the same candidates, and the list is ordered by the declared rank score.",
+            "The search record states the space, the budget, the counts evaluated and pruned, and the multiplicity choice. A result that omits that record fails.",
+            "When the choice is unadjusted, each emitted proposition says so. When the choice is a named adjustment or a confirmation split, that choice is fixed in the implementation note before the fixture winners are computed.",
+            "The search source does not link LibTorch and does not call Hx21."
+          ],
+          "evidence": [
+            {
+              "label": "Discovery search",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-uncertainty-goal",
+      "title": "Strengthen rank and dominance checks",
+      "description": "Keep the initial rules working, and add the uncertainty checks that a noisy gap can defeat.",
+      "milestones": [
+        {
+          "id": "insight-discovery-uncertainty-contrasts",
+          "title": "Add a gap interval and robust dominance",
+          "status": "proposed",
+          "description": "interval_on_gap verifies a strict ranking when a declared interval for the difference between the leader and the next group excludes 0. Robust dominance treats group A as dominating group B when the declared intervals support at least as good on every objective and strictly better on one. Point-estimate Pareto and interval_excludes_next remain available and keep their recorded basis. This milestone is not required before the first evaluator or the first search.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-baseline"
+          ],
+          "acceptance": [
+            "A fixture with a tiny noisy lead is verified under interval_excludes_next and insufficient_evidence or rejected under interval_on_gap, with both rules named on the propositions.",
+            "A fixture whose point-estimate Pareto set changes when noise of the declared scale is acknowledged is point_estimate on one proposition and robust on the other, and the robust set is the smaller one.",
+            "Existing fixtures for the initial rules still pass without being relabeled as the stronger rules."
+          ],
+          "evidence": [
+            {
+              "label": "Operation contract",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-synthetic-goal",
+      "title": "Generate both the planted relationship and the sample evidence",
+      "description": "Procedural tables store what the mechanism entailed and, separately, what evaluate says about the realized rows.",
+      "milestones": [
+        {
+          "id": "insight-discovery-synthetic-labels",
+          "title": "Keep generator truth apart from observed evidence",
+          "status": "proposed",
+          "description": "Generators draw ranking, comparison, correlation, trend, and trade-off tables from declared parameters, including a small-sample regime where a planted positive association can look weak or reversed. generator_truth records the planted relationship. observed_evidence is the set of propositions evaluate returns on that table, including insufficient_evidence and rejected. One table may carry several of each. Resamples of a training family are stored apart from held-out families. A later training loss may not treat a refusal as an error when observed_evidence withholds the claim. This milestone does not authorize a neural training run by itself.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-search"
+          ],
+          "acceptance": [
+            "Each class is planted by one rule: a declared shift for ranking, a two-filter contrast for comparison, an association plus noise for correlation, an ordered sequence plus noise for trend, and two opposing objectives for trade-off. generator_truth records that rule and its parameters.",
+            "At least one draw has observed status insufficient_evidence or rejected while generator_truth still records the planted relationship. At least one draw is empty or all holes and has observed status abstained with reason empty_set.",
+            "The example stores both objects. A caption is not accepted as either label. A table with two planted relationships stores both truths and the observed status of each.",
+            "The training split and the held-out split name disjoint generator families. A new seed of a training family is marked as a resample and is not the generalization split.",
+            "evaluate and search accept the generated tables. On a frozen fixture, observed_evidence matches evaluate, and search recovery is reported against the sample-supported subset rather than against every planted truth."
+          ],
+          "evidence": [
+            {
+              "label": "Training plan",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            },
+            {
+              "label": "Synthetic labels",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-query-goal",
+      "title": "Encode an analytical intention as an Hx21 query",
+      "description": "The dictionary is the bridge from a candidate's meaning to a SetBatch row. This goal checks the rows. It does not train a network and it does not block the deterministic evaluator.",
+      "milestones": [
+        {
+          "id": "insight-discovery-query-encoding",
+          "title": "Show that different questions encode as different rows",
+          "status": "ready",
+          "description": "encode_query implements INSIGHT-QUERY 0.1.0. It reads an intention and a column map and writes one query row. It does not read a cached state and it does not compute a statistic. A semantic width below 16 fails. A mixed predicate in one row fails. An unknown class, aggregator, or field fails. The fixture for the highest median compensation by category sets ranking and median in the semantic vector, names compensation as the primary field and category as the secondary field, and leaves both of those data slots as holes. Two intentions that differ in class, aggregator, relationship form, primary field, secondary field, or filter signature produce different semantic vectors or different observation masks. The fixture compares those rows. It does not call Hx21 encode or query and it does not require a trained checkpoint. The evaluator binary still does not link LibTorch. Readiness records that the dictionary is written. It does not admit a learned training run.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-record-query-source"
+          ],
+          "acceptance": [
+            "encode_query follows the INSIGHT-QUERY 0.1.0 index layout. A semantic width below 16 fails rather than dropping codes. A row with two different predicates fails. An unknown class, aggregator, or field fails.",
+            "The highest-median-compensation-by-category fixture puts the class, the median aggregator, the highest form, the compensation code, and the category code in the semantic vector, and it leaves the compensation slot and the category slot unobserved.",
+            "A second intention that changes only the aggregator, only the relationship form, only the primary field, only the secondary field, or only the filter signature differs in the semantic vector or in the observation mask.",
+            "The fixture compares query rows. It does not call Hx21 encode or query, and the evaluator binary does not link LibTorch."
+          ],
+          "evidence": [
+            {
+              "label": "Query dictionary",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            },
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-candidates-goal",
+      "title": "Ask whether state fusion improves discovery at the same budget",
+      "description": "Train Approach B to propose candidates from the cached state. Report search, Approach A, and Approach B separately on validity, diversity, discoveries per budget unit, recall, and abstention rate. The evaluator still owns the statistics.",
+      "milestones": [
+        {
+          "id": "insight-discovery-state-fusion-candidates",
+          "title": "Compare one seed, two seeds, table features, and the search",
+          "status": "proposed",
+          "description": "Approach B reads the cached state and emits INSIGHT-QUERY 0.1.0 intentions. encode_query builds each row. A readout emits a skeleton with empty statistics, and evaluate fills the numbers. Approach A encodes skeletons that a declared policy already listed. It is reported as a baseline. search, Approach A, and Approach B are separate arms. A run of Approach A alone is not the discovery result. encode runs once per non-empty set. The head does not write computed statistics and does not add a function to Hx21. An empty or all-hole set returns abstained with reason empty_set without calling encode, and that return spends one budget unit. The table-feature proposer emits candidates under the same evaluate budget and then calls evaluate. The report splits ranking from trade-off under one PMA seed and under two. The hypothesis is that ranking may survive one seed and that a trade-off may have more structure at two seeds. Neither side is the predicted winner, and neither outcome by itself authorizes an edit to Hx21. The study reports validity, diversity, verified discoveries per budget unit, recall of sample-supported relationships, abstention rate, wall-clock, and GPU time. GPU time is an explicit zero on arms that do not call Hx21. A matched budget is a matched count of evaluate calls. It is not matched wall-clock or GPU time. The study does not report usefulness and does not embed descriptions. Held-out generator families are reported apart from resamples. Agreement is with observed_evidence. Hx21 source stays in its package.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-synthetic-labels",
+            "insight-discovery-query-encoding"
+          ],
+          "acceptance": [
+            "Approach B emits intentions from the cached state alone. Approach A receives skeletons from a declared policy. The report names search, Approach A, and Approach B separately. A run of Approach A alone is not reported as the discovery result.",
+            "encode_query follows INSIGHT-QUERY 0.1.0. The head emits candidates whose computed statistics are empty, and evaluate fills them from the original table. Hx21 gains no new function.",
+            "The study gives search, Approach A, Approach B, and the table-feature proposer the same evidence rule and the same number of evaluate calls. The table-feature path emits candidates. It does not submit a precomputed feature score. Any larger evaluation budget is labeled as a different study. The report also gives wall-clock for every arm and GPU time for every arm, with an explicit zero when the arm does not call Hx21.",
+            "Scores include precision of verified propositions, diversity, verified discoveries per budget unit, recall of sample-supported relationships, and abstention rate. An empty_set abstention counts in the abstention rate and as one budget unit. It is not folded into precision. A refusal that matches observed_evidence is not a miss against generator_truth.",
+            "Ranking and trade-off are reported separately under one seed and under two seeds. The write-up states the hypothesis and does not treat either seed count as the default finding. Diversity uses the tuple of class, fields, aggregator, relationship form, and filter signature. The report does not include a usefulness score or a description embedding. A score on new seeds of a training generator is not reported as generalization. No Hx21 pipeline error is reported as an insight metric."
+          ],
+          "evidence": [
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            },
+            {
+              "label": "State fusion model surface",
+              "path": "code/fusion/state_fusion_transformer/include/state_fusion/model.h"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-lean-goal",
+      "title": "Specify reusable rules where a proof is practical",
+      "description": "Lean 4 is optional. A proof of an algorithm is not evidence about the rows.",
+      "type": "conditional",
+      "milestones": [
+        {
+          "id": "insight-discovery-lean-rules",
+          "title": "Formalize ranking order, dominance, and one aggregator",
+          "status": "proposed",
+          "description": "If Lean is admitted, specify the ranking order, Pareto dominance, and one aggregator, and check the C++ fixtures against that specification. Record properties that were not formalized. Lean is not required to build or run the evaluator or the search.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-baseline"
+          ],
+          "acceptance": [
+            "The note states which properties were proved, which fixture values were checked, and which claims remain assumptions about the rows.",
+            "The proof document separates algorithm correctness, statistical support, and representativeness of the observations.",
+            "Geometrics still builds and evaluates insights when Lean is absent."
+          ],
+          "evidence": [
+            {
+              "label": "Lean boundary",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-presentation-goal",
+      "title": "Project charts and descriptions from the proposition",
+      "description": "The evaluated proposition is the only source for the chart and the description.",
+      "milestones": [
+        {
+          "id": "insight-discovery-presentation",
+          "title": "Expose chart and description projections",
+          "status": "proposed",
+          "description": "Two pure functions read an evaluated proposition. The chart names the form and binds series already stored on the proposition. The description is a class template filled from the same fields, including status, the interval, and, when a search emitted the proposition, the multiplicity label. An embedding of that description, and any nearest-chart retrieval, wait until after the discovery comparison. They are not on the path that asks whether Hx21 beats search.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-baseline"
+          ],
+          "acceptance": [
+            "Verified and insufficient_evidence propositions produce a chart specification and a description. The insufficient_evidence description states that status. An unadjusted search result states that the interval was not adjusted for the number examined.",
+            "Rejected, abstained, and failed propositions produce neither a claim chart nor a claim sentence.",
+            "The chart series equal computed_statistics. The description path adds no language-model subsystem. The discovery comparison can be scored without calling either projection."
+          ],
+          "evidence": [
+            {
+              "label": "Presentation rules",
+              "path": "code/operations/insight_discovery/CONTRACT.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insight-discovery-relevance-goal",
+      "title": "Rank verified propositions by a declared audience value",
+      "description": "A later stage. This is where usefulness gets a definition. Preference chooses among defensible propositions and does not change their status.",
+      "type": "conditional",
+      "milestones": [
+        {
+          "id": "insight-discovery-relevance",
+          "title": "Keep preference separate from validation",
+          "status": "proposed",
+          "description": "An optional ranker reorders propositions that are already verified. The utility or preference it optimizes is written down before any preference data is scored. Operator and requester preferences may differ in an application binding. The first discovery comparison does not call this ranker and does not report usefulness. The ranker is not required for the evaluator, the search, the generators, or the candidate head.",
+          "updatedAt": "2026-11-01",
+          "dependsOn": [
+            "insight-discovery-deterministic-baseline"
+          ],
+          "acceptance": [
+            "The ranker accepts only verified propositions and returns an order.",
+            "It does not change validation_status, computed statistics, uncertainty, or the multiplicity label.",
+            "The training objective for the ranker is recorded before any preference data is scored, and engagement alone is not that objective."
+          ],
+          "evidence": [
+            {
+              "label": "Design note",
+              "path": "code/operations/insight_discovery/DESIGN.md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

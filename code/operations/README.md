@@ -29,6 +29,17 @@ caller-supplied saved vectors through the exact-search reference and refuses
 live calls and unbound relevance. Both profiles remain unbound. The registration
 establishes no retrieval quality.
 
+The [insight discovery component](insight_discovery/README.md) owns Hx22.
+INSIGHT-DISC 0.1.0 defines five classes as structured propositions. `evaluate`
+checks one candidate against the original rows. `search` is the budgeted
+discovery baseline. Approach B, the research objective, reads a cached Hx21
+state and emits an `INSIGHT-QUERY 0.1.0` intention before any candidate exists.
+Approach A only refines a skeleton `search` already listed. The first study
+reports validity, diversity, discoveries per budget unit, recall, abstention
+rate, wall-clock, and GPU time. One seed versus two seeds is a hypothesis.
+Neither procedure is implemented. The operation sits beside OR-01 through OR-13
+and adds no family identifier. No population or run is bound.
+
 The [counterfactuals component](counterfactuals/README.md) owns Hx06 / OR-06
 comparison work. Its entry guide links the callable paired-response tool,
 contracts, synthetic evaluations, readout decision and separately authored

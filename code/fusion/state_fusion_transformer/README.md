@@ -15,6 +15,41 @@ The synthetic panels, the capacity protocol, and the LEGO study check that
 path: missing values, permutation invariance, and a query against a cached
 state. A caller supplies its own records.
 
+## Where this stands
+
+On 11 November 2026 this family is paused on the surface above.
+
+What is here:
+
+- `encode` writes one fixed state, `[batch, seeds, d_model]`. `query` reads
+  that cached state. `query_scalars` is a linear probe on `query`.
+  `save_checkpoint` and `load_checkpoint` keep the config and the weights
+  with the caller. No trained weights ship in git.
+- `make test` is the recorded CUDA pipeline check from 29 October 2026:
+  invariance, holes, the query checks, and 400 Adam steps on one synthetic
+  panel. The numbers are in Recorded check below.
+- `make capacity` and `make lego` are separate checks from 31 October 2026.
+  They are not part of `make test`. Capacity showed that one pooled seed can
+  be indexed by place and kind better than the set mean, while reconstruction
+  stayed above the visible set mean and the filter error stayed above the
+  noise. The LEGO check, with Duplo held out, missed by `0.717937` bricks
+  against `1.04814` for the other piles in the box, on a pile of about 1.9.
+  Closer than those piles, and still too far off to trust the count.
+- The categorical names place, kind, record type, side, and currency are the
+  slot labels used by those checks. A caller chooses what they mean.
+
+What to consider on a later return:
+
+- Which records a caller puts in `SetBatch`, and what a query must return.
+  That binding is open. It is not part of this package.
+- Whether the capacity run should continue past 1,600 steps. The curve was
+  still falling, and reconstruction had not beaten the visible set mean.
+- Whether a count anyone would trust needs a different width or more than
+  one seed. The Duplo theme and the three baselines stay as recorded. A
+  later run does not pick a new theme after seeing the score.
+
+None of those considerations authorizes a run.
+
 This is not the State Representation Network in
 `code/embeddings/state_representation/`. That network maps one observation
 embedding to a predictive state. It is not the Temporal Fusion Transformer in
